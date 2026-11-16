@@ -382,6 +382,12 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 39,
         },
         {
+            PickUp = { 98203 },
+            Coord = { x = -4575.8, y = -531.5 },
+            RaidIcon = { { npcID = 270780, questID = 98203 } },
+            Zone = 1425,
+        },
+        {
             PickUp = { 7844 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 78.8, 78.4),
             RaidIcon = { { npcID = 14739, questID = 7844 } },
@@ -496,6 +502,12 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Button = { ["3123-1"] = 9618 },
             Zone = 1425,
             _index = 51,
+        },
+        {
+            Qpart = { [98203] = { 1 } },
+            Coord = { x = -2518.6, y = -217.3 },
+            IsQuestOnQuest = 98203,
+            Zone = 1425,
         },
         {
             Qpart = { [2995] = { 2 } },
@@ -632,6 +644,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 20,
             Zone = 1425,
             _index = 67,
+        },
+        {
+            Done = { 98203 },
+            Coord = { x = -4574.9, y = -530.5 },
+            RaidIcon = { { npcID = 270780, questID = 98203 } },
+            IsQuestOnQuest = 98203,
+            IsQuestReadyForTurnIn = 98203,
+            Zone = 1425,
         },
         {
             Done = { 7839 },

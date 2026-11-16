@@ -300,6 +300,21 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             Zone = 1422,
             _index = 27,
         }, {
+            UseItem = { itemID = 16787, itemSpellID = 19937 },
+            Coord = {
+                x = -3951.8,
+                y = -5102.8,
+            },
+            InstanceQuest = true,
+            AnyOf = {
+                { IsQuestOnQuest = 6570 },
+                { IsQuestCompleted = 6570, IsQuestNotOnQuest = 6582, IsQuestUncompleted = 6582 },
+            },
+            DontHaveAura = 19937,
+            ItemCount = { itemID = 16787, count = 1, operator = ">=" },
+            Zone = 1445,
+            _index = 28,
+        }, {
             Done = { 6570 },
             Coord = {
                 x = -3951.8,
@@ -308,7 +323,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6570,
             Zone = 1445,
-            _index = 28,
+            _index = 29,
         }, {
             PickUp = { 6582 },
             Coord = {
@@ -320,7 +335,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsOneOfQuestsCompleted = { 6570 },
             IsQuestUncompleted = 6582,
             Zone = 1445,
-            _index = 29,
+            _index = 30,
         }, {
             Qpart = {
                 [6582] = { 1 },
@@ -329,7 +344,22 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             NoArrow = true,
             InstanceQuest = true,
             IsQuestOnQuest = 6582,
-            _index = 30,
+            _index = 31,
+        }, {
+            UseItem = { itemID = 16787, itemSpellID = 19937 },
+            Coord = {
+                x = -3951.8,
+                y = -5102.8,
+            },
+            InstanceQuest = true,
+            AnyOf = {
+                { IsQuestOnQuest = 6582 },
+                { IsQuestCompleted = 6582, IsQuestNotOnQuest = 6583, IsQuestUncompleted = 6583 },
+            },
+            DontHaveAura = 19937,
+            ItemCount = { itemID = 16787, count = 1, operator = ">=" },
+            Zone = 1445,
+            _index = 32,
         }, {
             Done = { 6582 },
             Coord = {
@@ -339,7 +369,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6582,
             Zone = 1445,
-            _index = 31,
+            _index = 33,
         }, {
             PickUp = { 6583 },
             Coord = {
@@ -351,7 +381,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsOneOfQuestsCompleted = { 6570 },
             IsQuestUncompleted = 6583,
             Zone = 1445,
-            _index = 32,
+            _index = 34,
         }, {
             Qpart = {
                 [6583] = { 1 },
@@ -360,7 +390,22 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             NoArrow = true,
             InstanceQuest = true,
             IsQuestOnQuest = 6583,
-            _index = 33,
+            _index = 35,
+        }, {
+            UseItem = { itemID = 16787, itemSpellID = 19937 },
+            Coord = {
+                x = -3951.8,
+                y = -5102.8,
+            },
+            InstanceQuest = true,
+            AnyOf = {
+                { IsQuestOnQuest = 6583 },
+                { IsQuestCompleted = 6583, IsQuestNotOnQuest = 6584, IsQuestUncompleted = 6584 },
+            },
+            DontHaveAura = 19937,
+            ItemCount = { itemID = 16787, count = 1, operator = ">=" },
+            Zone = 1445,
+            _index = 36,
         }, {
             Done = { 6583 },
             Coord = {
@@ -370,7 +415,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6583,
             Zone = 1445,
-            _index = 34,
+            _index = 37,
         }, {
             PickUp = { 6584 },
             Coord = {
@@ -382,7 +427,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsOneOfQuestsCompleted = { 6570 },
             IsQuestUncompleted = 6584,
             Zone = 1445,
-            _index = 35,
+            _index = 38,
         }, {
             Qpart = {
                 [6584] = { 1 },
@@ -391,7 +436,22 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             NoArrow = true,
             InstanceQuest = true,
             IsQuestOnQuest = 6584,
-            _index = 36,
+            _index = 39,
+        }, {
+            UseItem = { itemID = 16787, itemSpellID = 19937 },
+            Coord = {
+                x = -3951.8,
+                y = -5102.8,
+            },
+            InstanceQuest = true,
+            AnyOf = {
+                { IsQuestOnQuest = 6584 },
+                { IsQuestCompleted = 6584, IsQuestNotOnQuest = 6585, IsQuestUncompleted = 6585 },
+            },
+            DontHaveAura = 19937,
+            ItemCount = { itemID = 16787, count = 1, operator = ">=" },
+            Zone = 1445,
+            _index = 40,
         }, {
             Done = { 6584 },
             Coord = {
@@ -401,7 +461,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6584,
             Zone = 1445,
-            _index = 37,
+            _index = 41,
         }, {
             PickUp = { 6585 },
             Coord = {
@@ -413,7 +473,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsQuestUncompleted = 6585,
             IsQuestsCompleted = { 6582, 6583, 6584 },
             Zone = 1445,
-            _index = 38,
+            _index = 42,
         }, {
             Qpart = {
                 [6585] = { 1 },
@@ -422,7 +482,22 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             NoArrow = true,
             InstanceQuest = true,
             IsQuestOnQuest = 6585,
-            _index = 39,
+            _index = 43,
+        }, {
+            UseItem = { itemID = 16787, itemSpellID = 19937 },
+            Coord = {
+                x = -3951.8,
+                y = -5102.8,
+            },
+            InstanceQuest = true,
+            AnyOf = {
+                { IsQuestOnQuest = 6585 },
+                { IsQuestCompleted = 6585, IsQuestNotOnQuest = 6601, IsQuestUncompleted = 6601 },
+            },
+            DontHaveAura = 19937,
+            ItemCount = { itemID = 16787, count = 1, operator = ">=" },
+            Zone = 1445,
+            _index = 44,
         }, {
             Done = { 6585 },
             Coord = {
@@ -432,7 +507,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6585,
             Zone = 1445,
-            _index = 40,
+            _index = 45,
         }, {
             PickUp = { 6601 },
             Coord = {
@@ -444,7 +519,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsOneOfQuestsCompleted = { 6585 },
             IsQuestUncompleted = 6601,
             Zone = 1445,
-            _index = 41,
+            _index = 46,
         }, {
             Done = { 6601 },
             Coord = {
@@ -454,7 +529,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6601,
             Zone = 1443,
-            _index = 42,
+            _index = 47,
         }, {
             PickUp = { 6602 },
             Coord = {
@@ -466,7 +541,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             IsOneOfQuestsCompleted = { 6601 },
             IsQuestUncompleted = 6602,
             Zone = 1443,
-            _index = 43,
+            _index = 48,
         }, {
             EnterInstance = {
                 dungeonKey = "INSTANCE_229",
@@ -475,7 +550,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             Dungeon = "INSTANCE_229",
             InstanceQuest = true,
             IsQuestOnQuest = 6602,
-            _index = 44,
+            _index = 49,
         }, {
             Qpart = {
                 [6602] = { 1 },
@@ -484,7 +559,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             NoArrow = true,
             InstanceQuest = true,
             IsQuestOnQuest = 6602,
-            _index = 45,
+            _index = 50,
         }, {
             LeaveInstance = {
                 dungeonKey = "INSTANCE_229",
@@ -493,7 +568,7 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             Dungeon = "INSTANCE_229",
             InstanceQuest = true,
             IsQuestOnQuest = 6602,
-            _index = 46,
+            _index = 51,
         }, {
             Done = { 6602 },
             Coord = {
@@ -503,9 +578,9 @@ APR.RouteQuestStepList["Forever-Raids-onyxias-lair-drakefire-h"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 6602,
             Zone = 1443,
-            _index = 47,
+            _index = 52,
         }, {
             RouteCompleted = true,
-            _index = 48,
+            _index = 53,
         } },
 }

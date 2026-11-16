@@ -677,6 +677,12 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 76,
         },
         {
+            PickUp = { 97265 },
+            Coord = { x = 3094, y = -1559.7 },
+            RaidIcon = { { npcID = 268705, questID = 97265 } },
+            Zone = 1443,
+        },
+        {
             PickUp = { 6143 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 23.3, 72.9),
             Zone = 1443,
@@ -820,6 +826,14 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             Range = 20,
             Zone = 1443,
             _index = 93,
+        },
+        {
+            Qpart = { [97265] = { 1, 2, 3, 4, 5 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 75.595, 21.675),
+            Range = 30,
+            RaidIcon = { { npcID = 4671, questID = 97265, objectiveIndex = 1 }, { npcID = 4675, questID = 97265, objectiveIndex = 2 }, { npcID = 4674, questID = 97265, objectiveIndex = 3 }, { npcID = 4672, questID = 97265, objectiveIndex = 4 }, { npcID = 4670, questID = 97265, objectiveIndex = 5 } },
+            IsQuestOnQuest = 97265,
+            Zone = 1443,
         },
         {
             Done = { 5501 },
@@ -1179,6 +1193,14 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 138,
         },
         {
+            Done = { 97265 },
+            Coord = { x = 3095.1, y = -1558.4 },
+            RaidIcon = { { npcID = 268705, questID = 97265 } },
+            IsQuestOnQuest = 97265,
+            IsQuestReadyForTurnIn = 97265,
+            Zone = 1443,
+        },
+        {
             Done = { 6142 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 22.7, 72.1),
             Zone = 1443,
@@ -1381,7 +1403,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
     mapID = 1443,
     conditions = { MinLevel = 40, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Tanaris-First-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 19 }, [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
     parallelSteps = {
         {
             repeatable = true,

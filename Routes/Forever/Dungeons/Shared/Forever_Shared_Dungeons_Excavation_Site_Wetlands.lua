@@ -110,17 +110,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Zone = 1437,
         _index = 9,
     }, {
-        Done = { 95772 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
-        RaidIcon = { {
-            npcID = 956,
-            questID = 95772,
-        } },
-        Faction = "Alliance",
-        IsQuestOnQuest = 95772,
-        Zone = 1433,
-        _index = 10,
-    }, {
         PickUp = { 276 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
@@ -133,7 +122,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         MinLevel = 20,
         Zone = 1437,
-        _index = 11,
+        _index = 10,
     }, {
         Done = { 469 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
@@ -144,7 +133,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 469,
         Zone = 1437,
-        _index = 12,
+        _index = 11,
     }, {
         PickUp = { 95647 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
@@ -158,7 +147,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         MinLevel = 24,
         Zone = 1437,
-        _index = 13,
+        _index = 12,
     }, {
         Qpart = {
             [276] = { 1, 2 },
@@ -166,7 +155,30 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 60.33, 73.77),
         IsQuestOnQuest = 276,
         Zone = 1437,
+        _index = 13,
+    }, {
+        PickUp = { 484 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
+        RaidIcon = { { npcID = 2094, questID = 484 } },
+        Faction = "Alliance",
+        Zone = 1437,
         _index = 14,
+    }, {
+        Qpart = { [484] = { 1 } },
+        Coord = { x = -753.50, y = -3534.31 },
+        Range = 70,
+        Faction = "Alliance",
+        IsQuestOnQuest = 484,
+        Zone = 1437,
+        _index = 15,
+    }, {
+        Done = { 484 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
+        RaidIcon = { { npcID = 2094, questID = 484 } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 484,
+        Zone = 1437,
+        _index = 16,
     }, {
         PickUp = { 98815 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
@@ -175,12 +187,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             questID = 98815,
         } },
         AnyOf = { {
-            IsQuestCompleted = 469,
+            IsQuestCompleted = 484,
         } },
         Faction = "Alliance",
         MinLevel = 24,
         Zone = 1437,
-        _index = 15,
+        _index = 17,
     }, {
         Done = { 276 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -191,7 +203,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 276,
         Zone = 1437,
-        _index = 16,
+        _index = 18,
     }, {
         PickUp = { 277 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -205,7 +217,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         MinLevel = 20,
         Zone = 1437,
-        _index = 17,
+        _index = 19,
     }, {
         Qpart = {
             [277] = { 1 },
@@ -213,7 +225,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 61.27, 58.42),
         IsQuestOnQuest = 277,
         Zone = 1437,
-        _index = 18,
+        _index = 20,
     }, {
         Done = { 277 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -224,7 +236,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 277,
         Zone = 1437,
-        _index = 19,
+        _index = 21,
     }, {
         PickUp = { 275 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -238,7 +250,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         MinLevel = 20,
         Zone = 1437,
-        _index = 20,
+        _index = 22,
     }, {
         Qpart = {
             [275] = { 1 },
@@ -246,7 +258,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 27.38, 37.12),
         IsQuestOnQuest = 275,
         Zone = 1437,
-        _index = 21,
+        _index = 23,
     }, {
         Done = { 275 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -257,7 +269,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 275,
         Zone = 1437,
-        _index = 22,
+        _index = 24,
     }, {
         PickUp = { 95646 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
@@ -271,7 +283,32 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         MinLevel = 24,
         Zone = 1437,
-        _index = 23,
+        _index = 25,
+    }, {
+        Done = { 95663 },
+        Coord = { x = -2366.312, y = -3699.685 },
+        RaidIcon = { {
+            npcID = 13155,
+            questID = 95663,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 95663,
+        Zone = 1437,
+        _index = 26,
+    }, {
+        PickUp = { 95682 },
+        Coord = { x = -2366.312, y = -3699.685 },
+        RaidIcon = { {
+            npcID = 13155,
+            questID = 95682,
+        } },
+        AnyOf = { {
+            IsQuestCompleted = 95663,
+        } },
+        Faction = "Horde",
+        MinLevel = 24,
+        Zone = 1437,
+        _index = 27,
     }, {
         EnterInstance = {
             dungeonKey = "INSTANCE_2998",
@@ -280,7 +317,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
         Zone = 1437,
-        _index = 24,
+        _index = 28,
+    }, {
+        Done = { 95772 },
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
+        RaidIcon = { {
+            npcID = 262465,
+            questID = 95772,
+        } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 95772,
+        _index = 29,
     }, {
         PickUp = { 95795 },
         NoArrow = true,
@@ -295,7 +344,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         } },
         Faction = "Alliance",
         MinLevel = 24,
-        _index = 25,
+        _index = 30,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2998",
@@ -305,7 +354,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        _index = 26,
+        _index = 31,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2998",
@@ -315,7 +364,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        _index = 27,
+        _index = 32,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2998",
@@ -325,7 +374,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        _index = 28,
+        _index = 33,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2998",
@@ -335,7 +384,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        _index = 29,
+        _index = 34,
     }, {
         Qpart = {
             [95646] = { 1 },
@@ -344,7 +393,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
         IsQuestOnQuest = 95646,
-        _index = 30,
+        _index = 35,
     }, {
         Qpart = {
             [95647] = { 1 },
@@ -353,242 +402,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
         IsQuestOnQuest = 95647,
-        _index = 31,
-    }, {
-        Done = { 95663 },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        RaidIcon = { {
-            npcID = 13155,
-            questID = 95663,
-        } },
-        Faction = "Horde",
-        IsQuestOnQuest = 95663,
-        _index = 32,
-    }, {
-        PickUp = { 95664 },
-        Button = {
-            ["95664"] = 270866,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        Faction = "Horde",
-        ItemCount = {
-            count = 1,
-            itemID = 270866,
-        },
-        MinLevel = 24,
-        _index = 33,
-    }, {
-        Qpart = {
-            [95697] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        IsQuestOnQuest = 95697,
-        _index = 34,
-    }, {
-        PickUp = { 95810 },
-        Button = {
-            ["95810"] = 270865,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        Faction = "Alliance",
-        ItemCount = {
-            count = 1,
-            itemID = 270865,
-        },
-        MinLevel = 24,
-        _index = 35,
-    }, {
-        Qpart = {
-            [98815] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        IsQuestOnQuest = 98815,
         _index = 36,
     }, {
-        Qpart = {
-            [95664] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        IsQuestOnQuest = 95664,
-        _index = 37,
-    }, {
-        PickUp = { 95682 },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        RaidIcon = { {
-            npcID = 13155,
-            questID = 95682,
-        } },
-        AnyOf = { {
-            IsQuestCompleted = 95663,
-        } },
-        Faction = "Horde",
-        MinLevel = 24,
-        _index = 38,
-    }, {
-        Qpart = {
-            [95810] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        IsQuestOnQuest = 95810,
-        _index = 39,
-    }, {
-        Qpart = {
-            [95682] = { 1, 2, 3 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        IsQuestOnQuest = 95682,
-        _index = 40,
-    }, {
-        Done = { 95682 },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        RaidIcon = { {
-            npcID = 13155,
-            questID = 95682,
-        } },
-        Faction = "Horde",
-        IsQuestOnQuest = 95682,
-        _index = 41,
-    }, {
-        LeaveInstance = {
-            dungeonKey = "INSTANCE_2998",
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_2998",
-        _index = 42,
-    }, {
-        Done = { 95646 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-        RaidIcon = { {
-            npcID = 1244,
-            questID = 95646,
-        } },
-        Faction = "Alliance",
-        IsQuestOnQuest = 95646,
-        Zone = 1437,
-        _index = 43,
-    }, {
         Done = { 95647 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
         RaidIcon = { {
-            npcID = 1480,
+            npcID = 262681,
             questID = 95647,
         } },
         Faction = "Alliance",
         IsQuestOnQuest = 95647,
-        Zone = 1437,
-        _index = 44,
-    }, {
-        Done = { 95664 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
-        RaidIcon = { {
-            npcID = 9087,
-            questID = 95664,
-        } },
-        Faction = "Horde",
-        IsQuestOnQuest = 95664,
-        Zone = 1456,
-        _index = 45,
-    }, {
-        Done = { 95697 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 57.2, 53.32),
-        RaidIcon = { {
-            npcID = 3368,
-            questID = 95697,
-        } },
-        Faction = "Horde",
-        IsQuestOnQuest = 95697,
-        Zone = 1454,
-        _index = 46,
-    }, {
-        Done = { 95795 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
-        RaidIcon = { {
-            npcID = 956,
-            questID = 95795,
-        } },
-        Faction = "Alliance",
-        IsQuestOnQuest = 95795,
-        Zone = 1433,
-        _index = 47,
-    }, {
-        Done = { 95810 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
-        RaidIcon = { {
-            npcID = 1077,
-            questID = 95810,
-        } },
-        Faction = "Alliance",
-        IsQuestOnQuest = 95810,
-        Zone = 1437,
-        _index = 48,
-    }, {
-        Done = { 98815 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
-        RaidIcon = { {
-            npcID = 2094,
-            questID = 98815,
-        } },
-        Faction = "Alliance",
-        IsQuestOnQuest = 98815,
-        Zone = 1437,
-        _index = 49,
-    }, {
-        PickUp = { 98823 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
-        RaidIcon = { {
-            npcID = 9087,
-            questID = 98823,
-        } },
-        AnyOf = { {
-            IsQuestCompleted = 95664,
-        } },
-        Faction = "Horde",
-        MinLevel = 24,
-        Zone = 1456,
-        _index = 50,
-    }, {
-        PickUp = { 98824 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
-        RaidIcon = { {
-            npcID = 1077,
-            questID = 98824,
-        } },
-        AnyOf = { {
-            IsQuestCompleted = 95810,
-        } },
-        Faction = "Alliance",
-        MinLevel = 24,
-        Zone = 1437,
-        _index = 51,
-    }, {
-        EnterInstance = {
-            dungeonKey = "INSTANCE_2998",
-        },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 48.22, 56.49),
-        Dungeon = "INSTANCE_2998",
-        InstanceQuest = true,
-        Zone = 1437,
-        _index = 52,
+        _index = 37,
     }, {
         PickUp = { 95809 },
         NoArrow = true,
@@ -603,41 +429,194 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         } },
         Faction = "Alliance",
         MinLevel = 24,
-        _index = 53,
+        _index = 38,
     }, {
-        Qpart = {
-            [98823] = { 1 },
+        PickUp = { 95664 },
+        Button = {
+            ["95664"] = 270866,
         },
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        IsQuestOnQuest = 98823,
-        _index = 54,
+        Faction = "Horde",
+        ItemCount = {
+            count = 1,
+            itemID = 270866,
+        },
+        MinLevel = 24,
+        _index = 39,
     }, {
         Qpart = {
-            [98824] = { 1 },
+            [95697] = { 1 },
         },
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        IsQuestOnQuest = 98824,
-        _index = 55,
+        IsQuestOnQuest = 95697,
+        _index = 40,
     }, {
-        Qpart = {
-            [95809] = { 1 },
+        PickUp = { 95810 },
+        Button = {
+            ["95810"] = 270865,
         },
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
-        IsQuestOnQuest = 95809,
-        _index = 56,
+        Faction = "Alliance",
+        ItemCount = {
+            count = 1,
+            itemID = 270865,
+        },
+        MinLevel = 24,
+        _index = 41,
+    }, {
+        Qpart = {
+            [98815] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
+        IsQuestOnQuest = 98815,
+        _index = 42,
+    }, {
+        Qpart = {
+            [95664] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95664,
+        _index = 43,
+    }, {
+        Qpart = {
+            [95810] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95810,
+        _index = 44,
+    }, {
+        Qpart = {
+            [95682] = { 1, 2, 3 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_2998",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95682,
+        _index = 45,
     }, {
         LeaveInstance = {
             dungeonKey = "INSTANCE_2998",
         },
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
-        _index = 57,
+        _index = 46,
+    }, {
+        Done = { 95682 },
+        Coord = { x = -2366.312, y = -3699.685 },
+        RaidIcon = { {
+            npcID = 13155,
+            questID = 95682,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 95682,
+        Zone = 1437,
+        _index = 47,
+    }, {
+        Done = { 95646 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
+        RaidIcon = { {
+            npcID = 1244,
+            questID = 95646,
+        } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 95646,
+        Zone = 1437,
+        _index = 48,
+    }, {
+        Done = { 95664 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
+        RaidIcon = { {
+            npcID = 9087,
+            questID = 95664,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 95664,
+        Zone = 1456,
+        _index = 49,
+    }, {
+        Done = { 95697 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 57.2, 53.32),
+        RaidIcon = { {
+            npcID = 3368,
+            questID = 95697,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 95697,
+        Zone = 1454,
+        _index = 50,
+    }, {
+        Done = { 95795 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
+        RaidIcon = { {
+            npcID = 956,
+            questID = 95795,
+        } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 95795,
+        Zone = 1433,
+        _index = 51,
+    }, {
+        Done = { 95810 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
+        RaidIcon = { {
+            npcID = 1077,
+            questID = 95810,
+        } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 95810,
+        Zone = 1437,
+        _index = 52,
+    }, {
+        Done = { 98815 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
+        RaidIcon = { {
+            npcID = 2094,
+            questID = 98815,
+        } },
+        Faction = "Alliance",
+        IsQuestOnQuest = 98815,
+        Zone = 1437,
+        _index = 53,
+    }, {
+        PickUp = { 98823 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
+        RaidIcon = { {
+            npcID = 9087,
+            questID = 98823,
+        } },
+        AnyOf = { {
+            IsQuestCompleted = 95664,
+        } },
+        Faction = "Horde",
+        MinLevel = 24,
+        Zone = 1456,
+        _index = 54,
+    }, {
+        PickUp = { 98824 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
+        RaidIcon = { {
+            npcID = 1077,
+            questID = 98824,
+        } },
+        AnyOf = { {
+            IsQuestCompleted = 95810,
+        } },
+        Faction = "Alliance",
+        MinLevel = 24,
+        Zone = 1437,
+        _index = 55,
     }, {
         Done = { 95809 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
@@ -648,7 +627,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 95809,
         Zone = 1437,
-        _index = 58,
+        _index = 56,
     }, {
         Done = { 98823 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 33.41, 22.59),
@@ -659,7 +638,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Horde",
         IsQuestOnQuest = 98823,
         Zone = 1412,
-        _index = 59,
+        _index = 57,
     }, {
         Done = { 98824 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.93, 18.55),
@@ -670,9 +649,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 98824,
         Zone = 1455,
-        _index = 60,
+        _index = 58,
     }, {
         RouteCompleted = true,
-        _index = 61,
+        _index = 59,
     } },
 }

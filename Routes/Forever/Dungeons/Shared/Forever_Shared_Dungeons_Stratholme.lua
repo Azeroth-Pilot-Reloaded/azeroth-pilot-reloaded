@@ -374,6 +374,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6022] = { 1 },
         },
+        Button = { ["6022-1"] = 15454 },
         NoArrow = true,
         IsQuestOnQuest = 6022,
         _index = 34,
@@ -2301,6 +2302,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5282] = { 1 },
         },
+        Button = { ["5282-1"] = 13289 },
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,

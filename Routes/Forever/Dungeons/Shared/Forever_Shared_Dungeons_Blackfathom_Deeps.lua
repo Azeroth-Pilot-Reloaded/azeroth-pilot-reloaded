@@ -273,6 +273,65 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Zone = 1439,
         _index = 20,
     }, {
+        LootItems = { { itemID = 16790, quantity = 1 } },
+        Coord = { x = 896.76, y = 4247.63 },
+        Faction = "Horde",
+        IsQuestNotOnQuest = 6564,
+        IsQuestUncompleted = 6564,
+        MinLevel = 17,
+        Zone = 1440,
+        _index = 21,
+    }, {
+        PickUp = { 6564 },
+        Coord = { x = 896.76, y = 4247.63 },
+        Button = {
+            ["6564"] = 16790,
+        },
+        AnyOf = { {
+            IsQuestCompleted = 6562,
+        } },
+        Faction = "Horde",
+        ItemCount = {
+            count = 1,
+            itemID = 16790,
+        },
+        MinLevel = 17,
+        Zone = 1440,
+        _index = 22,
+    }, {
+        Qpart = {
+            [6563] = { 1 },
+        },
+        Coord = { x = 896.76, y = 4247.63 },
+        IsQuestOnQuest = 6563,
+        Zone = 1440,
+        _index = 23,
+    }, {
+        Done = { 6564 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
+        RaidIcon = { {
+            npcID = 12736,
+            questID = 6564,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 6564,
+        Zone = 1440,
+        _index = 24,
+    }, {
+        PickUp = { 6565 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
+        RaidIcon = { {
+            npcID = 12736,
+            questID = 6565,
+        } },
+        AnyOf = { {
+            IsQuestCompleted = 6564,
+        } },
+        Faction = "Horde",
+        MinLevel = 17,
+        Zone = 1440,
+        _index = 25,
+    }, {
         EnterInstance = {
             dungeonKey = "INSTANCE_48",
         },
@@ -280,7 +339,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
         Zone = 1440,
-        _index = 21,
+        _index = 26,
     }, {
         PickUp = { 6561 },
         NoArrow = true,
@@ -292,96 +351,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         } },
         Faction = "Horde",
         MinLevel = 18,
-        _index = 22,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Ghamoo-ra",
-            npcID = 4887,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 23,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Lady Sarevess",
-            npcID = 4831,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 24,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Gelihast",
-            npcID = 6243,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 25,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Lorgus Jett",
-            npcID = 12902,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 26,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Baron Aquanis",
-            npcID = 12876,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
         _index = 27,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Old Serra'kis",
-            npcID = 4830,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 28,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Twilight Lord Kelris",
-            npcID = 4832,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 29,
-    }, {
-        KillNPC = {
-            dungeonKey = "INSTANCE_48",
-            name = "Aku'mai",
-            npcID = 4829,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        _index = 30,
-    }, {
-        Qpart = {
-            [971] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 971,
-        _index = 31,
     }, {
         Done = { 1198 },
         NoArrow = true,
@@ -393,94 +363,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         } },
         Faction = "Alliance",
         IsQuestOnQuest = 1198,
-        _index = 32,
-    }, {
-        Qpart = {
-            [1199] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 1199,
-        _index = 33,
-    }, {
-        Qpart = {
-            [1275] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 1275,
-        _index = 34,
-    }, {
-        Qpart = {
-            [1442] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 1442,
-        _index = 35,
-    }, {
-        Qpart = {
-            [6561] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 6561,
-        _index = 36,
-    }, {
-        Qpart = {
-            [6563] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 6563,
-        _index = 37,
-    }, {
-        PickUp = { 6564 },
-        Button = {
-            ["6564"] = 16790,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        AnyOf = { {
-            IsQuestCompleted = 6562,
-        } },
-        Faction = "Horde",
-        ItemCount = {
-            count = 1,
-            itemID = 16790,
-        },
-        MinLevel = 17,
-        _index = 38,
-    }, {
-        Qpart = {
-            [6921] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 6921,
-        _index = 39,
-    }, {
-        PickUp = { 6922 },
-        Button = {
-            ["6922"] = 16782,
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        Faction = "Horde",
-        ItemCount = {
-            count = 1,
-            itemID = 16782,
-        },
-        MinLevel = 21,
-        _index = 40,
+        _index = 28,
     }, {
         PickUp = { 1200 },
         NoArrow = true,
@@ -495,16 +378,165 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         } },
         Faction = "Alliance",
         MinLevel = 18,
-        _index = 41,
+        _index = 29,
     }, {
-        Qpart = {
-            [6564] = { 1 },
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Ghamoo-ra",
+            npcID = 4887,
         },
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
-        IsQuestOnQuest = 6564,
+        _index = 30,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Lady Sarevess",
+            npcID = 4831,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 31,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Gelihast",
+            npcID = 6243,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 32,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Lorgus Jett",
+            npcID = 12902,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 33,
+    }, {
+        Qpart = {
+            [6565] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 6565,
+        _index = 34,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Baron Aquanis",
+            npcID = 12876,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 35,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Old Serra'kis",
+            npcID = 4830,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 36,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Twilight Lord Kelris",
+            npcID = 4832,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 37,
+    }, {
+        KillNPC = {
+            dungeonKey = "INSTANCE_48",
+            name = "Aku'mai",
+            npcID = 4829,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        _index = 38,
+    }, {
+        Qpart = {
+            [971] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 971,
+        _index = 39,
+    }, {
+        Qpart = {
+            [1199] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 1199,
+        _index = 40,
+    }, {
+        Qpart = {
+            [1275] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 1275,
+        _index = 41,
+    }, {
+        Qpart = {
+            [1442] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 1442,
         _index = 42,
+    }, {
+        Qpart = {
+            [6561] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 6561,
+        _index = 43,
+    }, {
+        Qpart = {
+            [6921] = { 1 },
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        IsQuestOnQuest = 6921,
+        _index = 44,
+    }, {
+        PickUp = { 6922 },
+        Button = {
+            ["6922"] = 16782,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_48",
+        InstanceQuest = true,
+        Faction = "Horde",
+        ItemCount = {
+            count = 1,
+            itemID = 16782,
+        },
+        MinLevel = 21,
+        _index = 45,
     }, {
         Qpart = {
             [6922] = { 1 },
@@ -513,7 +545,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
         IsQuestOnQuest = 6922,
-        _index = 43,
+        _index = 46,
     }, {
         Qpart = {
             [1200] = { 1 },
@@ -522,14 +554,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
         IsQuestOnQuest = 1200,
-        _index = 44,
+        _index = 47,
     }, {
         LeaveInstance = {
             dungeonKey = "INSTANCE_48",
         },
         NoArrow = true,
         Dungeon = "INSTANCE_48",
-        _index = 45,
+        _index = 48,
     }, {
         Done = { 971 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 50.83, 5.62),
@@ -540,7 +572,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 971,
         Zone = 1455,
-        _index = 46,
+        _index = 49,
     }, {
         Done = { 1199 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 55.24, 23.99),
@@ -551,7 +583,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1199,
         Zone = 1457,
-        _index = 47,
+        _index = 50,
     }, {
         Done = { 1200 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 56.16, 24.39),
@@ -562,7 +594,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1200,
         Zone = 1457,
-        _index = 48,
+        _index = 51,
     }, {
         Done = { 1275 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.33, 43.04),
@@ -573,7 +605,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1275,
         Zone = 1439,
-        _index = 49,
+        _index = 52,
     }, {
         Done = { 1442 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.4, 40.13),
@@ -586,7 +618,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         IsQuestOnQuest = 1442,
         Race = { "Human", "Dwarf" },
         Zone = 1439,
-        _index = 50,
+        _index = 53,
     }, {
         Done = { 6561 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
@@ -597,7 +629,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Horde",
         IsQuestOnQuest = 6561,
         Zone = 1456,
-        _index = 51,
+        _index = 54,
     }, {
         Done = { 6563 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
@@ -608,18 +640,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Horde",
         IsQuestOnQuest = 6563,
         Zone = 1440,
-        _index = 52,
-    }, {
-        Done = { 6564 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
-        RaidIcon = { {
-            npcID = 12736,
-            questID = 6564,
-        } },
-        Faction = "Horde",
-        IsQuestOnQuest = 6564,
-        Zone = 1440,
-        _index = 53,
+        _index = 55,
     }, {
         Done = { 6921 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
@@ -630,7 +651,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Horde",
         IsQuestOnQuest = 6921,
         Zone = 1440,
-        _index = 54,
+        _index = 56,
     }, {
         Done = { 6922 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
@@ -641,46 +662,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Horde",
         IsQuestOnQuest = 6922,
         Zone = 1440,
-        _index = 55,
-    }, {
-        PickUp = { 6565 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
-        RaidIcon = { {
-            npcID = 12736,
-            questID = 6565,
-        } },
-        AnyOf = { {
-            IsQuestCompleted = 6564,
-        } },
-        Faction = "Horde",
-        MinLevel = 17,
-        Zone = 1440,
-        _index = 56,
-    }, {
-        EnterInstance = {
-            dungeonKey = "INSTANCE_48",
-        },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 16.354, 10.937),
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        Zone = 1440,
         _index = 57,
-    }, {
-        Qpart = {
-            [6565] = { 1 },
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        InstanceQuest = true,
-        IsQuestOnQuest = 6565,
-        _index = 58,
-    }, {
-        LeaveInstance = {
-            dungeonKey = "INSTANCE_48",
-        },
-        NoArrow = true,
-        Dungeon = "INSTANCE_48",
-        _index = 59,
     }, {
         Done = { 6565 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
@@ -691,9 +673,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Faction = "Horde",
         IsQuestOnQuest = 6565,
         Zone = 1440,
-        _index = 60,
+        _index = 58,
     }, {
         RouteCompleted = true,
-        _index = 61,
+        _index = 59,
     } },
 }

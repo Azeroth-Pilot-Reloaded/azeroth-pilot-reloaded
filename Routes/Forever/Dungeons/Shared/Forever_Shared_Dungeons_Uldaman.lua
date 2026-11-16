@@ -14,6 +14,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         min = 41,
     },
     mapID = 1418,
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 24.75, conditions = { Faction = "Alliance" } } },
+    nextRoute = {
+        "Forever-Alliance-Tanaris-First-Visit",
+        "Forever-Alliance-Tanaris-Warlock",
+    },
     steps = { {
         PickUp = { 2500 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.07, 49.38),
@@ -669,6 +674,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2240] = { 1 },
         },
+        Button = { ["2240-1"] = 7733 },
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,

@@ -41,10 +41,10 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 65,
             Note = { string.format(L["FLY_TO"], L["Redridge Mountains"]) },
-            Coord = { x = 490.03, y = -8835.82 },
+            Coord = { x = 1037.42, y = -10628.27 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1429, 1433 }, Race = "Human" }, { SkipInZones = { 1429, 1433 }, Race = "Dwarf" }, { SkipInZones = { 1429, 1433 }, Race = "Gnome" } },
-            Zone = 1453,
+            Zone = 1436,
             _index = 4,
         },
         {
@@ -58,10 +58,10 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 65,
             Note = { "NOT_ALREADY_REDRIDGE_MOUNTAINS_FLIGHT_PATH_SKIP", string.format(L["FLY_TO"], L["Redridge Mountains"]) },
-            Coord = { x = 490.03, y = -8835.82 },
+            Coord = { x = 1037.42, y = -10628.27 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1429, 1433 }, Race = "NightElf" }, { SkipInZones = { 1429, 1433 }, Race = "Skyborne" } },
-            Zone = 1453,
+            Zone = 1436,
             _index = 6,
         },
         {
@@ -457,10 +457,10 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 167,
-            Coord = { x = -2234.9, y = -9435.3 },
+            Coord = { x = 1037.42, y = -10628.27 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1439, 1453 }, Race = "Human" }, { SkipInZones = { 1439, 1453 }, Race = "Dwarf" }, { SkipInZones = { 1439, 1453 }, Race = "Gnome" }, { SkipInZones = { 1439, 1453 }, Race = "NightElf" }, { SkipInZones = { 1439, 1453 }, Race = "Skyborne" } },
-            Zone = 1433,
+            Zone = 1436,
             _index = 54,
         },
         {

@@ -180,8 +180,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [450] = { 1 },
             },
-            NoArrow = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.98, 73.22),
             IsQuestOnQuest = 450,
+            Zone = 1421,
             _index = 8,
         },
         {
@@ -280,6 +281,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             PickUp = { 92422 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.25, 60.2),
             Faction = "Horde",
+            IsQuestCompleted = 99156,
             MinLevel = 15,
             Zone = 1420,
             _index = 17,
@@ -288,6 +290,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             PickUp = { 95216 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.31, 71.91),
             Faction = "Horde",
+            IsQuestCompleted = 451,
             MinLevel = 16,
             Zone = 1458,
             _index = 18,

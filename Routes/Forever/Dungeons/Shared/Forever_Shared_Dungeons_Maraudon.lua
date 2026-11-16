@@ -120,17 +120,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Zone = 1443,
         _index = 10,
     }, {
-        PickUp = { 7066 },
-        NoArrow = true,
-        Dungeon = "INSTANCE_349",
-        InstanceQuest = true,
-        RaidIcon = { {
-            npcID = 12238,
-            questID = 7066,
-        } },
-        MinLevel = 45,
-        _index = 11,
-    }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
             name = "Noxxion",
@@ -139,7 +128,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 12,
+        _index = 11,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -149,7 +138,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 13,
+        _index = 12,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -159,7 +148,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 14,
+        _index = 13,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -169,7 +158,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 15,
+        _index = 14,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -179,7 +168,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 16,
+        _index = 15,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -189,7 +178,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 17,
+        _index = 16,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -199,7 +188,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
-        _index = 18,
+        _index = 17,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_349",
@@ -209,6 +198,17 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
+        _index = 18,
+    }, {
+        PickUp = { 7066 },
+        NoArrow = true,
+        Dungeon = "INSTANCE_349",
+        InstanceQuest = true,
+        RaidIcon = { {
+            npcID = 12238,
+            questID = 7066,
+        } },
+        MinLevel = 45,
         _index = 19,
     }, {
         Qpart = {
@@ -223,6 +223,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7029] = { 1, 2 },
         },
+        Button = { ["7029-1"] = 17696, ["7029-2"] = 17693 },
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -232,6 +233,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7041] = { 1, 2 },
         },
+        Button = { ["7041-1"] = 17696, ["7041-2"] = 17693 },
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -277,6 +279,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7067] = { 1 },
         },
+        Button = { ["7067-1"] = 17761 },
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,

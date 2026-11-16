@@ -507,6 +507,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
     }, {
         PickUp = { 434 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.23, 35.58),
+        NoAutoAccept = true,
         RaidIcon = { {
             npcID = 7766,
             questID = 434,
@@ -520,7 +521,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 47,
     }, {
         Qpart = {
-            [434] = { 1, 2 },
+            [434] = { 1, 2, 3 },
         },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 72.36, 35.12),
         IsQuestOnQuest = 434,

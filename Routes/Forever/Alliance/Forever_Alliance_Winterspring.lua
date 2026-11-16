@@ -335,6 +335,15 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 35,
         },
         {
+            PickUp = { 5123 },
+            Coord = { x = -5268.92, y = 6723.31 },
+            Button = { ["5123"] = 12842 },
+            ItemCount = { itemID = 12842, count = 1, operator = ">=" },
+            Zone = 1452,
+            _index = 36,
+        },
+
+        {
             DropQuest = 5123,
             DroppableQuest = { Qid = 5123, MobId = 10738, Text = "High Chief Winterfall" },
             Fillers = { [4809] = { 1 }, [8464] = { 1, 2, 3 } },
@@ -342,7 +351,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             AnyOf = { { IsQuestOnQuest = 5121 }, { IsQuestCompleted = 5121 } },
             Zone = 1452,
-            _index = 36,
+            _index = 37,
         },
         {
             Qpart = { [8464] = { 1, 2, 3 } },
@@ -353,7 +362,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 7439, questID = 8464, objectiveIndex = 1 }, { npcID = 7440, questID = 8464, objectiveIndex = 2 }, { npcID = 7438, questID = 8464, objectiveIndex = 3 } },
             IsQuestOnQuest = 8464,
             Zone = 1452,
-            _index = 37,
+            _index = 38,
         },
         {
             Waypoint = 979,
@@ -363,7 +372,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 20,
             IsQuestOnQuest = 977,
             Zone = 1452,
-            _index = 38,
+            _index = 39,
         },
         {
             Waypoint = 979,
@@ -373,7 +382,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 20,
             IsQuestOnQuest = 977,
             Zone = 1452,
-            _index = 39,
+            _index = 40,
         },
         {
             Qpart = { [977] = { 1 } },
@@ -382,7 +391,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 7459, questID = 977, objectiveIndex = 1 }, { npcID = 7460, questID = 977, objectiveIndex = 1 } },
             IsQuestOnQuest = 977,
             Zone = 1452,
-            _index = 40,
+            _index = 41,
         },
         {
             Done = { 979 },
@@ -392,7 +401,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 979,
             IsQuestReadyForTurnIn = 979,
             Zone = 1452,
-            _index = 41,
+            _index = 42,
         },
         {
             PickUp = { 4901 },
@@ -402,7 +411,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             NoAutoAccept = true,
             IsQuestCompleted = 979,
             Zone = 1452,
-            _index = 42,
+            _index = 43,
         },
         {
             Qpart = { [4901] = { 1 } },
@@ -411,7 +420,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             IsQuestOnQuest = 4901,
             Zone = 1452,
-            _index = 43,
+            _index = 44,
         },
         {
             Qpart = { [969] = { 1 } },
@@ -419,13 +428,13 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -4509.93, y = 5299.05 },
             IsQuestOnQuest = 969,
             Zone = 1452,
-            _index = 44,
+            _index = 45,
         },
         {
             UseHS = 977,
             UseHSIfAvailable = true,
             Class = { "ROGUE", "WARRIOR" },
-            _index = 45,
+            _index = 46,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
@@ -440,7 +449,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             UseHS = 977,
             UseHSIfAvailable = true,
             ClassNot = { "ROGUE", "WARRIOR" },
-            _index = 46,
+            _index = 47,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
@@ -456,14 +465,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 15,
             Zone = 1452,
-            _index = 47,
+            _index = 48,
         },
         {
             Done = { 977 },
             Coord = { x = -4639.36, y = 6752.65 },
             RaidIcon = { { npcID = 10305, questID = 977 } },
             Zone = 1452,
-            _index = 48,
+            _index = 49,
         },
         {
             PickUp = { 5163 },
@@ -471,7 +480,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 10305, questID = 5163 } },
             IsQuestCompleted = 977,
             Zone = 1452,
-            _index = 49,
+            _index = 50,
         },
         {
             Qpart = { [5163] = { 1 } },
@@ -479,7 +488,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["5163-1"] = 12928 },
             IsQuestOnQuest = 5163,
             Zone = 1452,
-            _index = 50,
+            _index = 51,
         },
         {
             Done = { 4809 },
@@ -487,7 +496,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 10468, questID = 4809 } },
             IsQuestReadyForTurnIn = 4809,
             Zone = 1452,
-            _index = 51,
+            _index = 52,
         },
         {
             Done = { 969 },
@@ -495,46 +504,46 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 969,
             IsQuestReadyForTurnIn = 969,
             Zone = 1452,
-            _index = 52,
+            _index = 53,
         },
         {
             LeaveQuests = { 969 },
-            _index = 53,
+            _index = 54,
         },
         {
             BankWithdraw = { items = { 17355 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 6762,
             Zone = 1452,
-            _index = 54,
+            _index = 55,
         },
         {
             BankWithdraw = { items = { 11172, 11173 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 4084,
             Zone = 1452,
-            _index = 55,
+            _index = 56,
         },
         {
             BankWithdraw = { items = { 13562 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 5385,
             Zone = 1452,
-            _index = 56,
+            _index = 57,
         },
         {
             BankWithdraw = { items = { 13207 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 5242,
             Zone = 1452,
-            _index = 57,
+            _index = 58,
         },
         {
             BankWithdraw = { items = { 12663 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 4986,
             Zone = 1452,
-            _index = 58,
+            _index = 59,
         },
         {
             Done = { 5121 },
@@ -542,7 +551,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 5121,
             IsQuestReadyForTurnIn = 5121,
             Zone = 1452,
-            _index = 59,
+            _index = 60,
         },
         {
             Done = { 5123 },
@@ -550,14 +559,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 5123,
             IsQuestReadyForTurnIn = 5123,
             Zone = 1452,
-            _index = 60,
+            _index = 61,
         },
         {
             PickUp = { 5128 },
             Coord = { x = -2536.77, y = 6395.57 },
             IsQuestsCompleted = { 5121, 5123 },
             Zone = 1452,
-            _index = 61,
+            _index = 62,
         },
         {
             Done = { 8464 },
@@ -566,14 +575,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8464,
             IsQuestReadyForTurnIn = 8464,
             Zone = 1452,
-            _index = 62,
+            _index = 63,
         },
         {
             UseSpell = { spellID = 18960 },
             Class = "DRUID",
             HasSpell = 18960,
             SkipInZones = { 1450 },
-            _index = 63,
+            _index = 64,
         },
         {
             Waypoint = 6762,
@@ -584,7 +593,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 64,
+            _index = 65,
         },
         {
             Waypoint = 6762,
@@ -595,7 +604,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 65,
+            _index = 66,
         },
         {
             Waypoint = 6762,
@@ -606,7 +615,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 66,
+            _index = 67,
         },
         {
             Waypoint = 6762,
@@ -617,7 +626,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 67,
+            _index = 68,
         },
         {
             Waypoint = 6762,
@@ -628,7 +637,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 68,
+            _index = 69,
         },
         {
             Waypoint = 6762,
@@ -639,7 +648,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 69,
+            _index = 70,
         },
         {
             Waypoint = 6762,
@@ -650,7 +659,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 70,
+            _index = 71,
         },
         {
             Waypoint = 6762,
@@ -661,7 +670,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 71,
+            _index = 72,
         },
         {
             Waypoint = 6762,
@@ -672,7 +681,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 72,
+            _index = 73,
         },
         {
             Waypoint = 6762,
@@ -683,7 +692,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 73,
+            _index = 74,
         },
         {
             Waypoint = 6762,
@@ -694,7 +703,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 74,
+            _index = 75,
         },
         {
             Waypoint = 6762,
@@ -705,7 +714,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 75,
+            _index = 76,
         },
         {
             Waypoint = 6762,
@@ -716,7 +725,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 76,
+            _index = 77,
         },
         {
             Waypoint = 6762,
@@ -727,7 +736,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 77,
+            _index = 78,
         },
         {
             Waypoint = 6762,
@@ -738,7 +747,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 78,
+            _index = 79,
         },
         {
             Waypoint = 6762,
@@ -749,7 +758,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 79,
+            _index = 80,
         },
         {
             Waypoint = 6762,
@@ -760,7 +769,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 80,
+            _index = 81,
         },
         {
             Waypoint = 6762,
@@ -771,7 +780,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 81,
+            _index = 82,
         },
         {
             Waypoint = 6762,
@@ -782,7 +791,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 82,
+            _index = 83,
         },
         {
             Waypoint = 6762,
@@ -793,7 +802,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 83,
+            _index = 84,
         },
         {
             Waypoint = 6762,
@@ -804,7 +813,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 84,
+            _index = 85,
         },
         {
             Waypoint = 6762,
@@ -815,7 +824,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 85,
+            _index = 86,
         },
         {
             Waypoint = 6762,
@@ -826,7 +835,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 86,
+            _index = 87,
         },
         {
             Waypoint = 6762,
@@ -837,7 +846,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 87,
+            _index = 88,
         },
         {
             Waypoint = 6762,
@@ -848,7 +857,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 88,
+            _index = 89,
         },
         {
             Waypoint = 6762,
@@ -859,7 +868,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1452, 1448 },
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 89,
+            _index = 90,
         },
         {
             Waypoint = 6762,
@@ -867,7 +876,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 15,
             SkipInZones = { 1450 },
             Zone = 1450,
-            _index = 90,
+            _index = 91,
         },
         {
             LearnSkill = { allAvailable = true, npcID = 12042 },
@@ -876,7 +885,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1450 },
             Race = { "NightElf", "Skyborne" },
             Zone = 1450,
-            _index = 91,
+            _index = 92,
         },
         {
             Done = { 6762 },
@@ -885,7 +894,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 6762,
             IsQuestReadyForTurnIn = 6762,
             Zone = 1450,
-            _index = 92,
+            _index = 93,
         },
         {
             Done = { 1123 },
@@ -894,7 +903,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1123,
             IsQuestReadyForTurnIn = 1123,
             Zone = 1450,
-            _index = 93,
+            _index = 94,
         },
         {
             PickUp = { 1124 },
@@ -903,7 +912,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsOneOfQuestsCompleted = { 1123, 6762 },
             MinLevel = 54,
             Zone = 1450,
-            _index = 94,
+            _index = 95,
         },
         {
             PickUp = { 5527 },
@@ -913,13 +922,13 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 11801, questID = 5527 } },
             MinLevel = 56,
             Zone = 1450,
-            _index = 95,
+            _index = 96,
         },
         {
             GetFP = 49,
             Coord = { x = -2491.6, y = 7454.82 },
             Zone = 1450,
-            _index = 96,
+            _index = 97,
         },
         {
             UseFlightPath = 5242,
@@ -927,7 +936,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -2491.6, y = 7454.82 },
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 97,
+            _index = 98,
         },
         {
             Done = { 5242 },
@@ -935,21 +944,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 5242,
             IsQuestReadyForTurnIn = 5242,
             Zone = 1448,
-            _index = 98,
+            _index = 99,
         },
         {
             Done = { 5385 },
             Coord = { x = -1310.73, y = 3989.5 },
             IsQuestOnQuest = 5385,
             Zone = 1448,
-            _index = 99,
+            _index = 100,
         },
         {
             Done = { 5128 },
             Coord = { x = -1298.65, y = 3999.43 },
             IsQuestOnQuest = 5128,
             Zone = 1448,
-            _index = 100,
+            _index = 101,
         },
         {
             Qpart = { [4084] = { 1 } },
@@ -957,7 +966,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             IsQuestOnQuest = 4084,
             Zone = 1448,
-            _index = 101,
+            _index = 102,
         },
         {
             Qpart = { [4084] = { 2 } },
@@ -965,7 +974,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             IsQuestOnQuest = 4084,
             Zone = 1448,
-            _index = 102,
+            _index = 103,
         },
         {
             Done = { 4084 },
@@ -974,7 +983,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4084,
             IsQuestReadyForTurnIn = 4084,
             Zone = 1448,
-            _index = 103,
+            _index = 104,
         },
         {
             PickUp = { 4005 },
@@ -982,7 +991,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 9116, questID = 4005 } },
             IsQuestCompleted = 4084,
             Zone = 1448,
-            _index = 104,
+            _index = 105,
         },
         {
             Note = { "OPTIONAL_CLEANSE_NEARBY_SONGFLOWER_TWO_PLANT_SALVES" },
@@ -990,7 +999,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ItemCount = { itemID = 11516, count = 2, operator = ">=" },
             OnlyInZones = { 1448 },
             Zone = 1448,
-            _index = 105,
+            _index = 106,
         },
         {
             UseFlightPath = 4005,
@@ -998,14 +1007,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -284.31, y = 2828.3 },
             OnlyInZones = { 1448, 1440 },
             Zone = 1440,
-            _index = 106,
+            _index = 107,
         },
         {
             PickUp = { 4507 },
             Coord = { x = -3729.95, y = -7115.3 },
             IsQuestCompleted = 4496,
             Zone = 1446,
-            _index = 107,
+            _index = 108,
         },
         {
             Qpart = { [5163] = { 2 } },
@@ -1013,20 +1022,20 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["5163-2"] = 12928 },
             IsQuestOnQuest = 5163,
             Zone = 1446,
-            _index = 108,
+            _index = 109,
         },
         {
             PickUp = { 4504 },
             Coord = { x = -3776.8, y = -7105.91 },
             Zone = 1446,
-            _index = 109,
+            _index = 110,
         },
         {
             UseItem = { itemID = 11617, questID = 4005 },
             NoArrow = true,
             IsQuestOnQuest = 4005,
             ItemCount = { itemID = 11617, count = 1, operator = ">=" },
-            _index = 110,
+            _index = 111,
         },
         {
             LootItems = { { itemID = 11169, quantity = 1, questID = 4005 }, { itemID = 11172, quantity = 11, questID = 4005 }, { itemID = 11173, quantity = 1, questID = 4005 } },
@@ -1034,7 +1043,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             NoArrow = true,
             IsQuestOnQuest = 4005,
             Not = { IsQuestReadyForTurnIn = 4005 },
-            _index = 111,
+            _index = 112,
         },
         {
             Waypoint = 4005,
@@ -1045,7 +1054,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 112,
+            _index = 113,
         },
         {
             Waypoint = 4005,
@@ -1056,7 +1065,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 113,
+            _index = 114,
         },
         {
             Waypoint = 4005,
@@ -1065,7 +1074,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["4005-1"] = 11617 },
             IsQuestCompleted = 4084,
             Zone = 1446,
-            _index = 114,
+            _index = 115,
         },
         {
             Waypoint = 4005,
@@ -1076,7 +1085,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 115,
+            _index = 116,
         },
         {
             Waypoint = 4005,
@@ -1087,7 +1096,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 116,
+            _index = 117,
         },
         {
             Waypoint = 4005,
@@ -1098,7 +1107,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 117,
+            _index = 118,
         },
         {
             Waypoint = 4005,
@@ -1109,7 +1118,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4005 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 118,
+            _index = 119,
         },
         {
             Qpart = { [4005] = { 1 } },
@@ -1119,7 +1128,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 9453, questID = 4005, objectiveIndex = 1 } },
             IsQuestOnQuest = 4005,
             Zone = 1446,
-            _index = 119,
+            _index = 120,
         },
         {
             UseFlightPath = 4005,
@@ -1127,7 +1136,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -3738.16, y = -7224.87 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 120,
+            _index = 121,
         },
         {
             Waypoint = 4005,
@@ -1137,7 +1146,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 4005, IsQuestReadyForTurnIn = 4005 }, { AllOf = { { IsQuestCompleted = 4005 }, { AllOf = { { IsQuestNotOnQuest = 3961 }, { Not = { IsQuestCompleted = 3961 } } } } } } },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 121,
+            _index = 122,
         },
         {
             Done = { 4005 },
@@ -1146,7 +1155,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4005,
             IsQuestReadyForTurnIn = 4005,
             Zone = 1449,
-            _index = 122,
+            _index = 123,
         },
         {
             PickUp = { 3961 },
@@ -1154,7 +1163,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 9117, questID = 3961 } },
             IsQuestCompleted = 4005,
             Zone = 1449,
-            _index = 123,
+            _index = 124,
         },
         {
             Waypoint = 3961,
@@ -1163,7 +1172,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3961,
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 124,
+            _index = 125,
         },
         {
             Done = { 3961 },
@@ -1172,14 +1181,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3961,
             IsQuestReadyForTurnIn = 3961,
             Zone = 1449,
-            _index = 125,
+            _index = 126,
         },
         {
             PickUp = { 3962 },
             Coord = { x = -1119.01, y = -6166.42 },
             IsQuestCompleted = 3961,
             Zone = 1449,
-            _index = 126,
+            _index = 127,
         },
         {
             Qpart = { [5163] = { 3 } },
@@ -1187,26 +1196,26 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["5163-3"] = 12928 },
             IsQuestOnQuest = 5163,
             Zone = 1449,
-            _index = 127,
+            _index = 128,
         },
         {
             DestroyItems = { items = { 11169 } },
             IsQuestCompleted = 4005,
             IsQuestUncompleted = 1124,
-            _index = 128,
+            _index = 129,
         },
         {
             Qpart = { [4504] = { 1 } },
             Coord = { x = -1494.27, y = -6612.93 },
             Range = 30,
             Zone = 1449,
-            _index = 129,
+            _index = 130,
         },
         {
             EquipItem = { itemID = 11522, slot = 17 },
             Note = { "EQUIP_SILVER_TOTEM_AQUEMENTAS_OFF_HAND", "KEEP_AURA_DISPELLED_CAUSES_KNOCKBACK_REAPPLIED_DURING" },
             IsQuestOnQuest = 3962,
-            _index = 130,
+            _index = 131,
         },
         {
             Qpart = { [3962] = { 1 } },
@@ -1215,7 +1224,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["3962-1"] = 11522 },
             IsQuestOnQuest = 3962,
             Zone = 1449,
-            _index = 131,
+            _index = 132,
         },
         {
             Qpart = { [3962] = { 2 } },
@@ -1223,7 +1232,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -1326.99, y = -7199.33 },
             IsQuestOnQuest = 3962,
             Zone = 1449,
-            _index = 132,
+            _index = 133,
         },
         {
             Waypoint = 4507,
@@ -1233,7 +1242,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 133,
+            _index = 134,
         },
         {
             Waypoint = 4507,
@@ -1243,7 +1252,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 134,
+            _index = 135,
         },
         {
             Waypoint = 4507,
@@ -1253,7 +1262,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 135,
+            _index = 136,
         },
         {
             Waypoint = 4507,
@@ -1262,7 +1271,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 20,
             IsQuestOnQuest = 4507,
             Zone = 1449,
-            _index = 136,
+            _index = 137,
         },
         {
             Waypoint = 4507,
@@ -1272,7 +1281,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 137,
+            _index = 138,
         },
         {
             Waypoint = 4507,
@@ -1282,7 +1291,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 138,
+            _index = 139,
         },
         {
             Waypoint = 4507,
@@ -1292,7 +1301,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 139,
+            _index = 140,
         },
         {
             Waypoint = 4507,
@@ -1302,7 +1311,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 140,
+            _index = 141,
         },
         {
             Waypoint = 4507,
@@ -1312,7 +1321,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 141,
+            _index = 142,
         },
         {
             Waypoint = 4507,
@@ -1322,7 +1331,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 142,
+            _index = 143,
         },
         {
             Waypoint = 4507,
@@ -1332,13 +1341,13 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { IsQuestReadyForTurnIn = 4507 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 143,
+            _index = 144,
         },
         {
             UseItem = { itemID = 11833, itemSpellID = 15627 },
             Note = { "THREE_WAVES_ATTACK_KILL_FINAL_ENEMY_WAVE" },
             IsQuestOnQuest = 4507,
-            _index = 144,
+            _index = 145,
         },
         {
             Qpart = { [4507] = { 1 } },
@@ -1348,7 +1357,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Button = { ["4507-1"] = 11833 },
             IsQuestOnQuest = 4507,
             Zone = 1449,
-            _index = 145,
+            _index = 146,
         },
         {
             Qpart = { [4513] = { 1 } },
@@ -1360,7 +1369,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4513,
             Race = { "Gnome", "Human", "Skyborne" },
             Zone = 1449,
-            _index = 146,
+            _index = 147,
         },
         {
             UseFlightPath = 3962,
@@ -1371,7 +1380,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 3962,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 147,
+            _index = 148,
         },
         {
             Done = { 3962 },
@@ -1380,12 +1389,12 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3962,
             IsQuestReadyForTurnIn = 3962,
             Zone = 1449,
-            _index = 148,
+            _index = 149,
         },
         {
             LeaveQuests = { 3962 },
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
-            _index = 149,
+            _index = 150,
         },
         {
             UseFlightPath = 4507,
@@ -1395,7 +1404,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 150,
+            _index = 151,
         },
         {
             UseFlightPath = 4507,
@@ -1405,7 +1414,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 151,
+            _index = 152,
         },
         {
             Done = { 4507 },
@@ -1414,7 +1423,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4507,
             IsQuestReadyForTurnIn = 4507,
             Zone = 1446,
-            _index = 152,
+            _index = 153,
         },
         {
             PickUp = { 4508 },
@@ -1422,26 +1431,26 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestCompleted = 4507,
             Zone = 1446,
-            _index = 153,
+            _index = 154,
         },
         {
             LeaveQuests = { 4507 },
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
-            _index = 154,
+            _index = 155,
         },
         {
             Done = { 4504 },
             Coord = { x = -3776.8, y = -7105.91 },
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1446,
-            _index = 155,
+            _index = 156,
         },
         {
             UseHS = 4809,
             UseHSIfAvailable = true,
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Class = { "ROGUE", "WARRIOR" },
-            _index = 156,
+            _index = 157,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
@@ -1458,7 +1467,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             UseHSIfAvailable = true,
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             ClassNot = { "ROGUE", "WARRIOR" },
-            _index = 157,
+            _index = 158,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
@@ -1478,7 +1487,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 158,
+            _index = 159,
         },
         {
             Waypoint = 4809,
@@ -1486,7 +1495,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 15,
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1452,
-            _index = 159,
+            _index = 160,
         },
         {
             Done = { 4809 },
@@ -1495,7 +1504,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestReadyForTurnIn = 4809,
             Zone = 1452,
-            _index = 160,
+            _index = 161,
         },
         {
             Done = { 5163 },
@@ -1503,7 +1512,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 10305, questID = 5163 } },
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1452,
-            _index = 161,
+            _index = 162,
         },
         {
             Qpart = { [4809] = { 1 } },
@@ -1513,7 +1522,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestOnQuest = 4809,
             Zone = 1452,
-            _index = 162,
+            _index = 163,
         },
         {
             Done = { 4809 },
@@ -1521,7 +1530,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 10468, questID = 4809 } },
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1452,
-            _index = 163,
+            _index = 164,
         },
         {
             UseSpell = { spellID = 18960 },
@@ -1529,7 +1538,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Class = "DRUID",
             HasSpell = 18960,
             SkipInZones = { 1450 },
-            _index = 164,
+            _index = 165,
         },
         {
             UseFlightPath = 6844,
@@ -1539,7 +1548,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1452 },
             Zone = 1452,
-            _index = 165,
+            _index = 166,
         },
         {
             Waypoint = 6844,
@@ -1547,7 +1556,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 15,
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1450,
-            _index = 166,
+            _index = 167,
         },
         {
             Done = { 6844 },
@@ -1557,7 +1566,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 6844,
             IsQuestReadyForTurnIn = 6844,
             Zone = 1450,
-            _index = 167,
+            _index = 168,
         },
         {
             PickUp = { 6845 },
@@ -1566,7 +1575,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestCompleted = 6844,
             Zone = 1450,
-            _index = 168,
+            _index = 169,
         },
         {
             Done = { 6845 },
@@ -1575,7 +1584,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 6845,
             IsQuestReadyForTurnIn = 6845,
             Zone = 1450,
-            _index = 169,
+            _index = 170,
         },
         {
             Done = { 5527 },
@@ -1585,7 +1594,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 5527,
             IsQuestReadyForTurnIn = 5527,
             Zone = 1450,
-            _index = 170,
+            _index = 171,
         },
         {
             PickUp = { 1185 },
@@ -1594,7 +1603,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestCompleted = 6845,
             Zone = 1450,
-            _index = 171,
+            _index = 172,
         },
         {
             Done = { 1185 },
@@ -1604,7 +1613,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1185,
             IsQuestReadyForTurnIn = 1185,
             Zone = 1450,
-            _index = 172,
+            _index = 173,
         },
         {
             UseFlightPath = 4901,
@@ -1614,7 +1623,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 173,
+            _index = 174,
         },
         {
             UseSpell = { spellID = 3565 },
@@ -1623,7 +1632,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             HasSpell = 3565,
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             SkipInZones = { 1457, 1438 },
-            _index = 174,
+            _index = 175,
         },
         {
             UseFlightPath = 4901,
@@ -1633,7 +1642,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1448 },
             Zone = 1448,
-            _index = 175,
+            _index = 176,
         },
         {
             Done = { 4901 },
@@ -1643,7 +1652,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 176,
+            _index = 177,
         },
         {
             PickUp = { 4902 },
@@ -1652,7 +1661,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestCompleted = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 177,
+            _index = 178,
         },
         {
             TakePortal = { mapID = 1457 },
@@ -1660,7 +1669,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 178,
+            _index = 179,
         },
         {
             Waypoint = 3378,
@@ -1668,7 +1677,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 15,
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             Zone = 1457,
-            _index = 179,
+            _index = 180,
         },
         {
             Done = { 3378 },
@@ -1677,7 +1686,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3378,
             IsQuestReadyForTurnIn = 3378,
             Zone = 1457,
-            _index = 180,
+            _index = 181,
         },
         {
             Done = { 4508 },
@@ -1686,7 +1695,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4508,
             IsQuestReadyForTurnIn = 4508,
             Zone = 1457,
-            _index = 181,
+            _index = 182,
         },
         {
             PickUp = { 4510 },
@@ -1694,7 +1703,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             IsQuestCompleted = 4508,
             Zone = 1457,
-            _index = 182,
+            _index = 183,
         },
         {
             Done = { 4510 },
@@ -1703,7 +1712,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4510,
             IsQuestReadyForTurnIn = 4510,
             Zone = 1457,
-            _index = 183,
+            _index = 184,
         },
         {
             Done = { 4986 },
@@ -1713,7 +1722,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4986,
             IsQuestReadyForTurnIn = 4986,
             Zone = 1457,
-            _index = 184,
+            _index = 185,
         },
         {
             TakePortal = { mapID = 1438 },
@@ -1723,7 +1732,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 185,
+            _index = 186,
         },
         {
             Done = { 4901 },
@@ -1733,7 +1742,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 186,
+            _index = 187,
         },
         {
             PickUp = { 4902 },
@@ -1742,7 +1751,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestCompleted = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 187,
+            _index = 188,
         },
         {
             TakePortal = { mapID = 1457 },
@@ -1750,7 +1759,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AllOf = { { IsQuestNotOnQuest = 6762, IsQuestUncompleted = 6762 }, { IsQuestNotOnQuest = 1123, IsQuestUncompleted = 1123 }, { IsQuestNotOnQuest = 1124, IsQuestUncompleted = 1124 } },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 188,
+            _index = 189,
         },
         {
             Done = { 4902 },
@@ -1759,7 +1768,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4902,
             IsQuestReadyForTurnIn = 4902,
             Zone = 1457,
-            _index = 189,
+            _index = 190,
         },
         {
             TakePortal = { mapID = 1438 },
@@ -1767,7 +1776,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1457 },
             SkipForLvl = 54,
             Zone = 1457,
-            _index = 190,
+            _index = 191,
         },
         {
             UseFlightPath = 4808,
@@ -1777,7 +1786,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1438 },
             SkipForLvl = 54,
             Zone = 1438,
-            _index = 191,
+            _index = 192,
         },
         {
             Grind = 54,
@@ -1786,7 +1795,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1448 },
             SkipForLvl = 54,
             Zone = 1448,
-            _index = 192,
+            _index = 193,
         },
         {
             UseFlightPath = 4901,
@@ -1795,14 +1804,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = 8640.79, x = 841.56, Range = 25, mapID = 1438 },
             OnlyInZones = { 1448 },
             Zone = 1448,
-            _index = 193,
+            _index = 194,
         },
         {
             TakePortal = { mapID = 1457 },
             Coord = { x = 968.9, y = 8795.34 },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 194,
+            _index = 195,
         },
         {
             PickUp = { 1047 },
@@ -1815,7 +1824,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1015 }, { IsQuestCompleted = 1015 }, { IsQuestOnQuest = 1019 }, { IsQuestCompleted = 1019 }, { IsQuestOnQuest = 1047 }, { IsQuestCompleted = 1047 }, { IsQuestOnQuest = 6761 }, { IsQuestCompleted = 6761 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 }, { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 195,
+            _index = 196,
         },
         {
             PickUp = { 1047 },
@@ -1828,7 +1837,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1015 }, { IsQuestCompleted = 1015 }, { IsQuestOnQuest = 1019 }, { IsQuestCompleted = 1019 }, { IsQuestOnQuest = 1047 }, { IsQuestCompleted = 1047 }, { IsQuestOnQuest = 6761 }, { IsQuestCompleted = 6761 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 }, { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 196,
+            _index = 197,
         },
         {
             Done = { 1015 },
@@ -1840,7 +1849,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 197,
+            _index = 198,
         },
         {
             Done = { 1019 },
@@ -1852,7 +1861,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 198,
+            _index = 199,
         },
         {
             Done = { 1047 },
@@ -1863,7 +1872,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 199,
+            _index = 200,
         },
         {
             PickUp = { 6761 },
@@ -1875,7 +1884,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 200,
+            _index = 201,
         },
         {
             Done = { 6761 },
@@ -1886,7 +1895,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 201,
+            _index = 202,
         },
         {
             PickUp = { 6762 },
@@ -1898,14 +1907,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Not = { AnyOf = { { IsQuestOnQuest = 1123 }, { IsQuestCompleted = 1123 }, { IsQuestOnQuest = 6762 }, { IsQuestCompleted = 6762 } } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 202,
+            _index = 203,
         },
         {
             TakePortal = { mapID = 1438 },
             Coord = { x = 2626.51, y = 9946.11 },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 203,
+            _index = 204,
         },
         {
             UseFlightPath = 4808,
@@ -1915,7 +1924,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 1124 }, { IsQuestCompleted = 1124 } },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 204,
+            _index = 205,
         },
         {
             UseFlightPath = 4808,
@@ -1926,7 +1935,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 1124,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 205,
+            _index = 206,
         },
         {
             UseFlightPath = 6844,
@@ -1937,7 +1946,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 1124,
             OnlyInZones = { 1452 },
             Zone = 1452,
-            _index = 206,
+            _index = 207,
         },
         {
             Done = { 6762 },
@@ -1949,7 +1958,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 1124,
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 207,
+            _index = 208,
         },
         {
             Done = { 1123 },
@@ -1961,7 +1970,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 1124,
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 208,
+            _index = 209,
         },
         {
             PickUp = { 1124 },
@@ -1971,7 +1980,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             MinLevel = 54,
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 209,
+            _index = 210,
         },
         {
             UseFlightPath = 5242,
@@ -1981,7 +1990,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 1124 }, { IsQuestCompleted = 1124 } },
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 210,
+            _index = 211,
         },
         {
             UseFlightPath = 4005,
@@ -1990,28 +1999,28 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = -6110.55, x = -1140.32, Range = 25, mapID = 1449 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 211,
+            _index = 212,
         },
         {
             Waypoint = 1124,
             Coord = { x = -528.94, y = -6495.27 },
             Range = 20,
             Zone = 1449,
-            _index = 212,
+            _index = 213,
         },
         {
             Waypoint = 1124,
             Coord = { x = -568.53, y = -6219.5 },
             Range = 20,
             Zone = 1449,
-            _index = 213,
+            _index = 214,
         },
         {
             Waypoint = 1124,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 88.4, 23.81),
             Range = 20,
             Zone = 1451,
-            _index = 214,
+            _index = 215,
         },
         {
             Done = { 1124 },
@@ -2020,7 +2029,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1124,
             IsQuestReadyForTurnIn = 1124,
             Zone = 1451,
-            _index = 215,
+            _index = 216,
         },
         {
             PickUp = { 1125 },
@@ -2028,27 +2037,27 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 13220, questID = 1125 } },
             IsQuestCompleted = 1124,
             Zone = 1451,
-            _index = 216,
+            _index = 217,
         },
         {
             PickUp = { 8307 },
             Coord = { x = 729.89, y = -6868.06 },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 217,
+            _index = 218,
         },
         {
             PickUp = { 8277 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 51.8, 38.6),
             RaidIcon = { { npcID = 15189, questID = 8277 } },
             Zone = 1451,
-            _index = 218,
+            _index = 219,
         },
         {
             PickUp = { 8283 },
             Coord = { x = 748.77, y = -6847.38 },
             Zone = 1451,
-            _index = 219,
+            _index = 220,
         },
         {
             Done = { 8275 },
@@ -2056,21 +2065,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15191, questID = 8275 } },
             IsQuestOnQuest = 8275,
             Zone = 1451,
-            _index = 220,
+            _index = 221,
         },
         {
             PickUp = { 8280 },
             Coord = { x = 755.71, y = -6847.76 },
             RaidIcon = { { npcID = 15191, questID = 8280 } },
             Zone = 1451,
-            _index = 221,
+            _index = 222,
         },
         {
             PickUp = { 8284 },
             Coord = { x = 807.22, y = -6828.52 },
             RaidIcon = { { npcID = 15183, questID = 8284 } },
             Zone = 1451,
-            _index = 222,
+            _index = 223,
         },
         {
             PickUp = { 8318 },
@@ -2078,7 +2087,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15306, questID = 8318 } },
             MinLevel = 57,
             Zone = 1451,
-            _index = 223,
+            _index = 224,
         },
         {
             Done = { 8307 },
@@ -2086,7 +2095,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 1215.82, y = -7010.96 },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 224,
+            _index = 225,
         },
         {
             PickUp = { 8313 },
@@ -2094,28 +2103,28 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 1215.82, y = -7010.96 },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 225,
+            _index = 226,
         },
         {
             Done = { 8313 },
             Coord = { x = 729.89, y = -6868.06 },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 226,
+            _index = 227,
         },
         {
             PickUp = { 8317 },
             Coord = { x = 729.89, y = -6868.06 },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 227,
+            _index = 228,
         },
         {
             Note = { "KILL_DREDGE_STRIKERS_LOOT_SANDWORM_MEAT", "COMPLETE_OBJECTIVE_LATER" },
             IsQuestOnQuest = 8317,
             IsQuestUncompleted = 1125,
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
-            _index = 228,
+            _index = 229,
         },
         {
             Qpart = { [5527] = { 1 } },
@@ -2124,7 +2133,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 335.16, y = -7244.16 },
             IsQuestOnQuest = 5527,
             Zone = 1451,
-            _index = 229,
+            _index = 230,
         },
         {
             Qpart = { [1125] = { 1, 2 } },
@@ -2135,7 +2144,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 12178, questID = 1125, objectiveIndex = 1 }, { npcID = 12179, questID = 1125, objectiveIndex = 2 } },
             IsQuestOnQuest = 1125,
             Zone = 1451,
-            _index = 230,
+            _index = 231,
         },
         {
             Done = { 1125 },
@@ -2145,7 +2154,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1125,
             IsQuestReadyForTurnIn = 1125,
             Zone = 1451,
-            _index = 231,
+            _index = 232,
         },
         {
             PickUp = { 1126 },
@@ -2153,7 +2162,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -314.34, y = -6398.15 },
             IsQuestCompleted = 1125,
             Zone = 1451,
-            _index = 232,
+            _index = 233,
         },
         {
             Qpart = { [1126] = { 1 } },
@@ -2163,7 +2172,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             IsQuestOnQuest = 1126,
             Zone = 1451,
-            _index = 233,
+            _index = 234,
         },
         {
             Done = { 1126 },
@@ -2172,7 +2181,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1126,
             IsQuestReadyForTurnIn = 1126,
             Zone = 1451,
-            _index = 234,
+            _index = 235,
         },
         {
             PickUp = { 6844 },
@@ -2180,19 +2189,19 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -314.34, y = -6398.15 },
             IsQuestCompleted = 1126,
             Zone = 1451,
-            _index = 235,
+            _index = 236,
         },
         {
             DestroyItems = { items = { 17345 } },
             Fillers = { [8280] = { 1 }, [8277] = { 2, 1 } },
             IsQuestUncompleted = 8284,
-            _index = 236,
+            _index = 237,
         },
         {
             Note = { "AVOID_NEARBY_ELITE_ENEMIES" },
             Fillers = { [8280] = { 1 }, [8277] = { 2, 1 } },
             IsQuestUncompleted = 8284,
-            _index = 237,
+            _index = 238,
         },
         {
             Qpart = { [8284] = { 1 } },
@@ -2200,7 +2209,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 1731.105, y = -6334.65 },
             Range = 30,
             Zone = 1451,
-            _index = 238,
+            _index = 239,
         },
         {
             Qpart = { [8280] = { 1 }, [8277] = { 2, 1 } },
@@ -2208,21 +2217,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             RaidIcon = { { npcID = 11740, questID = 8280, objectiveIndex = 1 }, { npcID = 11735, questID = 8277, objectiveIndex = 1 }, { npcID = 11738, questID = 8277, objectiveIndex = 2 } },
             Zone = 1451,
-            _index = 239,
+            _index = 240,
         },
         {
             Done = { 8284 },
             Coord = { x = 807.22, y = -6828.52 },
             RaidIcon = { { npcID = 15183, questID = 8284 } },
             Zone = 1451,
-            _index = 240,
+            _index = 241,
         },
         {
             PickUp = { 8285 },
             Coord = { x = 807.22, y = -6828.52 },
             RaidIcon = { { npcID = 15183, questID = 8285 } },
             Zone = 1451,
-            _index = 241,
+            _index = 242,
         },
         {
             PickUp = { 8304 },
@@ -2230,35 +2239,35 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15181, questID = 8304 } },
             MinLevel = 58,
             Zone = 1451,
-            _index = 242,
+            _index = 243,
         },
         {
             Done = { 8280 },
             Coord = { x = 755.71, y = -6847.76 },
             RaidIcon = { { npcID = 15191, questID = 8280 } },
             Zone = 1451,
-            _index = 243,
+            _index = 244,
         },
         {
             PickUp = { 8281 },
             Coord = { x = 755.71, y = -6847.76 },
             RaidIcon = { { npcID = 15191, questID = 8281 } },
             Zone = 1451,
-            _index = 244,
+            _index = 245,
         },
         {
             Done = { 8277 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 51.7, 38.5),
             RaidIcon = { { npcID = 15189, questID = 8277 } },
             Zone = 1451,
-            _index = 245,
+            _index = 246,
         },
         {
             PickUp = { 8278 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 51.7, 38.5),
             RaidIcon = { { npcID = 15189, questID = 8278 } },
             Zone = 1451,
-            _index = 246,
+            _index = 247,
         },
         {
             PickUp = { 8308 },
@@ -2268,7 +2277,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ItemCount = { itemID = 20461, count = 1, operator = ">=" },
             MinLevel = 58,
             Zone = 1451,
-            _index = 247,
+            _index = 248,
         },
         {
             Done = { 8308 },
@@ -2277,7 +2286,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8308,
             IsQuestReadyForTurnIn = 8308,
             Zone = 1451,
-            _index = 248,
+            _index = 249,
         },
         {
             Qpart = { [8304] = { 2 } },
@@ -2287,7 +2296,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15170, questID = 8304, objectiveIndex = 2 } },
             IsQuestOnQuest = 8304,
             Zone = 1451,
-            _index = 249,
+            _index = 250,
         },
         {
             Qpart = { [8304] = { 1 } },
@@ -2297,7 +2306,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15171, questID = 8304, objectiveIndex = 1 } },
             IsQuestOnQuest = 8304,
             Zone = 1451,
-            _index = 250,
+            _index = 251,
         },
         {
             Qpart = { [8283] = { 1 } },
@@ -2306,7 +2315,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 986.89, y = -8083.34 },
             Range = 30,
             Zone = 1451,
-            _index = 251,
+            _index = 252,
         },
         {
             Waypoint = 8285,
@@ -2316,7 +2325,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 8285 }, { AllOf = { { IsQuestCompleted = 8285 }, { AllOf = { { IsQuestNotOnQuest = 8279 }, { Not = { IsQuestCompleted = 8279 } } } } } } },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 252,
+            _index = 253,
         },
         {
             Done = { 8285 },
@@ -2324,7 +2333,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 196.98, y = -7578.73 },
             RaidIcon = { { npcID = 15194, questID = 8285 } },
             Zone = 1451,
-            _index = 253,
+            _index = 254,
         },
         {
             PickUp = { 8279 },
@@ -2332,7 +2341,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = 196.98, y = -7578.73 },
             RaidIcon = { { npcID = 15194, questID = 8279 } },
             Zone = 1451,
-            _index = 254,
+            _index = 255,
         },
         {
             Qpart = { [8278] = { 1, 3 } },
@@ -2340,7 +2349,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             RaidIcon = { { npcID = 11737, questID = 8278, objectiveIndex = 1 }, { npcID = 11739, questID = 8278, objectiveIndex = 3 } },
             Zone = 1451,
-            _index = 255,
+            _index = 256,
         },
         {
             Qpart = { [8278] = { 2 }, [8281] = { 1 } },
@@ -2348,7 +2357,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 30,
             RaidIcon = { { npcID = 11736, questID = 8278, objectiveIndex = 2 }, { npcID = 11741, questID = 8281, objectiveIndex = 1 } },
             Zone = 1451,
-            _index = 256,
+            _index = 257,
         },
         {
             LootItems = { { itemID = 20424, quantity = 10, questID = 8317 } },
@@ -2358,14 +2367,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8317,
             ItemCount = { itemID = 20452, count = 10, operator = "<" },
             Zone = 1451,
-            _index = 257,
+            _index = 258,
         },
         {
             Done = { 8281 },
             Coord = { x = 755.71, y = -6847.76 },
             RaidIcon = { { npcID = 15191, questID = 8281 } },
             Zone = 1451,
-            _index = 258,
+            _index = 259,
         },
         {
             BuyMerchant = { { quantity = 10, itemID = 3713, questID = 8317 } },
@@ -2379,7 +2388,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ItemCount = { itemID = 3713, count = 10, operator = "<" },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 259,
+            _index = 260,
         },
         {
             LootItems = { { quantity = 10, itemID = 20452, questID = 8317 } },
@@ -2391,7 +2400,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 8317,
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 260,
+            _index = 261,
         },
         {
             Done = { 8317 },
@@ -2401,20 +2410,20 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ItemCount = { itemID = 20452, count = 10, operator = ">=" },
             Skill = { operator = ">=", skill = "cooking", rank = 285 },
             Zone = 1451,
-            _index = 261,
+            _index = 262,
         },
         {
             Done = { 8278 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 51.7, 38.5),
             RaidIcon = { { npcID = 15189, questID = 8278 } },
             Zone = 1451,
-            _index = 262,
+            _index = 263,
         },
         {
             PickUp = { 8282 },
             Coord = { x = 739.58, y = -6853.05 },
             Zone = 1451,
-            _index = 263,
+            _index = 264,
         },
         {
             Done = { 8304 },
@@ -2422,7 +2431,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15181, questID = 8304 } },
             IsQuestOnQuest = 8304,
             Zone = 1451,
-            _index = 264,
+            _index = 265,
         },
         {
             Done = { 8283 },
@@ -2430,7 +2439,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8283,
             IsQuestReadyForTurnIn = 8283,
             Zone = 1451,
-            _index = 265,
+            _index = 266,
         },
         {
             Qpart = { [8279] = { 3 } },
@@ -2438,7 +2447,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 10,
             RaidIcon = { { npcID = 11804, questID = 8279, objectiveIndex = 3 } },
             Zone = 1451,
-            _index = 266,
+            _index = 267,
         },
         {
             Qpart = { [8279] = { 1 } },
@@ -2446,7 +2455,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 10,
             RaidIcon = { { npcID = 15200, questID = 8279, objectiveIndex = 1 } },
             Zone = 1451,
-            _index = 267,
+            _index = 268,
         },
         {
             Qpart = { [8279] = { 2 } },
@@ -2454,14 +2463,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Range = 10,
             RaidIcon = { { npcID = 11803, questID = 8279, objectiveIndex = 2 } },
             Zone = 1451,
-            _index = 268,
+            _index = 269,
         },
         {
             Waypoint = 8279,
             Coord = { x = 1889.6, y = -7867.77 },
             Range = 20,
             Zone = 1451,
-            _index = 269,
+            _index = 270,
         },
         {
             LootItems = { { quantity = 10, itemID = 20404, questID = 8323, includeBank = false } },
@@ -2472,7 +2481,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 8323,
             MinLevel = 54,
             Zone = 1451,
-            _index = 270,
+            _index = 271,
         },
         {
             LootItems = { { quantity = 20, itemID = 20404, questID = 8318, includeBank = false } },
@@ -2483,7 +2492,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 8318 }, { IsQuestOnQuest = 8323 } },
             IsQuestOnQuest = 8318,
             Zone = 1451,
-            _index = 271,
+            _index = 272,
         },
         {
             LootItems = { { quantity = 10, itemID = 20404, questID = 8318, includeBank = false } },
@@ -2494,7 +2503,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8318,
             IsQuestUncompleted = 8318,
             Zone = 1451,
-            _index = 272,
+            _index = 273,
         },
         {
             LootItems = { { quantity = 10, itemID = 20404, questID = 8323, includeBank = false } },
@@ -2505,14 +2514,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8323,
             IsQuestUncompleted = 8323,
             Zone = 1451,
-            _index = 273,
+            _index = 274,
         },
         {
             Qpart = { [8282] = { 1 } },
             Note = { "WAIT_ELITE_PATROLS_UPHILL_LOOTING_SATCHEL" },
             Coord = { x = 985.26, y = -8080.99 },
             Zone = 1451,
-            _index = 274,
+            _index = 275,
         },
         {
             Waypoint = 8279,
@@ -2522,21 +2531,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 8279 }, { AllOf = { { IsQuestCompleted = 8279 }, { AllOf = { { IsQuestNotOnQuest = 8287 }, { Not = { IsQuestCompleted = 8287 } } } } } }, { AllOf = { { ItemCount = { itemID = 20404, count = 10, operator = ">=" } }, { AllOf = { { IsQuestNotOnQuest = 8323 }, { Not = { IsQuestCompleted = 8323 } } } } } }, { IsQuestOnQuest = 8323, IsQuestReadyForTurnIn = 8323 } },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 275,
+            _index = 276,
         },
         {
             Done = { 8279 },
             Coord = { x = 196.98, y = -7578.73 },
             RaidIcon = { { npcID = 15194, questID = 8279 } },
             Zone = 1451,
-            _index = 276,
+            _index = 277,
         },
         {
             PickUp = { 8287 },
             Coord = { x = 196.98, y = -7578.73 },
             RaidIcon = { { npcID = 15194, questID = 8287 } },
             Zone = 1451,
-            _index = 277,
+            _index = 278,
         },
         {
             PickUp = { 8323 },
@@ -2544,13 +2553,13 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             NoAutoAccept = true,
             ItemCount = { count = 10, itemID = 20404, operator = ">=" },
             Zone = 1451,
-            _index = 278,
+            _index = 279,
         },
         {
             Qpart = { [8323] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 8323,
-            _index = 279,
+            _index = 280,
         },
         {
             Done = { 8323 },
@@ -2558,33 +2567,33 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8323,
             IsQuestReadyForTurnIn = 8323,
             Zone = 1451,
-            _index = 280,
+            _index = 281,
         },
         {
             Qpart = { [8318] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 8318,
-            _index = 281,
+            _index = 282,
         },
         {
             Done = { 8318 },
             Coord = { x = 845.51, y = -6835.95 },
             RaidIcon = { { npcID = 15306, questID = 8318 } },
             Zone = 1451,
-            _index = 282,
+            _index = 283,
         },
         {
             Done = { 8287 },
             Coord = { x = 823.84, y = -6752.4 },
             RaidIcon = { { npcID = 15181, questID = 8287 } },
             Zone = 1451,
-            _index = 283,
+            _index = 284,
         },
         {
             Done = { 8282 },
             Coord = { x = 739.58, y = -6853.05 },
             Zone = 1451,
-            _index = 284,
+            _index = 285,
         },
         {
             UseFlightPath = 3962,
@@ -2594,7 +2603,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 3962,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 285,
+            _index = 286,
         },
         {
             Done = { 3962 },
@@ -2602,11 +2611,11 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3962,
             IsQuestReadyForTurnIn = 3962,
             Zone = 1449,
-            _index = 286,
+            _index = 287,
         },
         {
             LeaveQuests = { 3962 },
-            _index = 287,
+            _index = 288,
         },
         {
             UseFlightPath = 4507,
@@ -2615,7 +2624,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = -7224.87, x = -3738.16, Range = 25, mapID = 1446 },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 288,
+            _index = 289,
         },
         {
             UseFlightPath = 4507,
@@ -2624,7 +2633,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = -7224.87, x = -3738.16, Range = 25, mapID = 1446 },
             OnlyInZones = { 1449 },
             Zone = 1449,
-            _index = 289,
+            _index = 290,
         },
         {
             Done = { 4507 },
@@ -2632,30 +2641,30 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4507,
             IsQuestReadyForTurnIn = 4507,
             Zone = 1446,
-            _index = 290,
+            _index = 291,
         },
         {
             PickUp = { 4508 },
             Coord = { x = -3729.95, y = -7115.3 },
             IsQuestCompleted = 4507,
             Zone = 1446,
-            _index = 291,
+            _index = 292,
         },
         {
             LeaveQuests = { 4507 },
-            _index = 292,
+            _index = 293,
         },
         {
             Done = { 4504 },
             Coord = { x = -3776.8, y = -7105.91 },
             Zone = 1446,
-            _index = 293,
+            _index = 294,
         },
         {
             UseHS = 4809,
             UseHSIfAvailable = true,
             Class = { "ROGUE", "WARRIOR" },
-            _index = 294,
+            _index = 295,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
@@ -2670,7 +2679,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             UseHS = 4809,
             UseHSIfAvailable = true,
             ClassNot = { "ROGUE", "WARRIOR" },
-            _index = 295,
+            _index = 296,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
@@ -2688,14 +2697,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = 6800.51, x = -4742.38, Range = 25, mapID = 1452 },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 296,
+            _index = 297,
         },
         {
             Waypoint = 4809,
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 15,
             Zone = 1452,
-            _index = 297,
+            _index = 298,
         },
         {
             Done = { 4809 },
@@ -2703,14 +2712,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 10468, questID = 4809 } },
             IsQuestReadyForTurnIn = 4809,
             Zone = 1452,
-            _index = 298,
+            _index = 299,
         },
         {
             Done = { 5163 },
             Coord = { x = -4639.36, y = 6752.65 },
             RaidIcon = { { npcID = 10305, questID = 5163 } },
             Zone = 1452,
-            _index = 299,
+            _index = 300,
         },
         {
             Qpart = { [4809] = { 1 } },
@@ -2719,21 +2728,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 7448, questID = 4809, objectiveIndex = 1 }, { npcID = 7449, questID = 4809, objectiveIndex = 1 }, { npcID = 7447, questID = 4809, objectiveIndex = 1 } },
             IsQuestOnQuest = 4809,
             Zone = 1452,
-            _index = 300,
+            _index = 301,
         },
         {
             Done = { 4809 },
             Coord = { x = -4692.11, y = 6705.56 },
             RaidIcon = { { npcID = 10468, questID = 4809 } },
             Zone = 1452,
-            _index = 301,
+            _index = 302,
         },
         {
             UseSpell = { spellID = 18960 },
             Class = "DRUID",
             HasSpell = 18960,
             SkipInZones = { 1450 },
-            _index = 302,
+            _index = 303,
         },
         {
             UseFlightPath = 6844,
@@ -2742,14 +2751,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = 7454.82, x = -2491.6, Range = 25, mapID = 1450 },
             OnlyInZones = { 1452 },
             Zone = 1452,
-            _index = 303,
+            _index = 304,
         },
         {
             Waypoint = 6844,
             Coord = { x = -2483.16, y = 7880.79 },
             Range = 15,
             Zone = 1450,
-            _index = 304,
+            _index = 305,
         },
         {
             Done = { 6844 },
@@ -2758,7 +2767,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 6844,
             IsQuestReadyForTurnIn = 6844,
             Zone = 1450,
-            _index = 305,
+            _index = 306,
         },
         {
             PickUp = { 6845 },
@@ -2766,7 +2775,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -2417.23, y = 7943.57 },
             IsQuestCompleted = 6844,
             Zone = 1450,
-            _index = 306,
+            _index = 307,
         },
         {
             Done = { 6845 },
@@ -2774,7 +2783,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 6845,
             IsQuestReadyForTurnIn = 6845,
             Zone = 1450,
-            _index = 307,
+            _index = 308,
         },
         {
             Done = { 5527 },
@@ -2783,7 +2792,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 5527,
             IsQuestReadyForTurnIn = 5527,
             Zone = 1450,
-            _index = 308,
+            _index = 309,
         },
         {
             PickUp = { 1185 },
@@ -2791,7 +2800,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             Coord = { x = -2417.23, y = 7943.57 },
             IsQuestCompleted = 6845,
             Zone = 1450,
-            _index = 309,
+            _index = 310,
         },
         {
             Done = { 1185 },
@@ -2800,7 +2809,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 1185,
             IsQuestReadyForTurnIn = 1185,
             Zone = 1450,
-            _index = 310,
+            _index = 311,
         },
         {
             UseFlightPath = 4901,
@@ -2810,7 +2819,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 4901 }, { IsQuestOnQuest = 4902 }, { IsQuestCompleted = 4901, IsQuestUncompleted = 4902 }, { IsQuestOnQuest = 3378 }, { IsQuestOnQuest = 4508 }, { IsQuestCompleted = 4508, IsQuestUncompleted = 4510 }, { IsQuestOnQuest = 4510 }, { IsQuestOnQuest = 4986 } },
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 311,
+            _index = 312,
         },
         {
             UseSpell = { spellID = 3565 },
@@ -2819,7 +2828,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             HasSpell = 3565,
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             SkipInZones = { 1457, 1438 },
-            _index = 312,
+            _index = 313,
         },
         {
             UseFlightPath = 4901,
@@ -2829,7 +2838,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestOnQuest = 4901 }, { IsQuestOnQuest = 4902 }, { IsQuestCompleted = 4901, IsQuestUncompleted = 4902 }, { IsQuestOnQuest = 3378 }, { IsQuestOnQuest = 4508 }, { IsQuestCompleted = 4508, IsQuestUncompleted = 4510 }, { IsQuestOnQuest = 4510 }, { IsQuestOnQuest = 4986 } },
             OnlyInZones = { 1448 },
             Zone = 1448,
-            _index = 313,
+            _index = 314,
         },
         {
             Done = { 4901 },
@@ -2838,7 +2847,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 314,
+            _index = 315,
         },
         {
             PickUp = { 4902 },
@@ -2846,21 +2855,21 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestCompleted = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 315,
+            _index = 316,
         },
         {
             TakePortal = { mapID = 1457 },
             Coord = { x = 968.9, y = 8795.34 },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 316,
+            _index = 317,
         },
         {
             Waypoint = 3378,
             Coord = { x = 2626.51, y = 9946.11 },
             Range = 15,
             Zone = 1457,
-            _index = 317,
+            _index = 318,
         },
         {
             Done = { 3378 },
@@ -2868,7 +2877,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 3378,
             IsQuestReadyForTurnIn = 3378,
             Zone = 1457,
-            _index = 318,
+            _index = 319,
         },
         {
             Done = { 4508 },
@@ -2876,14 +2885,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4508,
             IsQuestReadyForTurnIn = 4508,
             Zone = 1457,
-            _index = 319,
+            _index = 320,
         },
         {
             PickUp = { 4510 },
             Coord = { x = 2495.63, y = 9634.06 },
             IsQuestCompleted = 4508,
             Zone = 1457,
-            _index = 320,
+            _index = 321,
         },
         {
             Done = { 4510 },
@@ -2891,7 +2900,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4510,
             IsQuestReadyForTurnIn = 4510,
             Zone = 1457,
-            _index = 321,
+            _index = 322,
         },
         {
             Done = { 4986 },
@@ -2900,7 +2909,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4986,
             IsQuestReadyForTurnIn = 4986,
             Zone = 1457,
-            _index = 322,
+            _index = 323,
         },
         {
             TakePortal = { mapID = 1438 },
@@ -2909,7 +2918,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 323,
+            _index = 324,
         },
         {
             Done = { 4901 },
@@ -2918,7 +2927,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 324,
+            _index = 325,
         },
         {
             PickUp = { 4902 },
@@ -2926,14 +2935,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestCompleted = 4901,
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 325,
+            _index = 326,
         },
         {
             TakePortal = { mapID = 1457 },
             Coord = { x = 968.9, y = 8795.34 },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 326,
+            _index = 327,
         },
         {
             Done = { 4902 },
@@ -2941,7 +2950,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 4902,
             IsQuestReadyForTurnIn = 4902,
             Zone = 1457,
-            _index = 327,
+            _index = 328,
         },
         {
             TakePortal = { mapID = 1438 },
@@ -2949,7 +2958,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 328,
+            _index = 329,
         },
         {
             UseFlightPath = 4808,
@@ -2959,7 +2968,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             OnlyInZones = { 1438 },
             Zone = 1438,
-            _index = 329,
+            _index = 330,
         },
         {
             UseFlightPath = 5242,
@@ -2969,7 +2978,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 330,
+            _index = 331,
         },
         {
             UseFlightPath = 4005,
@@ -2979,7 +2988,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 331,
+            _index = 332,
         },
         {
             Waypoint = 1124,
@@ -2989,7 +2998,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = -6495.27, x = -528.94, Range = 20, mapID = 1449 },
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             Zone = 1449,
-            _index = 332,
+            _index = 333,
         },
         {
             Waypoint = 1124,
@@ -2999,7 +3008,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = { y = -6219.5, x = -568.53, Range = 20, mapID = 1449 },
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             Zone = 1449,
-            _index = 333,
+            _index = 334,
         },
         {
             Waypoint = 1124,
@@ -3009,7 +3018,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1451, 88.4, 23.81, 20),
             AnyOf = { { IsQuestUncompleted = 8318 }, { IsQuestUncompleted = 8304 } },
             Zone = 1451,
-            _index = 334,
+            _index = 335,
         },
         {
             Grind = 57,
@@ -3021,7 +3030,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1451 },
             SkipForLvl = 57,
             Zone = 1451,
-            _index = 335,
+            _index = 336,
         },
         {
             PickUp = { 8318 },
@@ -3030,7 +3039,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             MinLevel = 57,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 336,
+            _index = 337,
         },
         {
             LootItems = { { quantity = 20, itemID = 20404, questID = 8318, includeBank = false } },
@@ -3042,7 +3051,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8318,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 337,
+            _index = 338,
         },
         {
             LootItems = { { quantity = 10, itemID = 20404, questID = 8318, includeBank = false } },
@@ -3054,7 +3063,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 8318,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 338,
+            _index = 339,
         },
         {
             LootItems = { { quantity = 10, itemID = 20404, questID = 8323, includeBank = false } },
@@ -3066,7 +3075,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestUncompleted = 8323,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 339,
+            _index = 340,
         },
         {
             PickUp = { 8323 },
@@ -3075,14 +3084,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             ItemCount = { count = 10, itemID = 20404, operator = ">=" },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 340,
+            _index = 341,
         },
         {
             Qpart = { [8323] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 8323,
             OnlyInZones = { 1451 },
-            _index = 341,
+            _index = 342,
         },
         {
             Done = { 8323 },
@@ -3091,14 +3100,14 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 8323,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 342,
+            _index = 343,
         },
         {
             Qpart = { [8318] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 8318,
             OnlyInZones = { 1451 },
-            _index = 343,
+            _index = 344,
         },
         {
             Done = { 8318 },
@@ -3106,7 +3115,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             RaidIcon = { { npcID = 15306, questID = 8318 } },
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 344,
+            _index = 345,
         },
         {
             Grind = 58,
@@ -3118,7 +3127,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             OnlyInZones = { 1451 },
             SkipForLvl = 58,
             Zone = 1451,
-            _index = 345,
+            _index = 346,
         },
         {
             PickUp = { 8304 },
@@ -3127,7 +3136,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             MinLevel = 58,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 346,
+            _index = 347,
         },
         {
             Qpart = { [8304] = { 2 } },
@@ -3138,7 +3147,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             -- GossipOptionIDs = {}, -- TODO: verify option IDs for skipgossip
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 347,
+            _index = 348,
         },
         {
             Qpart = { [8304] = { 1 } },
@@ -3149,7 +3158,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             -- GossipOptionIDs = {}, -- TODO: verify option IDs for skipgossip
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 348,
+            _index = 349,
         },
         {
             Done = { 8304 },
@@ -3158,7 +3167,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestOnQuest = 8304,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 349,
+            _index = 350,
         },
         {
             PickUp = { 8308 },
@@ -3169,7 +3178,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             MinLevel = 58,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 350,
+            _index = 351,
         },
         {
             Done = { 8308 },
@@ -3179,16 +3188,16 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             IsQuestReadyForTurnIn = 8308,
             OnlyInZones = { 1451 },
             Zone = 1451,
-            _index = 351,
+            _index = 352,
         },
         {
             Note = { "LITTLE_SLIME_GOES_LONG_WAY_STILL_LOG" },
             IsQuestOnQuest = 4513,
-            _index = 352,
+            _index = 353,
         },
         {
             RouteCompleted = true,
-            _index = 353,
+            _index = 354,
         },
     },
 }

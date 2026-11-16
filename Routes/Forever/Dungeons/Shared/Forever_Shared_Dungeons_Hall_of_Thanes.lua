@@ -136,12 +136,20 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             _index = 13,
         },
         {
+            PickUp = { 96395 },
+            NoArrow = true,
+            Dungeon = "HOT",
+            InstanceQuest = true,
+            Faction = "Alliance",
+            _index = 14,
+        },
+        {
             KillNPC = { dungeonKey = "HOT", name = "Faldrim Anvilmar", npcID = 261306 },
             Fillers = { [96403] = { 1 }, [96394] = { 1, 2 } },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 14,
+            _index = 15,
         },
         {
             Qpart = { [96395] = { 1 } },
@@ -150,7 +158,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Dungeon = "HOT",
             InstanceQuest = true,
             IsQuestOnQuest = 96395,
-            _index = 15,
+            _index = 16,
         },
         {
             Done = { 96395 },
@@ -159,7 +167,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Dungeon = "HOT",
             InstanceQuest = true,
             IsQuestOnQuest = 96395,
-            _index = 16,
+            _index = 17,
         },
         {
             Qpart = { [96394] = { 1, 2 } },
@@ -169,7 +177,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
-            _index = 17,
+            _index = 18,
         },
         {
             KillNPC = { dungeonKey = "HOT", npcID = 261316, name = "Magmatus" },
@@ -177,7 +185,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 18,
+            _index = 19,
         },
         {
             KillNPC = { dungeonKey = "HOT", npcID = 261311, name = "Plunder" },
@@ -185,7 +193,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 19,
+            _index = 20,
         },
         {
             KillNPC = { dungeonKey = "HOT", name = "Durgen Dirgehammer", npcID = 261319 },
@@ -194,7 +202,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 20,
+            _index = 21,
         },
         {
             Qpart = { [96393] = { 1 } },
@@ -204,7 +212,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 96393,
-            _index = 21,
+            _index = 22,
         },
         {
             Qpart = { [96403] = { 1 } },
@@ -213,7 +221,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Dungeon = "HOT",
             InstanceQuest = true,
             IsQuestOnQuest = 96403,
-            _index = 22,
+            _index = 23,
         },
         {
             LeaveInstance = { dungeonKey = "HOT" },
@@ -221,14 +229,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 23,
+            _index = 24,
         },
         {
             Done = { 96403 },
             Coord = { x = -968.2, y = -4803.7 },
             IsQuestOnQuest = 96403,
             Zone = 1455,
-            _index = 24,
+            _index = 25,
         },
         {
             Waypoint = 96394,
@@ -238,7 +246,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 25,
+            _index = 26,
         },
         {
             Waypoint = 96394,
@@ -248,7 +256,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 26,
+            _index = 27,
         },
         {
             Waypoint = 96394,
@@ -258,7 +266,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 27,
+            _index = 28,
         },
         {
             Waypoint = 96394,
@@ -268,7 +276,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 28,
+            _index = 29,
         },
         {
             Waypoint = 96394,
@@ -278,7 +286,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 29,
+            _index = 30,
         },
         {
             Waypoint = 96394,
@@ -288,7 +296,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 30,
+            _index = 31,
         },
         {
             Waypoint = 96394,
@@ -298,7 +306,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 31,
+            _index = 32,
         },
         {
             Done = { 96394 },
@@ -306,7 +314,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96394,
             Zone = 1455,
-            _index = 32,
+            _index = 33,
         },
         {
             Waypoint = 96393,
@@ -316,7 +324,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             AnyOf = { { IsQuestOnQuest = 96393 }, { IsQuestOnQuest = 98423 } },
             Faction = "Alliance",
             Zone = 1455,
-            _index = 33,
+            _index = 34,
         },
         {
             Waypoint = 96393,
@@ -326,7 +334,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             AnyOf = { { IsQuestOnQuest = 96393 }, { IsQuestOnQuest = 98423 } },
             Faction = "Alliance",
             Zone = 1455,
-            _index = 34,
+            _index = 35,
         },
         {
             Waypoint = 96393,
@@ -336,7 +344,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             AnyOf = { { IsQuestOnQuest = 96393 }, { IsQuestOnQuest = 98423 } },
             Faction = "Alliance",
             Zone = 1455,
-            _index = 35,
+            _index = 36,
         },
         {
             Waypoint = 96393,
@@ -346,7 +354,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             AnyOf = { { IsQuestOnQuest = 96393 }, { IsQuestOnQuest = 98423 } },
             Faction = "Alliance",
             Zone = 1455,
-            _index = 36,
+            _index = 37,
         },
         {
             Done = { 96393 },
@@ -354,7 +362,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96393,
             Zone = 1455,
-            _index = 37,
+            _index = 38,
         },
         {
             Done = { 98423 },
@@ -362,11 +370,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 98423,
             Zone = 1455,
-            _index = 38,
+            _index = 39,
         },
         {
             RouteCompleted = true,
-            _index = 39,
+            _index = 40,
         },
     },
 }

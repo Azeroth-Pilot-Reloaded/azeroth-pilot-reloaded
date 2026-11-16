@@ -3,12 +3,12 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
     label = L["Forever - Horde - Feralas (First Visit)"],
     legacyLabels = { L["Forever - Horde - Feralas (First Visit)"] .. " (43-44)" },
-    levelRange = { min = 43, max = 44 },
+    levelRange = { min = 44, max = 45 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1444,
-    conditions = { MinLevel = 40, Faction = "Horde" },
+    conditions = { MinLevel = 44, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Stranglethorn-Vale-Third-Visit" },
     prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 21 }, [APR.PREFAB_TYPES.Speedrun] = { index = 21 } },
     parallelSteps = {
@@ -101,6 +101,11 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             RaidIcon = { { npcID = 7875, questID = 2862 } },
             Zone = 1444,
             _index = 7,
+        },
+        {
+            PickUp = { 92878 },
+            Coord = { x = 237.3, y = -4408 },
+            Zone = 1444,
         },
         {
             PickUp = { 2822 },
@@ -383,6 +388,13 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 40,
         },
         {
+            Qpart = { [92878] = { 1 } },
+            Note = { "HARD_STEP_GROUP", "NOT_WANT_CANNOT_SKIP_STEP" },
+            Coord = { x = 828.5, y = -4149.8 },
+            IsQuestOnQuest = 92878,
+            Zone = 1444,
+        },
+        {
             Done = { 2902 },
             Note = { "CLICK_WOODPAW_BATTLE_MAP_TOP_CRATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 71.6, 55.9),
@@ -416,6 +428,13 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             RaidIcon = { { npcID = 7875, questID = 2903 } },
             Zone = 1444,
             _index = 45,
+        },
+        {
+            Done = { 92878 },
+            Coord = { x = 237.3, y = -4408 },
+            IsQuestOnQuest = 92878,
+            IsQuestReadyForTurnIn = 92878,
+            Zone = 1444,
         },
         {
             PickUp = { 7730, 7731 },

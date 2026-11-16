@@ -26,6 +26,20 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         Zone = 1412,
         _index = 1,
     }, {
+        PickUp = { 95789 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.95, 77.21),
+        RaidIcon = { { npcID = 773, questID = 95789 } },
+        MinLevel = 30,
+        Zone = 1434,
+        _index = 2,
+    }, {
+        PickUp = { 95791 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.95, 77.21),
+        RaidIcon = { { npcID = 773, questID = 95791 } },
+        MinLevel = 30,
+        Zone = 1434,
+        _index = 3,
+    }, {
         EnterInstance = {
             dungeonKey = "DROWNED_CITY",
         },
@@ -33,7 +47,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
         Zone = 1434,
-        _index = 2,
+        _index = 4,
     }, {
         KillNPC = {
             dungeonKey = "DROWNED_CITY",
@@ -43,7 +57,21 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
-        _index = 3,
+        _index = 5,
+    }, {
+        Qpart = { [95775] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95775,
+        _index = 6,
+    }, {
+        Qpart = { [95787] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95787,
+        _index = 7,
     }, {
         KillNPC = {
             dungeonKey = "DROWNED_CITY",
@@ -53,7 +81,21 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
-        _index = 4,
+        _index = 8,
+    }, {
+        Qpart = { [95775] = { 2 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95775,
+        _index = 9,
+    }, {
+        Qpart = { [95787] = { 2 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95787,
+        _index = 10,
     }, {
         KillNPC = {
             dungeonKey = "DROWNED_CITY",
@@ -63,7 +105,28 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
-        _index = 5,
+        _index = 11,
+    }, {
+        Qpart = { [95775] = { 3 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95775,
+        _index = 12,
+    }, {
+        Qpart = { [95787] = { 3 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95787,
+        _index = 13,
+    }, {
+        Qpart = { [95791] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95791,
+        _index = 14,
     }, {
         KillNPC = {
             dungeonKey = "DROWNED_CITY",
@@ -73,7 +136,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
-        _index = 6,
+        _index = 15,
     }, {
         KillNPC = {
             dungeonKey = "DROWNED_CITY",
@@ -83,7 +146,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
-        _index = 7,
+        _index = 16,
     }, {
         Qpart = {
             [96774] = { 1 },
@@ -92,14 +155,77 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
         IsQuestOnQuest = 96774,
-        _index = 8,
+        _index = 17,
+    }, {
+        Qpart = { [95775] = { 4 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95775,
+        _index = 18,
+    }, {
+        Qpart = { [95787] = { 4 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95787,
+        _index = 19,
+    }, {
+        Qpart = { [95776] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95776,
+        _index = 20,
+    }, {
+        Qpart = { [95788] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95788,
+        _index = 21,
+    }, {
+        Qpart = { [95789] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95789,
+        _index = 22,
+    }, {
+        Qpart = { [95791] = { 2 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 95791,
+        _index = 23,
+    }, {
+        Qpart = { [97130] = { 1 } },
+        NoArrow = true,
+        Dungeon = "DROWNED_CITY",
+        InstanceQuest = true,
+        IsQuestOnQuest = 97130,
+        _index = 24,
     }, {
         LeaveInstance = {
             dungeonKey = "DROWNED_CITY",
         },
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
-        _index = 9,
+        _index = 25,
+    }, {
+        Done = { 95789 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.95, 77.21),
+        RaidIcon = { { npcID = 773, questID = 95789 } },
+        IsQuestOnQuest = 95789,
+        Zone = 1434,
+        _index = 26,
+    }, {
+        Done = { 95791 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.95, 77.21),
+        RaidIcon = { { npcID = 773, questID = 95791 } },
+        IsQuestOnQuest = 95791,
+        Zone = 1434,
+        _index = 27,
     }, {
         Done = { 96774 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 32.5, 20.66),
@@ -110,9 +236,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         Faction = "Horde",
         IsQuestOnQuest = 96774,
         Zone = 1412,
-        _index = 10,
+        _index = 28,
     }, {
         RouteCompleted = true,
-        _index = 11,
+        _index = 29,
     } },
 }

@@ -1335,6 +1335,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3528] = { 1 },
         },
+        Button = { ["3528-1"] = 10663 },
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
