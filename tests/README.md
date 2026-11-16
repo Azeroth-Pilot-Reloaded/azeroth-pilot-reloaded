@@ -57,7 +57,9 @@ formatters moving diagnostic marker comments across authored table fields/operat
 
 `note_item_links_test.lua` joins real note resolution, item presentation and pooled
 Current Step rows with invented items on Retail/Forever. It checks localized names,
-quality colors, icons, exact variant payloads, hover tooltips, readable missing-data
+quality colors without duplicate markup, icon-space-name without added brackets,
+exact variant payloads, complete escaped item links from
+native text input, preserved literal/partial markup, hover tooltips, readable missing-data
 fallbacks, shared requests, event bursts, replacement, cancellation, hide/show and
 combat. Unchanged notes perform no item reads or text writes. Preview text in the
 quest-order list and arrow retains the authored hyperlink label. On both actual
