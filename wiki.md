@@ -382,9 +382,19 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Steps and `parallelSteps[].conditions`     | All filters below; group conditions control insertion, while a failed step filter skips that step.                                                                                                                                                                |
 | Route `conditions`: visibility             | `InterfaceVersion`, `InterfaceVersionExact`, `DontHaveSpell`, `IsQuestReadyForTurnIn`, `HasAchievement`, `DontHaveAchievement`, `Faction`, `Race`, `Class`, `ClassNot`, `Event`, `AlliedRace`, `IsQuestCompleted`, `IsQuestUncompleted`. Failure hides the route. |
-| Route `conditions`: availability           | Numeric `Level`, `MinLevel`, `MaxLevel`, `BeLvl`, plus `ClassSpec` and `Zones`. Failure disables the route.                                                                                                                                                       |
-| Route-level `AnyOf`                        | Alternatives use step filters; failure hides the route, including failures of nested level conditions.                                                                                                                                                            |
+| Route `conditions`: availability           | Numeric `Level`, `MinLevel`, `MaxLevel`, `BeLvl`, plus `ClassSpec` and `Zones`. Enforced failures disable the route; level recommendations follow the policy below.                                                                                                                                                       |
+| Route-level `AnyOf`                        | Alternatives use the route selection policy; enforced failures hide the route. Nested level recommendations follow the policy below.                                                                                                                                                            |
 | Conditional `nextRoute` / `prefab` entries | Use step filters; these affect the suggestion or prefab membership.                                                                                                                                                                                               |
+
+For Forever reputation guides, route level thresholds are recommendations for manual
+selection at every level, including thresholds of 10 or below. Ordinary Forever
+leveling chapters use the same policy. The browser, manual addition and direct
+activation share this rule; an unmet recommendation stays visible as a warning.
+Faction restrictions and declared quest/route prerequisites remain mandatory.
+Starter and specialized routes keep their existing entry policy. Level predicates
+under `Not` keep their original meaning. Automatic recommendations and step/group
+filters still enforce the authored levels; selecting a guide does not waive quest
+or activity requirements.
 
 | Option                              | Description                                                                                                                                                                       | Expected Syntax                                                                                            |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
