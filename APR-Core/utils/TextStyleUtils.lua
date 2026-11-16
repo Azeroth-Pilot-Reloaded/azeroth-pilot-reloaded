@@ -12,6 +12,33 @@ local LSM = LibStub("LibSharedMedia-3.0")
 APR.TextStyleUtils = APR.TextStyleUtils or {}
 local TextStyleUtils = APR.TextStyleUtils
 
+-- Presentation only: keep the authored hyperlink payload (including variant
+-- fields) intact. Callers own pending-data subscriptions, never translations.
+function TextStyleUtils:FormatItemLinks(text)
+    local pending, items = {}, {}
+    local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+    local formatted = text:gsub("(|+)H([^|]+)|h(.-)|h", --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:20:callback#2", --[[/APR_DIAG]]function(pipes, payload, label)
+        local original = pipes .. "H" .. payload .. "|h" .. label .. "|h"
+        local id = tonumber(payload:match("^item:(%d+)$") or payload:match("^item:(%d+):"))
+        if #pipes % 2 == 0 or not id or id <= 0 then return original end
+        local item = items[payload]
+        if not item then
+            local name, link, quality, _, _, _, _, _, _, icon
+            if getInfo then name, link, quality, _, _, _, _, _, _, icon = getInfo(payload) end
+            local color = link and link:match("|c(%x%x%x%x%x%x%x%x)")
+            local qualityColor = ITEM_QUALITY_COLORS and ITEM_QUALITY_COLORS[quality]
+            color = color or (qualityColor and qualityColor.hex) or "ffffffff"
+            item = { name = name, color = color, icon = icon }
+            items[payload] = item
+        end
+        if not item.name then pending[id] = true end
+        local name = item.name or label:gsub("^%[(.*)%]$", "%1")
+        local icon = item.icon and ("|T" .. tostring(item.icon) .. ":0|t ") or ""
+        return pipes:sub(1, -2) .. icon .. "|c" .. item.color .. "|H" .. payload .. "|h[" .. name .. "]|h|r"
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    return formatted, pending
+end--[[APR_DIAG]]; TextStyleUtils.FormatItemLinks = APRTrace("APR-Core/utils/TextStyleUtils.lua:17:TextStyleUtils:FormatItemLinks#1", TextStyleUtils.FormatItemLinks)--[[/APR_DIAG]]
+
 TextStyleUtils.GLOBAL_PROFILE_KEY = APR.GLOBAL_TEXT_APPEARANCE_KEY or "globalTextAppearance"
 
 TextStyleUtils.BASE_TEXT_COLORS = {

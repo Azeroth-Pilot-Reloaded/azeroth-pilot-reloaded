@@ -12,6 +12,81 @@ local Layout = CurrentStep.layout
 local TOP_OFFSET = Layout.topOffset
 local PADDING, INDENT, DETAIL_GAP = Layout.padding, Layout.indent, Layout.detailGap
 
+local pendingItemRows, requestedItems = {}, {}
+local itemTextFrame, itemTextTimer
+local BindItemText
+
+local function HideItemTooltip(row)
+    if GameTooltip and GameTooltip.IsOwned and GameTooltip:IsOwned(row) then GameTooltip:Hide() end
+end--[[APR_DIAG]]; HideItemTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:19:HideItemTooltip#1", HideItemTooltip)--[[/APR_DIAG]]
+
+local function RetireItemText(row)
+    pendingItemRows[row] = nil
+    HideItemTooltip(row)
+    if not next(pendingItemRows) then
+        requestedItems = {}
+        if itemTextFrame then itemTextFrame:UnregisterEvent("ITEM_DATA_LOAD_RESULT") end
+        if itemTextTimer then itemTextTimer:Cancel(); itemTextTimer = nil end
+    end
+end--[[APR_DIAG]]; RetireItemText = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:23:RetireItemText#2", RetireItemText)--[[/APR_DIAG]]
+
+local function RefreshItemText()
+    itemTextTimer = nil
+    local rows = {}
+    for row, ids in pairs(pendingItemRows) do
+        for id in pairs(ids) do
+            if requestedItems[id] == "complete" then rows[#rows + 1] = row; break end
+        end
+    end
+    for _, row in ipairs(rows) do
+        -- Only the current binding survives in this map. Released/recycled and
+        -- hidden rows cannot be updated by an old load or scheduled callback.
+        if pendingItemRows[row] then BindItemText(row, true) end
+    end
+    if #rows > 0 then CurrentStep:ReOrderQuestSteps() end
+end--[[APR_DIAG]]; RefreshItemText = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:33:RefreshItemText#3", RefreshItemText)--[[/APR_DIAG]]
+
+BindItemText = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:49:callback#4", --[[/APR_DIAG]]function(row, refresh)
+    local utils = APR.TextStyleUtils
+    local raw = row._rawExtraLineText
+    if not raw or not utils or not utils.FormatItemLinks then return end
+    if not refresh and row._itemTextSource == raw then return end
+    if row._itemTextSource ~= raw then HideItemTooltip(row) end
+    local rendered, pending = utils:FormatItemLinks(raw)
+    row._itemTextSource, row._renderedExtraLineText = raw, rendered
+    pendingItemRows[row] = nil
+    local waiting = {}
+    for id in pairs(pending) do
+        if requestedItems[id] ~= "complete" then waiting[id] = true end
+    end
+    if next(waiting) and C_Item and C_Item.RequestLoadItemDataByID and C_Timer and C_Timer.NewTimer then
+        pendingItemRows[row] = waiting
+        if not itemTextFrame then
+            itemTextFrame = CreateFrame("Frame")
+            CurrentStep.itemTextFrame = itemTextFrame
+            itemTextFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:67:callback#5", --[[/APR_DIAG]]function(_, _, id)
+                if not requestedItems[id] or requestedItems[id] == "complete" then return end
+                requestedItems[id] = "complete"
+                if not itemTextTimer then
+                    local timer
+                    timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:72:callback#6", --[[/APR_DIAG]]function()
+                        if itemTextTimer == timer then RefreshItemText() end
+                    end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    itemTextTimer = timer
+                end
+            end--[[APR_DIAG]])--[[/APR_DIAG]])
+        end
+        itemTextFrame:RegisterEvent("ITEM_DATA_LOAD_RESULT")
+        for id in pairs(waiting) do
+            if not requestedItems[id] then
+                requestedItems[id] = true
+                C_Item.RequestLoadItemDataByID(id)
+            end
+        end
+    end
+    if not next(pendingItemRows) then RetireItemText(row) end
+end--[[APR_DIAG]])--[[/APR_DIAG]]
+
 local function ActionTextToken()
     local data = APRData and APR.PlayerID and APRData[APR.PlayerID]
     local index = data and APR.ActiveRoute and data[APR.ActiveRoute]
@@ -239,6 +314,7 @@ CurrentStep.RecycleCombatRows = APRTrace(
 
 function CurrentStep:RecycleRow(container, key)
     if not container or container.inRowPool then return end
+    RetireItemText(container)
     if container.rowKind == "preview" and APR.currentStepImagePreview then
         APR.currentStepImagePreview:ClosePreviewWindows(container)
     end
@@ -291,6 +367,10 @@ function CurrentStep:RecycleRow(container, key)
     container.extraContentHeight, container.progressBarOnly = nil, nil
     container.stale, container.refreshActions, container.actionSeen, container.raidSeen = nil, nil, nil, nil
     container._isManagedExtraLine, container._rawExtraLineText, container._manualLeadingDash = nil, nil, nil
+    container._itemTextSource, container._renderedExtraLineText = nil, nil
+    container:SetScript("OnHyperlinkEnter", nil)
+    container:SetScript("OnHyperlinkLeave", nil)
+    if container.SetHyperlinksEnabled then container:SetHyperlinksEnabled(false) end
     if container.detailFonts then container.subTexts = {} end
 
     local parent, kind = container:GetParent(), container.rowKind
@@ -717,14 +797,39 @@ function CurrentStep:AddExtraLineText(key, text, color, dash)
     else
         self:ReleaseRow(self.questsList, questKey)
     end
-    local container = AcquireRow(self, list, rowKey, "extra", text, true, color, false)
+    local previous = list[rowKey]
+    local displayText = previous and previous._itemTextSource == text and previous._renderedExtraLineText or text
+    local container = AcquireRow(self, list, rowKey, "extra", displayText, true, color, false)
     container._isManagedExtraLine = true
     container._rawExtraLineText, container._manualLeadingDash = text, dash
+    BindItemText(container)
+    if not container.itemTextHooks then
+        container.itemTextHooks = true
+        container:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:728:callback#44", --[[/APR_DIAG]]function(row)
+            RetireItemText(row)
+            row._itemTextSource = nil
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        container:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:732:callback#45", --[[/APR_DIAG]]function(row)
+            if row._rawExtraLineText then
+                BindItemText(row, true)
+                self:ReOrderQuestSteps()
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end
+    if container.SetHyperlinksEnabled then
+        container:SetHyperlinksEnabled(true)
+        container:SetScript("OnHyperlinkEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:741:callback#46", --[[/APR_DIAG]]function(row, link)
+            if not row.hiddenInCombat and not row.inRowPool and link and link:match("^item:%d+") then
+                GameTooltip:SetOwner(row, "ANCHOR_CURSOR")
+                GameTooltip:SetHyperlink(link)
+                GameTooltip:Show()
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        container:SetScript("OnHyperlinkLeave", HideItemTooltip)
+    end
     self:MaybeAttachRaidIconButton(rowKey)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]
-CurrentStep.AddExtraLineText =
-    APRTrace("APR-Core/ui/route/CurrentStepRows.lua:570:CurrentStep:AddExtraLineText#37", CurrentStep.AddExtraLineText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.AddExtraLineText = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:702:CurrentStep:AddExtraLineText#43", CurrentStep.AddExtraLineText)--[[/APR_DIAG]]
 
 local function AddDivider(self, list, key)
     if not APR.settings.profile.currentStepShow then return end
@@ -805,7 +910,7 @@ function CurrentStep:ReOrderQuestSteps()
                 local dash = row._manualLeadingDash
                 if dash == nil then dash = autoCount > 1 end
                 row.showLeadingDash = dash
-                SetText(row.font, (dash and "- " or "") .. row._rawExtraLineText)
+                SetText(row.font, (dash and "- " or "") .. (row._renderedExtraLineText or row._rawExtraLineText))
             end
             if row.rowKind ~= "divider" then MeasureRow(row) end
             -- Secure descendants also protect their parent's anchors in combat.

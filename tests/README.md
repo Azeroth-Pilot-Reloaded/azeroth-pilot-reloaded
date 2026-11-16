@@ -55,6 +55,18 @@ coverage. Synthetic cases still reject missing/wrong wrappers, duplicate trace
 identifiers, missing call adapters and incorrect manifest counts. They also cover
 formatters moving diagnostic marker comments across authored table fields/operators.
 
+`note_item_links_test.lua` joins real note resolution, item presentation and pooled
+Current Step rows with invented items on Retail/Forever. It checks localized names,
+quality colors, icons, exact variant payloads, hover tooltips, readable missing-data
+fallbacks, shared requests, event bursts, replacement, cancellation, hide/show and
+combat. Unchanged notes perform no item reads or text writes. Preview text in the
+quest-order list and arrow retains the authored hyperlink label. On both actual
+clients, check native wrapping, icon sizing, hovering and switching steps while
+item data loads, including a raid-button row during combat; simulated widgets
+cannot certify native rendering or taint behavior. API contracts were checked in
+Blizzard's [Retail source](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/ItemDocumentation.lua)
+and [Forever 1.60.1 snapshot](https://github.com/Gethe/wow-ui-source/blob/bd2470aed543f72697a044e989285b6c83e63f73/Interface/AddOns/Blizzard_APIDocumentationGenerated/ItemDocumentation.lua).
+
 `reward_scoring_test.lua` uses invented item variants and equipped configurations
 for weighted gains, usability, unique-equipped categories and weapon replacement.
 It also compares complete weapon configurations with destination-specific DPS,
