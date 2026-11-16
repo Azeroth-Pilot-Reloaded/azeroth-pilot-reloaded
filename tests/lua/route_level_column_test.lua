@@ -186,10 +186,16 @@ end
 local row = browser.list.active[1]
 row.scripts.OnEnter(row)
 assert(env.tooltip():find(LEVEL .. " " .. row.item.level, 1, true))
--- Rebinding an unknown range clears the old label on a reused row.
+-- Recycled rows show a placeholder for missing levels and restore known levels.
 row.item = { key = "unknown", label = "Unknown", visibility = "visible", category = "", author = "APR", status = "" }
 APR.RouteBrowserRows:Bind(row, row.item, 1, browser)
-assert(row.levels:GetText() == "")
+assert(row.levels:GetText() == "-")
+row.item.level = ""
+APR.RouteBrowserRows:Bind(row, row.item, 1, browser)
+assert(row.levels:GetText() == "-", "An empty formatted range uses the same placeholder as absent metadata")
+row.item.level = "2-7"
+APR.RouteBrowserRows:Bind(row, row.item, 1, browser)
+assert(row.levels:GetText() == "2-7", "A reused row cannot retain the missing-level placeholder")
 for _, width in ipairs({ 160, 200, 220, 300, 327, 328, 400 }) do
     local columns = APR.RouteBrowserRows:Columns(width)
     assert(columns.levels[2] == 72 and columns.name[2] > 0)
