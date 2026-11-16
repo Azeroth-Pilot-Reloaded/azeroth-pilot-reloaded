@@ -396,7 +396,7 @@ local function AddRouteToPath(catalog, record, restart)
         APR:CheckRouteChanges(record.key)
     end
     if not APR:AddRouteToCustomPathByKey(record.key) then return false end
-    APR.routeconfig:SendCustomPathUpdate()
+    APR.routeconfig:SendCustomPathUpdate(nil, true)
     return true
 end--[[APR_DIAG]]
 AddRouteToPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:291:AddRouteToPath#15", AddRouteToPath)--[[/APR_DIAG]]
@@ -459,7 +459,7 @@ function Catalog:ChangePath(record, action, restart)
     else
         return false
     end
-    APR.routeconfig:SendCustomPathUpdate()
+    APR.routeconfig:SendCustomPathUpdate(nil, true)
     return true
 end--[[APR_DIAG]]
 Catalog.ChangePath =
