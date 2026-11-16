@@ -3,16 +3,18 @@
 Explicit authoring tool; never called by tests or addon startup. No third-party
 quest IDs or scripts are executed. Source targets are cross-checked against the
 local guide data before any output is written. Activity prose is authored in
-tools/localization/forever-reputation-translations.json, preserving route titles.
+Route-generator/tools/localization/forever-reputation-translations.json, preserving route titles.
 """
 
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 
 
 ROOT = Path(__file__).resolve().parents[2]
+LOCALIZATION_ROOT = Path(os.environ.get('APR_ROUTEGEN_ROOT', ROOT.parent / 'Route-generator')) / 'tools/localization'
 STANDINGS = {"Hated": 1, "Hostile": 2, "Unfriendly": 3, "Neutral": 4,
              "Friendly": 5, "Honored": 6, "Revered": 7, "Exalted": 8}
 
@@ -388,7 +390,7 @@ FACTION_NAMES = {
 # longer English/French explanations are editorial variants of the same method.
 def translation_catalog():
     """The reviewed export is also the authoring source; do not duplicate prose."""
-    return json.loads((ROOT / 'tools/localization/forever-reputation-translations.json').read_text(encoding='utf-8'))
+    return json.loads((LOCALIZATION_ROOT / 'forever-reputation-translations.json').read_text(encoding='utf-8'))
 
 
 def all_activities():
@@ -858,7 +860,7 @@ def main():
     parser.add_argument('--source', type=Path, required=True, help='Directory containing the reviewed .guide data')
     parser.add_argument('--output', type=Path, default=ROOT / 'Routes/Forever/Reputation')
     parser.add_argument('--translations', type=Path,
-                        default=ROOT / 'tools/localization/forever-reputation-translations.json')
+                        default=LOCALIZATION_ROOT / 'forever-reputation-translations.json')
     parser.add_argument('--key-migration', type=Path, default=ROOT / '.cache/reputation-key-migration.json')
     args = parser.parse_args()
     count = build(args.source, args.output, args.translations, args.key_migration)

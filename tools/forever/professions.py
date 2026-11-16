@@ -7,6 +7,7 @@ and the authored locale tables plus localized name chunks for readable APR text.
 from pathlib import Path
 import argparse
 import json
+import os
 import re
 import unicodedata
 from urllib.parse import unquote
@@ -14,6 +15,7 @@ from urllib.parse import unquote
 from lupa.lua51 import LuaRuntime
 
 ROOT = Path(__file__).resolve().parents[2]
+LOCALIZATION_ROOT = Path(os.environ.get('APR_ROUTEGEN_ROOT', ROOT.parent / 'Route-generator')) / 'tools/localization'
 
 def lua(value):
     if isinstance(value, str):
@@ -177,7 +179,7 @@ class Texts:
             "Alchimia", "Forgiatura", "Cucina", "Incantamento", "Ingegneria", "Primo Soccorso", "Pesca", "Erbalismo", "Conciatura", "Estrazione", "Scuoiatura", "Sartoria"))})
         self.translations = {}
         self.note_values = set()
-        export = ROOT / "tools/localization/forever-professions-translations.json"
+        export = LOCALIZATION_ROOT / "forever-professions-translations.json"
         self.reviewed = json.loads(export.read_text(encoding="utf-8")) if export.exists() else {}
         self.english_names = english_names(guides, source)
         self.key_names = descriptive_note_keys(guides, self.english_names)
@@ -454,9 +456,10 @@ def main():
         result, skill, count = convert_guide(slug, guide, texts)
         (DEST / ("Forever_Profession_" + slug.replace("-", "_") + ".lua")).write_text(result, encoding="utf-8")
         print(f"{slug}: skill {skill}, {count} steps")
-    export = ROOT / "tools/localization/forever-professions-translations.json"
+    export = LOCALIZATION_ROOT / "forever-professions-translations.json"
     for loc in LOCALES:
         texts.output[loc]["FOREVER_PROF_SPECIALIZATION_DETAILS"] = SPECIALIZATION_TEXT[loc]
+    export.parent.mkdir(parents=True, exist_ok=True)
     export.write_text(json.dumps(texts.output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     report = ROOT / ".cache/profession-numeric-label-review.json"
     report.parent.mkdir(parents=True, exist_ok=True)

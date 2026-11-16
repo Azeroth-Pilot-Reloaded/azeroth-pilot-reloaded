@@ -9,12 +9,14 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sqlite3
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+LOCALIZATION_ROOT = Path(os.environ.get('APR_ROUTEGEN_ROOT', ROOT.parent / 'Route-generator')) / 'tools/localization'
 sys.path.insert(0, str(ROOT))
 from lupa.lua51 import LuaRuntime
 from tests.routes.route_loader import plain
@@ -359,6 +361,8 @@ def main():
     parser.add_argument("--reference-data", type=Path, required=True)
     parser.add_argument("--encounter-reference", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=ROOT)
+    parser.add_argument("--translations", type=Path,
+                        default=LOCALIZATION_ROOT / "forever-dungeons-translations.json")
     args = parser.parse_args()
     data = declared_tables(args.instance_source)
     encounter_rows = encounter_reference(args.encounter_reference)
@@ -413,7 +417,7 @@ def main():
     stats = []
     patches = []
     quest_scope = {}
-    translation_path = args.output / "tools/localization/forever-dungeons-translations.json"
+    translation_path = args.translations
     exports = json.loads(translation_path.read_text(encoding="utf-8")) if translation_path.exists() else {"enUS": {}, "frFR": {}}
     route_dir = args.output / "Routes/Forever/Dungeons/Shared"
     route_dir.mkdir(parents=True, exist_ok=True)
@@ -740,7 +744,7 @@ def main():
     report_path = args.output / ".cache/forever-dungeons/review.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    translations = args.output / "tools/localization/forever-dungeons-translations.json"
+    translations = args.translations
     translations.parent.mkdir(parents=True, exist_ok=True)
     translations.write_text(json.dumps(exports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     legacy = clean_legacy_routes(ROOT, quest_scope) if args.output.resolve() == ROOT else 0
