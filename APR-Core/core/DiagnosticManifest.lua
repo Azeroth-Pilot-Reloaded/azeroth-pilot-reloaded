@@ -25,7 +25,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/group/PathSharing.lua"] = {instrumented = 37, diagnosticHelpers = 0},
     ["APR-Core/features/group/PathSharingImport.lua"] = {instrumented = 14, diagnosticHelpers = 0},
     ["APR-Core/features/group/PathSharingProtocol.lua"] = {instrumented = 15, diagnosticHelpers = 0},
-    ["APR-Core/features/group/PathSharingUI.lua"] = {instrumented = 5, diagnosticHelpers = 0},
+    ["APR-Core/features/group/PathSharingUI.lua"] = {instrumented = 6, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Arrow.lua"] = {instrumented = 34, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/FlightPath.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Map.lua"] = {instrumented = 43, diagnosticHelpers = 0},

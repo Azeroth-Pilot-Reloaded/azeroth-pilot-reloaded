@@ -17,6 +17,7 @@ local function Enabled()
     local profile = APR:GetSettingsProfile()
     return profile and profile.enableAddon and IsInGroup() and not IsInRaid()
 end--[[APR_DIAG]]; Enabled = APRTrace("APR-Core/features/group/PathSharing.lua:16:Enabled#1", Enabled)--[[/APR_DIAG]]
+Sharing.IsAvailable = Enabled
 
 local function Channel()
     return IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
@@ -324,6 +325,7 @@ function Sharing:OnAddonMessage(_, prefix, message, channel, sender)
 end--[[APR_DIAG]]; Sharing.OnAddonMessage = APRTrace("APR-Core/features/group/PathSharing.lua:277:Sharing:OnAddonMessage#32", Sharing.OnAddonMessage)--[[/APR_DIAG]]
 
 function Sharing:RefreshRoster()
+    if self.RefreshShareControls then self:RefreshShareControls() end
     self:Sweep()
     if not Enabled() then self.rosterSignature = nil; self.lastOffer = {}; return end
     local signature, keys = "", {}

@@ -329,6 +329,7 @@ assert(S.peers["Peer-Away"])
 raid = true; S:Sweep()
 assert(not next(S.peers) and not S:SharePath())
 raid = false; grouped = false; S:RefreshRoster()
+assert(not S:IsAvailable(), "The UI shares the transport's solo guard")
 assert(not next(S.incoming) and not next(S.outgoing))
 grouped, instance = true, false
 receive("H|1")
