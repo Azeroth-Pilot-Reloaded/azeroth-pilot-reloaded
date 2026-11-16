@@ -664,7 +664,7 @@ APR.RouteQuestStepList["Forever-Library-Books"] = {
             _index = 65,
         },
         {
-            Note = { "FOREVER_MISC_LIBRARY_78150", "UPSTAIRS" },
+            Note = { "FOREVER_MISC_LIBRARY_OPTIONAL_NECKLACE_QUEST", "UPSTAIRS" },
             
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.94, 86.54),
             Range = 5,
@@ -688,7 +688,7 @@ APR.RouteQuestStepList["Forever-Library-Books"] = {
             _index = 67,
         },
         {
-            Note = { "FOREVER_MISC_LIBRARY_78150" },
+            Note = { "FOREVER_MISC_LIBRARY_OPTIONAL_NECKLACE_QUEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 73.4, 33),
             Range = 5,
             RaidIcon = { { npcID = 211022, questID = 78150 } },
@@ -1118,7 +1118,7 @@ APR.RouteQuestStepList["Forever-Library-Books"] = {
             _index = 109,
         },
         {
-            Note = { "FOREVER_MISC_LIBRARY_79536", "UPSTAIRS" },
+            Note = { "FOREVER_MISC_LIBRARY_OPTIONAL_RING_QUEST", "UPSTAIRS" },
             
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.94, 86.54),
             Range = 5,
@@ -1449,7 +1449,7 @@ APR.RouteQuestStepList["Forever-Library-Books"] = {
             _index = 141,
         },
         {
-            Note = { "FOREVER_MISC_LIBRARY_82208", "UPSTAIRS" },
+            Note = { "FOREVER_MISC_LIBRARY_OPTIONAL_FINAL_REWARD_QUEST", "UPSTAIRS" },
             
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.94, 86.54),
             Range = 5,
