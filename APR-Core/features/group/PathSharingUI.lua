@@ -41,7 +41,7 @@ end--[[APR_DIAG]]; Sharing.ShowMemberMenu = APRTrace("APR-Core/features/group/Pa
 -- The header keeps its own drag/minimize scripts. This child consumes its clicks.
 if PartyFrameHeader and APR.UI then
     PartyFrameHeader:SetWidth(PartyScreenPanel:GetWidth())
-    local button = APR.UI:IconButton(PartyFrameHeader, "group", 22, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:37:callback#5", --[[/APR_DIAG]]function()
+    local button = APR.UI:IconButton(PartyFrameHeader, "share", 22, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:37:callback#5", --[[/APR_DIAG]]function()
         Sharing:SharePath()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     button:SetPoint("RIGHT", PartyFrameHeader.MinimizeButton, "LEFT", -6, 0)

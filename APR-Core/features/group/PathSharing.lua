@@ -38,7 +38,7 @@ end--[[APR_DIAG]]; Sharing.Roster = APRTrace("APR-Core/features/group/PathSharin
 
 function Sharing:Status(key, value)
     self.status = value and string.format(L[key], value) or L[key]
-    APR:Print(self.status)
+    APR:PrintInfo(self.status)
 end--[[APR_DIAG]]; Sharing.Status = APRTrace("APR-Core/features/group/PathSharing.lua:38:Sharing:Status#5", Sharing.Status)--[[/APR_DIAG]]
 
 function Sharing:OwnDialog(frame)
