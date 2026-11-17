@@ -255,6 +255,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     elseif self.phase == "probe" then
         if result then
             self.result.segments = request.probeSegments(result)
+            self.result.totalSeconds = result.estimatedSeconds or math.huge
         elseif self.searchFailed then
             self:ExplainFailure()
             return

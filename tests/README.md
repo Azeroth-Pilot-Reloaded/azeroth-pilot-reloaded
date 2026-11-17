@@ -434,6 +434,16 @@ checks scaled graph hover, peak context, frozen timelines and bounded captures.
 `tools/validation/check_package.py` still needs an unpacked release to validate a
 real package; its automated tests use a minimal package fixture.
 
+`navigation_implicit_destination_test.lua` resolves unannotated world coordinates
+outside a guide's starting map on both clients. It checks shared zone/navigation
+targets, explicit map/interior priority, disconnected regions, immutable source
+data, cached projections, geometry changes, unreadable values and API recovery.
+The planner, taxi and controller suites also charge the potential flight and
+final approach when comparing a flight-master verification detour with a complete
+journey. Map projection contracts were checked against Blizzard's
+[Retail source](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/MapDocumentation.lua)
+and [Forever snapshot](https://github.com/Gethe/wow-ui-source/blob/bd2470aed543f72697a044e989285b6c83e63f73/Interface/AddOns/Blizzard_APIDocumentationGenerated/MapDocumentation.lua).
+
 The `navigation_*` suites exercise directed travel, cumulative fare/reagent
 budgets, access regions, transient guidance, quote changes, confirmed taxi
 measurements, stale callbacks and shared preview geometry. Package validation

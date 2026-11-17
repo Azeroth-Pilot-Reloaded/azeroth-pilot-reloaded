@@ -111,14 +111,14 @@ request.engine.CreateSearch = function()
 end
 request.taxiData.CreateProbeSearch = function(_, _, _, baseline)
     assert(baseline == math.huge, "A graph failure leaves room for an unpriced flight-master offer")
-    return { Step = function() return "ready", { id = "check-master" } end }
+    return { Step = function() return "ready", { id = "check-master", estimatedSeconds = 120 } end }
 end
 request.probeSegments = function(probe) return { probe } end
 job = APR.NavigationPlanner:Create(request)
 while job:Step(64, 1) == "planning" do
 end
 assert(
-    job.status == "ready" and job:GetResult().queue[1].id == "check-master",
+    job.status == "ready" and job:GetResult().queue[1].id == "check-master" and job:GetResult().totalSeconds == 120,
     "Missing taxi data can lead to bounded exploration even when the known graph has no route"
 )
 request.taxiData.CreateProbeSearch = function()
