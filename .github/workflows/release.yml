@@ -1,15 +1,15 @@
 name: Release Addon
 
 on:
-  # Automatic alpha releases are paused. Uncomment branches and schedule to re-enable them.
-  push:
-    #   branches:
-    #     - '**'
-    #     # Automation can push using a personal token, so also exclude its branches.
-    #     - '!interface-version'
-    #     - '!automation/**'
-    tags:
-      - "**"
+  release:
+    types: [published]
+  # Automatic alpha releases are paused. Uncomment push and schedule to re-enable them.
+  # push:
+  #   branches:
+  #     - '**'
+  #     # Automation can push using a personal token, so also exclude its branches.
+  #     - '!interface-version'
+  #     - '!automation/**'
   # Catch up on default-branch changes skipped during the alpha cooldown.
   # schedule:
   #   - cron: '17 * * * *'
@@ -27,14 +27,37 @@ env:
 
 jobs:
   release:
-    if: github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' && (startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && github.event.inputs.tag != ''))
+    if: github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' && (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.tag != ''))
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Clone project
         uses: actions/checkout@v7.0.1
         with:
-          ref: ${{ github.event.inputs.tag || github.ref }}
+          ref: refs/tags/${{ github.event.release.tag_name || inputs.tag }}
           fetch-depth: 0
+
+      - name: Use GitHub release notes as changelog
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json body,isDraft > "$RUNNER_TEMP/release-notes.json"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          release = json.loads((Path(os.environ["RUNNER_TEMP"]) / "release-notes.json").read_text(encoding="utf-8"))
+          body = release.get("body") or ""
+          if release.get("isDraft") or not body.strip():
+              raise SystemExit("Publish the GitHub release with non-empty release notes before packaging.")
+
+          Path("CHANGELOG.md").write_text(body, encoding="utf-8")
+          with Path(".pkgmeta").open("a", encoding="utf-8") as pkgmeta:
+              pkgmeta.write("\nmanual-changelog:\n  filename: CHANGELOG.md\n  markup-type: markdown\n")
+          PY
 
       - name: WoW Packager
         # v2.6+ recognizes WoW Forever (Interface 16001) on CurseForge and Wago.
@@ -45,6 +68,7 @@ jobs:
   release-alpha:
     if: >-
       github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' &&
+      github.event_name != 'release' &&
       !startsWith(github.ref, 'refs/tags/') &&
       ((github.event_name == 'push' &&
         github.actor != 'github-actions[bot]' &&
