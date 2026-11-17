@@ -572,7 +572,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Riverglades"] = {
             _index = 67,
         },
         {
-            DestroyItems = { items = { 271629 }, text = "Delete the [Wood Bundle]" },
+            DestroyItems = { items = { 271629 } },
             Fillers = { [95261] = { 1 } },
             _index = 68,
         },
