@@ -1430,48 +1430,108 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "WARRIOR",
+            Race = "Human",
             Zone = 1429,
             _index = 33,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "WARRIOR",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 34,
         },
         {
             PickUp = { 15, 92479 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "HUNTER",
+            Race = "Human",
             Zone = 1429,
-            _index = 34,
+            _index = 35,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "HUNTER",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 36,
         },
         {
             PickUp = { 15, 3104 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 35,
+            _index = 37,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "MAGE",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 38,
         },
         {
             PickUp = { 15, 3102 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "ROGUE",
+            Race = "Human",
             Zone = 1429,
-            _index = 36,
+            _index = 39,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "ROGUE",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 40,
         },
         {
             PickUp = { 15, 3103 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 37,
+            _index = 41,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "PRIEST",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 42,
         },
         {
             PickUp = { 15, 3105 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "WARLOCK",
+            Race = "Human",
             Zone = 1429,
-            _index = 38,
+            _index = 43,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "WARLOCK",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 44,
         },
         {
             Done = { 7 },
@@ -1479,15 +1539,25 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 7 } },
             Class = "PALADIN",
             Zone = 1429,
-            _index = 39,
+            _index = 45,
         },
         {
             PickUp = { 15, 3101 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197 } },
             Class = "PALADIN",
+            Race = "Human",
             Zone = 1429,
-            _index = 40,
+            _index = 46,
+        },
+        {
+            PickUp = { 15 },
+            Coord = { x = -162.62, y = -8902.59 },
+            RaidIcon = { { npcID = 197 } },
+            Class = "PALADIN",
+            Race = { "Dwarf", "NightElf", "Gnome", "Skyborne" },
+            Zone = 1429,
+            _index = 47,
         },
         {
             Grind = 2,
@@ -1496,7 +1566,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 18, IsQuestUncompleted = 18 } } } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 41,
+            _index = 48,
         },
         {
             PickUp = { 18 },
@@ -1504,15 +1574,16 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 823, questID = 18 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 42,
+            _index = 49,
         },
         {
             Done = { 3105 },
             Coord = { x = -195.59, y = -8926.73 },
             RaidIcon = { { npcID = 459, questID = 3105 } },
             Class = "WARLOCK",
+            Race = "Human",
             Zone = 1429,
-            _index = 43,
+            _index = 50,
         },
         {
             PickUp = { 1598 },
@@ -1520,7 +1591,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 459, questID = 1598 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 44,
+            _index = 51,
         },
         {
             LearnSkill = { spellID = 348 },
@@ -1529,7 +1600,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 1598,
             MinLevel = 1,
             Zone = 1429,
-            _index = 45,
+            _index = 52,
         },
         {
             Qpart = { [1598] = { 1 } },
@@ -1537,7 +1608,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -432.55, y = -8958.0 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 46,
+            _index = 53,
         },
         {
             DeathSkip = true,
@@ -1548,7 +1619,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 1598,
             SkipForLvl = 10,
             Zone = 1429,
-            _index = 47,
+            _index = 54,
         },
         {
             Done = { 1598 },
@@ -1556,12 +1627,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 459, questID = 1598 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 48,
+            _index = 55,
         },
         {
             UseSpell = { spellID = 688, questID = 15 },
             Class = "WARLOCK",
-            _index = 49,
+            _index = 56,
         },
         {
             Qpart = { [15] = { 1 } },
@@ -1571,14 +1642,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 257 } },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 15 }, { IsQuestCompleted = 15 } },
             Zone = 1429,
-            _index = 50,
+            _index = 57,
         },
         {
             SellItems = { junk = true, questID = 15 },
             Coord = { x = -119.86, y = -8898.21 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1429,
-            _index = 51,
+            _index = 58,
         },
         {
             Waypoint = 15,
@@ -1586,7 +1657,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "HUNTER",
             Zone = 1429,
-            _index = 52,
+            _index = 59,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 200, targetStock = true } },
@@ -1599,7 +1670,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { count = 200, itemID = 2512, operator = "<" },
             Money = { copper = 10, operator = ">=" },
             Zone = 1429,
-            _index = 53,
+            _index = 60,
         },
         {
             Done = { 15 },
@@ -1607,14 +1678,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 15 } },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 15 }, { IsQuestCompleted = 15 } },
             Zone = 1429,
-            _index = 54,
+            _index = 61,
         },
         {
             PickUp = { 21 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197, questID = 21 } },
             Zone = 1429,
-            _index = 55,
+            _index = 62,
         },
         {
             Done = { 91743 },
@@ -1623,7 +1694,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91743,
             IsQuestReadyForTurnIn = 91743,
             Zone = 1429,
-            _index = 56,
+            _index = 63,
         },
         {
             PickUp = { 91745 },
@@ -1631,7 +1702,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 951, questID = 91745 } },
             IsQuestCompleted = 91743,
             Zone = 1429,
-            _index = 57,
+            _index = 64,
         },
         {
             Waypoint = 3104,
@@ -1639,8 +1710,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.79, 41.58),
             Range = 12.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 58,
+            _index = 65,
         },
         {
             Waypoint = 3104,
@@ -1648,8 +1720,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.975, 41.146),
             Range = 12.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 59,
+            _index = 66,
         },
         {
             Waypoint = 3104,
@@ -1657,8 +1730,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.262, 40.633),
             Range = 12.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 60,
+            _index = 67,
         },
         {
             Waypoint = 3104,
@@ -1666,8 +1740,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.51, 40.095),
             Range = 6.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 61,
+            _index = 68,
         },
         {
             Waypoint = 3104,
@@ -1675,8 +1750,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.691, 40.23),
             Range = 6.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 62,
+            _index = 69,
         },
         {
             Waypoint = 3104,
@@ -1684,8 +1760,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.595, 40.673),
             Range = 6.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 63,
+            _index = 70,
         },
         {
             Waypoint = 3104,
@@ -1693,8 +1770,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.324, 40.492),
             Range = 6.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 64,
+            _index = 71,
         },
         {
             Waypoint = 3104,
@@ -1702,8 +1780,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.436, 39.881),
             Range = 10.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 65,
+            _index = 72,
         },
         {
             Waypoint = 3104,
@@ -1711,16 +1790,18 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -188.23, y = -8851.58 },
             Range = 12.0,
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 66,
+            _index = 73,
         },
         {
             Done = { 3104 },
             Coord = { x = -188.23, y = -8851.58 },
             RaidIcon = { { npcID = 198, questID = 3104 } },
             Class = "MAGE",
+            Race = "Human",
             Zone = 1429,
-            _index = 67,
+            _index = 74,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1729,7 +1810,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 1,
             Zone = 1429,
-            _index = 68,
+            _index = 75,
         },
         {
             Waypoint = 3103,
@@ -1737,8 +1818,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -175.7, y = -8881.62 },
             Range = 15.0,
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 69,
+            _index = 76,
         },
         {
             Waypoint = 3103,
@@ -1746,16 +1828,18 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -193.06, y = -8870.05 },
             Range = 10.0,
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 70,
+            _index = 77,
         },
         {
             Done = { 3103 },
             Coord = { x = -193.34, y = -8853.59 },
             RaidIcon = { { npcID = 375, questID = 3103 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 71,
+            _index = 78,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1764,7 +1848,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 1,
             Zone = 1429,
-            _index = 72,
+            _index = 79,
         },
         {
             Waypoint = 3100,
@@ -1772,8 +1856,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -186.12, y = -8907.08 },
             Range = 15.0,
             Class = "WARRIOR",
+            Race = "Human",
             Zone = 1429,
-            _index = 73,
+            _index = 80,
         },
         {
             Waypoint = 3101,
@@ -1781,16 +1866,18 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -186.12, y = -8907.08 },
             Range = 15.0,
             Class = "PALADIN",
+            Race = "Human",
             Zone = 1429,
-            _index = 74,
+            _index = 81,
         },
         {
             Done = { 3100 },
             Coord = { x = -208.4, y = -8918.35 },
             RaidIcon = { { npcID = 911, questID = 3100 } },
             Class = "WARRIOR",
+            Race = "Human",
             Zone = 1429,
-            _index = 75,
+            _index = 82,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1799,15 +1886,16 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 1,
             Zone = 1429,
-            _index = 76,
+            _index = 83,
         },
         {
             Done = { 3101 },
             Coord = { x = -215.03, y = -8914.58 },
             RaidIcon = { { npcID = 925, questID = 3101 } },
             Class = "PALADIN",
+            Race = "Human",
             Zone = 1429,
-            _index = 77,
+            _index = 84,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1816,7 +1904,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 1,
             Zone = 1429,
-            _index = 78,
+            _index = 85,
         },
         {
             Grind = 2,
@@ -1824,22 +1912,23 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 18, IsQuestUncompleted = 18 } } } },
             Zone = 1429,
-            _index = 79,
+            _index = 86,
         },
         {
             PickUp = { 18 },
             Coord = { x = -136.52, y = -8933.53 },
             RaidIcon = { { npcID = 823, questID = 18 } },
             Zone = 1429,
-            _index = 80,
+            _index = 87,
         },
         {
             Done = { 92479 },
             Coord = { x = -242.1, y = -8884.2 },
             RaidIcon = { { npcID = 248415, questID = 92479 } },
             Class = "HUNTER",
+            Race = "Human",
             Zone = 1429,
-            _index = 81,
+            _index = 88,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1849,7 +1938,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 1,
             Zone = 1429,
-            _index = 82,
+            _index = 89,
         },
         {
             LearnSkill = { spellID = 172 },
@@ -1858,7 +1947,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 18,
             MinLevel = 4,
             Zone = 1429,
-            _index = 83,
+            _index = 90,
         },
         {
             Qpart = { [18] = { 1 } },
@@ -1866,21 +1955,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 38, questID = 18, objectiveIndex = 1 } },
             Zone = 1429,
-            _index = 84,
+            _index = 91,
         },
         {
             Done = { 18 },
             Coord = { x = -136.48, y = -8933.47 },
             RaidIcon = { { npcID = 823, questID = 18 } },
             Zone = 1429,
-            _index = 85,
+            _index = 92,
         },
         {
             PickUp = { 3903, 6 },
             Coord = { x = -136.48, y = -8933.47 },
             RaidIcon = { { npcID = 823 } },
             Zone = 1429,
-            _index = 86,
+            _index = 93,
         },
         {
             Done = { 91745 },
@@ -1888,7 +1977,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 247226, questID = 91745 } },
             IsQuestOnQuest = 91745,
             Zone = 1429,
-            _index = 87,
+            _index = 94,
         },
         {
             PickUp = { 91752 },
@@ -1896,7 +1985,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 247226, questID = 91752 } },
             IsQuestCompleted = 91745,
             Zone = 1429,
-            _index = 88,
+            _index = 95,
         },
         {
             Waypoint = 3903,
@@ -1904,7 +1993,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -117.74, y = -8681.87 },
             Range = 20.0,
             Zone = 1429,
-            _index = 89,
+            _index = 96,
         },
         {
             Waypoint = 91752,
@@ -1913,7 +2002,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 90,
+            _index = 97,
         },
         {
             Waypoint = 91752,
@@ -1922,7 +2011,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 91,
+            _index = 98,
         },
         {
             Waypoint = 91752,
@@ -1931,7 +2020,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 92,
+            _index = 99,
         },
         {
             Waypoint = 91752,
@@ -1940,7 +2029,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 93,
+            _index = 100,
         },
         {
             Waypoint = 91752,
@@ -1949,7 +2038,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 94,
+            _index = 101,
         },
         {
             Qpart = { [21] = { 1 } },
@@ -1959,7 +2048,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestOnQuest = 21,
             Zone = 1429,
-            _index = 95,
+            _index = 102,
         },
         {
             Qpart = { [91743] = { 1 } },
@@ -1969,6 +2058,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestOnQuest = 91743,
             Zone = 1429,
+            _index = 103,
         },
         {
             Qpart = { [91752] = { 1 } },
@@ -1977,7 +2067,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 248362, questID = 91752, objectiveIndex = 1 } },
             IsQuestOnQuest = 91752,
             Zone = 1429,
-            _index = 96,
+            _index = 104,
         },
         {
             Waypoint = 3903,
@@ -1985,7 +2075,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             IsQuestOnQuest = 3903,
             Zone = 1429,
-            _index = 97,
+            _index = 105,
         },
         {
             Done = { 3903 },
@@ -1993,7 +2083,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 9296, questID = 3903 } },
             Class = { "HUNTER", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1429,
-            _index = 98,
+            _index = 106,
         },
         {
             Done = { 3903 },
@@ -2001,7 +2091,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 9296, questID = 3903 } },
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 99,
+            _index = 107,
         },
         {
             PickUp = { 3904 },
@@ -2009,15 +2099,16 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 9296, questID = 3904 } },
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 100,
+            _index = 108,
         },
         {
             Done = { 3102 },
             Coord = { x = -210.9, y = -8863.47 },
             RaidIcon = { { npcID = 915, questID = 3102 } },
             Class = "ROGUE",
+            Race = "Human",
             Zone = 1429,
-            _index = 101,
+            _index = 109,
         },
         {
             LearnSkill = { spellID = 1784 },
@@ -2026,7 +2117,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 6,
             MinLevel = 1,
             Zone = 1429,
-            _index = 102,
+            _index = 110,
         },
         {
             LearnSkill = { spellID = 921 },
@@ -2035,7 +2126,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 6,
             MinLevel = 4,
             Zone = 1429,
-            _index = 103,
+            _index = 111,
         },
         {
             Qpart = { [3904] = { 1 } },
@@ -2043,7 +2134,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 104,
+            _index = 112,
         },
         {
             Qpart = { [6] = { 1 } },
@@ -2051,7 +2142,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             RaidIcon = { { npcID = 103, questID = 6, objectiveIndex = 1 } },
             Zone = 1429,
-            _index = 105,
+            _index = 113,
         },
         {
             DeathSkip = true,
@@ -2059,7 +2150,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AnyOf = { { IsQuestUncompleted = 6, Class = { "HUNTER", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" } }, { IsQuestUncompleted = 3904, Class = { "MAGE", "PRIEST" } } },
             Hardcore = false,
             SkipForLvl = 10,
-            _index = 106,
+            _index = 114,
         },
         {
             Done = { 3904 },
@@ -2067,7 +2158,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 9296, questID = 3904 } },
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 107,
+            _index = 115,
         },
         {
             PickUp = { 3905 },
@@ -2075,14 +2166,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 9296, questID = 3905 } },
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 108,
+            _index = 116,
         },
         {
             Done = { 6 },
             Coord = { x = -136.48, y = -8933.47 },
             RaidIcon = { { npcID = 823, questID = 6 } },
             Zone = 1429,
-            _index = 109,
+            _index = 117,
         },
         {
             Done = { 91752 },
@@ -2090,7 +2181,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 91752 } },
             IsQuestOnQuest = 91752,
             Zone = 1429,
-            _index = 110,
+            _index = 118,
         },
         {
             PickUp = { 91758 },
@@ -2098,21 +2189,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 91758 } },
             IsQuestCompleted = 91752,
             Zone = 1429,
-            _index = 111,
+            _index = 119,
         },
         {
             Done = { 21 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197, questID = 21 } },
             Zone = 1429,
-            _index = 112,
+            _index = 120,
         },
         {
             PickUp = { 54 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197, questID = 54 } },
             Zone = 1429,
-            _index = 113,
+            _index = 121,
         },
         {
             Done = { 91743 },
@@ -2121,7 +2212,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91743,
             IsQuestReadyForTurnIn = 91743,
             Zone = 1429,
-            _index = 114,
+            _index = 122,
         },
         {
             PickUp = { 91745 },
@@ -2129,7 +2220,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 951, questID = 91745 } },
             IsQuestCompleted = 91743,
             Zone = 1429,
-            _index = 115,
+            _index = 123,
         },
         {
             Waypoint = 3905,
@@ -2138,7 +2229,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15.0,
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 116,
+            _index = 124,
         },
         {
             Waypoint = 3905,
@@ -2147,7 +2238,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10.0,
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 117,
+            _index = 125,
         },
         {
             Done = { 3905 },
@@ -2155,7 +2246,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 952, questID = 3905 } },
             Class = { "MAGE", "PRIEST" },
             Zone = 1429,
-            _index = 118,
+            _index = 126,
         },
         {
             Done = { 91745 },
@@ -2163,7 +2254,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 247226, questID = 91745 } },
             IsQuestOnQuest = 91745,
             Zone = 1429,
-            _index = 119,
+            _index = 127,
         },
         {
             PickUp = { 91752 },
@@ -2171,7 +2262,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 247226, questID = 91752 } },
             IsQuestCompleted = 91745,
             Zone = 1429,
-            _index = 120,
+            _index = 128,
         },
         {
             Waypoint = 91752,
@@ -2181,7 +2272,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 121,
+            _index = 129,
         },
         {
             Waypoint = 91752,
@@ -2190,7 +2281,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 122,
+            _index = 130,
         },
         {
             Waypoint = 91752,
@@ -2199,7 +2290,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 123,
+            _index = 131,
         },
         {
             Waypoint = 91752,
@@ -2208,7 +2299,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 124,
+            _index = 132,
         },
         {
             Waypoint = 91752,
@@ -2217,7 +2308,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 125,
+            _index = 133,
         },
         {
             Waypoint = 91752,
@@ -2226,7 +2317,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91752,
             Not = { IsQuestReadyForTurnIn = 91752 },
             Zone = 1429,
-            _index = 126,
+            _index = 134,
         },
         {
             Qpart = { [91752] = { 1 } },
@@ -2235,7 +2326,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 248362, questID = 91752, objectiveIndex = 1 } },
             IsQuestOnQuest = 91752,
             Zone = 1429,
-            _index = 127,
+            _index = 135,
         },
         {
             Waypoint = 91752,
@@ -2243,7 +2334,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             IsQuestOnQuest = 91752,
             Zone = 1429,
-            _index = 128,
+            _index = 136,
         },
         {
             Done = { 91752 },
@@ -2251,7 +2342,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 91752 } },
             IsQuestOnQuest = 91752,
             Zone = 1429,
-            _index = 129,
+            _index = 137,
         },
         {
             PickUp = { 91758 },
@@ -2259,7 +2350,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 197, questID = 91758 } },
             IsQuestCompleted = 91752,
             Zone = 1429,
-            _index = 130,
+            _index = 138,
         },
         {
             Done = { 91758 },
@@ -2267,7 +2358,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 248415, questID = 91758 } },
             IsQuestOnQuest = 91758,
             Zone = 1429,
-            _index = 131,
+            _index = 139,
         },
         {
             Grind = 4,
@@ -2276,14 +2367,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestNotOnQuest = 96627,
             IsQuestUncompleted = 96627,
             Zone = 1429,
-            _index = 132,
+            _index = 140,
         },
         {
             PickUp = { 96627 },
             Coord = { x = -162.62, y = -8902.59 },
             RaidIcon = { { npcID = 197, questID = 96627 } },
             Zone = 1429,
-            _index = 133,
+            _index = 141,
         },
         {
             Grind = 5,
@@ -2292,15 +2383,16 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 5623, IsQuestUncompleted = 5623 } } } },
             Class = "PRIEST",
             Zone = 1429,
-            _index = 134,
+            _index = 142,
         },
         {
             PickUp = { 5623 },
             Coord = { x = -193.34, y = -8853.59 },
             RaidIcon = { { npcID = 375, questID = 5623 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 135,
+            _index = 143,
         },
         {
             PickUp = { 91772 },
@@ -2308,12 +2400,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 248415, questID = 91772 } },
             IsQuestCompleted = 91758,
             Zone = 1429,
-            _index = 136,
+            _index = 144,
         },
         {
             UseItem = { itemID = 247970, itemSpellID = 1246031 },
             IsQuestUncompleted = 96627,
-            _index = 137,
+            _index = 145,
         },
         {
             Note = { "CLICK_GREEN_KOBOLD_TRACKS_GROUND_TRAVEL_GOLDSHIRE" },
@@ -2323,14 +2415,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["91772"] = 247970 },
             IsQuestUncompleted = 96627,
             Zone = 1429,
-            _index = 138,
+            _index = 146,
         },
         {
             PickUp = { 2158 },
             Coord = { x = -46, y = -9044.61 },
             RaidIcon = { { npcID = 6774, questID = 2158 } },
             Zone = 1429,
-            _index = 139,
+            _index = 147,
         },
         {
             Done = { 96627 },
@@ -2339,7 +2431,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["91772-1"] = 247970 },
             RaidIcon = { { npcID = 263399, questID = 96627 } },
             Zone = 1429,
-            _index = 140,
+            _index = 148,
         },
         {
             PickUp = { 95998 },
@@ -2348,7 +2440,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["91772-1"] = 247970 },
             RaidIcon = { { npcID = 263399, questID = 95998 } },
             Zone = 1429,
-            _index = 141,
+            _index = 149,
         },
         {
             Qpart = { [95998] = { 1, 2 } },
@@ -2357,7 +2449,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -22.99, y = -9402.4 },
             EmoteETA = 60,
             Zone = 1429,
-            _index = 142,
+            _index = 150,
         },
         {
             Done = { 95998 },
@@ -2365,7 +2457,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 263399, questID = 95998 } },
             HasSpell = 8613,
             Zone = 1429,
-            _index = 143,
+            _index = 151,
         },
         {
             PickUp = { 96626, 97924 },
@@ -2373,7 +2465,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 263399 } },
             HasSpell = 8613,
             Zone = 1429,
-            _index = 144,
+            _index = 152,
         },
         {
             Done = { 95998 },
@@ -2381,14 +2473,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 263399, questID = 95998 } },
             HasSpell = 2366,
             Zone = 1429,
-            _index = 145,
+            _index = 153,
         },
         {
             PickUp = { 96626, 97921 },
             Coord = { x = -22.99, y = -9404.71 },
             HasSpell = 2366,
             Zone = 1429,
-            _index = 146,
+            _index = 154,
         },
         {
             Done = { 95998 },
@@ -2396,28 +2488,28 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 263399, questID = 95998 } },
             HasSpell = 2575,
             Zone = 1429,
-            _index = 147,
+            _index = 155,
         },
         {
             PickUp = { 96626, 97923 },
             Coord = { x = -22.99, y = -9404.71 },
             HasSpell = 2575,
             Zone = 1429,
-            _index = 148,
+            _index = 156,
         },
         {
             Done = { 95998 },
             Coord = { x = -22.99, y = -9404.71 },
             RaidIcon = { { npcID = 263399, questID = 95998 } },
             Zone = 1429,
-            _index = 149,
+            _index = 157,
         },
         {
             PickUp = { 96626 },
             Coord = { x = -22.99, y = -9404.71 },
             RaidIcon = { { npcID = 263399, questID = 96626 } },
             Zone = 1429,
-            _index = 150,
+            _index = 158,
         },
         {
             Qpart = { [91772] = { 1 } },
@@ -2426,7 +2518,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Button = { ["91772-1"] = 247970 },
             Zone = 1429,
-            _index = 151,
+            _index = 159,
         },
         {
             LearnProfession = 2018,
@@ -2437,7 +2529,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 54,
             MinLevel = 5,
             Zone = 1429,
-            _index = 152,
+            _index = 160,
         },
         {
             LearnProfession = 2018,
@@ -2448,7 +2540,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 54,
             MinLevel = 5,
             Zone = 1429,
-            _index = 153,
+            _index = 161,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
@@ -2464,7 +2556,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 4,
             Money = { copper = 564, operator = ">=" },
             Zone = 1429,
-            _index = 154,
+            _index = 162,
         },
         {
             Waypoint = 54,
@@ -2474,7 +2566,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 3.8, precision = 1, allowMissing = true },
             Zone = 1429,
-            _index = 155,
+            _index = 163,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2490, quantity = 1, targetStock = true } },
@@ -2490,7 +2582,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 4,
             Money = { copper = 568, operator = ">=" },
             Zone = 1429,
-            _index = 156,
+            _index = 164,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
@@ -2506,7 +2598,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 3,
             Money = { copper = 401, operator = ">=" },
             Zone = 1429,
-            _index = 157,
+            _index = 165,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2493, quantity = 1 } },
@@ -2518,47 +2610,47 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 54,
             ItemCount = { itemID = 2493, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 158,
+            _index = 166,
         },
         {
             SellItems = { junk = true, questID = 54 },
             Coord = { x = 87.87, y = -9462.26 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             Zone = 1429,
-            _index = 159,
+            _index = 167,
         },
         {
             Done = { 54, 91772 },
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240 } },
             Zone = 1429,
-            _index = 160,
+            _index = 168,
         },
         {
             PickUp = { 62, 91775 },
             Coord = { x = 74.02, y = -9465.52 },
             Zone = 1429,
-            _index = 161,
+            _index = 169,
         },
         {
             PickUp = { 60 },
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 60 } },
             Zone = 1429,
-            _index = 162,
+            _index = 170,
         },
         {
             Done = { 2158 },
             Coord = { x = 16.2, y = -9462.65 },
             RaidIcon = { { npcID = 295, questID = 2158 } },
             Zone = 1429,
-            _index = 163,
+            _index = 171,
         },
         {
             SetHS = 2158,
             Coord = { x = 16.2, y = -9462.65 },
             Zone = 1429,
-            _index = 164,
+            _index = 172,
         },
         {
             LearnProfession = 2550,
@@ -2568,14 +2660,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 5,
             Money = { copper = 100, operator = ">=" },
             Zone = 1429,
-            _index = 165,
+            _index = 173,
         },
         {
             Done = { 96626 },
             Coord = { x = -5.63, y = -9467.21 },
             RaidIcon = { { npcID = 1430, questID = 96626 } },
             Zone = 1429,
-            _index = 166,
+            _index = 174,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
@@ -2587,14 +2679,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             ItemCount = { itemID = 2946, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 167,
+            _index = 175,
         },
         {
             DestroyItems = { items = { 2947 } },
             Class = "ROGUE",
             IsQuestUncompleted = 85,
             ItemCount = { operator = ">=", count = 1, itemID = 2946 },
-            _index = 168,
+            _index = 176,
         },
         {
             Waypoint = 85,
@@ -2603,7 +2695,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5.0,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 169,
+            _index = 177,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2612,7 +2704,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 170,
+            _index = 178,
         },
         {
             Waypoint = 85,
@@ -2624,7 +2716,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 16321, count = 1, operator = "<" },
             Money = { copper = 105, operator = ">=" },
             Zone = 1429,
-            _index = 171,
+            _index = 179,
         },
         {
             BuyMerchant = { { itemID = 16321, quantity = 1, targetStock = true } },
@@ -2638,7 +2730,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 4,
             Money = { copper = 105, operator = ">=" },
             Zone = 1429,
-            _index = 172,
+            _index = 180,
         },
         {
             Waypoint = 85,
@@ -2647,7 +2739,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 9.0,
             Class = { "MAGE", "ROGUE" },
             Zone = 1429,
-            _index = 173,
+            _index = 181,
         },
         {
             Waypoint = 5623,
@@ -2655,8 +2747,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 174,
+            _index = 182,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2665,23 +2758,25 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 175,
+            _index = 183,
         },
         {
             Done = { 5623 },
             Coord = { x = 33.14, y = -9460.75 },
             RaidIcon = { { npcID = 377, questID = 5623 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 176,
+            _index = 184,
         },
         {
             PickUp = { 5624 },
             Coord = { x = 33.14, y = -9460.75 },
             RaidIcon = { { npcID = 377, questID = 5624 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 177,
+            _index = 185,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2690,7 +2785,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 178,
+            _index = 186,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2700,7 +2795,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 100 },
             Zone = 1429,
-            _index = 179,
+            _index = 187,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 414, quantity = 20 } },
@@ -2711,7 +2806,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             ItemCount = { operator = "<", count = 7, itemID = 414 },
             Zone = 1429,
-            _index = 180,
+            _index = 188,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2720,7 +2815,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 181,
+            _index = 189,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2729,14 +2824,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 182,
+            _index = 190,
         },
         {
             PickUp = { 47 },
             Coord = { x = 72.81, y = -9496.23 },
             RaidIcon = { { npcID = 241, questID = 47 } },
             Zone = 1429,
-            _index = 183,
+            _index = 191,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2506, quantity = 1, targetStock = true } },
@@ -2751,7 +2846,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 3,
             Money = { copper = 300, operator = ">=" },
             Zone = 1429,
-            _index = 184,
+            _index = 192,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 200, targetStock = true } },
@@ -2764,7 +2859,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 2512, count = 200, operator = "<" },
             Money = { copper = 10, operator = ">=" },
             Zone = 1429,
-            _index = 185,
+            _index = 193,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2773,22 +2868,23 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             MinLevel = 1,
             Zone = 1429,
-            _index = 186,
+            _index = 194,
         },
         {
             Qpart = { [5624] = { 1 } },
             Note = { "HEAL_BUFF_QUEST_NPC_RANK_2" },
             Coord = { x = -135.72, y = -9514.56 },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 187,
+            _index = 195,
         },
         {
             LootItems = { { itemID = 769, quantity = 4, questID = 86 } },
             Coord = { x = 271.79, y = -9759.98 },
             Range = 30,
             Zone = 1429,
-            _index = 188,
+            _index = 196,
         },
         {
             Waypoint = 85,
@@ -2796,7 +2892,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 338.47, y = -9889.69 },
             Range = 5,
             Zone = 1429,
-            _index = 189,
+            _index = 197,
         },
         {
             Grind = 6,
@@ -2804,14 +2900,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 88, IsQuestUncompleted = 88 } } } },
             Zone = 1429,
-            _index = 190,
+            _index = 198,
         },
         {
             PickUp = { 85, 88 },
             Fillers = { [86] = { 1 } },
             Coord = { x = 332.43, y = -9894.99 },
             Zone = 1429,
-            _index = 191,
+            _index = 199,
         },
         {
             UseSpell = { spellID = 2018, questID = 85 },
@@ -2823,7 +2919,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2835, operator = ">=" },
             Zone = 1429,
-            _index = 192,
+            _index = 200,
         },
         {
             UseSpell = { spellID = 2018, questID = 85 },
@@ -2836,7 +2932,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2589, operator = ">=" },
             Zone = 1429,
-            _index = 193,
+            _index = 201,
         },
         {
             Fillers = { [86] = { 1 } },
@@ -2849,7 +2945,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             ItemCount = { count = 1, itemID = 2862, operator = ">=" },
             Zone = 1429,
-            _index = 194,
+            _index = 202,
         },
         {
             Fillers = { [86] = { 1 } },
@@ -2862,7 +2958,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 85,
             ItemCount = { count = 1, itemID = 3239, operator = ">=" },
             Zone = 1429,
-            _index = 195,
+            _index = 203,
         },
         {
             Done = { 85 },
@@ -2870,7 +2966,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 38.41, y = -9923.69 },
             RaidIcon = { { npcID = 247, questID = 85 } },
             Zone = 1429,
-            _index = 196,
+            _index = 204,
         },
         {
             PickUp = { 86 },
@@ -2878,7 +2974,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 38.41, y = -9923.69 },
             RaidIcon = { { npcID = 247, questID = 86 } },
             Zone = 1429,
-            _index = 197,
+            _index = 205,
         },
         {
             PickUp = { 106 },
@@ -2886,7 +2982,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 37.61, y = -10014.03 },
             RaidIcon = { { npcID = 251, questID = 106 } },
             Zone = 1429,
-            _index = 198,
+            _index = 206,
         },
         {
             SellItems = { junk = true, questID = 106 },
@@ -2894,7 +2990,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 65.28, y = -10008.2 },
             Class = { "HUNTER", "PALADIN", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 199,
+            _index = 207,
         },
         {
             Waypoint = 106,
@@ -2903,7 +2999,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             Zone = 1429,
-            _index = 200,
+            _index = 208,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
@@ -2914,7 +3010,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 106,
             ItemCount = { itemID = 1179, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 201,
+            _index = 209,
         },
         {
             UseSpell = { spellID = 2018, questID = 106 },
@@ -2926,7 +3022,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2835, operator = ">=" },
             Zone = 1429,
-            _index = 202,
+            _index = 210,
         },
         {
             UseSpell = { spellID = 2018, questID = 106 },
@@ -2939,7 +3035,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2589, operator = ">=" },
             Zone = 1429,
-            _index = 203,
+            _index = 211,
         },
         {
             Fillers = { [86] = { 1 } },
@@ -2952,7 +3048,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 106,
             ItemCount = { count = 1, itemID = 2862, operator = ">=" },
             Zone = 1429,
-            _index = 204,
+            _index = 212,
         },
         {
             Fillers = { [86] = { 1 } },
@@ -2965,7 +3061,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 106,
             ItemCount = { count = 1, itemID = 3239, operator = ">=" },
             Zone = 1429,
-            _index = 205,
+            _index = 213,
         },
         {
             Done = { 106 },
@@ -2973,7 +3069,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 499.72, y = -9930.05 },
             RaidIcon = { { npcID = 252, questID = 106 } },
             Zone = 1429,
-            _index = 206,
+            _index = 214,
         },
         {
             PickUp = { 111 },
@@ -2981,42 +3077,42 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 499.72, y = -9930.05 },
             RaidIcon = { { npcID = 252, questID = 111 } },
             Zone = 1429,
-            _index = 207,
+            _index = 215,
         },
         {
             Qpart = { [86] = { 1 } },
             Coord = { x = 271.79, y = -9759.98 },
             Range = 30,
             Zone = 1429,
-            _index = 208,
+            _index = 216,
         },
         {
             Done = { 86 },
             Coord = { x = 338.47, y = -9889.69 },
             RaidIcon = { { npcID = 246, questID = 86 } },
             Zone = 1429,
-            _index = 209,
+            _index = 217,
         },
         {
             PickUp = { 84 },
             Coord = { x = 338.47, y = -9889.69 },
             RaidIcon = { { npcID = 246, questID = 84 } },
             Zone = 1429,
-            _index = 210,
+            _index = 218,
         },
         {
             Done = { 111 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 34.945, 83.855),
             RaidIcon = { { npcID = 248, questID = 111 } },
             Zone = 1429,
-            _index = 211,
+            _index = 219,
         },
         {
             PickUp = { 107 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 34.945, 83.855),
             RaidIcon = { { npcID = 248, questID = 107 } },
             Zone = 1429,
-            _index = 212,
+            _index = 220,
         },
         {
             UseSpell = { spellID = 2018, questID = 84 },
@@ -3024,7 +3120,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "ROGUE", "WARRIOR" },
             HasSpell = 2018,
             ItemCount = { operator = ">=", count = 1, itemID = 2835 },
-            _index = 213,
+            _index = 221,
         },
         {
             UseSpell = { spellID = 2018, questID = 84 },
@@ -3033,7 +3129,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "PALADIN",
             HasSpell = 2018,
             ItemCount = { operator = ">=", count = 1, itemID = 2589 },
-            _index = 214,
+            _index = 222,
         },
         {
             UseItem = { itemID = 2862, itemSpellID = 2828 },
@@ -3042,7 +3138,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             IsQuestUncompleted = 84,
             ItemCount = { operator = ">=", count = 1, itemID = 2862 },
-            _index = 215,
+            _index = 223,
         },
         {
             UseItem = { itemID = 3239, itemSpellID = 3112 },
@@ -3051,7 +3147,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             IsQuestUncompleted = 84,
             ItemCount = { operator = ">=", count = 1, itemID = 3239 },
-            _index = 216,
+            _index = 224,
         },
         {
             Done = { 84 },
@@ -3059,7 +3155,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 38.41, y = -9923.69 },
             RaidIcon = { { npcID = 247, questID = 84 } },
             Zone = 1429,
-            _index = 217,
+            _index = 225,
         },
         {
             PickUp = { 87 },
@@ -3067,7 +3163,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 38.41, y = -9923.69 },
             RaidIcon = { { npcID = 247, questID = 87 } },
             Zone = 1429,
-            _index = 218,
+            _index = 226,
         },
         {
             Waypoint = 62,
@@ -3075,7 +3171,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 62, Not = { IsQuestReadyForTurnIn = 62 } }, { IsQuestOnQuest = 87, Not = { IsQuestReadyForTurnIn = 87 } } },
             Zone = 1429,
-            _index = 219,
+            _index = 227,
         },
         {
             Qpart = { [62] = { 1 } },
@@ -3084,7 +3180,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 165.65, y = -9817.985 },
             Range = 30,
             Zone = 1429,
-            _index = 220,
+            _index = 228,
         },
         {
             Qpart = { [87] = { 1 } },
@@ -3094,7 +3190,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             RaidIcon = { { npcID = 327, questID = 87, objectiveIndex = 1 } },
             Zone = 1429,
-            _index = 221,
+            _index = 229,
         },
         {
             Qpart = { [91775] = { 1 } },
@@ -3102,7 +3198,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 91.2, y = -9788.5 },
             Range = 30,
             Zone = 1429,
-            _index = 222,
+            _index = 230,
         },
         {
             Note = { "SAVE_ONE_MINOR_HEALING_POTION_LATER_ENCOUNTER" },
@@ -3112,7 +3208,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 87,
             Zone = 1429,
-            _index = 223,
+            _index = 231,
         },
         {
             Waypoint = 87,
@@ -3120,7 +3216,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15,
             IsQuestOnQuest = 87,
             Zone = 1429,
-            _index = 224,
+            _index = 232,
         },
         {
             Qpart = { [60] = { 1 }, [47] = { 1 } },
@@ -3130,7 +3226,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 475 }, { npcID = 40 } },
             IsQuestNotOnQuest = 91775,
             Zone = 1429,
-            _index = 225,
+            _index = 233,
         },
         {
             Qpart = { [60] = { 1 }, [47] = { 1 } },
@@ -3139,14 +3235,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 475 }, { npcID = 40 } },
             Zone = 1429,
-            _index = 226,
+            _index = 234,
         },
         {
             Qpart = { [91775] = { 2 } },
             Coord = { x = 217.89, y = -9873.42 },
             Range = 30,
             Zone = 1429,
-            _index = 227,
+            _index = 235,
         },
         {
             Done = { 87 },
@@ -3154,7 +3250,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 338.47, y = -9889.69 },
             RaidIcon = { { npcID = 246, questID = 87 } },
             Zone = 1429,
-            _index = 228,
+            _index = 236,
         },
         {
             Waypoint = 47,
@@ -3163,7 +3259,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
             Zone = 1429,
-            _index = 229,
+            _index = 237,
         },
         {
             DeathSkip = true,
@@ -3175,7 +3271,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 47,
             SkipForLvl = 10,
             Zone = 1429,
-            _index = 230,
+            _index = 238,
         },
         {
             Qpart = { [47] = { 1 } },
@@ -3184,7 +3280,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 475 }, { npcID = 40 } },
             Zone = 1429,
-            _index = 231,
+            _index = 239,
         },
         {
             Done = { 47 },
@@ -3193,7 +3289,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 72.81, y = -9496.23 },
             RaidIcon = { { npcID = 241, questID = 47 } },
             Zone = 1429,
-            _index = 232,
+            _index = 240,
         },
         {
             Done = { 62 },
@@ -3201,7 +3297,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 62 } },
             Zone = 1429,
-            _index = 233,
+            _index = 241,
         },
         {
             Done = { 60 },
@@ -3209,7 +3305,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 60 } },
             Zone = 1429,
-            _index = 234,
+            _index = 242,
         },
         {
             Done = { 107 },
@@ -3217,7 +3313,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 107 } },
             Zone = 1429,
-            _index = 235,
+            _index = 243,
         },
         {
             Grind = 7,
@@ -3225,7 +3321,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 40, IsQuestUncompleted = 40 } } } },
             Zone = 1429,
-            _index = 236,
+            _index = 244,
         },
         {
             PickUp = { 40 },
@@ -3234,7 +3330,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 72.81, y = -9496.23 },
             RaidIcon = { { npcID = 241, questID = 40 } },
             Zone = 1429,
-            _index = 237,
+            _index = 245,
         },
         {
             PickUp = { 76 },
@@ -3242,7 +3338,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 76 } },
             Zone = 1429,
-            _index = 238,
+            _index = 246,
         },
         {
             Done = { 40 },
@@ -3250,7 +3346,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 40 } },
             Zone = 1429,
-            _index = 239,
+            _index = 247,
         },
         {
             PickUp = { 35 },
@@ -3258,14 +3354,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 35 } },
             Zone = 1429,
-            _index = 240,
+            _index = 248,
         },
         {
             Done = { 91775 },
             Coord = { x = 74.02, y = -9465.52 },
             IsQuestReadyForTurnIn = 91775,
             Zone = 1429,
-            _index = 241,
+            _index = 249,
         },
         {
             PickUp = { 91777 },
@@ -3273,7 +3369,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             IsQuestCompleted = 91775,
             Zone = 1429,
-            _index = 242,
+            _index = 250,
         },
         {
             Done = { 62 },
@@ -3281,7 +3377,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 62 } },
             Zone = 1429,
-            _index = 243,
+            _index = 251,
         },
         {
             PickUp = { 76 },
@@ -3289,7 +3385,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 76 } },
             Zone = 1429,
-            _index = 244,
+            _index = 252,
         },
         {
             Done = { 40 },
@@ -3297,7 +3393,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 40 } },
             Zone = 1429,
-            _index = 245,
+            _index = 253,
         },
         {
             PickUp = { 35 },
@@ -3305,7 +3401,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240, questID = 35 } },
             Zone = 1429,
-            _index = 246,
+            _index = 254,
         },
         {
             SellItems = { junk = true, questID = 60 },
@@ -3314,7 +3410,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARRIOR",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = ">", value = 3.8, precision = 1, allowMissing = true },
             Zone = 1429,
-            _index = 247,
+            _index = 255,
         },
         {
             SellItems = { junk = true, questID = 60 },
@@ -3322,7 +3418,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 94.01, y = -9464.89 },
             Class = { "HUNTER", "MAGE", "PRIEST", "WARLOCK" },
             Zone = 1429,
-            _index = 248,
+            _index = 256,
         },
         {
             SellItems = { junk = true, questID = 60 },
@@ -3331,7 +3427,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = ">", value = 3.3, precision = 1, allowMissing = true },
             Zone = 1429,
-            _index = 249,
+            _index = 257,
         },
         {
             SellItems = { junk = true, questID = 60 },
@@ -3340,7 +3436,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "PALADIN",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = ">", value = 5.0, precision = 1, allowMissing = true },
             Zone = 1429,
-            _index = 250,
+            _index = 258,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
@@ -3357,7 +3453,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 4,
             Money = { operator = ">=", copper = 564 },
             Zone = 1429,
-            _index = 251,
+            _index = 259,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2490, quantity = 1, targetStock = true } },
@@ -3375,7 +3471,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 4,
             Money = { operator = ">=", copper = 568 },
             Zone = 1429,
-            _index = 252,
+            _index = 260,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
@@ -3393,7 +3489,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 3,
             Money = { operator = ">=", copper = 401 },
             Zone = 1429,
-            _index = 253,
+            _index = 261,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2493, quantity = 1 } },
@@ -3406,7 +3502,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 60,
             ItemCount = { itemID = 2493, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 254,
+            _index = 262,
         },
         {
             Qpart = { [60] = { 1 } },
@@ -3415,7 +3511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 475 }, { npcID = 40 } },
             Zone = 1429,
-            _index = 255,
+            _index = 263,
         },
         {
             PickUp = { 61 },
@@ -3423,7 +3519,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 61 } },
             Zone = 1429,
-            _index = 256,
+            _index = 264,
         },
         {
             PickUp = { 112 },
@@ -3431,7 +3527,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 112 } },
             Zone = 1429,
-            _index = 257,
+            _index = 265,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3441,7 +3537,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 258,
+            _index = 266,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3451,7 +3547,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 259,
+            _index = 267,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3461,7 +3557,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 260,
+            _index = 268,
         },
         {
             Waypoint = 99127,
@@ -3471,7 +3567,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10.0,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 261,
+            _index = 269,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3481,7 +3577,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 262,
+            _index = 270,
         },
         {
             Waypoint = 99127,
@@ -3493,7 +3589,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 16302, count = 1, operator = "<" },
             Money = { copper = 105, operator = ">=" },
             Zone = 1429,
-            _index = 263,
+            _index = 271,
         },
         {
             BuyMerchant = { { itemID = 16302, quantity = 1, targetStock = true } },
@@ -3508,7 +3604,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 8,
             Money = { copper = 105, operator = ">=" },
             Zone = 1429,
-            _index = 264,
+            _index = 272,
         },
         {
             Waypoint = 99127,
@@ -3518,7 +3614,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 9.0,
             Class = { "MAGE", "PALADIN", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 265,
+            _index = 273,
         },
         {
             Waypoint = 5624,
@@ -3527,8 +3623,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 266,
+            _index = 274,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3538,7 +3635,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 267,
+            _index = 275,
         },
         {
             Done = { 5624 },
@@ -3546,8 +3643,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 33.14, y = -9460.75 },
             RaidIcon = { { npcID = 377, questID = 5624 } },
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1429,
-            _index = 268,
+            _index = 276,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3557,7 +3655,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 269,
+            _index = 277,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3567,7 +3665,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             MinLevel = 1,
             Zone = 1429,
-            _index = 270,
+            _index = 278,
         },
         {
             LearnProfession = 3273,
@@ -3578,7 +3676,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 5,
             Money = { operator = ">=", copper = 100 },
             Zone = 1429,
-            _index = 271,
+            _index = 279,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 4, targetStock = true, optional = true, bagSlots = 6 } },
@@ -3589,7 +3687,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 151, questID = 91775, objectiveIndex = 2 } },
             Money = { copper = 1250, operator = ">=" },
             Zone = 1429,
-            _index = 272,
+            _index = 280,
         },
         {
             Waypoint = 99127,
@@ -3598,7 +3696,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 273,
+            _index = 281,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 414, quantity = 1 } },
@@ -3609,7 +3707,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             ItemCount = { itemID = 414, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 274,
+            _index = 282,
         },
         {
             Waypoint = 99127,
@@ -3618,7 +3716,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "HUNTER", "PALADIN" },
             Zone = 1429,
-            _index = 275,
+            _index = 283,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 414, quantity = 1 } },
@@ -3629,7 +3727,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             ItemCount = { itemID = 414, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 276,
+            _index = 284,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
@@ -3640,7 +3738,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             ItemCount = { itemID = 1179, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 277,
+            _index = 285,
         },
         {
             Waypoint = 99127,
@@ -3649,7 +3747,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             Zone = 1429,
-            _index = 278,
+            _index = 286,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
@@ -3660,7 +3758,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99127,
             ItemCount = { itemID = 1179, count = 1, operator = "<" },
             Zone = 1429,
-            _index = 279,
+            _index = 287,
         },
         {
             PickUp = { 99127 },
@@ -3668,7 +3766,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 47.5, 62.2),
             RaidIcon = { { npcID = 383, questID = 99127 } },
             Zone = 1429,
-            _index = 280,
+            _index = 288,
         },
         {
             PickUp = { 99143 },
@@ -3677,7 +3775,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 1651, questID = 99143 } },
             Hardcore = false,
             Zone = 1429,
-            _index = 281,
+            _index = 289,
         },
         {
             Qpart = { [99127] = { 1 } },
@@ -3686,7 +3784,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.8, 62.4),
             Range = 30,
             Zone = 1429,
-            _index = 282,
+            _index = 290,
         },
         {
             Done = { 99127 },
@@ -3694,7 +3792,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 47.5, 62.2),
             RaidIcon = { { npcID = 383, questID = 99127 } },
             Zone = 1429,
-            _index = 283,
+            _index = 291,
         },
         {
             PickUp = { 99128 },
@@ -3702,7 +3800,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 47.5, 62.2),
             RaidIcon = { { npcID = 383, questID = 99128 } },
             Zone = 1429,
-            _index = 284,
+            _index = 292,
         },
         {
             Qpart = { [99128] = { 2, 1 }, [112] = { 1 } },
@@ -3713,7 +3811,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 735 }, { npcID = 285 } },
             Hardcore = false,
             Zone = 1429,
-            _index = 285,
+            _index = 293,
         },
         {
             Qpart = { [99128] = { 2, 1 }, [112] = { 1 } },
@@ -3723,7 +3821,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 735 }, { npcID = 285 } },
             Hardcore = true,
             Zone = 1429,
-            _index = 286,
+            _index = 294,
         },
         {
             Qpart = { [99143] = { 1 } },
@@ -3733,7 +3831,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Hardcore = false,
             Zone = 1429,
-            _index = 287,
+            _index = 295,
         },
         {
             Done = { 99143 },
@@ -3743,13 +3841,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 99143,
             IsQuestReadyForTurnIn = 99143,
             Zone = 1429,
-            _index = 288,
+            _index = 296,
         },
         {
             Qpart = { [99128] = { 1, 2 } },
             NoArrow = true,
             RaidIcon = { { npcID = 285, questID = 99128, objectiveIndex = 2 }, { npcID = 735, questID = 99128, objectiveIndex = 1 } },
-            _index = 289,
+            _index = 297,
         },
         {
             Done = { 99128 },
@@ -3757,7 +3855,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 47.5, 62.2),
             RaidIcon = { { npcID = 383, questID = 99128 } },
             Zone = 1429,
-            _index = 290,
+            _index = 298,
         },
         {
             PickUp = { 99129 },
@@ -3765,7 +3863,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 47.5, 62.2),
             RaidIcon = { { npcID = 383, questID = 99129 } },
             Zone = 1429,
-            _index = 291,
+            _index = 299,
         },
         {
             UseSpell = { spellID = 2018, questID = 76 },
@@ -3777,7 +3875,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2835, operator = ">=" },
             Zone = 1429,
-            _index = 292,
+            _index = 300,
         },
         {
             UseSpell = { spellID = 2018, questID = 76 },
@@ -3790,7 +3888,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2589, operator = ">=" },
             Zone = 1429,
-            _index = 293,
+            _index = 301,
         },
         {
             Fillers = { [91775] = { 2 } },
@@ -3803,7 +3901,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91777,
             ItemCount = { itemID = 2862, count = 1, operator = ">=" },
             Zone = 1429,
-            _index = 294,
+            _index = 302,
         },
         {
             Fillers = { [91775] = { 2 } },
@@ -3816,7 +3914,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91777,
             ItemCount = { itemID = 3239, count = 1, operator = ">=" },
             Zone = 1429,
-            _index = 295,
+            _index = 303,
         },
         {
             Waypoint = 76,
@@ -3825,7 +3923,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 76,
             Not = { IsQuestReadyForTurnIn = 76 },
             Zone = 1429,
-            _index = 296,
+            _index = 304,
         },
         {
             Waypoint = 91777,
@@ -3835,7 +3933,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 297,
+            _index = 305,
         },
         {
             Waypoint = 76,
@@ -3844,7 +3942,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 76,
             Not = { IsQuestReadyForTurnIn = 76 },
             Zone = 1429,
-            _index = 298,
+            _index = 306,
         },
         {
             Qpart = { [76] = { 1 } },
@@ -3852,7 +3950,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -574.675, y = -9115.625 },
             Range = 30,
             Zone = 1429,
-            _index = 299,
+            _index = 307,
         },
         {
             Qpart = { [91777] = { 1 } },
@@ -3862,7 +3960,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 300,
+            _index = 308,
         },
         {
             Qpart = { [91777] = { 2 } },
@@ -3872,7 +3970,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 301,
+            _index = 309,
         },
         {
             Waypoint = 91777,
@@ -3881,7 +3979,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 302,
+            _index = 310,
         },
         {
             Waypoint = 91777,
@@ -3890,7 +3988,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 303,
+            _index = 311,
         },
         {
             Waypoint = 91777,
@@ -3899,7 +3997,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 304,
+            _index = 312,
         },
         {
             Waypoint = 91777,
@@ -3908,7 +4006,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 18,
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 305,
+            _index = 313,
         },
         {
             Waypoint = 91777,
@@ -3918,7 +4016,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 951, questID = 91775, objectiveIndex = 2 } },
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 306,
+            _index = 314,
         },
         {
             Done = { 91777 },
@@ -3927,7 +4025,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 951, questID = 91777 } },
             IsQuestOnQuest = 91777,
             Zone = 1429,
-            _index = 307,
+            _index = 315,
         },
         {
             Waypoint = 35,
@@ -3935,7 +4033,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -439.5, y = -9118.5 },
             Range = 20,
             Zone = 1429,
-            _index = 308,
+            _index = 316,
         },
         {
             Waypoint = 35,
@@ -3943,7 +4041,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -468.4, y = -9147.2 },
             Range = 10.0,
             Zone = 1429,
-            _index = 309,
+            _index = 317,
         },
         {
             Waypoint = 35,
@@ -3951,7 +4049,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -497.1, y = -9173.0 },
             Range = 20.0,
             Zone = 1429,
-            _index = 310,
+            _index = 318,
         },
         {
             UseSpell = { spellID = 2018, questID = 2178 },
@@ -3963,7 +4061,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2835, operator = ">=" },
             Zone = 1429,
-            _index = 311,
+            _index = 319,
         },
         {
             UseSpell = { spellID = 2018, questID = 2178 },
@@ -3976,7 +4074,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { count = 1, itemID = 2589, operator = ">=" },
             Zone = 1429,
-            _index = 312,
+            _index = 320,
         },
         {
             Fillers = { [91775] = { 2 } },
@@ -3989,7 +4087,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 35,
             ItemCount = { count = 1, itemID = 2862, operator = ">=" },
             Zone = 1429,
-            _index = 313,
+            _index = 321,
         },
         {
             Fillers = { [91775] = { 2 } },
@@ -4002,7 +4100,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 35,
             ItemCount = { count = 1, itemID = 3239, operator = ">=" },
             Zone = 1429,
-            _index = 314,
+            _index = 322,
         },
         {
             Waypoint = 35,
@@ -4011,7 +4109,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 61.82, 53.871),
             Range = 15.0,
             Zone = 1429,
-            _index = 315,
+            _index = 323,
         },
         {
             Note = { "KITE_YOUNG_FOREST_BEAR_GUARD_THOMAS", "ACCEPT_QUEST_BEAST_DIES_RECEIVE_CREDIT", "DEAL_MORE_50_DAMAGE_YOURSELF_GET_CREDIT" },
@@ -4020,7 +4118,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestUncompleted = 35,
             Zone = 1429,
-            _index = 316,
+            _index = 324,
         },
         {
             Done = { 35 },
@@ -4028,7 +4126,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1032.06, y = -9610.23 },
             RaidIcon = { { npcID = 261, questID = 35 } },
             Zone = 1429,
-            _index = 317,
+            _index = 325,
         },
         {
             PickUp = { 37, 52 },
@@ -4036,21 +4134,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1032.06, y = -9610.23 },
             RaidIcon = { { npcID = 261 } },
             Zone = 1429,
-            _index = 318,
+            _index = 326,
         },
         {
             Done = { 37 },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
             Coord = { x = -986.35, y = -9336.06 },
             Zone = 1429,
-            _index = 319,
+            _index = 327,
         },
         {
             PickUp = { 45 },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
             Coord = { x = -986.35, y = -9336.06 },
             Zone = 1429,
-            _index = 320,
+            _index = 328,
         },
         {
             PickUp = { 5545 },
@@ -4058,135 +4156,135 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1289.22, y = -9469.8 },
             RaidIcon = { { npcID = 10616, questID = 5545 } },
             Zone = 1429,
-            _index = 321,
+            _index = 329,
         },
         {
             SellItems = { junk = true, questID = 45 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1355.2, y = -9469.27 },
             Zone = 1429,
-            _index = 322,
-        },
-        {
-            Done = { 45 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "RUN_TOP_ROLF_CORPSE_CAST_DIVINE_PROTECTION", "FLEE_RESET_UNWANTED_ENEMIES" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "PALADIN",
-            Hardcore = false,
-            Zone = 1429,
-            _index = 323,
-        },
-        {
-            PickUp = { 71 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "RUN_TOP_ROLF_CORPSE_CAST_DIVINE_PROTECTION", "FLEE_RESET_UNWANTED_ENEMIES" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "PALADIN",
-            Hardcore = false,
-            Zone = 1429,
-            _index = 324,
-        },
-        {
-            Done = { 45 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_NUKE", "REMEMBER_DURING_DIVINE_PROTECTION_UNABLE_ATTACK" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "PALADIN",
-            Hardcore = true,
-            Zone = 1429,
-            _index = 325,
-        },
-        {
-            PickUp = { 71 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_NUKE", "REMEMBER_DURING_DIVINE_PROTECTION_UNABLE_ATTACK" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "PALADIN",
-            Hardcore = true,
-            Zone = 1429,
-            _index = 326,
-        },
-        {
-            Done = { 45 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "POOL_100_RAGE_PULL_2_MURLOCS_FRONT" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "WARRIOR",
-            Zone = 1429,
-            _index = 327,
-        },
-        {
-            PickUp = { 71 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "POOL_100_RAGE_PULL_2_MURLOCS_FRONT" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "WARRIOR",
-            Zone = 1429,
-            _index = 328,
-        },
-        {
-            Done = { 45 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "HUNTER",
-            Zone = 1429,
-            _index = 329,
-        },
-        {
-            PickUp = { 71 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL" },
-            Coord = { x = -1234.31, y = -9224.18 },
-            Class = "HUNTER",
-            Zone = 1429,
             _index = 330,
         },
         {
             Done = { 45 },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_POLYMORPH" },
+            Note = { "RUN_TOP_ROLF_CORPSE_CAST_DIVINE_PROTECTION", "FLEE_RESET_UNWANTED_ENEMIES" },
             Coord = { x = -1234.31, y = -9224.18 },
-            Class = "MAGE",
+            Class = "PALADIN",
+            Hardcore = false,
             Zone = 1429,
             _index = 331,
         },
         {
             PickUp = { 71 },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_POLYMORPH" },
+            Note = { "RUN_TOP_ROLF_CORPSE_CAST_DIVINE_PROTECTION", "FLEE_RESET_UNWANTED_ENEMIES" },
             Coord = { x = -1234.31, y = -9224.18 },
-            Class = "MAGE",
+            Class = "PALADIN",
+            Hardcore = false,
             Zone = 1429,
             _index = 332,
         },
         {
             Done = { 45 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_FOCUS" },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_NUKE", "REMEMBER_DURING_DIVINE_PROTECTION_UNABLE_ATTACK" },
             Coord = { x = -1234.31, y = -9224.18 },
-            Class = "ROGUE",
+            Class = "PALADIN",
+            Hardcore = true,
             Zone = 1429,
             _index = 333,
         },
         {
             PickUp = { 71 },
-            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_FOCUS" },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_NUKE", "REMEMBER_DURING_DIVINE_PROTECTION_UNABLE_ATTACK" },
             Coord = { x = -1234.31, y = -9224.18 },
-            Class = "ROGUE",
+            Class = "PALADIN",
+            Hardcore = true,
             Zone = 1429,
             _index = 334,
         },
         {
             Done = { 45 },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "POOL_100_RAGE_PULL_2_MURLOCS_FRONT" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "WARRIOR",
+            Zone = 1429,
+            _index = 335,
+        },
+        {
+            PickUp = { 71 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "POOL_100_RAGE_PULL_2_MURLOCS_FRONT" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "WARRIOR",
+            Zone = 1429,
+            _index = 336,
+        },
+        {
+            Done = { 45 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "HUNTER",
+            Zone = 1429,
+            _index = 337,
+        },
+        {
+            PickUp = { 71 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "HUNTER",
+            Zone = 1429,
+            _index = 338,
+        },
+        {
+            Done = { 45 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_POLYMORPH" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "MAGE",
+            Zone = 1429,
+            _index = 339,
+        },
+        {
+            PickUp = { 71 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_POLYMORPH" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "MAGE",
+            Zone = 1429,
+            _index = 340,
+        },
+        {
+            Done = { 45 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_FOCUS" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "ROGUE",
+            Zone = 1429,
+            _index = 341,
+        },
+        {
+            PickUp = { 71 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
+            Note = { "ENEMIES_CAN_HEAL", "PULL_2_MURLOCS_FRONT_HUTS_MOVE_AWAY_FOCUS" },
+            Coord = { x = -1234.31, y = -9224.18 },
+            Class = "ROGUE",
+            Zone = 1429,
+            _index = 342,
+        },
+        {
+            Done = { 45 },
+            Fillers = { [91775] = { 2 }, [52] = { 1, 2 }, [5545] = { 1 } },
             Note = { "ENEMIES_CAN_HEAL", "CAST_RENEW_POWER_WORD_SHIELD_GET_FULL" },
             Coord = { x = -1234.31, y = -9224.18 },
             Class = "PRIEST",
             Zone = 1429,
-            _index = 335,
+            _index = 343,
         },
         {
             PickUp = { 71 },
@@ -4195,7 +4293,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1234.31, y = -9224.18 },
             Class = "PRIEST",
             Zone = 1429,
-            _index = 336,
+            _index = 344,
         },
         {
             Done = { 45 },
@@ -4204,7 +4302,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1234.31, y = -9224.18 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 337,
+            _index = 345,
         },
         {
             PickUp = { 71 },
@@ -4213,7 +4311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1234.31, y = -9224.18 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 338,
+            _index = 346,
         },
         {
             Qpart = { [5545] = { 1 } },
@@ -4221,7 +4319,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1296.085, y = -9268.27 },
             Range = 30,
             Zone = 1429,
-            _index = 339,
+            _index = 347,
         },
         {
             Done = { 5545 },
@@ -4229,7 +4327,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1289.22, y = -9469.8 },
             RaidIcon = { { npcID = 10616, questID = 5545 } },
             Zone = 1429,
-            _index = 340,
+            _index = 348,
         },
         {
             PickUp = { 83 },
@@ -4237,7 +4335,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1222.4, y = -9531.76 },
             RaidIcon = { { npcID = 278, questID = 83 } },
             Zone = 1429,
-            _index = 341,
+            _index = 349,
         },
         {
             PickUp = { 91733 },
@@ -4245,28 +4343,28 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1119.7708, y = -9603.7687 },
             RaidIcon = { { npcID = 248265, questID = 91733 } },
             Zone = 1429,
-            _index = 342,
+            _index = 350,
         },
         {
             Qpart = { [91733] = { 2 } },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 74.3, 76.4),
             Zone = 1429,
-            _index = 343,
+            _index = 351,
         },
         {
             Qpart = { [91733] = { 1 } },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 76.7, 82.5),
             Zone = 1429,
-            _index = 344,
+            _index = 352,
         },
         {
             Qpart = { [91733] = { 3 } },
             Fillers = { [91775] = { 2 }, [52] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 77.3, 86.8),
             Zone = 1429,
-            _index = 345,
+            _index = 353,
         },
         {
             Qpart = { [52] = { 1, 2 } },
@@ -4275,7 +4373,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 118, questID = 52, objectiveIndex = 1 }, { npcID = 822, questID = 52, objectiveIndex = 2 } },
             Zone = 1429,
-            _index = 346,
+            _index = 354,
         },
         {
             DropQuest = 184,
@@ -4285,7 +4383,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 82.282, 71.543),
             Range = 30,
             Zone = 1429,
-            _index = 347,
+            _index = 355,
         },
         {
             Qpart = { [88] = { 1 } },
@@ -4295,7 +4393,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             Class = "WARRIOR",
             Zone = 1429,
-            _index = 348,
+            _index = 356,
         },
         {
             Qpart = { [88] = { 1 } },
@@ -4305,7 +4403,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK" },
             Zone = 1429,
-            _index = 349,
+            _index = 357,
         },
         {
             Qpart = { [88] = { 1 } },
@@ -4315,7 +4413,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             Class = "ROGUE",
             Zone = 1429,
-            _index = 350,
+            _index = 358,
         },
         {
             Qpart = { [83] = { 1 } },
@@ -4324,7 +4422,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 116, questID = 83, objectiveIndex = 1 }, { npcID = 474, questID = 83, objectiveIndex = 1 } },
             Zone = 1429,
-            _index = 351,
+            _index = 359,
         },
         {
             Done = { 52 },
@@ -4332,7 +4430,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1032.06, y = -9610.23 },
             RaidIcon = { { npcID = 261 } },
             Zone = 1429,
-            _index = 352,
+            _index = 360,
         },
         {
             Done = { 71 },
@@ -4341,7 +4439,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 261 } },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 71 }, { IsQuestCompleted = 71 } },
             Zone = 1429,
-            _index = 353,
+            _index = 361,
         },
         {
             Done = { 52 },
@@ -4349,7 +4447,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1032.06, y = -9610.23 },
             RaidIcon = { { npcID = 261 } },
             Zone = 1429,
-            _index = 354,
+            _index = 362,
         },
         {
             Done = { 71 },
@@ -4358,7 +4456,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 261 } },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 71 }, { IsQuestCompleted = 71 } },
             Zone = 1429,
-            _index = 355,
+            _index = 363,
         },
         {
             PickUp = { 39 },
@@ -4366,7 +4464,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1032.06, y = -9610.23 },
             RaidIcon = { { npcID = 261, questID = 39 } },
             Zone = 1429,
-            _index = 356,
+            _index = 364,
         },
         {
             Done = { 91733 },
@@ -4374,7 +4472,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1119.7708, y = -9603.7687 },
             RaidIcon = { { npcID = 248265, questID = 91733 } },
             Zone = 1429,
-            _index = 357,
+            _index = 365,
         },
         {
             DeathSkip = true,
@@ -4388,7 +4486,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             SkipForLvl = 10,
             SkipInZones = { 1433 },
             Zone = 1429,
-            _index = 358,
+            _index = 366,
         },
         {
             Done = { 83 },
@@ -4396,7 +4494,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1222.4, y = -9531.76 },
             RaidIcon = { { npcID = 278, questID = 83 } },
             Zone = 1429,
-            _index = 359,
+            _index = 367,
         },
         {
             Grind = 9,
@@ -4404,7 +4502,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 109, IsQuestUncompleted = 109 } } } },
             Zone = 1429,
-            _index = 360,
+            _index = 368,
         },
         {
             PickUp = { 109 },
@@ -4413,7 +4511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 261, questID = 109 } },
             MinLevel = 9,
             Zone = 1429,
-            _index = 361,
+            _index = 369,
         },
         {
             Waypoint = 91740,
@@ -4422,7 +4520,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             IsQuestOnQuest = 91740,
             Zone = 1429,
-            _index = 362,
+            _index = 370,
         },
         {
             Done = { 91740 },
@@ -4432,7 +4530,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91740,
             IsQuestReadyForTurnIn = 91740,
             Zone = 1429,
-            _index = 363,
+            _index = 371,
         },
         {
             Waypoint = 244,
@@ -4441,7 +4539,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1433,
-            _index = 364,
+            _index = 372,
         },
         {
             PickUp = { 244 },
@@ -4451,7 +4549,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             MinLevel = 11,
             Zone = 1433,
-            _index = 365,
+            _index = 373,
         },
         {
             DeathSkip = true,
@@ -4464,7 +4562,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 244,
             SkipForLvl = 10,
             Zone = 1433,
-            _index = 366,
+            _index = 374,
         },
         {
             Waypoint = 244,
@@ -4475,7 +4573,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1433,
-            _index = 367,
+            _index = 375,
         },
         {
             Waypoint = 244,
@@ -4486,7 +4584,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1433,
-            _index = 368,
+            _index = 376,
         },
         {
             Waypoint = 244,
@@ -4497,7 +4595,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1433,
-            _index = 369,
+            _index = 377,
         },
         {
             Done = { 244 },
@@ -4508,7 +4606,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 244,
             MinLevel = 11,
             Zone = 1433,
-            _index = 370,
+            _index = 378,
         },
         {
             GetFP = 5,
@@ -4516,19 +4614,19 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2234.9, y = -9435.3 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1433,
-            _index = 371,
+            _index = 379,
         },
         {
             UseHS = 112,
             UseHSIfAvailable = true,
-            _index = 372,
+            _index = 380,
         },
         {
             Waypoint = 112,
             Coord = { x = 16.2, y = -9462.65 },
             Range = 10,
             Zone = 1429,
-            _index = 373,
+            _index = 381,
         },
         {
             Note = { "CAREFUL_MONEY_NEED_SAVE_31S_85C_STORMWIND" },
@@ -4539,7 +4637,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 112,
             Money = { copper = 5000, operator = "<" },
             Zone = 1429,
-            _index = 374,
+            _index = 382,
         },
         {
             Note = { "CAREFUL_MONEY_TRY_SAVE_32S_8C_STORMWIND" },
@@ -4550,13 +4648,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 112,
             Money = { copper = 5000, operator = "<" },
             Zone = 1429,
-            _index = 375,
+            _index = 383,
         },
         {
             Qpart = { [112] = { 1 } },
             NoArrow = true,
             RaidIcon = { { npcID = 285, questID = 112, objectiveIndex = 1 }, { npcID = 735, questID = 112, objectiveIndex = 1 } },
-            _index = 376,
+            _index = 384,
         },
         {
             Done = { 112 },
@@ -4564,7 +4662,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 31.92, y = -9460.38 },
             RaidIcon = { { npcID = 253, questID = 112 } },
             Zone = 1429,
-            _index = 377,
+            _index = 385,
         },
         {
             PickUp = { 114 },
@@ -4573,7 +4671,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ETA = 9.0,
             RaidIcon = { { npcID = 253, questID = 114 } },
             Zone = 1429,
-            _index = 378,
+            _index = 386,
         },
         {
             Waypoint = 39,
@@ -4583,7 +4681,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 9.0,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 379,
+            _index = 387,
         },
         {
             LearnProfession = 3273,
@@ -4593,7 +4691,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 39,
             MinLevel = 5,
             Zone = 1429,
-            _index = 380,
+            _index = 388,
         },
         {
             LearnSkill = { spellID = 921 },
@@ -4602,7 +4700,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 39,
             MinLevel = 4,
             Zone = 1429,
-            _index = 381,
+            _index = 389,
         },
         {
             LearnSkill = { spellIDs = { 674, 2983 } },
@@ -4612,7 +4710,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 39,
             MinLevel = 10,
             Zone = 1429,
-            _index = 382,
+            _index = 390,
         },
         {
             Done = { 39, 76 },
@@ -4620,7 +4718,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             RaidIcon = { { npcID = 240 } },
             Zone = 1429,
-            _index = 383,
+            _index = 391,
         },
         {
             PickUp = { 239, 109 },
@@ -4628,7 +4726,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 384,
+            _index = 392,
         },
         {
             PickUp = { 239, 59, 109 },
@@ -4636,7 +4734,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 385,
+            _index = 393,
         },
         {
             SellItems = { junk = true, questID = 91746 },
@@ -4644,7 +4742,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 94.01, y = -9464.89 },
             Money = { operator = "<", copper = 7500 },
             Zone = 1429,
-            _index = 386,
+            _index = 394,
         },
         {
             PickUp = { 1097 },
@@ -4652,7 +4750,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 87.87, y = -9456.65 },
             RaidIcon = { { npcID = 514, questID = 1097 } },
             Zone = 1429,
-            _index = 387,
+            _index = 395,
         },
         {
             Waypoint = 91746,
@@ -4660,7 +4758,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -81.9, y = -9381.8 },
             Range = 5.0,
             Zone = 1429,
-            _index = 388,
+            _index = 396,
         },
         {
             Done = { 91746 },
@@ -4669,7 +4767,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91746,
             IsQuestReadyForTurnIn = 91746,
             Zone = 1429,
-            _index = 389,
+            _index = 397,
         },
         {
             Done = { 97924 },
@@ -4679,7 +4777,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 97924,
             IsQuestReadyForTurnIn = 97924,
             Zone = 1429,
-            _index = 390,
+            _index = 398,
         },
         {
             Done = { 91751 },
@@ -4689,7 +4787,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 91751,
             IsQuestReadyForTurnIn = 91751,
             Zone = 1429,
-            _index = 391,
+            _index = 399,
         },
         {
             Grind = 10,
@@ -4698,7 +4796,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 94792, IsQuestUncompleted = 94792 } } } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 392,
+            _index = 400,
         },
         {
             PickUp = { 94792 },
@@ -4707,7 +4805,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94792 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 393,
+            _index = 401,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4718,7 +4816,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 94792,
             MinLevel = 1,
             Zone = 1429,
-            _index = 394,
+            _index = 402,
         },
         {
             Qpart = { [94792] = { 1 } },
@@ -4728,7 +4826,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["94792-1"] = 266158 },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 395,
+            _index = 403,
         },
         {
             Done = { 94792 },
@@ -4737,7 +4835,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94792 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 396,
+            _index = 404,
         },
         {
             PickUp = { 94863 },
@@ -4746,7 +4844,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94863 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 397,
+            _index = 405,
         },
         {
             Qpart = { [94863] = { 1 } },
@@ -4757,7 +4855,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["94863-1"] = 266253 },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 398,
+            _index = 406,
         },
         {
             Done = { 94863 },
@@ -4766,7 +4864,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94863 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 399,
+            _index = 407,
         },
         {
             PickUp = { 94864 },
@@ -4775,7 +4873,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94864 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 400,
+            _index = 408,
         },
         {
             Qpart = { [94864] = { 1 } },
@@ -4786,7 +4884,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["94864-1"] = 266254 },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 401,
+            _index = 409,
         },
         {
             Done = { 94864 },
@@ -4795,7 +4893,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94864 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 402,
+            _index = 410,
         },
         {
             PickUp = { 94793 },
@@ -4804,7 +4902,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 251507, questID = 94793 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 403,
+            _index = 411,
         },
         {
             Done = { 94793 },
@@ -4813,7 +4911,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 258930, questID = 94793 } },
             Class = "HUNTER",
             Zone = 1429,
-            _index = 404,
+            _index = 412,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4824,7 +4922,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99129,
             MinLevel = 1,
             Zone = 1429,
-            _index = 405,
+            _index = 413,
         },
         {
             Grind = 10,
@@ -4834,7 +4932,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARRIOR",
             Money = { copper = 5000, operator = ">=" },
             Zone = 1429,
-            _index = 406,
+            _index = 414,
         },
         {
             PickUp = { 1638 },
@@ -4843,7 +4941,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARRIOR",
             Money = { operator = ">=", copper = 5000 },
             Zone = 1429,
-            _index = 407,
+            _index = 415,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4854,7 +4952,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 5000 },
             Zone = 1429,
-            _index = 408,
+            _index = 416,
         },
         {
             Done = { 99129 },
@@ -4867,7 +4965,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Money = { copper = 5000, operator = "<" },
             SkipForLvl = 10,
             Zone = 1429,
-            _index = 409,
+            _index = 417,
         },
         {
             Grind = 10,
@@ -4876,7 +4974,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 1638, IsQuestUncompleted = 1638 } } } },
             Class = "WARRIOR",
             Zone = 1429,
-            _index = 410,
+            _index = 418,
         },
         {
             PickUp = { 1638 },
@@ -4885,7 +4983,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 109.36, y = -9461.84 },
             Class = "WARRIOR",
             Zone = 1429,
-            _index = 411,
+            _index = 419,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4896,7 +4994,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 10,
             SkipForLvl = 12,
             Zone = 1429,
-            _index = 412,
+            _index = 420,
         },
         {
             PickUp = { 2998 },
@@ -4904,8 +5002,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 109.04, y = -9468.16 },
             Class = "PALADIN",
             MinLevel = 12,
+            Race = "Human",
             Zone = 1429,
-            _index = 413,
+            _index = 421,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4915,7 +5014,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99129,
             MinLevel = 12,
             Zone = 1429,
-            _index = 414,
+            _index = 422,
         },
         {
             Waypoint = 99129,
@@ -4925,7 +5024,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10.0,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 415,
+            _index = 423,
         },
         {
             Waypoint = 1685,
@@ -4934,7 +5033,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 416,
+            _index = 424,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4944,7 +5043,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99129,
             MinLevel = 1,
             Zone = 1429,
-            _index = 417,
+            _index = 425,
         },
         {
             Done = { 99129 },
@@ -4956,7 +5055,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestReadyForTurnIn = 99129,
             SkipForLvl = 10,
             Zone = 1429,
-            _index = 418,
+            _index = 426,
         },
         {
             Grind = 10,
@@ -4965,7 +5064,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 1685, IsQuestUncompleted = 1685 } } } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 419,
+            _index = 427,
         },
         {
             Waypoint = 1685,
@@ -4979,7 +5078,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 1685,
             MinLevel = 10,
             Zone = 1429,
-            _index = 420,
+            _index = 428,
         },
         {
             PickUp = { 1685 },
@@ -4988,7 +5087,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6121, questID = 1685 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 421,
+            _index = 429,
         },
         {
             Done = { 99129 },
@@ -5000,7 +5099,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestReadyForTurnIn = 99129,
             SkipForLvl = 10,
             Zone = 1429,
-            _index = 422,
+            _index = 430,
         },
         {
             Waypoint = 99129,
@@ -5012,7 +5111,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ClassNot = "PRIEST",
             MinLevel = 10,
             Zone = 1429,
-            _index = 423,
+            _index = 431,
         },
         {
             Grind = 10,
@@ -5023,7 +5122,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestNotOnQuest = 94774,
             IsQuestUncompleted = 94774,
             Zone = 1429,
-            _index = 424,
+            _index = 432,
         },
         {
             Waypoint = 99129,
@@ -5036,7 +5135,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "PRIEST",
             MinLevel = 10,
             Zone = 1429,
-            _index = 425,
+            _index = 433,
         },
         {
             PickUp = { 94774 },
@@ -5046,8 +5145,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             DontHaveSpell = 1277370,
             IsQuestUncompleted = 94774,
             MinLevel = 10,
+            Race = "Human",
             Zone = 1429,
-            _index = 426,
+            _index = 434,
         },
         {
             LearnSkill = { allAvailable = true, npcID = 377 },
@@ -5056,7 +5156,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "PRIEST",
             MinLevel = 10,
             Zone = 1429,
-            _index = 427,
+            _index = 435,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -5066,7 +5166,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 99129,
             MinLevel = 10,
             Zone = 1429,
-            _index = 428,
+            _index = 436,
         },
         {
             LeaveQuests = { 59 },
@@ -5075,7 +5175,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 429,
+            _index = 437,
         },
         {
             Done = { 99129 },
@@ -5083,7 +5183,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 72.81, y = -9496.23 },
             RaidIcon = { { npcID = 241, questID = 99129 } },
             Zone = 1429,
-            _index = 430,
+            _index = 438,
         },
         {
             Waypoint = 114,
@@ -5091,7 +5191,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 37.61, y = -10014.03 },
             Range = 20,
             Zone = 1429,
-            _index = 431,
+            _index = 439,
         },
         {
             Done = { 114 },
@@ -5099,14 +5199,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 37.61, y = -10014.03 },
             RaidIcon = { { npcID = 251, questID = 114 } },
             Zone = 1429,
-            _index = 432,
+            _index = 440,
         },
         {
             Done = { 88 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 332.43, y = -9894.99 },
             Zone = 1429,
-            _index = 433,
+            _index = 441,
         },
         {
             Waypoint = 239,
@@ -5114,7 +5214,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 673.96, y = -9704.45 },
             Range = 20,
             Zone = 1429,
-            _index = 434,
+            _index = 442,
         },
         {
             Done = { 239 },
@@ -5123,7 +5223,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 963, questID = 239 } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 435,
+            _index = 443,
         },
         {
             Waypoint = 239,
@@ -5132,7 +5232,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 436,
+            _index = 444,
         },
         {
             Done = { 239 },
@@ -5141,7 +5241,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 963, questID = 239 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 437,
+            _index = 445,
         },
         {
             PickUp = { 11 },
@@ -5150,7 +5250,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 963, questID = 11 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 438,
+            _index = 446,
         },
         {
             PickUp = { 176 },
@@ -5158,7 +5258,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 683.4, y = -9667.93 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 439,
+            _index = 447,
         },
         {
             DropQuest = 123,
@@ -5169,7 +5269,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 440,
+            _index = 448,
         },
         {
             Qpart = { [176] = { 1 } },
@@ -5179,7 +5279,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 441,
+            _index = 449,
         },
         {
             Qpart = { [11] = { 1 } },
@@ -5189,7 +5289,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 97, questID = 11, objectiveIndex = 1 }, { npcID = 478, questID = 11, objectiveIndex = 1 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 442,
+            _index = 450,
         },
         {
             Done = { 11 },
@@ -5198,7 +5298,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 963, questID = 11 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 443,
+            _index = 451,
         },
         {
             LeaveQuests = { 123 },
@@ -5207,7 +5307,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1429,
-            _index = 444,
+            _index = 452,
         },
         {
             Waypoint = 184,
@@ -5216,7 +5316,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 445,
+            _index = 453,
         },
         {
             Waypoint = 64,
@@ -5226,7 +5326,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 184,
             Zone = 1436,
-            _index = 446,
+            _index = 454,
         },
         {
             PickUp = { 64 },
@@ -5236,7 +5336,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 184,
             Zone = 1436,
-            _index = 447,
+            _index = 455,
         },
         {
             Done = { 184 },
@@ -5246,7 +5346,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 184,
             Zone = 1436,
-            _index = 448,
+            _index = 456,
         },
         {
             PickUp = { 151, 36 },
@@ -5255,7 +5355,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 238 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 449,
+            _index = 457,
         },
         {
             Waypoint = 64,
@@ -5264,7 +5364,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 450,
+            _index = 458,
         },
         {
             PickUp = { 64, 151, 36 },
@@ -5272,7 +5372,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 919.47, y = -9853.13 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 451,
+            _index = 459,
         },
         {
             Note = { "NOT_LOOT_SACKS_OATS_YET_SENT_YOURSELF" },
@@ -5282,7 +5382,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             IsQuestUncompleted = 36,
             Zone = 1436,
-            _index = 452,
+            _index = 460,
         },
         {
             PickUp = { 9 },
@@ -5291,7 +5391,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 233, questID = 9 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 453,
+            _index = 461,
         },
         {
             Done = { 36 },
@@ -5300,7 +5400,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 235, questID = 36 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 454,
+            _index = 462,
         },
         {
             PickUp = { 38, 22 },
@@ -5309,7 +5409,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 235 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 455,
+            _index = 463,
         },
         {
             Waypoint = 109,
@@ -5318,7 +5418,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 456,
+            _index = 464,
         },
         {
             Done = { 109 },
@@ -5327,7 +5427,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 234, questID = 109 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 457,
+            _index = 465,
         },
         {
             PickUp = { 12, 102 },
@@ -5335,7 +5435,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 1041.93, y = -10511.2 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1436,
-            _index = 458,
+            _index = 466,
         },
         {
             Done = { 109 },
@@ -5344,7 +5444,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 234, questID = 109 } },
             Class = "HUNTER",
             Zone = 1436,
-            _index = 459,
+            _index = 467,
         },
         {
             Grind = 10,
@@ -5353,7 +5453,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 6181, IsQuestUncompleted = 6181 } } } },
             IsQuestUncompleted = 6181,
             Zone = 1436,
-            _index = 460,
+            _index = 468,
         },
         {
             PickUp = { 6181 },
@@ -5361,24 +5461,27 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 1021.6, y = -10500.61 },
             RaidIcon = { { npcID = 491, questID = 6181 } },
             IsQuestUncompleted = 6181,
+            Race = "Human",
             Zone = 1436,
-            _index = 461,
+            _index = 469,
         },
         {
             Done = { 6181 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1037.42, y = -10628.27 },
             RaidIcon = { { npcID = 523, questID = 6181 } },
+            Race = "Human",
             Zone = 1436,
-            _index = 462,
+            _index = 470,
         },
         {
             PickUp = { 6281 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1037.42, y = -10628.27 },
             RaidIcon = { { npcID = 523, questID = 6281 } },
+            Race = "Human",
             Zone = 1436,
-            _index = 463,
+            _index = 471,
         },
         {
             UseFlightPath = 61,
@@ -5387,7 +5490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 1037.42, y = -10628.27 },
             ZoneStepTrigger = { mapID = 1453 },
             Zone = 1436,
-            _index = 464,
+            _index = 472,
         },
         {
             Done = { 61 },
@@ -5396,7 +5499,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 625.48, y = -8857.76 },
             RaidIcon = { { npcID = 279, questID = 61 } },
             Zone = 1453,
-            _index = 465,
+            _index = 473,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
@@ -5408,7 +5511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 3107, count = 1, operator = "<" },
             MinLevel = { level = 10, xp = 5890 },
             Zone = 1453,
-            _index = 466,
+            _index = 474,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
@@ -5421,7 +5524,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 3107, count = 0, operator = "==" },
             SkipForLvl = { level = 10, xp = 5890 },
             Zone = 1453,
-            _index = 467,
+            _index = 475,
         },
         {
             LearnSkill = { spellID = 202 },
@@ -5432,7 +5535,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 3000 },
             Zone = 1453,
-            _index = 468,
+            _index = 476,
         },
         {
             Waypoint = 6281,
@@ -5440,8 +5543,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 613.0, y = -8796.03 },
             Range = 5,
             Class = "HUNTER",
+            Race = "Human",
             Zone = 1453,
-            _index = 469,
+            _index = 477,
         },
         {
             LearnSkill = { spellIDs = { 201, 227 } },
@@ -5452,7 +5556,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 2000 },
             Zone = 1453,
-            _index = 470,
+            _index = 478,
         },
         {
             LearnSkill = { spellID = 201 },
@@ -5463,7 +5567,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 5500 },
             Zone = 1453,
-            _index = 471,
+            _index = 479,
         },
         {
             LearnSkill = { spellID = 227 },
@@ -5473,7 +5577,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "PRIEST", "MAGE", "WARLOCK" },
             MinLevel = 1,
             Zone = 1453,
-            _index = 472,
+            _index = 480,
         },
         {
             LearnSkill = { spellID = 202 },
@@ -5483,7 +5587,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 6281,
             MinLevel = 1,
             Zone = 1453,
-            _index = 473,
+            _index = 481,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 853, quantity = 1 } },
@@ -5496,7 +5600,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 853, count = 1, operator = "<" },
             SkipForLvl = 11,
             Zone = 1453,
-            _index = 474,
+            _index = 482,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 853, quantity = 1 } },
@@ -5509,7 +5613,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 853, count = 1, operator = "<" },
             MinLevel = 11,
             Zone = 1453,
-            _index = 475,
+            _index = 483,
         },
         {
             SetHS = 6281,
@@ -5517,7 +5621,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 673.58, y = -8867.76 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Zone = 1453,
-            _index = 476,
+            _index = 484,
         },
         {
             SetHS = 1685,
@@ -5525,7 +5629,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 673.58, y = -8867.76 },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 477,
+            _index = 485,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2507, quantity = 1 } },
@@ -5537,7 +5641,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 2507, count = 1, operator = "<" },
             Money = { operator = ">=", copper = 1751 },
             Zone = 1453,
-            _index = 478,
+            _index = 486,
         },
         {
             Waypoint = 6281,
@@ -5545,8 +5649,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 702.7, y = -8791.8 },
             Range = 5,
             Class = "HUNTER",
+            Race = "Human",
             Zone = 1453,
-            _index = 479,
+            _index = 487,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1200, targetStock = true } },
@@ -5561,7 +5666,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 10,
             Money = { copper = 300, operator = ">=" },
             Zone = 1453,
-            _index = 480,
+            _index = 488,
         },
         {
             Waypoint = 1685,
@@ -5571,7 +5676,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 481,
+            _index = 489,
         },
         {
             Waypoint = 1685,
@@ -5580,7 +5685,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1685,
             Zone = 1453,
-            _index = 482,
+            _index = 490,
         },
         {
             Waypoint = 1685,
@@ -5590,7 +5695,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 483,
+            _index = 491,
         },
         {
             Waypoint = 1685,
@@ -5599,7 +5704,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1685,
             Zone = 1453,
-            _index = 484,
+            _index = 492,
         },
         {
             Waypoint = 1685,
@@ -5608,7 +5713,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1685,
             Zone = 1453,
-            _index = 485,
+            _index = 493,
         },
         {
             Waypoint = 1685,
@@ -5617,7 +5722,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1685,
             Zone = 1453,
-            _index = 486,
+            _index = 494,
         },
         {
             Done = { 1685 },
@@ -5626,7 +5731,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6122, questID = 1685 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 487,
+            _index = 495,
         },
         {
             PickUp = { 1688 },
@@ -5635,7 +5740,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6122, questID = 1688 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 488,
+            _index = 496,
         },
         {
             Waypoint = 1688,
@@ -5644,7 +5749,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1688,
             Zone = 1453,
-            _index = 489,
+            _index = 497,
         },
         {
             Waypoint = 176,
@@ -5654,7 +5759,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 490,
+            _index = 498,
         },
         {
             Waypoint = 176,
@@ -5663,7 +5768,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 491,
+            _index = 499,
         },
         {
             Done = { 176 },
@@ -5672,7 +5777,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 123,
             Zone = 1429,
-            _index = 492,
+            _index = 500,
         },
         {
             Done = { 123 },
@@ -5681,7 +5786,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 123,
             Zone = 1429,
-            _index = 493,
+            _index = 501,
         },
         {
             Done = { 176 },
@@ -5689,7 +5794,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 74.02, y = -9465.52 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 494,
+            _index = 502,
         },
         {
             Fillers = { [91775] = { 2 } },
@@ -5698,7 +5803,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestUncompleted = 59,
             Zone = 1429,
-            _index = 495,
+            _index = 503,
         },
         {
             DropQuest = 184,
@@ -5709,7 +5814,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 496,
+            _index = 504,
         },
         {
             Qpart = { [1688] = { 1 } },
@@ -5720,7 +5825,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 881 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 497,
+            _index = 505,
         },
         {
             Qpart = { [83] = { 1 } },
@@ -5730,7 +5835,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 116, questID = 83, objectiveIndex = 1 }, { npcID = 474, questID = 83, objectiveIndex = 1 } },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 498,
+            _index = 506,
         },
         {
             Done = { 59, 83 },
@@ -5738,7 +5843,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1222.4, y = -9531.76 },
             Class = "WARLOCK",
             Zone = 1429,
-            _index = 499,
+            _index = 507,
         },
         {
             Waypoint = 244,
@@ -5747,7 +5852,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 500,
+            _index = 508,
         },
         {
             PickUp = { 244 },
@@ -5757,7 +5862,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             MinLevel = 11,
             Zone = 1433,
-            _index = 501,
+            _index = 509,
         },
         {
             Waypoint = 244,
@@ -5767,7 +5872,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15.0,
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 502,
+            _index = 510,
         },
         {
             Waypoint = 244,
@@ -5777,7 +5882,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 503,
+            _index = 511,
         },
         {
             Waypoint = 244,
@@ -5787,7 +5892,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 504,
+            _index = 512,
         },
         {
             Waypoint = 244,
@@ -5797,7 +5902,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 505,
+            _index = 513,
         },
         {
             Done = { 244 },
@@ -5807,7 +5912,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 244,
             Zone = 1433,
-            _index = 506,
+            _index = 514,
         },
         {
             GetFP = 5,
@@ -5815,7 +5920,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2234.9, y = -9435.3 },
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 507,
+            _index = 515,
         },
         {
             UseFlightPath = 1688,
@@ -5825,7 +5930,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ZoneStepTrigger = { mapID = 1453 },
             Class = "WARLOCK",
             Zone = 1433,
-            _index = 508,
+            _index = 516,
         },
         {
             Waypoint = 1688,
@@ -5835,7 +5940,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 509,
+            _index = 517,
         },
         {
             Waypoint = 1688,
@@ -5844,7 +5949,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1688,
             Zone = 1453,
-            _index = 510,
+            _index = 518,
         },
         {
             Waypoint = 1688,
@@ -5854,7 +5959,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 511,
+            _index = 519,
         },
         {
             Waypoint = 1688,
@@ -5863,7 +5968,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1688,
             Zone = 1453,
-            _index = 512,
+            _index = 520,
         },
         {
             Waypoint = 1688,
@@ -5872,7 +5977,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1688,
             Zone = 1453,
-            _index = 513,
+            _index = 521,
         },
         {
             Waypoint = 1688,
@@ -5881,7 +5986,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestOnQuest = 1688,
             Zone = 1453,
-            _index = 514,
+            _index = 522,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -5891,7 +5996,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 1688,
             MinLevel = 12,
             Zone = 1453,
-            _index = 515,
+            _index = 523,
         },
         {
             Done = { 1688 },
@@ -5900,7 +6005,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6122, questID = 1688 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 516,
+            _index = 524,
         },
         {
             PickUp = { 1689 },
@@ -5909,7 +6014,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6122, questID = 1689 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 517,
+            _index = 525,
         },
         {
             Waypoint = 1689,
@@ -5918,7 +6023,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 18.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 518,
+            _index = 526,
         },
         {
             Waypoint = 1689,
@@ -5927,7 +6032,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 18.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 519,
+            _index = 527,
         },
         {
             Waypoint = 1689,
@@ -5936,7 +6041,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 18.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 520,
+            _index = 528,
         },
         {
             Note = { "DOWNSTAIRS" },
@@ -5946,7 +6051,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestUncompleted = 1689,
             Zone = 1453,
-            _index = 521,
+            _index = 529,
         },
         {
             Qpart = { [1689] = { 1 } },
@@ -5957,7 +6062,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 5676, questID = 1689, objectiveIndex = 1 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 522,
+            _index = 530,
         },
         {
             Done = { 1689 },
@@ -5966,7 +6071,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6122, questID = 1689 } },
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 523,
+            _index = 531,
         },
         {
             Waypoint = 6281,
@@ -5975,8 +6080,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             IsQuestCompleted = 1689,
             IsQuestOnQuest = 6281,
+            Race = "Human",
             Zone = 1453,
-            _index = 524,
+            _index = 532,
         },
         {
             LearnSkill = { spellID = 921 },
@@ -5985,7 +6091,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 6281,
             MinLevel = 4,
             Zone = 1453,
-            _index = 525,
+            _index = 533,
         },
         {
             LearnSkill = { spellIDs = { 674, 2983 } },
@@ -5995,7 +6101,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 6281,
             MinLevel = 10,
             Zone = 1453,
-            _index = 526,
+            _index = 534,
         },
         {
             Note = { "NOT_WORRY_NOT_DUAL_WIELDING_RIGHT_NOW" },
@@ -6005,16 +6111,18 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "ROGUE",
             EquippedItemStat = { operator = "<", slot = 17, value = 3.4, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", allowMissing = true },
             IsQuestUncompleted = 6281,
+            Race = "Human",
             Zone = 1453,
-            _index = 527,
+            _index = 535,
         },
         {
             Done = { 6281 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 382.02, y = -8702.29 },
             RaidIcon = { { npcID = 1323, questID = 6281 } },
+            Race = "Human",
             Zone = 1453,
-            _index = 528,
+            _index = 536,
         },
         {
             PickUp = { 6261 },
@@ -6022,8 +6130,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 382.02, y = -8702.29 },
             RaidIcon = { { npcID = 1323, questID = 6261 } },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
+            Race = "Human",
             Zone = 1453,
-            _index = 529,
+            _index = 537,
         },
         {
             Done = { 1638 },
@@ -6032,7 +6141,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6089, questID = 1638 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 530,
+            _index = 538,
         },
         {
             PickUp = { 1639 },
@@ -6041,7 +6150,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6089, questID = 1639 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 531,
+            _index = 539,
         },
         {
             Done = { 1639 },
@@ -6050,7 +6159,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6090, questID = 1639 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 532,
+            _index = 540,
         },
         {
             PickUp = { 1640 },
@@ -6059,7 +6168,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6090, questID = 1640 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 533,
+            _index = 541,
         },
         {
             Qpart = { [1640] = { 1 } },
@@ -6068,7 +6177,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6090, questID = 1640, objectiveIndex = 1 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 534,
+            _index = 542,
         },
         {
             Done = { 1640 },
@@ -6077,7 +6186,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6090, questID = 1640 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 535,
+            _index = 543,
         },
         {
             PickUp = { 1665 },
@@ -6086,7 +6195,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6090, questID = 1665 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 536,
+            _index = 544,
         },
         {
             Done = { 1665 },
@@ -6095,7 +6204,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             RaidIcon = { { npcID = 6089, questID = 1665 } },
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 537,
+            _index = 545,
         },
         {
             Waypoint = 94774,
@@ -6104,8 +6213,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20,
             Class = "PRIEST",
+            Race = "Human",
             Zone = 1453,
-            _index = 538,
+            _index = 546,
         },
         {
             Done = { 94774 },
@@ -6114,8 +6224,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "PRIEST",
             IsQuestOnQuest = 94774,
+            Race = "Human",
             Zone = 1453,
-            _index = 539,
+            _index = 547,
         },
         {
             Done = { 5635 },
@@ -6128,8 +6239,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 5635,
             IsQuestReadyForTurnIn = 5635,
             IsQuestUncompleted = 94774,
+            Race = "Dwarf",
             Zone = 1453,
-            _index = 540,
+            _index = 548,
         },
         {
             Done = { 5634 },
@@ -6141,8 +6253,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 5634,
             IsQuestReadyForTurnIn = 5634,
             IsQuestUncompleted = 94774,
+            Race = "Dwarf",
             Zone = 1453,
-            _index = 541,
+            _index = 549,
         },
         {
             LearnSkill = { allAvailable = true, npcID = 376 },
@@ -6153,7 +6266,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestCompleted = 94774,
             MinLevel = 10,
             Zone = 1453,
-            _index = 542,
+            _index = 550,
         },
         {
             LearnSkill = { allAvailable = true, npcID = 376 },
@@ -6164,7 +6277,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 94774,
             MinLevel = 10,
             Zone = 1453,
-            _index = 543,
+            _index = 551,
         },
         {
             Done = { 1097 },
@@ -6172,7 +6285,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 685.22, y = -8387.23 },
             RaidIcon = { { npcID = 1416, questID = 1097 } },
             Zone = 1453,
-            _index = 544,
+            _index = 552,
         },
         {
             PickUp = { 353 },
@@ -6180,7 +6293,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 685.22, y = -8387.23 },
             RaidIcon = { { npcID = 1416, questID = 353 } },
             Zone = 1453,
-            _index = 545,
+            _index = 553,
         },
         {
             Note = { "PUT_SUNDER_ARMOR_ACTION_BAR_ENSURE_USE" },
@@ -6190,7 +6303,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 6661,
             Zone = 1453,
-            _index = 546,
+            _index = 554,
         },
         {
             BuyMerchant = { { itemID = 2901, quantity = 1, questID = 432 } },
@@ -6200,7 +6313,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasSpell = 2018,
             ItemCount = { itemID = 2901, count = 1, operator = "<" },
             Zone = 1453,
-            _index = 547,
+            _index = 555,
         },
         {
             Waypoint = 6661,
@@ -6209,7 +6322,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             SkipInZones = { 1455 },
             Zone = 1453,
-            _index = 548,
+            _index = 556,
         },
         {
             Waypoint = 6661,
@@ -6218,7 +6331,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             SkipInZones = { 1455 },
             Zone = 1453,
-            _index = 549,
+            _index = 557,
         },
         {
             Tram = true,
@@ -6228,7 +6341,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "HUNTER", "MAGE", "PRIEST" },
             SkipInZones = { 1455, 1426, 1432 },
             Zone = 1453,
-            _index = 550,
+            _index = 558,
         },
         {
             Tram = true,
@@ -6239,7 +6352,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "PALADIN", "WARRIOR" },
             SkipInZones = { 1455, 1426, 1432 },
             Zone = 1453,
-            _index = 551,
+            _index = 559,
         },
         {
             Tram = true,
@@ -6250,7 +6363,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "ROGUE",
             SkipInZones = { 1455, 1426, 1432 },
             Zone = 1453,
-            _index = 552,
+            _index = 560,
         },
         {
             Tram = true,
@@ -6261,7 +6374,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = "WARLOCK",
             SkipInZones = { 1455, 1426, 1432 },
             Zone = 1453,
-            _index = 553,
+            _index = 561,
         },
         {
             PickUp = { 6661 },
@@ -6269,7 +6382,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = 40.0752, y = -19.6312 },
             RaidIcon = { { npcID = 12997, questID = 6661 } },
             Zone = 499,
-            _index = 554,
+            _index = 562,
         },
         {
             Qpart = { [6661] = { 1 } },
@@ -6280,7 +6393,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Button = { ["6661-1"] = 17117 },
             RaidIcon = { { npcID = 13016, questID = 6661, objectiveIndex = 1 } },
             Zone = 499,
-            _index = 555,
+            _index = 563,
         },
         {
             Done = { 6661 },
@@ -6289,7 +6402,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 12997, questID = 6661 } },
             Zone = 499,
-            _index = 556,
+            _index = 564,
         },
         {
             Waypoint = 353,
@@ -6297,7 +6410,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15,
             SkipInZones = { 1455, 1426, 1432 },
             Zone = 1455,
-            _index = 557,
+            _index = 565,
         },
         {
             Waypoint = 314,
@@ -6306,7 +6419,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 15.0,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 558,
+            _index = 566,
         },
         {
             Waypoint = 314,
@@ -6315,7 +6428,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 12.0,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 559,
+            _index = 567,
         },
         {
             LearnSkill = { spellID = 2687 },
@@ -6327,7 +6440,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             MinLevel = 10,
             SkipForLvl = 12,
             Zone = 1455,
-            _index = 560,
+            _index = 568,
         },
         {
             Waypoint = 314,
@@ -6337,7 +6450,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10.0,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 561,
+            _index = 569,
         },
         {
             Waypoint = 314,
@@ -6347,7 +6460,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 6.0,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 562,
+            _index = 570,
         },
         {
             Waypoint = 314,
@@ -6356,7 +6469,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 563,
+            _index = 571,
         },
         {
             LearnSkill = { spellID = 2567 },
@@ -6366,7 +6479,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 314,
             MinLevel = 1,
             Zone = 1455,
-            _index = 564,
+            _index = 572,
         },
         {
             LearnSkill = { spellID = 199 },
@@ -6376,7 +6489,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 314,
             MinLevel = 1,
             Zone = 1455,
-            _index = 565,
+            _index = 573,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
@@ -6388,7 +6501,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 3107, count = 1, operator = "<" },
             MinLevel = { level = 10, xp = 7405 },
             Zone = 1455,
-            _index = 566,
+            _index = 574,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
@@ -6401,7 +6514,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 3107, count = 0, operator = "==" },
             SkipForLvl = { level = 10, xp = 7405 },
             Zone = 1455,
-            _index = 567,
+            _index = 575,
         },
         {
             Waypoint = 314,
@@ -6411,14 +6524,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 6.0,
             Class = "WARRIOR",
             Zone = 1455,
-            _index = 568,
+            _index = 576,
         },
         {
             GetFP = 6,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1152.4, y = -4821.13 },
             Zone = 1455,
-            _index = 569,
+            _index = 577,
         },
         {
             Waypoint = 314,
@@ -6427,7 +6540,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             Class = "MAGE",
             Zone = 1455,
-            _index = 570,
+            _index = 578,
         },
         {
             Waypoint = 314,
@@ -6436,7 +6549,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "MAGE",
             Zone = 1455,
-            _index = 571,
+            _index = 579,
         },
         {
             Waypoint = 314,
@@ -6445,7 +6558,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "MAGE",
             Zone = 1455,
-            _index = 572,
+            _index = 580,
         },
         {
             Waypoint = 314,
@@ -6454,7 +6567,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "MAGE",
             Zone = 1455,
-            _index = 573,
+            _index = 581,
         },
         {
             Waypoint = 314,
@@ -6463,7 +6576,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "MAGE",
             Zone = 1455,
-            _index = 574,
+            _index = 582,
         },
         {
             Waypoint = 314,
@@ -6472,7 +6585,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 12.0,
             Class = "MAGE",
             Zone = 1455,
-            _index = 575,
+            _index = 583,
         },
         {
             Waypoint = 314,
@@ -6481,7 +6594,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 576,
+            _index = 584,
         },
         {
             Waypoint = 314,
@@ -6490,7 +6603,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 577,
+            _index = 585,
         },
         {
             Waypoint = 314,
@@ -6499,7 +6612,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 578,
+            _index = 586,
         },
         {
             Waypoint = 314,
@@ -6508,7 +6621,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 579,
+            _index = 587,
         },
         {
             Waypoint = 314,
@@ -6517,7 +6630,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20.0,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 580,
+            _index = 588,
         },
         {
             Waypoint = 314,
@@ -6526,7 +6639,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 12.0,
             Class = "PALADIN",
             Zone = 1455,
-            _index = 581,
+            _index = 589,
         },
         {
             LearnSkill = { spellID = 122 },
@@ -6536,7 +6649,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 314,
             MinLevel = 10,
             Zone = 1455,
-            _index = 582,
+            _index = 590,
         },
         {
             LearnSkill = { spellID = 633 },
@@ -6546,7 +6659,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 314,
             MinLevel = 10,
             Zone = 1455,
-            _index = 583,
+            _index = 591,
         },
         {
             BuyMerchant = { { quantity = 3, itemID = 3172, questID = 418 } },
@@ -6559,7 +6672,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 584,
+            _index = 592,
         },
         {
             BuyMerchant = { { quantity = 3, itemID = 3173, questID = 418 } },
@@ -6572,7 +6685,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 585,
+            _index = 593,
         },
         {
             BuyMerchant = { { quantity = 3, itemID = 3174, questID = 418 } },
@@ -6585,7 +6698,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 586,
+            _index = 594,
         },
         {
             BuyMerchant = { { itemID = 769, quantity = 50 }, { itemID = 2672, quantity = 50 } },
@@ -6597,7 +6710,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 587,
+            _index = 595,
         },
         {
             BuyMerchant = { { itemID = 3172, quantity = 3, questID = 418 } },
@@ -6609,7 +6722,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { skill = "cooking", rank = 50, operator = ">=" },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 588,
+            _index = 596,
         },
         {
             BuyMerchant = { { itemID = 3173, quantity = 3, questID = 418 } },
@@ -6621,7 +6734,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { skill = "cooking", rank = 50, operator = ">=" },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 589,
+            _index = 597,
         },
         {
             BuyMerchant = { { itemID = 3174, quantity = 3, questID = 418 } },
@@ -6633,7 +6746,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Skill = { skill = "cooking", rank = 50, operator = ">=" },
             SkipInZones = { 1426 },
             Zone = 1455,
-            _index = 590,
+            _index = 598,
         },
         {
             Waypoint = 314,
@@ -6641,7 +6754,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 53.47, 35.02),
             Range = 5,
             Zone = 1426,
-            _index = 591,
+            _index = 599,
         },
         {
             PickUp = { 96408 },
@@ -6649,7 +6762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -682.3, y = -5489.0 },
             RaidIcon = { { npcID = 1376, questID = 96408 } },
             Zone = 1426,
-            _index = 592,
+            _index = 600,
         },
         {
             Waypoint = 314,
@@ -6658,7 +6771,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             IsQuestUncompleted = 314,
             Zone = 1426,
-            _index = 593,
+            _index = 601,
         },
         {
             Waypoint = 314,
@@ -6667,7 +6780,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             IsQuestUncompleted = 314,
             Zone = 1426,
-            _index = 594,
+            _index = 602,
         },
         {
             Note = { "KITE_ENEMY_BACK_QUEST_GIVER" },
@@ -6675,14 +6788,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.538, 46.195),
             IsQuestUncompleted = 314,
             Zone = 1426,
-            _index = 595,
+            _index = 603,
         },
         {
             PickUp = { 314 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1304.71, y = -5513.86 },
             Zone = 1426,
-            _index = 596,
+            _index = 604,
         },
         {
             Qpart = { [314] = { 1 } },
@@ -6691,14 +6804,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.436, 50.393),
             Range = 30,
             Zone = 1426,
-            _index = 597,
+            _index = 605,
         },
         {
             Done = { 314 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1304.71, y = -5513.86 },
             Zone = 1426,
-            _index = 598,
+            _index = 606,
         },
         {
             Done = { 96408 },
@@ -6706,7 +6819,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             RaidIcon = { { npcID = 264936, questID = 96408 } },
             Zone = 1426,
-            _index = 599,
+            _index = 607,
         },
         {
             PickUp = { 96392 },
@@ -6714,7 +6827,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             RaidIcon = { { npcID = 264936, questID = 96392 } },
             Zone = 1426,
-            _index = 600,
+            _index = 608,
         },
         {
             Waypoint = 96392,
@@ -6722,7 +6835,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
             Zone = 1426,
-            _index = 601,
+            _index = 609,
         },
         {
             Note = { "PRESS_ESCAPE_CANCEL_FARSIGHT" },
@@ -6732,12 +6845,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             HasAura = 1293681,
             IsQuestUncompleted = 96392,
             Zone = 1426,
-            _index = 602,
+            _index = 610,
         },
         {
             Qpart = { [96392] = { 1 } },
             NoArrow = true,
-            _index = 603,
+            _index = 611,
         },
         {
             Done = { 96392 },
@@ -6746,7 +6859,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             RaidIcon = { { npcID = 264936, questID = 96392 } },
             Zone = 1426,
-            _index = 604,
+            _index = 612,
         },
         {
             PickUp = { 96390 },
@@ -6755,7 +6868,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             RaidIcon = { { npcID = 264936, questID = 96390 } },
             Zone = 1426,
-            _index = 605,
+            _index = 613,
         },
         {
             LearnProfession = 2550,
@@ -6765,7 +6878,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 432,
             MinLevel = 5,
             Zone = 1426,
-            _index = 606,
+            _index = 614,
         },
         {
             Waypoint = 433,
@@ -6773,7 +6886,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1579.96, y = -5714.73 },
             Range = 5,
             Zone = 1426,
-            _index = 607,
+            _index = 615,
         },
         {
             PickUp = { 433 },
@@ -6781,7 +6894,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1579.96, y = -5714.73 },
             RaidIcon = { { npcID = 1977, questID = 433 } },
             Zone = 1426,
-            _index = 608,
+            _index = 616,
         },
         {
             PickUp = { 432 },
@@ -6789,7 +6902,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1600.3, y = -5726.59 },
             RaidIcon = { { npcID = 1254, questID = 432 } },
             Zone = 1426,
-            _index = 609,
+            _index = 617,
         },
         {
             LearnProfession = 2575,
@@ -6801,7 +6914,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 432,
             MinLevel = 5,
             Zone = 1426,
-            _index = 610,
+            _index = 618,
         },
         {
             UseSpell = { spellID = 2580, questID = 432 },
@@ -6811,7 +6924,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             HasSpell = 2575,
             Zone = 1426,
-            _index = 611,
+            _index = 619,
         },
         {
             Waypoint = 433,
@@ -6820,7 +6933,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 433,
             Not = { IsQuestReadyForTurnIn = 433 },
             Zone = 1426,
-            _index = 612,
+            _index = 620,
         },
         {
             Waypoint = 433,
@@ -6829,7 +6942,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestOnQuest = 433,
             Not = { IsQuestReadyForTurnIn = 433 },
             Zone = 1426,
-            _index = 613,
+            _index = 621,
         },
         {
             Qpart = { [432] = { 1 }, [433] = { 1 } },
@@ -6839,7 +6952,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1677.92, y = -5663.05 },
             Range = 30,
             Zone = 1426,
-            _index = 614,
+            _index = 622,
         },
         {
             Waypoint = 433,
@@ -6847,7 +6960,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 5,
             IsQuestOnQuest = 433,
             Zone = 1426,
-            _index = 615,
+            _index = 623,
         },
         {
             Waypoint = 432,
@@ -6855,7 +6968,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1600.3, y = -5726.59 },
             Range = 5,
             Zone = 1426,
-            _index = 616,
+            _index = 624,
         },
         {
             Done = { 433 },
@@ -6863,7 +6976,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1579.96, y = -5714.73 },
             RaidIcon = { { npcID = 1977, questID = 433 } },
             Zone = 1426,
-            _index = 617,
+            _index = 625,
         },
         {
             Done = { 432 },
@@ -6871,7 +6984,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1600.3, y = -5726.59 },
             RaidIcon = { { npcID = 1254, questID = 432 } },
             Zone = 1426,
-            _index = 618,
+            _index = 626,
         },
         {
             Done = { 95213 },
@@ -6879,7 +6992,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1606.02, y = -5676.35 },
             IsQuestOnQuest = 95213,
             Zone = 1426,
-            _index = 619,
+            _index = 627,
         },
         {
             PickUp = { 95214 },
@@ -6887,7 +7000,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1606.02, y = -5676.35 },
             IsQuestCompleted = 95213,
             Zone = 1426,
-            _index = 620,
+            _index = 628,
         },
         {
             Waypoint = 96390,
@@ -6897,7 +7010,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             SkipForLvl = 15,
             Zone = 1426,
-            _index = 621,
+            _index = 629,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
@@ -6909,7 +7022,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             ItemCount = { itemID = 1179, count = 1, operator = "<" },
             SkipForLvl = 15,
             Zone = 1426,
-            _index = 622,
+            _index = 630,
         },
         {
             DropQuest = 95213,
@@ -6922,7 +7035,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             IsQuestUncompleted = 95213,
             ItemCount = { itemID = 268548, count = 1, operator = ">=" },
             Zone = 1426,
-            _index = 623,
+            _index = 631,
         },
         {
             Waypoint = 96390,
@@ -6930,7 +7043,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2009.87, y = -5860.22 },
             Range = 20,
             Zone = 1426,
-            _index = 624,
+            _index = 632,
         },
         {
             Done = { 95213 },
@@ -6938,7 +7051,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1606.02, y = -5676.35 },
             IsQuestOnQuest = 95213,
             Zone = 1426,
-            _index = 625,
+            _index = 633,
         },
         {
             PickUp = { 95214 },
@@ -6946,7 +7059,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1606.02, y = -5676.35 },
             IsQuestCompleted = 95213,
             Zone = 1426,
-            _index = 626,
+            _index = 634,
         },
         {
             Qpart = { [96390] = { 1 } },
@@ -6955,7 +7068,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             RaidIcon = { { npcID = 6123, questID = 96390, objectiveIndex = 1 } },
             Zone = 1426,
-            _index = 627,
+            _index = 635,
         },
         {
             DropQuest = 96391,
@@ -6963,7 +7076,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Fillers = { [91775] = { 2 }, [95214] = { 1 } },
             Coord = { x = -2034.49, y = -5922.6 },
             Zone = 1426,
-            _index = 628,
+            _index = 636,
         },
         {
             Qpart = { [95214] = { 1 } },
@@ -6972,7 +7085,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             IsQuestOnQuest = 95214,
             Zone = 1426,
-            _index = 629,
+            _index = 637,
         },
         {
             Done = { 95214 },
@@ -6980,7 +7093,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1606.02, y = -5676.35 },
             IsQuestOnQuest = 95214,
             Zone = 1426,
-            _index = 630,
+            _index = 638,
         },
         {
             Done = { 96390, 96391 },
@@ -6988,7 +7101,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             RaidIcon = { { npcID = 264936 } },
             Zone = 1426,
-            _index = 631,
+            _index = 639,
         },
         {
             PickUp = { 96393 },
@@ -6996,7 +7109,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -1394.24, y = -5797.83 },
             IsQuestCompleted = 96391,
             Zone = 1426,
-            _index = 632,
+            _index = 640,
         },
         {
             Waypoint = 419,
@@ -7004,7 +7117,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2197.02, y = -5279.07 },
             Range = 20,
             Zone = 1426,
-            _index = 633,
+            _index = 641,
         },
         {
             PickUp = { 419 },
@@ -7012,21 +7125,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2329.6, y = -5163.76 },
             RaidIcon = { { npcID = 1960, questID = 419 } },
             Zone = 1426,
-            _index = 634,
+            _index = 642,
         },
         {
             Done = { 419 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -2121.76, y = -5064.7 },
             Zone = 1426,
-            _index = 635,
+            _index = 643,
         },
         {
             PickUp = { 417 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -2121.76, y = -5064.7 },
             Zone = 1426,
-            _index = 636,
+            _index = 644,
         },
         {
             Qpart = { [417] = { 1 } },
@@ -7035,7 +7148,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 10,
             RaidIcon = { { npcID = 1961, questID = 417, objectiveIndex = 1 } },
             Zone = 1426,
-            _index = 637,
+            _index = 645,
         },
         {
             Done = { 417 },
@@ -7043,7 +7156,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Coord = { x = -2329.6, y = -5163.76 },
             RaidIcon = { { npcID = 1960, questID = 417 } },
             Zone = 1426,
-            _index = 638,
+            _index = 646,
         },
         {
             Grind = 10,
@@ -7051,7 +7164,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 30,
             AnyOf = { { IsQuestNotOnQuest = 416, IsQuestUncompleted = 416 }, { IsQuestNotOnQuest = 224, IsQuestUncompleted = 224 }, { IsQuestNotOnQuest = 267, IsQuestUncompleted = 267 } },
             Zone = 1426,
-            _index = 639,
+            _index = 647,
         },
         {
             Waypoint = 353,
@@ -7060,11 +7173,11 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             Range = 20,
             SkipInZones = { 1432 },
             Zone = 1426,
-            _index = 640,
+            _index = 648,
         },
         {
             RouteCompleted = true,
-            _index = 641,
+            _index = 649,
         },
     },
 }
