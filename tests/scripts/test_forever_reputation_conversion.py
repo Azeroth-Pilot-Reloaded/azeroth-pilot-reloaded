@@ -24,11 +24,20 @@ class ReputationConversionTests(unittest.TestCase):
                       [(5, 'gather'), (8, 'exchange')])
         self.activities = {'gather': {'enUS': 'Gather tokens.', 'frFR': 'Récupérez les jetons.'},
                            'exchange': {'enUS': 'Exchange tokens.', 'frFR': 'Échangez les jetons.'}}
+        localization = self.root / 'localization'
+        localization.mkdir()
+        catalog = {
+            locale: {f'FOREVER_REPUTATION_ACTIVITY_{activity.upper()}': values[locale]
+                     for activity, values in self.activities.items()}
+            for locale in ('enUS', 'frFR')
+        }
+        localization.joinpath('forever-reputation-translations.json').write_text(
+            json.dumps(catalog, ensure_ascii=False), encoding='utf-8')
         self.source.joinpath('invented.guide').write_text(
             'guide fixture\n  rep 98765 Friendly\n  rep 98765 Exalted optional\n', encoding='utf-8')
         self.addCleanup(patch.stopall)
         patch.object(converter, 'CATALOG', [self.entry]).start()
-        patch.object(converter, 'all_activities', return_value=self.activities).start()
+        patch.object(converter, 'LOCALIZATION_ROOT', localization).start()
 
     def test_builds_native_progression_and_separate_translation_export(self):
         converter.build(self.source, self.output, self.translations)
