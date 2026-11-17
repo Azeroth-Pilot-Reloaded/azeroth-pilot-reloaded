@@ -1,8 +1,17 @@
 """Authoring tool behavior uses invented contracts, never a shipped itinerary."""
 import unittest
+from contextlib import closing, redirect_stdout
+import io
+import json
+from pathlib import Path
+import sqlite3
+import sys
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 from lupa.lua51 import LuaRuntime
 from tools.forever.build_dungeons import lua, quest_dependencies, schedule_quests, step_blocks, replace_step_blocks
+from tools.forever import build_dungeons
 
 
 class DungeonAuthoringTests(unittest.TestCase):
@@ -64,6 +73,47 @@ class DungeonAuthoringTests(unittest.TestCase):
         self.assertEqual(lua(a), lua(b))
         table = LuaRuntime().eval(lua(a))
         self.assertEqual(list(table.encounters[90002].values()), [91002, 91003])
+
+    def test_instance_export_preserves_independent_leveling_chapters(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, reference = root / 'source', root / 'reference'
+            source.mkdir()
+            reference.mkdir()
+            (source / 'Data.lua').write_text('local _, ns = ...; ns.data = {}; ns.dungeons = {}', encoding='utf-8')
+            (source / 'Curated.lua').write_text('local _, ns = ...; ns.curated = {}; ns.curatedDungeons = {}', encoding='utf-8')
+            encounters = source / 'encounters.lua'
+            encounters.write_text('', encoding='utf-8')
+            for name in ('npc', 'quest', 'quest_start', 'quest_end', 'quest_objective', 'ui_map'):
+                (reference / (name + '.jsonl')).write_text('', encoding='utf-8')
+            database = root / 'quests.sqlite3'
+            with closing(sqlite3.connect(database)) as db, db:
+                db.execute('CREATE TABLE entities(kind TEXT, id INTEGER, data_json TEXT)')
+                db.execute('CREATE TABLE support(name TEXT, data_json TEXT)')
+                db.execute('INSERT INTO support VALUES (?, ?)', ('ZoneDB', json.dumps({
+                    'private': {'areaIdToUiMapId': ''}, 'instanceIdToAreaId': {}})))
+            catalog = root / 'APR-Core/data/Dungeons/DungeonsForever.lua'
+            catalog.parent.mkdir(parents=True)
+            catalog.write_text('APR.DungeonData = { forever = {} }', encoding='utf-8')
+            chapters = []
+            for faction in ('Alliance', 'Horde'):
+                chapter = root / 'Routes/Forever/Dungeons' / faction / 'invented.lua'
+                chapter.parent.mkdir(parents=True)
+                chapter.write_text('APR.RouteQuestStepList["invented-' + faction + '"] = {\n'
+                    '    nextRoute = {\n        { route = "invented-successor" },\n    },\n'
+                    '    parallelSteps = {{steps = {{PickUp={80002}, _index=1}}}},\n'
+                    '    steps = {\n        {PickUp={80001}, _index=1},\n'
+                    '        {Boat=true, _index=2},\n        {RouteCompleted=true, _index=3},\n    },\n}\n',
+                    encoding='utf-8')
+                chapters.append((chapter, chapter.read_bytes()))
+            arguments = ['build_dungeons', '--instance-source', str(source), '--quest-database', str(database),
+                         '--reference-data', str(reference), '--encounter-reference', str(encounters),
+                         '--translations', str(root / 'translations.json')]
+            with patch.object(build_dungeons, 'ROOT', root), patch.object(sys, 'argv', arguments), redirect_stdout(io.StringIO()):
+                build_dungeons.main()
+            self.assertTrue((root / '.cache/forever-dungeons/review.json').is_file())
+            for chapter, expected in chapters:
+                self.assertEqual(chapter.read_bytes(), expected)
 
 
 if __name__ == "__main__":

@@ -16,7 +16,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     },
     parallelSteps = {
         {
-            conditions = { ItemCount = { itemID = 10441, count = 1 }, IsQuestNotOnQuest = 6981, IsQuestUncompleted = 6981, MinLevel = 15 },
+            conditions = {
+                ItemCount = { itemID = 10441, count = 1 },
+                IsQuestNotOnQuest = 6981,
+                IsQuestUncompleted = 6981,
+                MinLevel = 15,
+            },
             steps = {
                 {
                     PickUp = { 6981 },
@@ -42,9 +47,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             _index = 1,
         },
         {
-            Qpart = {
-                [865] = { 1 },
-            },
+            Qpart = { [865] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 57.04, 53.01),
             IsQuestOnQuest = 865,
             Zone = 1413,
@@ -74,9 +77,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             _index = 4,
         },
         {
-            Qpart = {
-                [870] = { 1 },
-            },
+            Qpart = { [870] = { 1 } },
             Coord = { x = -1943.16, y = 89.64 },
             IsQuestOnQuest = 870,
             Zone = 1413,
@@ -101,18 +102,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
                 npcID = 3448,
                 questID = 877,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 870,
-            } },
+            AnyOf = { { IsQuestCompleted = 870 } },
             Faction = "Horde",
             MinLevel = 10,
             Zone = 1413,
             _index = 7,
         },
         {
-            Qpart = {
-                [877] = { 1 },
-            },
+            Qpart = { [877] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 55.61, 42.75),
             IsQuestOnQuest = 877,
             Zone = 1413,
@@ -137,18 +134,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
                 npcID = 3448,
                 questID = 880,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 877,
-            } },
+            AnyOf = { { IsQuestCompleted = 877 } },
             Faction = "Horde",
             MinLevel = 10,
             Zone = 1413,
             _index = 10,
         },
         {
-            Qpart = {
-                [880] = { 1 },
-            },
+            Qpart = { [880] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.1, 38.85),
             IsQuestOnQuest = 880,
             Zone = 1413,
@@ -173,9 +166,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
                 npcID = 3448,
                 questID = 1489,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 880,
-            } },
+            AnyOf = { { IsQuestCompleted = 880 } },
             Faction = "Horde",
             MinLevel = 12,
             Zone = 1413,
@@ -200,9 +191,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
                 npcID = 5769,
                 questID = 1490,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 1489,
-            } },
+            AnyOf = { { IsQuestCompleted = 1489 } },
             Faction = "Horde",
             MinLevel = 12,
             Zone = 1456,
@@ -364,7 +353,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2134.68, y = -764.35 },
             Range = 30,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1413,
             _index = 29,
         },
@@ -373,7 +365,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2122.52, y = -734.62 },
             Range = 20,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1413,
             _index = 30,
         },
@@ -382,7 +377,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2061.94, y = -781.68 },
             Range = 20,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1414,
             _index = 31,
         },
@@ -391,7 +389,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2028.82, y = -828.29 },
             Range = 10,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1414,
             _index = 32,
         },
@@ -400,7 +401,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2021.46, y = -816.03 },
             Range = 10,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1414,
             _index = 33,
         },
@@ -409,7 +413,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
-            AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
+            AnyOf = {
+                { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 },
+                { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 },
+            },
             Zone = 1414,
             _index = 34,
         },
@@ -641,7 +648,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [962] = { 1 } },
-            Note = { "LOOT_SERPENTBLOOM_GROUND", "RECOMMENDED_MAXIMUM_3_PLAYERS_ATTEMPT_COMPLETE", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
+            Note = {
+                "LOOT_SERPENTBLOOM_GROUND",
+                "RECOMMENDED_MAXIMUM_3_PLAYERS_ATTEMPT_COMPLETE",
+                "FIND_HERBS_ENABLED_SEE_MINIMAP",
+            },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
@@ -709,7 +720,23 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Coord = { x = -2454.9, y = -766.38 },
             Range = 15,
             ZoneStepTrigger = { x = -2454.9, y = -766.38, Range = 15, mapID = 1413 },
-            AnyOf = { { IsQuestOnQuest = 6981 }, { Faction = "Horde", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3369, IsQuestUncompleted = 3369 }, { Faction = "Alliance", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3370, IsQuestUncompleted = 3370 } },
+            AnyOf = {
+                { IsQuestOnQuest = 6981 },
+                {
+                    Faction = "Horde",
+                    MinLevel = 15,
+                    IsQuestCompleted = 6981,
+                    IsQuestNotOnQuest = 3369,
+                    IsQuestUncompleted = 3369,
+                },
+                {
+                    Faction = "Alliance",
+                    MinLevel = 15,
+                    IsQuestCompleted = 6981,
+                    IsQuestNotOnQuest = 3370,
+                    IsQuestUncompleted = 3370,
+                },
+            },
             OnlyInZones = { 1413 },
             Zone = 1413,
             _index = 68,
@@ -719,7 +746,23 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Coord = { x = -2301.88, y = -640.03 },
             Range = 15,
             ZoneStepTrigger = { x = -2301.88, y = -640.03, Range = 15, mapID = 1413 },
-            AnyOf = { { IsQuestOnQuest = 6981 }, { Faction = "Horde", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3369, IsQuestUncompleted = 3369 }, { Faction = "Alliance", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3370, IsQuestUncompleted = 3370 } },
+            AnyOf = {
+                { IsQuestOnQuest = 6981 },
+                {
+                    Faction = "Horde",
+                    MinLevel = 15,
+                    IsQuestCompleted = 6981,
+                    IsQuestNotOnQuest = 3369,
+                    IsQuestUncompleted = 3369,
+                },
+                {
+                    Faction = "Alliance",
+                    MinLevel = 15,
+                    IsQuestCompleted = 6981,
+                    IsQuestNotOnQuest = 3370,
+                    IsQuestUncompleted = 3370,
+                },
+            },
             OnlyInZones = { 1413 },
             Zone = 1413,
             _index = 69,

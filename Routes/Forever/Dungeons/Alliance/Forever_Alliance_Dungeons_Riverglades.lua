@@ -531,7 +531,10 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         },
         {
             Qpart = { [95643] = { 2, 1 }, [95642] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_CRYSTAL_CATALYST_ABSORB_MAGIC", "FOREVER_RIVERGLADES_CRYSTAL_CATALYST_COMBAT_ADVICE" },
+            Note = {
+                "FOREVER_RIVERGLADES_CRYSTAL_CATALYST_ABSORB_MAGIC",
+                "FOREVER_RIVERGLADES_CRYSTAL_CATALYST_COMBAT_ADVICE",
+            },
             Coord = { x = -4207.55, y = -8093.95 },
             Range = 30,
             Button = { ["95643-2"] = 269990, ["95643-1"] = 269990, ["95642-1"] = 269990 },
@@ -909,7 +912,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         {
             Qpart = { [94963] = { 1 } },
             Fillers = { [94879] = { 1 }, [94961] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_FUZZLE_ESCORT_TREASURE", "FOREVER_RIVERGLADES_FUZZLE_BETRAYAL", "FOREVER_RIVERGLADES_FUZZLE_TWILIGHT_OBJECTIVES" },
+            Note = {
+                "FOREVER_RIVERGLADES_FUZZLE_ESCORT_TREASURE",
+                "FOREVER_RIVERGLADES_FUZZLE_BETRAYAL",
+                "FOREVER_RIVERGLADES_FUZZLE_TWILIGHT_OBJECTIVES",
+            },
             Range = 30,
             NoArrow = true,
             RaidIcon = 259179,
@@ -947,7 +954,10 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         },
         {
             LootItems = { { itemID = 266427, quantity = 1 } },
-            Note = { "FOREVER_RIVERGLADES_TWILIGHT_NEOPHYTES_KILL", "FOREVER_RIVERGLADES_TWILIGHT_CHARM_BONES_AND_LOG_LOOT" },
+            Note = {
+                "FOREVER_RIVERGLADES_TWILIGHT_NEOPHYTES_KILL",
+                "FOREVER_RIVERGLADES_TWILIGHT_CHARM_BONES_AND_LOG_LOOT",
+            },
             Coord = { x = -4163.55, y = -8060.05 },
             Range = 30,
             RaidIcon = 256952,
@@ -1577,7 +1587,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         {
             Qpart = { [95986] = { 1 } },
             Fillers = { [95991] = { 1 }, [94925] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_OMBASSA_CALL_SUMMON", "FOREVER_RIVERGLADES_OMBASSA_SUMMON_WARNING", "FOREVER_RIVERGLADES_OMBASSA_GROUP_SUMMON_ADVICE" },
+            Note = {
+                "FOREVER_RIVERGLADES_OMBASSA_CALL_SUMMON",
+                "FOREVER_RIVERGLADES_OMBASSA_SUMMON_WARNING",
+                "FOREVER_RIVERGLADES_OMBASSA_GROUP_SUMMON_ADVICE",
+            },
             Coord = { x = -4765.7, y = -8235.45 },
             Range = 30,
             Button = { ["95986-1"] = 271779 },
@@ -1671,7 +1685,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         {
             Qpart = { [94861] = { 1 } },
             Fillers = { [95991] = { 1 }, [96009] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_HURLEY_RESCUE_CURLY", "FOREVER_RIVERGLADES_HURLEY_CRAWFISH_ESCORT", "FOREVER_RIVERGLADES_ENEMIES_LATER_OPPORTUNITIES" },
+            Note = {
+                "FOREVER_RIVERGLADES_HURLEY_RESCUE_CURLY",
+                "FOREVER_RIVERGLADES_HURLEY_CRAWFISH_ESCORT",
+                "FOREVER_RIVERGLADES_ENEMIES_LATER_OPPORTUNITIES",
+            },
             Range = 30,
             NoArrow = true,
             Not = { IsQuestReadyForTurnIn = 94842 },
@@ -1772,7 +1790,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
             Waypoint = 95792,
             NonSkippableWaypoint = true,
             Fillers = { [95792] = { 2, 1 } },
-            Note = { "FOREVER_RIVERGLADES_SCALDARON_HEAD_START_QUEST", "FOREVER_RIVERGLADES_SCALDARON_GROUP_WARNING", "FOREVER_RIVERGLADES_ABSENT_TARGET_SKIP" },
+            Note = {
+                "FOREVER_RIVERGLADES_SCALDARON_HEAD_START_QUEST",
+                "FOREVER_RIVERGLADES_SCALDARON_GROUP_WARNING",
+                "FOREVER_RIVERGLADES_ABSENT_TARGET_SKIP",
+            },
             Coord = { x = -3373.8, y = -8807.4 },
             Range = 30.0,
             RaidIcon = 263141,
@@ -1782,7 +1804,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         {
             LootItems = { { itemID = 271612, quantity = 1, questID = 95935 } },
             Fillers = { [95792] = { 2, 1 } },
-            Note = { "FOREVER_RIVERGLADES_SCALDARON_HEAD_START_QUEST", "FOREVER_RIVERGLADES_SCALDARON_GROUP_WARNING", "FOREVER_RIVERGLADES_ABSENT_TARGET_SKIP" },
+            Note = {
+                "FOREVER_RIVERGLADES_SCALDARON_HEAD_START_QUEST",
+                "FOREVER_RIVERGLADES_SCALDARON_GROUP_WARNING",
+                "FOREVER_RIVERGLADES_ABSENT_TARGET_SKIP",
+            },
             Coord = { x = -3419.8, y = -8833.5 },
             RaidIcon = 263141,
             IsQuestNotOnQuest = 95935,
@@ -1989,10 +2015,21 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
         },
         {
             LootItems = { { itemID = 11307, quantity = 1 } },
-            Note = { "FOREVER_RIVERGLADES_FREDERICK_LONGBOW_CHECK", "FOREVER_RIVERGLADES_RAZOR_ARROWS_RESTOCK", "FOREVER_RIVERGLADES_MISSING_STOCK_SKIP" },
+            Note = {
+                "FOREVER_RIVERGLADES_FREDERICK_LONGBOW_CHECK",
+                "FOREVER_RIVERGLADES_RAZOR_ARROWS_RESTOCK",
+                "FOREVER_RIVERGLADES_MISSING_STOCK_SKIP",
+            },
             Coord = { x = 706.15, y = -8795.15 },
             Class = "HUNTER",
-            EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 21.96, precision = 1, allowMissing = true },
+            EquippedItemStat = {
+                slot = 18,
+                stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT",
+                operator = "<",
+                value = 21.96,
+                precision = 1,
+                allowMissing = true,
+            },
             ItemCount = { operator = "<", count = 1, itemID = 11307 },
             Zone = 1453,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
@@ -2272,11 +2309,19 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades"] = {
             _index = 265,
         },
         {
-            BuyMerchant = { { itemID = 4479, quantity = 8, questID = 1714 }, { itemID = 4480, quantity = 8, questID = 1714 }, { itemID = 4481, quantity = 8, questID = 1714 } },
+            BuyMerchant = {
+                { itemID = 4479, quantity = 8, questID = 1714 },
+                { itemID = 4480, quantity = 8, questID = 1714 },
+                { itemID = 4481, quantity = 8, questID = 1714 },
+            },
             Note = { "PLANNING_RUNNING_SCARLET_MONASTERY_BONEBITER_SKIP_STEP" },
             Coord = { x = -909.66645, y = -4957.8219 },
             Range = 13,
-            AnyOf = { { ItemCount = { itemID = 4479, count = 8, operator = "<" } }, { ItemCount = { itemID = 4480, count = 8, operator = "<" } }, { ItemCount = { itemID = 4481, count = 8, operator = "<" } } },
+            AnyOf = {
+                { ItemCount = { itemID = 4479, count = 8, operator = "<" } },
+                { ItemCount = { itemID = 4480, count = 8, operator = "<" } },
+                { ItemCount = { itemID = 4481, count = 8, operator = "<" } },
+            },
             Class = "WARRIOR",
             Zone = 1455,
             _index = 266,
@@ -2781,7 +2826,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades-II"] = {
         {
             Qpart = { [95165] = { 3 } },
             Fillers = { [95261] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_SHIP_CANNON_AMMUNITION_COLLECT", "FOREVER_RIVERGLADES_SHIP_CANNON_INTERACT_KEY", "FOREVER_RIVERGLADES_SHIP_CAMERA_ADVICE" },
+            Note = {
+                "FOREVER_RIVERGLADES_SHIP_CANNON_AMMUNITION_COLLECT",
+                "FOREVER_RIVERGLADES_SHIP_CANNON_INTERACT_KEY",
+                "FOREVER_RIVERGLADES_SHIP_CAMERA_ADVICE",
+            },
             Coord = { x = -6299.2, y = -7739.4 },
             Zone = 2548,
             _index = 48,
@@ -2826,7 +2875,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades-II"] = {
         {
             Qpart = { [95165] = { 1 } },
             Fillers = { [95261] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_SHIP_CANNON_AMMUNITION_COLLECT", "FOREVER_RIVERGLADES_SHIP_CANNON_INTERACT_KEY", "FOREVER_RIVERGLADES_SHIP_CAMERA_ADVICE" },
+            Note = {
+                "FOREVER_RIVERGLADES_SHIP_CANNON_AMMUNITION_COLLECT",
+                "FOREVER_RIVERGLADES_SHIP_CANNON_INTERACT_KEY",
+                "FOREVER_RIVERGLADES_SHIP_CAMERA_ADVICE",
+            },
             Coord = { x = -6173.7, y = -7299.8 },
             Zone = 2548,
             _index = 53,
@@ -2910,7 +2963,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades-II"] = {
             NonSkippableWaypoint = true,
             DroppableQuest = { MobId = 259056, Qid = 94926, Text = "Komuk" },
             Fillers = { [95261] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_DUNSTON_WAIT_CLEAR_OGRES", "FOREVER_RIVERGLADES_KOMUK_PATROL_KILL", "FOREVER_RIVERGLADES_KOMUK_GROUP_WARNING" },
+            Note = {
+                "FOREVER_RIVERGLADES_DUNSTON_WAIT_CLEAR_OGRES",
+                "FOREVER_RIVERGLADES_KOMUK_PATROL_KILL",
+                "FOREVER_RIVERGLADES_KOMUK_GROUP_WARNING",
+            },
             Coord = { x = -5104.7, y = -7253.1 },
             Range = 30.0,
             Button = { ["94926"] = 266889 },
@@ -3001,7 +3058,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Riverglades-II"] = {
             Qpart = { [96085] = { 1 } },
             DroppableQuest = { MobId = 259056, Qid = 94926, Text = "Komuk" },
             Fillers = { [95261] = { 1 }, [95991] = { 1 }, [95064] = { 1 }, [95426] = { 1 }, [95912] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_KREK_GROUP_WARNING", "FOREVER_RIVERGLADES_KOMUK_PATROL_KILL", "FOREVER_RIVERGLADES_KOMUK_GROUP_WARNING" },
+            Note = {
+                "FOREVER_RIVERGLADES_KREK_GROUP_WARNING",
+                "FOREVER_RIVERGLADES_KOMUK_PATROL_KILL",
+                "FOREVER_RIVERGLADES_KOMUK_GROUP_WARNING",
+            },
             Coord = { x = -4773.1, y = -7376.7 },
             Range = 30,
             Button = { ["94926"] = 266889 },

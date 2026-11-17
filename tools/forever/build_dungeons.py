@@ -3,10 +3,13 @@
 Supply an instance source directory (Data.lua, Curated.lua), a quest database
 and a corroborating JSONL dataset. Lua declarations run in an empty environment.
 No manifests or locale files are written. Existing detailed runs are preserved.
+Faction leveling chapters are authored independently and are never pruned by
+the standalone instance builder: their outdoor quests and travel connect runs.
 """
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 import hashlib
 import json
 import os
@@ -240,72 +243,6 @@ def replace_step_blocks(source, blocks):
     return source[:begin] + "{\n" + ",\n".join(result) + ",\n    }" + source[end:]
 
 
-def clean_legacy_routes(root, scope):
-    """Remove unrelated leveling activities without renaming historical keys."""
-    from tests.routes.route_loader import load_routes
-    paths = sorted(p for faction in ("Alliance", "Horde") for p in (root / "Routes/Forever/Dungeons" / faction).glob("*.lua"))
-    catalog = load_routes(paths)
-    count = 0
-    for path in paths:
-        matches = [(k, v) for k, v in catalog.routes.items() if catalog.sources[k] == path.relative_to(ROOT).as_posix()]
-        if len(matches) != 1:
-            raise ValueError("Legacy authoring expects one declaration per file")
-        key, route = matches[0]
-        name = path.name
-        instances = ([3065] if "Hall_of_Thanes" in name or "Loch_Modan" in name else
-                     [2999] if "Ruins_of_Lordaeron" in name else [36] if "Deadmines" in name or "Westfall" in name or "Elwynn" in name else
-                     [389] if "Ragefire" in name else [43] if "Wailing" in name else
-                     [43, 48] if "Darkshore" in name else [2999, 389, 33] if "Silverpine" in name else [389, 43, 47])
-        allowed = set().union(*(scope.get(i, set()) for i in instances))
-        source = path.read_text(encoding="utf-8")
-        _, _, blocks = step_blocks(source)
-        if len(blocks) != len(route["steps"]):
-            raise ValueError("Cannot align legacy steps: " + key)
-        kept = []
-        for step, block in zip(values(route["steps"]), blocks):
-            related = set()
-            for field in ("PickUp", "Done", "Qpart", "Waypoint", "UseFlightPath", "GetFP", "UseHS", "SetHS"):
-                value = step.get(field)
-                if isinstance(value, dict):
-                    related.update(value if field == "Qpart" else value.values())
-                elif isinstance(value, int):
-                    related.add(value)
-            if not related.intersection(allowed) and not step.get("Dungeon") and not step.get("RouteCompleted"):
-                continue
-            for field in ("PickUp", "Done", "Qpart", "Fillers"):
-                value = step.get(field)
-                if not isinstance(value, dict):
-                    continue
-                replacement = ({q: values(v) for q, v in value.items() if q in allowed}
-                               if field in ("Qpart", "Fillers") else [q for q in value.values() if q in allowed])
-                match = re.search(r"\b" + field + r"\s*=\s*\{", block)
-                if not match:
-                    continue
-                begin = block.index("{", match.start())
-                end = table_end(block, begin)
-                if replacement:
-                    block = block[:begin] + lua(replacement, 12) + block[end:]
-                else:
-                    stop = end + (1 if block[end:end + 1] == "," else 0)
-                    block = block[:match.start()] + block[stop:]
-            kept.append(block)
-        if not kept or "RouteCompleted" not in kept[-1]:
-            kept.append("{\n            RouteCompleted = true,\n            _index = 1,\n        }")
-        source = replace_step_blocks(source, kept)
-        source = re.sub(r'^        \{ route = "([^"]+)"[^\n]*\n',
-                        lambda match: match[0] if "-Dungeons-" in match[1] else "", source, flags=re.M)
-        # Remove leveling-only background shopping/training from these chapters.
-        match = re.search(r"^    parallelSteps = \{", source, re.M)
-        if match:
-            end = table_end(source, source.index("{", match.start()))
-            source = source[:match.start()] + source[end + 1:].lstrip("\n")
-        if len(kept) == 1 and "hiddenFromSelection" not in source:
-            source = source.replace("    steps = {", "    hiddenFromSelection = true,\n    steps = {", 1)
-        path.write_text(source, encoding="utf-8")
-        count += 1
-    return count
-
-
 def extend_detailed_route(path, entries, bosses, key):
     """Retain authored mechanics; add absent prerequisites, quests and bosses."""
     from tests.routes.route_loader import load_routes
@@ -371,7 +308,7 @@ def main():
     for row in encounter_rows:
         instance_npcs.setdefault(row.get("instance"), set()).update(values(row["npcs"]))
     dbpath = args.quest_database
-    with sqlite3.connect(f"file:{dbpath.as_posix()}?mode=ro", uri=True) as db:
+    with closing(sqlite3.connect(f"{dbpath.resolve().as_uri()}?mode=ro", uri=True)) as db:
         entities = {kind: {int(i): json.loads(raw) for i, raw in db.execute(
             "SELECT id,data_json FROM entities WHERE kind=?", (kind,))} for kind in ("Quest", "Npc", "Object", "Item")}
         zones = json.loads(db.execute("SELECT data_json FROM support WHERE name=?", ("ZoneDB",)).fetchone()[0])
@@ -416,7 +353,6 @@ def main():
     notes = []
     stats = []
     patches = []
-    quest_scope = {}
     translation_path = args.translations
     exports = json.loads(translation_path.read_text(encoding="utf-8")) if translation_path.exists() else {"enUS": {}, "frFR": {}}
     route_dir = args.output / "Routes/Forever/Dungeons/Shared"
@@ -556,7 +492,6 @@ def main():
             order.append(q)
         for q in sorted(closure):
             visit(q)
-        quest_scope[inst] = closure
         before, during, after = [], [], []
         quest_stages = []
         interior_related = set(selected)
@@ -747,8 +682,7 @@ def main():
     translations = args.translations
     translations.parent.mkdir(parents=True, exist_ok=True)
     translations.write_text(json.dumps(exports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    legacy = clean_legacy_routes(ROOT, quest_scope) if args.output.resolve() == ROOT else 0
-    print(json.dumps({"dungeons": len(stats), "newRoutes": sum(not s["preserved"] for s in stats), "legacyReviewed": legacy, "limitations": len(notes)}, indent=2))
+    print(json.dumps({"dungeons": len(stats), "newRoutes": sum(not s["preserved"] for s in stats), "limitations": len(notes)}, indent=2))
 
 
 if __name__ == "__main__":

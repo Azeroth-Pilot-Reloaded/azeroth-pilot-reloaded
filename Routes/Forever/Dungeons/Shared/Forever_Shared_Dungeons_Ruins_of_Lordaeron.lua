@@ -16,7 +16,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
     },
     parallelSteps = {
         {
-            conditions = { ItemCount = { itemID = 275521, count = 1 }, IsQuestNotOnQuest = 95204, IsQuestUncompleted = 95204, Faction = "Horde", MinLevel = 16 },
+            conditions = {
+                ItemCount = { itemID = 275521, count = 1 },
+                IsQuestNotOnQuest = 95204,
+                IsQuestUncompleted = 95204,
+                Faction = "Horde",
+                MinLevel = 16,
+            },
             steps = {
                 {
                     PickUp = { 95204 },
@@ -29,7 +35,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             },
         },
         {
-            conditions = { ItemCount = { itemID = 280438, count = 1 }, IsQuestNotOnQuest = 97288, IsQuestUncompleted = 97288, Faction = "Horde", MinLevel = 16 },
+            conditions = {
+                ItemCount = { itemID = 280438, count = 1 },
+                IsQuestNotOnQuest = 97288,
+                IsQuestUncompleted = 97288,
+                Faction = "Horde",
+                MinLevel = 16,
+            },
             steps = {
                 {
                     PickUp = { 97288 },
@@ -42,7 +54,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             },
         },
         {
-            conditions = { ItemCount = { itemID = 268579, count = 1 }, IsQuestNotOnQuest = 95189, IsQuestUncompleted = 95189, Faction = "Alliance", MinLevel = 16 },
+            conditions = {
+                ItemCount = { itemID = 268579, count = 1 },
+                IsQuestNotOnQuest = 95189,
+                IsQuestUncompleted = 95189,
+                Faction = "Alliance",
+                MinLevel = 16,
+            },
             steps = {
                 {
                     PickUp = { 95189 },
@@ -55,7 +73,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             },
         },
         {
-            conditions = { ItemCount = { itemID = 268535, count = 1 }, IsQuestNotOnQuest = 95195, IsQuestUncompleted = 95195, Faction = "Alliance", MinLevel = 16 },
+            conditions = {
+                ItemCount = { itemID = 268535, count = 1 },
+                IsQuestNotOnQuest = 95195,
+                IsQuestUncompleted = 95195,
+                Faction = "Alliance",
+                MinLevel = 16,
+            },
             steps = {
                 {
                     PickUp = { 95195 },
@@ -68,7 +92,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             },
         },
         {
-            conditions = { ItemCount = { itemID = 251270, count = 1 }, IsQuestNotOnQuest = 92415, IsQuestUncompleted = 92415, Faction = "Alliance", MinLevel = 15 },
+            conditions = {
+                ItemCount = { itemID = 251270, count = 1 },
+                IsQuestNotOnQuest = 92415,
+                IsQuestUncompleted = 92415,
+                Faction = "Alliance",
+                MinLevel = 15,
+            },
             steps = {
                 {
                     PickUp = { 92415 },
@@ -81,7 +111,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             },
         },
         {
-            conditions = { ItemCount = { itemID = 251520, count = 1 }, IsQuestNotOnQuest = 92415, IsQuestUncompleted = 92415, Faction = "Alliance", MinLevel = 15 },
+            conditions = {
+                ItemCount = { itemID = 251520, count = 1 },
+                IsQuestNotOnQuest = 92415,
+                IsQuestUncompleted = 92415,
+                Faction = "Alliance",
+                MinLevel = 15,
+            },
             steps = {
                 {
                     PickUp = { 92415 },
@@ -108,9 +144,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 1,
         },
         {
-            Qpart = {
-                [356] = { 1, 2 },
-            },
+            Qpart = { [356] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 77.83, 59.47),
             IsQuestOnQuest = 356,
             Zone = 1420,
@@ -141,9 +175,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 4,
         },
         {
-            Qpart = {
-                [447] = { 1, 2 },
-            },
+            Qpart = { [447] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 46.33, 49.63),
             IsQuestOnQuest = 447,
             Zone = 1421,
@@ -168,18 +200,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
                 npcID = 2055,
                 questID = 450,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 447,
-            } },
+            AnyOf = { { IsQuestCompleted = 447 } },
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1458,
             _index = 7,
         },
         {
-            Qpart = {
-                [450] = { 1 },
-            },
+            Qpart = { [450] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.98, 73.22),
             IsQuestOnQuest = 450,
             Zone = 1421,
@@ -204,18 +232,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
                 npcID = 1937,
                 questID = 451,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 450,
-            } },
+            AnyOf = { { IsQuestCompleted = 450 } },
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1421,
             _index = 10,
         },
         {
-            Qpart = {
-                [451] = { 1, 2, 3 },
-            },
+            Qpart = { [451] = { 1, 2, 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 70, 33.56),
             IsQuestOnQuest = 451,
             Zone = 1421,
@@ -240,18 +264,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
                 npcID = 1495,
                 questID = 99156,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 356,
-            } },
+            AnyOf = { { IsQuestCompleted = 356 } },
             Faction = "Horde",
             MinLevel = 6,
             Zone = 1420,
             _index = 13,
         },
         {
-            Qpart = {
-                [99156] = { 1 },
-            },
+            Qpart = { [99156] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 80.31, 45.52),
             IsQuestOnQuest = 99156,
             Zone = 1420,
@@ -586,18 +606,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
                 npcID = 14450,
                 questID = 95161,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 92415,
-            } },
+            AnyOf = { { IsQuestCompleted = 92415 } },
             Faction = "Alliance",
             MinLevel = 15,
             Zone = 1453,
             _index = 51,
         },
         {
-            Qpart = {
-                [95161] = { 1 },
-            },
+            Qpart = { [95161] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 95161,
             _index = 52,
@@ -615,8 +631,129 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 53,
         },
         {
-            RouteCompleted = true,
+            PickUp = { 97289 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97289,
+            } },
+            AnyOf = { { IsQuestCompleted = 97288 } },
+            Faction = "Horde",
+            MinLevel = 15,
+            Zone = 1458,
             _index = 54,
+        },
+        {
+            Done = { 97289 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.88, 61.7),
+            RaidIcon = { {
+                npcID = 271613,
+                questID = 97289,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 97289,
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 55,
+        },
+        {
+            PickUp = { 97290 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.88, 61.7),
+            RaidIcon = { {
+                npcID = 271613,
+                questID = 97290,
+            } },
+            AnyOf = { { IsQuestCompleted = 97289 } },
+            Faction = "Horde",
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 56,
+        },
+        {
+            Done = { 97290 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97290,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 97290,
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 57,
+        },
+        {
+            PickUp = { 97291 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97291,
+            } },
+            AnyOf = { { IsQuestCompleted = 97290 } },
+            Faction = "Horde",
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 58,
+        },
+        {
+            Qpart = { [97291] = { 1, 2, 3 } },
+            NoArrow = true,
+            Faction = "Horde",
+            IsQuestOnQuest = 97291,
+            MinLevel = 15,
+            _index = 59,
+        },
+        {
+            Done = { 97291 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97291,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 97291,
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 60,
+        },
+        {
+            PickUp = { 97292 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97292,
+            } },
+            AnyOf = { { IsQuestCompleted = 97291 } },
+            Faction = "Horde",
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 61,
+        },
+        {
+            Qpart = { [97292] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.98, 61.92),
+            Faction = "Horde",
+            IsQuestOnQuest = 97292,
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 62,
+        },
+        {
+            Done = { 97292 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 97292,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 97292,
+            MinLevel = 15,
+            Zone = 1458,
+            _index = 63,
+        },
+        {
+            RouteCompleted = true,
+            _index = 64,
         },
     },
 }

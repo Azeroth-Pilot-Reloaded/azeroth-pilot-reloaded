@@ -28,9 +28,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             _index = 1,
         },
         {
-            Qpart = {
-                [5726] = { 1 },
-            },
+            Qpart = { [5726] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 51.61, 10.15),
             IsQuestOnQuest = 5726,
             Zone = 1411,
@@ -55,18 +53,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
                 npcID = 4949,
                 questID = 5727,
             } },
-            AnyOf = { {
-                IsQuestCompleted = 5726,
-            } },
+            AnyOf = { { IsQuestCompleted = 5726 } },
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1454,
             _index = 4,
         },
         {
-            Qpart = {
-                [5727] = { 1 },
-            },
+            Qpart = { [5727] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.47, 50.59),
             IsQuestOnQuest = 5727,
             Zone = 1454,

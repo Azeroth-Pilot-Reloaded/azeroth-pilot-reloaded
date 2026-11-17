@@ -16,7 +16,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
     },
     parallelSteps = {
         {
-            conditions = { ItemCount = { itemID = 281030, count = 1 }, IsQuestNotOnQuest = 98423, IsQuestUncompleted = 98423, Faction = "Alliance", MinLevel = 9 },
+            conditions = {
+                ItemCount = { itemID = 281030, count = 1 },
+                IsQuestNotOnQuest = 98423,
+                IsQuestUncompleted = 98423,
+                Faction = "Alliance",
+                MinLevel = 9,
+            },
             steps = {
                 {
                     PickUp = { 98423 },
