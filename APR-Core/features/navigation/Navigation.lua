@@ -897,6 +897,13 @@ function nav:GetRemainingSeconds(walkSpeedFor)
     for index = self.cursor, #self.queue do
         local step = self.queue[index]
         local duration = step.seconds or 0
+        if step.kind == "verify_taxi" then
+            -- This queue stops at the master, but comparisons still cover the
+            -- potential flight and the walk from its arrival to the objective.
+            -- Missing estimates cannot make an incomplete trip appear free.
+            duration = step.probeDestination and (duration + walkSeconds(step.probeDestination, self.destination))
+                or math.huge
+        end
         if step.kind == "walk" then
             local from = index == self.cursor and position or step.from
             duration = walkSeconds(from, step.to)
@@ -1276,6 +1283,7 @@ function nav:PrepareGuidanceStep(segment, index, generation, position)
         hearthstone = segment.hearthstone == true,
         canStart = segment.canStart,
         seconds = segment.seconds or 0,
+        probeDestination = segment.probeDestination,
         copper = segment.copper or 0,
         arrivalZTolerance = segment.arrivalZTolerance,
         fromNodeID = segment.fromNodeID,
@@ -1635,6 +1643,8 @@ function nav:Update(context)
                         to = probe.from,
                         fromNodeID = probe.fromNodeID,
                         toNodeID = probe.toNodeID,
+                        seconds = probe.flightSeconds,
+                        probeDestination = probe.flightDestination,
                         instruction = L["NAVIGATION_CONSULT_TAXI"],
                         contextKey = contextKey,
                     },

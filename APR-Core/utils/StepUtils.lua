@@ -937,14 +937,56 @@ local function NormalizeZoneList(value)
 end--[[APR_DIAG]]
 NormalizeZoneList = APRTrace("APR-Core/utils/StepUtils.lua:689:NormalizeZoneList#27", NormalizeZoneList)--[[/APR_DIAG]]
 
---- Normalize a step's zone definition into a list, falling back to the route map id.
+local coordinateMaps = setmetatable({}, { __mode = "k" })
+local function PublicCoordinateNumber(value)
+    return not (issecretvalue and issecretvalue(value))
+        and type(value) == "number" and value == value and value > -math.huge and value < math.huge
+end--[[APR_DIAG]]; PublicCoordinateNumber = APRTrace("APR-Core/utils/StepUtils.lua:901:PublicCoordinateNumber#34", PublicCoordinateNumber)--[[/APR_DIAG]]
+
+-- A route's starting map is only a hint for unannotated world coordinates.
+-- Replace it only when its outdoor bounds exclude the point and the client
+-- identifies a local map containing it. Explicit zones/floors stay authoritative.
+local function CoordinateMap(self, step, fallbackMapID)
+    local coord = step and step.Coord
+    if type(coord) ~= "table" then return nil end
+    if coord.mapID then return coord.mapID end
+    local data = self.NavigationData
+    local project = data and data.env and data.env.worldToMap
+    if not project or not PublicCoordinateNumber(fallbackMapID)
+        or not PublicCoordinateNumber(coord.x) or not PublicCoordinateNumber(coord.y)
+        or (coord.instanceID ~= nil and not PublicCoordinateNumber(coord.instanceID)) then return nil end
+    local cached = coordinateMaps[coord]
+    if cached and cached.data == data and cached.positions == data.positions
+        and cached.revision == self.navigationGeometryRevision and cached.fallback == fallbackMapID
+        and cached.x == coord.x and cached.y == coord.y and cached.instanceID == coord.instanceID then
+        return cached.map
+    end
+    local info = data:GetMapAncestryInfo(fallbackMapID)
+    if not info or not PublicCoordinateNumber(info.mapType) or info.mapType > 3 then return nil end
+    local instance = coord.instanceID or data:GetMapWorldInstanceID(fallbackMapID)
+    if not PublicCoordinateNumber(instance) then return nil end
+    local map, x, y = project(instance, coord.y, coord.x, fallbackMapID)
+    if map ~= fallbackMapID or not PublicCoordinateNumber(x) or not PublicCoordinateNumber(y) then return nil end
+    if x < 0 or x > 1 or y < 0 or y > 1 then
+        map, x, y = project(instance, coord.y, coord.x)
+        if not PublicCoordinateNumber(map) or not PublicCoordinateNumber(x) or not PublicCoordinateNumber(y)
+            or x < 0 or x > 1 or y < 0 or y > 1 then return nil end
+        info = data:GetMapAncestryInfo(map)
+        if not info or info.mapType ~= 3 or data:GetMapWorldInstanceID(map) ~= instance then return nil end
+    end
+    coordinateMaps[coord] = { data = data, positions = data.positions, revision = self.navigationGeometryRevision,
+        fallback = fallbackMapID, x = coord.x, y = coord.y, instanceID = coord.instanceID, map = map }
+    return map
+end--[[APR_DIAG]]; CoordinateMap = APRTrace("APR-Core/utils/StepUtils.lua:909:CoordinateMap#35", CoordinateMap)--[[/APR_DIAG]]
+
+--- Normalize a step's zone definition into a list, falling back to its world point or route map id.
 function APR:GetStepZoneList(step, fallbackMapID)
     local zones = step and NormalizeZoneList(step.Zones) or nil
     if not zones or #zones == 0 then
         zones = step and NormalizeZoneList(step.Zone) or nil
     end
     if not zones or #zones == 0 then
-        zones = NormalizeZoneList(fallbackMapID)
+        zones = NormalizeZoneList(CoordinateMap(self, step, fallbackMapID) or fallbackMapID)
     end
 
     if self:IsTransportStep(step) and step.ZoneStepTrigger.mapID then
@@ -1077,7 +1119,7 @@ function APR:GetStepCoord(step, fallbackMapID, zoneHint)
     end
 
     if IsCoordTable(step.Coord) then
-        return step.Coord, nil
+        return step.Coord, step.Coord.mapID or self:GetStepZoneForPlayer(step, fallbackMapID, zoneHint)
     end
 
     local coordsSource = step.Coords or step.Coord

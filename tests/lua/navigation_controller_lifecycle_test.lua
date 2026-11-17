@@ -1340,3 +1340,29 @@ function APR.NavigationData:CanWalk(from, to)
     return canWalk(self, from, to)
 end
 assert(not t.nav:IsItineraryValid(), "A future walk becoming inaccessible invalidates a retained portal itinerary")
+
+-- A verification queue ends at the master; its cost must still reach the goal.
+t = fixture()
+local probeSpeed, offerProbe = 10, true
+function t.nav:GetMovementSpeed() return probeSpeed end
+t.edges[1].from, t.edges[1].seconds = t.position, 200
+APR.taxiData.CreateProbeSearch = function()
+    local probe = offerProbe and {
+        from = { x = 100, y = 0, instanceID = 0, uiMapID = 2 },
+        fromNodeID = 1, toNodeID = 2,
+        flightSeconds = 50, estimatedSeconds = 70,
+        flightDestination = { x = 14900, y = 0, instanceID = 0, uiMapID = 3 },
+    }
+    return { Step = function() return "ready", probe end }
+end
+t:Update()
+assert(t.nav.queue[#t.nav.queue].kind == "verify_taxi" and t.nav.totalSeconds == 70)
+assert(t.nav:GetRemainingSeconds() == 70, "Charge approach, potential flight and final walk, not only reaching the master")
+t.position.x, probeSpeed = 50, 5
+assert(t.nav:GetRemainingSeconds() == 80, "Re-cost both walks after movement and a speed change")
+offerProbe, t.edges[1].seconds = false, 75
+t:Update()
+assert(t.nav:GetActiveStep().connectionID == "portal" and not t.nav.lastComparison.retained,
+    "A faster complete journey replaces an old master detour instead of comparing against its approach alone")
+assert(t.nav.lastComparison.remainingSeconds == 80 and t.nav.lastComparison.candidateSeconds == 75)
+assert(APRData.p.r == 1, "Replacing a verification detour preserves authored quest progress")

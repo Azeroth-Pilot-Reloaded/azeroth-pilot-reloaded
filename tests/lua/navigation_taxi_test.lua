@@ -118,6 +118,8 @@ local options = { contextKey = "route:1:revision", walkSpeed = 7, canWalk = func
 local probe = assert(taxi:FindProbe(start, goal, 200, options))
 assert(probe.fromNodeID == 1 and probe.toNodeID == 2 and probe.to == probe.from)
 assert(probe.kind == "verify_taxi", "A probe ends at the departure, never an imaginary flight arrival")
+assert(probe.flightSeconds == 25 and probe.flightDestination.x == 1000 and probe.estimatedSeconds == 25,
+    "Exploration retains the complete flight estimate separately from its departure waypoint")
 taxi:MarkProbeAttempt(1, 2, options.contextKey)
 start.x = 40
 assert(not taxi:FindProbe(start, goal, 200, options), "Moving must not reset an unsuccessful probe")

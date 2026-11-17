@@ -738,6 +738,8 @@ local function EvaluateProbe(job, record)
             toNodeID = to,
             pathID = record.id,
             estimatedSeconds = estimate,
+            flightSeconds = duration + BOARDING_SECONDS,
+            flightDestination = target,
             instruction = L["NAVIGATION_CONSULT_TAXI"],
         }
     end
