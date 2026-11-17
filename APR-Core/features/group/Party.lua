@@ -378,7 +378,7 @@ local function AcquireTeamContainer()
         container:EnableMouse(true)
         container:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:400:callback#100", --[[/APR_DIAG]]function(self, button)
             if button == "RightButton" and self.playerData and APR.PathSharing then
-                APR.PathSharing:ShowMemberMenu(self.playerData.username, self)
+                APR.PathSharing:ShowMemberMenu(self.playerData.username)
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
         container:SetScript(

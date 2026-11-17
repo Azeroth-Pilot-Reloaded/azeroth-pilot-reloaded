@@ -11,7 +11,7 @@ function Sharing:RefreshShareControls()
         PartyFrameHeader.SharePathButton:SetEnabled(self:IsAvailable() == true)
     end
     if APR.RouteBrowser and APR.RouteBrowser.RefreshShareButton then APR.RouteBrowser:RefreshShareButton() end
-end--[[APR_DIAG]]; Sharing.RefreshShareControls = APRTrace("APR-Core/features/group/PathSharingUI.lua:9:Sharing:RefreshShareControls#100", Sharing.RefreshShareControls)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Sharing.RefreshShareControls = APRTrace("APR-Core/features/group/PathSharingUI.lua:9:Sharing:RefreshShareControls#1", Sharing.RefreshShareControls)--[[/APR_DIAG]]
 
 function Sharing:ChooseRecipient(routeKey)
     if InCombatLockdown() then return end
@@ -22,26 +22,52 @@ function Sharing:ChooseRecipient(routeKey)
     end
     if #options == 1 then self:Status("GROUP_PATH_SHARE_NO_PEERS"); return end
     APR.UI:ShowSelectionDialog(routeKey and L["GROUP_ROUTE_SHARE_ACTION"] or L["GROUP_PATH_SHARE_ACTION"],
-        nil, options, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:18:callback#2", --[[/APR_DIAG]]function(option)
+        nil, options, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:25:callback#3", --[[/APR_DIAG]]function(option)
             if routeKey then self:ShareRoute(routeKey, option.value or nil)
             else self:SharePath(option.value or nil) end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Sharing.ChooseRecipient = APRTrace("APR-Core/features/group/PathSharingUI.lua:9:Sharing:ChooseRecipient#1", Sharing.ChooseRecipient)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Sharing.ChooseRecipient = APRTrace("APR-Core/features/group/PathSharingUI.lua:16:Sharing:ChooseRecipient#2", Sharing.ChooseRecipient)--[[/APR_DIAG]]
 
-function Sharing:ShowMemberMenu(name, owner)
-    if InCombatLockdown() then return end
+function Sharing:RegisterMemberMenu()
+    if self.memberMenuHooked then return true end
+    if not Menu or type(Menu.ModifyMenu) ~= "function" then return false end
+    Menu.ModifyMenu("MENU_UNIT_PARTY", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:34:callback#5", --[[/APR_DIAG]]function(_, root, context)
+        local key = context and context.aprPathSharingKey
+        -- Only APR's own right-click entry point opts in. Other unit menus stay native.
+        if not key or not self:IsAvailable() or not self:Roster()[key] then return end
+        root:CreateDivider()
+        local action = root:CreateButton(L["GROUP_PATH_SHARE_ACTION"], --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:39:callback#6", --[[/APR_DIAG]]function()
+            if InCombatLockdown() or not self:IsAvailable() or not self.peers[key] then return end
+            local name = self:Roster()[key]
+            if name then self:SharePath(name) end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        action:SetEnabled(self.peers[key] == true)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.memberMenuHooked = true
+    return true
+end--[[APR_DIAG]]; Sharing.RegisterMemberMenu = APRTrace("APR-Core/features/group/PathSharingUI.lua:31:Sharing:RegisterMemberMenu#4", Sharing.RegisterMemberMenu)--[[/APR_DIAG]]
+
+function Sharing:ShowMemberMenu(name)
+    if InCombatLockdown() or not self:IsAvailable() then return end
     local key = APR.PartyProtocol.PlayerKey(name)
     if not key or not self:Roster()[key] then return end
-    APR.UI:ShowSelectionDialog(name, nil, {
-        { label = L["GROUP_PATH_SHARE_ACTION"], enabled = self.peers[key] == true,
-            tooltip = not self.peers[key] and L["GROUP_PATH_SHARE_NO_PEERS"] or nil },
-    }, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:31:callback#4", --[[/APR_DIAG]]function() self:SharePath(name) end--[[APR_DIAG]])--[[/APR_DIAG]], nil, owner)
-end--[[APR_DIAG]]; Sharing.ShowMemberMenu = APRTrace("APR-Core/features/group/PathSharingUI.lua:24:Sharing:ShowMemberMenu#3", Sharing.ShowMemberMenu)--[[/APR_DIAG]]
+    -- Retail and Forever use the native popup. Do not replace protected group
+    -- actions with addon implementations if a client's menu API is unavailable.
+    if type(UnitPopup_OpenMenu) ~= "function" or not self:RegisterMemberMenu() then return end
+    for index = 1, 4 do
+        local unit = "party" .. index
+        local currentName = APR.PartyProtocol.UnitName(unit)
+        if currentName and APR.PartyProtocol.PlayerKey(currentName) == key then
+            UnitPopup_OpenMenu("PARTY", { unit = unit, aprPathSharingKey = key })
+            return
+        end
+    end
+end--[[APR_DIAG]]; Sharing.ShowMemberMenu = APRTrace("APR-Core/features/group/PathSharingUI.lua:50:Sharing:ShowMemberMenu#7", Sharing.ShowMemberMenu)--[[/APR_DIAG]]
 
 -- The header keeps its own drag/minimize scripts. This child consumes its clicks.
 if PartyFrameHeader and APR.UI then
     PartyFrameHeader:SetWidth(PartyScreenPanel:GetWidth())
-    local button = APR.UI:IconButton(PartyFrameHeader, "share", 22, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:37:callback#5", --[[/APR_DIAG]]function()
+    local button = APR.UI:IconButton(PartyFrameHeader, "send", 22, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PathSharingUI.lua:70:callback#8", --[[/APR_DIAG]]function()
         Sharing:SharePath()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     button:SetPoint("RIGHT", PartyFrameHeader.MinimizeButton, "LEFT", -6, 0)
