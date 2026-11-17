@@ -98,6 +98,7 @@ dofile("APR-Core/features/group/PartyFinderProtocol.lua")
 dofile("APR-Core/features/group/PathSharingProtocol.lua")
 dofile("APR-Core/features/group/PathSharing.lua")
 dofile("APR-Core/features/group/PathSharingImport.lua")
+local nativeMenu = dofile("tests/lua/native_member_menu_test_env.lua")
 dofile("APR-Core/features/group/PathSharingUI.lua")
 local S, P = APR.PathSharing, APR.PathSharingProtocol
 local function receive(message, sender, channel)
@@ -253,11 +254,12 @@ env.gameVersion = APR.GAME_VERSIONS.Forever
 -- The right-click action targets exactly the selected member; the route chooser
 -- leaves unadvertised members disabled rather than silently broadcasting.
 S:ShowMemberMenu("Peer-Home")
-assert(dialog.options[1].enabled)
+assert(nativeMenu.which == "PARTY" and nativeMenu.context.unit == "party1")
+assert(nativeMenu.root.additions[1].enabled)
 local target, sharedRoute
 local sharePath, shareRoute = S.SharePath, S.ShareRoute
 function S:SharePath(name) target = name end
-choose(dialog.options[1]); assert(target == "Peer-Home")
+nativeMenu.root.additions[1].callback(); assert(target == "Peer-Home")
 function S:ShareRoute(key, name) sharedRoute, target = key, name end
 S:ChooseRecipient("recorded")
 local disabled

@@ -310,8 +310,10 @@ remains available through its slash command.
 ## Sharing paths and Recorder routes
 
 The group header shares the current path with compatible APR party members;
-right-clicking an APR member row targets that member. The route catalogue's
-Share button sends the selected Recorder route to a member or the party.
+right-clicking an APR member row opens WoW's native party menu, including its
+leadership, whisper and uninvite actions, with an additional path-sharing entry.
+The route catalogue's Share button sends the selected Recorder route to a member
+or the party.
 Receiving data and importing it are separate confirmations. Importing a path
 replaces its ordered list and either preserves local progress or projects the
 sender's definition-based step onto the receiving character. A standalone route
