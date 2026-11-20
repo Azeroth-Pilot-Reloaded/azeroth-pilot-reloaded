@@ -40,6 +40,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             _index = 2,
         },
         {
+            Done = { 2923 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
+            RaidIcon = { {
+                npcID = 7944,
+                questID = 2923,
+            } },
+            AllOf = { { IsQuestUncompleted = 2922 }, { IsQuestNotOnQuest = 2922 } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 2923,
+            Zone = 1455,
+            _index = 3,
+        },
+        {
             PickUp = { 2922 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
             RaidIcon = { {
@@ -49,7 +62,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 20,
             Zone = 1455,
-            _index = 3,
+            _index = 4,
         },
         {
             PickUp = { 2923 },
@@ -58,10 +71,24 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
                 npcID = 7917,
                 questID = 2923,
             } },
+            AllOf = { { IsQuestUncompleted = 2922 }, { IsQuestNotOnQuest = 2922 } },
             Faction = "Alliance",
             MinLevel = 20,
             Zone = 1453,
-            _index = 4,
+            _index = 5,
+        },
+        {
+            Done = { 2925 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.92, 46.1),
+            RaidIcon = { {
+                npcID = 6169,
+                questID = 2925,
+            } },
+            AllOf = { { IsQuestUncompleted = 2924 }, { IsQuestNotOnQuest = 2924 } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 2925,
+            Zone = 1455,
+            _index = 6,
         },
         {
             PickUp = { 2924 },
@@ -73,7 +100,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1455,
-            _index = 5,
+            _index = 7,
         },
         {
             PickUp = { 2925 },
@@ -82,10 +109,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
                 npcID = 6142,
                 questID = 2925,
             } },
+            AllOf = { { IsQuestUncompleted = 2924 }, { IsQuestNotOnQuest = 2924 } },
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1457,
-            _index = 6,
+            _index = 8,
         },
         {
             PickUp = { 2927 },
@@ -97,7 +125,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 20,
             Zone = 1455,
-            _index = 7,
+            _index = 9,
         },
         {
             PickUp = { 2928 },
@@ -109,7 +137,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 20,
             Zone = 1453,
-            _index = 8,
+            _index = 10,
         },
         {
             PickUp = { 2929 },
@@ -121,7 +149,20 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 25,
             Zone = 1455,
-            _index = 9,
+            _index = 11,
+        },
+        {
+            Done = { 2931 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.83, 48.1),
+            RaidIcon = { {
+                npcID = 7950,
+                questID = 2931,
+            } },
+            AllOf = { { IsQuestUncompleted = 2930 }, { IsQuestNotOnQuest = 2930 } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 2931,
+            Zone = 1455,
+            _index = 12,
         },
         {
             PickUp = { 2930 },
@@ -133,7 +174,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 25,
             Zone = 1455,
-            _index = 10,
+            _index = 13,
         },
         {
             PickUp = { 2931 },
@@ -142,10 +183,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
                 npcID = 4077,
                 questID = 2931,
             } },
+            AllOf = { { IsQuestUncompleted = 2930 }, { IsQuestNotOnQuest = 2930 } },
             Faction = "Alliance",
             MinLevel = 25,
             Zone = 1442,
-            _index = 11,
+            _index = 14,
         },
         {
             Done = { 2842 },
@@ -157,31 +199,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2842,
             Zone = 1434,
-            _index = 12,
-        },
-        {
-            Done = { 2923 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
-            RaidIcon = { {
-                npcID = 7944,
-                questID = 2923,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 2923,
-            Zone = 1455,
-            _index = 13,
-        },
-        {
-            Done = { 2925 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.92, 46.1),
-            RaidIcon = { {
-                npcID = 6169,
-                questID = 2925,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 2925,
-            Zone = 1455,
-            _index = 14,
+            _index = 15,
         },
         {
             Done = { 2927 },
@@ -193,18 +211,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2927,
             Zone = 1426,
-            _index = 15,
-        },
-        {
-            Done = { 2931 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.83, 48.1),
-            RaidIcon = { {
-                npcID = 7950,
-                questID = 2931,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 2931,
-            Zone = 1455,
             _index = 16,
         },
         {
@@ -254,30 +260,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             _index = 20,
         },
         {
-            PickUp = { 2951 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            MinLevel = 25,
-            _index = 21,
-        },
-        {
-            PickUp = { 4601 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            MinLevel = 25,
-            _index = 22,
-        },
-        {
-            PickUp = { 4602 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            MinLevel = 25,
-            _index = 23,
-        },
-        {
             KillNPC = {
                 dungeonKey = "INSTANCE_90",
                 name = "Grubbis",
@@ -286,7 +268,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
-            _index = 24,
+            _index = 21,
         },
         {
             KillNPC = {
@@ -297,7 +279,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
-            _index = 25,
+            _index = 22,
         },
         {
             KillNPC = {
@@ -308,7 +290,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
-            _index = 26,
+            _index = 23,
         },
         {
             KillNPC = {
@@ -319,7 +301,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
-            _index = 27,
+            _index = 24,
         },
         {
             KillNPC = {
@@ -330,7 +312,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
-            _index = 28,
+            _index = 25,
         },
         {
             Qpart = { [2841] = { 1, 2 } },
@@ -338,7 +320,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2841,
-            _index = 29,
+            _index = 26,
         },
         {
             Qpart = { [2843] = { 1 } },
@@ -346,7 +328,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2843,
-            _index = 30,
+            _index = 27,
         },
         {
             Qpart = { [2904] = { 1 } },
@@ -354,7 +336,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2904,
-            _index = 31,
+            _index = 28,
         },
         {
             Qpart = { [2922] = { 1 } },
@@ -362,7 +344,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2922,
-            _index = 32,
+            _index = 29,
         },
         {
             Qpart = { [2924] = { 1 } },
@@ -370,7 +352,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2924,
-            _index = 33,
+            _index = 30,
         },
         {
             Qpart = { [2926] = { 1 } },
@@ -379,7 +361,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2926,
-            _index = 34,
+            _index = 31,
         },
         {
             Qpart = { [2928] = { 1 } },
@@ -387,7 +369,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2928,
-            _index = 35,
+            _index = 32,
         },
         {
             Qpart = { [2929] = { 1 } },
@@ -395,7 +377,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2929,
-            _index = 36,
+            _index = 33,
         },
         {
             Qpart = { [2930] = { 1 } },
@@ -403,7 +385,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2930,
-            _index = 37,
+            _index = 34,
         },
         {
             PickUp = { 2945 },
@@ -416,7 +398,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
                 itemID = 9326,
             },
             MinLevel = 28,
-            _index = 38,
+            _index = 35,
         },
         {
             Qpart = { [2951] = { 1, 2 } },
@@ -424,7 +406,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2951,
-            _index = 39,
+            _index = 36,
         },
         {
             Qpart = { [4601] = { 1, 2 } },
@@ -432,7 +414,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4601,
-            _index = 40,
+            _index = 37,
         },
         {
             Qpart = { [4602] = { 1, 2 } },
@@ -440,7 +422,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4602,
-            _index = 41,
+            _index = 38,
         },
         {
             Qpart = { [2945] = { 1 } },
@@ -448,7 +430,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2945,
-            _index = 42,
+            _index = 39,
         },
         {
             Done = { 2951 },
@@ -456,7 +438,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2951,
-            _index = 43,
+            _index = 40,
         },
         {
             Done = { 4601 },
@@ -464,7 +446,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4601,
-            _index = 44,
+            _index = 41,
         },
         {
             Done = { 4602 },
@@ -472,7 +454,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4602,
-            _index = 45,
+            _index = 42,
         },
         {
             Done = { 2945 },
@@ -480,34 +462,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2945,
-            _index = 46,
-        },
-        {
-            PickUp = { 2952 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2951 }, { IsQuestCompleted = 4601 }, { IsQuestCompleted = 4602 } },
-            MinLevel = 25,
-            _index = 47,
-        },
-        {
-            PickUp = { 4605 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2951 }, { IsQuestCompleted = 4601 }, { IsQuestCompleted = 4602 } },
-            MinLevel = 25,
-            _index = 48,
-        },
-        {
-            PickUp = { 4606 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2951 }, { IsQuestCompleted = 4601 }, { IsQuestCompleted = 4602 } },
-            MinLevel = 25,
-            _index = 49,
+            _index = 43,
         },
         {
             PickUp = { 2947 },
@@ -517,7 +472,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             AnyOf = { { IsQuestCompleted = 2945 } },
             Faction = "Alliance",
             MinLevel = 28,
-            _index = 50,
+            _index = 44,
         },
         {
             PickUp = { 2949 },
@@ -527,7 +482,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             AnyOf = { { IsQuestCompleted = 2945 } },
             Faction = "Horde",
             MinLevel = 28,
-            _index = 51,
+            _index = 45,
         },
         {
             Done = { 2952 },
@@ -535,7 +490,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2952,
-            _index = 52,
+            _index = 46,
         },
         {
             Done = { 4605 },
@@ -543,7 +498,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4605,
-            _index = 53,
+            _index = 47,
         },
         {
             Done = { 4606 },
@@ -551,7 +506,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4606,
-            _index = 54,
+            _index = 48,
         },
         {
             Qpart = { [2947] = { 1 } },
@@ -559,7 +514,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2947,
-            _index = 55,
+            _index = 49,
         },
         {
             Qpart = { [2949] = { 1 } },
@@ -567,34 +522,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2949,
-            _index = 56,
-        },
-        {
-            PickUp = { 2953 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2952 }, { IsQuestCompleted = 4605 }, { IsQuestCompleted = 4606 } },
-            MinLevel = 25,
-            _index = 57,
-        },
-        {
-            PickUp = { 4603 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2952 }, { IsQuestCompleted = 4605 }, { IsQuestCompleted = 4606 } },
-            MinLevel = 25,
-            _index = 58,
-        },
-        {
-            PickUp = { 4604 },
-            NoArrow = true,
-            Dungeon = "INSTANCE_90",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 2955 }, { IsQuestCompleted = 4605 }, { IsQuestCompleted = 4606 } },
-            MinLevel = 25,
-            _index = 59,
+            _index = 50,
         },
         {
             Qpart = { [2953] = { 1 } },
@@ -602,7 +530,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2953,
-            _index = 60,
+            _index = 51,
         },
         {
             Qpart = { [4603] = { 1 } },
@@ -610,7 +538,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4603,
-            _index = 61,
+            _index = 52,
         },
         {
             Qpart = { [4604] = { 1 } },
@@ -618,7 +546,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4604,
-            _index = 62,
+            _index = 53,
         },
         {
             Done = { 2953 },
@@ -626,7 +554,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2953,
-            _index = 63,
+            _index = 54,
         },
         {
             Done = { 4603 },
@@ -634,7 +562,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4603,
-            _index = 64,
+            _index = 55,
         },
         {
             Done = { 4604 },
@@ -642,13 +570,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 4604,
-            _index = 65,
+            _index = 56,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_90" },
             NoArrow = true,
             Dungeon = "INSTANCE_90",
-            _index = 66,
+            _index = 57,
         },
         {
             Done = { 2841 },
@@ -660,7 +588,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2841,
             Zone = 1454,
-            _index = 67,
+            _index = 58,
         },
         {
             Done = { 2843 },
@@ -672,7 +600,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2843,
             Zone = 1434,
-            _index = 68,
+            _index = 59,
         },
         {
             Done = { 2904 },
@@ -683,7 +611,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             } },
             IsQuestOnQuest = 2904,
             Zone = 1434,
-            _index = 69,
+            _index = 60,
         },
         {
             Done = { 2922 },
@@ -695,7 +623,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2922,
             Zone = 1455,
-            _index = 70,
+            _index = 61,
         },
         {
             Done = { 2924 },
@@ -707,7 +635,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2924,
             Zone = 1455,
-            _index = 71,
+            _index = 62,
         },
         {
             Done = { 2926 },
@@ -719,7 +647,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2926,
             Zone = 1426,
-            _index = 72,
+            _index = 63,
         },
         {
             Done = { 2928 },
@@ -731,7 +659,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2928,
             Zone = 1453,
-            _index = 73,
+            _index = 64,
         },
         {
             Done = { 2929 },
@@ -743,7 +671,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2929,
             Zone = 1455,
-            _index = 74,
+            _index = 65,
         },
         {
             Done = { 2930 },
@@ -755,7 +683,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2930,
             Zone = 1455,
-            _index = 75,
+            _index = 66,
         },
         {
             Done = { 2947 },
@@ -767,7 +695,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2947,
             Zone = 1455,
-            _index = 76,
+            _index = 67,
         },
         {
             Done = { 2949 },
@@ -779,7 +707,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2949,
             Zone = 1454,
-            _index = 77,
+            _index = 68,
         },
         {
             PickUp = { 2948 },
@@ -792,7 +720,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 28,
             Zone = 1455,
-            _index = 78,
+            _index = 69,
         },
         {
             PickUp = { 2950 },
@@ -805,7 +733,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             MinLevel = 28,
             Zone = 1454,
-            _index = 79,
+            _index = 70,
         },
         {
             PickUp = { 2962 },
@@ -818,19 +746,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             MinLevel = 20,
             Zone = 1426,
-            _index = 80,
+            _index = 71,
         },
         {
             Qpart = { [2948] = { 1, 2, 3 } },
             NoArrow = true,
             IsQuestOnQuest = 2948,
-            _index = 81,
+            _index = 72,
         },
         {
             Qpart = { [2950] = { 1, 2, 3 } },
             NoArrow = true,
             IsQuestOnQuest = 2950,
-            _index = 82,
+            _index = 73,
         },
         {
             Done = { 2948 },
@@ -842,7 +770,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2948,
             Zone = 1455,
-            _index = 83,
+            _index = 74,
         },
         {
             Done = { 2950 },
@@ -854,7 +782,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2950,
             Zone = 1454,
-            _index = 84,
+            _index = 75,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_90" },
@@ -862,7 +790,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             Zone = 1426,
-            _index = 85,
+            _index = 76,
         },
         {
             Qpart = { [2962] = { 1 } },
@@ -871,13 +799,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Dungeon = "INSTANCE_90",
             InstanceQuest = true,
             IsQuestOnQuest = 2962,
-            _index = 86,
+            _index = 77,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_90" },
             NoArrow = true,
             Dungeon = "INSTANCE_90",
-            _index = 87,
+            _index = 78,
         },
         {
             Done = { 2962 },
@@ -889,11 +817,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2962,
             Zone = 1426,
-            _index = 88,
+            _index = 79,
         },
         {
             RouteCompleted = true,
-            _index = 89,
+            _index = 80,
         },
     },
 }

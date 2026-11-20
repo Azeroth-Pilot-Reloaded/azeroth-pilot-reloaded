@@ -277,7 +277,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
                 npcID = 260386,
                 questID = 95454,
             } },
-            AnyOf = { { IsQuestCompleted = 95309 } },
+
             Faction = "Horde",
             MinLevel = 48,
             _index = 21,
@@ -326,16 +326,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             _index = 25,
         },
         {
-            PickUp = { 95263 },
-            NoArrow = true,
-            Dungeon = "ALCAZ_PRISON",
-            InstanceQuest = true,
-            AnyOf = { { IsQuestCompleted = 95262 } },
-            Faction = "Alliance",
-            MinLevel = 48,
-            _index = 26,
-        },
-        {
             Done = { 95454 },
             NoArrow = true,
             Dungeon = "ALCAZ_PRISON",
@@ -343,7 +333,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95454,
             MinLevel = 48,
-            _index = 27,
+            _index = 26,
         },
         {
             PickUp = { 96369 },
@@ -353,7 +343,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             AnyOf = { { IsQuestCompleted = 95454 } },
             Faction = "Horde",
             MinLevel = 48,
-            _index = 28,
+            _index = 27,
         },
         {
             Done = { 96369 },
@@ -367,7 +357,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96369,
             MinLevel = 48,
-            _index = 29,
+            _index = 28,
         },
         {
             PickUp = { 95483 },
@@ -381,7 +371,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             AllOf = { { IsQuestCompleted = 96369 } },
             Faction = "Horde",
             MinLevel = 48,
-            _index = 30,
+            _index = 29,
         },
         {
             Qpart = { [96332] = { 1, 2, 3 } },
@@ -391,7 +381,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96332,
             MinLevel = 48,
-            _index = 31,
+            _index = 30,
         },
         {
             Qpart = { [96334] = { 1 } },
@@ -401,7 +391,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96334,
             MinLevel = 48,
-            _index = 32,
+            _index = 31,
         },
         {
             PickUp = { 96335 },
@@ -409,7 +399,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Dungeon = "ALCAZ_PRISON",
             InstanceQuest = true,
             MinLevel = 48,
-            _index = 33,
+            _index = 32,
         },
         {
             KillNPC = {
@@ -420,7 +410,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             NoArrow = true,
             Dungeon = "ALCAZ_PRISON",
             InstanceQuest = true,
-            _index = 34,
+            _index = 33,
         },
         {
             Qpart = { [96335] = { 1 } },
@@ -429,7 +419,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 96335,
             MinLevel = 48,
-            _index = 35,
+            _index = 34,
         },
         {
             Done = { 96335 },
@@ -437,6 +427,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Dungeon = "ALCAZ_PRISON",
             InstanceQuest = true,
             IsQuestOnQuest = 96335,
+            MinLevel = 48,
+            _index = 35,
+        },
+        {
+            PickUp = { 95263 },
+            NoArrow = true,
+            Dungeon = "ALCAZ_PRISON",
+            InstanceQuest = true,
+            AnyOf = { {
+                IsQuestCompleted = 96335,
+            } },
+            Faction = "Alliance",
             MinLevel = 48,
             _index = 36,
         },
@@ -488,6 +490,32 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             _index = 41,
         },
         {
+            PickUp = { 95264 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 63.45, 42.33),
+            RaidIcon = { {
+                npcID = 260271,
+                questID = 95264,
+            } },
+            Faction = "Alliance",
+            IsQuestCompleted = 95263,
+            MinLevel = 48,
+            Zone = 1445,
+            _index = 42,
+        },
+        {
+            Done = { 95264 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
+            RaidIcon = { {
+                npcID = 332,
+                questID = 95264,
+            } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 95264,
+            MinLevel = 48,
+            Zone = 1453,
+            _index = 43,
+        },
+        {
             Done = { 95483 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
             RaidIcon = { {
@@ -498,7 +526,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 95483,
             MinLevel = 48,
             Zone = 1454,
-            _index = 42,
+            _index = 44,
         },
         {
             Done = { 96332 },
@@ -511,7 +539,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96332,
             MinLevel = 48,
             Zone = 1445,
-            _index = 43,
+            _index = 45,
         },
         {
             Done = { 96334 },
@@ -524,14 +552,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96334,
             MinLevel = 48,
             Zone = 1454,
-            _index = 44,
+            _index = 46,
         },
         {
             Done = { 96337 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 43.42, 67.89),
             IsQuestOnQuest = 96337,
             Zone = 1436,
-            _index = 45,
+            _index = 47,
         },
         {
             PickUp = { 96377 },
@@ -548,7 +576,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             },
             MinLevel = 48,
             Zone = 1453,
-            _index = 46,
+            _index = 48,
         },
         {
             Qpart = { [96377] = { 1 } },
@@ -556,7 +584,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 96377,
             MinLevel = 48,
-            _index = 47,
+            _index = 49,
         },
         {
             Done = { 96377 },
@@ -569,7 +597,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96377,
             MinLevel = 48,
             Zone = 1453,
-            _index = 48,
+            _index = 50,
         },
         {
             PickUp = { 96376 },
@@ -586,7 +614,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             },
             MinLevel = 48,
             Zone = 1454,
-            _index = 49,
+            _index = 51,
         },
         {
             Qpart = { [96376] = { 1 } },
@@ -594,7 +622,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96376,
             MinLevel = 48,
-            _index = 50,
+            _index = 52,
         },
         {
             Done = { 96376 },
@@ -607,7 +635,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96376,
             MinLevel = 48,
             Zone = 1454,
-            _index = 51,
+            _index = 53,
         },
         {
             Done = { 96381 },
@@ -620,7 +648,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96381,
             MinLevel = 48,
             Zone = 1445,
-            _index = 52,
+            _index = 54,
         },
         {
             Done = { 96772 },
@@ -633,11 +661,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Alcaz-Prison"] = {
             IsQuestOnQuest = 96772,
             MinLevel = 46,
             Zone = 1416,
-            _index = 53,
+            _index = 55,
         },
         {
             RouteCompleted = true,
-            _index = 54,
+            _index = 56,
         },
     },
 }

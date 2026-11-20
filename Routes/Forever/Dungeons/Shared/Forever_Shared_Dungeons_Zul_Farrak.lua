@@ -38,6 +38,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             _index = 2,
         },
         {
+            Done = { 2861 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
+            RaidIcon = { {
+                npcID = 6546,
+                questID = 2861,
+            } },
+            AllOf = { { IsQuestUncompleted = 2846 }, { IsQuestNotOnQuest = 2846 } },
+            IsQuestOnQuest = 2861,
+            Zone = 1445,
+            _index = 3,
+        },
+        {
             PickUp = { 2846 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
             RaidIcon = { {
@@ -46,7 +58,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             } },
             MinLevel = 40,
             Zone = 1445,
-            _index = 3,
+            _index = 4,
         },
         {
             PickUp = { 2861 },
@@ -55,10 +67,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
                 npcID = 4568,
                 questID = 2861,
             } },
+            AllOf = { { IsQuestUncompleted = 2846 }, { IsQuestNotOnQuest = 2846 } },
             Faction = "Horde",
             MinLevel = 40,
             Zone = 1458,
-            _index = 4,
+            _index = 5,
         },
         {
             PickUp = { 2864 },
@@ -67,9 +80,22 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
                 npcID = 773,
                 questID = 2864,
             } },
+            AllOf = { { IsQuestUncompleted = 2865 }, { IsQuestNotOnQuest = 2865 } },
             MinLevel = 40,
             Zone = 1434,
-            _index = 5,
+            _index = 6,
+        },
+        {
+            Done = { 2864 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.57, 26.76),
+            RaidIcon = { {
+                npcID = 7876,
+                questID = 2864,
+            } },
+            AllOf = { { IsQuestUncompleted = 2865 }, { IsQuestNotOnQuest = 2865 } },
+            IsQuestOnQuest = 2864,
+            Zone = 1446,
+            _index = 7,
         },
         {
             PickUp = { 2865 },
@@ -80,7 +106,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             } },
             MinLevel = 40,
             Zone = 1446,
-            _index = 6,
+            _index = 8,
         },
         {
             PickUp = { 2933 },
@@ -88,7 +114,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             Faction = "Horde",
             MinLevel = 40,
             Zone = 1425,
-            _index = 7,
+            _index = 9,
         },
         {
             PickUp = { 2988 },
@@ -100,7 +126,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             Faction = "Alliance",
             MinLevel = 40,
             Zone = 1425,
-            _index = 8,
+            _index = 10,
         },
         {
             PickUp = { 3042 },
@@ -111,7 +137,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             } },
             MinLevel = 40,
             Zone = 1446,
-            _index = 9,
+            _index = 11,
         },
         {
             PickUp = { 3520 },
@@ -121,28 +147,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
                 questID = 3520,
             } },
             MinLevel = 40,
-            Zone = 1446,
-            _index = 10,
-        },
-        {
-            Done = { 2861 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
-            RaidIcon = { {
-                npcID = 6546,
-                questID = 2861,
-            } },
-            IsQuestOnQuest = 2861,
-            Zone = 1445,
-            _index = 11,
-        },
-        {
-            Done = { 2864 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.57, 26.76),
-            RaidIcon = { {
-                npcID = 7876,
-                questID = 2864,
-            } },
-            IsQuestOnQuest = 2864,
             Zone = 1446,
             _index = 12,
         },
