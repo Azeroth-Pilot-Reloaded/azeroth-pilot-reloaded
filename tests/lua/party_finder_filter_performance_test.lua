@@ -77,8 +77,18 @@ P.NormalizeLanguages, table.sort = normalize, sort
 finder:SetLanguageOption("languages", "fr", false)
 finder:SetLanguageOption("languages", "zhTW", true)
 assert(finder:GetCount() == 60, "Changing preferences immediately rebuilds the compiled policy")
+local filtered = finder:GetCandidates()
+assert(#list == 120 and filtered ~= list, "A hidden viewport keeps the ordered rows its offsets describe")
+dofile("APR-Core/ui/foundations/VirtualList.lua")
+local viewport = setmetatable({items = filtered, rowHeight = 20}, APR.VirtualList)
+viewport.offsets = viewport:PrepareItems(filtered).offsets
+finder:SetLanguageOption("languages", "fr", true)
+assert(finder:GetCount() == 180)
+assert(viewport:IndexAt(1180) == 60 and viewport:IndexAt(1200) == 60,
+    "Reopening a hidden list after the badge grows still uses its published final row")
 env:Advance(121)
 assert(finder:GetCount() == 0, "Compiled policies do not extend the candidate expiration boundary")
+assert(#filtered == 60, "Expiring candidates preserves the last published viewport")
 print(
     "Companion filters: 240 peers use two normalizations/three sorts instead of 720/721; bilingual, unknown, settings and expiry passed"
 )

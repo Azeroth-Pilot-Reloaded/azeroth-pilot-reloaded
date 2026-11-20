@@ -33,7 +33,8 @@ for profile, records in pairs(LibStub("LibAPRNavigation-1.0").serviceLocations) 
             assert(type(record.expansionName) == "string" and record.expansionName ~= "")
         end
         local key = table.concat({record.service, record.npcID or record.objectID or 0, record.mapID,
-            record.x, record.y, record.faction, record.skill or 0, record.class or "", record.expansion or -1}, ":")
+            record.x, record.y, record.floor or "", record.z or "", record.faction, record.skill or 0,
+            record.class or "", record.expansion or -1}, ":")
         assert(not seen[key], "Duplicate service location")
         seen[key] = true
     end

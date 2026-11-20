@@ -70,6 +70,29 @@ for _, profile in ipairs({ "retail", "forever" }) do
     assert(frame.OnUpdate == nil)
     old(frame, 0.5)
     assert(arrivals == 1, "Retired callbacks cannot continue arrival work")
+    if profile == "forever" then
+        local originChecks, fullChecks = 0, 0
+        APR.Services = {request = {waitingForOrigin = true, profile = profile}}
+        function APR.Services:GetStep() end
+        function APR.Services:Validate(originOnly)
+            if originOnly then originChecks = originChecks + 1 else fullChecks = fullChecks + 1 end
+        end
+        nav:RefreshActivity()
+        frame.OnUpdate(frame, 0.04)
+        assert(originChecks == 0)
+        frame.OnUpdate(frame, 0.02)
+        assert(originChecks == 1 and fullChecks == 0 and arrivals == 1)
+        frame.OnUpdate(frame, 0.45)
+        assert(originChecks == 1 and fullChecks == 1, "The ordinary poll includes the origin check only once")
+        nav:InvalidatePathCache()
+        nav:InvalidatePathCache("QUEST_LOG_UPDATE")
+        assert(not APR.Services.request.invalidated, "Routine refreshes leave a pending service search running")
+        frame.OnEvent(frame, "QUEST_TURNED_IN")
+        assert(APR.Services.request.invalidated, "An access change retires a service ranking even without a guide")
+        APR.Services.request = nil
+        nav:RefreshActivity()
+        assert(frame.OnUpdate == nil, "Clearing the pending request also stops the fast observation")
+    end
 
     -- A real measurement can be completed without a guide route.
     taxi.measurement = { playerID = APR.PlayerID, snapshot = taxi:GetSnapshotKey(), started = fixture.time - 3 }

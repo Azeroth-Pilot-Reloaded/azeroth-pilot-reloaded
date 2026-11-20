@@ -9,43 +9,35 @@ APR.taxiData = APR:NewModule("NavigationTaxi")
 local taxi = APR.taxiData
 local function Now()
     return GetTime and GetTime() or 0
-end--[[APR_DIAG]]
-Now = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:10:Now#1", Now)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Now = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:10:Now#1", Now)--[[/APR_DIAG]]
 local function Number(value)
     if issecretvalue and issecretvalue(value) then return false end
     if APR.IsPublicNumber then return APR:IsPublicNumber(value) end
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
-end--[[APR_DIAG]]
-Number = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:13:Number#2", Number)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Number = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:13:Number#2", Number)--[[/APR_DIAG]]
 local function Price(value)
     return Number(value) and value >= 0
-end--[[APR_DIAG]]
-Price = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:18:Price#3", Price)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Price = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:18:Price#3", Price)--[[/APR_DIAG]]
 local function Positive(value)
     return Number(value) and value > 0
-end--[[APR_DIAG]]
-Positive = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:21:Positive#4", Positive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Positive = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:21:Positive#4", Positive)--[[/APR_DIAG]]
 local function Pair(fromID, toID)
     return tostring(fromID) .. ":" .. tostring(toID)
-end--[[APR_DIAG]]
-Pair = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:24:Pair#5", Pair)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pair = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:24:Pair#5", Pair)--[[/APR_DIAG]]
 local function Distance(a, b)
     if not a or not b or a.instanceID ~= b.instanceID then return math.huge end
     return math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
-end--[[APR_DIAG]]
-Distance = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:27:Distance#6", Distance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Distance = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:27:Distance#6", Distance)--[[/APR_DIAG]]
 function taxi:GetAPI()
     local api = _G.LibTaxiData_API
     if type(api) ~= "table" or type(api.GetNodeWorldPosition) ~= "function" then return nil, "LibTaxiData" end
     return api
-end--[[APR_DIAG]]
-taxi.GetAPI = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:31:taxi:GetAPI#7", taxi.GetAPI)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetAPI = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:31:taxi:GetAPI#7", taxi.GetAPI)--[[/APR_DIAG]]
 function taxi:Call(method, ...)
     local api = self:GetAPI()
     if not api or type(api[method]) ~= "function" then return nil, "LibTaxiData" end
     return api[method](...)
-end--[[APR_DIAG]]
-taxi.Call = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:36:taxi:Call#8", taxi.Call)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.Call = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:36:taxi:Call#8", taxi.Call)--[[/APR_DIAG]]
 for _, name in ipairs({
     "GetNode",
     "GetAllNodes",
@@ -68,6 +60,15 @@ for _, name in ipairs({
 
             --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:61:callback#9", --[[/APR_DIAG]]function(self, ...) return self:Call(method, ...) end--[[APR_DIAG]])--[[/APR_DIAG]]
 end
+function taxi:IsFlightMasterCandidate(node)
+    local api = self:GetAPI()
+    local flags = api and api.FLAGS
+    if type(flags) ~= "table" or type(node) ~= "table" or not Number(node.flags) then return true end
+    -- The catalogue also includes landing-only and scripted transport points.
+    local endpoint, ignored = flags.END_POINT_ONLY, flags.IGNORE_FOR_FIND_NEAREST
+    return not (Positive(endpoint) and math.floor(node.flags / endpoint) % 2 == 1)
+        and not (Positive(ignored) and math.floor(node.flags / ignored) % 2 == 1)
+end--[[APR_DIAG]]; taxi.IsFlightMasterCandidate = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:63:taxi:IsFlightMasterCandidate#10", taxi.IsFlightMasterCandidate)--[[/APR_DIAG]]
 function taxi:GetNodeName(nodeID)
     local node = self.liveNodes and self.liveNodes[nodeID]
     local name = node and node.name
@@ -81,8 +82,7 @@ function taxi:GetNodeName(nodeID)
         return name
     end
     return self:Call("GetNodeName", nodeID)
-end--[[APR_DIAG]]
-taxi.GetNodeName = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:47:taxi:GetNodeName#10", taxi.GetNodeName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetNodeName = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:72:taxi:GetNodeName#11", taxi.GetNodeName)--[[/APR_DIAG]]
 function taxi:GetSnapshotKey()
     local source = self:Call("GetSource")
     if type(source) ~= "table" then source = {} end
@@ -95,9 +95,7 @@ function taxi:GetSnapshotKey()
     self.snapshotProfile, self.snapshotBuild, self.snapshotFingerprint = profile, build, fingerprint
     self.snapshotKey = table.concat({ tostring(profile), tostring(build), tostring(fingerprint) }, ":")
     return self.snapshotKey
-end--[[APR_DIAG]]
-taxi.GetSnapshotKey =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:54:taxi:GetSnapshotKey#11", taxi.GetSnapshotKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetSnapshotKey = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:86:taxi:GetSnapshotKey#12", taxi.GetSnapshotKey)--[[/APR_DIAG]]
 function taxi:GetCharacterData(snapshot)
     local character = APRData and APR.PlayerID and APRData[APR.PlayerID]
     if type(character) ~= "table" then return nil end
@@ -128,9 +126,7 @@ function taxi:GetCharacterData(snapshot)
         data.legacyMigrated = true
     end
     return data
-end--[[APR_DIAG]]
-taxi.GetCharacterData =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:67:taxi:GetCharacterData#12", taxi.GetCharacterData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetCharacterData = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:99:taxi:GetCharacterData#13", taxi.GetCharacterData)--[[/APR_DIAG]]
 local function Position(nodeID)
     local p = taxi:GetNodeWorldPosition(nodeID)
     if type(p) ~= "table" or not Number(p.instanceID) or not Number(p.x) or not Number(p.y) then return nil end
@@ -152,8 +148,7 @@ local function Position(nodeID)
         instanceID = p.instanceID,
         uiMapID = p.uiMapID or p.sourceMapID,
     }
-end--[[APR_DIAG]]
-Position = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:95:Position#13", Position)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Position = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:130:Position#14", Position)--[[/APR_DIAG]]
 local function Signature(to, slots, sequence)
     if not GetNumRoutes or not TaxiGetNodeSlot or not Positive(to.slotIndex) then return nil end
     local count = GetNumRoutes(to.slotIndex)
@@ -171,24 +166,19 @@ local function Signature(to, slots, sequence)
     -- A shorter or incomplete previous route may leave a tail in this scratch
     -- buffer. Only its current prefix belongs to this itinerary.
     return table.concat(sequence, ">", 1, size)
-end--[[APR_DIAG]]
-Signature = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:106:Signature#14", Signature)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Signature = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:152:Signature#15", Signature)--[[/APR_DIAG]]
 function taxi:SetProbeContext(key)
     key = tostring(key or "default") .. ":" .. tostring(APR.PlayerID) .. ":" .. self:GetSnapshotKey()
     if self.probeContext ~= key then
         self.probeContext, self.probeAttempts, self.blocked = key, {}, {}
         self:InvalidateEdges()
     end
-end--[[APR_DIAG]]
-taxi.SetProbeContext =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:121:taxi:SetProbeContext#15", taxi.SetProbeContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.SetProbeContext = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:170:taxi:SetProbeContext#16", taxi.SetProbeContext)--[[/APR_DIAG]]
 function taxi:MarkProbeAttempt(from, to, contextKey)
     if contextKey then self:SetProbeContext(contextKey) end
     self.probeAttempts = self.probeAttempts or {}
     self.probeAttempts[Pair(from, to)] = true
-end--[[APR_DIAG]]
-taxi.MarkProbeAttempt =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:128:taxi:MarkProbeAttempt#16", taxi.MarkProbeAttempt)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.MarkProbeAttempt = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:177:taxi:MarkProbeAttempt#17", taxi.MarkProbeAttempt)--[[/APR_DIAG]]
 function taxi:ObserveTaxiMap(nodes)
     self:InvalidateEdges()
     self.liveOffers, self.liveNodes, self.blocked = {}, {}, self.blocked or {}
@@ -232,15 +222,11 @@ function taxi:ObserveTaxiMap(nodes)
         APR.navigation:InvalidatePathCache()
         APR.navigation:RequestUpdate()
     end
-end--[[APR_DIAG]]
-taxi.ObserveTaxiMap =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:133:taxi:ObserveTaxiMap#17", taxi.ObserveTaxiMap)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.ObserveTaxiMap = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:182:taxi:ObserveTaxiMap#18", taxi.ObserveTaxiMap)--[[/APR_DIAG]]
 function taxi:CloseTaxiMap()
     if self.liveOffers then self:InvalidateEdges() end
     self.liveOffers, self.liveNodes, self.currentNodeID, self.liveSnapshot, self.livePlayerID = nil, nil, nil, nil, nil
-end--[[APR_DIAG]]
-taxi.CloseTaxiMap =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:167:taxi:CloseTaxiMap#18", taxi.CloseTaxiMap)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CloseTaxiMap = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:226:taxi:CloseTaxiMap#19", taxi.CloseTaxiMap)--[[/APR_DIAG]]
 function taxi:GetQuote(nodeID, fromID)
     if
         self.liveSnapshot ~= self:GetSnapshotKey()
@@ -268,23 +254,17 @@ function taxi:GetQuote(nodeID, fromID)
         slotIndex = offer.slotIndex,
         signature = offer.signature,
     }
-end--[[APR_DIAG]]
-taxi.GetQuote = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:171:taxi:GetQuote#19", taxi.GetQuote)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetQuote = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:230:taxi:GetQuote#20", taxi.GetQuote)--[[/APR_DIAG]]
 function taxi:GetMeasuredDuration(from, to, signature)
     local data = self:GetCharacterData()
     local record = data and data.durations[signature or (tostring(from) .. ">" .. tostring(to))]
     return type(record) == "table" and Positive(record.seconds) and record.seconds or nil
-end--[[APR_DIAG]]
-taxi.GetMeasuredDuration = APRTrace(
-    "APR-Core/features/navigation/NavigationTaxi.lua:182:taxi:GetMeasuredDuration#20",
-    taxi.GetMeasuredDuration
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.GetMeasuredDuration = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:258:taxi:GetMeasuredDuration#21", taxi.GetMeasuredDuration)--[[/APR_DIAG]]
 local function Available(api, nodeID)
     return APR.HasTaxiNode
         and APR:HasTaxiNode(nodeID) == true
         and (not api.IsNodeAvailable or api.IsNodeAvailable(nodeID) == true)
-end--[[APR_DIAG]]
-Available = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:187:Available#21", Available)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Available = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:263:Available#22", Available)--[[/APR_DIAG]]
 
 local EMPTY_PATHS = {}
 local BOARDING_SECONDS = 15
@@ -292,35 +272,26 @@ local BOARDING_SECONDS = 15
 -- A probe cannot beat a route shorter than the boarding time alone.
 function taxi:CanProbeBeat(baselineSeconds)
     return not Number(baselineSeconds) or baselineSeconds > BOARDING_SECONDS
-end--[[APR_DIAG]]
-taxi.CanProbeBeat =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:196:taxi:CanProbeBeat#22", taxi.CanProbeBeat)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CanProbeBeat = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:273:taxi:CanProbeBeat#23", taxi.CanProbeBeat)--[[/APR_DIAG]]
 
 local function Paths(api)
     local paths = type(api.GetAllPaths) == "function" and api.GetAllPaths()
     return type(paths) == "table" and paths or EMPTY_PATHS
-end--[[APR_DIAG]]
-Paths = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:200:Paths#23", Paths)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Paths = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:277:Paths#24", Paths)--[[/APR_DIAG]]
 
 -- Offers and measured durations can change without changing the DB2 catalog.
 -- Keep its coordinates and pair index, but discard any prepared character graph.
 function taxi:InvalidateEdges()
     self.edgeRevision = (self.edgeRevision or 0) + 1
     self.cachedEdges = nil
-end--[[APR_DIAG]]
-taxi.InvalidateEdges =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:207:taxi:InvalidateEdges#24", taxi.InvalidateEdges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.InvalidateEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:284:taxi:InvalidateEdges#25", taxi.InvalidateEdges)--[[/APR_DIAG]]
 
 -- LibTaxiData publishes immutable catalogs identified by their fingerprint.
 -- Editors and tests that mutate one in place must invalidate that catalog too.
 function taxi:InvalidateStaticCache()
     self.staticCache = nil
     self:InvalidateEdges()
-end--[[APR_DIAG]]
-taxi.InvalidateStaticCache = APRTrace(
-    "APR-Core/features/navigation/NavigationTaxi.lua:214:taxi:InvalidateStaticCache#25",
-    taxi.InvalidateStaticCache
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.InvalidateStaticCache = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:291:taxi:InvalidateStaticCache#26", taxi.InvalidateStaticCache)--[[/APR_DIAG]]
 
 local function StaticCache(owner, api, paths, snapshot)
     local cache = owner.staticCache
@@ -354,8 +325,7 @@ local function StaticCache(owner, api, paths, snapshot)
     owner.staticCache = cache
     owner.cachedEdges = nil
     return cache
-end--[[APR_DIAG]]
-StaticCache = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:219:StaticCache#26", StaticCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; StaticCache = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:296:StaticCache#27", StaticCache)--[[/APR_DIAG]]
 
 -- Index one path per operation. Other jobs may reuse a partially built index;
 -- cancellation never leaves a half-counted path in this shared cache.
@@ -394,8 +364,7 @@ local function IndexNextPath(cache)
         cache.nodeSet[to] = true
         cache.nodeIDs[#cache.nodeIDs + 1] = to
     end
-end--[[APR_DIAG]]
-IndexNextPath = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:240:IndexNextPath#27", IndexNextPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IndexNextPath = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:332:IndexNextPath#28", IndexNextPath)--[[/APR_DIAG]]
 
 local WorkJob = {}
 WorkJob.__index = WorkJob
@@ -403,9 +372,10 @@ WorkJob.__index = WorkJob
 function WorkJob:Cancel()
     if self.status ~= "planning" then return end
     self.status = "cancelled"
+    if self.walkingJob then self.walkingJob:Cancel() end
+    self.walkingJob, self.groundQuery = nil, nil
     self.edges, self.best, self.data = nil, nil, nil
-end--[[APR_DIAG]]
-WorkJob.Cancel = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:276:WorkJob:Cancel#28", WorkJob.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Cancel = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:372:WorkJob:Cancel#29", WorkJob.Cancel)--[[/APR_DIAG]]
 
 -- The caller shares its remaining frame budget with every preparation phase.
 -- A single client API call cannot be interrupted, so check before each unit.
@@ -422,17 +392,19 @@ function WorkJob:Step(maxOperations, maxMilliseconds)
     end
     local limit = type(maxOperations) == "number" and math.max(0, math.floor(maxOperations)) or 64
     local started = self.clock and self.clock()
+    self.deadline = started and maxMilliseconds and (started + maxMilliseconds)
+    self.sliceMilliseconds, self.workLastStep = maxMilliseconds or 1, 0
     for _ = 1, limit do
         if maxMilliseconds and (maxMilliseconds <= 0 or (started and self.clock() - started >= maxMilliseconds)) then
             break
         end
         self:Advance()
         self.operations = self.operations + 1
+        self.workLastStep = self.workLastStep + 1
         if self.status ~= "planning" then break end
     end
     return self.status, self.result, self.metadata
-end--[[APR_DIAG]]
-WorkJob.Step = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:284:WorkJob:Step#29", WorkJob.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Step = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:382:WorkJob:Step#30", WorkJob.Step)--[[/APR_DIAG]]
 
 function WorkJob:Position(nodeID)
     local cached = self.cache.positions[nodeID] or self.localPositions[nodeID]
@@ -451,23 +423,19 @@ function WorkJob:Position(nodeID)
         self.incompletePositions = true
     end
     return position
-end--[[APR_DIAG]]
-WorkJob.Position = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:303:WorkJob:Position#30", WorkJob.Position)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Position = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:409:WorkJob:Position#31", WorkJob.Position)--[[/APR_DIAG]]
 
 function WorkJob:Available(nodeID)
     if self.availability[nodeID] == nil then
         self.availability[nodeID] = Available(self.api, nodeID) == true
     end
     return self.availability[nodeID]
-end--[[APR_DIAG]]
-WorkJob.Available =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:322:WorkJob:Available#31", WorkJob.Available)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Available = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:428:WorkJob:Available#32", WorkJob.Available)--[[/APR_DIAG]]
 
 function WorkJob:Measured(signature)
     local record = self.data and self.data.durations[signature]
     return type(record) == "table" and Positive(record.seconds) and record.seconds or nil
-end--[[APR_DIAG]]
-WorkJob.Measured = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:329:WorkJob:Measured#32", WorkJob.Measured)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Measured = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:435:WorkJob:Measured#33", WorkJob.Measured)--[[/APR_DIAG]]
 
 function WorkJob:Quote(nodeID, fromID)
     if not self.live or fromID ~= self.currentNodeID then return nil end
@@ -477,8 +445,7 @@ function WorkJob:Quote(nodeID, fromID)
         self.quotes[nodeID] = cached
     end
     return cached or nil
-end--[[APR_DIAG]]
-WorkJob.Quote = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:334:WorkJob:Quote#33", WorkJob.Quote)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.Quote = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:440:WorkJob:Quote#34", WorkJob.Quote)--[[/APR_DIAG]]
 
 function WorkJob:NodeName(nodeID)
     local liveNode = self.live and self.owner.liveNodes and self.owner.liveNodes[nodeID]
@@ -493,8 +460,7 @@ function WorkJob:NodeName(nodeID)
         self.cache.names[nodeID] = name
     end
     return name
-end--[[APR_DIAG]]
-WorkJob.NodeName = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:344:WorkJob:NodeName#34", WorkJob.NodeName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WorkJob.NodeName = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:450:WorkJob:NodeName#35", WorkJob.NodeName)--[[/APR_DIAG]]
 
 local function NewJob(owner, context)
     local api = owner:GetAPI()
@@ -520,8 +486,7 @@ local function NewJob(owner, context)
     }, WorkJob)
     if api then job.cache = StaticCache(owner, api, paths, snapshot) end
     return job
-end--[[APR_DIAG]]
-NewJob = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:359:NewJob#35", NewJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NewJob = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:465:NewJob#36", NewJob)--[[/APR_DIAG]]
 
 local function AddFlight(job, id, fromID, toID, seconds, copper, pathID, requiresVerification)
     local source, target = job:Position(fromID), job:Position(toID)
@@ -542,8 +507,7 @@ local function AddFlight(job, id, fromID, toID, seconds, copper, pathID, require
             :format(job:NodeName(toID)),
     }
     job.seen[Pair(fromID, toID)] = true
-end--[[APR_DIAG]]
-AddFlight = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:376:AddFlight#36", AddFlight)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddFlight = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:491:AddFlight#37", AddFlight)--[[/APR_DIAG]]
 
 local function AddStaticPath(job, record)
     local from, to = record.from, record.to
@@ -567,8 +531,7 @@ local function AddStaticPath(job, record)
     if (not quote or quote.signature == record.signature) and Positive(duration) and Price(price) then
         AddFlight(job, "taxi:" .. tostring(record.id), from, to, duration, price, record.id, not quote)
     end
-end--[[APR_DIAG]]
-AddStaticPath = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:389:AddStaticPath#37", AddStaticPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddStaticPath = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:512:AddStaticPath#38", AddStaticPath)--[[/APR_DIAG]]
 
 local function AddObservedOffer(job, to, offer)
     local from = offer.fromNodeID
@@ -579,8 +542,7 @@ local function AddObservedOffer(job, to, offer)
     if quote and duration and job:Available(from) and job:Available(to) and (not job.seen[pair] or ambiguous) then
         AddFlight(job, "offer:" .. pair, from, to, duration, quote.priceCopper)
     end
-end--[[APR_DIAG]]
-AddObservedOffer = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:409:AddObservedOffer#38", AddObservedOffer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddObservedOffer = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:536:AddObservedOffer#39", AddObservedOffer)--[[/APR_DIAG]]
 
 local function FinishEdges(job)
     job.status, job.result = "ready", job.edges
@@ -601,8 +563,7 @@ local function FinishEdges(job)
             data = job.data,
         }
     end
-end--[[APR_DIAG]]
-FinishEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:422:FinishEdges#39", FinishEdges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; FinishEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:547:FinishEdges#40", FinishEdges)--[[/APR_DIAG]]
 
 local function AdvanceEdges(job)
     if not job.cache then
@@ -645,8 +606,7 @@ local function AdvanceEdges(job)
         end
         FinishEdges(job)
     end
-end--[[APR_DIAG]]
-AdvanceEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:435:AdvanceEdges#40", AdvanceEdges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AdvanceEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:568:AdvanceEdges#41", AdvanceEdges)--[[/APR_DIAG]]
 
 -- No path scan happens here. The controller advances indexing, discovery
 -- checks and edge creation through Step with the same frame budget as search.
@@ -667,9 +627,7 @@ function taxi:CreateEdgeBuild(context)
         job.previous = previous
     end
     return job
-end--[[APR_DIAG]]
-taxi.CreateEdgeBuild =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:468:taxi:CreateEdgeBuild#41", taxi.CreateEdgeBuild)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CreateEdgeBuild = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:613:taxi:CreateEdgeBuild#42", taxi.CreateEdgeBuild)--[[/APR_DIAG]]
 
 -- Retained for callers that explicitly need a synchronous result. APR uses
 -- CreateEdgeBuild so this compatibility method cannot consume a render frame.
@@ -680,8 +638,80 @@ function taxi:BuildEdges(context)
         status, edges, metadata = job:Step(256)
     until status ~= "planning"
     return edges or {}, metadata
-end--[[APR_DIAG]]
-taxi.BuildEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:483:taxi:BuildEdges#42", taxi.BuildEdges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.BuildEdges = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:634:taxi:BuildEdges#43", taxi.BuildEdges)--[[/APR_DIAG]]
+
+local function ProbeWalkSeconds(job, from, to)
+    if from.instanceID ~= to.instanceID then return math.huge end
+    if not job.walkingProvider then return Distance(from, to) / job.speed end
+    local context = job.walkingContext
+    local speed = context.walkSpeedFor and context.walkSpeedFor(from, to) or job.speed
+    if context.walkSpeedAt then
+        local fromSpeed, toSpeed = context.walkSpeedAt(from), context.walkSpeedAt(to)
+        speed = math.min(Positive(fromSpeed) and fromSpeed or job.speed, Positive(toSpeed) and toSpeed or job.speed)
+    end
+    if not Positive(speed) then speed = job.speed end
+    local dz = Number(from.z) and Number(to.z) and to.z - from.z or 0
+    return math.sqrt((from.x - to.x)^2 + (from.y - to.y)^2 + dz^2) / speed
+end--[[APR_DIAG]]; ProbeWalkSeconds = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:643:ProbeWalkSeconds#44", ProbeWalkSeconds)--[[/APR_DIAG]]
+
+local function TerrainCost(job, entry, from, to)
+    if entry and entry.state == "no_path" then return false end
+    if entry and entry.state == "ready" and Price(entry.seconds) then return entry.seconds end
+    local seconds = ProbeWalkSeconds(job, from, to)
+    return Number(seconds) and seconds or false
+end--[[APR_DIAG]]; TerrainCost = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:657:TerrainCost#45", TerrainCost)--[[/APR_DIAG]]
+
+local function StepWalkingJob(job)
+    local remaining = job.deadline and math.max(0, job.deadline - job.clock()) or job.sliceMilliseconds
+    if remaining <= 0 then return "planning" end
+    return job.walkingJob:Step(1, remaining)
+end--[[APR_DIAG]]; StepWalkingJob = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:664:StepWalkingJob#46", StepWalkingJob)--[[/APR_DIAG]]
+
+local function PrepareProbeApproaches(job)
+    local pending = job.approachBatch
+    if not pending then
+        job.approachBatch = {index = 1, targets = {}, ids = {}}
+        return
+    end
+    if pending.stage == "costs" then
+        local status, result = StepWalkingJob(job)
+        if status == "planning" then return end
+        if status == "cancelled" then job:Cancel(); return end
+        job.walkingJob = nil
+        pending.costs, pending.index, pending.stage = result and result.costs or {}, 1, "apply"
+        return
+    end
+    if pending.stage == "apply" then
+        local id = pending.ids[pending.index]
+        if not id then job.approachBatch, job.approachesReady = nil, true; return end
+        job.approachCosts[id] = TerrainCost(job, pending.costs[pending.index], job.start, pending.targets[pending.index])
+        pending.index = pending.index + 1
+        return
+    end
+    local id = job.cache.departureIDs[pending.index]
+    pending.index = pending.index + 1
+    if id then
+        local position = job:Available(id) and job:Position(id)
+        if position and (not job.canWalk or job.canWalk(job.start, position)) then
+            pending.targets[#pending.targets + 1], pending.ids[#pending.ids + 1] = position, id
+        else
+            job.approachCosts[id] = false
+        end
+        return
+    end
+    if #pending.targets == 0 then job.approachBatch, job.approachesReady = nil, true; return end
+    job.walkingJob = job.walkingProvider:CreateCostJob(job.start, pending.targets, job.walkingContext)
+    pending.stage = "costs"
+end--[[APR_DIAG]]; PrepareProbeApproaches = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:670:PrepareProbeApproaches#47", PrepareProbeApproaches)--[[/APR_DIAG]]
+
+local function AdvanceProbeExit(job)
+    local query = job.groundQuery
+    local status, result = StepWalkingJob(job)
+    if status == "planning" then return end
+    if status == "cancelled" then job:Cancel(); return end
+    job.exitCosts[query.id] = TerrainCost(job, result and result.costs and result.costs[1], query.from, job.goal)
+    job.walkingJob, job.groundQuery = nil, nil
+end--[[APR_DIAG]]; AdvanceProbeExit = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:707:AdvanceProbeExit#48", AdvanceProbeExit)--[[/APR_DIAG]]
 
 local function ProbeGroundCost(job, nodeID, departure)
     local costs = departure and job.approachCosts or job.exitCosts
@@ -689,11 +719,15 @@ local function ProbeGroundCost(job, nodeID, departure)
     local position = job:Position(nodeID)
     local from, to = departure and job.start or position, departure and position or job.goal
     local reachable = position and (not job.canWalk or job.canWalk(from, to))
-    local cost = reachable and Distance(from, to) / job.speed
+    if reachable and job.walkingProvider then
+        job.walkingJob = job.walkingProvider:CreateCostJob(from, {to}, job.walkingContext)
+        job.groundQuery = {id = nodeID, from = from}
+        return nil
+    end
+    local cost = reachable and ProbeWalkSeconds(job, from, to)
     costs[nodeID] = Number(cost) and cost or false
     return costs[nodeID]
-end--[[APR_DIAG]]
-ProbeGroundCost = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:490:ProbeGroundCost#43", ProbeGroundCost)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ProbeGroundCost = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:716:ProbeGroundCost#49", ProbeGroundCost)--[[/APR_DIAG]]
 
 local function EvaluateProbe(job, record)
     local from, to, pair = record.from, record.to, record.pair
@@ -704,6 +738,7 @@ local function EvaluateProbe(job, record)
     if available == nil then available = job:Available(to) end
     if not available then return end
     local approach, exit = job.approachCosts[from], ProbeGroundCost(job, to, false)
+    if exit == nil then return false end
     if exit == false then return end
     local lowerBound = approach + BOARDING_SECONDS + exit
     local best = job.best
@@ -740,11 +775,40 @@ local function EvaluateProbe(job, record)
             estimatedSeconds = estimate,
             flightSeconds = duration + BOARDING_SECONDS,
             flightDestination = target,
+            approachSeconds = approach,
+            exitSeconds = exit,
             instruction = L["NAVIGATION_CONSULT_TAXI"],
         }
     end
-end--[[APR_DIAG]]
-EvaluateProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:501:EvaluateProbe#44", EvaluateProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EvaluateProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:732:EvaluateProbe#50", EvaluateProbe)--[[/APR_DIAG]]
+
+local function MaterializeProbe(job)
+    local best = job.best
+    local phase = job.probePathPhase or "approach"
+    if phase == "complete" then job.status, job.result = "ready", best; return end
+    local from, to = phase == "approach" and job.start or best.flightDestination,
+        phase == "approach" and best.from or job.goal
+    if not job.walkingJob then
+        job.walkingJob = job.walkingProvider:CreatePathJob(from, to, job.walkingContext)
+        return
+    end
+    local status, result = StepWalkingJob(job)
+    if status == "planning" then return end
+    if status == "cancelled" then job:Cancel(); return end
+    job.walkingJob = nil
+    if status == "no_path" then
+        local costs = phase == "approach" and job.approachCosts or job.exitCosts
+        costs[phase == "approach" and best.fromNodeID or best.toNodeID] = false
+        job.best, job.probePathPhase, job.outgoing = nil, nil, nil
+        job.materializingProbe = nil
+        job.departureIndex, job.pathIndex = 0, 0
+        return
+    end
+    if status == "ready" and result then
+        if phase == "approach" then best.approachPath = result.path else best.exitPath = result.path end
+    end
+    job.probePathPhase = phase == "approach" and "exit" or "complete"
+end--[[APR_DIAG]]; MaterializeProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:785:MaterializeProbe#51", MaterializeProbe)--[[/APR_DIAG]]
 
 local function AdvanceProbe(job)
     if not job.cache or not job.start or not job.goal or job.baseline <= BOARDING_SECONDS then
@@ -755,11 +819,13 @@ local function AdvanceProbe(job)
         IndexNextPath(job.cache)
         return
     end
+    if job.walkingProvider and not job.approachesReady then PrepareProbeApproaches(job); return end
+    if job.groundQuery then AdvanceProbeExit(job); return end
+    if job.probePathPhase or job.materializingProbe then MaterializeProbe(job); return end
     if job.outgoing then
-        job.pathIndex = job.pathIndex + 1
-        local record = job.outgoing[job.pathIndex]
+        local record = job.outgoing[job.pathIndex + 1]
         if record then
-            EvaluateProbe(job, record)
+            if EvaluateProbe(job, record) ~= false then job.pathIndex = job.pathIndex + 1 end
             return
         end
         job.outgoing = nil
@@ -768,6 +834,11 @@ local function AdvanceProbe(job)
     job.departureIndex = job.departureIndex + 1
     local nodeID = job.cache.departureIDs[job.departureIndex]
     if not nodeID then
+        if job.walkingProvider and job.best then
+            job.materializingProbe = true
+            MaterializeProbe(job)
+            return
+        end
         job.status, job.result = "ready", job.best
         return
     end
@@ -782,8 +853,7 @@ local function AdvanceProbe(job)
     local lowerBound = approach + BOARDING_SECONDS
     if lowerBound >= job.baseline or (job.best and lowerBound > job.best.estimatedSeconds) then return end
     job.outgoing, job.pathIndex = job.cache.outgoing[nodeID], 0
-end--[[APR_DIAG]]
-AdvanceProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:537:AdvanceProbe#45", AdvanceProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AdvanceProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:813:AdvanceProbe#52", AdvanceProbe)--[[/APR_DIAG]]
 
 function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     options = options or {}
@@ -793,12 +863,13 @@ function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     job.start, job.goal, job.canWalk = start, goal, options.canWalk
     job.baseline = baselineSeconds or math.huge
     job.speed = Positive(options.walkSpeed) and options.walkSpeed or 7
+    job.walkingProvider = options.walkingProvider
+    job.walkingContext = {walkSpeed = job.speed, walkSpeedFor = options.walkSpeedFor,
+        walkSpeedAt = options.walkSpeedAt, clock = job.clock}
     job.approachCosts, job.exitCosts = {}, {}
     job.pathIndex, job.departureIndex = 0, 0
     return job
-end--[[APR_DIAG]]
-taxi.CreateProbeSearch =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:569:taxi:CreateProbeSearch#46", taxi.CreateProbeSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CreateProbeSearch = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:858:taxi:CreateProbeSearch#53", taxi.CreateProbeSearch)--[[/APR_DIAG]]
 
 function taxi:FindProbe(start, goal, baselineSeconds, options)
     local job = self:CreateProbeSearch(start, goal, baselineSeconds, options)
@@ -807,15 +878,13 @@ function taxi:FindProbe(start, goal, baselineSeconds, options)
         status, probe = job:Step(256)
     until status ~= "planning"
     return probe
-end--[[APR_DIAG]]
-taxi.FindProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:582:taxi:FindProbe#47", taxi.FindProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.FindProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:874:taxi:FindProbe#54", taxi.FindProbe)--[[/APR_DIAG]]
 
 function taxi:CanTake(nodeID)
     local quote, money = self:GetQuote(nodeID), GetMoney and GetMoney() or 0
     if not quote or not Price(money) or quote.priceCopper > money then return false end
     return true, quote.slotIndex
-end--[[APR_DIAG]]
-taxi.CanTake = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:589:taxi:CanTake#48", taxi.CanTake)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CanTake = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:883:taxi:CanTake#55", taxi.CanTake)--[[/APR_DIAG]]
 function taxi:StartMeasurement(slot)
     if not self.currentNodeID or not self.liveOffers then return end
     for destinationID, offer in pairs(self.liveOffers) do
@@ -838,9 +907,7 @@ function taxi:StartMeasurement(slot)
             return
         end
     end
-end--[[APR_DIAG]]
-taxi.StartMeasurement =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:594:taxi:StartMeasurement#49", taxi.StartMeasurement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.StartMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:888:taxi:StartMeasurement#56", taxi.StartMeasurement)--[[/APR_DIAG]]
 function taxi:PollMeasurement()
     local measurement = self.measurement
     if not measurement then return end
@@ -888,19 +955,17 @@ function taxi:PollMeasurement()
             APR.navigation:RequestUpdate()
         end
     end
-end--[[APR_DIAG]]
-taxi.PollMeasurement =
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:610:taxi:PollMeasurement#50", taxi.PollMeasurement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.PollMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:911:taxi:PollMeasurement#57", taxi.PollMeasurement)--[[/APR_DIAG]]
 if hooksecurefunc then
     hooksecurefunc(
         "TakeTaxiNode",
 
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:828:callback#51", --[[/APR_DIAG]]function(slot) taxi:StartMeasurement(slot) end--[[APR_DIAG]])--[[/APR_DIAG]]
+            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:963:callback#58", --[[/APR_DIAG]]function(slot) taxi:StartMeasurement(slot) end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
 end
 local frame, elapsed = CreateFrame("Frame"), 0
 local measurementPoll =
-     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:833:callback#52", --[[/APR_DIAG]]function(_, delta)
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:968:callback#59", --[[/APR_DIAG]]function(_, delta)
         if not taxi.measurement then return end
         elapsed = elapsed + delta
         if elapsed >= 0.2 then
@@ -914,4 +979,4 @@ frame:SetScript("OnUpdate", nil)
 function taxi:RefreshMeasurementActivity()
     elapsed = 0
     frame:SetScript("OnUpdate", self.measurement and measurementPoll or nil)
-end--[[APR_DIAG]]; taxi.RefreshMeasurementActivity = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:844:taxi:RefreshMeasurementActivity#53", taxi.RefreshMeasurementActivity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.RefreshMeasurementActivity = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:979:taxi:RefreshMeasurementActivity#60", taxi.RefreshMeasurementActivity)--[[/APR_DIAG]]

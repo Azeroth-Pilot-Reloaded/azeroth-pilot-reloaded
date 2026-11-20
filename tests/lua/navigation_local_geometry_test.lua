@@ -20,8 +20,14 @@ lib:RegisterData("synthetic", "geometry", {
                 { key = "road", polygon = { { 0.2, 0.2 }, { 0.6, 0.2 }, { 0.6, 0.8 }, { 0.2, 0.8 } } },
                 { key = "dock", center = { 0.8, 0.8 }, radius = 5 },
             },
+            [102] = {
+                { key = "landing", bounds = { instanceID = 8, minX = 50, maxX = 90, minY = 70, maxY = 90, minZ = 12 } },
+            },
         },
-        MapRemaps = { [100] = { { instanceID = 8, minX = 80, maxX = 160, minY = 0, maxY = 100, mapID = 101 } } },
+        MapRemaps = {
+            [100] = { { instanceID = 8, minX = 80, maxX = 160, minY = 0, maxY = 100, mapID = 101 } },
+            [103] = { { instanceID = 8, minX = 50, maxX = 90, minY = 70, maxY = 90, minZ = 12, mapID = 102 } },
+        },
     },
 })
 local ready, projections = true, 0
@@ -59,6 +65,16 @@ local mapped = data:NormalizeLocation({ space = "world", uiMapID = 100, instance
 assert(mapped.uiMapID == 101)
 local other = data:NormalizeLocation({ space = "world", uiMapID = 100, instanceID = 9, x = 100, y = 80 })
 assert(other.uiMapID == 100, "A matching rectangle in another world does not remap")
+local function landing(map, world, z)
+    return data:NormalizeLocation({ uiMapID = map, instanceID = world, x = 90, y = 80, z = z })
+end
+local upper = landing(103, 8, 12)
+assert(upper.uiMapID == 102 and upper.accessKey == "landing")
+for _, lower in ipairs({ landing(103, 8, 11), landing(103, 8), landing(103, 9, 12) }) do
+    assert(lower.uiMapID == 103 and not lower.accessKey)
+    assert(not data:CanWalk(lower, upper), "Overlapping XY cannot assign another layer or world to the landing")
+end
+assert(not landing(102, 8, 11).accessKey and not landing(102, 8).accessKey)
 assert(data:NormalizeLocation({ space = "map", uiMapID = 101, x = 0.5, y = 1.2 }) == nil)
 local extended = data:NormalizeLocation({ space = "mapProjection", uiMapID = 101, x = 0.5, y = 1.2 })
 assert(math.abs(extended.x - 236) < 0.00001 and math.abs(extended.y - 160) < 0.00001)

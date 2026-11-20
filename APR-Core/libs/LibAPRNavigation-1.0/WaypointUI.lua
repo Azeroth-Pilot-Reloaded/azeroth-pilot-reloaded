@@ -1,7 +1,7 @@
 -- Optional waypoint output. A consumer may publish explicitly or enable an
 -- observer of its current target; route progression always belongs to the host.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("waypoint-ui", 6) then return end
+if not Lib:BeginModule("waypoint-ui", 7) then return end
 local Instance = Lib.Instance
 local visualKeys = { "name", "iconTexture", "iconType", "r", "g", "b", "requestRecolor", "stripCoordinates" }
 
@@ -157,10 +157,10 @@ local function MapPosition(instance, position, anyMap)
     return { mapID = mapID, x = x * 100, y = y * 100 }
 end
 
-local function SameRequest(a, b)
-    if a.mapID ~= b.mapID or a.x ~= b.x or a.y ~= b.y or a.suppressAudio ~= b.suppressAudio or a.token ~= b.token then
-        return false
-    end
+local function SameRequest(a, b, finalDestination)
+    if a.mapID ~= b.mapID or a.x ~= b.x or a.y ~= b.y or a.token ~= b.token then return false end
+    if finalDestination then return true end
+    if a.suppressAudio ~= b.suppressAudio then return false end
     for _, key in ipairs(visualKeys) do
         if a[key] ~= b[key] then return false end
     end
@@ -193,8 +193,7 @@ local function PublishWaypoint(self, position, options, automatic)
     request.token = options.token or position.token
     request.suppressAudio = options.suppressAudio ~= false
     request.stripCoordinates = options.stripCoordinates ~= false
-    -- The host has already selected the active leg. Avoid another planner
-    -- immediately replacing it when Waypoint UI receives this request.
+    -- The host plans the journey and owns its guidance.
     request.suppressPathfinding = true
 
     local state = self.waypointUI
@@ -227,7 +226,9 @@ local function PublishWaypoint(self, position, options, automatic)
             return nil, "waypoint_already_tracked"
         end
     end
-    if state and state.api == api and SameRequest(state.request, request) then
+    local finalDestination = automatic and position.finalDestination == true
+    if state and state.api == api
+        and SameRequest(state.request, request, automatic and (finalDestination or state.finalDestination)) then
         if OwnsWaypoint(state, current) then
             if not automatic and type(api.IsUserNavigationTracked) == "function" then
                 local success, tracked = pcall(api.IsUserNavigationTracked)
@@ -260,6 +261,7 @@ local function PublishWaypoint(self, position, options, automatic)
         request = savedRequest,
         session = point,
         token = request.token or (automatic and automatic.target),
+        finalDestination = finalDestination,
         point = { mapID = point.mapID, x = point.x, y = point.y },
     }
     return point
@@ -468,12 +470,17 @@ local function TargetSnapshot(target, options)
     return result
 end
 
-function Instance:GetWaypointTargetState()
+function Instance:GetWaypointTargetState(finalDestination)
     if not self.waypointUIEnabled then return nil, { guideMode = "blocked" }, "waypoint_ui_disabled" end
     if type(self.env.getWaypointTarget) ~= "function" then
         return nil, { guideMode = "blocked" }, "waypoint_target_unavailable"
     end
-    local ok, target, options = pcall(self.env.getWaypointTarget)
+    local ok, target, options
+    if finalDestination and self.waypointOptions and self.waypointOptions.finalDestination then
+        ok, target, options = pcall(self.env.getWaypointTarget, true)
+    else
+        ok, target, options = pcall(self.env.getWaypointTarget)
+    end
     if not ok then return nil, { guideMode = "blocked" }, "waypoint_target_error" end
     if options ~= nil and type(options) ~= "table" then return nil, { guideMode = "blocked" }, "invalid_options" end
     options = options or {}
@@ -599,7 +606,7 @@ end
 
 local function RefreshAutomatic(self, automatic)
     local generation = automatic.generation
-    local target, options, errorReason = self:GetWaypointTargetState()
+    local target, options, errorReason = self:GetWaypointTargetState(true)
     -- A host callback may disable or restart automatic output while sampled.
     if not self.waypointUIEnabled or automatic.generation ~= generation then return self:GetWaypointUIStatus() end
     if errorReason then
@@ -675,21 +682,26 @@ local function StopTicker(automatic)
     automatic.generation = automatic.generation + 1
 end
 
-function Instance:ReleaseWaypoints(suppressContext)
+function Instance:ReleaseWaypoints(suppressContext, keepAutomatic)
     local automatic = self.waypointUIAutomatic
     if suppressContext then
         local _, options = self:GetWaypointTargetState()
         self.waypointCancelledContext = options and options.context
     end
     if self.ClearManualAzerothWaypoint then self:ClearManualAzerothWaypoint() end
-    local _, reason = ClearWaypoint(self)
-    self.waypointPendingRelease = reason ~= nil
+    local reason
+    local keepWaypoint = keepAutomatic and not suppressContext and automatic and automatic.ownedWaypoint
+        and automatic.ownedWaypoint == self.waypointUI and not self.waypointPendingRelease
+    if not keepWaypoint then
+        local _, clearReason = ClearWaypoint(self)
+        reason, self.waypointPendingRelease = clearReason, clearReason ~= nil
+    end
     if self.ReleaseAzerothWaypoint then
         local released, awReason = self:ReleaseAzerothWaypoint()
         self.waypointAWPending = released == false
         reason = reason or awReason
     end
-    if automatic then
+    if automatic and not keepWaypoint then
         automatic.point, automatic.ownedWaypoint = nil, nil
         automatic.hasTarget, automatic.target = nil, nil
         automatic.reason = reason or "no_waypoint"

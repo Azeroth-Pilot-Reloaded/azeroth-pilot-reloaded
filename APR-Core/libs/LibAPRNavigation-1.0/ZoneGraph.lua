@@ -2,7 +2,7 @@
 -- region, not every coordinate in that region. Character flags are never cached
 -- in this shared geometry index; each request owns a fresh condition snapshot.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_graph", 4) then return end
+if not Lib:BeginModule("zone_graph", 5) then return end
 local Instance = Lib.Instance
 
 local function Encode(value)
@@ -71,6 +71,15 @@ local function IndexDefinition(graph, data, definition, context)
 end
 
 function Instance:CreateZoneGraphRoute(context, makeWalk)
+    if context.walkingProvider then
+        -- This topology merges all coordinates in one access region. Terrain
+        -- requests need the full endpoint graph and its physical edge costs.
+        return {
+            status = "fallback",
+            Step = function(job) return job.status end,
+            Cancel = function(job) job.status = "cancelled" end,
+        }
+    end
     local graph = self.zoneGraph
     if
         not graph

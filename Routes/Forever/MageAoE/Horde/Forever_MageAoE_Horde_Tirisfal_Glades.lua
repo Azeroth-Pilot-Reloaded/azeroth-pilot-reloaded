@@ -554,7 +554,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
         },
         {
             SellItems = { junk = true, questID = 382 },
-            Coord = { x = 1568.35, y = 1859.49 },
+            Coord = { x = 1568.35, y = 1859.49, z = 94.3 },
             Zone = 1420,
             _index = 69,
         },

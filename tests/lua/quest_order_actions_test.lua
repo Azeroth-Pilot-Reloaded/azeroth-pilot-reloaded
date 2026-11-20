@@ -242,12 +242,12 @@ assert(
 -- Loot values remain in detail rows, while known travel destinations fill the title.
 local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }
 local lootRow = render({ lootStep }).stepList[1]
-assert(lootRow.title == "Loot: Item 20, Unknown")
+assert(lootRow.title == "Loot: Item 20\nLoot: Unknown")
 assert(lootRow.quests[1].questID == 3 and lootRow.quests[1].questName == "Item 20")
 assert(lootRow.quests[2].questName == UNKNOWN)
 local completedLoot = render({ lootStep }, 2).stepList[1]
 assert(
-    completedLoot.title == "Loot: Item 20, Unknown" and completedLoot.color == "green" and #completedLoot.quests == 0
+    completedLoot.title == "Loot: Item 20\nLoot: Unknown" and completedLoot.color == "green" and #completedLoot.quests == 0
 )
 assert(render({ { UseFlightPath = 10 } }).stepList[1].title == "Fly to Flight destination")
 assert(render({ { UseItem = { itemID = 20 } } }).stepList[1].title == "Use Item 20")
@@ -274,7 +274,7 @@ assert(APR:GetStepString({ UseItem = { itemID = 20 } }) == "Use Item 20")
 assert(APR:GetStepString({ UseItem = { itemID = 404 } }) == "Use Unknown")
 assert(APR:GetStepString({ UseSpell = { spellID = 20 } }) == "Cast Spell 20")
 assert(APR:GetStepString({ UseSpell = { spellID = 404 } }) == "Cast Unknown")
-assert(APR:GetStepString(lootStep) == "Loot: Item 20, Unknown")
+assert(APR:GetStepString(lootStep) == "Loot: Item 20\nLoot: Unknown")
 assert(APR:GetStepString({ Grind = 20 }) == "Grind")
 assert(APR:GetStepString({ LeaveInstance = { mapID = 2 } }) == "Leave instance: Zone")
 assert(APR:GetStepString({ LeaveInstance = { dungeonKey = "ROL" } }) == "Leave Ruins of Lordaeron")
@@ -364,8 +364,19 @@ local actions = {
 equipped[16], known[20] = 20, true
 preview = render(actions)
 assert(
-    preview.stepList[1].title == "SELLITEMS: Item 20 (SELL_ITEM_EQUIPPED), Unknown (404)\nSell supplies\nVENDOR_TRASH"
+    preview.stepList[1].title == "SELLITEMS:\nItem 20 (SELL_ITEM_EQUIPPED)\nUnknown (404)\nSell supplies\nVENDOR_TRASH"
 )
+assert(preview.stepList[2].title == "LEARNSKILL:\nSpell 20\nSpell 21")
+for _, key in ipairs({ "BankDeposit", "BankWithdraw", "DestroyItems" }) do
+    local rule = { items = { 20, { itemID = 404 } }, text = "Item advice" }
+    assert(render({ { [key] = rule } }).stepList[1].title
+        == key:upper() .. ":\nItem 20\nUnknown (404)\nItem advice",
+        "Every item, including an uncached one, gets its own line before fallback advice")
+end
+local purchase = render({ { BuyMerchant = { { itemID = 20, quantity = 2 }, { itemID = 21, quantity = 3 } } } })
+assert(#purchase.stepList[1].quests == 2)
+assert(purchase.stepList[1].quests[1].questID == 2 and purchase.stepList[1].quests[1].questName == "Item 20")
+assert(purchase.stepList[1].quests[2].questID == 3 and purchase.stepList[1].quests[2].questName == "Item 21")
 assert(preview.stepList[2].color == "gray", "Every requested skill must be known")
 assert(preview.stepList[7].color == "green")
 known[21] = true
@@ -440,6 +451,9 @@ for line in actionTable:gmatch("[^\n]+") do
 end
 assert(#documented == 57, "Review coverage when the action table changes")
 local hiddenOptions = { DroppableQuest = true, Fillers = true, NpcDismount = true }
+
+local missingLabel, missingAction = APR:GetStepString(nil)
+assert(missingLabel == "" and missingAction == nil, "An absent step has no label or action")
 
 -- Optional and automatic fields never become the primary action or a preview row.
 for key in pairs(hiddenOptions) do
@@ -518,7 +532,7 @@ assert(title == table.concat(expected, "\n"), "only actionable instructions belo
 local _, abandoned = title:gsub(L.LEAVE_QUEST .. ": 12 %- Quest 12", "")
 assert(abandoned == 1, "A quest in both abandonment fields is only displayed once")
 local sale = render({ { SellItems = { items = { 20 }, junk = true } } }).stepList[1].title
-assert(sale == L.SELLITEMS .. ": Item 20 (" .. L.SELL_ITEM_EQUIPPED .. ")\n" .. L.VENDOR_TRASH)
+assert(sale == L.SELLITEMS .. ":\nItem 20 (" .. L.SELL_ITEM_EQUIPPED .. ")\n" .. L.VENDOR_TRASH)
 
 local cachedTitle = C_QuestLog.GetTitleForQuestID
 local requested = {}

@@ -1,0 +1,42 @@
+local F = dofile("tests/lua/terrain_runtime_fixture.lua")
+local lib = F.load()
+C_Timer = { After = function() error("Terrain must not schedule a timer") end,
+    NewTicker = function() error("Terrain must not create a ticker") end }
+CreateFrame = function() error("Terrain must not create an event/frame pump") end
+local provider = F.provider(lib, F.map({ wall = true }))
+local a, b = F.point(1, 1, 0), F.point(6, 1, 0)
+local ticks = 0
+local function clock() ticks = ticks + 1; return ticks end
+local job = provider:CreatePathJob(a, b, { walkSpeed = 7, clock = clock })
+assert(ticks == 0, "Creating jobs performs no search work")
+assert(job:Step(0, 10) == "planning" and job.workLastStep == 0)
+assert(job:Step(100000, 0) == "planning" and job.workLastStep == 0)
+assert(job:Step(100000, 2) == "planning" and job.workLastStep < 100000,
+    "The caller deadline must interrupt work before the operation ceiling")
+job:Cancel()
+assert(job:Step(10, 10) == "cancelled" and job.workLastStep == 0)
+local batch = provider:CreateCostJob(a, { b, b, b }, { walkSpeed = 7 })
+batch:Step(1, 10)
+batch:Cancel()
+assert(batch:Step(100, 10) == "cancelled" and batch.workLastStep == 0)
+local first = provider:CreatePathJob(a, b, { walkSpeed = 7 })
+local second = provider:CreatePathJob(b, a, { walkSpeed = 14 })
+for _ = 1, 10 do first:Step(1, 10); second:Step(1, 10) end
+local s1, r1 = F.finish(first, 1)
+local s2, r2 = F.finish(second, 1)
+assert(s1 == "ready" and s2 == "ready")
+assert(r1.yards > 800 and r1.yards < 1100 and r2.yards > 800 and r2.yards < 1100)
+F.near(r1.seconds, r1.yards / 7)
+F.near(r2.seconds, r2.yards / 14)
+assert(r1.path[1].x == a.x and r1.path[#r1.path].x == b.x)
+assert(r2.path[1].x == b.x and r2.path[#r2.path].x == a.x)
+print("terrain runtime budget: operation/time slices, cancellation and interleaved jobs passed")
+local cached = provider:CreatePathJob(a, b, { walkSpeed = 14 })
+local cachedStatus, cachedResult = cached:Step(3, 10)
+assert(cachedStatus == "ready" and cachedResult.path ~= r1.path)
+F.near(cachedResult.seconds, r1.yards / 14)
+local stale = provider:CreatePathJob(a, b, { walkSpeed = 7, style = "fastest" })
+assert(stale:Step(3, 10) == "planning", "Replace the generation while an uncached route is still running")
+F.provider(lib, F.map(), 2)
+assert(F.finish(stale) == "unavailable", "A replaced terrain revision cannot publish an old path")
+assert(F.finish(provider:CreatePathJob(a, b, { walkSpeed = 7 })) == "ready")

@@ -202,3 +202,35 @@ assert(
     job.status == "cancelled" and not job.blockers and not job.diagnosticSegments,
     "Cancelled diagnostics release their partial result and cannot report obsolete gates"
 )
+
+do
+    local function point(x, map) return { x = x, y = 0, instanceID = 1, uiMapID = map } end
+    local start, boarding, goal = point(0, 1), point(10, 1), point(1000, 2)
+    local ferry = { kind = "boat", from = boarding, to = point(900, 2), seconds = 10 }
+    local edges = {
+        { kind = "boat", from = boarding, to = point(999, 3), seconds = 1 },
+        { kind = "boat", from = boarding, to = point(999, 2), seconds = 200 },
+        ferry,
+    }
+    local plan = APR.NavigationPlanner:Create({
+        start = start, goal = goal, walkSpeed = 10, budget = 0,
+        progressiveTravel = true, walkingGoalApproach = 20, allowEarlyWalkingApproach = true,
+        canWalk = function() return true end,
+        data = { CreateEdgeBuild = function() return Work("catalogue", edges) end },
+        walkingProvider = { CreatePathJob = function(_, from, to)
+            assert(from == start and to == boarding)
+            return Work("access", { path = { from, to }, seconds = 1, yards = 10 })
+        end },
+        taxiData = { CreateEdgeBuild = function() return Work("taxi", {}) end },
+        engine = { CreateSearch = function(_, options)
+            assert(options.walkingGoalApproach == 20, "The distant pin can use an approach in its first search")
+            return Work("search", { segments = {}, totalSeconds = 40 })
+        end },
+        prepareSegment = function(segment) return segment end,
+    })
+    for _ = 1, 100 do
+        if plan:Step(64, 1) == "ready" then break end
+    end
+    assert(plan.status == "ready" and plan.travelPreview[1].path[2] == boarding and plan.travelPreview[2] == ferry,
+        "Early guidance uses a proven boarding path and a competitive transport to the requested map")
+end

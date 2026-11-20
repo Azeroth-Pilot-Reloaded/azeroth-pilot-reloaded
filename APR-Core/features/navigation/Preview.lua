@@ -12,6 +12,7 @@ local mapInfos, parentRects, parentTransforms = {}, {}, {}
 local pointProjections = setmetatable({}, { __mode = "k" })
 local MAX_POINT_MAPS = 8
 local MISSING_PROJECTION_RETRY = 0.2
+local WORLD_MAP_ID = 947
 local hbd = LibStub("HereBeDragons-2.0", true)
 
 local function finite(value)
@@ -55,11 +56,10 @@ local function ParentRect(mapID, parentID)
         and hbd
         and hbd.TranslateZoneCoordinates
     then
-        -- Classic/Forever may not expose native parent rectangles. HBD's
-        -- same-instance zone conversion is affine; derive its rectangle once.
-        -- Different-instance parent artwork keeps the existing retryable path.
+        -- Forever may not expose native parent rectangles. HBD provides affine
+        -- transforms for same-instance maps and for continents on Azeroth.
         local sourceInstance, parentInstance = Preview:GetMapInstance(mapID), Preview:GetMapInstance(parentID)
-        if sourceInstance ~= nil and sourceInstance == parentInstance then
+        if parentID == WORLD_MAP_ID or (sourceInstance ~= nil and sourceInstance == parentInstance) then
             minX, minY = hbd:TranslateZoneCoordinates(0, 0, mapID, parentID, true)
             maxX, maxY = hbd:TranslateZoneCoordinates(1, 1, mapID, parentID, true)
         end
@@ -247,7 +247,7 @@ function Preview:ProjectPoint(point, mapID)
     end
     local result = cache.maps[mapID]
     if result and (not result.retryAt or (GetTime and GetTime() or 0) < result.retryAt) then
-        return result.x, result.y
+        return result.x, result.y, result.retryAt
     end
     local x, y, stableFailure, retryable = self:ComputeProjection(point, mapID)
     if not finite(x) or not finite(y) then
@@ -267,7 +267,7 @@ function Preview:ProjectPoint(point, mapID)
     result.retryAt = (retryable or ((x == nil or y == nil) and not stableFailure))
             and ((GetTime and GetTime() or 0) + MISSING_PROJECTION_RETRY)
         or nil
-    return x, y
+    return x, y, result.retryAt
 end--[[APR_DIAG]]
 Preview.ProjectPoint =
     APRTrace("APR-Core/features/navigation/Preview.lua:156:Preview:ProjectPoint#7", Preview.ProjectPoint)--[[/APR_DIAG]]
@@ -304,6 +304,9 @@ local function enginePoint(position, source)
         arrival = true,
         label = source.label or source.instruction,
         mandatory = source.mandatory,
+        accessKey = position.accessKey,
+        floor = position.floor,
+        z = position.z,
     }
 end--[[APR_DIAG]]
 enginePoint = APRTrace("APR-Core/features/navigation/Preview.lua:208:enginePoint#9", enginePoint)--[[/APR_DIAG]]
@@ -316,6 +319,9 @@ local function append(points, point)
         and previous.Coord.x == point.Coord.x
         and previous.Coord.y == point.Coord.y
         and previous.instanceID == point.instanceID
+        and (previous.floor == nil or point.floor == nil or previous.floor == point.floor)
+        and (previous.z == nil or point.z == nil or previous.z == point.z)
+        and (previous.accessKey == nil or point.accessKey == nil or previous.accessKey == point.accessKey)
         and not point.breakBefore
     then
         -- A coincident walk must not swallow a mandatory transport/probe or its
@@ -335,6 +341,7 @@ local function append(points, point)
         keep.breakBefore = previous.breakBefore or point.breakBefore
         keep.breakAfter = previous.breakAfter or point.breakAfter
         keep.mandatory = previous.mandatory or point.mandatory
+        keep.walkStep = previous.walkStep or point.walkStep
         points[#points] = keep
         return
     end
@@ -368,10 +375,13 @@ function Preview:BuildRoutePoints(step, index, steps)
     while cursor <= #steps do
         local current = cursor == index and step or steps[cursor]
         if not current then break end
-        local visible = not APR.StepFilterQoL or APR:StepFilterQoL(current)
+        local destinationPin = current._mapWaypoint or current.serviceWaypoint
+        local visible = destinationPin or not APR.StepFilterQoL or APR:StepFilterQoL(current)
         if visible then
             if current.NoArrow then break end
-            local coord, zone = APR:GetStepCoord(current, routeMapID, playerMapID)
+            local coord, zone
+            if destinationPin then coord = current.Coord
+            else coord, zone = APR:GetStepCoord(current, routeMapID, playerMapID) end
             if not coord then break end
             local uiMapID = coord.mapID or zone or current.Zone or routeMapID
             if type(uiMapID) ~= "number" then uiMapID = routeMapID end
@@ -383,8 +393,9 @@ function Preview:BuildRoutePoints(step, index, steps)
                     instanceID = current.instanceID,
                     routeIndex = cursor,
                     step = current,
-                    kind = current.Waypoint and "waypoint" or "objective",
-                }, false)
+                    kind = current._mapWaypoint and "map_waypoint" or (current.Waypoint and "waypoint" or "objective"),
+                    label = destinationPin and APR.Services:GetLabel() or nil,
+                }, destinationPin)
             )
             if not current.Waypoint then break end
         end
@@ -407,6 +418,9 @@ Preview.BuildRoutePoints =
 
 function Preview:Build(guidance, step, index, steps, cursor)
     local routePoints = self:BuildRoutePoints(step, index, steps)
+    local active = guidance and guidance[cursor or 1]
+    local pathCursor = active and (active.pathAimIndex or active.pathCursor)
+    local pathAimPoint = active and active.pathAimPoint
     local cached = self.guidanceCache
     -- Published guidance is immutable. Arrow and map refreshes can reuse its
     -- points until the queue advances or the authored route cache changes.
@@ -415,6 +429,8 @@ function Preview:Build(guidance, step, index, steps, cursor)
         and cached
         and cached.guidance == guidance
         and cached.cursor == cursor
+        and cached.pathCursor == pathCursor
+        and cached.pathAimPoint == pathAimPoint
         and cached.routePoints == routePoints
     then
         return cached.points
@@ -425,9 +441,28 @@ function Preview:Build(guidance, step, index, steps, cursor)
         local personalAction = entry.sourceFree == true and entry.action ~= nil
         -- A personal action has no fixed cast location. Keep any preceding
         -- approach walk and its destination, but never pin the old cast origin.
-        local point = not personalAction and self:Point(entry, true) or nil
-        append(points, point)
         local kind = entry.kind or entry.type
+        local walkingPath = kind == "walk" and entry.path and #entry.path > 1
+        local point = not personalAction and not walkingPath and self:Point(entry, true) or nil
+        if walkingPath then
+            local first = guidanceIndex == (cursor or 1) and (pathCursor or 2) or 1
+            local aim = guidanceIndex == (cursor or 1) and pathAimPoint
+            for pathIndex = aim and first - 1 or first, #entry.path do
+                local bend = enginePoint(pathIndex < first and aim or entry.path[pathIndex], entry)
+                if bend then
+                    bend.kind = "walk"
+                    bend.breakBefore = entry.breakBefore and pathIndex == 1 or nil
+                    bend.estimated = entry.estimated
+                    bend.walkStep = entry
+                    bend.arrival = nil
+                    bend.uiMapID = bend.uiMapID or entry.uiMapID
+                    bend.terrainBend = entry.estimated or pathIndex < #entry.path
+                    append(points, bend)
+                end
+            end
+        else
+            append(points, point)
+        end
         if (point or personalAction) and entry.to and kind ~= "walk" and kind ~= "waypoint" and not entry.arrival then
             local arrival = enginePoint(entry.to, entry)
             if arrival then
@@ -442,11 +477,22 @@ function Preview:Build(guidance, step, index, steps, cursor)
             end
         end
     end
-    for _, point in ipairs(routePoints) do
-        append(points, self:Point(point, false))
+    for routePointIndex, point in ipairs(routePoints) do
+        local nextPoint = self:Point(point, false)
+        if nextPoint and active and routePointIndex > 1 then nextPoint.guideContinuation = true end
+        if nextPoint and (nextPoint.kind == "map_waypoint" or (nextPoint.step and nextPoint.step.serviceWaypoint) or
+            (routePointIndex == 1 and points[#points] and points[#points].walkStep)) then
+            local last = points[#points]
+            -- Render the pin during planning too. A line to it requires a
+            -- published itinerary whose final point reaches the destination.
+            nextPoint.breakBefore = not last or last.instanceID ~= nextPoint.instanceID
+                or last.Coord.x ~= nextPoint.Coord.x or last.Coord.y ~= nextPoint.Coord.y
+        end
+        append(points, nextPoint)
     end
     if cursor then
-        self.guidanceCache = { guidance = guidance, cursor = cursor, routePoints = routePoints, points = points }
+        self.guidanceCache = { guidance = guidance, cursor = cursor, pathCursor = pathCursor, pathAimPoint = pathAimPoint,
+            routePoints = routePoints, points = points }
     end
     return points
 end--[[APR_DIAG]]
@@ -476,10 +522,14 @@ function Preview:GetPoints()
     local playerMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
     local queue, cursor, state =
         navigation and navigation.queue, navigation and navigation.cursor, navigation and navigation.state
+    local active = queue and queue[cursor or 1]
+    local pathCursor = active and (active.pathAimIndex or active.pathCursor)
+    local pathAimPoint = active and active.pathAimPoint
     local runtime = APR.runtimeRouteStep
     local coord = runtime and runtime.step and runtime.step.Coord
     local noArrow = runtime and runtime.step and runtime.step.NoArrow
     local cached = self.publishedCache
+    local service = APR.Services and APR.Services.active
     if
         cached
         and cached.route == route
@@ -490,8 +540,14 @@ function Preview:GetPoints()
         and cached.revision == APR.stepRevision
         and cached.playerMapID == playerMapID
         and cached.queue == queue
+        and cached.walkingPreview == (navigation and navigation.walkingPreview)
+        and cached.waypointLeg == (navigation and navigation.waypointPendingLeg)
+        and cached.waypointPreview == (navigation and navigation.waypointPreview)
         and cached.cursor == cursor
+        and cached.pathCursor == pathCursor
+        and cached.pathAimPoint == pathAimPoint
         and cached.state == state
+        and cached.service == service
         and cached.runtime == runtime
         and cached.coord == coord
         and cached.noArrow == noArrow
@@ -513,8 +569,14 @@ function Preview:GetPoints()
         sourceStep = sourceStep,
         playerMapID = playerMapID,
         queue = queue,
+        walkingPreview = navigation and navigation.walkingPreview,
+        waypointLeg = navigation and navigation.waypointPendingLeg,
+        waypointPreview = navigation and navigation.waypointPreview,
         cursor = cursor,
+        pathCursor = pathCursor,
+        pathAimPoint = pathAimPoint,
         state = state,
+        service = service,
         runtime = runtime,
         coord = runtime and runtime.step and runtime.step.Coord,
         noArrow = runtime and runtime.step and runtime.step.NoArrow,

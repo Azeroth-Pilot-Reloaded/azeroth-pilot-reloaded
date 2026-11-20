@@ -14,7 +14,11 @@ function env.methods:CreateLine()
     self.line = line
     return line
 end
-local setEndPoint = env.methods.SetEndPoint
+local setStartPoint, setEndPoint = env.methods.SetStartPoint, env.methods.SetEndPoint
+function env.methods:SetStartPoint(...)
+    self.startpointWrites = (self.startpointWrites or 0) + 1
+    setStartPoint(self, ...)
+end
 function env.methods:SetEndPoint(...)
     self.endpointWrites = (self.endpointWrites or 0) + 1
     setEndPoint(self, ...)
@@ -81,29 +85,28 @@ assert(minimapLine:IsShown(), "The line returns when facing data is available")
 WorldMapFrame:Show()
 tick()
 local mapLine = WorldMapFrame.children[1].line
-local start, finish = mapLine.startPoint[2], mapLine.endPoint[2]
-local startWrites, finishWrites = start.anchors, finish.anchors
+local startWrites, finishWrites = mapLine.startpointWrites, mapLine.endpointWrites
 for _ = 1, 100 do
     tick()
 end
 assert(
-    start.anchors == startWrites and finish.anchors == finishWrites,
+    mapLine.startpointWrites == startWrites and mapLine.endpointWrites == finishWrites,
     "Unchanged world-map geometry never reanchors the line"
 )
 playerY = playerY + 1
 tick()
 assert(
-    start.anchors == startWrites + 1 and finish.anchors == finishWrites,
+    mapLine.startpointWrites == startWrites + 1 and mapLine.endpointWrites == finishWrites,
     "Movement only reanchors the changed endpoint"
 )
-finishWrites = finish.anchors
+finishWrites = mapLine.endpointWrites
 APR.Arrow.y = APR.Arrow.y + 10
 tick()
-assert(finish.anchors == finishWrites + 1, "A changed target updates the world-map endpoint")
-startWrites = start.anchors
+assert(mapLine.endpointWrites == finishWrites + 1, "A changed target updates the world-map endpoint")
+startWrites = mapLine.startpointWrites
 WorldMapFrame:SetSize(500, 400)
 tick()
-assert(start.anchors == startWrites + 1, "Resizing redraws world-map geometry")
+assert(mapLine.startpointWrites == startWrites + 1, "Resizing redraws world-map geometry")
 WorldMapFrame:Hide()
 tick()
 assert(not mapLine:IsShown())

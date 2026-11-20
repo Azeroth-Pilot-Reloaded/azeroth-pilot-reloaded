@@ -44,6 +44,23 @@ assert(
 )
 fixture.time = fixture.time + 1
 assert(APR:GetZoneDetectionReport().playerCurrent == 2395)
+
+-- A localized area observation can resolve overlapping UI maps when the
+-- client has no altitude. Missing names or a known height keep the native map.
+config.ObservedAreaMaps = { [8002] = { [70001] = 2395 } }
+fixture.currentMap = 8002
+fixture.player = point(8002)
+local zone, subzone
+function GetZoneText() return zone end
+function GetSubZoneText() return subzone end
+assert(APR:GetNavigationPlayerPosition().uiMapID == 8002)
+subzone = C_Map.GetAreaInfo(70001)
+assert(APR:GetNavigationPlayerPosition().uiMapID == 2395)
+zone, subzone = subzone, ""
+assert(APR:GetNavigationPlayerPosition().uiMapID == 2395)
+fixture.player.z = 20
+assert(APR:GetNavigationPlayerPosition().uiMapID == 8002)
+
 print(
     "Navigation zones: hierarchy, exact thresholds, world identity, restrictions-first semantics, cycles and geographic compatibility passed"
 )

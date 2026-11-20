@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 20) then return end
+if not Lib:BeginModule("catalog", 22) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -321,6 +321,12 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         end
         return
     end
+    if definition.originRadius then
+        local origin = self.context.playerPosition
+        if not origin or type(origin.x) ~= "number" or type(origin.y) ~= "number"
+            or not self.owner:IsSameAccessRegion(origin, from)
+            or not ((origin.x - from.x)^2 + (origin.y - from.y)^2 <= definition.originRadius^2) then return end
+    end
 
     local requirements = self.snapshot:GetTravelRequirements(definition.requirements, from, to)
     local canStart = prepared.canStart
@@ -375,6 +381,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         hearthstone = destination.dynamic == "bind" or definition.routeAction == "UseHS"
             or definition.routeAction == "UseDalaHS" or definition.routeAction == "UseGarrisonHS",
         arrivalZTolerance = definition.arrivalZTolerance,
+        arrivalRadius = definition.arrivalRadius,
         verifiedBuild = definition.verifiedBuild,
         canStart = canStart,
     }

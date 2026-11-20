@@ -31,23 +31,23 @@ for id = 1, 20 do
 end
 local rule = { items = items }
 local text = APR:GetRouteActionText("BankDeposit", rule, true)
-assert(text == "BANKDEPOSIT: " .. table.concat(expected, ", "))
+assert(text == "BANKDEPOSIT:\n" .. table.concat(expected, "\n"))
 assert(reads == 200, "20 item labels must share one 200-slot snapshot")
 
 reads = 0
 bags[0][1] = nil
 expected[1] = "27 × item 1"
-assert(APR:GetRouteActionText("DestroyItems", rule, true) == "DESTROYITEMS: " .. table.concat(expected, ", "))
+assert(APR:GetRouteActionText("DestroyItems", rule, true) == "DESTROYITEMS:\n" .. table.concat(expected, "\n"))
 assert(reads == 200, "The next render must take a fresh snapshot after inventory changes")
 assert(APR:GetRouteItemActionCount("BankDeposit", 1) == 27)
 assert(APR:GetRouteItemActionCount("DestroyItems", 999) == 0)
 
 reads = 0
 local preview = APR:GetRouteActionText("BankDeposit", { items = { 1, 999 } })
-assert(preview == "BANKDEPOSIT: item 1, item 999" and reads == 0, "Future previews must not inspect today's bags")
+assert(preview == "BANKDEPOSIT:\nitem 1\nitem 999" and reads == 0, "Future previews must not inspect today's bags")
 local closed = APR:GetRouteActionText("BankWithdraw", { items = { 1, 999 } }, true)
 assert(
-    closed == "BANKWITHDRAW: item 1, item 999" and reads == 0,
+    closed == "BANKWITHDRAW:\nitem 1\nitem 999" and reads == 0,
     "A closed bank has unknown quantities, not zero counts"
 )
 
@@ -59,13 +59,13 @@ APR.routeBankOpen = true
 reads = 0
 assert(
     APR:GetRouteActionText("BankWithdraw", { items = { 1, 2, 999 } }, true)
-        == "BANKWITHDRAW: 9 × item 1, 4 × item 2, 0 × item 999"
+        == "BANKWITHDRAW:\n9 × item 1\n4 × item 2\n0 × item 999"
 )
 assert(reads == 120, "Withdrawals scan only bank containers once")
 
 slotsAvailable, reads = false, 0
 assert(
-    APR:GetRouteActionText("BankDeposit", { items = { 1, 2 } }, true) == "BANKDEPOSIT: item 1, item 2",
+    APR:GetRouteActionText("BankDeposit", { items = { 1, 2 } }, true) == "BANKDEPOSIT:\nitem 1\nitem 2",
     "A partially unavailable container invalidates all counts instead of showing partial totals"
 )
 assert(reads == 160)

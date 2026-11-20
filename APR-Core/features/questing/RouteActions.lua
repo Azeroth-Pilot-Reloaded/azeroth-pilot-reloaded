@@ -209,7 +209,23 @@ function APR:ProcessRouteItems(key, rule, state, automatic, hardwareEvent)
     if key == "DestroyItems" and GetCursorInfo() then return false end
     if key == "SellItems" and (not self.routeMerchantOpen or self.routeBankOpen) then return false end
     local banking = key == "BankDeposit" or key == "BankWithdraw"
-    if banking and (not self.routeBankOpen or self.routeMerchantOpen) then return false end
+    if banking then
+        if self.routeMerchantOpen then return false end
+        -- Empty deposits need no bank visit. Withdrawals can only establish
+        -- absence from an open, accessible bank; unknown data retains the step.
+        if not state.pending then
+            local counts = GetRouteItemActionCounts(self, key)
+            if counts then
+                local remaining = false
+                for _, entry in ipairs(entries) do
+                    local id = type(entry) == "table" and entry.itemID or entry
+                    if (counts[id] or 0) > 0 then remaining = true; break end
+                end
+                if not remaining then return true end
+            end
+        end
+        if not self.routeBankOpen then return false end
+    end
     if rule.npcID and CurrentNPC() ~= rule.npcID then return false end
     if (ContainerCall("GetContainerNumSlots", 0) or 0) == 0 then return false end
     local bankBags, bankType, bankSizes
@@ -374,7 +390,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
             names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
         end
         -- Spell names come from the client; a route's literal text must never override them.
-        return #names > 0 and (label .. ": " .. table.concat(names, ", ")) or label
+        return #names > 0 and (label .. ":\n" .. table.concat(names, "\n")) or label
     end
 
     if key == "TameBeast" then
@@ -415,15 +431,18 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
         if key == "SellItems" then
             local lines = {}
             if #names > 0 then
-                lines[#lines + 1] = label .. ": " .. table.concat(names, ", ")
+                lines[#lines + 1] = label .. ":\n" .. table.concat(names, "\n")
                 if missing and (rule.text or rule.Text) then lines[#lines + 1] = Fallback() end
             end
             if rule.junk then lines[#lines + 1] = L["VENDOR_TRASH"] end
             if #lines > 0 then return table.concat(lines, "\n") end
         end
-        -- Item data can be absent until cached. Keep the route fallback until every name is available.
-        if missing and (rule.text or rule.Text) then return Fallback() end
-        if #names > 0 then return label .. ": " .. table.concat(names, ", ") end
+        if #names > 0 then
+            local text = label .. ":\n" .. table.concat(names, "\n")
+            -- Keep every item visible while uncached names load, alongside route advice.
+            if missing and (rule.text or rule.Text) then text = text .. "\n" .. Fallback() end
+            return text
+        end
     end
 
     return Fallback()
@@ -434,7 +453,7 @@ function APR:CancelRouteItemDestruction()
     if self.routeItemDestructionFrame then self.routeItemDestructionFrame:Hide() end
 end--[[APR_DIAG]]; APR.CancelRouteItemDestruction = APRTrace("APR-Core/features/questing/RouteActions.lua:410:APR:CancelRouteItemDestruction#18", APR.CancelRouteItemDestruction)--[[/APR_DIAG]]
 
--- Like RestedXP's inventory handler, defer protected deletion until real input.
+-- Inventory handler, defer protected deletion until real input.
 -- Never cache a bag slot: inventory and route eligibility are re-read on that input.
 function APR:DestroyRouteItemOnInput()
     local request = self.routeItemDestruction

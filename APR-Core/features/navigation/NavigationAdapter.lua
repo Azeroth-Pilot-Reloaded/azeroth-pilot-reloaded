@@ -571,7 +571,7 @@ Adapter.GetWaypointText = APRTrace(
     Adapter.GetWaypointText
 )--[[/APR_DIAG]]
 
-function environment.getWaypointTarget()
+function environment.getWaypointTarget(finalDestination)
     Adapter.waypointTargetAvailable = nil
     local profile = APR.settings and APR.settings.profile
     if not profile or not profile.enableAddon
@@ -593,15 +593,35 @@ function environment.getWaypointTarget()
         or not profile.enableAddon
         or (not APR.ActiveRoute and not service)
         or Call(UnitIsDeadOrGhost, "player") == true
-        or APR.stepUpdateRunning
-        or APR.stepUpdatePending
         or not step
     then
         return nil, options
     end
 
     local preview, navigation, point, transient = APR.navigationPreview, APR.navigation
-    if navigation and navigation.retainedArrow then
+    local destination
+    if finalDestination and preview and not step.NoArrow then
+        local context = navigation and ((navigation.state ~= "ready" and navigation.state ~= "instance"
+            and navigation._routedStepContext) or navigation.waypointDestinationContext)
+        if service then
+            destination = service.target
+        elseif context and APR.IsStepContextCurrent and APR:IsStepContextCurrent(context) then
+            destination = navigation.destination
+        end
+    end
+    if destination then
+        if step.Waypoint and Adapter:IsWaypointCompleted(step) then return nil, options end
+        point = preview:Point({
+            Coord = { x = destination.y, y = destination.x },
+            uiMapID = destination.uiMapID,
+            instanceID = destination.instanceID,
+            accessKey = destination.accessKey,
+            floor = destination.floor,
+            label = service and APR.Services:GetLabel(),
+        })
+    elseif APR.stepUpdateRunning or APR.stepUpdatePending then
+        return nil, options
+    elseif navigation and navigation.retainedArrow then
         point, transient = navigation:GetRetainedArrow(), true
     elseif navigation and navigation:IsNavigating() then
         if navigation.context and ((service and not APR.Services:IsContextCurrent(navigation.context))
@@ -614,7 +634,7 @@ function environment.getWaypointTarget()
     end
     -- Ordinary quest objectives retain AzerothWaypoint's existing extractor,
     -- metadata and icon selection. APR only supplies authored positional goals.
-    if not transient and not step.Waypoint then
+    if not destination and not transient and not step.Waypoint then
         options.guideMode = "fallback"
         return nil, options
     end
@@ -622,7 +642,7 @@ function environment.getWaypointTarget()
     if not preview then return nil, options end
     if transient then
         if not point or point.displayAction or (point.sourceFree and point.action) then return nil, options end
-    else
+    elseif not destination then
         if step.NoArrow or not APR.IsInRouteZone or Adapter:IsWaypointCompleted(step) then return nil, options end
         local _, routeMap = APR:GetCurrentRouteMapIDsAndName()
         local hint = APR:GetPlayerParentMapID()
@@ -639,8 +659,12 @@ function environment.getWaypointTarget()
     local mapID = coord.mapID or point.uiMapID
     if not Number(mapID) or mapID <= 0 then return nil, options end
     local instanceID = point.instanceID or coord.instanceID or preview:GetMapInstance(mapID)
-    local playerY, playerX, _, playerInstance = Call(UnitPosition, "player")
-    if not Number(playerInstance) or (instanceID ~= nil and instanceID ~= playerInstance) then return nil, options end
+    local playerY, playerX
+    if not destination then
+        local _, playerInstance
+        playerY, playerX, _, playerInstance = Call(UnitPosition, "player")
+        if not Number(playerInstance) or (instanceID ~= nil and instanceID ~= playerInstance) then return nil, options end
+    end
     local x, y = preview:ProjectPoint(point, mapID)
     if not Number(x) or not Number(y) or x < 0 or x > 1 or y < 0 or y > 1 then return nil, options end
     local token = table.concat({
@@ -653,7 +677,7 @@ function environment.getWaypointTarget()
     }, "\031")
     if Adapter.waypointArrivedToken == token then return nil, options end
     -- Retiring a nearby marker never advances the guide or changes route state.
-    if not transient and Number(step.Range) and step.Range > 0 and Number(playerX) and Number(playerY) then
+    if not transient and not destination and Number(step.Range) and step.Range > 0 and Number(playerX) and Number(playerY) then
         local playerMap = C_Map and Call(C_Map.GetBestMapForUnit, "player")
         local projected = preview:ProjectPoint(point, playerMap)
         if projected and (coord.x - playerX) ^ 2 + (coord.y - playerY) ^ 2 < step.Range ^ 2 then
@@ -662,7 +686,7 @@ function environment.getWaypointTarget()
         end
     end
     Adapter.waypointTargetAvailable = true
-    local title, subtext = Adapter:GetWaypointText(step, transient and point or nil, token)
+    local title, subtext = Adapter:GetWaypointText(step, point, token)
     options.name, options.token = title .. (subtext and "\n" .. subtext or ""), token
     return {
         space = "map",
@@ -674,6 +698,7 @@ function environment.getWaypointTarget()
         subtext = subtext,
         token = token,
         transient = transient,
+        finalDestination = destination and true,
         source = "apr.step#" .. tostring(index) .. (transient and ":" .. tostring(point.id or "navigation") or ""),
         kind = "guide_goal",
         guideProvider = "apr",
@@ -1555,7 +1580,10 @@ local profile = interface >= 16000 and interface < 17000 and "forever"
 local Data = Lib:New({
     profile = profile,
     environment = environment,
-    waypoints = { guideProviderID = "apr", nativeSupportSetting = "APRSupportEnabled", automaticRefresh = "external" },
+    waypoints = {
+        guideProviderID = "apr", nativeSupportSetting = "APRSupportEnabled", automaticRefresh = "external",
+        finalDestination = true,
+    },
 })
 APR.NavigationData, APR.NavigationEngine = Data, Lib.Engine
 function Adapter:RefreshWaypoints()

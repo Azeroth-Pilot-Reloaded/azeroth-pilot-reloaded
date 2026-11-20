@@ -96,13 +96,35 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
         {
             KillNPC = {
                 dungeonKey = "SHAPERS_TERRACE",
+                name = "Izha'Rel",
+                npcID = 253218,
+            },
+            NoArrow = true,
+            Dungeon = "SHAPERS_TERRACE",
+            InstanceQuest = true,
+            _index = 8,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "SHAPERS_TERRACE",
+                name = "Tor'Rel",
+                npcID = 261811,
+            },
+            NoArrow = true,
+            Dungeon = "SHAPERS_TERRACE",
+            InstanceQuest = true,
+            _index = 9,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "SHAPERS_TERRACE",
                 name = "Thunderhoof",
                 npcID = 261812,
             },
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 8,
+            _index = 10,
         },
         {
             KillNPC = {
@@ -113,7 +135,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 9,
+            _index = 11,
         },
         {
             KillNPC = {
@@ -124,7 +146,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 10,
+            _index = 12,
         },
         {
             KillNPC = {
@@ -135,7 +157,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 11,
+            _index = 13,
         },
         {
             KillNPC = {
@@ -146,7 +168,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 12,
+            _index = 14,
         },
         {
             KillNPC = {
@@ -157,7 +179,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 13,
+            _index = 15,
         },
         {
             KillNPC = {
@@ -168,7 +190,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 14,
+            _index = 16,
         },
         {
             KillNPC = {
@@ -179,7 +201,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
             InstanceQuest = true,
-            _index = 15,
+            _index = 17,
         },
         {
             Qpart = { [95924] = { 1, 2, 3 } },
@@ -189,7 +211,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95924,
             MinLevel = 55,
-            _index = 16,
+            _index = 18,
         },
         {
             Qpart = { [95925] = { 1, 2, 3, 4, 5 } },
@@ -200,7 +222,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95925,
             MinLevel = 55,
-            _index = 17,
+            _index = 19,
         },
         {
             Qpart = { [95926] = { 1 } },
@@ -210,7 +232,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95926,
             MinLevel = 55,
-            _index = 18,
+            _index = 20,
         },
         {
             Qpart = { [95928] = { 1, 2, 3, 4 } },
@@ -220,7 +242,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95928,
             MinLevel = 55,
-            _index = 19,
+            _index = 21,
         },
         {
             Qpart = { [97049] = { 1 } },
@@ -230,13 +252,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             Faction = "Horde",
             IsQuestOnQuest = 97049,
             MinLevel = 55,
-            _index = 20,
+            _index = 22,
         },
         {
             LeaveInstance = { dungeonKey = "SHAPERS_TERRACE" },
             NoArrow = true,
             Dungeon = "SHAPERS_TERRACE",
-            _index = 21,
+            _index = 23,
         },
         {
             Done = { 95924 },
@@ -249,7 +271,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             IsQuestOnQuest = 95924,
             MinLevel = 55,
             Zone = 1455,
-            _index = 22,
+            _index = 24,
         },
         {
             Done = { 95925 },
@@ -262,7 +284,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             IsQuestOnQuest = 95925,
             MinLevel = 55,
             Zone = 1455,
-            _index = 23,
+            _index = 25,
         },
         {
             Done = { 95926 },
@@ -275,7 +297,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             IsQuestOnQuest = 95926,
             MinLevel = 55,
             Zone = 1458,
-            _index = 24,
+            _index = 26,
         },
         {
             Done = { 95928 },
@@ -288,7 +310,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             IsQuestOnQuest = 95928,
             MinLevel = 55,
             Zone = 1412,
-            _index = 25,
+            _index = 27,
         },
         {
             Done = { 97049 },
@@ -301,11 +323,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shaper-s-Terrace"] = {
             IsQuestOnQuest = 97049,
             MinLevel = 55,
             Zone = 1458,
-            _index = 26,
+            _index = 28,
         },
         {
             RouteCompleted = true,
-            _index = 27,
+            _index = 29,
         },
     },
 }
