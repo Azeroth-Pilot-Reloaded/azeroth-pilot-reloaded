@@ -1,7 +1,7 @@
 -- Preferred authored zone entrances bypass whole-world transport searches.
 -- The host opts in; the generic shortest-time engine keeps its existing API.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_routing", 4) then return end
+if not Lib:BeginModule("zone_routing", 5) then return end
 local Instance = Lib.Instance
 local Job = {}
 Job.__index = Job
@@ -24,7 +24,8 @@ function Instance:CreateZoneRoute(context)
     return setmetatable({
         owner = self,
         context = context,
-        status = "planning",
+        -- Region-level shortcuts cannot prove a shortest terrain journey.
+        status = context.walkingProvider and "fallback" or "planning",
         phase = "lookup",
         mapID = context.goal and context.goal.uiMapID,
         depth = 0,

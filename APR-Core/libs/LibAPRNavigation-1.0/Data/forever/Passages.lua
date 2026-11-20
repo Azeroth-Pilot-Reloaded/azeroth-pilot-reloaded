@@ -1,5 +1,102 @@
 -- Declarative travel data. Names are resolved through the game client.
-LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
+local function World(instanceID, uiMapID, x, y, z, noAutoconnect)
+    return {
+        space = "world",
+        instanceID = instanceID,
+        uiMapID = uiMapID,
+        x = x,
+        y = y,
+        z = z,
+        noAutoconnect = noAutoconnect,
+    }
+end
+
+local function Passage(id, from, to, seconds, requirements)
+    return {
+        id = id,
+        kind = "passage",
+        from = from,
+        to = to,
+        requirements = requirements,
+        seconds = seconds,
+        costMode = not seconds and "ground" or nil,
+    }
+end
+
+local function Lift(id, from, to, seconds)
+    return {
+        id = id,
+        kind = "elevator",
+        bidirectional = true,
+        from = from,
+        to = to,
+        seconds = seconds,
+        arrivalRadius = 16,
+        arrivalZTolerance = 8,
+        durationSource = "estimated-wait-and-ride",
+        reviewStatus = "confirmed",
+    }
+end
+
+-- Recorded bends from the road, through the gate and throne room, to the
+-- upper lift hall. The terrain grid has stacked surfaces at the gate.
+local undercityApproach = {
+    World(0, 1420, 1884, 241, 58),
+    World(0, 1420, 1877.57, 240.75, 61, true),
+    World(0, 1420, 1749.54, 239.14, 62),
+    World(0, 1420, 1724.7, 255.64, 64, true),
+    World(0, 1420, 1706.97, 240.68, 63, true),
+    World(0, 1420, 1660.12, 241.06, 63, true),
+    World(0, 1420, 1623.38, 257.08, 63, true),
+    World(0, 1420, 1598.73, 244.51, 60),
+}
+local undercityLifts = {
+    { "west", World(0, 1420, 1596.1, 280.8, 62), World(0, 1458, 1596.15, 291.8, -40.784) },
+    { "east", World(0, 1420, 1595.3, 198.3, 63), World(0, 1458, 1595.26, 188.644, -40.783) },
+    { "south", World(0, 1420, 1551.2, 241.1, 62), World(0, 1458, 1544.24, 240.773, -40.783) },
+}
+-- The sewer is an alternate entrance for travellers already at its mouth.
+-- Keep its bends private so an approach cannot join from the terrain above.
+local undercitySewer = {
+    World(0, 1420, 1684.44, 610.42, 40.1),
+    World(0, 1420, 1665.17, 539.52, nil, true),
+    World(0, 1420, 1659.8, 481.48, nil, true),
+    World(0, 1420, 1632.15, 476.49, nil, true),
+    World(0, 1420, 1627.02, 439.08, nil, true),
+    World(0, 1420, 1598.86, 435.05, nil, true),
+    World(0, 1458, 1595, 415, -62),
+}
+
+local function AddPassageChain(connections, id, points, radius, first)
+    for index = (first or 1) + 1, #points do
+        local edge = Passage(id .. ":" .. (index - 1), points[index - 1], points[index])
+        edge.bidirectional, edge.arrivalRadius = true, radius
+        connections[#connections + 1] = edge
+    end
+end
+
+-- Each platform has its own walking region inside the tram instance.
+local alliance = { faction = "Alliance" }
+local ironforgeStation = World(369, 499, 69.228, 10.393, -4.297)
+local stormwindStation = World(369, 499, 67.761, 2490.98, -4.296)
+local ironforgeExit = World(369, 499, 76.027, 10.504, -4.297)
+local stormwindExit = World(369, 499, 80.163, 2490.88, -1.857)
+local ironforgeBoarding = World(369, 499, 4.6296, 28.139, -3.4569)
+local stormwindBoarding = World(369, 499, 4.6294, 2510.42, -3.2704)
+local stormwindArrival = World(369, 499, 45.0956, 2490.52, -4.2965)
+local function Tram(id, from, to)
+    return {
+        id = id,
+        kind = "tram",
+        from = from,
+        to = to,
+        requirements = alliance,
+        seconds = 160,
+        arrivalRadius = 16,
+    }
+end
+
+local catalogue = {
     connections = {
         -- Classic AreaTrigger 2534/2530 and their server return landings.
         -- Exit-only: entering the PvP halls has additional access conditions.
@@ -96,82 +193,6 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             costMode = "ground",
         },
         {
-            id = "walk-undercity-lift:1",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1420, x = 1877.57, y = 240.75 },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1749.54, y = 239.14, noAutoconnect = true },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-undercity-lift:2",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1458, x = 1749.54, y = 239.14, noAutoconnect = true },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1724.7, y = 255.64, noAutoconnect = true },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-undercity-lift:3",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1458, x = 1724.7, y = 255.64, noAutoconnect = true },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1706.97, y = 240.68, noAutoconnect = true },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-undercity-lift:4",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1458, x = 1706.97, y = 240.68, noAutoconnect = true },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1660.12, y = 241.06, noAutoconnect = true },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-undercity-lift:5",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1458, x = 1660.12, y = 241.06, noAutoconnect = true },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1623.38, y = 257.08, noAutoconnect = true },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-undercity-lift:6",
-            kind = "walk",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1458, x = 1623.38, y = 257.08, noAutoconnect = true },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1598.73, y = 244.51 },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "walk-thunder-bluff-west-lift",
-            kind = "elevator",
-            reviewStatus = "candidate",
-            bidirectional = true,
-            from = { instanceID = 1, space = "world", uiMapID = 1456, x = -1297.31, y = 187.505, z = 130.082 },
-            to = { instanceID = 1, space = "world", uiMapID = 1456, x = -1297.31, y = 187.505, z = 68.711 },
-            seconds = 45,
-            arrivalZTolerance = 8,
-            disabled = true,
-        },
-        {
-            id = "walk-thunder-bluff-north-lift",
-            kind = "elevator",
-            reviewStatus = "candidate",
-            bidirectional = true,
-            from = { instanceID = 1, space = "world", uiMapID = 1456, x = -1032.655, y = -38.796, z = 140.497 },
-            to = { instanceID = 1, space = "world", uiMapID = 1456, x = -1032.655, y = -38.796, z = 69.148 },
-            seconds = 45,
-            arrivalZTolerance = 8,
-            disabled = true,
-        },
-        {
             id = "walk-freewind-post-lift",
             kind = "elevator",
             reviewStatus = "candidate",
@@ -181,39 +202,6 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             seconds = 45,
             arrivalZTolerance = 8,
             disabled = true,
-        },
-        {
-            id = "elevator-undercity-west-surface-to-city",
-            kind = "elevator",
-            reviewStatus = "confirmed",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1420, x = 1596.15, y = 291.8, z = 55.718 },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1596.15, y = 291.8, z = -40.784 },
-            seconds = 13,
-            arrivalZTolerance = 8,
-            durationSource = "estimated-wait-and-ride",
-        },
-        {
-            id = "elevator-undercity-east-surface-to-city",
-            kind = "elevator",
-            reviewStatus = "confirmed",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1420, x = 1595.26, y = 188.644, z = 55.718 },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1595.26, y = 188.644, z = -40.783 },
-            seconds = 13,
-            arrivalZTolerance = 8,
-            durationSource = "estimated-wait-and-ride",
-        },
-        {
-            id = "elevator-undercity-south-surface-to-city",
-            kind = "elevator",
-            reviewStatus = "confirmed",
-            bidirectional = true,
-            from = { instanceID = 0, space = "world", uiMapID = 1420, x = 1544.24, y = 240.773, z = 55.718 },
-            to = { instanceID = 0, space = "world", uiMapID = 1458, x = 1544.24, y = 240.773, z = -40.783 },
-            seconds = 13,
-            arrivalZTolerance = 8,
-            durationSource = "estimated-wait-and-ride",
         },
         {
             id = "forever-border-1",
@@ -273,8 +261,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             id = "forever-border-7",
             kind = "walk",
             bidirectional = true,
-            from = { space = "map", uiMapID = 1457, x = 0.8626, y = 0.3556 },
-            to = { space = "map", uiMapID = 1438, x = 0.3616, y = 0.5439 },
+            from = { space = "map", uiMapID = 1457, x = 0.8626, y = 0.3556, z = 1328 },
+            to = { space = "map", uiMapID = 1438, x = 0.3616, y = 0.5439, z = 1327 },
             seconds = 0,
             costMode = "ground",
         },
@@ -300,8 +288,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             id = "forever-border-10",
             kind = "walk",
             bidirectional = true,
-            from = { space = "map", uiMapID = 1411, x = 0.4553, y = 0.1212 },
-            to = { space = "map", uiMapID = 1454, x = 0.5252, y = 0.8477 },
+            from = { space = "map", uiMapID = 1411, x = 0.4553, y = 0.1212, z = 26 },
+            to = { space = "map", uiMapID = 1454, x = 0.5252, y = 0.8477, z = 25 },
             seconds = 0,
             costMode = "ground",
         },
@@ -399,8 +387,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             id = "forever-border-21",
             kind = "walk",
             bidirectional = true,
-            from = { space = "map", uiMapID = 1429, x = 0.3249, y = 0.5006 },
-            to = { space = "map", uiMapID = 1453, x = 0.7333, y = 0.9069 },
+            from = { space = "map", uiMapID = 1429, x = 0.3249, y = 0.5006, z = 92 },
+            to = { space = "map", uiMapID = 1453, x = 0.7333, y = 0.9069, z = 93 },
             seconds = 0,
             costMode = "ground",
         },
@@ -633,26 +621,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             id = "forever-border-47",
             kind = "walk",
             bidirectional = true,
-            from = { space = "map", uiMapID = 1426, x = 0.534, y = 0.35 },
-            to = { space = "map", uiMapID = 1455, x = 0.1616, y = 0.8458 },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "forever-border-48",
-            kind = "walk",
-            bidirectional = true,
-            from = { space = "map", uiMapID = 1420, x = 0.6187, y = 0.6501 },
-            to = { space = "map", uiMapID = 1458, x = 0.6622, y = 0.0189 },
-            seconds = 0,
-            costMode = "ground",
-        },
-        {
-            id = "forever-border-49",
-            kind = "walk",
-            bidirectional = true,
-            from = { space = "map", uiMapID = 1420, x = 0.1528, y = 0.3086 },
-            to = { space = "map", uiMapID = 1458, x = 0.1481, y = 0.3528 },
+            from = { space = "map", uiMapID = 1426, x = 0.534, y = 0.35, z = 496 },
+            to = { space = "map", uiMapID = 1455, x = 0.1616, y = 0.8458, z = 497 },
             seconds = 0,
             costMode = "ground",
         },
@@ -665,14 +635,90 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             seconds = 0,
             costMode = "ground",
         },
-        {
-            id = "portal-stormwind-to-ironforge",
-            kind = "tram",
-            bidirectional = true,
-            from = { space = "map", uiMapID = 1453, x = 0.6036, y = 0.1247 },
-            to = { space = "map", uiMapID = 1455, x = 0.729, y = 0.5027 },
-            requirements = { faction = "Alliance" },
-            seconds = 500,
-        },
+        Lift(
+            "elevator-thunder-bluff-west",
+            World(1, 1412, -1281.6, 193.9, 69),
+            World(1, 1456, -1284.7, 182.1, 130),
+            39
+        ),
+        Lift(
+            "elevator-thunder-bluff-west-south",
+            World(1, 1412, -1314.7, 182, 69),
+            World(1, 1456, -1306.8, 177.2, 130),
+            18
+        ),
+        Lift(
+            "elevator-thunder-bluff-north",
+            World(1, 1412, -1037.3, -50.5, 61),
+            World(1, 1456, -1053.3, -39.4, 141),
+            16
+        ),
+        Lift(
+            "elevator-thunder-bluff-north-east",
+            World(1, 1412, -1022.5, -24, 69),
+            World(1, 1456, -1037.2, -25.2, 141),
+            14
+        ),
+        Passage("passage-stormwind-deeprun-tram", World(0, 1453, -8346.46, 514.031, 92), stormwindStation, 5, alliance),
+        Passage(
+            "passage-ironforge-deeprun-tram",
+            World(0, 1455, -4840.26, -1330.46, 502),
+            ironforgeStation,
+            5,
+            alliance
+        ),
+        Passage(
+            "passage-deeprun-tram-stormwind",
+            stormwindExit,
+            World(0, 1453, -8354.23, 524.068, 91.797),
+            5,
+            alliance
+        ),
+        Passage(
+            "passage-deeprun-tram-ironforge",
+            ironforgeExit,
+            World(0, 1455, -4839.51, -1317.74, 501.868),
+            5,
+            alliance
+        ),
+        Tram("tram-stormwind-ironforge", stormwindBoarding, ironforgeStation),
+        Tram("tram-ironforge-stormwind", ironforgeBoarding, stormwindArrival),
     },
-}, 33)
+}
+
+-- These platform corridors are inside an instance without a terrain pack.
+-- Keep them usable even when the exterior walking legs require terrain proof.
+AddPassageChain(
+    catalogue.connections,
+    "passage-deeprun-tram-stormwind-platform",
+    { stormwindExit, stormwindStation, stormwindArrival, stormwindBoarding },
+    8
+)
+AddPassageChain(
+    catalogue.connections,
+    "passage-deeprun-tram-ironforge-platform",
+    { ironforgeExit, ironforgeStation, ironforgeBoarding },
+    8
+)
+
+AddPassageChain(catalogue.connections, "passage-undercity-gate", undercityApproach, 8)
+local sewerEntry = Passage("passage-undercity-sewer-entry", undercitySewer[1], undercitySewer[2])
+sewerEntry.originRadius, sewerEntry.arrivalRadius = 75, 8
+catalogue.connections[#catalogue.connections + 1] = sewerEntry
+local sewerExit = Passage("passage-undercity-sewer-exit", undercitySewer[2], undercitySewer[1])
+sewerExit.arrivalRadius = 8
+catalogue.connections[#catalogue.connections + 1] = sewerExit
+AddPassageChain(catalogue.connections, "passage-undercity-sewer", undercitySewer, 8, 2)
+for _, lift in ipairs(undercityLifts) do
+    local side, upper, lower = lift[1], lift[2], lift[3]
+    AddPassageChain(
+        catalogue.connections,
+        "passage-undercity-" .. side .. "-lift",
+        { undercityApproach[#undercityApproach], upper },
+        8
+    )
+    catalogue.connections[#catalogue.connections + 1] =
+        Lift("elevator-undercity-" .. side .. "-surface-to-city", upper, lower, 13)
+end
+
+LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", catalogue, 35)

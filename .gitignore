@@ -8,6 +8,7 @@
 .cache/
 __pycache__/
 node_modules/
+target/
 
 # Generated localization notification state (persisted in the Actions cache)
 /.github/scripts/localization-state.json
@@ -22,4 +23,4 @@ docs/*
 .vscode/settings.json
 AGENTS.md
 .scratch/*
-.metrics/*
+.metrics/

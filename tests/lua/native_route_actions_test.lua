@@ -191,9 +191,9 @@ assert(not APR:ProcessRouteItems("BankDeposit", { items = { 100 } }, state) and 
 assert(APR:GetRouteItemActionCount("BankDeposit", 100) == 2)
 assert(APR:GetRouteItemActionCount("DestroyItems", 100) == 2)
 assert(APR:GetRouteItemActionCount("BankWithdraw", 100) == nil, "A closed bank is not an empty bank")
-assert(APR:GetRouteActionText("BankDeposit", { items = { 100 } }, true) == "BANKDEPOSIT: 2 × item 100")
+assert(APR:GetRouteActionText("BankDeposit", { items = { 100 } }, true) == "BANKDEPOSIT:\n2 × item 100")
 assert(
-    APR:GetRouteActionText("BankDeposit", { items = { 100 } }) == "BANKDEPOSIT: item 100",
+    APR:GetRouteActionText("BankDeposit", { items = { 100 } }) == "BANKDEPOSIT:\nitem 100",
     "Do not predict future inventory quantities in route previews"
 )
 APR.routeBankOpen = true
@@ -230,9 +230,9 @@ lockedCombat = false
 assert(not APR:ProcessRouteItems("SellItems", { items = { 200 }, npcID = 2163 }, {}))
 assert(bags[0][2] == nil)
 local sale = { items = { 100, { itemID = 200 } }, junk = true }
-assert(APR:GetRouteActionText("SellItems", sale) == "SELLITEMS: item 100 (SELL_ITEM_EQUIPPED), item 200\nVENDOR_TRASH")
+assert(APR:GetRouteActionText("SellItems", sale) == "SELLITEMS:\nitem 100 (SELL_ITEM_EQUIPPED)\nitem 200\nVENDOR_TRASH")
 assert(APR:GetRouteActionText("SellItems", { junk = true, text = "Old advice" }) == "VENDOR_TRASH")
-assert(APR:GetRouteActionText("SellItems", { items = { 200 } }) == "SELLITEMS: item 200")
+assert(APR:GetRouteActionText("SellItems", { items = { 200 } }) == "SELLITEMS:\nitem 200")
 local itemInfo = C_Item.GetItemInfo
 C_Item.GetItemInfo = function() end
 local uncached = APR:GetRouteActionText("SellItems", { items = { 100 }, junk = true, text = "Sell weapon" })
@@ -258,7 +258,7 @@ do
     GetInventoryItemID = function(_, slot) return equipment[slot] end
     bags, APR.routeMerchantOpen = { [0] = {} }, false
     local rule, state = { junk = true, equippedSlots = { 16 } }, {}
-    assert(APR:GetRouteActionText("SellItems", rule) == "SELLITEMS: item 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH")
+    assert(APR:GetRouteActionText("SellItems", rule) == "SELLITEMS:\nitem 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH")
     assert(not APR:ProcessRouteItems("SellItems", rule, state), "Closed merchant must wait")
     APR.routeMerchantOpen = true
     assert(not APR:ProcessRouteItems("SellItems", rule, state), "Equipped slot must wait even without junk")
@@ -272,7 +272,7 @@ do
         { itemID = 200, stackCount = 1, quality = 1 },
     }
     assert(
-        APR:GetRouteActionText("SellItems", rule, true, state) == "SELLITEMS: item 100\nVENDOR_TRASH",
+        APR:GetRouteActionText("SellItems", rule, true, state) == "SELLITEMS:\nitem 100\nVENDOR_TRASH",
         "Current row must retain original weapon after unequipping or replacing it"
     )
     assert(not APR:ProcessRouteItems("SellItems", rule, state), "Locked original weapon must wait")
@@ -291,7 +291,7 @@ do
     assert(APR:ProcessRouteItems("SellItems", rule, state), "Original weapon sale completes the action")
     assert(
         APR:GetRouteActionText("SellItems", { items = { 400 }, equippedSlots = { 18, 18 } })
-            == "SELLITEMS: item 400 (SELL_ITEM_EQUIPPED)",
+            == "SELLITEMS:\nitem 400 (SELL_ITEM_EQUIPPED)",
         "Explicit and slot targets must not duplicate names"
     )
     local rangedRule, rangedState = { equippedSlots = { 18 } }, {}
@@ -321,18 +321,18 @@ do
     function APR.currentStep:AddQuestSteps(_, text) rowText = text end
     equipment[16], equipment[18], bags[0] = 100, 400, {}
     assert(APR:HandleRouteAction(APR:GetStep(1)))
-    assert(APRData.player.test == 1 and rowText == "SELLITEMS: item 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH")
+    assert(APRData.player.test == 1 and rowText == "SELLITEMS:\nitem 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH")
     equipment[16] = nil
     bags[0][1] = { itemID = 100, stackCount = 1, quality = 1 }
     assert(APR:HandleRouteAction(APR:GetStep(1)))
     assert(
-        APRData.player.test == 1 and rowText == "SELLITEMS: item 100\nVENDOR_TRASH",
+        APRData.player.test == 1 and rowText == "SELLITEMS:\nitem 100\nVENDOR_TRASH",
         "Current frame keeps the original target until the sale is confirmed"
     )
     assert(APR:HandleRouteAction(APR:GetStep(1)) and APRData.player.test == 2)
     assert(APR:HandleRouteAction(APR:GetStep(2)))
     assert(
-        APRData.player.test == 2 and rowText == "SELLITEMS: item 400 (SELL_ITEM_EQUIPPED)",
+        APRData.player.test == 2 and rowText == "SELLITEMS:\nitem 400 (SELL_ITEM_EQUIPPED)",
         "Next step must capture its own selected slot"
     )
     APR.RouteQuestStepList.test, APRData.player.test, APR.currentStep.AddQuestSteps = oldRoute, oldIndex, oldRows

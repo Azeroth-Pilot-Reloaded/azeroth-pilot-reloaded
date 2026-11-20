@@ -45,6 +45,10 @@ function APR:GetNavigationPlayerContext()
     end
     x, y, z, world =
         PublicPositionNumber(x), PublicPositionNumber(y), PublicPositionNumber(z), PublicPositionNumber(world)
+    -- This client's native zero is an altitude placeholder, not sea level.
+    -- Retain explicit nonzero observations and the existing Retail contract.
+    if z == 0 and self.GetGameVersion and self.GAME_VERSIONS
+        and self:GetGameVersion() == self.GAME_VERSIONS.Forever then z = nil end
     local name, kind, instanceID
     if GetInstanceInfo then
         local ok, n, k, _, _, _, _, _, id = --[[APR_DIAG]]
@@ -700,8 +704,25 @@ function APR:GetNavigationPlayerPosition()
         uiMapID = context.uiMapID,
         isInstance = context.isInstance or nil,
     }
-    local sanctum = C_Map and C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
-    if sanctum and GetSubZoneText and GetSubZoneText() == sanctum then position.accessKey = "wizards-sanctum" end
+    local areaName = C_Map and C_Map.GetAreaInfo
+    local sanctum = areaName and areaName(10523)
+    local config = self.NavigationData and self.NavigationData.GetConfig and self.NavigationData:GetConfig()
+    local maps = position.z == nil and config and config.ObservedAreaMaps
+        and config.ObservedAreaMaps[position.uiMapID]
+    local subzone = (sanctum or maps) and GetSubZoneText and GetSubZoneText()
+    if self.CanAccessValue and not self:CanAccessValue(subzone) then subzone = nil end
+    if sanctum and subzone == sanctum then position.accessKey = "wizards-sanctum" end
+    if areaName and maps then
+        local zone = GetZoneText and GetZoneText()
+        if self.CanAccessValue and not self:CanAccessValue(zone) then zone = nil end
+        for id, mapID in pairs(maps) do
+            local name = areaName(id)
+            if name and name ~= "" and (subzone == name or zone == name) then
+                position.uiMapID = mapID
+                break
+            end
+        end
+    end
     if self.NavigationData then
         if position.uiMapID and self.NavigationData.NormalizeLocation then
             return self.NavigationData:NormalizeLocation(position)

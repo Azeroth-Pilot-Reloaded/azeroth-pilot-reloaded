@@ -1275,17 +1275,14 @@ function Finder:GetCandidates()
     self.candidateList = list
     -- An empty badge/list has no need to resolve progression or start a route fingerprint.
     if not self.candidates or not next(self.candidates) then
-        for index = #list, 1, -1 do
-            list[index] = nil
-        end
-        return list
+        if #list > 0 then self.candidateList = {} end
+        return self.candidateList
     end
     local settings, state = self:GetSettings(), self:GetLocalState()
     if not self:IsEnabled() or not settings or not state then return list end
     if not self.candidatesDirty and self.listExpires and GetTime() < self.listExpires then return list end
-    for index = #list, 1, -1 do
-        list[index] = nil
-    end
+    -- A hidden panel still owns the offsets for its published candidate list.
+    list = {}
     self.candidateList, self.candidatesDirty, self.listExpires = list, nil, math.huge
     local query = self:MakeQuery(state)
     local languagePolicy = P.CompileLanguagePolicy(settings.languages, settings.blockedLanguages)

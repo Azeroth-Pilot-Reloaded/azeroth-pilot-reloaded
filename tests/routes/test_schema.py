@@ -173,9 +173,13 @@ class RouteSchemaTests(unittest.TestCase):
 
     def test_recorded_world_coordinate_identity_is_optional_and_explicit(self):
         self.schema.step({"Coord": {"x": 12.5, "y": -40, "mapID": 2512, "instanceID": 0}}, "step")
+        self.schema.step({"Coord": {"x": 12.5, "y": -40, "z": -4.5}}, "step")
+        self.schema.step({"Coords": seq({"Zone": 1, "x": 12, "y": 8, "z": 0},
+                                        {"Zone": 2, "Coord": {"x": 15, "y": 16, "z": 100}})}, "step")
         self.schema.step({"EnterScenario": {"mapID": 2269}}, "step")
         self.schema.step({"LeaveScenario": {"mapID": 2269}, "NoArrow": True}, "step")
-        for invalid in ({"x": 1, "y": 2, "instanceID": -1}, {"x": 1, "y": 2, "instanceID": "2601"}):
+        for invalid in ({"x": 1, "y": 2, "instanceID": -1}, {"x": 1, "y": 2, "instanceID": "2601"},
+                        {"x": 1, "y": 2, "z": float("inf")}, {"x": 1, "y": 2, "z": "95"}):
             with self.assertRaises(InvalidRoute):
                 self.schema.step({"Coord": invalid}, "step")
 

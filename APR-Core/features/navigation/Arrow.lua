@@ -56,15 +56,27 @@ local function SaveArrowPosition()
 end--[[APR_DIAG]]
 SaveArrowPosition = APRTrace("APR-Core/features/navigation/Arrow.lua:53:SaveArrowPosition#3", SaveArrowPosition)--[[/APR_DIAG]]
 
-local function ShouldShowArrow()
+local function CanShowArrow(instanceID)
     if not APR.settings.profile.showArrow then return false end
     if not APR.Arrow.Active then return false end
+    local navigation = APR.navigation
+    local provisional = APR.Arrow.provisionalTarget
+    if provisional then
+        if (navigation and (navigation.worldLoading or navigation.state == "instance"))
+            or (APR.Services and APR.Services:GetStep()) then return false end
+        if not APR:IsStepContextCurrent(provisional.context) then return false end
+        if instanceID == nil then instanceID = WorldInstanceID(select(4, UnitPosition("player"))) end
+        if provisional.instanceID ~= instanceID then return false end
+    elseif navigation and not navigation.retainedArrow and navigation.BlocksDirectGuidance and navigation:BlocksDirectGuidance() then
+        return false
+    end
     -- Personal travel has no direction. Its executable control belongs to the
     -- current-step row, which already owns a validated secure action button.
     if APR.Arrow.displayAction then return false end
     if
         APR.Arrow.x == 0
-        and not (APR.navigation and (APR.navigation.retainedArrow or APR.navigation:IsNavigating()))
+        and not APR.Arrow.rangeTarget
+        and not (provisional or navigation and (navigation.retainedArrow or navigation:IsNavigating()))
     then
         return false
     end
@@ -72,7 +84,7 @@ local function ShouldShowArrow()
     if not APR:IsInstanceWithUI() then return false end
     return true
 end--[[APR_DIAG]]
-ShouldShowArrow = APRTrace("APR-Core/features/navigation/Arrow.lua:61:ShouldShowArrow#4", ShouldShowArrow)--[[/APR_DIAG]]
+CanShowArrow = APRTrace("APR-Core/features/navigation/Arrow.lua:61:CanShowArrow#4", CanShowArrow)--[[/APR_DIAG]]
 
 local function GetArrowColor(percentage)
     if percentage > 0.98 then
@@ -156,8 +168,6 @@ APR.ArrowFrame:SetScript(
 
 local arrowPoll =
      --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:153:callback#9", --[[/APR_DIAG]]function(self, tick)
-        if not APR.ArrowFrame:IsShown() then return end
-
         APR.Arrow.frameTicker = APR.Arrow.frameTicker + tick
         if APR.Arrow.frameTicker < APR.Arrow.arrowUpdateRate then return end
         APR.Arrow.frameTicker = 0
@@ -167,9 +177,13 @@ local arrowPoll =
 
 APR.ArrowFrame:SetScript("OnUpdate", nil)
 function APR.Arrow:RefreshActivity()
-    local active = self.Active and APR.ArrowFrame:IsShown()
-    APR.ArrowFrame:SetScript("OnUpdate", active and arrowPoll or nil)
-    if not active then self.frameTicker = 0 end
+    local shown = APR.ArrowFrame:IsShown()
+    local active = self.Active and APR.settings.profile.showArrow
+    local watchingRange = active and not shown and self.rangeTarget and APR.ActiveRoute and APR.RouteQuestStepList
+    APR.ArrowFrame:SetScript("OnUpdate", active and shown and arrowPoll or nil)
+    -- A hidden frame stops receiving OnUpdate. Its visible drag anchor can watch for a range exit.
+    APR.ArrowFrameM:SetScript("OnUpdate", watchingRange and arrowPoll or nil)
+    if not (active and shown or watchingRange) then self.frameTicker = 0 end
     if APR.NavigationAdapter and APR.NavigationAdapter.RefreshActivity then
         APR.NavigationAdapter:RefreshActivity(APR.navigation and APR.navigation:IsNavigating())
     end
@@ -183,7 +197,7 @@ APR.ArrowFrame.Button:SetScript(
     "OnMouseDown",
      --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:179:callback#13", --[[/APR_DIAG]]function(self, button)
         APR.ArrowFrame.Button:Hide()
-        if APR.navigation and (APR.navigation.retainedArrow or APR.navigation:IsNavigating()) then return end
+        if APR.Arrow.provisionalTarget or APR.navigation and (APR.navigation.retainedArrow or APR.navigation:IsNavigating()) then return end
         APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
         APR:NextQuestStep()
     end--[[APR_DIAG]])--[[/APR_DIAG]]
@@ -546,7 +560,9 @@ function APR.Arrow:SetCoord()
 
     if APR.navigation and APR.navigation:IsNavigating() then
         local guidance = APR.navigation:GetActiveStep()
+        local target = APR.navigation.GetGuidanceTarget and APR.navigation:GetGuidanceTarget()
         local coord = guidance and guidance.Coord
+        if guidance and guidance.path and target then coord = {x = target.y, y = target.x} end
         local action = guidance and guidance.sourceFree and guidance.action
         local _, _, _, instanceID = UnitPosition("player")
         instanceID = WorldInstanceID(instanceID)
@@ -560,8 +576,13 @@ function APR.Arrow:SetCoord()
         return
     end
 
+    local blocked = navigation and navigation.BlocksDirectGuidance and navigation:BlocksDirectGuidance()
+    local forever = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+    local pending = forever and navigation and (navigation.state == "planning" or navigation.state == "waiting_data"
+        or navigation.state == "no_path")
     local step, currentStepIndex, routeSteps = APR:GetCurrentStep()
     if not routeSteps or not step then
+        if blocked or self.provisionalTarget then self:SetArrowActive(false, 0, 0) end
         return
     end
 
@@ -570,32 +591,64 @@ function APR.Arrow:SetCoord()
         return
     end
 
-    if step and step.NoArrow and (APR.IsInRouteZone or step.Dungeon) then
+    if step.NoArrow and (APR.IsInRouteZone or step.Dungeon or blocked or pending or self.provisionalTarget) then
         APR:Debug("APR.Arrow:SetCoord(): NoArrow step found, hiding arrow")
         self:SetArrowActive(false, 0, 0)
         return
     end
 
     local _, routeMapID = APR:GetCurrentRouteMapIDsAndName()
-    local stepCoord = APR:GetStepCoord(step, routeMapID, APR:GetPlayerParentMapID())
+    local stepCoord, resolvedMap = APR:GetStepCoord(step, routeMapID, APR:GetPlayerParentMapID())
+    local provisional = forever and (blocked or pending or not APR.IsInRouteZone)
+    if provisional or blocked or not APR.IsInRouteZone then
+        if provisional and APR.ActiveRoute and not step.NoArrow and stepCoord
+            and type(stepCoord.x) == "number" and type(stepCoord.y) == "number"
+            and (not APR.CanAccessValue or APR:CanAccessValue(stepCoord.x) and APR:CanAccessValue(stepCoord.y))
+            and mathAbs(stepCoord.x) < math.huge and mathAbs(stepCoord.y) < math.huge
+            and not (APR.Services and APR.Services:GetStep())
+            and not (navigation and navigation.worldLoading)
+            and APR.CaptureStepContext and APR.IsStepContextCurrent
+            and not APR.routeValidationPending and not APR.routeValidationFailed then
+            local data = APR.NavigationData
+            local map = stepCoord.mapID or resolvedMap or routeMapID
+            local targetWorld = stepCoord.instanceID
+            if targetWorld == nil and map and data and data.GetMapWorldInstanceID then
+                targetWorld = data:GetMapWorldInstanceID(map)
+            end
+            targetWorld = WorldInstanceID(targetWorld)
+            if targetWorld ~= nil and targetWorld == WorldInstanceID(select(4, UnitPosition("player"))) then
+                -- The guide's coordinates are an immediate bearing. Arrival and
+                -- access remain owned by the resolved path and guide handlers.
+                self:SetArrowActive(true, stepCoord.x, stepCoord.y, nil, {
+                    context = APR:CaptureStepContext(), instanceID = targetWorld,
+                })
+                return
+            end
+        end
+        if blocked or self.provisionalTarget or provisional then self:SetArrowActive(false, 0, 0) end
+        return
+    end
     if not stepCoord and APR.IsInRouteZone then
         APR:Debug("APR.Arrow:SetCoord(): Step has no coordinates, hiding arrow")
         self:SetArrowActive(false, 0, 0)
         return
     end
 
-    if self.currentStep ~= currentStepIndex and stepCoord and APR.IsInRouteZone then
+    if (self.currentStep ~= currentStepIndex or self.provisionalTarget) and stepCoord and APR.IsInRouteZone then
         APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. currentStepIndex .. " at coordinates:", stepCoord)
-        local x = stepCoord.x
+        local rangeTarget
         -- Step refreshes must not briefly show an arrow we already reached.
         -- Waypoints still need OnUpdate to perform their step transition.
         if step.Range and not step.Waypoint then
-            local playerY, playerX = UnitPosition("player")
-            if playerY and DistanceBetween(playerX, playerY, x, stepCoord.y) < step.Range then
-                x = 0
+            local playerY, playerX, _, instanceID = UnitPosition("player")
+            if
+                not (issecretvalue and (issecretvalue(playerX) or issecretvalue(playerY)))
+                and playerY and playerX and DistanceBetween(playerX, playerY, stepCoord.x, stepCoord.y) < step.Range
+            then
+                rangeTarget = { step = step, instanceID = WorldInstanceID(instanceID) }
             end
         end
-        self:SetArrowActive(true, x, stepCoord.y)
+        self:SetArrowActive(true, stepCoord.x, stepCoord.y, nil, nil, rangeTarget)
         self.currentStep = currentStepIndex
     end
 end--[[APR_DIAG]]
@@ -624,14 +677,37 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         return
     end
     local questStep, currentStepIndex, routeSteps = APR:GetCurrentStep()
-    if not routeSteps and not (navigation and navigation:IsNavigating()) then
+    local rangeTarget = self.rangeTarget
+    if not routeSteps and not retained and not guidance and not rangeTarget then
         APR.ArrowFrame:Hide()
         return
     end
 
-    local isNavigating = retained ~= nil or (navigation and navigation:IsNavigating())
+    local isNavigating = retained ~= nil or self.provisionalTarget ~= nil or (navigation and navigation:IsNavigating())
     local stepCoord = not isNavigating and questStep and APR:GetStepCoord(questStep, nil, APR:GetPlayerParentMapID())
         or nil
+    local x, y = self.x, self.y
+    if rangeTarget then
+        if
+            questStep ~= rangeTarget.step or isNavigating or questStep.NoArrow or questStep.Waypoint
+            or questStep.UseHS or questStep.UseDalaHS or questStep.UseGarrisonHS
+        then
+            self:SetArrowActive(false, 0, 0)
+            return
+        end
+        if
+            not APR.IsInRouteZone or not stepCoord
+            or (navigation and (navigation.worldLoading or navigation.state == "instance"))
+            or (rangeTarget.instanceID ~= nil and rangeTarget.instanceID ~= instanceID)
+        then
+            return
+        end
+        x, y = stepCoord.x, stepCoord.y
+    end
+    local distance = DistanceBetween(playerX, playerY, x, y)
+    local inRange = not isNavigating and questStep and questStep.Range and APR.IsInRouteZone and distance < questStep.Range
+    if rangeTarget and inRange then return end
+
     if not isNavigating and questStep and questStep.ZoneStepTrigger and not APR:IsTransportStep(questStep) then -- Transports poll arrival independently of the arrow.
         local trigger = questStep.ZoneStepTrigger
         if APR:IsZoneStepTriggerReached(trigger, playerX, playerY) then
@@ -641,20 +717,15 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         end
     end
 
-    if not APR.ArrowFrame:IsShown() then APR.ArrowFrame:Show() end
-    if APR.ArrowFrame.Button:IsShown() then APR.ArrowFrame.Button:Hide() end
-    local x, y = self.x, self.y
-    local distance = DistanceBetween(playerX, playerY, x, y)
-    local dx, dy = playerX - x, y - playerY
-    local angle = mathAtan2(-dx, dy) - facing
-    local perc = mathAbs((math.pi - mathAbs(angle)) / math.pi)
-
     -- Distance remains informational. Zone admission and rerouting belong to
     -- the controller, so a long same-continent walk never creates an error here.
     if not isNavigating and stepCoord then
         self.QuestStepDistance = DistanceBetween(playerX, playerY, stepCoord.x, stepCoord.y)
     end
 
+    if guidance and guidance.kind == "walk" and guidance.path and navigation.GetRemainingWalkYards then
+        distance = navigation:GetRemainingWalkYards()
+    end
     if isNavigating then
         self.Distance = distance
         self.isWrongZoneDistance = false
@@ -664,18 +735,22 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         self.Distance = stepCoord and self.QuestStepDistance or distance
     end
 
-    if not isNavigating and questStep and (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
-        local range = questStep.Range or 0
-        if distance < range then
-            self.x = 0
-            APR.ArrowFrame:Hide()
-            if questStep.Waypoint then
-                self.currentStep = 0
-                APR:NextQuestStep()
-            end
-            return
+    if inRange then
+        self.x = 0
+        if not questStep.Waypoint then self.rangeTarget = { step = questStep, instanceID = instanceID } end
+        APR.ArrowFrame:Hide()
+        if questStep.Waypoint then
+            self.currentStep = 0
+            APR:NextQuestStep()
         end
+        return
     end
+    if rangeTarget then self.x, self.y, self.rangeTarget = x, y, nil end
+    if not APR.ArrowFrame:IsShown() then APR.ArrowFrame:Show() end
+    if APR.ArrowFrame.Button:IsShown() then APR.ArrowFrame.Button:Hide() end
+    local dx, dy = playerX - x, y - playerY
+    local angle = mathAtan2(-dx, dy) - facing
+    local perc = mathAbs((math.pi - mathAbs(angle)) / math.pi)
 
     -- Arrow color
     local r, g, b = GetArrowColor(perc)
@@ -697,10 +772,13 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         )
         self.lastTextureCell = cell
     end
+    if guidance and not retained and navigation.MarkGuidanceSurface then
+        navigation:MarkGuidanceSurface("Arrow", guidance)
+    end
 
     -- Distance display
     local displayedDistance =
-        mathFloor(distance + CheckDistance(questStep, currentStepIndex, routeSteps, stepCoord, retained))
+        mathFloor(distance + CheckDistance(questStep, currentStepIndex, routeSteps, stepCoord, retained or self.provisionalTarget))
     if self.lastDisplayedDistance ~= displayedDistance then
         APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
         self.lastDisplayedDistance = displayedDistance
@@ -709,19 +787,27 @@ end--[[APR_DIAG]]
 UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:451:UpdatePosition#21", UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdatePosition()
-    local playerY, playerX, _, instanceID = UnitPosition("player")
-    instanceID = WorldInstanceID(instanceID)
     if
-        not playerY
-        or (not APR.ActiveRoute and not (APR.Services and APR.Services:GetStep()))
+        (not APR.ActiveRoute and not (APR.Services and APR.Services:GetStep()))
         or not APR.RouteQuestStepList
         or not APR.settings.profile.showArrow
         or not self.Active
     then
         self.positionCache = nil
         APR.ArrowFrame:Hide()
+        if self.rangeTarget then self:RefreshActivity() end
         return
     end
+    local playerY, playerX, _, instanceID = UnitPosition("player")
+    if
+        (issecretvalue and (issecretvalue(playerX) or issecretvalue(playerY)))
+        or not playerY or not playerX
+    then
+        self.positionCache = nil
+        APR.ArrowFrame:Hide()
+        return
+    end
+    instanceID = WorldInstanceID(instanceID)
     local facing = GetPlayerFacing()
     if not facing then return end
     local progress = APRData[APR.PlayerID]
@@ -755,7 +841,7 @@ function APR.Arrow:UpdatePosition()
     end
     -- Pet battles and instance visibility change on events, not every frame.
     -- Idle polls retry once per second; explicit visibility refreshes bypass it.
-    if not ShouldShowArrow() then
+    if not CanShowArrow(instanceID) then
         self.positionCache = nil
         APR.ArrowFrame:Hide()
         return
@@ -777,22 +863,25 @@ APR.Arrow.UpdatePosition =
 
 function APR.Arrow:RefreshVisibility()
     self.positionCache = nil
+    if self.rangeTarget then self:RefreshActivity() end
     self:UpdatePosition()
 end--[[APR_DIAG]]
 APR.Arrow.RefreshVisibility =
     APRTrace("APR-Core/features/navigation/Arrow.lua:597:APR.Arrow:RefreshVisibility#23", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
 
-function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
+function APR.Arrow:SetArrowActive(isActive, x, y, displayAction, provisionalTarget, rangeTarget)
     local a = APR.Arrow
+    a.provisionalTarget = isActive and provisionalTarget or nil
     a:SetDisplayAction(isActive and displayAction or nil)
     a.positionCache = nil
     a.routeDistanceCache = nil
     a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
     a.Active = isActive
-    a.x = x or 0
+    a.rangeTarget = isActive and rangeTarget or nil
+    a.x = not a.rangeTarget and x or 0
     a.y = y or 0
     a:UpdateActionText()
-    if isActive and x and y and ShouldShowArrow() then
+    if isActive and x and y and not a.rangeTarget and CanShowArrow() then
         APR.ArrowFrame:Show()
     else
         APR.ArrowFrame:Hide()

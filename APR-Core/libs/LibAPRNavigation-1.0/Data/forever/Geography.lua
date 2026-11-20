@@ -18,17 +18,46 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         IsolatedAreas = {
             [1441] = "forever:thousand-needles",
             [1452] = "forever:winterspring",
+            [1456] = "forever:thunder-bluff",
             [1458] = "forever:undercity",
             [2521] = "forever:zephras",
             [2548] = "forever:powderfuse",
         },
         IsolatedContinents = {},
         MapTypeOverrides = {},
+        -- The live client can expose the overlapping map artwork while
+        -- UnitPosition supplies only XY. Use the native area names then.
+        ObservedAreaMaps = {
+            [1412] = { [1638] = 1456 },
+            [1420] = { [1497] = 1458 },
+            [1456] = { [215] = 1412 },
+            [1458] = { [153] = 1420 },
+        },
         actionLoadingSeconds = 5,
         defaultItemCastSeconds = 10,
         defaultSpellCastSeconds = 10,
         threshold = 2000,
         LocalRegions = {
+            [499] = {
+                {
+                    key = "tram-ironforge",
+                    bounds = { instanceID = 369, minX = -100, maxX = 160, minY = -130, maxY = 160 },
+                },
+                {
+                    key = "tram-stormwind",
+                    bounds = { instanceID = 369, minX = -100, maxX = 160, minY = 2340, maxY = 2650 },
+                },
+            },
+            [1420] = {
+                {
+                    key = "undercity-lift-hall",
+                    bounds = { instanceID = 0, minX = 1538, maxX = 1680, minY = 174, maxY = 310 },
+                },
+                {
+                    key = "undercity-courtyard",
+                    bounds = { instanceID = 0, minX = 1538, maxX = 1880, minY = 174, maxY = 310 },
+                },
+            },
             [1433] = {
                 {
                     key = "redridge_road",
@@ -38,6 +67,20 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
             [1438] = { { center = { 0.55, 0.92 }, key = "ruttheran", radius = 200 } },
         },
         MapRemaps = {
+            -- The native city map can cover the upper ruins and the occupied
+            -- city at the same XY. Keep each approach on its own level.
+            [1458] = {
+                { instanceID = 0, mapID = 1420, minX = 1538, maxX = 1880, minY = 174, maxY = 310, minZ = 45 },
+                -- The city map extends over the open slope to the sewer mouth.
+                { instanceID = 0, mapID = 1420, minX = 1630, maxX = 1730, minY = 580, maxY = 655, indoors = false },
+            },
+            [1420] = {
+                { instanceID = 0, mapID = 1458, minX = 1538, maxX = 1700, minY = 174, maxY = 310, maxZ = 0 },
+            },
+            -- The footprint of the bluff spans both the mesa and its base.
+            [1456] = {
+                { instanceID = 1, mapID = 1412, minX = -1345, maxX = -990, minY = -80, maxY = 225, maxZ = 85 },
+            },
             [1414] = {
                 {
                     instanceID = 1,
@@ -196,4 +239,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
             },
         },
     },
-}, 35)
+}, 37)

@@ -126,6 +126,55 @@ map.messages.APR_MAP_UPDATE()
 tick()
 assert(rebuilds == 4 and #fixture.worldPins() == 8 and #fixture.miniPins() == 4)
 assert(created == 12, "Event bursts and lifecycle changes cannot grow warmed marker pools")
+
+APR.ActiveRoute = nil
+profile.mapshowNextSteps, profile.minimapshowNextSteps = false, false
+function env.methods:RegisterForClicks(...) self.registeredClicks = { ... } end
+local waypoint = {
+    kind = "map_waypoint",
+    generated = true,
+    Coord = {x = 800, y = 900},
+    label = "Selected destination",
+    instruction = "Walk to destination",
+}
+APR.Services = {active = {step = {_mapWaypoint = true}}, Cancel = function(self)
+    self.active, waypoint = nil, nil
+end}
+APR.navigationPreview = {
+    GetPoints = function() return waypoint and {waypoint} or {} end,
+    ProjectPoint = function() return 0.8, 0.9 end,
+}
+map:AddMapPins()
+assert(#fixture.worldPins() == 1 and #fixture.miniPins() == 1)
+local waypointPin = fixture.worldPins()[1]
+assert(waypointPin.registeredClicks[1] == "RightButtonUp" and waypointPin.registeredClicks[2] == "LeftButtonUp"
+    and waypointPin.guidancePoint == waypoint)
+for _, pin in ipairs({ waypointPin, fixture.miniPins()[1] }) do
+    pin.scripts.OnEnter(pin)
+    assert(GameTooltip:IsShown() and tooltip == "Selected destination")
+    pin.scripts.OnLeave(pin)
+end
+waypoint.label = nil
+waypointPin.scripts.OnEnter(waypointPin)
+assert(GameTooltip:IsShown() and tooltip == "Walk to destination")
+waypointPin.scripts.OnLeave(waypointPin)
+waypoint.instruction = nil
+for _, pin in ipairs({ waypointPin, fixture.miniPins()[1] }) do
+    tooltip = nil
+    pin.scripts.OnEnter(pin)
+    assert(not GameTooltip:IsShown() and tooltip == nil, "An unlabeled navigation pin has no tooltip")
+end
+waypointPin.scripts.OnClick(waypointPin, "LeftButton")
+assert(waypoint, "A regular left click leaves the manual pin in place")
+local destination, activeDetour = waypoint, APR.Services.active
+waypointPin.scripts.OnClick(waypointPin, "RightButton")
+assert(not waypoint, "Right click still cancels the detour")
+waypoint, APR.Services.active = destination, activeDetour
+function IsControlKeyDown() return true end
+waypointPin.scripts.OnClick(waypointPin, "LeftButton")
+map:AddMapPins()
+assert(not waypoint and #fixture.worldPins() == 0 and #fixture.miniPins() == 0,
+    "Control-click, the native removal gesture, clears the APR pin from both surfaces")
 print(
     "Map pins: bounded pools across 200 steps, live tooltips/numbering, one burst rebuild, resize, disable and immediate refresh passed"
 )

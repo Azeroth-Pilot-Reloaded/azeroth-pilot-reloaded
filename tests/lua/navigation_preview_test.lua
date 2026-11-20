@@ -190,7 +190,7 @@ assert(
     #APR.map.worldSegments == 6 and #APR.map.minimapSegments == 6,
     "Both maps show player, five waypoints and pickup, regardless of the pin-count setting"
 )
-local frames, anchors = env.frames(), APR.map.worldSegments[2].start.anchors
+local frames, anchor = env.frames(), APR.map.worldSegments[2].line.startPoint
 reads = coordinateReads
 local routeReads, clipCalls, projectionCalls = 0, 0, 0
 local getStep, clipMinimap, clipWorld, project =
@@ -215,7 +215,7 @@ for _ = 1, 100 do
     tick()
 end
 assert(
-    env.frames() == frames and APR.map.worldSegments[2].start.anchors == anchors and coordinateReads == reads,
+    env.frames() == frames and APR.map.worldSegments[2].line.startPoint == anchor and coordinateReads == reads,
     "Unchanged chain rendering allocates no frames, resolves no coordinates and moves no anchors"
 )
 assert(

@@ -49,6 +49,13 @@ temporary fixtures; content validation only reports invalid input. Keep tests
 deterministic and run the complete suite before finishing. Repository-wide agent
 instructions are in [AGENTS.md](../AGENTS.md).
 
+`manifest_fixture.lua` follows XML Script/Include ordering and the `[Game]`
+selector. Its default excludes distributed terrain declarations, so engine
+outcomes do not depend on maintained maps. Terrain behavior uses invented
+collision fixtures; export tests and the common pack checker validate shipped
+graph structure separately. Tests can explicitly enable terrain declarations
+when validating their common content contract.
+
 Instrumentation checks compare Lua structure rather than exact generated text.
 Formatting, comments, body edits and shifted trace line hints do not invalidate
 coverage. Synthetic cases still reject missing/wrong wrappers, duplicate trace

@@ -200,6 +200,20 @@ assert(
 C_MountJournal = nil
 state.nav:InvalidatePathCache()
 assert(not state.nav:HasUsableMount(), "Clients without a mount journal retain conservative estimates")
+local speedReads = 0
+function state.nav:GetMovementSpeed()
+    speedReads = speedReads + 1
+    return 28
+end
+APR.NavigationData = {GetWalkingSpeed = function(_, _, _, ground) return ground end}
+function IsFlying() return false end
+C_PlayerInfo = {GetGlidingInfo = function() return false end}
+local origin = {instanceID = 1, uiMapID = 2, floor = 3}
+local remote = {instanceID = 1, uiMapID = 2, floor = 4}
+local speed, ceiling, at, between = state.nav:GetWalkingSpeedModel(origin, 2000)
+assert(speedReads == 1 and speed == 28 and ceiling == 28)
+assert(at(origin) == 28 and at(remote) == 14 and between(origin, remote) == 14,
+    "A fast ground vehicle only supplies its observed speed in the departure area")
 print(
     "Navigation mounts: bounded repeat probes, live ownership/usability, unavailable data, restrictions and client fallbacks passed"
 )

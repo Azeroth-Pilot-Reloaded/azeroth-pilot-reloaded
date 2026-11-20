@@ -30,12 +30,7 @@ return function(profile)
     end
     load("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
     local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-    local file = assert(io.open(root .. "LibAPRNavigation.xml"))
-    local xml = file:read("*a")
-    file:close()
-    for path in xml:gmatch('file="([^"]+)"') do
-        load(root .. path)
-    end
+    dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", { load = load })
     local environment = {
         getMapInfo = function(id)
             local observed = C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(id)

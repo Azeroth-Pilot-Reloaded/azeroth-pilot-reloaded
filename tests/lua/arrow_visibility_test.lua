@@ -3,18 +3,25 @@ local function noop() end
 local methods = {}
 local function widget(parent)
     return setmetatable(
-        { shown = true, showCount = 0, scripts = {}, parent = parent, scale = 1 },
+        { shown = true, showCount = 0, scripts = {}, hooks = {}, parent = parent, scale = 1 },
         { __index = methods }
     )
 end
 setmetatable(methods, { __index = function() return noop end })
 function methods:Show()
+    local changed = not self.shown
     self.shown = true
     self.showCount = self.showCount + 1
+    if changed and self.hooks.OnShow then self.hooks.OnShow(self) end
 end
-function methods:Hide() self.shown = false end
+function methods:Hide()
+    local changed = self.shown
+    self.shown = false
+    if changed and self.hooks.OnHide then self.hooks.OnHide(self) end
+end
 function methods:IsShown() return self.shown end
 function methods:SetScript(event, callback) self.scripts[event] = callback end
+function methods:HookScript(event, callback) self.hooks[event] = callback end
 function methods:CreateTexture() return widget(self) end
 function methods:CreateFontString() return widget(self) end
 function methods:SetParent(parent) self.parent = parent end
@@ -68,7 +75,8 @@ APRData = { player = { route = 1 } }
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
-function APR:GetGameVersion() return "forever" end
+local gameVersion = "forever"
+function APR:GetGameVersion() return gameVersion end
 function APR:RegisterFontString() end
 function APR:Debug() end
 function APR:GetRouteSteps() return steps end
@@ -88,7 +96,12 @@ local function refresh()
 end
 local function tick()
     seconds = seconds + 0.03
-    if frame:IsShown() then frame.scripts.OnUpdate(frame, 0.03) end
+    local anchor = APR.ArrowFrameM
+    if frame:IsShown() and frame.scripts.OnUpdate then
+        frame.scripts.OnUpdate(frame, 0.03)
+    elseif anchor:IsShown() and anchor.scripts.OnUpdate then
+        anchor.scripts.OnUpdate(anchor, 0.03)
+    end
 end
 
 local function verifyNavigation()
@@ -107,18 +120,40 @@ local function verifyNavigation()
     assert(arrow.x == 0, "Reached coordinates also suppress the map line")
     assert(advanced == 0, "Arrival alone must not complete LootMoney")
 
-    playerX = step.Coord.x + 60
-    refresh()
-    assert(frame:IsShown(), "Refreshing outside Range restores guidance")
+    playerX, playerY = nil, step.Coord.y
     tick()
+    assert(not frame:IsShown(), "An unavailable position cannot show the arrow")
+    playerX, instanceID = step.Coord.x + 60, 1
+    tick()
+    assert(not frame:IsShown(), "An unrelated world cannot restore the previous target")
+    instanceID = 0
+    tick()
+    assert(
+        frame:IsShown() and frame.distance.text == "60 yards",
+        "Leaving Range restores the current target without a step refresh"
+    )
+    assert(not APR.ArrowFrameM.scripts.OnUpdate, "The visible arrow takes over its updates once outside Range")
     playerX = step.Coord.x + 8
     tick()
     assert(not frame:IsShown(), "Entering Range hides on the same update, without waiting another frame")
     assert(advanced == 0)
 
+    APR.settings.profile.showArrow = false
+    arrow:RefreshVisibility()
+    assert(
+        not frame:IsShown() and not APR.ArrowFrameM.scripts.OnUpdate,
+        "Disabling the arrow stops the hidden range watch"
+    )
     playerX = step.Coord.x + step.Range
-    refresh()
-    assert(frame:IsShown(), "Preserve the strict arrival boundary")
+    APR.settings.profile.showArrow = true
+    arrow:RefreshVisibility()
+    assert(frame:IsShown() and arrow.x == step.Coord.x, "Re-enabling at the strict Range boundary restores guidance")
+    playerX = step.Coord.x + 8
+    tick()
+    assert(not frame:IsShown())
+    playerX = step.Coord.x + step.Range
+    tick()
+    assert(frame:IsShown() and arrow.x == step.Coord.x, "Returning to the strict Range boundary restores guidance again")
     playerX = step.Coord.x + 8
     step.Waypoint = 123
     refresh()
@@ -153,9 +188,13 @@ local function verifyNavigation()
     refresh()
     assert(not frame:IsShown(), "Refreshing must respect the arrow visibility setting immediately")
     APR.settings.profile.showArrow = true
+    playerX = step.Coord.x + 8
+    refresh()
+    assert(not frame:IsShown() and APR.ArrowFrameM.scripts.OnUpdate)
     step.NoArrow = true
     refresh()
     assert(not frame:IsShown() and not arrow.Active)
+    assert(not APR.ArrowFrameM.scripts.OnUpdate, "NoArrow stops watching for a range exit")
 end
 
 assert(frame.arrow.texture:find("Arrow.blp", 1, true), "Existing profiles must keep the classic artwork")
@@ -168,7 +207,57 @@ assert(
     arrow.x == originalX and arrow.y == originalY and arrow.Active == originalActive and advanced == originalAdvanced,
     "Changing artwork cannot change the target, activate guidance or advance a step"
 )
+gameVersion = "retail"
 verifyNavigation()
+gameVersion = "forever"
+
+-- A same-world authored coordinate is a bearing while exact routing is pending.
+do
+    step.NoArrow, step.Waypoint = nil, 123
+    step.Coord.mapID = 1411
+    APR.NavigationData = {GetMapWorldInstanceID = function(_, map) return map == 1411 and 0 or 1 end}
+    APR.navigation.BlocksDirectGuidance = function() return true end
+    APR.IsInRouteZone = false
+    playerX, playerY = step.Coord.x + 60, step.Coord.y
+    local previous = advanced
+    APR.navigation.state = "planning"
+    refresh()
+    assert(frame:IsShown() and arrow.x == step.Coord.x and arrow.y == step.Coord.y)
+
+    APR.navigation.state = "no_path"
+    refresh()
+    playerX = step.Coord.x + 2
+    tick()
+    assert(frame:IsShown() and advanced == previous, "A failed route keeps its bearing without completing the waypoint")
+
+    instanceID = 1
+    tick()
+    assert(not frame:IsShown(), "A bearing cannot survive a world change")
+    instanceID = 0
+    step.Coord.mapID = 999
+    refresh()
+    assert(not frame:IsShown(), "Coordinates in another world cannot be used as a bearing")
+    step.Coord.mapID = 1411
+
+    APR.Services = {GetStep = function() return {_mapWaypoint = true} end}
+    refresh()
+    assert(not frame:IsShown(), "A map pin must not inherit the authored step's bearing")
+    APR.Services = nil
+
+    refresh()
+    navigating = true
+    local pathTarget = {x = -700, y = -4200}
+    APR.navigation.GetGuidanceTarget = function() return pathTarget end
+    APR.navigation.GetActiveStep = function() return {Coord = step.Coord, path = {pathTarget}} end
+    APR.navigation.BlocksDirectGuidance = function() return not navigating end
+    refresh()
+    assert(frame:IsShown() and arrow.x == pathTarget.y and arrow.y == pathTarget.x and not arrow.provisionalTarget)
+    APR.navigation.GetActiveStep = function() return navigating and {Coord = step.Coord} or nil end
+    APR.navigation.GetGuidanceTarget, APR.navigation.BlocksDirectGuidance, APR.navigation.state = nil, nil, nil
+    APR.NavigationData = nil
+    APR.IsInRouteZone, navigating = true, false
+    step.Waypoint, step.Coord.mapID = nil, nil
+end
 
 -- Both sprite sheets use exactly the same heading cells, colors and distance text.
 step.NoArrow = nil
@@ -440,6 +529,13 @@ APR.navigation.retainedArrow = { Coord = { x = 0, y = playerY }, instanceID = 0 
 refresh()
 tick()
 assert(frame:IsShown(), "World X zero is a valid retained target, not an arrival sentinel")
+APR.ActiveRoute = nil
+APR.Services = { GetStep = function() return { _service = true } end }
+APR.navigation.retainedArrow = { Coord = { x = playerX + 20, y = playerY }, instanceID = 0, serviceWaypoint = true }
+refresh()
+tick()
+assert(frame:IsShown() and frame.distance.text == "20 yards", "A service waypoint points and updates without an active guide")
+APR.ActiveRoute, APR.Services = "route", nil
 APR.settings.profile.showArrow = false
 refresh()
 assert(not frame:IsShown(), "Retained guidance still respects the arrow visibility setting")
@@ -573,3 +669,16 @@ APR.navigation.state, instanceID = "ready", 90
 refresh()
 tick()
 assert(frame:IsShown(), "A real position restores ordinary guidance after the instance restriction ends")
+
+navigating = false
+step.Range = 30
+playerX, playerY = step.Coord.x, step.Coord.y
+refresh()
+assert(not frame:IsShown() and APR.ArrowFrameM.scripts.OnUpdate, "The active objective starts a hidden range watch")
+APR:SetRouteProgress(APR.ActiveRoute, 2, "manual_skip")
+playerX = playerX + 60
+tick()
+assert(
+    not frame:IsShown() and not APR.ArrowFrameM.scripts.OnUpdate,
+    "A delayed step refresh cannot restore the previous objective's arrow"
+)

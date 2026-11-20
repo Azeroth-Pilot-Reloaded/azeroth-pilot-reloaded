@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 16) then return end
+if not Lib:BeginModule("geography", 18) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -97,7 +97,12 @@ function Instance:ProjectExtendedMap(mapID, x, y)
     return world, ox + x * (xx - ox) + y * (yx - ox), oy + x * (xy - oy) + y * (yy - oy)
 end
 
-function Instance:GetRemappedMapID(mapID, instanceID, x, y)
+local function InHeightRange(z, bounds)
+    return (not bounds.minZ and not bounds.maxZ)
+        or (Finite(z) and (not bounds.minZ or z >= bounds.minZ) and (not bounds.maxZ or z <= bounds.maxZ))
+end
+
+function Instance:GetRemappedMapID(mapID, instanceID, x, y, z)
     for _, rect in ipairs((self.config.MapRemaps or EMPTY)[mapID] or EMPTY) do
         if
             instanceID == rect.instanceID
@@ -105,8 +110,9 @@ function Instance:GetRemappedMapID(mapID, instanceID, x, y)
             and x <= rect.maxX
             and y >= rect.minY
             and y <= rect.maxY
+            and InHeightRange(z, rect)
         then
-            return rect.mapID
+            return rect.mapID, rect
         end
     end
     return mapID
@@ -138,6 +144,19 @@ function Instance:GetLocationAccessKey(position)
     if not regions then return end
     self.localRegionGeometry = self.localRegionGeometry or {}
     for _, region in ipairs(regions) do
+        if region.bounds then
+            local bounds = region.bounds
+            if
+                self:GetWorldInstanceID(bounds.instanceID) == self:GetWorldInstanceID(position.instanceID)
+                and position.x >= bounds.minX
+                and position.x <= bounds.maxX
+                and position.y >= bounds.minY
+                and position.y <= bounds.maxY
+                and InHeightRange(position.z, bounds)
+            then
+                return region.key
+            end
+        end
         local geometry = self.localRegionGeometry[region]
         if not geometry and self.env.mapToWorld and (region.center or region.polygon) then
             geometry = { vertices = {} }
@@ -199,7 +218,8 @@ function Instance:NormalizeLocation(location, hint)
     end
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
-    mapID = self:GetRemappedMapID(mapID, instanceID, x, y)
+    local remap
+    mapID, remap = self:GetRemappedMapID(mapID, instanceID, x, y, location.z)
     local position = {
         instanceID = instanceID,
         uiMapID = mapID,
@@ -220,6 +240,7 @@ function Instance:NormalizeLocation(location, hint)
         isInstance = location.isInstance,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
+    if remap and remap.indoors ~= nil then position.indoors = remap.indoors end
     position.accessKey = self:GetLocationAccessKey(position)
     position.region = self:GetPositionRegion(position)
     return position

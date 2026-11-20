@@ -11,7 +11,8 @@ local nav = setmetatable({profile = "forever", env = {}, serviceLocations = {
 }}, {__index = library.Instance})
 function nav:GetText(key) return key end
 function nav:NormalizeLocation(point)
-    return {x = point.x * 100, y = point.y * 100, instanceID = 0, uiMapID = point.uiMapID}
+    return {x = point.x * 100, y = point.y * 100, instanceID = 0, uiMapID = point.uiMapID,
+        floor = point.floor, z = point.z}
 end
 function nav:CanWalk(a, b) return a.uiMapID == b.uiMapID and a.instanceID == b.instanceID end
 function nav:CreateEdgeBuild()
@@ -29,6 +30,17 @@ assert(status == "ready" and result.record.npcID == 22 and result.totalSeconds =
 assert(nav:IsServiceArrival({x = 4, y = 0, instanceID = 0, uiMapID = 1}, result.target))
 assert(not nav:IsServiceArrival({x = 4, y = 0, instanceID = 0, uiMapID = 3}, result.target))
 assert(not nav:IsServiceArrival({x = 4, y = 0, z = 20, instanceID = 0, uiMapID = 1}, {x = 4, y = 0, z = 0, instanceID = 0, uiMapID = 1}))
+do
+    local upstairs = setmetatable({profile = "forever", env = {}, serviceLocations = {
+        {service = "bank", mapID = 1, x = 1, y = 0, floor = 1, z = 5},
+        {service = "bank", mapID = 1, x = 4, y = 0, floor = 2, z = 12},
+    }}, {__index = nav})
+    function upstairs:CanWalk(a, b) return a.floor == b.floor end
+    local search = upstairs:CreateServiceSearch({start = {x = 0, y = 0, instanceID = 0, uiMapID = 1, floor = 2},
+        query = {service = "bank"}, walkSpeed = 2})
+    while search:Step() == "planning" do end
+    assert(search.result and search.result.target.floor == 2 and search.result.target.z == 12)
+end
 local missing = nav:CreateServiceSearch({start = start, query = {service = "flight"}})
 assert(missing:Step() == "unavailable" and missing.reason == "taxi_unavailable")
 local cancelled = nav:CreateServiceSearch({start = start, query = {service = "inn"}})

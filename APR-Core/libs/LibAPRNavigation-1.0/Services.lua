@@ -1,6 +1,6 @@
 -- Reusable service discovery. All client observations and taxi data are injected.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("services", 4) then return end
+if not Lib:BeginModule("services", 11) then return end
 local Instance = Lib.Instance
 Lib.serviceLocations = Lib.serviceLocations or {}
 local PROFESSIONS = {
@@ -47,22 +47,126 @@ end
 function Instance:GetServiceStepCursor(queue, cursor, direction, position)
     if direction ~= 1 and direction ~= -1 then return end
     if not queue or not queue[cursor or 0] or not position then return end
+    if direction == 1 and queue[cursor].approachOnly then return end
     local index = cursor + direction
     if index == #queue + 1 then return index end -- Explicitly dismiss the final destination.
     if index < 1 or index > #queue then return end
     local step = queue[index]
     if step.canStart and step.canStart(position, true) ~= true then return end
-    -- A manual advance can omit a waypoint, but cannot invent a crossing.
-    if step.kind == "walk" then
-        if step.to and self:CanWalk(position, step.to) == true then return index end
-    elseif step.sourceFree then
-        return index
-    elseif step.from and self:CanWalk(position, step.from) == true then
-        return index
+    if step.kind ~= "walk" and step.sourceFree then return index end
+    -- The arrow will resume at this bend (or the boarding point). A shared
+    -- access region alone cannot prove that the player can reach it.
+    local target = step.from
+    if step.kind == "walk" then target = (step.path and step.path[step.pathCursor or 2]) or step.to end
+    if not target or self:CanWalk(position, target) ~= true then return end
+    local provider = self.profile == "forever" and self.GetWalkingProvider and self:GetWalkingProvider()
+    if provider and provider.RequiresWalkingProof and provider:RequiresWalkingProof(position, target) then
+        if position.z == nil then
+            position = Lib.Copy(position)
+            position.z = provider.GetServiceOriginHeight and provider:GetServiceOriginHeight(position, queue[cursor])
+                or (provider.GetGuidanceHeight and provider:GetGuidanceHeight(position))
+        end
+        if target.z == nil and provider.GetGuidanceHeight then
+            target = Lib.Copy(target)
+            target.z = provider:GetGuidanceHeight(target)
+        end
+        if not provider.CanFollowWalkingSegment or provider:CanFollowWalkingSegment(position, target) ~= true then return end
     end
+    return index
 end
 local function Number(value)
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
+end
+
+local function HorizontalSeconds(a, b, speed)
+    if a.instanceID ~= b.instanceID then return math.huge end
+    return math.sqrt((a.x - b.x)^2 + (a.y - b.y)^2) / speed
+end
+
+-- Keep every point that could participate in a journey within the trial
+-- time limit. Walking uses its speed ceiling, ignores walls and height, and
+-- every transport is assumed affordable and usable. Source-free actions may
+-- depart immediately. These relaxations can only enlarge the retained set.
+local function ScreenServiceRoutes(request, limit)
+    local speed = request.walkingSpeedCeiling
+    local start = {point = request.start, seconds = 0}
+    local reached, pending, labels = {}, {start}, {}
+    local work = 0
+    local function checkpoint()
+        work = work + 1
+        if work == 16 then work = 0; coroutine.yield() end
+    end
+    while #pending > 0 do
+        local best = 1
+        for i = 2, #pending do
+            checkpoint()
+            if pending[i].seconds < pending[best].seconds then best = i end
+        end
+        local label = pending[best]
+        pending[best] = pending[#pending]
+        pending[#pending] = nil
+        if label == start or labels[label.point] == label then
+            reached[#reached + 1] = label
+            label.radiusSquared = ((limit - label.seconds) * speed)^2
+            for _, group in ipairs(request.edgeGroups) do
+                for _, edge in ipairs(group) do
+                    checkpoint()
+                    if not edge.hearthstone and Number(edge.seconds) and edge.seconds >= 0
+                        and edge.from and Number(edge.from.x) and Number(edge.from.y)
+                        and edge.to and Number(edge.to.x) and Number(edge.to.y) then
+                        local boarding = edge.sourceFree and 0 or HorizontalSeconds(label.point, edge.from, speed)
+                        local seconds = label.seconds + boarding + edge.seconds
+                        local previous = labels[edge.to]
+                        -- If a previously reached origin already covers the
+                        -- landing at this time, its entire remaining circle
+                        -- is covered too (horizontal triangle inequality).
+                        local improves = seconds <= limit and (not previous or seconds < previous.seconds)
+                        if improves then
+                            for _, origin in ipairs(reached) do
+                                checkpoint()
+                                if origin.seconds + HorizontalSeconds(origin.point, edge.to, speed) <= seconds then
+                                    improves = false
+                                    break
+                                end
+                            end
+                        end
+                        if improves then
+                            local arrival = {point = edge.to, seconds = seconds}
+                            labels[edge.to], pending[#pending + 1] = arrival, arrival
+                        end
+                    end
+                end
+            end
+        end
+    end
+    local function within(point)
+        if not point or not Number(point.x) or not Number(point.y) then return false end
+        for _, label in ipairs(reached) do
+            checkpoint()
+            local p = label.point
+            if p.instanceID == point.instanceID and (point.x - p.x)^2 + (point.y - p.y)^2 <= label.radiusSquared then
+                return true
+            end
+        end
+        return false
+    end
+    local goals, indices, groups = {}, {}, {}
+    for i, goal in ipairs(request.goals) do
+        if within(goal) then
+            goals[#goals + 1], indices[#indices + 1] = goal, i
+        end
+    end
+    if #goals == 0 or #goals == #request.goals then return end
+    for n, group in ipairs(request.edgeGroups) do
+        local keep = {}
+        for _, edge in ipairs(group) do
+            -- Even an expensive transport can contribute an intermediate
+            -- walking waypoint. Preserve both endpoints if either is nearby.
+            if within(edge.from) or within(edge.to) then keep[#keep + 1] = edge end
+        end
+        groups[n] = keep
+    end
+    return {goals = goals, indices = indices, edgeGroups = groups}
 end
 
 -- Find nearby services using ordinary travel first. A recall must not turn a
@@ -72,6 +176,7 @@ function Instance:CreateServiceRouteSearch(options)
     local baseline = {}
     for key, value in pairs(options) do baseline[key] = value end
     baseline.excludeHearthstones = true
+    baseline.serviceWalking = self.profile == "forever"
     return setmetatable({navigator = self, options = options, status = "planning", phase = "baseline",
         active = self:CreateSearch(baseline)}, ServiceRoute)
 end
@@ -96,6 +201,8 @@ function ServiceRoute:Step(maxOperations, maxMilliseconds)
     local status, result = self.active:Step(maxOperations, maxMilliseconds)
     if status == "planning" then return status end
     if status == "cancelled" then self:Cancel(); return self.status end
+    self.unresolvedSurface = self.unresolvedSurface or self.active.unresolvedSurface
+    self.unresolvedStartSurface = self.unresolvedStartSurface or self.active.unresolvedStartSurface
     if self.phase == "baseline" then
         self.baseline = result
         local threshold = self.options.hearthstoneThresholdSeconds or HEARTHSTONE_THRESHOLD_SECONDS
@@ -104,6 +211,7 @@ function ServiceRoute:Step(maxOperations, maxMilliseconds)
             local request = {}
             for key, value in pairs(self.options) do request[key] = value end
             request.excludeHearthstones = false
+            request.serviceWalking = self.navigator.profile == "forever"
             if result and result.goalIndex then
                 self.goalIndex = result.goalIndex
                 request.goal, request.goals = request.goals[result.goalIndex], nil
@@ -120,6 +228,7 @@ function ServiceRoute:Step(maxOperations, maxMilliseconds)
         result.withoutHearthstoneSeconds = self.baseline and self.baseline.totalSeconds or math.huge
         result.hearthstoneAllowed = self.phase == "recall"
     end
+    if status == "no_path" and self.unresolvedSurface then status = "waiting_data" end
     self.status, self.result, self.active = status, result, nil
     return status, result
 end
@@ -193,15 +302,26 @@ function Instance:GetTrainingServiceQuery(spellID, professionOnly)
         requireSpellEvidence = professionOnly == true}
 end
 
+local FACTION_SIDE = {Alliance = "A", Horde = "H"}
 function Instance:ServiceMatches(record, query, character)
-    local side = ({Alliance = "A", Horde = "H"})[character.faction]
-    if record.faction ~= nil and record.faction ~= "B" and record.faction ~= "AH" and record.faction ~= side then return false end
     if record.service ~= query.service then return false end
     if query.npcID and record.npcID ~= query.npcID then return false end
     if query.skill and record.skill ~= query.skill then return false end
     if query.expansion ~= nil and record.expansion ~= query.expansion then return false end
-    if record.service == "class" and record.class ~= character.class then return false end
-    if record.requirements and (not self.CheckRequirements or self:CheckRequirements(record.requirements, character) ~= true) then return false end
+    if record.faction ~= nil and record.faction ~= "B" and record.faction ~= "AH" then
+        if not character.faction then return nil end
+        if record.faction ~= FACTION_SIDE[character.faction] then return false end
+    end
+    if record.service == "class" then
+        if not record.class then return false end
+        if not character.class then return nil end
+        if record.class ~= character.class then return false end
+    end
+    if record.requirements then
+        if not self.CheckRequirements then return nil end
+        local available = self:CheckRequirements(record.requirements, character)
+        if available ~= true then return available end
+    end
     -- Exact spell IDs also identify profession ranks and recipes. A profession
     -- category alone cannot certify that a trainer teaches the requested rank.
     if query.spellIDs then
@@ -225,9 +345,27 @@ function Instance:IsServiceArrival(position, target, radius)
     if not position or not target or position.instanceID ~= target.instanceID then return false end
     if not Number(position.x) or not Number(position.y) or not Number(target.x) or not Number(target.y) then return false end
     if (position.x - target.x)^2 + (position.y - target.y)^2 > radius^2 then return false end
-    if target.z ~= nil and (not Number(position.z) or math.abs(position.z - target.z) > radius) then return false end
     if self:CanWalk(position, target) ~= true then return false end
-    return not self.IsSameAccessRegion or self:IsSameAccessRegion(position, target) == true
+    if self.IsSameAccessRegion and self:IsSameAccessRegion(position, target) ~= true then return false end
+    local provider = self.profile == "forever" and self.GetWalkingProvider and self:GetWalkingProvider()
+    if provider and provider.RequiresWalkingProof and provider:RequiresWalkingProof(position, target) then
+        if position.z == nil and provider.GetGuidanceHeight then
+            position = Lib.Copy(position)
+            position.z = provider:GetGuidanceHeight(position)
+        end
+        if not Number(position.z) then return false end
+        -- Interaction height can differ slightly from its walkable floor.
+        -- Keep the interaction tolerance and check the final physical link.
+        if target.z ~= nil and (not Number(target.z) or math.abs(position.z - target.z) > radius) then return false end
+        local ground = provider.GetGuidanceHeight and provider:GetGuidanceHeight(target)
+        if Number(ground) and (target.z == nil or math.abs(ground - target.z) <= radius) then
+            target = Lib.Copy(target)
+            target.z = ground
+        end
+        if not Number(target.z) or math.abs(position.z - target.z) > radius then return false end
+        return provider.CanFollowWalkingSegment and provider:CanFollowWalkingSegment(position, target) == true or false
+    end
+    return target.z == nil or (Number(target.z) and Number(position.z) and math.abs(position.z - target.z) <= radius)
 end
 
 function Instance:CreateServiceSearch(options)
@@ -237,7 +375,9 @@ function Instance:CreateServiceSearch(options)
     local character = {}
     for key, value in pairs(options.character or (self.env.getCharacter and self.env.getCharacter()) or EMPTY) do character[key] = value end
     local job = setmetatable({navigator = self, options = options, query = query, character = character,
-        status = "planning", phase = "candidate", candidates = {}, goals = {}}, Job)
+        status = "planning", phase = "candidate", candidates = {}, goals = {},
+        walkingProvider = options.walkingProvider or (self.GetWalkingProvider and self:GetWalkingProvider())}, Job)
+    job.start = options.start
     if not Number(options.start and options.start.x) or not Number(options.start and options.start.y) then
         job.status, job.reason = "waiting_data", "position"
     elseif query.service == "flight" then
@@ -250,6 +390,17 @@ function Instance:CreateServiceSearch(options)
         end
     else
         job.source = self:GetServiceLocations()
+        if job.source == Lib.serviceLocations[self.profile] then
+            -- Registered declarations are immutable until the next revision.
+            -- Build the index in slices and publish it only after a complete scan.
+            local index = self.serviceIndex
+            if index and index.source == job.source then
+                job.source = index.groups[query.service] or EMPTY
+            else
+                job.index = {source = job.source, groups = {}}
+            end
+            job.positionCache = self.positions
+        end
     end
     return job
 end
@@ -258,31 +409,96 @@ function Job:Cancel()
     self.status = "cancelled"
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.active, self.source = nil, nil
+    self.screen, self.routeRequest, self.index = nil, nil, nil
 end
 
 function Job:GetResult() return self.result, self.status end
 
+function Job:PrepareRoute()
+    local context = {}
+    for field, value in pairs(self.options) do context[field] = value end
+    context.goal, context.playerPosition = self.goals[1], self.start
+    context.deferInstructions = true
+    self.context, self.phase = context, "prepare"
+    self.active = context.adapter and context.adapter.CreatePreparation and context.adapter:CreatePreparation(context) or nil
+end
+
 function Job:Advance(operations, milliseconds)
     local nav, options = self.navigator, self.options
+    if self.phase == "screen" then
+        local ok, window = coroutine.resume(self.screen)
+        if ok and coroutine.status(self.screen) ~= "dead" then return end
+        self.screen, self.phase = nil, "search"
+        if not ok or not window then
+            self.active = nav:CreateServiceRouteSearch(self.routeRequest)
+            return
+        end
+        local trial = {}
+        for key, value in pairs(self.routeRequest) do trial[key] = value end
+        trial.goals, trial.edgeGroups = window.goals, window.edgeGroups
+        trial.serviceWalking, trial.excludeHearthstones = true, true
+        self.trialIndices, self.active = window.indices, nav:CreateSearch(trial)
+        return
+    end
+    if self.phase == "origin" then
+        local status, z = self.active:Step(operations, milliseconds)
+        if status == "planning" then return end
+        if status == "cancelled" then self:Cancel(); return end
+        if Number(z) then
+            self.start = Lib.Copy(self.start)
+            self.start.z = z
+        end
+        self:PrepareRoute()
+        return
+    end
     if self.phase == "candidate" then
+        if self.index then
+            -- Indexing declarations performs no host calls. Batch these small
+            -- table reads, but keep projections and availability checks sliced.
+            local count = math.min(operations, 64)
+            for i = 1, count do
+                local key, record = next(self.source, self.cursor)
+                self.cursor = key
+                if not key then
+                    nav.serviceIndex = self.index
+                    self.source, self.index = self.index.groups[self.query.service] or EMPTY, nil
+                    return i
+                end
+                if type(record) == "table" and record.service then
+                    local group = self.index.groups[record.service]
+                    if not group then group = {}; self.index.groups[record.service] = group end
+                    group[#group + 1] = record
+                end
+            end
+            return count
+        end
         local key, record = next(self.source, self.cursor)
         self.cursor = key
         if key == nil then
-            if #self.goals == 0 then
+            if self.nearestIndex then
+                local index = self.nearestIndex
+                self.result = {record = self.candidates[index], target = self.goals[index], byCoordinates = true}
+                self.status = "ready"
+            elseif #self.goals == 0 then
                 self.status = self.waitingData and "waiting_data" or "no_path"
+            elseif nav.profile == "forever" and options.activeWalk and options.activeWalk.kind == "walk"
+                and options.activeWalk.path and self.start.z == nil
+                and self.walkingProvider and self.walkingProvider.CreateServiceOriginJob then
+                self.phase = "origin"
+                self.active = self.walkingProvider:CreateServiceOriginJob(self.start, options.activeWalk, options.clock)
             else
-                local context = {}
-                for field, value in pairs(options) do context[field] = value end
-                context.goal, context.playerPosition = self.goals[1], options.start
-                context.deferInstructions = true
-                self.context, self.phase = context, "prepare"
-                self.active = options.adapter and options.adapter.CreatePreparation and options.adapter:CreatePreparation(context) or nil
+                self:PrepareRoute()
             end
             return
         end
         local candidate, target
         if self.query.service == "flight" then
             local provider = options.flightProvider
+            if nav.profile == "forever" and provider.IsFlightMasterCandidate and not provider:IsFlightMasterCandidate(record) then return end
+            -- Some scheduled vehicles have visible taxi nodes, but no
+            -- discoverable flight point or ride mount for either faction.
+            if nav.profile == "forever" and type(record) == "table" and record.characterBitNumber == 0
+                and record.hordeMountCreatureID == 0 and record.allianceMountCreatureID == 0 then return end
             local available = provider:IsNodeAvailable(key)
             local visible = not provider.IsNodeVisible or provider:IsNodeVisible(key)
             if available == nil or visible == nil then self.waitingData = true end
@@ -297,15 +513,33 @@ function Job:Advance(operations, milliseconds)
             local matches = nav:ServiceMatches(record, self.query, self.character)
             if matches == nil then self.waitingData = true end
             if matches then
-                target = nav:NormalizeLocation({space = "map", uiMapID = record.mapID,
-                    x = record.x / 100, y = record.y / 100, z = record.z})
+                target = self.positionCache and self.positionCache[record]
+                if not target then
+                    target = nav:NormalizeLocation({space = "map", uiMapID = record.mapID,
+                        x = record.x / 100, y = record.y / 100, z = record.z, floor = record.floor})
+                    if self.positionCache and target and target.region then self.positionCache[record] = target end
+                end
                 candidate = record
                 if not target then self.waitingData = true end
             end
         end
         if target and candidate then
+            if not Number(target.x) or not Number(target.y) or not Number(target.instanceID) then
+                self.waitingData = true
+                return
+            end
             self.candidates[#self.candidates + 1] = candidate
             self.goals[#self.goals + 1] = target
+            if options.nearestByCoordinates and target.instanceID == self.start.instanceID then
+                local distanceSquared = (self.start.x - target.x)^2 + (self.start.y - target.y)^2
+                if not self.nearestSquared or distanceSquared < self.nearestSquared then
+                    self.nearestSquared, self.nearestIndex = distanceSquared, #self.goals
+                end
+            end
+            if options.batchTerrainWork and Number(options.walkingSpeedCeiling) and options.walkingSpeedCeiling > 0 then
+                local seconds = HorizontalSeconds(self.start, target, options.walkingSpeedCeiling)
+                self.nearestSeconds = math.min(self.nearestSeconds or math.huge, seconds)
+            end
         end
         return
     end
@@ -333,28 +567,60 @@ function Job:Advance(operations, milliseconds)
     elseif self.phase == "taxi" then
         self.taxiEdges = result or EMPTY
     elseif self.phase == "search" then
+        if self.trialIndices then
+            -- An actual route below the limit certifies the reduction: every
+            -- competing route as fast as this one was included. On failure or
+            -- overrun the full search still owns all goals, edges and recalls.
+            if status ~= "ready" or not result or not self.trialIndices[result.goalIndex]
+                or not Number(result.totalSeconds) or result.totalSeconds > self.trialLimit then
+                self.trialIndices, self.active = nil, nav:CreateServiceRouteSearch(self.routeRequest)
+                return
+            end
+            result.goalIndex = self.trialIndices[result.goalIndex]
+            result.withoutHearthstoneSeconds, result.hearthstoneAllowed = result.totalSeconds, false
+        end
         if status == "ready" and result and result.goalIndex then
             local index = result.goalIndex
             self.result = {record = self.candidates[index], target = self.goals[index],
                 totalSeconds = result.totalSeconds, itinerary = result}
+            if self.navigator.profile == "forever" then
+                local first, last = result.segments[1], result.segments[#result.segments]
+                if first and first.path then self.result.origin = first.path[1] end
+                if last and last.path and self.result.target.z == nil then
+                    self.result.target = Lib.Copy(self.result.target)
+                    self.result.target.z = last.path[#last.path].z
+                end
+            end
             self.status = "ready"
         else
-            self.status = self.waitingData and "waiting_data" or "no_path"
+            self.status = (self.waitingData or status == "waiting_data") and "waiting_data" or "no_path"
+            if self.active.unresolvedStartSurface then self.reason = "origin_surface" end
         end
         self.active, self.edges, self.taxiEdges = nil, nil, nil
+        self.routeRequest = nil
         return
     end
     -- Only confirmed taxi edges participate. No unknown-flight probe can win a service ranking.
-    self.active = nav:CreateServiceRouteSearch({start = options.start, goals = self.goals,
+    self.routeRequest = {start = self.start, goals = self.goals,
+        batchTerrainWork = options.batchTerrainWork,
         waitingData = self.waitingData,
+        walkingProvider = self.walkingProvider, faction = self.character.faction,
+        walkingSpeedCeiling = options.walkingSpeedCeiling,
         hearthstoneThresholdSeconds = options.hearthstoneThresholdSeconds,
         clock = options.clock, walkSpeed = options.walkSpeed or 7, walkSpeedAt = options.walkSpeedAt,
         walkSpeedFor = options.walkSpeedFor, budget = options.budget or 0,
         resources = self.metadata.resources, edgeGroups = {self.edges, self.taxiEdges},
         canWalk = function(a, b) return nav:CanWalk(a, b) end,
         walkingRegionFor = nav.GetPositionRegion and function(p) return nav:GetPositionRegion(p) end,
-        walkingIsTransitive = true})
-    self.phase = "search"
+        walkingIsTransitive = true}
+    if self.navigator.profile == "forever" and #self.goals >= 32 and self.nearestSeconds then
+        local recallThreshold = options.hearthstoneThresholdSeconds or HEARTHSTONE_THRESHOLD_SECONDS
+        self.trialLimit = math.min(recallThreshold, math.max(15, self.nearestSeconds * 1.5))
+        self.phase = "screen"
+        self.screen = coroutine.create(function() return ScreenServiceRoutes(self.routeRequest, self.trialLimit) end)
+    else
+        self.phase, self.active = "search", nav:CreateServiceRouteSearch(self.routeRequest)
+    end
 end
 
 function Job:Step(maxOperations, maxMilliseconds)
@@ -364,12 +630,14 @@ function Job:Step(maxOperations, maxMilliseconds)
     local budget = Number(maxMilliseconds) and math.max(0, maxMilliseconds) or 1
     if maxOperations == 0 or budget == 0 then return self.status, self.result, self.reason end
     local deadline = clock and clock() + budget
-    for _ = 1, maxOperations do
+    local remaining = maxOperations
+    while remaining > 0 do
         if deadline and clock() >= deadline then break end
         -- Keep provider/search stages inside one shared slice, including candidate scanning.
         local phase = self.phase
-        self:Advance(maxOperations, deadline and math.max(0, deadline - clock()) or budget)
-        if self.status ~= "planning" or phase ~= "candidate" then break end
+        local used = self:Advance(remaining, deadline and math.max(0, deadline - clock()) or budget)
+        remaining = remaining - (used or 1)
+        if self.status ~= "planning" or (phase ~= "candidate" and phase ~= "screen") then break end
     end
     return self.status, self.result, self.reason
 end

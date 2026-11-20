@@ -322,15 +322,16 @@ local waypointStepOptions = { "Waypoint" }
 -- This keeps UI construction simple while letting steps remain data-driven.
 -- skipNote lets waypoint summaries prefer destination actions over notes.
 function APR:GetStepString(step, skipNote, nextStep)
+    if not step then return "" end
     if self:IsTransportStep(step) then return self:GetTransportStepText(step) end
-    if step and step.LootMoney then
+    if step.LootMoney then
         return self:GetLootMoneyStepText(step.LootMoney), "LootMoney"
     end
     for _, key in ipairs(self.routeActionKeys or {}) do
-        if step and step[key] then return self:GetRouteActionText(key, step[key]), key end
+        if step[key] then return self:GetRouteActionText(key, step[key]), key end
     end
-    if step and step.SkillGoal then return self:GetSkillGoalStepText(step.SkillGoal), "SkillGoal" end
-    if not skipNote and step and step.Note then
+    if step.SkillGoal then return self:GetSkillGoalStepText(step.SkillGoal), "SkillGoal" end
+    if not skipNote and step.Note then
         local noteValue = step.Note
         if type(noteValue) == "table" then
             noteValue = noteValue[1]
@@ -349,10 +350,10 @@ function APR:GetStepString(step, skipNote, nextStep)
         return "Note", "Note"
     end
 
-    if step and step.Reputation then
+    if step.Reputation then
         return self:GetReputationStepText(step.Reputation), "Reputation"
     end
-    if step and step.Emote then
+    if step.Emote then
         return string.format(L["PERFORM_EMOTE"], step.Emote.emote), "Emote"
     end
 
@@ -437,9 +438,9 @@ APR.GetSkillGoalStepText = APRTrace("APR-Core/utils/StepUtils.lua:414:APR:GetSki
 function APR:GetLootItemsStepText(items)
     local names = {}
     for _, item in ipairs(items) do
-        names[#names + 1] = C_Item.GetItemInfo(item.itemID) or UNKNOWN
+        names[#names + 1] = string.format(L["LOOT_ITEM"], C_Item.GetItemInfo(item.itemID) or UNKNOWN)
     end
-    return string.format(L["LOOT_ITEM"], table.concat(names, ", "))
+    return table.concat(names, "\n")
 end--[[APR_DIAG]]
 APR.GetLootItemsStepText =
     APRTrace("APR-Core/utils/StepUtils.lua:334:APR:GetLootItemsStepText#10", APR.GetLootItemsStepText)--[[/APR_DIAG]]

@@ -1361,6 +1361,7 @@ function APR.settings:createBlizzOptions()
                                     function(info, value)
                                         SetProfileOption(info, value)
                                         if value then APR.Arrow.Active = true end
+                                        APR.Arrow:RefreshVisibility()
                                     end --[[APR_DIAG]]
                                 ) --[[/APR_DIAG]],
                                 --[[APR_DIAG]]
