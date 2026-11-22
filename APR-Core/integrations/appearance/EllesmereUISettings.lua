@@ -28,11 +28,11 @@ function APR:EnableEllesmereUISettings(S)
     local function Enabled()
         return APR.EllesmereUISkin and APR.EllesmereUISkin:GetFont() ~= nil
     end--[[APR_DIAG]]
-    Enabled = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:28:Enabled#2", Enabled)--[[/APR_DIAG]]
+    Enabled = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:28:Enabled#2", Enabled)--[[/APR_DIAG]]
     local function IsAPR(app)
         return type(app) == "string" and (app == APR.title or app:sub(1, #APR.title + 1) == APR.title .. "/")
     end--[[APR_DIAG]]
-    IsAPR = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:31:IsAPR#3", IsAPR)--[[/APR_DIAG]]
+    IsAPR = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:31:IsAPR#3", IsAPR)--[[/APR_DIAG]]
     local function TextColor(text, role, r, g, b)
         local custom = APR.GetCustomTextColor and APR:GetCustomTextColor("general", role)
         if custom then
@@ -43,7 +43,7 @@ function APR:EnableEllesmereUISettings(S)
             text:SetTextColor(S.GetAccentColor())
         end
     end--[[APR_DIAG]]
-    TextColor = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:34:TextColor#4", TextColor)--[[/APR_DIAG]]
+    TextColor = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:34:TextColor#4", TextColor)--[[/APR_DIAG]]
     local function WithContext(fn, ...)
         depth = depth + 1
         local result = { --[[APR_DIAG]]
@@ -53,7 +53,7 @@ function APR:EnableEllesmereUISettings(S)
         if not result[1] then error(result[2], 0) end
         return unpack(result, 2)
     end--[[APR_DIAG]]
-    WithContext = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:40:WithContext#5", WithContext)--[[/APR_DIAG]]
+    WithContext = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:40:WithContext#5", WithContext)--[[/APR_DIAG]]
     local function Fonts(root)
         if not root or not root.GetRegions then return end
 
@@ -87,7 +87,7 @@ function APR:EnableEllesmereUISettings(S)
             S.Font(region)
         end
     end--[[APR_DIAG]]
-    Fonts = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:47:Fonts#6", Fonts)--[[/APR_DIAG]]
+    Fonts = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:47:Fonts#6", Fonts)--[[/APR_DIAG]]
     local function Style(widget, visited)
         if not widget then return end
         visited = visited or {}
@@ -236,7 +236,7 @@ function APR:EnableEllesmereUISettings(S)
                         widget,
                         method, --[[APR_DIAG]]
                         APRTrace(
-                            "APR-Core/integrations/EllesmereUISettings.lua:200:callback#8", --[[/APR_DIAG]]
+                            "APR-Core/integrations/appearance/EllesmereUISettings.lua:200:callback#8", --[[/APR_DIAG]]
                             function() Style(widget) end --[[APR_DIAG]]
                         ) --[[/APR_DIAG]]
                     )
@@ -245,11 +245,11 @@ function APR:EnableEllesmereUISettings(S)
         end
         styling[widget] = nil
     end--[[APR_DIAG]]
-    Style = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:78:Style#7", Style)--[[/APR_DIAG]]
+    Style = APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:78:Style#7", Style)--[[/APR_DIAG]]
 
     local create, release = gui.Create, gui.Release
     gui.Create = --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:207:callback#9", --[[/APR_DIAG]] function(self, kind)
+        APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:207:callback#9", --[[/APR_DIAG]] function(self, kind)
             if depth == 0 or not Enabled() then return create(self, kind) end
             local privateType = "APREllesmere:" .. kind
             local constructor = self.WidgetRegistry[kind]
@@ -260,7 +260,7 @@ function APR:EnableEllesmereUISettings(S)
             return widget
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     gui.Release = --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:217:callback#10", --[[/APR_DIAG]] function(self, widget)
+        APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:217:callback#10", --[[/APR_DIAG]] function(self, widget)
             local privateType = owned[widget]
             local wasReleasing = widget.isQueuedForRelease
             release(self, widget)
@@ -274,7 +274,7 @@ function APR:EnableEllesmereUISettings(S)
         local original = dialog[method]
         dialog[method] = --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/EllesmereUISettings.lua:229:callback#11", --[[/APR_DIAG]]
+                "APR-Core/integrations/appearance/EllesmereUISettings.lua:229:callback#11", --[[/APR_DIAG]]
                 function(self, app, ...)
                     if not IsAPR(app) or not Enabled() then return original(self, app, ...) end
                     local result = { WithContext(original, self, app, ...) }
@@ -294,7 +294,7 @@ function APR:EnableEllesmereUISettings(S)
             )--[[/APR_DIAG]]
     end
     S.OnLooksChanged(--[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:243:callback#12", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:243:callback#12", --[[/APR_DIAG]] function()
             -- Both containers and their children are hooked; one refresh owns the
             -- whole traversal without remembering widgets across live changes.
             local visited = {}
@@ -307,7 +307,7 @@ function APR:EnableEllesmereUISettings(S)
     events:RegisterEvent("PLAYER_REGEN_ENABLED")
     events:SetScript(
         "OnEvent", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:253:callback#13", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/appearance/EllesmereUISettings.lua:253:callback#13", --[[/APR_DIAG]] function()
             local queued = pending
             pending = setmetatable({}, { __mode = "k" })
             local visited = {}
@@ -318,6 +318,6 @@ function APR:EnableEllesmereUISettings(S)
     )
 end--[[APR_DIAG]]
 APR.EnableEllesmereUISettings = APRTrace(
-    "APR-Core/integrations/EllesmereUISettings.lua:12:APR:EnableEllesmereUISettings#1",
+    "APR-Core/integrations/appearance/EllesmereUISettings.lua:12:APR:EnableEllesmereUISettings#1",
     APR.EnableEllesmereUISettings
 )--[[/APR_DIAG]]

@@ -4,28 +4,10 @@ local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yi
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Direct friend discovery supplements the realm channel; it never relays other players.
+local Constants = APR.GroupConstants
+
 local Finder = APR.partyFinder
 local P = APR.PartyFinderProtocol
-local PREFIX = "APRFindV1"
-local ROSTER_LIMIT, ACCOUNT_LIMIT, PEER_LIMIT = 512, 8, 512
-local SEARCH_LIMIT, QUEUE_LIMIT, SEND_INTERVAL = 32, 128, 0.125
-local SEARCH_FIELDS = {
-    "context",
-    "alternateContext",
-    "route",
-    "revision",
-    "progressId",
-    "step",
-    "total",
-    "mode",
-    "range",
-    "minLevel",
-    "maxLevel",
-    "primary",
-    "languages",
-    "warMode",
-    "showIncompatibleWarMode",
-}
 
 local function Public(value)
     return not (issecretvalue and issecretvalue(value))
@@ -143,7 +125,7 @@ function Finder:RefreshFriendPeers(force)
         if not peer.key or peer.key == self.playerKey then return end
         local old = peers[peer.key]
         if not old then
-            if #order >= PEER_LIMIT then return end
+            if #order >= Constants.PartyFinderFriends.PEER_LIMIT then return end
             order[#order + 1] = peer.key
         elseif old.gameAccountID then
             -- One character can be present in both social lists or on multiple account records.
@@ -155,7 +137,7 @@ function Finder:RefreshFriendPeers(force)
     Add = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:99:Add#12", Add)--[[/APR_DIAG]]
     local count = Read(C_FriendList and C_FriendList.GetNumFriends)
     if PositiveInteger(count) then
-        for index = 1, math.min(ROSTER_LIMIT, count) do
+        for index = 1, math.min(Constants.PartyFinderFriends.ROSTER_LIMIT, count) do
             local info = Read(C_FriendList and C_FriendList.GetFriendInfoByIndex, index)
             if Table(info) and Public(info.connected) and info.connected == true and Public(info.name) then
                 Add({ key = self:PlayerKey(info.name), channel = "WHISPER", friendIndex = index })
@@ -164,12 +146,12 @@ function Finder:RefreshFriendPeers(force)
     end
     count = bnetReady and BattleNetSender() and Read(BNGetNumFriends)
     if PositiveInteger(count) then
-        for index = 1, math.min(ROSTER_LIMIT, count) do
+        for index = 1, math.min(Constants.PartyFinderFriends.ROSTER_LIMIT, count) do
             local account = Read(C_BattleNet and C_BattleNet.GetFriendAccountInfo, index)
             if FriendAccount(account) then
                 local games = Read(C_BattleNet and C_BattleNet.GetFriendNumGameAccounts, index)
                 if PositiveInteger(games) then
-                    for gameIndex = 1, math.min(ACCOUNT_LIMIT, games) do
+                    for gameIndex = 1, math.min(Constants.PartyFinderFriends.ACCOUNT_LIMIT, games) do
                         local game = Read(C_BattleNet.GetFriendGameAccountInfo, index, gameIndex)
                         local key = GameKey(self, game)
                         if key then
@@ -272,7 +254,7 @@ local function SameSearch(self, query)
     local state = self:GetLocalState()
     if not state then return false end
     local current = self:MakeQuery(state)
-    for _, field in ipairs(SEARCH_FIELDS) do
+    for _, field in ipairs(Constants.PartyFinderFriends.SEARCH_FIELDS) do
         if current[field] ~= query[field] then return false end
     end
     return true
@@ -319,7 +301,7 @@ CurrentPacket = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:203:Cur
 local function Queue(self, entry)
     local queue = self.friendSendQueue or {}
     self.friendSendQueue = queue
-    if #queue >= QUEUE_LIMIT then return false end
+    if #queue >= Constants.PartyFinderFriends.QUEUE_LIMIT then return false end
     queue[#queue + 1] = entry
     self:ScheduleFriendSends()
     return true
@@ -330,7 +312,7 @@ function Finder:ScheduleFriendSends()
     if self.friendSendTimer or not self.friendSendQueue or #self.friendSendQueue == 0 then return end
     self:SetTimer(
         "friendSendTimer",
-        math.max(0, (self.friendLastSend or -100) + SEND_INTERVAL - GetTime()), --[[APR_DIAG]]
+        math.max(0, (self.friendLastSend or -100) + Constants.PartyFinderFriends.SEND_INTERVAL - GetTime()), --[[APR_DIAG]]
         APRTrace("APR-Core/features/group/PartyFinderFriends.lua:234:callback#21", --[[/APR_DIAG]] function()
             local queue = self.friendSendQueue
             local entry = queue and table.remove(queue, 1)
@@ -345,7 +327,7 @@ function Finder:ScheduleFriendSends()
                             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
                                 send,
                                 entry.gameAccountID,
-                                PREFIX,
+                                Constants.PartyFinder.PREFIX,
                                 entry.wire
                             )
                     end
@@ -441,7 +423,7 @@ function Finder:StartFriendSearch(query)
     self.friendSearchContacts = { query = query, peers = {} }
     local accepted = false
     local start = (self.friendSearchCursor or 0) % #order
-    local count = math.min(SEARCH_LIMIT, #order)
+    local count = math.min(Constants.PartyFinderFriends.SEARCH_LIMIT, #order)
     if query.cycle and count < #order then query.cycle.complete = false end
     local function guard() return SameSearch(self, query) end--[[APR_DIAG]]
     guard = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:288:guard#24", guard)--[[/APR_DIAG]]
@@ -548,14 +530,14 @@ function Finder:WithdrawFriends()
                             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
                                 send,
                                 peer.gameAccountID,
-                                PREFIX,
+                                Constants.PartyFinder.PREFIX,
                                 "1|W"
                             )
                     else
                         ok, result = --[[APR_DIAG]]
                             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
                                 send,
-                                PREFIX,
+                                Constants.PartyFinder.PREFIX,
                                 "1|W",
                                 "WHISPER",
                                 key
@@ -596,7 +578,7 @@ Finder.StopFriendTransport = APRTrace(
 )--[[/APR_DIAG]]
 
 function Finder:HandleBattleNetMessage(prefix, wire, distribution, senderID)
-    if not Public(prefix) or prefix ~= PREFIX or not self:IsEnabled() then return end
+    if not Public(prefix) or prefix ~= Constants.PartyFinder.PREFIX or not self:IsEnabled() then return end
     local second = math.floor(GetTime())
     if self.friendReceiveSecond ~= second then
         self.friendReceiveSecond, self.friendReceiveCount = second, 0

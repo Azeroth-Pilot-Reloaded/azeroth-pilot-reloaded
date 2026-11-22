@@ -6,6 +6,8 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Resolves public NPC identity and route-approved emotes/raid-marker targets.
 -- Secret-aware identity reads are delegated to SecretUtils before constructing macro text.
 
+local DENIED_NPC_CLOSE_DELAY_SECONDS = 0.3
+
 --- Extract numeric NPC ID from a unit GUID.
 -- The default unit is the current target, but we allow overriding so mouseover or other units can be inspected.
 function APR:GetTargetID(unit)
@@ -121,7 +123,7 @@ function APR:CheckDenyNPC(step)
     if not IsDenyNPCRequestCurrent(self, request) then return end
 
     request.timer = C_Timer.NewTimer(
-        0.3, --[[APR_DIAG]]
+        DENIED_NPC_CLOSE_DELAY_SECONDS, --[[APR_DIAG]]
         APRTrace("APR-Core/utils/TargetUtils.lua:85:callback#6", --[[/APR_DIAG]] function()
             if self.denyNPCCloseRequest ~= request then return end
             -- Release ownership before native/context calls, including calls that fail.

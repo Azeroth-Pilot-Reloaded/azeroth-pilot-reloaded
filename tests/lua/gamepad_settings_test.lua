@@ -57,9 +57,9 @@ function SmartNavigation_AddJumpNavigationOverride(frame, direction, callback)
     frame.overrides = frame.overrides or {}
     frame.overrides[direction] = callback
 end
-dofile("APR-Core/integrations/Gamepad.lua")
-dofile("APR-Core/integrations/GamepadNavigation.lua")
-dofile("APR-Core/integrations/GamepadControls.lua")
+dofile("APR-Core/integrations/gamepad/Gamepad.lua")
+dofile("APR-Core/integrations/gamepad/GamepadNavigation.lua")
+dofile("APR-Core/integrations/gamepad/GamepadControls.lua")
 local pad = APR.Gamepad
 local window = CreateFrame("Frame", nil, UIParent)
 pad:RegisterWindow(window)

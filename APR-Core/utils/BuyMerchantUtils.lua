@@ -6,6 +6,9 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Route quantities are additional purchases unless targetStock explicitly requests carried stock.
 -- Completion waits for loot events; inventory deltas only prevent duplicate purchase requests.
 
+local DEFAULT_LOOT_QUANTITY = 1
+local LOOT_QUANTITY_PATTERN = "x(%d+)"
+
 local currentPurchaseTracking, currentPurchaseItems, currentPurchaseContext, purchaseCompleted, purchaseRequested
 
 -- Per-item conditions allow one merchant visit to serve different weapons or
@@ -190,14 +193,12 @@ APR.BuyItemFromMerchant =
     APRTrace("APR-Core/utils/BuyMerchantUtils.lua:86:APR:BuyItemFromMerchant#7", APR.BuyItemFromMerchant)--[[/APR_DIAG]]
 
 function APR:GetQuantityfromLootMessage(message)
-    local quantity = 1 -- by default the quantity if not specified is 1
-    local quantityPattern = "x(%d+)"
     local sanitizedMessage = APR:StripHyperlinks(message)
-    local extractedQuantity = sanitizedMessage:match(quantityPattern)
+    local extractedQuantity = sanitizedMessage:match(LOOT_QUANTITY_PATTERN)
     if extractedQuantity then
-        quantity = tonumber(extractedQuantity)
+        return tonumber(extractedQuantity)
     end
-    return quantity
+    return DEFAULT_LOOT_QUANTITY
 end--[[APR_DIAG]]
 APR.GetQuantityfromLootMessage =
     APRTrace("APR-Core/utils/BuyMerchantUtils.lua:154:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]

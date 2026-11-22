@@ -21,7 +21,7 @@ function LibStub(name, ...)
     return oldLibStub(name, ...)
 end
 function APR:ResolveUIFileAsset(path) return path end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/TextStyles.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
@@ -349,7 +349,7 @@ local function apply(name)
         frame.provider = name
     end
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 APR:RegisterSkinProvider("ElvUI", apply("ElvUI"), function() return APR:IsSkinProviderUsed("ElvUI") end)
 APR:RegisterSkinProvider(
     "EllesmereUI",

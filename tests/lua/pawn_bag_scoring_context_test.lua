@@ -106,7 +106,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     function PawnSetStatValue(name, stat, value) PawnCommon.Scales[name].Values[stat] = value end
     dofile("APR-Core/utils/ProfileUtils.lua")
     dofile("APR-Core/features/questing/RewardScoring.lua")
-    dofile("APR-Core/integrations/Pawn.lua")
+    dofile("APR-Core/integrations/equipment/Pawn.lua")
     dofile("APR-Core/features/player/BagUpgrades.lua")
     local pawn, bags = APR.PawnRewards, APR.BagUpgrades
     pawn:OnEnable()

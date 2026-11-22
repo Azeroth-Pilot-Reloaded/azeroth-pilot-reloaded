@@ -5,26 +5,12 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Discovers willing APR peers without rebuilding route/UI state on network traffic.
 -- Presence is private to each requester; the public channel carries bounded queries and withdrawals.
+local Constants = APR.GroupConstants.PartyFinder
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local P = APR.PartyFinderProtocol
 APR.partyFinder = APR:NewModule("PartyFinder")
 local Finder = APR.partyFinder
-local PREFIX = "APRFindV1"
-local ZERO = "00000000"
-local CACHE_TTL, REQUEST_LIMIT = 120, 200
-local QUERY_INTERVAL, QUERY_TTL, RESPONSE_INTERVAL = 30, 10, 30
-local AUTO_QUERY_INTERVAL = 60
-local AUTO_QUERY_QUIET, RESPONSE_PACE = 30, 5
-local PRESENTATION_OPTIONS = { showButton = true, showBadge = true }
-local ALERT_OPTIONS = { notifications = true, notificationCooldown = true, soundEnabled = true, soundChannel = true }
-local PROGRESS_KEYS = {
-    same = "GROUP_SYNCED",
-    ahead = "GROUP_STEPS_AHEAD",
-    behind = "GROUP_STEPS_BEHIND",
-    different = "GROUP_DIFFERENT_STEP",
-    other = "GROUP_OTHER_ROUTE",
-    unknown = "GROUP_SYNC_UNAVAILABLE",
-}
 
 local function Copy(value)
     if type(value) ~= "table" then return value end
@@ -116,9 +102,9 @@ function Finder:SetOption(key, value)
     if type(value) ~= "table" and settings[key] == value then return end
     settings[key] = value
     -- Display and alert preferences do not change presence or discovery state.
-    if PRESENTATION_OPTIONS[key] then
+    if Constants.PRESENTATION_OPTIONS[key] then
         self:Notify()
-    elseif not ALERT_OPTIONS[key] then
+    elseif not Constants.ALERT_OPTIONS[key] then
         self:RefreshSettings()
     end
 end--[[APR_DIAG]]
@@ -433,10 +419,10 @@ function Finder:GetLocalState()
         context = context,
         worldContext = worldContext,
         map = map,
-        route = route and P.Hash(route) or ZERO,
+        route = route and P.Hash(route) or Constants.ZERO,
         alternateContext = alternateContext,
         alternateWorldContext = alternateWorldContext,
-        revision = self.revision or ZERO,
+        revision = self.revision or Constants.ZERO,
         progressId = progress and progress.id or "unknown",
         step = progress and progress.step or 0,
         total = progress and progress.total or 0,
@@ -533,7 +519,7 @@ Finder.ClearTraffic =
     APRTrace("APR-Core/features/group/PartyFinder.lua:459:Finder:ClearTraffic#32", Finder.ClearTraffic)--[[/APR_DIAG]]
 
 function Finder:GetSearchCooldown()
-    return self.lastSearch and math.max(0, QUERY_INTERVAL - (GetTime() - self.lastSearch)) or 0
+    return self.lastSearch and math.max(0, Constants.QUERY_INTERVAL - (GetTime() - self.lastSearch)) or 0
 end--[[APR_DIAG]]
 Finder.GetSearchCooldown =
     APRTrace("APR-Core/features/group/PartyFinder.lua:463:Finder:GetSearchCooldown#33", Finder.GetSearchCooldown)--[[/APR_DIAG]]
@@ -597,7 +583,7 @@ function Finder:Send(kind, data, channel, target, control, guard, ttl)
     local ok, result = --[[APR_DIAG]]
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
             C_ChatInfo.SendAddonMessage,
-            PREFIX,
+            Constants.PREFIX,
             wire,
             channel,
             target
@@ -851,7 +837,7 @@ function Finder:Matches(state, query)
     if query.minLevel and query.minLevel > 0 and state.level < query.minLevel then return false end
     if query.maxLevel and query.maxLevel > 0 and state.level > query.maxLevel then return false end
     if query.mode == "zone" or query.mode == "world" then return true end
-    if state.route ~= query.route or query.route == ZERO then return false end
+    if state.route ~= query.route or query.route == Constants.ZERO then return false end
     local status, gap = P.CompareProgress(query, state)
     if query.mode == "step" then return status == "same" end
     -- Unknown revisions/branches can be browsed in zone mode without inventing proximity.
@@ -864,7 +850,7 @@ function Finder:MakeQuery(state)
     local world = settings.matchMode == "world"
     local mode = settings.matchMode
     -- Step proximity has no meaning without a route; keep discovery useful.
-    if state.route == ZERO and not world then mode = "zone" end
+    if state.route == Constants.ZERO and not world then mode = "zone" end
     return {
         context = world and state.worldContext or state.context,
         -- These extra fields are local cache filters; the codec does not transmit them.
@@ -876,8 +862,8 @@ function Finder:MakeQuery(state)
         alternateWorldContext = settings.showIncompatibleWarMode and state.alternateWorldContext or nil,
         warMode = state.warMode,
         showIncompatibleWarMode = settings.showIncompatibleWarMode == true,
-        route = world and ZERO or state.route,
-        revision = world and ZERO or state.revision,
+        route = world and Constants.ZERO or state.route,
+        revision = world and Constants.ZERO or state.revision,
         progressId = world and "unknown" or state.progressId,
         step = world and 0 or state.step,
         total = world and 0 or state.total,
@@ -904,8 +890,8 @@ function Finder:Search(automatic)
     end
     local now = GetTime()
     if
-        self.lastSearch and now - self.lastSearch < (automatic and AUTO_QUERY_INTERVAL or QUERY_INTERVAL)
-        or automatic and self.lastDiscoveryQuerySeen and now - self.lastDiscoveryQuerySeen < AUTO_QUERY_QUIET
+        self.lastSearch and now - self.lastSearch < (automatic and Constants.AUTO_QUERY_INTERVAL or Constants.QUERY_INTERVAL)
+        or automatic and self.lastDiscoveryQuerySeen and now - self.lastDiscoveryQuerySeen < Constants.AUTO_QUERY_QUIET
     then
         if not self.query then self.status = "throttled" end
         self:Notify()
@@ -967,7 +953,7 @@ function Finder:Search(automatic)
     self:BeginResultCycle(query)
     query.cycle.public = publicSent
     self.lastDiscoveryQuerySeen = now
-    query.channelID, query.count, query.expires = channelID, 0, now + QUERY_TTL
+    query.channelID, query.count, query.expires = channelID, 0, now + Constants.QUERY_TTL
     if publicSent and query.alternateContext then
         local alternate = {}
         for key, value in pairs(query) do alternate[key] = value end
@@ -995,7 +981,7 @@ function Finder:Search(automatic)
     end
     self:SetTimer(
         "queryTimer",
-        QUERY_TTL,
+        Constants.QUERY_TTL,
 
         --[[APR_DIAG]]
         APRTrace(
@@ -1101,13 +1087,13 @@ function Finder:CanAnswer(query, sender)
     return state
         and (query.mode == "world" or not self.fingerprintJob)
         and self:Matches(state, query)
-        and (not self.lastResponseAttempt or GetTime() - self.lastResponseAttempt >= RESPONSE_PACE)
+        and (not self.lastResponseAttempt or GetTime() - self.lastResponseAttempt >= Constants.RESPONSE_PACE)
         and P.AcceptLanguages(
             P.LanguagesFromMask(query.languages),
             settings.visibleLanguages,
             settings.blockedLanguages
         )
-        and (not self.repliedTo[sender] or GetTime() - self.repliedTo[sender] >= RESPONSE_INTERVAL)
+        and (not self.repliedTo[sender] or GetTime() - self.repliedTo[sender] >= Constants.RESPONSE_INTERVAL)
 end--[[APR_DIAG]]
 Finder.CanAnswer = APRTrace("APR-Core/features/group/PartyFinder.lua:925:Finder:CanAnswer#47", Finder.CanAnswer)--[[/APR_DIAG]]
 
@@ -1135,9 +1121,9 @@ function Finder:QueueResponse(query, sender)
     for _ in pairs(self.requestTimes) do
         seenCount = seenCount + 1
     end
-    if seenCount >= REQUEST_LIMIT and not self.requestTimes[sender] then return end
+    if seenCount >= Constants.REQUEST_LIMIT and not self.requestTimes[sender] then return end
     self.requestTimes[sender] = GetTime()
-    self:ScheduleExpiry(self.requestTimes[sender] + CACHE_TTL)
+    self:ScheduleExpiry(self.requestTimes[sender] + Constants.CACHE_TTL)
     if not self:CanAnswer(query, sender) then
         self:TraceTraffic("STATE", "Q", "CHANNEL", sender, "filters_or_cooldown")
         return
@@ -1145,7 +1131,7 @@ function Finder:QueueResponse(query, sender)
     self.responses[sender] = {
         query = query,
         due = GetTime() + ((query.friendQuery or query.aprQuery) and 0.1 or self:GetDiscoveryResponseDelay(query)),
-        expires = GetTime() + QUERY_TTL,
+        expires = GetTime() + Constants.QUERY_TTL,
     }
     self:ScheduleResponses()
 end--[[APR_DIAG]]
@@ -1161,7 +1147,7 @@ function Finder:ScheduleResponses()
     if not next(self.responses) then return end
     local due = math.huge
     for _, entry in pairs(self.responses) do
-        local ready = math.max(entry.due, (self.lastResponseAttempt or -100) + RESPONSE_PACE)
+        local ready = math.max(entry.due, (self.lastResponseAttempt or -100) + Constants.RESPONSE_PACE)
         due = math.min(due, ready, entry.expires)
     end
     self:SetTimer(
@@ -1173,7 +1159,7 @@ function Finder:ScheduleResponses()
             local chosen, entry
             local earliest
             for sender, pending in pairs(self.responses) do
-                local ready = math.max(pending.due, (self.lastResponseAttempt or -100) + RESPONSE_PACE)
+                local ready = math.max(pending.due, (self.lastResponseAttempt or -100) + Constants.RESPONSE_PACE)
                 ready = math.min(ready, pending.expires)
                 if not earliest or ready < earliest then
                     chosen, entry, earliest = sender, pending, ready
@@ -1291,14 +1277,14 @@ function Finder:GetCandidates()
         if now >= self:CandidateExpiry(data) then
             self.candidates[key] = nil
         elseif self:Matches(data, query) and P.AcceptLanguageMask(data.languages, languagePolicy) then
-            data.stale = self:CandidateExpiry(data) < math.huge and now - data.seenAt >= CACHE_TTL
+            data.stale = self:CandidateExpiry(data) < math.huge and now - data.seenAt >= Constants.CACHE_TTL
             data.warModeCompatible = data.warMode == state.warMode
             data.progressStatus, data.gap = P.CompareProgress(state, data)
             list[#list + 1] = data
             self.listExpires = math.min(
                 self.listExpires,
                 self:CandidateExpiry(data),
-                not data.stale and self:CandidateExpiry(data) < math.huge and data.seenAt + CACHE_TTL or math.huge
+                not data.stale and self:CandidateExpiry(data) < math.huge and data.seenAt + Constants.CACHE_TTL or math.huge
             )
         end
     end
@@ -1324,8 +1310,8 @@ Finder.GetCount = APRTrace("APR-Core/features/group/PartyFinder.lua:1165:Finder:
 
 function Finder:GetCandidateDescription(candidate)
     local status, gap = P.CompareProgress(self:GetLocalState() or {}, candidate)
-    if gap and gap ~= 0 then return string.format(L[PROGRESS_KEYS[status]], math.abs(gap)) end
-    return L[PROGRESS_KEYS[status]]
+    if gap and gap ~= 0 then return string.format(L[Constants.PROGRESS_KEYS[status]], math.abs(gap)) end
+    return L[Constants.PROGRESS_KEYS[status]]
 end--[[APR_DIAG]]
 Finder.GetCandidateDescription = APRTrace(
     "APR-Core/features/group/PartyFinder.lua:1169:Finder:GetCandidateDescription#56",
@@ -1341,14 +1327,14 @@ function Finder:ScheduleExpiry(addedExpiry)
         earliest = math.min(
             earliest,
             self:CandidateExpiry(data),
-            self:CandidateExpiry(data) < math.huge and GetTime() < data.seenAt + CACHE_TTL and data.seenAt + CACHE_TTL or math.huge
+            self:CandidateExpiry(data) < math.huge and GetTime() < data.seenAt + Constants.CACHE_TTL and data.seenAt + Constants.CACHE_TTL or math.huge
         )
     end
     for _, at in pairs(self.requestTimes) do
-        earliest = math.min(earliest, at + CACHE_TTL)
+        earliest = math.min(earliest, at + Constants.CACHE_TTL)
     end
     for _, at in pairs(self.repliedTo) do
-        earliest = math.min(earliest, at + CACHE_TTL)
+        earliest = math.min(earliest, at + Constants.CACHE_TTL)
     end
     for _, at in pairs(self.notificationTimes or {}) do
         earliest = math.min(earliest, at + 600)
@@ -1371,10 +1357,10 @@ function Finder:ScheduleExpiry(addedExpiry)
                 end
             end
             for key, at in pairs(self.requestTimes) do
-                if GetTime() - at >= CACHE_TTL then self.requestTimes[key] = nil end
+                if GetTime() - at >= Constants.CACHE_TTL then self.requestTimes[key] = nil end
             end
             for key, at in pairs(self.repliedTo) do
-                if GetTime() - at >= CACHE_TTL then self.repliedTo[key] = nil end
+                if GetTime() - at >= Constants.CACHE_TTL then self.repliedTo[key] = nil end
             end
             for key, at in pairs(self.notificationTimes or {}) do
                 if GetTime() - at >= 600 then self.notificationTimes[key] = nil end
@@ -1483,7 +1469,7 @@ function Finder:DeferQuery(data, sender)
     end
     if count >= 16 and not pending[key] then return end
     self.pendingQueries = pending
-    pending[key] = { query = data, expires = GetTime() + QUERY_TTL }
+    pending[key] = { query = data, expires = GetTime() + Constants.QUERY_TTL }
 end--[[APR_DIAG]]
 Finder.DeferQuery = APRTrace("APR-Core/features/group/PartyFinder.lua:1307:Finder:DeferQuery#64", Finder.DeferQuery)--[[/APR_DIAG]]
 
@@ -1519,7 +1505,7 @@ Finder.ReplayPendingQueries =
 function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, localID, name)
     if
         not Public(prefix)
-        or prefix ~= PREFIX
+        or prefix ~= Constants.PREFIX
         or not self:IsEnabled()
         or APR.CommunicationChannel and APR.CommunicationChannel.departing
     then
@@ -1740,7 +1726,7 @@ function Finder:OnInit()
     self.responses, self.candidates, self.requestTimes, self.repliedTo, self.notificationTimes = {}, {}, {}, {}, {}
     local name = GetUnitName and GetUnitName("player", true) or APR.Username
     self.playerKey = self:PlayerKey(name)
-    if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(PREFIX) end
+    if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(Constants.PREFIX) end
     self.eventFrame = self.eventFrame or CreateFrame("Frame")
     self.eventFrame:SetScript(
         "OnEvent",

@@ -1,7 +1,7 @@
 -- Every editable setting must survive the new navigation with its original callbacks and constraints.
 dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 GENERAL, OPTIONS = "General", "Options"
 DISPLAY = "Display"
 local oldLibStub = LibStub
@@ -467,7 +467,7 @@ print(
 
 -- Exercise the real navigation controller: moved categories still resolve to their panels,
 -- category changes retain the last tab and contextual actions do not leak to another page.
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/panels/Workspace.lua")

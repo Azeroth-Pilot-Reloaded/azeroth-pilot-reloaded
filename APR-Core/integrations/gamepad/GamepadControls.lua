@@ -18,7 +18,7 @@ function Pad:GetMenuChord()
     end
     return chord
 end--[[APR_DIAG]]
-Pad.GetMenuChord = APRTrace("APR-Core/integrations/GamepadControls.lua:11:Pad:GetMenuChord#1", Pad.GetMenuChord)--[[/APR_DIAG]]
+Pad.GetMenuChord = APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:11:Pad:GetMenuChord#1", Pad.GetMenuChord)--[[/APR_DIAG]]
 
 function Pad:FormatMenuChord(chord)
     local labels = {}
@@ -28,7 +28,7 @@ function Pad:FormatMenuChord(chord)
     return table.concat(labels, " + ")
 end--[[APR_DIAG]]
 Pad.FormatMenuChord =
-    APRTrace("APR-Core/integrations/GamepadControls.lua:22:Pad:FormatMenuChord#2", Pad.FormatMenuChord)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:22:Pad:FormatMenuChord#2", Pad.FormatMenuChord)--[[/APR_DIAG]]
 
 -- Observe only the configured buttons. Never replace native navigation bindings.
 local chordWatcher = CreateFrame("Frame")
@@ -42,7 +42,7 @@ function Pad:RefreshMenuChord()
     chordWatcher:SetShown(active == true)
 end--[[APR_DIAG]]
 Pad.RefreshMenuChord =
-    APRTrace("APR-Core/integrations/GamepadControls.lua:33:Pad:RefreshMenuChord#3", Pad.RefreshMenuChord)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:33:Pad:RefreshMenuChord#3", Pad.RefreshMenuChord)--[[/APR_DIAG]]
 chordWatcher:Hide()
 chordWatcher:RegisterEvent("PLAYER_LOGIN")
 chordWatcher:RegisterEvent("PLAYER_REGEN_DISABLED")
@@ -56,7 +56,7 @@ chordWatcher:SetScript(
 
     --[[APR_DIAG]]
     APRTrace(
-        "APR-Core/integrations/GamepadControls.lua:43:callback#4", --[[/APR_DIAG]]
+        "APR-Core/integrations/gamepad/GamepadControls.lua:43:callback#4", --[[/APR_DIAG]]
         function(_, event)
             if event == "GAME_PAD_DISCONNECTED" then Pad.chordDisconnected = true end
             if event == "GAME_PAD_CONNECTED" then Pad.chordDisconnected = nil end
@@ -67,7 +67,7 @@ chordWatcher:SetScript(
 chordWatcher:SetScript(
     "OnUpdate",
     --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/GamepadControls.lua:47:callback#5", --[[/APR_DIAG]] function(_, elapsed)
+    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:47:callback#5", --[[/APR_DIAG]] function(_, elapsed)
         chordElapsed = chordElapsed + elapsed
         if chordElapsed < 0.05 then return end
         chordElapsed = 0
@@ -109,7 +109,7 @@ function Pad:CancelMenuBinding()
     frame:Hide()
 end--[[APR_DIAG]]
 Pad.CancelMenuBinding =
-    APRTrace("APR-Core/integrations/GamepadControls.lua:79:Pad:CancelMenuBinding#6", Pad.CancelMenuBinding)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:79:Pad:CancelMenuBinding#6", Pad.CancelMenuBinding)--[[/APR_DIAG]]
 
 function Pad:CaptureMenuBinding()
     if InCombatLockdown() or not self:IsEnabled() then return end
@@ -131,7 +131,7 @@ function Pad:CaptureMenuBinding()
 
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:106:callback#8", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:106:callback#8", --[[/APR_DIAG]]
                 function() self:CancelMenuBinding() end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -142,14 +142,14 @@ function Pad:CaptureMenuBinding()
             "OnKeyDown",
 
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:114:callback#9", --[[/APR_DIAG]] function(_, key)
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:114:callback#9", --[[/APR_DIAG]] function(_, key)
                 if key == "ESCAPE" then self:CancelMenuBinding() end
             end--[[APR_DIAG]]) --[[/APR_DIAG]]
         )
         self.windows[frame].close =
         --[[APR_DIAG]]
 APRTrace(
-            "APR-Core/integrations/GamepadControls.lua:121:callback#10", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/GamepadControls.lua:121:callback#10", --[[/APR_DIAG]]
             function() self:CancelMenuBinding() end --[[APR_DIAG]]
         )--[[/APR_DIAG]]
         if frame.close then
@@ -158,7 +158,7 @@ APRTrace(
 
                 --[[APR_DIAG]]
                 APRTrace(
-                    "APR-Core/integrations/GamepadControls.lua:128:callback#11", --[[/APR_DIAG]]
+                    "APR-Core/integrations/gamepad/GamepadControls.lua:128:callback#11", --[[/APR_DIAG]]
                     function() self:CancelMenuBinding() end --[[APR_DIAG]]
                 ) --[[/APR_DIAG]]
             )
@@ -167,7 +167,7 @@ APRTrace(
             "OnGamePadButtonDown",
 
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:134:callback#12", --[[/APR_DIAG]] function(_, button)
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:134:callback#12", --[[/APR_DIAG]] function(_, button)
                 if not frame.captureListening or InCombatLockdown() then return end
                 if button == "PADBACK" then
                     self:CancelMenuBinding()
@@ -195,7 +195,7 @@ APRTrace(
         frame:SetScript(
             "OnGamePadButtonUp",
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:161:callback#13", --[[/APR_DIAG]] function(_, button)
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:161:callback#13", --[[/APR_DIAG]] function(_, button)
                 if not frame.captureListening or InCombatLockdown() or not frame.captureHeld[button] then return end
                 frame.captureHeld[button] = nil
                 if next(frame.captureHeld) then return end
@@ -228,7 +228,7 @@ APRTrace(
                     message,
 
                     --[[APR_DIAG]]
-                    APRTrace("APR-Core/integrations/GamepadControls.lua:189:callback#14", --[[/APR_DIAG]] function()
+                    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:189:callback#14", --[[/APR_DIAG]] function()
                         if InCombatLockdown() then
                             APR:PrintInfo(L["GAMEPAD_COMBAT"])
                             return
@@ -270,7 +270,7 @@ APRTrace(
 
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:218:callback#15", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:218:callback#15", --[[/APR_DIAG]]
                 function()
                     frame:EnableGamePadButton(true)
                     self:RefreshMenuChord()
@@ -281,7 +281,7 @@ APRTrace(
             "OnHide",
 
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:223:callback#16", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:223:callback#16", --[[/APR_DIAG]] function()
                 if not InCombatLockdown() then frame:EnableGamePadButton(false) end
                 frame.captureListening = false
                 frame.captureButton, frame.captureBaseKey, frame.captureKey = nil, nil, nil
@@ -294,7 +294,7 @@ APRTrace(
             "OnEvent",
 
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:234:callback#17", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:234:callback#17", --[[/APR_DIAG]] function()
                 frame.captureListening = false
                 frame:Hide()
             end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -307,7 +307,7 @@ APRTrace(
     self.bindingCapture:Show()
 end--[[APR_DIAG]]
 Pad.CaptureMenuBinding =
-    APRTrace("APR-Core/integrations/GamepadControls.lua:86:Pad:CaptureMenuBinding#7", Pad.CaptureMenuBinding)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:86:Pad:CaptureMenuBinding#7", Pad.CaptureMenuBinding)--[[/APR_DIAG]]
 
 -- Keep changes private until Apply. Cancel/Back therefore never alter settings or
 -- the theme draft (including its class-colour choice).
@@ -335,14 +335,14 @@ function Pad:ShowColor(widget)
             slider.OnSmartNavClick =
             --[[APR_DIAG]]
 APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:273:callback#19", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:273:callback#19", --[[/APR_DIAG]]
                 function() end --[[APR_DIAG]]
             )--[[/APR_DIAG]]
             slider:SetScript(
                 "OnValueChanged",
 
                 --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/GamepadControls.lua:277:callback#20", --[[/APR_DIAG]] function(_, value)
+                APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:277:callback#20", --[[/APR_DIAG]] function(_, value)
                     frame.values[channel] = math.floor(value + 0.5) / 255
                     label:SetText(name .. "  " .. math.floor(value + 0.5))
                     frame.swatch:SetColorTexture(unpack(frame.values))
@@ -355,7 +355,7 @@ APRTrace(
                     entry[1],
 
                     --[[APR_DIAG]]
-                    APRTrace("APR-Core/integrations/GamepadControls.lua:289:callback#21", --[[/APR_DIAG]] function()
+                    APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:289:callback#21", --[[/APR_DIAG]] function()
                         slider:SetValue(math.max(0, math.min(255, slider:GetValue() + delta)))
                         return true
                     end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -372,7 +372,7 @@ APRTrace(
             135,
 
             --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadControls.lua:305:callback#22", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:305:callback#22", --[[/APR_DIAG]] function()
                 local target, values = frame.target, frame.values
                 frame:Hide()
                 if InCombatLockdown() or not target or target.disabled or not target.frame:IsVisible() then return end
@@ -390,7 +390,7 @@ APRTrace(
 
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:323:callback#23", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:323:callback#23", --[[/APR_DIAG]]
                 function() frame:Hide() end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -401,7 +401,7 @@ APRTrace(
 
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:332:callback#24", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:332:callback#24", --[[/APR_DIAG]]
                 function() frame.target = nil end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -411,7 +411,7 @@ APRTrace(
 
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadControls.lua:340:callback#25", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadControls.lua:340:callback#25", --[[/APR_DIAG]]
                 function() frame:Hide() end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -428,7 +428,7 @@ APRTrace(
     frame:Show()
     self:RequestFocus(frame.content)
 end--[[APR_DIAG]]
-Pad.ShowColor = APRTrace("APR-Core/integrations/GamepadControls.lua:249:Pad:ShowColor#18", Pad.ShowColor)--[[/APR_DIAG]]
+Pad.ShowColor = APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:249:Pad:ShowColor#18", Pad.ShowColor)--[[/APR_DIAG]]
 
 function Pad:AdaptColor(widget)
     if widget.aprPadColor then return end
@@ -441,14 +441,14 @@ function Pad:AdaptColor(widget)
     frame.OnSmartNavClick =
     --[[APR_DIAG]]
 APRTrace(
-        "APR-Core/integrations/GamepadControls.lua:367:callback#27", --[[/APR_DIAG]]
+        "APR-Core/integrations/gamepad/GamepadControls.lua:367:callback#27", --[[/APR_DIAG]]
         function() self:ShowColor(widget) end --[[APR_DIAG]]
     )--[[/APR_DIAG]]
     frame:SetScript(
         "OnClick",
 
         --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadControls.lua:371:callback#28", --[[/APR_DIAG]] function(button, ...)
+        APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:371:callback#28", --[[/APR_DIAG]] function(button, ...)
             if self:IsEnabled() and SmartNavigation:GetCurrentButton() == button then
                 self:ShowColor(widget)
             elseif click then
@@ -459,7 +459,7 @@ APRTrace(
     widget.OnRelease =
     --[[APR_DIAG]]
 APRTrace(
-        "APR-Core/integrations/GamepadControls.lua:381:callback#29", --[[/APR_DIAG]]
+        "APR-Core/integrations/gamepad/GamepadControls.lua:381:callback#29", --[[/APR_DIAG]]
         function(target, ...)
             if self.colorEditor and self.colorEditor.target == target then self.colorEditor:Hide() end
             frame:SetScript("OnClick", click)
@@ -471,4 +471,4 @@ APRTrace(
         end --[[APR_DIAG]]
     )--[[/APR_DIAG]]
 end--[[APR_DIAG]]
-Pad.AdaptColor = APRTrace("APR-Core/integrations/GamepadControls.lua:356:Pad:AdaptColor#26", Pad.AdaptColor)--[[/APR_DIAG]]
+Pad.AdaptColor = APRTrace("APR-Core/integrations/gamepad/GamepadControls.lua:356:Pad:AdaptColor#26", Pad.AdaptColor)--[[/APR_DIAG]]

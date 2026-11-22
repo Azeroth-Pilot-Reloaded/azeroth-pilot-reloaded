@@ -11,8 +11,7 @@ local LibWindow = LibStub("LibWindow-1.1")
 
 APR.XPBuffOverlay = APR:NewModule("XPBuffOverlay")
 local overlay = APR.XPBuffOverlay
-local rows = {}
-local frame
+
 local PANEL_BACKDROP = {
     bgFile = "Interface\\Buttons\\WHITE8X8",
     tile = true,
@@ -21,6 +20,9 @@ local PANEL_BACKDROP = {
     edgeSize = 16,
     insets = { left = 4, right = 4, top = 4, bottom = 4 },
 }
+
+local rows = {}
+local frame
 
 function overlay:IsBonusEnabled(sourceName)
     local profile = APR.settings and APR.settings.profile

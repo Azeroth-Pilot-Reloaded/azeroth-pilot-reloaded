@@ -1,7 +1,7 @@
 -- Fresh defaults detect integrations; saved manual choices remain authoritative.
 dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 local profile = {}
 APR.settings.profile = profile
 ElvUI, EllesmereUI = nil, nil

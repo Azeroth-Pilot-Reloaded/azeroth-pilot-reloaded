@@ -7,11 +7,11 @@ function GetLocale() return "enUS" end
 function env.methods:Raise() self.raised = true end
 function env.methods:IsVisible() return self.shown and (not self.parent or self.parent:IsVisible()) end
 UIParent:SetSize(1920, 1080)
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
-dofile("APR-Core/integrations/Gamepad.lua")
-dofile("APR-Core/integrations/GamepadNavigation.lua")
+dofile("APR-Core/integrations/gamepad/Gamepad.lua")
+dofile("APR-Core/integrations/gamepad/GamepadNavigation.lua")
 dofile("APR-Core/ui/panels/Workspace.lua")
 
 for _, name in ipairs({ "RouteBrowser", "StatusPanel", "AboutPanel", "OptionsPanel", "PerformanceDashboard" }) do

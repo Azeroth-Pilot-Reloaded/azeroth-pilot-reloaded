@@ -38,7 +38,7 @@ function hooksecurefunc(target, key, callback)
 end
 
 -- Reload after installing native frame behaviour, as WoW has it before loading APR.
-dofile("APR-Core/integrations/QuestTracker.lua")
+dofile("APR-Core/integrations/quest-tracking/QuestTracker.lua")
 local tracker = APR.QuestTracker
 local root = env.widget(UIParent)
 _G["!KalielsTrackerFrame"] = root

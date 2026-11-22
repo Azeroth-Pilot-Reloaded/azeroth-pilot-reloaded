@@ -35,7 +35,7 @@ function Pad:SetNavigationFlag(frame, key, value)
         frame[key] = value
     end
 end--[[APR_DIAG]]
-Pad.SetNavigationFlag = APRTrace("APR-Core/integrations/Gamepad.lua:18:Pad:SetNavigationFlag#1", Pad.SetNavigationFlag)--[[/APR_DIAG]]
+Pad.SetNavigationFlag = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:18:Pad:SetNavigationFlag#1", Pad.SetNavigationFlag)--[[/APR_DIAG]]
 
 function Pad:RestoreNavigationFlags()
     local helper = SmartNavigationSecureHelper
@@ -55,7 +55,7 @@ function Pad:RestoreNavigationFlags()
     self.flagHelper, self.pendingFlags = helper, nil
 end--[[APR_DIAG]]
 Pad.RestoreNavigationFlags =
-    APRTrace("APR-Core/integrations/Gamepad.lua:33:Pad:RestoreNavigationFlags#2", Pad.RestoreNavigationFlags)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:33:Pad:RestoreNavigationFlags#2", Pad.RestoreNavigationFlags)--[[/APR_DIAG]]
 
 function Pad:SelectButton(button, frame)
     if not self:IsEnabled() or InCombatLockdown() then return end
@@ -67,7 +67,7 @@ function Pad:SelectButton(button, frame)
         SmartNavigation:SelectButton(button)
     end
 end--[[APR_DIAG]]
-Pad.SelectButton = APRTrace("APR-Core/integrations/Gamepad.lua:43:Pad:SelectButton#3", Pad.SelectButton)--[[/APR_DIAG]]
+Pad.SelectButton = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:43:Pad:SelectButton#3", Pad.SelectButton)--[[/APR_DIAG]]
 
 -- A restricted GetFrameRef() handle is not a native Button: putting it in
 -- clickbutton makes Blizzard's click handler call methods the handle lacks.
@@ -85,7 +85,7 @@ local function CreateActionProxy(name, kind, cycleTargets)
     proxy:SetAttribute("actionKind", kind)
     proxy:SetScript(
         "PreClick", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Gamepad.lua:63:callback#5", --[[/APR_DIAG]] function(self)
+        APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:63:callback#5", --[[/APR_DIAG]] function(self)
             -- Housing buttons normally record their departure in their own PreClick.
             if self:GetAttribute("type") ~= "teleporthome" then return end
             local data = APR.navigation and APR.navigation:GetData()
@@ -130,7 +130,7 @@ local function CreateActionProxy(name, kind, cycleTargets)
     )
     return proxy
 end--[[APR_DIAG]]
-CreateActionProxy = APRTrace("APR-Core/integrations/Gamepad.lua:57:CreateActionProxy#4", CreateActionProxy)--[[/APR_DIAG]]
+CreateActionProxy = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:57:CreateActionProxy#4", CreateActionProxy)--[[/APR_DIAG]]
 
 local function ActionButtonBefore(left, right)
     if left.aprActionFiller ~= right.aprActionFiller then return not left.aprActionFiller end
@@ -147,7 +147,7 @@ local function ActionButtonBefore(left, right)
     if left.aprActionKey ~= right.aprActionKey then return left.aprActionKey < right.aprActionKey end
     return left:GetAttribute("apr-action-kind") < right:GetAttribute("apr-action-kind")
 end--[[APR_DIAG]]
-ActionButtonBefore = APRTrace("APR-Core/integrations/Gamepad.lua:89:ActionButtonBefore#6", ActionButtonBefore)--[[/APR_DIAG]]
+ActionButtonBefore = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:89:ActionButtonBefore#6", ActionButtonBefore)--[[/APR_DIAG]]
 
 function Pad:RegisterActionButton(button, key, filler, kind)
     if InCombatLockdown() or not SecureHandlerWrapScript then return end
@@ -183,14 +183,14 @@ function Pad:RegisterActionButton(button, key, filler, kind)
     end
 end--[[APR_DIAG]]
 Pad.RegisterActionButton =
-    APRTrace("APR-Core/integrations/Gamepad.lua:105:Pad:RegisterActionButton#7", Pad.RegisterActionButton)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:105:Pad:RegisterActionButton#7", Pad.RegisterActionButton)--[[/APR_DIAG]]
 
 -- Only a changed desired target set resets the secure rotation, never a refresh.
 function Pad:SetTargetCycleTargets(signature)
     if InCombatLockdown() or self.targetSignature == signature then return end
     self.targetSignature = signature
     if self.targetCycleProxy then self.targetCycleProxy:SetAttribute("cycleIndex", 0) end
-end--[[APR_DIAG]]; Pad.SetTargetCycleTargets = APRTrace("APR-Core/integrations/Gamepad.lua:189:Pad:SetTargetCycleTargets#31008", Pad.SetTargetCycleTargets)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.SetTargetCycleTargets = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:189:Pad:SetTargetCycleTargets#31008", Pad.SetTargetCycleTargets)--[[/APR_DIAG]]
 
 function Pad:IsAvailable()
     return InputUtil
@@ -199,12 +199,12 @@ function Pad:IsAvailable()
         and GamepadMode.FrameControlsManager
         and SmartNavigation
 end--[[APR_DIAG]]
-Pad.IsAvailable = APRTrace("APR-Core/integrations/Gamepad.lua:130:Pad:IsAvailable#8", Pad.IsAvailable)--[[/APR_DIAG]]
+Pad.IsAvailable = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:130:Pad:IsAvailable#8", Pad.IsAvailable)--[[/APR_DIAG]]
 
 function Pad:IsEnabled()
     return self:IsAvailable() and InputUtil.IsGamepadUIEnabled()
 end--[[APR_DIAG]]
-Pad.IsEnabled = APRTrace("APR-Core/integrations/Gamepad.lua:135:Pad:IsEnabled#9", Pad.IsEnabled)--[[/APR_DIAG]]
+Pad.IsEnabled = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:135:Pad:IsEnabled#9", Pad.IsEnabled)--[[/APR_DIAG]]
 
 function Pad:ShowWindow(frame)
     local entry = self.windows[frame]
@@ -232,7 +232,7 @@ function Pad:ShowWindow(frame)
     end
     self:Refresh(frame)
 end--[[APR_DIAG]]
-Pad.ShowWindow = APRTrace("APR-Core/integrations/Gamepad.lua:139:Pad:ShowWindow#10", Pad.ShowWindow)--[[/APR_DIAG]]
+Pad.ShowWindow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:139:Pad:ShowWindow#10", Pad.ShowWindow)--[[/APR_DIAG]]
 
 function Pad:HideWindow(frame)
     local entry = self.windows[frame]
@@ -253,7 +253,7 @@ function Pad:HideWindow(frame)
         entry.returnFrame, entry.nativePopup = nil, nil
     end
 end--[[APR_DIAG]]
-Pad.HideWindow = APRTrace("APR-Core/integrations/Gamepad.lua:159:Pad:HideWindow#11", Pad.HideWindow)--[[/APR_DIAG]]
+Pad.HideWindow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:159:Pad:HideWindow#11", Pad.HideWindow)--[[/APR_DIAG]]
 
 function Pad:FocusWindow(frame)
     if not self:IsEnabled() or InCombatLockdown() or not frame or not frame:IsVisible() then return end
@@ -263,7 +263,7 @@ function Pad:FocusWindow(frame)
     if manager:GetActiveFrame() ~= frame or manager.isUIFocused == false then self:HideWindow(frame) end
     self:ShowWindow(frame)
 end--[[APR_DIAG]]
-Pad.FocusWindow = APRTrace("APR-Core/integrations/Gamepad.lua:176:Pad:FocusWindow#12", Pad.FocusWindow)--[[/APR_DIAG]]
+Pad.FocusWindow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:176:Pad:FocusWindow#12", Pad.FocusWindow)--[[/APR_DIAG]]
 
 function Pad:RegisterWindow(frame, popup, close, owns)
     if not frame then return end
@@ -275,7 +275,7 @@ function Pad:RegisterWindow(frame, popup, close, owns)
     self.windows[frame] = { popup = popup, order = self.serial, owns = owns }
     local previousClose = frame.SmartNavigationCloseHandler
     frame.SmartNavigationCloseHandler = --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Gamepad.lua:191:callback#14", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:191:callback#14", --[[/APR_DIAG]] function()
             if owns and not owns() then return previousClose and previousClose(frame) end
             if InCombatLockdown() then return true end
             local entry = self.windows[frame]
@@ -295,7 +295,7 @@ function Pad:RegisterWindow(frame, popup, close, owns)
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     local previousSelect = frame.SmartNavigationOnSelect
     frame.SmartNavigationOnSelect = --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Gamepad.lua:206:callback#15", --[[/APR_DIAG]] function(owner, button)
+        APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:206:callback#15", --[[/APR_DIAG]] function(owner, button)
             if previousSelect then previousSelect(owner, button) end
             if owns and not owns() then return end
             -- Native right-stick scrolling needs the viewport associated with the current focus.
@@ -309,27 +309,27 @@ function Pad:RegisterWindow(frame, popup, close, owns)
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     frame:HookScript(
         "OnShow", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Gamepad.lua:218:callback#16", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:218:callback#16", --[[/APR_DIAG]] function()
             if not self.windows[frame].manual then self:ShowWindow(frame) end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
     frame:HookScript(
         "OnHide", --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/Gamepad.lua:221:callback#17", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/Gamepad.lua:221:callback#17", --[[/APR_DIAG]]
             function() self:HideWindow(frame) end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
     frame:HookScript(
         "OnSizeChanged", --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/Gamepad.lua:222:callback#18", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/Gamepad.lua:222:callback#18", --[[/APR_DIAG]]
             function() self:Refresh(frame) end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
     self:ShowWindow(frame)
 end--[[APR_DIAG]]
-Pad.RegisterWindow = APRTrace("APR-Core/integrations/Gamepad.lua:185:Pad:RegisterWindow#13", Pad.RegisterWindow)--[[/APR_DIAG]]
+Pad.RegisterWindow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:185:Pad:RegisterWindow#13", Pad.RegisterWindow)--[[/APR_DIAG]]
 
 -- Refresh after layout and row recycling have finished. No polling while windows are idle.
 local refreshFrame = CreateFrame("Frame")
@@ -346,10 +346,10 @@ function Pad:Refresh(frame)
         refreshFrame:Show()
     end
 end--[[APR_DIAG]]
-Pad.Refresh = APRTrace("APR-Core/integrations/Gamepad.lua:230:Pad:Refresh#19", Pad.Refresh)--[[/APR_DIAG]]
+Pad.Refresh = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:230:Pad:Refresh#19", Pad.Refresh)--[[/APR_DIAG]]
 refreshFrame:SetScript(
     "OnUpdate", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/Gamepad.lua:236:callback#20", --[[/APR_DIAG]] function()
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:236:callback#20", --[[/APR_DIAG]] function()
         refreshFrame:Hide()
         for frame in pairs(pending) do
             pending[frame] = nil
@@ -377,7 +377,7 @@ function Pad:RestoreWindows()
     table.sort(
         frames, --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/Gamepad.lua:260:callback#22", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/Gamepad.lua:260:callback#22", --[[/APR_DIAG]]
             function(a, b) return a.order < b.order end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
@@ -397,7 +397,7 @@ function Pad:RestoreWindows()
     end
     self:OfferMenu()
 end--[[APR_DIAG]]
-Pad.RestoreWindows = APRTrace("APR-Core/integrations/Gamepad.lua:252:Pad:RestoreWindows#21", Pad.RestoreWindows)--[[/APR_DIAG]]
+Pad.RestoreWindows = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:252:Pad:RestoreWindows#21", Pad.RestoreWindows)--[[/APR_DIAG]]
 
 function Pad:OfferMenu()
     if
@@ -418,14 +418,14 @@ function Pad:OfferMenu()
         if bound then return end
         if not self.menu or not self.menu:IsShown() then self:ToggleMenu() end
     end--[[APR_DIAG]]
-    offer = APRTrace("APR-Core/integrations/Gamepad.lua:278:offer#24", offer)--[[/APR_DIAG]]
+    offer = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:278:offer#24", offer)--[[/APR_DIAG]]
     if C_Timer and C_Timer.After then
         C_Timer.After(0, offer)
     else
         offer()
     end
 end--[[APR_DIAG]]
-Pad.OfferMenu = APRTrace("APR-Core/integrations/Gamepad.lua:274:Pad:OfferMenu#23", Pad.OfferMenu)--[[/APR_DIAG]]
+Pad.OfferMenu = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:274:Pad:OfferMenu#23", Pad.OfferMenu)--[[/APR_DIAG]]
 
 function Pad:InstallTransitions()
     if
@@ -441,7 +441,7 @@ function Pad:InstallTransitions()
     InputUtil.RegisterForInterfaceTransitions(self)
     InputUtil.RegisterGamepadUninit(
         self, --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Gamepad.lua:292:callback#26", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:292:callback#26", --[[/APR_DIAG]] function()
             -- Blizzard resets its manager during the high-priority transition phase.
             for _, entry in pairs(self.windows) do
                 entry.active = nil
@@ -455,7 +455,7 @@ function Pad:InstallTransitions()
     InputUtil.RegisterGamepadInit(
         self, --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/Gamepad.lua:299:callback#27", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/Gamepad.lua:299:callback#27", --[[/APR_DIAG]]
             function()
                 self.chordDisconnected = nil
                 if self.RefreshMenuChord then self:RefreshMenuChord() end
@@ -465,7 +465,7 @@ function Pad:InstallTransitions()
     )
 end--[[APR_DIAG]]
 Pad.InstallTransitions =
-    APRTrace("APR-Core/integrations/Gamepad.lua:287:Pad:InstallTransitions#25", Pad.InstallTransitions)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:287:Pad:InstallTransitions#25", Pad.InstallTransitions)--[[/APR_DIAG]]
 
 -- Sliders need an explicit commit: AceConfig writes ranges on OnMouseUp, not SetValue.
 function Pad:AdjustSlider(widget, direction)
@@ -479,7 +479,7 @@ function Pad:AdjustSlider(widget, direction)
     local commit = slider:GetScript("OnMouseUp")
     if commit then commit(slider, "LeftButton") end
 end--[[APR_DIAG]]
-Pad.AdjustSlider = APRTrace("APR-Core/integrations/Gamepad.lua:303:Pad:AdjustSlider#28", Pad.AdjustSlider)--[[/APR_DIAG]]
+Pad.AdjustSlider = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:303:Pad:AdjustSlider#28", Pad.AdjustSlider)--[[/APR_DIAG]]
 
 function Pad:AdaptSettings(widget, seen)
     if not widget then return end
@@ -512,7 +512,7 @@ function Pad:AdaptSettings(widget, seen)
                 self:AdjustSlider(widget, direction)
                 return true -- consume this direction even if AceConfig rebuilt the widget
             end--[[APR_DIAG]]
-            adjust = APRTrace("APR-Core/integrations/Gamepad.lua:338:adjust#30", adjust)--[[/APR_DIAG]]
+            adjust = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:338:adjust#30", adjust)--[[/APR_DIAG]]
             if self.SetDirection then
                 self:SetDirection(slider, entry[1], adjust)
             else
@@ -520,7 +520,7 @@ function Pad:AdaptSettings(widget, seen)
             end
         end
         slider.OnSmartNavClick = --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/Gamepad.lua:345:callback#31", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:345:callback#31", --[[/APR_DIAG]] function()
                 -- Confirm reaches exact numeric entry without moving the thumb to the mouse cursor.
                 if widget.editbox and widget.editbox:IsVisible() and not widget.disabled and not InCombatLockdown() then
                     self:SelectButton(widget.editbox)
@@ -532,12 +532,12 @@ function Pad:AdaptSettings(widget, seen)
             widget.frame,
             true, --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/Gamepad.lua:353:callback#32", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/Gamepad.lua:353:callback#32", --[[/APR_DIAG]]
                 function() widget:Close() end --[[APR_DIAG]]
             ) --[[/APR_DIAG]],
             --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/Gamepad.lua:354:callback#33", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/Gamepad.lua:354:callback#33", --[[/APR_DIAG]]
                 function() return not self.OwnSettingsWidget or widget.aprPadOwned == true end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -553,7 +553,7 @@ function Pad:AdaptSettings(widget, seen)
     end
     if widget.frame then self:Refresh(widget.frame) end
 end--[[APR_DIAG]]
-Pad.AdaptSettings = APRTrace("APR-Core/integrations/Gamepad.lua:315:Pad:AdaptSettings#29", Pad.AdaptSettings)--[[/APR_DIAG]]
+Pad.AdaptSettings = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:315:Pad:AdaptSettings#29", Pad.AdaptSettings)--[[/APR_DIAG]]
 
 -- Navigate by record index, not by recycled frame identity. This reaches every record,
 -- including those for which no frame exists yet, and keeps the same action column.
@@ -578,7 +578,7 @@ function Pad:NavigateList(list, row, path, delta)
         index = index + delta
     end
 end--[[APR_DIAG]]
-Pad.NavigateList = APRTrace("APR-Core/integrations/Gamepad.lua:366:Pad:NavigateList#34", Pad.NavigateList)--[[/APR_DIAG]]
+Pad.NavigateList = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:366:Pad:NavigateList#34", Pad.NavigateList)--[[/APR_DIAG]]
 
 local LIST_DIRECTIONS = { { "UP", -1 }, { "DOWN", 1 } }
 local function VisitListRow(self, list, row, frame, path)
@@ -588,7 +588,7 @@ local function VisitListRow(self, list, row, frame, path)
             local function navigate()
                 return self:NavigateList(list, row, path, delta)
             end--[[APR_DIAG]]
-            navigate = APRTrace("APR-Core/integrations/Gamepad.lua:390:navigate#36", navigate)--[[/APR_DIAG]]
+            navigate = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:390:navigate#36", navigate)--[[/APR_DIAG]]
             if self.SetDirection then
                 self:SetDirection(frame, entry[1], navigate)
             else
@@ -602,7 +602,7 @@ local function VisitListRow(self, list, row, frame, path)
         VisitListRow(self, list, row, child, childPath)
     end
 end--[[APR_DIAG]]
-VisitListRow = APRTrace("APR-Core/integrations/Gamepad.lua:386:VisitListRow#35", VisitListRow)--[[/APR_DIAG]]
+VisitListRow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:386:VisitListRow#35", VisitListRow)--[[/APR_DIAG]]
 
 function Pad:AdaptListRow(list, row)
     self.lists[list] = true
@@ -611,7 +611,7 @@ function Pad:AdaptListRow(list, row)
     row.aprGamepadList = list
     VisitListRow(self, list, row, row, {})
 end--[[APR_DIAG]]
-Pad.AdaptListRow = APRTrace("APR-Core/integrations/Gamepad.lua:404:Pad:AdaptListRow#37", Pad.AdaptListRow)--[[/APR_DIAG]]
+Pad.AdaptListRow = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:404:Pad:AdaptListRow#37", Pad.AdaptListRow)--[[/APR_DIAG]]
 
 function Pad:GetTaintReport()
     if type(issecurevariable) ~= "function" then return "Taint inspection unavailable" end
@@ -623,7 +623,7 @@ function Pad:GetTaintReport()
             lines[#lines + 1] = label .. "." .. key .. ": " .. (secure and "secure" or tostring(owner or "macro"))
         end
     end--[[APR_DIAG]]
-    inspect = APRTrace("APR-Core/integrations/Gamepad.lua:415:inspect#39", inspect)--[[/APR_DIAG]]
+    inspect = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:415:inspect#39", inspect)--[[/APR_DIAG]]
     inspect("globals", _G, {
         "GamepadMode",
         "GamepadSharedUtility",
@@ -682,7 +682,7 @@ function Pad:GetTaintReport()
     end
     return table.concat(lines, "\n")
 end--[[APR_DIAG]]
-Pad.GetTaintReport = APRTrace("APR-Core/integrations/Gamepad.lua:412:Pad:GetTaintReport#38", Pad.GetTaintReport)--[[/APR_DIAG]]
+Pad.GetTaintReport = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:412:Pad:GetTaintReport#38", Pad.GetTaintReport)--[[/APR_DIAG]]
 
 function Pad:RecordBlockedAction(addon, action)
     if
@@ -700,7 +700,7 @@ function Pad:RecordBlockedAction(addon, action)
     end
 end--[[APR_DIAG]]
 Pad.RecordBlockedAction =
-    APRTrace("APR-Core/integrations/Gamepad.lua:448:Pad:RecordBlockedAction#40", Pad.RecordBlockedAction)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:448:Pad:RecordBlockedAction#40", Pad.RecordBlockedAction)--[[/APR_DIAG]]
 
 function Pad:GetDiagnosticReport()
     local navigation = SmartNavigation
@@ -733,7 +733,7 @@ function Pad:GetDiagnosticReport()
     return table.concat(lines, "\n")
 end--[[APR_DIAG]]
 Pad.GetDiagnosticReport =
-    APRTrace("APR-Core/integrations/Gamepad.lua:457:Pad:GetDiagnosticReport#41", Pad.GetDiagnosticReport)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:457:Pad:GetDiagnosticReport#41", Pad.GetDiagnosticReport)--[[/APR_DIAG]]
 
 function Pad:ShowDiagnostics()
     -- Sample after the slash command's chat window has released native focus.
@@ -742,14 +742,14 @@ function Pad:ShowDiagnostics()
         if self.menu and self.menu:IsShown() then self:CloseMenu(true) end
         UI:ShowTextReport(DEBUG or L["DEBUG"], report)
     end--[[APR_DIAG]]
-    show = APRTrace("APR-Core/integrations/Gamepad.lua:491:show#43", show)--[[/APR_DIAG]]
+    show = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:491:show#43", show)--[[/APR_DIAG]]
     if C_Timer and C_Timer.After then
         C_Timer.After(0.2, show)
     else
         show()
     end
 end--[[APR_DIAG]]
-Pad.ShowDiagnostics = APRTrace("APR-Core/integrations/Gamepad.lua:489:Pad:ShowDiagnostics#42", Pad.ShowDiagnostics)--[[/APR_DIAG]]
+Pad.ShowDiagnostics = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:489:Pad:ShowDiagnostics#42", Pad.ShowDiagnostics)--[[/APR_DIAG]]
 
 function Pad:RunAction(action)
     if InCombatLockdown() then
@@ -809,7 +809,7 @@ function Pad:RunAction(action)
                 frame,
                 false, --[[APR_DIAG]]
                 APRTrace(
-                    "APR-Core/integrations/Gamepad.lua:527:callback#45", --[[/APR_DIAG]]
+                    "APR-Core/integrations/gamepad/Gamepad.lua:527:callback#45", --[[/APR_DIAG]]
                     function() self:HideWindow(frame) end --[[APR_DIAG]]
                 ) --[[/APR_DIAG]]
             )
@@ -820,7 +820,7 @@ function Pad:RunAction(action)
         self:FocusWindow(frame)
     end
 end--[[APR_DIAG]]
-Pad.RunAction = APRTrace("APR-Core/integrations/Gamepad.lua:499:Pad:RunAction#44", Pad.RunAction)--[[/APR_DIAG]]
+Pad.RunAction = APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:499:Pad:RunAction#44", Pad.RunAction)--[[/APR_DIAG]]
 
 local watcher = CreateFrame("Frame")
 watcher:RegisterEvent("ADDON_LOADED")
@@ -830,7 +830,7 @@ watcher:RegisterEvent("PLAYER_REGEN_DISABLED")
 watcher:RegisterEvent("ADDON_ACTION_FORBIDDEN")
 watcher:SetScript(
     "OnEvent", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/Gamepad.lua:540:callback#46", --[[/APR_DIAG]] function(_, event, addon, action)
+    APRTrace("APR-Core/integrations/gamepad/Gamepad.lua:540:callback#46", --[[/APR_DIAG]] function(_, event, addon, action)
         if event == "ADDON_ACTION_FORBIDDEN" then
             Pad:RecordBlockedAction(addon, action)
             return

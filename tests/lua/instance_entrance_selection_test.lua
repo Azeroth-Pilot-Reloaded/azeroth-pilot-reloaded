@@ -16,7 +16,7 @@ for _, profile in ipairs({ "retail", "forever" }) do
             requirements = { questActive = 42 }, interiorMapIDs = {},
             exterior = { uiMapID = 10, instanceID = 0, x = 700, y = 600 } },
     } })
-    dofile("APR-Core/integrations/NavigationEntrances.lua")
+    dofile("APR-Core/features/navigation/adapter/NavigationEntrances.lua")
     dofile("APR-Core/features/questing/DelveRoutes.lua")
     dofile("APR-Core/utils/StepUtils.lua")
     dofile("APR-Core/utils/DungeonUtils.lua")

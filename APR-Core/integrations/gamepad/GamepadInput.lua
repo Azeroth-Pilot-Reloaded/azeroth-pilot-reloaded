@@ -15,7 +15,7 @@ function Pad:IsInputOwner(owner)
         and owner:IsVisible()
         and SmartNavigation:GetActiveFrame() == owner
 end--[[APR_DIAG]]
-Pad.IsInputOwner = APRTrace("APR-Core/integrations/GamepadInput.lua:12:Pad:IsInputOwner#1", Pad.IsInputOwner)--[[/APR_DIAG]]
+Pad.IsInputOwner = APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:12:Pad:IsInputOwner#1", Pad.IsInputOwner)--[[/APR_DIAG]]
 
 function Pad:DispatchInput(owner, key, down)
     local entry = self.inputHandlers[owner]
@@ -23,7 +23,7 @@ function Pad:DispatchInput(owner, key, down)
     local callback = entry.buttons[key]
     if callback then callback(down) end
 end--[[APR_DIAG]]
-Pad.DispatchInput = APRTrace("APR-Core/integrations/GamepadInput.lua:17:Pad:DispatchInput#2", Pad.DispatchInput)--[[/APR_DIAG]]
+Pad.DispatchInput = APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:17:Pad:DispatchInput#2", Pad.DispatchInput)--[[/APR_DIAG]]
 
 function Pad:RefreshInputOwner()
     if InCombatLockdown() then return end
@@ -43,7 +43,7 @@ function Pad:RefreshInputOwner()
     chosen.router:Show()
 end--[[APR_DIAG]]
 Pad.RefreshInputOwner =
-    APRTrace("APR-Core/integrations/GamepadInput.lua:24:Pad:RefreshInputOwner#3", Pad.RefreshInputOwner)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:24:Pad:RefreshInputOwner#3", Pad.RefreshInputOwner)--[[/APR_DIAG]]
 
 function Pad:QueueInputRefresh()
     if pending then return end
@@ -52,7 +52,7 @@ function Pad:QueueInputRefresh()
         pending = false
         self:RefreshInputOwner()
     end--[[APR_DIAG]]
-    refresh = APRTrace("APR-Core/integrations/GamepadInput.lua:45:refresh#5", refresh)--[[/APR_DIAG]]
+    refresh = APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:45:refresh#5", refresh)--[[/APR_DIAG]]
     if C_Timer and C_Timer.After then
         C_Timer.After(0, refresh)
     else
@@ -60,7 +60,7 @@ function Pad:QueueInputRefresh()
     end
 end--[[APR_DIAG]]
 Pad.QueueInputRefresh =
-    APRTrace("APR-Core/integrations/GamepadInput.lua:42:Pad:QueueInputRefresh#4", Pad.QueueInputRefresh)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:42:Pad:QueueInputRefresh#4", Pad.QueueInputRefresh)--[[/APR_DIAG]]
 
 function Pad:RegisterInputHandler(owner, settings)
     if self.inputHandlers[owner] then return end
@@ -105,7 +105,7 @@ function Pad:RegisterInputHandler(owner, settings)
             button:SetScript(
                 "OnClick", --[[APR_DIAG]]
                 APRTrace(
-                    "APR-Core/integrations/GamepadInput.lua:83:callback#7", --[[/APR_DIAG]]
+                    "APR-Core/integrations/gamepad/GamepadInput.lua:83:callback#7", --[[/APR_DIAG]]
                     function(_, _, down) self:DispatchInput(owner, key, down) end --[[APR_DIAG]]
                 ) --[[/APR_DIAG]]
             )
@@ -116,7 +116,7 @@ function Pad:RegisterInputHandler(owner, settings)
             router:EnableGamePadStick(true)
             router:SetScript(
                 "OnGamepadStick", --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/GamepadInput.lua:89:callback#8", --[[/APR_DIAG]] function(_, stick, x, y)
+                APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:89:callback#8", --[[/APR_DIAG]] function(_, stick, x, y)
                     if self:IsInputOwner(owner) then return entry.stick(stick, x, y) end
                     return true
                 end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -127,13 +127,13 @@ function Pad:RegisterInputHandler(owner, settings)
     owner:HookScript(
         "OnShow", --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/GamepadInput.lua:96:callback#9", --[[/APR_DIAG]]
+            "APR-Core/integrations/gamepad/GamepadInput.lua:96:callback#9", --[[/APR_DIAG]]
             function() self:QueueInputRefresh() end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
     owner:HookScript(
         "OnHide", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadInput.lua:97:callback#10", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:97:callback#10", --[[/APR_DIAG]] function()
             if entry.release then entry.release() end
             self:QueueInputRefresh()
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -143,7 +143,7 @@ function Pad:RegisterInputHandler(owner, settings)
         EventRegistry:RegisterCallback(
             "Gamepad.RefreshFrameFocus", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/GamepadInput.lua:103:callback#11", --[[/APR_DIAG]]
+                "APR-Core/integrations/gamepad/GamepadInput.lua:103:callback#11", --[[/APR_DIAG]]
                 function() self:QueueInputRefresh() end --[[APR_DIAG]]
             ) --[[/APR_DIAG]],
             self
@@ -152,7 +152,7 @@ function Pad:RegisterInputHandler(owner, settings)
     self:QueueInputRefresh()
 end--[[APR_DIAG]]
 Pad.RegisterInputHandler =
-    APRTrace("APR-Core/integrations/GamepadInput.lua:52:Pad:RegisterInputHandler#6", Pad.RegisterInputHandler)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:52:Pad:RegisterInputHandler#6", Pad.RegisterInputHandler)--[[/APR_DIAG]]
 
 local watcher = CreateFrame("Frame")
 watcher:RegisterEvent("PLAYER_REGEN_ENABLED")
@@ -160,7 +160,7 @@ watcher:RegisterEvent("PLAYER_REGEN_DISABLED")
 if APR.RegisterSupportedEvent then APR:RegisterSupportedEvent(watcher, "GAME_PAD_DISCONNECTED") end
 watcher:SetScript(
     "OnEvent", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/GamepadInput.lua:112:callback#12", --[[/APR_DIAG]] function(_, event)
+    APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:112:callback#12", --[[/APR_DIAG]] function(_, event)
         if event == "PLAYER_REGEN_DISABLED" or event == "GAME_PAD_DISCONNECTED" then
             for _, entry in pairs(Pad.inputHandlers) do
                 if entry.release then entry.release() end
@@ -192,7 +192,7 @@ function Pad:CreateInputHint(parent, label, key, fallback)
     self:RefreshInputHint(hint)
     return hint
 end--[[APR_DIAG]]
-Pad.CreateInputHint = APRTrace("APR-Core/integrations/GamepadInput.lua:118:Pad:CreateInputHint#13", Pad.CreateInputHint)--[[/APR_DIAG]]
+Pad.CreateInputHint = APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:118:Pad:CreateInputHint#13", Pad.CreateInputHint)--[[/APR_DIAG]]
 
 function Pad:RefreshInputHint(hint)
     local utility = InputIconTextureSetUtility
@@ -207,4 +207,4 @@ function Pad:RefreshInputHint(hint)
     hint.text:SetText(hint.label)
 end--[[APR_DIAG]]
 Pad.RefreshInputHint =
-    APRTrace("APR-Core/integrations/GamepadInput.lua:134:Pad:RefreshInputHint#14", Pad.RefreshInputHint)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/gamepad/GamepadInput.lua:134:Pad:RefreshInputHint#14", Pad.RefreshInputHint)--[[/APR_DIAG]]

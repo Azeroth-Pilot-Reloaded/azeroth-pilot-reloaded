@@ -112,12 +112,12 @@ step, render and profile hooks call the library for synchronization and cleanup.
 Provider selection, ownership, combat deferral and native-carrier management live
 inside the library. APR enables this integration automatically while the addon is
 active, using AzerothWaypoint when available and Waypoint UI as its fallback.
-`NavigationAdapter.lua` supplies WoW APIs and APR localization/state; transport
+`features/navigation/adapter/` supplies WoW APIs and APR localization/state; transport
 data lives under the library’s `Data/retail` and `Data/forever` directories, split
 by type. The [nine-addon source review](../../Route-generator/tools/validation/NAVIGATION_RESEARCH.fr.md)
 records the inspected versions and the architectural decisions.
 
-`NavigationPlanner.lua` schedules catalogue preparation, taxi data, graph search,
+`NavigationPlanner.lua` and `features/navigation/planner/` schedule catalogue preparation, taxi data, graph search,
 optional flight-master probes and guidance rows under one 1 ms slice budget.
 Provider jobs resume on later frames and cancel with their route context. The
 `NavigationPlanningSlice` metric records actual slice durations in `/apr perf`.
@@ -152,7 +152,6 @@ the authored route changes, rather than copied on every map refresh.
 | [data/models/Classes.lua](data/models/Classes.lua)                           | Class/specialization IDs and locale-independent route keys. |
 | [data/models/Enums.lua](data/models/Enums.lua)                               | Shared clients, categories, expansions, and orders.         |
 | [data/models/Quest.lua](data/models/Quest.lua)                               | Priority of primary actions and quest/dialogue rules.       |
-| [integrations/NavigationEntrances.lua](integrations/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.     |
 
 ### Features and route engine
 
@@ -175,6 +174,7 @@ the authored route changes, rather than copied on every map refresh.
 | [features/navigation/Arrow.lua](features/navigation/Arrow.lua)                                       | Orientation, distance, visibility, and arrival at a configurable cadence.                         |
 | [features/navigation/FlightPath.lua](features/navigation/FlightPath.lua)                             | Taxi discoveries and route-requested flight selection.                                            |
 | [features/navigation/Map.lua](features/navigation/Map.lua)                                           | Map and minimap markers and lines using HereBeDragons.                                            |
+| [features/navigation/adapter/NavigationEntrances.lua](features/navigation/adapter/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.                                 |
 | [features/navigation/WorldCoordinateConverter.lua](features/navigation/WorldCoordinateConverter.lua) | Author conversion/export on detached copy; geometry of collection zones.                          |
 | [features/player/AFK.lua](features/player/AFK.lua)                                                   | Countdown and anchor; no `OnUpdate` once stopped.                                                 |
 | [features/player/Buff.lua](features/player/Buff.lua)                                                 | Route buffs via AuraContainer or per-request checks depending on capabilities.                    |
@@ -184,17 +184,26 @@ the authored route changes, rather than copied on every map refresh.
 | [features/group/Party.lua](features/group/Party.lua)                                                 | Group progression, rate-limited sending, and incoming fragments.                                  |
 | [features/group/PartyProtocol.lua](features/group/PartyProtocol.lua)                                 | Validation/copy of consumed fields, real sender, and bounded cost.                                |
 
+The XML manifests under [features/navigation/](features/navigation/) define the
+load order of each subsystem. Navigation, questing and group modules can use
+their feature's `Constants.lua`. Player modules, `RouteActions.lua` and
+utilities declare their constants at the top of the file after imports and module setup.
+
 ### Integrations
+
+Integrations are grouped by responsibility under [integrations/](integrations/).
+Appearance adapters share a registry. The other folders cover equipment,
+gamepad input and quest tracking.
 
 | File                                                                             | External boundary                                                               |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [features/navigation/NavigationTaxi.lua](features/navigation/NavigationTaxi.lua) | `LibTaxiData_API` facade, capability control, and login diagnostics.            |
-| [features/navigation/Navigation.lua](features/navigation/Navigation.lua)         | Transient guidance queue, incremental planning and independent arrival checks.  |
+| [features/navigation/NavigationTaxi.xml](features/navigation/NavigationTaxi.xml) | Taxi API facade, graph preparation, flight-master probes, and measurements.    |
+| [features/navigation/controller/](features/navigation/controller/)              | Transient guidance queue, incremental planning, and independent arrival checks. |
 | [libs/LibAPRNavigation-1.0/Search.lua](libs/LibAPRNavigation-1.0/Search.lua)     | Incremental shortest-time search with cumulative money and consumable budgets.  |
-| [integrations/SkinRegistry.lua](integrations/SkinRegistry.lua)                   | Low-level APR control registry, single provider, and out-of-combat application. |
-| [integrations/ElvUISkin.lua](integrations/ElvUISkin.lua)                         | ElvUI appearance and anchored panel backgrounds.                                |
-| [integrations/EllesmereUISkin.lua](integrations/EllesmereUISkin.lua)             | Public EUI API, updated theme fonts and colors.                                 |
-| [integrations/EllesmereUISettings.lua](integrations/EllesmereUISettings.lua)     | Private AceGUI pool: the APR skin does not propagate to other addons.           |
+| [integrations/appearance/SkinRegistry.lua](integrations/appearance/SkinRegistry.lua)                   | Low-level APR control registry, single provider, and out-of-combat application. |
+| [integrations/appearance/ElvUISkin.lua](integrations/appearance/ElvUISkin.lua)                         | ElvUI appearance and anchored panel backgrounds.                                |
+| [integrations/appearance/EllesmereUISkin.lua](integrations/appearance/EllesmereUISkin.lua)             | Public EUI API, updated theme fonts and colors.                                 |
+| [integrations/appearance/EllesmereUISettings.lua](integrations/appearance/EllesmereUISettings.lua)     | Private AceGUI pool: the APR skin does not propagate to other addons.           |
 
 ### Interface
 
@@ -501,7 +510,7 @@ probe serves the CurrentStep fallback; it stays dormant when the main observer e
 - APR owns the secure buttons, attributes, and callbacks; the skin modifies the appearance.
   Protected changes wait until combat ends.
 - Public EUI primitives and refreshed accents/fonts; bar colors remain consistent with APR options.
-- `integrations/QuestTracker.lua` resolves Blizzard, Questie and Kaliel's containers.
+- `integrations/quest-tracking/QuestTracker.lua` resolves Blizzard, Questie and Kaliel's containers.
   APR stays anchored to UIParent and never hooks Blizzard tracker layout callbacks. Below follows
   visible tracker content. Above keeps APR's top fixed and temporarily translates the
   tracker by the height of Current Step → AFK → Fillers → Quest Order List. Detaching,

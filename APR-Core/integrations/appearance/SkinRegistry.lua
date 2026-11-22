@@ -40,7 +40,7 @@ function APR:GetSelectedSkinName()
     return "wow"
 end--[[APR_DIAG]]
 APR.GetSelectedSkinName =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:19:APR:GetSelectedSkinName#1", APR.GetSelectedSkinName)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:19:APR:GetSelectedSkinName#1", APR.GetSelectedSkinName)--[[/APR_DIAG]]
 
 local scopeRoots = {
     CurrentStepScreenPanel = "currentStep",
@@ -62,7 +62,7 @@ function APR:GetSkinScope(frame)
         frame = frame.GetParent and frame:GetParent()
     end
 end--[[APR_DIAG]]
-APR.GetSkinScope = APRTrace("APR-Core/integrations/SkinRegistry.lua:36:APR:GetSkinScope#2", APR.GetSkinScope)--[[/APR_DIAG]]
+APR.GetSkinScope = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:36:APR:GetSkinScope#2", APR.GetSkinScope)--[[/APR_DIAG]]
 
 function APR:GetAppearanceProvider(scope)
     local choice = self.QuestTracker
@@ -71,7 +71,7 @@ function APR:GetAppearanceProvider(scope)
     return choice or self:GetSelectedSkinName()
 end--[[APR_DIAG]]
 APR.GetAppearanceProvider =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:44:APR:GetAppearanceProvider#3", APR.GetAppearanceProvider)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:44:APR:GetAppearanceProvider#3", APR.GetAppearanceProvider)--[[/APR_DIAG]]
 
 -- Skins keep persistent texture hooks; changing their scope needs a clean rebuild.
 function APR:AppearanceNeedsReload(previous, current)
@@ -80,11 +80,11 @@ function APR:AppearanceNeedsReload(previous, current)
             or name == "EllesmereUI"
             or (self.Themes and self.Themes[name] and self.Themes[name].style == "modern")
     end--[[APR_DIAG]]
-    needsRebuild = APRTrace("APR-Core/integrations/SkinRegistry.lua:51:needsRebuild#5", needsRebuild)--[[/APR_DIAG]]
+    needsRebuild = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:51:needsRebuild#5", needsRebuild)--[[/APR_DIAG]]
     return current ~= previous and (needsRebuild(previous) or needsRebuild(current))
 end--[[APR_DIAG]]
 APR.AppearanceNeedsReload =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:50:APR:AppearanceNeedsReload#4", APR.AppearanceNeedsReload)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:50:APR:AppearanceNeedsReload#4", APR.AppearanceNeedsReload)--[[/APR_DIAG]]
 
 function APR:ReloadChangedTrackerAppearance(scope, previous)
     if not self:AppearanceNeedsReload(previous, self:GetAppearanceProvider(scope)) then return false end
@@ -92,7 +92,7 @@ function APR:ReloadChangedTrackerAppearance(scope, previous)
     return true
 end--[[APR_DIAG]]
 APR.ReloadChangedTrackerAppearance = APRTrace(
-    "APR-Core/integrations/SkinRegistry.lua:58:APR:ReloadChangedTrackerAppearance#6",
+    "APR-Core/integrations/appearance/SkinRegistry.lua:58:APR:ReloadChangedTrackerAppearance#6",
     APR.ReloadChangedTrackerAppearance
 )--[[/APR_DIAG]]
 
@@ -112,7 +112,7 @@ function APR:ChangeTrackerOption(scope, key, value, onChanged, prepare)
         profile[key] = value
         return true
     end--[[APR_DIAG]]
-    apply = APRTrace("APR-Core/integrations/SkinRegistry.lua:73:apply#8", apply)--[[/APR_DIAG]]
+    apply = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:73:apply#8", apply)--[[/APR_DIAG]]
     if self:AppearanceNeedsReload(previous, current) then
         self:RequestReload(apply)
         return true
@@ -121,7 +121,7 @@ function APR:ChangeTrackerOption(scope, key, value, onChanged, prepare)
     return false
 end--[[APR_DIAG]]
 APR.ChangeTrackerOption =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:65:APR:ChangeTrackerOption#7", APR.ChangeTrackerOption)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:65:APR:ChangeTrackerOption#7", APR.ChangeTrackerOption)--[[/APR_DIAG]]
 
 function APR:IsSkinProviderUsed(name)
     if self:GetSelectedSkinName() == name then return true end
@@ -129,13 +129,13 @@ function APR:IsSkinProviderUsed(name)
     return profile and profile.currentStepAttachFrameToQuestLog and profile.currentStepTrackerAppearance == name
 end--[[APR_DIAG]]
 APR.IsSkinProviderUsed =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:87:APR:IsSkinProviderUsed#9", APR.IsSkinProviderUsed)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:87:APR:IsSkinProviderUsed#9", APR.IsSkinProviderUsed)--[[/APR_DIAG]]
 
 local function TargetProvider(frame, target)
     local name = APR:GetAppearanceProvider(target.options.scope or APR:GetSkinScope(frame))
     return providers[name] or (provider and provider.name ~= "ElvUI" and provider.name ~= "EllesmereUI" and provider)
 end--[[APR_DIAG]]
-TargetProvider = APRTrace("APR-Core/integrations/SkinRegistry.lua:93:TargetProvider#10", TargetProvider)--[[/APR_DIAG]]
+TargetProvider = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:93:TargetProvider#10", TargetProvider)--[[/APR_DIAG]]
 
 local function ApplyTarget(frame, target)
     if InCombatLockdown() then
@@ -156,7 +156,7 @@ local function ApplyTarget(frame, target)
     selected.apply(frame, target.kind, target.options)
     target.applied = true
 end--[[APR_DIAG]]
-ApplyTarget = APRTrace("APR-Core/integrations/SkinRegistry.lua:98:ApplyTarget#11", ApplyTarget)--[[/APR_DIAG]]
+ApplyTarget = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:98:ApplyTarget#11", ApplyTarget)--[[/APR_DIAG]]
 
 function APR:RegisterSkinTarget(frame, kind, options)
     if not frame then return end
@@ -168,7 +168,7 @@ function APR:RegisterSkinTarget(frame, kind, options)
     ApplyTarget(frame, target)
 end--[[APR_DIAG]]
 APR.RegisterSkinTarget =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:118:APR:RegisterSkinTarget#12", APR.RegisterSkinTarget)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:118:APR:RegisterSkinTarget#12", APR.RegisterSkinTarget)--[[/APR_DIAG]]
 
 function APR:RefreshRegisteredSkins(refreshNative)
     if refreshNative then
@@ -190,7 +190,7 @@ function APR:RefreshRegisteredSkins(refreshNative)
     if self.RefreshStatusBarColors then self:RefreshStatusBarColors() end
 end--[[APR_DIAG]]
 APR.RefreshRegisteredSkins =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:128:APR:RefreshRegisteredSkins#13", APR.RefreshRegisteredSkins)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:128:APR:RefreshRegisteredSkins#13", APR.RefreshRegisteredSkins)--[[/APR_DIAG]]
 
 function APR:GetSkinProviderName(scope)
     local selected = providers[self:GetAppearanceProvider(scope)]
@@ -198,10 +198,10 @@ function APR:GetSkinProviderName(scope)
     return selected and selected.enabled() and selected.name or nil
 end--[[APR_DIAG]]
 APR.GetSkinProviderName =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:141:APR:GetSkinProviderName#14", APR.GetSkinProviderName)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:141:APR:GetSkinProviderName#14", APR.GetSkinProviderName)--[[/APR_DIAG]]
 
 function APR:AreSkinsPending() return pending end--[[APR_DIAG]]
-APR.AreSkinsPending = APRTrace("APR-Core/integrations/SkinRegistry.lua:147:APR:AreSkinsPending#15", APR.AreSkinsPending)--[[/APR_DIAG]]
+APR.AreSkinsPending = APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:147:APR:AreSkinsPending#15", APR.AreSkinsPending)--[[/APR_DIAG]]
 
 function APR:RegisterSkinProvider(name, apply, enabled)
     -- A reload is required to change providers; never stack two skins on a control.
@@ -221,7 +221,7 @@ function APR:RegisterSkinProvider(name, apply, enabled)
     return true
 end--[[APR_DIAG]]
 APR.RegisterSkinProvider =
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:149:APR:RegisterSkinProvider#16", APR.RegisterSkinProvider)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:149:APR:RegisterSkinProvider#16", APR.RegisterSkinProvider)--[[/APR_DIAG]]
 
 -- Only the small set of APR windows is enumerated, never UIParent or quest rows.
 function APR:RegisterStaticSkinTargets()
@@ -263,7 +263,7 @@ function APR:RegisterStaticSkinTargets()
     end
 end--[[APR_DIAG]]
 APR.RegisterStaticSkinTargets = APRTrace(
-    "APR-Core/integrations/SkinRegistry.lua:161:APR:RegisterStaticSkinTargets#17",
+    "APR-Core/integrations/appearance/SkinRegistry.lua:161:APR:RegisterStaticSkinTargets#17",
     APR.RegisterStaticSkinTargets
 )--[[/APR_DIAG]]
 
@@ -271,7 +271,7 @@ local events = CreateFrame("Frame")
 events:RegisterEvent("PLAYER_REGEN_ENABLED")
 events:SetScript(
     "OnEvent", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/SkinRegistry.lua:189:callback#18", --[[/APR_DIAG]] function()
+    APRTrace("APR-Core/integrations/appearance/SkinRegistry.lua:189:callback#18", --[[/APR_DIAG]] function()
         if pending then
             if pendingFullRefresh then
                 -- An explicit theme/provider change still needs the complete refresh.

@@ -79,7 +79,7 @@ function APR:GetSettingsProfile() return self.settings.profile end
 
 dofile("APR-Core/ui/foundations/StatusBars.lua")
 
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 local events = frames[1]
 local calls = {}
 local S = {}
@@ -110,7 +110,7 @@ function S:HandleIcon(texture) record("icon", texture) end
 function S:HandleEditBox(frame) record("editbox", frame) end
 
 ElvUI = { { GetModule = function() return S end } }
-dofile("APR-Core/integrations/ElvUISkin.lua")
+dofile("APR-Core/integrations/appearance/ElvUISkin.lua")
 local preset, arrow, scroll, close, item, icon =
     CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame()
 local clicked = 0
@@ -174,18 +174,18 @@ print(
 
 -- EllesmereUI owns registration timing and its per-addon preference.
 ElvUI, EllesmereUI = nil, nil
-dofile("APR-Core/integrations/EllesmereUISkin.lua")
+dofile("APR-Core/integrations/appearance/EllesmereUISkin.lua")
 EllesmereUI = {} -- Older versions without the public API remain harmless.
-dofile("APR-Core/integrations/EllesmereUISkin.lua")
+dofile("APR-Core/integrations/appearance/EllesmereUISkin.lua")
 assert(not APR.EllesmereUISkin)
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 events = frames[#frames]
 local callback, euiEnabled
 EllesmereUI.RegisterSkin = function(name, apply)
     assert(name == "APR")
     callback = apply
 end
-dofile("APR-Core/integrations/EllesmereUISkin.lua")
+dofile("APR-Core/integrations/appearance/EllesmereUISkin.lua")
 assert(callback, "Register through the public API, not private EUI globals")
 local eui = { IsEnabled = function() return euiEnabled end }
 for _, kind in ipairs({
@@ -404,8 +404,8 @@ ElvUI = { { GetModule = function() return S end } }
 CurrentStepScreenPanel = CreateFrame()
 local guideButton, globalButton = CreateFrame(), CreateFrame()
 function guideButton:GetParent() return CurrentStepScreenPanel end
-dofile("APR-Core/integrations/SkinRegistry.lua")
-dofile("APR-Core/integrations/ElvUISkin.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/ElvUISkin.lua")
 APR.ElvUISkin:OnEnable()
 APR:RegisterSkinTarget(guideButton, "button")
 APR:RegisterSkinTarget(globalButton, "button")
@@ -436,8 +436,8 @@ print("PASS: real ElvUI/EllesmereUI coexistence, explicit tracker override, isol
 
 APR.settings.profile.elvuiSkin, APR.settings.profile.ellesmereuiSkin = false, true
 APR.settings.profile.currentStepTrackerAppearance = "ElvUI"
-dofile("APR-Core/integrations/SkinRegistry.lua")
-dofile("APR-Core/integrations/EllesmereUISkin.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/EllesmereUISkin.lua")
 local elvGuide, euiGlobal = CreateFrame(), CreateFrame()
 function elvGuide:GetParent() return CurrentStepScreenPanel end
 APR.ElvUISkin:OnEnable()

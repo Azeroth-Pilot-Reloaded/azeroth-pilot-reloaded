@@ -11,6 +11,8 @@ local LibWindow = LibStub("LibWindow-1.1")
 
 APR.heirloom = APR:NewModule("Heirloom")
 
+local WARBAND_MAP_SPELL_ID = 431280
+
 APR.heirloom.buttons = {}
 APR.heirloom.iconButtons = {}
 APR.heirloom._pendingCombatRefresh = false
@@ -19,7 +21,7 @@ APR.heirloom._combatWatcher = nil
 -- Keep immutable declarations lazy on clients where this feature never opens.
 -- Ownership and faction are still read live on every refresh.
 local heirlooms
-local WARBAND_MAP_SPELL_ID = 431280
+
 local mapSpells = {}
 local pendingMapItems = {}
 

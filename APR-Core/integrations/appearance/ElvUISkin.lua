@@ -27,7 +27,7 @@ local function IsElvUISkinEnabled()
     end
     return APR.settings.profile.elvuiSkin ~= false
 end--[[APR_DIAG]]
-IsElvUISkinEnabled = APRTrace("APR-Core/integrations/ElvUISkin.lua:23:IsElvUISkinEnabled#1", IsElvUISkinEnabled)--[[/APR_DIAG]]
+IsElvUISkinEnabled = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:23:IsElvUISkinEnabled#1", IsElvUISkinEnabled)--[[/APR_DIAG]]
 
 -- These media colors also drive ElvUI's own buttons; decorative APR regions use the same live palette.
 local stripeColor = { 0.2, 0.2, 0.2, 1 }
@@ -40,26 +40,26 @@ function APR.ElvUISkin:GetThemeColor(role)
     if role == "surface" then return E.media.backdropcolor or E.media.backdropfadecolor end
 end--[[APR_DIAG]]
 APR.ElvUISkin.GetThemeColor =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:33:APR.ElvUISkin:GetThemeColor#2", APR.ElvUISkin.GetThemeColor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:33:APR.ElvUISkin:GetThemeColor#2", APR.ElvUISkin.GetThemeColor)--[[/APR_DIAG]]
 
 local function IsSkinned(frame)
     return frame and skinnedFrames[frame]
 end--[[APR_DIAG]]
-IsSkinned = APRTrace("APR-Core/integrations/ElvUISkin.lua:42:IsSkinned#3", IsSkinned)--[[/APR_DIAG]]
+IsSkinned = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:42:IsSkinned#3", IsSkinned)--[[/APR_DIAG]]
 
 local function MarkSkinned(frame)
     if frame then
         skinnedFrames[frame] = true
     end
 end--[[APR_DIAG]]
-MarkSkinned = APRTrace("APR-Core/integrations/ElvUISkin.lua:46:MarkSkinned#4", MarkSkinned)--[[/APR_DIAG]]
+MarkSkinned = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:46:MarkSkinned#4", MarkSkinned)--[[/APR_DIAG]]
 
 --- Check if the current step frame is attached to the quest log (ObjectiveTracker)
 ---@return boolean
 local function IsAttachedToQuestLog()
     return APR.settings and APR.settings.profile and APR.settings.profile.currentStepAttachFrameToQuestLog
 end--[[APR_DIAG]]
-IsAttachedToQuestLog = APRTrace("APR-Core/integrations/ElvUISkin.lua:54:IsAttachedToQuestLog#5", IsAttachedToQuestLog)--[[/APR_DIAG]]
+IsAttachedToQuestLog = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:54:IsAttachedToQuestLog#5", IsAttachedToQuestLog)--[[/APR_DIAG]]
 
 --- When ElvUI skin is active and attached to quest log, keep snapped AFK backdrop transparent.
 local function UpdateSnappedBackdrops()
@@ -158,7 +158,7 @@ local function UpdateSnappedBackdrops()
     isApplyingBackdropOverride = false
 end--[[APR_DIAG]]
 UpdateSnappedBackdrops =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:60:UpdateSnappedBackdrops#6", UpdateSnappedBackdrops)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:60:UpdateSnappedBackdrops#6", UpdateSnappedBackdrops)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Core Skinning Helpers ----------------------------------
@@ -173,7 +173,7 @@ local function SkinButton(button)
     end
     MarkSkinned(button)
 end--[[APR_DIAG]]
-SkinButton = APRTrace("APR-Core/integrations/ElvUISkin.lua:161:SkinButton#7", SkinButton)--[[/APR_DIAG]]
+SkinButton = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:161:SkinButton#7", SkinButton)--[[/APR_DIAG]]
 
 --- Skin the current-step settings icon without converting it to a boxed button.
 --- Keeping native icon textures avoids the black-square artifact with ElvUI HandleButton.
@@ -186,7 +186,7 @@ local function SkinSettingsIconButton(button)
     MarkSkinned(button)
 end--[[APR_DIAG]]
 SkinSettingsIconButton =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:172:SkinSettingsIconButton#8", SkinSettingsIconButton)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:172:SkinSettingsIconButton#8", SkinSettingsIconButton)--[[/APR_DIAG]]
 
 --- Skin a UIPanelCloseButton
 ---@param button table
@@ -197,7 +197,7 @@ local function SkinCloseButton(button)
     end
     MarkSkinned(button)
 end--[[APR_DIAG]]
-SkinCloseButton = APRTrace("APR-Core/integrations/ElvUISkin.lua:182:SkinCloseButton#9", SkinCloseButton)--[[/APR_DIAG]]
+SkinCloseButton = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:182:SkinCloseButton#9", SkinCloseButton)--[[/APR_DIAG]]
 
 --- Force ObjectiveTracker "secondary" minimize visuals on APR headers when ElvUI skin is enabled.
 ---@param button table
@@ -225,7 +225,7 @@ local function SkinSecondaryMinimizeButton(button, parentFrame)
             highlight:SetAtlas("ui-questtrackerbutton-yellow-highlight")
         end
     end--[[APR_DIAG]]
-    ApplyAtlasState = APRTrace("APR-Core/integrations/ElvUISkin.lua:196:ApplyAtlasState#11", ApplyAtlasState)--[[/APR_DIAG]]
+    ApplyAtlasState = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:196:ApplyAtlasState#11", ApplyAtlasState)--[[/APR_DIAG]]
 
     ApplyAtlasState()
     if button.HookScript then
@@ -234,7 +234,7 @@ local function SkinSecondaryMinimizeButton(button, parentFrame)
     button.__APRSecondaryMinimizeSkinned = true
 end--[[APR_DIAG]]
 SkinSecondaryMinimizeButton =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:193:SkinSecondaryMinimizeButton#10", SkinSecondaryMinimizeButton)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:193:SkinSecondaryMinimizeButton#10", SkinSecondaryMinimizeButton)--[[/APR_DIAG]]
 
 --- Skin an ObjectiveTracker-style header
 ---@param header table
@@ -248,7 +248,7 @@ local function SkinOTHeader(header)
     end
     MarkSkinned(header)
 end--[[APR_DIAG]]
-SkinOTHeader = APRTrace("APR-Core/integrations/ElvUISkin.lua:226:SkinOTHeader#12", SkinOTHeader)--[[/APR_DIAG]]
+SkinOTHeader = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:226:SkinOTHeader#12", SkinOTHeader)--[[/APR_DIAG]]
 
 -- Creation is handled by SkinRegistry; only snap geometry still needs hooks.
 local function HookDynamicFrames()
@@ -258,7 +258,7 @@ local function HookDynamicFrames()
             APR.currentStep,
             "RefreshCurrentStepFrameAnchor", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/ElvUISkin.lua:241:callback#14", --[[/APR_DIAG]]
+                "APR-Core/integrations/appearance/ElvUISkin.lua:241:callback#14", --[[/APR_DIAG]]
                 function()
                     UpdateSnappedBackdrops()
                 end --[[APR_DIAG]]
@@ -271,7 +271,7 @@ local function HookDynamicFrames()
             APR.currentStep,
             "UpdateBackgroundColorAlpha", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/ElvUISkin.lua:247:callback#15", --[[/APR_DIAG]]
+                "APR-Core/integrations/appearance/ElvUISkin.lua:247:callback#15", --[[/APR_DIAG]]
                 function()
                     UpdateSnappedBackdrops()
                 end --[[APR_DIAG]]
@@ -284,7 +284,7 @@ local function HookDynamicFrames()
             APR.AFK,
             "RefreshFrameAnchor", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/ElvUISkin.lua:253:callback#16", --[[/APR_DIAG]]
+                "APR-Core/integrations/appearance/ElvUISkin.lua:253:callback#16", --[[/APR_DIAG]]
                 function()
                     UpdateSnappedBackdrops()
                 end --[[APR_DIAG]]
@@ -292,7 +292,7 @@ local function HookDynamicFrames()
         )
     end
 end--[[APR_DIAG]]
-HookDynamicFrames = APRTrace("APR-Core/integrations/ElvUISkin.lua:238:HookDynamicFrames#13", HookDynamicFrames)--[[/APR_DIAG]]
+HookDynamicFrames = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:238:HookDynamicFrames#13", HookDynamicFrames)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Module Initialization ----------------------------------
@@ -367,7 +367,7 @@ local function SkinRegisteredTarget(frame, kind, options)
         MarkSkinned(frame)
     end
 end--[[APR_DIAG]]
-SkinRegisteredTarget = APRTrace("APR-Core/integrations/ElvUISkin.lua:264:SkinRegisteredTarget#17", SkinRegisteredTarget)--[[/APR_DIAG]]
+SkinRegisteredTarget = APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:264:SkinRegisteredTarget#17", SkinRegisteredTarget)--[[/APR_DIAG]]
 
 local hooksInstalled = false
 function APR.ElvUISkin:OnEnable()
@@ -382,7 +382,7 @@ function APR.ElvUISkin:OnEnable()
                 E,
                 "UpdateMedia", --[[APR_DIAG]]
                 APRTrace(
-                    "APR-Core/integrations/ElvUISkin.lua:334:callback#19", --[[/APR_DIAG]]
+                    "APR-Core/integrations/appearance/ElvUISkin.lua:334:callback#19", --[[/APR_DIAG]]
                     function() APR:RefreshRegisteredSkins() end --[[APR_DIAG]]
                 ) --[[/APR_DIAG]]
             )
@@ -392,7 +392,7 @@ function APR.ElvUISkin:OnEnable()
     UpdateSnappedBackdrops()
 end--[[APR_DIAG]]
 APR.ElvUISkin.OnEnable =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:326:APR.ElvUISkin:OnEnable#18", APR.ElvUISkin.OnEnable)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:326:APR.ElvUISkin:OnEnable#18", APR.ElvUISkin.OnEnable)--[[/APR_DIAG]]
 
 --- Re-apply skins (called when the setting is toggled on)
 function APR.ElvUISkin:ApplySkins()
@@ -404,4 +404,4 @@ function APR.ElvUISkin:ApplySkins()
     UpdateSnappedBackdrops()
 end--[[APR_DIAG]]
 APR.ElvUISkin.ApplySkins =
-    APRTrace("APR-Core/integrations/ElvUISkin.lua:342:APR.ElvUISkin:ApplySkins#20", APR.ElvUISkin.ApplySkins)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/ElvUISkin.lua:342:APR.ElvUISkin:ApplySkins#20", APR.ElvUISkin.ApplySkins)--[[/APR_DIAG]]

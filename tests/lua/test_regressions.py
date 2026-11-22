@@ -17,6 +17,7 @@ def run_lua_suite(path: Path) -> LuaRuntime:
     previous = Path.cwd()
     try:
         os.chdir(ROOT)
+        runtime.execute('dofile = dofile("tests/lua/feature_loader.lua")(dofile, _G)')
         runtime.execute(path.read_text(encoding="utf-8"), name="@" + path.relative_to(ROOT).as_posix())
     finally:
         os.chdir(previous)

@@ -48,7 +48,7 @@ retain their normalized coordinate limits.
 | `AzerothWaypoint.lua`                                     | Independent guide-provider wrapper, metadata preservation, provider arbitration and combat-safe release |
 | `Data/retail/`, `Data/forever/`                           | Positions, directions, costs and requirements, separated by client and transport type                   |
 | APR `NavigationAdapter.lua`                               | WoW API access, client locale/names, bind/house observations and character settings                     |
-| APR `integrations/NavigationEntrances.lua`                | Lazy compatibility facade over the library entrance registry; contains no coordinates                   |
+| APR `features/navigation/adapter/NavigationEntrances.lua`            | Lazy compatibility facade over the library entrance registry; contains no coordinates                   |
 | APR `Navigation.lua`, `NavigationTaxi.lua`, `Preview.lua` | Route lifecycle, character taxi knowledge, secure buttons and rendering                                 |
 | APR `NavigationPlanner.lua`                               | One scheduler for preparation, search, optional probes and guidance rows                                |
 

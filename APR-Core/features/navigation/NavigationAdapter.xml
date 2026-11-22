@@ -1,0 +1,12 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="NavigationAdapter.lua" />
+    <Script file="adapter/NavigationAdapterLocations.lua" />
+    <Script file="adapter/NavigationAdapterCharacter.lua" />
+    <Script file="adapter/NavigationAdapterQuests.lua" />
+    <Script file="adapter/NavigationAdapterActions.lua" />
+    <Script file="adapter/NavigationAdapterWaypoints.lua" />
+    <Script file="adapter/NavigationAdapterData.lua" />
+    <Script file="adapter/NavigationAdapterWaypointActivity.lua" />
+    <Script file="adapter/NavigationAdapterEvents.lua" />
+    <Script file="adapter/NavigationEntrances.lua" />
+</Ui>

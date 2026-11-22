@@ -128,11 +128,11 @@ GAMEOPTIONS_MENU, KEY_BINDINGS = "Options", "Key Bindings"
 local function defaultMenuBinding() return "PAD4" end
 GetBindingKey = defaultMenuBinding
 APR.title = "APR"
-dofile("APR-Core/integrations/Gamepad.lua")
-dofile("APR-Core/integrations/GamepadNavigation.lua")
-dofile("APR-Core/integrations/GamepadControls.lua")
-dofile("APR-Core/integrations/GamepadInput.lua")
-dofile("APR-Core/integrations/GamepadMenu.lua")
+dofile("APR-Core/integrations/gamepad/Gamepad.lua")
+dofile("APR-Core/integrations/gamepad/GamepadNavigation.lua")
+dofile("APR-Core/integrations/gamepad/GamepadControls.lua")
+dofile("APR-Core/integrations/gamepad/GamepadInput.lua")
+dofile("APR-Core/integrations/gamepad/GamepadMenu.lua")
 dofile("APR-Core/ui/panels/Workspace.lua")
 for _, name in ipairs({ "StatusPanel", "AboutPanel", "OptionsPanel", "PerformanceDashboard" }) do
     APR[name] = {

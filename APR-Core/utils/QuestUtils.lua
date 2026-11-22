@@ -8,8 +8,9 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local questTitleRequests = {}
 local QUEST_TITLE_RETRY_DELAY = 30
+
+local questTitleRequests = {}
 
 function APR:RequiresManualQuestReward()
     local isForever = self:GetGameVersion() == self.GAME_VERSIONS.Forever

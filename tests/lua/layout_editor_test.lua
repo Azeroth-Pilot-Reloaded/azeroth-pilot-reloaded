@@ -25,7 +25,7 @@ function APR:SetupFrameDrag(frame, guard, stopped)
     frame.endDrag = function() stopped(frame) end
 end
 dofile("APR-Core/utils/Utils.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/panels/LayoutEditor.lua")

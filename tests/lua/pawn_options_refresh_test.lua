@@ -135,7 +135,7 @@ function PawnGetSingleValueFromItem() return 0, 0 end
 function PawnImportScale(name) PawnCommon.Scales[name] = { Values = { Intellect = 4 }, ClassID = 8 } end
 function PawnDeleteScale(name) PawnCommon.Scales[name] = nil end
 dofile("APR-Core/utils/ProfileUtils.lua")
-dofile("APR-Core/integrations/Pawn.lua")
+dofile("APR-Core/integrations/equipment/Pawn.lua")
 dofile("APR-Core/ui/panels/OptionsPanel.lua")
 local pawn, panel = APR.PawnRewards, APR.OptionsPanel
 pawn:OnEnable()

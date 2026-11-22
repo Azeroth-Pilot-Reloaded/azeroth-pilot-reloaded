@@ -6,6 +6,8 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Owns group-progress presentation, throttled snapshots and incoming fragment reassembly.
 -- Pooled rows retain APR ownership; incomplete messages expire without retaining a permanent ticker.
 
+local Constants = APR.GroupConstants.Party
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
@@ -15,20 +17,7 @@ APR.party = APR:NewModule("Party")
 local AceSerializer = _G.LibStub("AceSerializer-3.0")
 
 --Local constant
-local FRAME_WIDTH = 250
-local MIN_ROW_HEIGHT = 40
-local ROW_PADDING = 6
-local ROW_TEXT_GAP = 2
-local MAX_FRAGMENT_COUNT = 128 -- Bound an incomplete group snapshot to 23 KiB.
-local GROUP_SEND_THROTTLE = 2
-local GROUP_SEND_COALESCE = 0.5
-local GROUP_REQUEST_THROTTLE = 5
-local MAX_OUTGOING_BYTES = 2048 -- Optional tooltip rows never grow the progression stream beyond 2 KiB.
-local MAX_TOOLTIP_ROWS = 128
-local MAX_PENDING_MESSAGES = 80 -- Two snapshots per raid member, at most.
-local FRAGMENT_TTL = 10
-local FRAGMENT_SWEEP_INTERVAL = 5
-local TOOLTIP_FIELDS = { "extraLines", "questSteps" }
+
 local UpdateGroupStep
 local rosterMembers, rosterTimestamp, rosterRaid = {}, nil, nil
 
@@ -82,7 +71,7 @@ GetGroupRoster = APRTrace("APR-Core/features/group/Party.lua:55:GetGroupRoster#3
 ---------------------------------------------------------------------------------------
 
 local PartyFrame = CreateFrame("Frame", "PartyScreenPanel", UIParent, "BackdropTemplate")
-PartyFrame:SetSize(FRAME_WIDTH, 1)
+PartyFrame:SetSize(Constants.FRAME_WIDTH, 1)
 PartyFrame:SetFrameStrata("LOW")
 PartyFrame:SetClampedToScreen(true)
 
@@ -393,7 +382,7 @@ local function AcquireTeamContainer()
         APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
     end
 
-    container:SetWidth(FRAME_WIDTH)
+    container:SetWidth(Constants.FRAME_WIDTH)
     container.layoutDirty = true
     return container
 end--[[APR_DIAG]]
@@ -421,26 +410,26 @@ local function LayoutTeamContainer(container)
     if modernList and APR.UI and APR.UI.StyleListRow and not container.aprListRow then
         APR.UI:StyleListRow(container, nil, "party", true)
     end
-    local inset = modernList and 12 or ROW_PADDING
+    local inset = modernList and 12 or Constants.ROW_PADDING
     local indexWidth = container.fontIndex:GetStringWidth()
     if container.layoutInset ~= inset then
         container.fontIndex:ClearAllPoints()
-        container.fontIndex:SetPoint("TOPRIGHT", -inset, -ROW_PADDING)
+        container.fontIndex:SetPoint("TOPRIGHT", -inset, -Constants.ROW_PADDING)
         container.fontName:ClearAllPoints()
-        container.fontName:SetPoint("TOPLEFT", inset, -ROW_PADDING)
+        container.fontName:SetPoint("TOPLEFT", inset, -Constants.ROW_PADDING)
     end
     if container.layoutInset ~= inset or container.layoutIndexWidth ~= indexWidth then
-        container.fontName:SetWidth(math.max(1, FRAME_WIDTH - inset * 2 - indexWidth - 10))
+        container.fontName:SetWidth(math.max(1, Constants.FRAME_WIDTH - inset * 2 - indexWidth - 10))
     end
     local titleHeight = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight())
     if container.layoutInset ~= inset or container.layoutTitleHeight ~= titleHeight then
         container.fontStatus:ClearAllPoints()
-        container.fontStatus:SetPoint("TOPLEFT", inset, -(ROW_PADDING + titleHeight + ROW_TEXT_GAP))
-        container.fontStatus:SetWidth(FRAME_WIDTH - inset * 2)
+        container.fontStatus:SetPoint("TOPLEFT", inset, -(Constants.ROW_PADDING + titleHeight + Constants.ROW_TEXT_GAP))
+        container.fontStatus:SetWidth(Constants.FRAME_WIDTH - inset * 2)
     end
     container.layoutInset, container.layoutIndexWidth, container.layoutTitleHeight = inset, indexWidth, titleHeight
     container.desiredHeight =
-        math.max(MIN_ROW_HEIGHT, ROW_PADDING * 2 + titleHeight + ROW_TEXT_GAP + container.fontStatus:GetStringHeight())
+        math.max(Constants.MIN_ROW_HEIGHT, Constants.ROW_PADDING * 2 + titleHeight + Constants.ROW_TEXT_GAP + container.fontStatus:GetStringHeight())
     container.layoutDirty = nil
     return container.desiredHeight
 end--[[APR_DIAG]]
@@ -577,7 +566,7 @@ function APR.party:ReOrderTeam()
         self.orderedNames, self.orderDirty = orderedNames, nil
     end
 
-    local rowHeight = MIN_ROW_HEIGHT
+    local rowHeight = Constants.MIN_ROW_HEIGHT
     for _, name in ipairs(orderedNames) do
         rowHeight = math.max(rowHeight, LayoutTeamContainer(self.teamList[name]))
     end
@@ -737,7 +726,7 @@ function APR.party:SyncGroupRoster(force)
     -- Retrying before the request cooldown elapses silently drops the request,
     -- leaving a peer whose first response was lost undiscovered indefinitely.
     self.groupSyncTimer = C_Timer.NewTimer(
-        GROUP_REQUEST_THROTTLE, --[[APR_DIAG]]
+        Constants.GROUP_REQUEST_THROTTLE, --[[APR_DIAG]]
         APRTrace("APR-Core/features/group/Party.lua:631:callback#29", --[[/APR_DIAG]] function()
             self.groupSyncTimer = nil
             if CanShareGroupProgress() then
@@ -814,7 +803,7 @@ APR.party.SendGroupMessage =
 
 function APR.party:BuildGroupPayload(username)
     local routeFileName = APR.ActiveRoute
-    local stepDetails = APR.currentStep:GetCurrentStepDetails(false, MAX_TOOLTIP_ROWS, MAX_OUTGOING_BYTES)
+    local stepDetails = APR.currentStep:GetCurrentStepDetails(false, Constants.MAX_TOOLTIP_ROWS, Constants.MAX_OUTGOING_BYTES)
     local route
     if routeFileName then
         route = APR:GetRouteDisplayName(routeFileName) or routeFileName
@@ -844,20 +833,20 @@ local function SerializeGroupPayload(data)
     -- Bound local tooltip work before sanitizing or serializing oversized rows.
     local details = data.stepFrameDetails
     local textBytes, rows = 0, 0
-    for _, field in ipairs(TOOLTIP_FIELDS) do
+    for _, field in ipairs(Constants.TOOLTIP_FIELDS) do
         if details and details[field] then
             for _, row in ipairs(details[field]) do
                 rows, textBytes = rows + 1, textBytes + #row.text
-                if rows > MAX_TOOLTIP_ROWS or textBytes > MAX_OUTGOING_BYTES then break end
+                if rows > Constants.MAX_TOOLTIP_ROWS or textBytes > Constants.MAX_OUTGOING_BYTES then break end
                 if row.subSteps then
                     for _, sub in ipairs(row.subSteps) do
                         rows, textBytes = rows + 1, textBytes + #sub.text
-                        if rows > MAX_TOOLTIP_ROWS or textBytes > MAX_OUTGOING_BYTES then break end
+                        if rows > Constants.MAX_TOOLTIP_ROWS or textBytes > Constants.MAX_OUTGOING_BYTES then break end
                     end
                 end
             end
         end
-        if rows > MAX_TOOLTIP_ROWS or textBytes > MAX_OUTGOING_BYTES then break end
+        if rows > Constants.MAX_TOOLTIP_ROWS or textBytes > Constants.MAX_OUTGOING_BYTES then break end
     end
     local candidate = {
         username = data.username,
@@ -867,7 +856,7 @@ local function SerializeGroupPayload(data)
         totalSteps = data.totalSteps,
         routeProgress = data.routeProgress,
         sojournerSkipCampaign = data.sojournerSkipCampaign,
-        stepFrameDetails = details and textBytes <= MAX_OUTGOING_BYTES and rows <= MAX_TOOLTIP_ROWS and {
+        stepFrameDetails = details and textBytes <= Constants.MAX_OUTGOING_BYTES and rows <= Constants.MAX_TOOLTIP_ROWS and {
             extraLines = details.extraLines,
             questSteps = details.questSteps,
         } or {},
@@ -883,11 +872,11 @@ local function SerializeGroupPayload(data)
     -- warnings, including snapshots whose oversized tooltip was discarded.
     wire.sojournerSkipCampaign = wire.sojournerSkipCampaign or nil
     local serialized = AceSerializer:Serialize(wire)
-    if #serialized > MAX_OUTGOING_BYTES then
+    if #serialized > Constants.MAX_OUTGOING_BYTES then
         wire.stepFrameDetails = {}
         serialized = AceSerializer:Serialize(wire)
     end
-    if #serialized <= MAX_OUTGOING_BYTES then return serialized end
+    if #serialized <= Constants.MAX_OUTGOING_BYTES then return serialized end
 end--[[APR_DIAG]]
 SerializeGroupPayload =
     APRTrace("APR-Core/features/group/Party.lua:715:SerializeGroupPayload#34", SerializeGroupPayload)--[[/APR_DIAG]]
@@ -909,7 +898,7 @@ function APR.party:SendGroupMessageNow()
     end
     if
         self.groupSendInFlight
-        or (self.lastGroupSendTime and GetTime() - self.lastGroupSendTime < GROUP_SEND_THROTTLE)
+        or (self.lastGroupSendTime and GetTime() - self.lastGroupSendTime < Constants.GROUP_SEND_THROTTLE)
     then
         self:QueueGroupMessage(self.pendingGroupResend)
         return
@@ -967,7 +956,7 @@ function APR.party:QueueGroupMessage(force)
     self.pendingGroupResend = self.pendingGroupResend or force
     if self.groupSendInFlight or self.groupSendTimer then return end
 
-    local delay = self.lastGroupSendTime and math.max(0, GROUP_SEND_THROTTLE - (GetTime() - self.lastGroupSendTime))
+    local delay = self.lastGroupSendTime and math.max(0, Constants.GROUP_SEND_THROTTLE - (GetTime() - self.lastGroupSendTime))
         or 0
     -- A forced response bypasses deduplication, never the send-frequency limit.
     if force and delay == 0 then
@@ -975,7 +964,7 @@ function APR.party:QueueGroupMessage(force)
         return
     end
     self.groupSendTimer = C_Timer.NewTimer(
-        math.max(GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]
+        math.max(Constants.GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]
         APRTrace("APR-Core/features/group/Party.lua:829:callback#39", --[[/APR_DIAG]] function()
             self.groupSendTimer = nil
             if self.pendingGroupSend then self:SendGroupMessageNow() end
@@ -990,7 +979,7 @@ function APR.party:SendGroupMessageDelete()
     if
         username
         and CanShareGroupProgress()
-        and (not self.lastGroupDeleteTime or GetTime() - self.lastGroupDeleteTime >= GROUP_SEND_THROTTLE)
+        and (not self.lastGroupDeleteTime or GetTime() - self.lastGroupDeleteTime >= Constants.GROUP_SEND_THROTTLE)
     then
         self.lastGroupDeleteTime = GetTime()
         C_ChatInfo.SendAddonMessage("APRPartyDelete", username, GetGroupChannel())
@@ -1100,7 +1089,7 @@ UpdateGroupStep = --[[APR_DIAG]]
     end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 function APR.party:UpdateGroupListing(message, sender)
-    if type(message) ~= "string" or #message > MAX_FRAGMENT_COUNT * 180 then return false end
+    if type(message) ~= "string" or #message > Constants.MAX_FRAGMENT_COUNT * 180 then return false end
     local senderKey = APR.PartyProtocol.PlayerKey(sender)
     if senderKey and self.lastReceivedMessages[senderKey] == message then return true end
     local started = APR:StartPerformanceSample()
@@ -1188,7 +1177,7 @@ function APR.party:StartFragmentCleanupTicker()
     end
 
     self.fragmentCleanupTicker = C_Timer.NewTicker(
-        FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]
+        Constants.FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]
         APRTrace(
             "APR-Core/features/group/Party.lua:993:callback#47", --[[/APR_DIAG]]
             function()
@@ -1234,7 +1223,7 @@ function APR.party:HandleMessageFragment(message, sender)
         or not total
         or index < 1
         or index > total
-        or total > MAX_FRAGMENT_COUNT
+        or total > Constants.MAX_FRAGMENT_COUNT
         or #part > 180
     then
         return
@@ -1254,14 +1243,14 @@ function APR.party:HandleMessageFragment(message, sender)
             pending = pending + 1
             if record.sender == sender then fromSender = fromSender + 1 end
         end
-        if pending >= MAX_PENDING_MESSAGES or fromSender >= 2 then return end
+        if pending >= Constants.MAX_PENDING_MESSAGES or fromSender >= 2 then return end
         fragments = { total = total, count = 0, parts = {}, sender = sender }
         self.incomingFragments[key] = fragments
     end
     if fragments.parts[index] then return end
     fragments.parts[index] = part
     fragments.count = fragments.count + 1
-    self.fragmentExpiry[key] = GetTime() + FRAGMENT_TTL
+    self.fragmentExpiry[key] = GetTime() + Constants.FRAGMENT_TTL
 
     if fragments.count == total then
         self.incomingFragments[key] = nil
@@ -1289,7 +1278,7 @@ function APR.party:RequestData()
         return
     end
     local now = GetTime()
-    if self.lastGroupRequestTime and now - self.lastGroupRequestTime < GROUP_REQUEST_THROTTLE then return end
+    if self.lastGroupRequestTime and now - self.lastGroupRequestTime < Constants.GROUP_REQUEST_THROTTLE then return end
     self.lastGroupRequestTime = now
     C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
 end--[[APR_DIAG]]

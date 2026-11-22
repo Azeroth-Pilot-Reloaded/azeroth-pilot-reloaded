@@ -11,6 +11,10 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Improved zone detection with caching and hierarchy support.
 ---=============================================================================
 
+-- Bound ancestry walks even when the client returns a cycle.
+local MAX_MAP_ANCESTRY_DEPTH = 50
+local PLAYER_CONTEXT_CACHE_SECONDS = 1
+
 local function HasMapApi()
     return C_Map and C_Map.GetBestMapForUnit and C_Map.GetMapInfo
 end--[[APR_DIAG]]
@@ -121,11 +125,11 @@ function APR:InitZoneDetectionCache()
     if self.ZoneDetection then return end
 
     self.ZoneDetection = {
-        -- Cache: player zone context (TTL = 1 second)
+        -- Short-lived player zone context
         playerContextCache = {
             mapIDs = {},
             timestamp = 0,
-            ttl = 1,
+            ttl = PLAYER_CONTEXT_CACHE_SECONDS,
         },
         -- Cache: map hierarchy data (persistent)
         hierarchyCache = {},
@@ -156,7 +160,7 @@ function APR:GetContinent(mapId)
     mapId = mapId or self:GetPlayerMapID()
 
     -- Match the hierarchy helper's bound, including malformed cyclic data.
-    for _ = 1, 50 do
+    for _ = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapId or mapId == 0 then break end
         local info = C_Map.GetMapInfo(mapId)
         if not info or not info.mapType then break end
@@ -191,13 +195,13 @@ function APR:GetPlayerParentMapID(mapType)
 
     -- Stop at the nearest match instead of allocating the complete ancestry.
     local mapID = currentMapId
-    for depth = 1, 50 do
+    for depth = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapID or mapID == 0 then break end
         local mapInfo = self:GetMapInfoCached(mapID)
         if mapInfo and mapInfo.mapType == mapType then
             return mapID
         end
-        if depth == 50 then break end
+        if depth == MAX_MAP_ANCESTRY_DEPTH then break end
         -- Parent links remain live even when a map's type is already cached.
         mapInfo = C_Map.GetMapInfo(mapID)
         if not mapInfo or mapInfo.parentMapID == mapID then break end
@@ -293,10 +297,9 @@ function APR:GetMapParentChain(mapID)
 
     local chain = {}
     local current = mapID
-    local maxDepth = 50 -- Prevent infinite loops
     local depth = 0
 
-    while current and current ~= 0 and depth < maxDepth do
+    while current and current ~= 0 and depth < MAX_MAP_ANCESTRY_DEPTH do
         table.insert(chain, current)
 
         local mapInfo = C_Map.GetMapInfo(current)
@@ -519,7 +522,7 @@ APR.CheckContinentMatch =
 local function GetOutdoorMapContext(self, mapID)
     local config = GetNavigationConfig() or {}
     local visited, isolation, outerZone = {}, nil, nil
-    for _ = 1, 50 do
+    for _ = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapID or mapID == 0 or visited[mapID] then return nil end
         visited[mapID] = true
         local info = self:GetMapInfoCached(mapID)

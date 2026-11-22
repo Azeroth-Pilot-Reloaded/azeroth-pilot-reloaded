@@ -32,12 +32,12 @@ local mutations = {
 local function ordinary(value)
     return not issecretvalue or not issecretvalue(value)
 end--[[APR_DIAG]]
-ordinary = APRTrace("APR-Core/integrations/Pawn.lua:20:ordinary#1", ordinary)--[[/APR_DIAG]]
+ordinary = APRTrace("APR-Core/integrations/equipment/Pawn.lua:20:ordinary#1", ordinary)--[[/APR_DIAG]]
 
 local function finite(value)
     return ordinary(value) and type(value) == "number" and value == value and value ~= math.huge and value ~= -math.huge
 end--[[APR_DIAG]]
-finite = APRTrace("APR-Core/integrations/Pawn.lua:24:finite#2", finite)--[[/APR_DIAG]]
+finite = APRTrace("APR-Core/integrations/equipment/Pawn.lua:24:finite#2", finite)--[[/APR_DIAG]]
 
 local function pawnReady()
     if
@@ -53,7 +53,7 @@ local function pawnReady()
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](PawnIsReady)
     return ok and ready == true
 end--[[APR_DIAG]]
-pawnReady = APRTrace("APR-Core/integrations/Pawn.lua:29:pawnReady#3", pawnReady)--[[/APR_DIAG]]
+pawnReady = APRTrace("APR-Core/integrations/equipment/Pawn.lua:29:pawnReady#3", pawnReady)--[[/APR_DIAG]]
 
 local function character()
     local char = APR.settings and APR.settings.db and APR.settings.db.char
@@ -71,12 +71,12 @@ local function character()
     end
     return char
 end--[[APR_DIAG]]
-character = APRTrace("APR-Core/integrations/Pawn.lua:37:character#4", character)--[[/APR_DIAG]]
+character = APRTrace("APR-Core/integrations/equipment/Pawn.lua:37:character#4", character)--[[/APR_DIAG]]
 
 local function specializationKey()
     return APR:GetRewardBuildContext().key
 end--[[APR_DIAG]]
-specializationKey = APRTrace("APR-Core/integrations/Pawn.lua:46:specializationKey#5", specializationKey)--[[/APR_DIAG]]
+specializationKey = APRTrace("APR-Core/integrations/equipment/Pawn.lua:46:specializationKey#5", specializationKey)--[[/APR_DIAG]]
 
 local function fingerprint(name)
     if type(name) ~= "string" or not PawnCommon or not PawnCommon.Scales or not PawnCommon.Scales[name] then return end
@@ -106,7 +106,7 @@ local function fingerprint(name)
     end
     return table.concat(parts, ";")
 end--[[APR_DIAG]]
-fingerprint = APRTrace("APR-Core/integrations/Pawn.lua:61:fingerprint#6", fingerprint)--[[/APR_DIAG]]
+fingerprint = APRTrace("APR-Core/integrations/equipment/Pawn.lua:61:fingerprint#6", fingerprint)--[[/APR_DIAG]]
 
 function PawnRewards:IsAutomatic()
     local profile = APR:GetSettingsProfile()
@@ -114,7 +114,7 @@ function PawnRewards:IsAutomatic()
         and ((profile.autoHandIn and profile.autoHandInChoice) or APR:GetBagUpgradeSuggestions())
 end--[[APR_DIAG]]
 PawnRewards.IsAutomatic =
-    APRTrace("APR-Core/integrations/Pawn.lua:89:PawnRewards:IsAutomatic#7", PawnRewards.IsAutomatic)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:89:PawnRewards:IsAutomatic#7", PawnRewards.IsAutomatic)--[[/APR_DIAG]]
 
 function PawnRewards:CancelPrompt()
     self.popupWaiting = nil
@@ -123,7 +123,7 @@ function PawnRewards:CancelPrompt()
     if prompt and StaticPopup_Hide then StaticPopup_Hide(PROMPT_NAME) end
 end--[[APR_DIAG]]
 PawnRewards.CancelPrompt =
-    APRTrace("APR-Core/integrations/Pawn.lua:94:PawnRewards:CancelPrompt#8", PawnRewards.CancelPrompt)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:94:PawnRewards:CancelPrompt#8", PawnRewards.CancelPrompt)--[[/APR_DIAG]]
 
 function PawnRewards:CancelRefresh()
     local timer = self.refreshTimer
@@ -131,7 +131,7 @@ function PawnRewards:CancelRefresh()
     if timer and timer.Cancel then timer:Cancel() end
 end--[[APR_DIAG]]
 PawnRewards.CancelRefresh =
-    APRTrace("APR-Core/integrations/Pawn.lua:101:PawnRewards:CancelRefresh#9", PawnRewards.CancelRefresh)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:101:PawnRewards:CancelRefresh#9", PawnRewards.CancelRefresh)--[[/APR_DIAG]]
 
 function PawnRewards:InstallHooks()
     if not hooksecurefunc then return end
@@ -140,7 +140,7 @@ function PawnRewards:InstallHooks()
         if not self.hooked[name] and type(_G[name]) == "function" then
             hooksecurefunc(
                 name, --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/Pawn.lua:112:callback#11", --[[/APR_DIAG]] function()
+                APRTrace("APR-Core/integrations/equipment/Pawn.lua:112:callback#11", --[[/APR_DIAG]] function()
                     if self.active then self:QueueRefresh() end
                 end--[[APR_DIAG]]) --[[/APR_DIAG]]
             )
@@ -149,14 +149,14 @@ function PawnRewards:InstallHooks()
     end
 end--[[APR_DIAG]]
 PawnRewards.InstallHooks =
-    APRTrace("APR-Core/integrations/Pawn.lua:107:PawnRewards:InstallHooks#10", PawnRewards.InstallHooks)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:107:PawnRewards:InstallHooks#10", PawnRewards.InstallHooks)--[[/APR_DIAG]]
 
 function PawnRewards:QueueRefresh()
     if not self.active or self.refreshTimer then return end
     local timer
     timer = C_Timer.NewTimer(
         REFRESH_DELAY, --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Pawn.lua:121:callback#13", --[[/APR_DIAG]] function()
+        APRTrace("APR-Core/integrations/equipment/Pawn.lua:121:callback#13", --[[/APR_DIAG]] function()
             if self.refreshTimer ~= timer then return end
             self.refreshTimer = nil
             if self.active then self:RefreshSettings() end
@@ -165,7 +165,7 @@ function PawnRewards:QueueRefresh()
     self.refreshTimer = timer
 end--[[APR_DIAG]]
 PawnRewards.QueueRefresh =
-    APRTrace("APR-Core/integrations/Pawn.lua:118:PawnRewards:QueueRefresh#12", PawnRewards.QueueRefresh)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:118:PawnRewards:QueueRefresh#12", PawnRewards.QueueRefresh)--[[/APR_DIAG]]
 
 -- Pawn stores the numeric class on the scale, not in GetAllScalesEx rows.
 -- Untagged custom imports remain usable only when Pawn enables them for this
@@ -178,7 +178,7 @@ local function matchesCharacterClass(name, row, classID)
     end
     return ordinary(row.IsProvider) and row.IsProvider == false and ordinary(row.IsVisible) and row.IsVisible == true
 end--[[APR_DIAG]]
-matchesCharacterClass = APRTrace("APR-Core/integrations/Pawn.lua:132:matchesCharacterClass#14", matchesCharacterClass)--[[/APR_DIAG]]
+matchesCharacterClass = APRTrace("APR-Core/integrations/equipment/Pawn.lua:132:matchesCharacterClass#14", matchesCharacterClass)--[[/APR_DIAG]]
 
 function PawnRewards:ReadScales()
     if not pawnReady() then return end
@@ -212,7 +212,7 @@ function PawnRewards:ReadScales()
     return scales
 end--[[APR_DIAG]]
 PawnRewards.ReadScales =
-    APRTrace("APR-Core/integrations/Pawn.lua:142:PawnRewards:ReadScales#15", PawnRewards.ReadScales)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:142:PawnRewards:ReadScales#15", PawnRewards.ReadScales)--[[/APR_DIAG]]
 
 function PawnRewards:UpdateSnapshot()
     local char = character()
@@ -269,7 +269,7 @@ function PawnRewards:UpdateSnapshot()
     end
 end--[[APR_DIAG]]
 PawnRewards.UpdateSnapshot =
-    APRTrace("APR-Core/integrations/Pawn.lua:163:PawnRewards:UpdateSnapshot#16", PawnRewards.UpdateSnapshot)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:163:PawnRewards:UpdateSnapshot#16", PawnRewards.UpdateSnapshot)--[[/APR_DIAG]]
 
 -- Native button clicks, programmatic hides and popup replacement all retire
 -- a frame through this callback. Retry once after a closure, never by polling.
@@ -277,7 +277,7 @@ function PawnRewards:WatchPopupAvailability()
     if self.popupHooked or not hooksecurefunc or type(StaticPopup_OnHide) ~= "function" then return end
     hooksecurefunc(
         "StaticPopup_OnHide", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Pawn.lua:212:callback#18", --[[/APR_DIAG]] function(dialog)
+        APRTrace("APR-Core/integrations/equipment/Pawn.lua:212:callback#18", --[[/APR_DIAG]] function(dialog)
             if not self.active then return end
             if self.prompt and dialog and dialog.which == PROMPT_NAME then
                 self.prompt = nil
@@ -289,7 +289,7 @@ function PawnRewards:WatchPopupAvailability()
     self.popupHooked = true
 end--[[APR_DIAG]]
 PawnRewards.WatchPopupAvailability = APRTrace(
-    "APR-Core/integrations/Pawn.lua:210:PawnRewards:WatchPopupAvailability#17",
+    "APR-Core/integrations/equipment/Pawn.lua:210:PawnRewards:WatchPopupAvailability#17",
     PawnRewards.WatchPopupAvailability
 )--[[/APR_DIAG]]
 
@@ -345,16 +345,16 @@ function PawnRewards:TryPrompt()
         self.pending[prompt.name] = nil
         self:QueueRefresh()
     end--[[APR_DIAG]]
-    resolve = APRTrace("APR-Core/integrations/Pawn.lua:239:resolve#20", resolve)--[[/APR_DIAG]]
+    resolve = APRTrace("APR-Core/integrations/equipment/Pawn.lua:239:resolve#20", resolve)--[[/APR_DIAG]]
     APR.questionDialog:CreateQuestionPopup(
         PROMPT_NAME,
         string.format(L["REWARD_PAWN_CHANGED"], scale.label),
         --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/Pawn.lua:263:callback#21", --[[/APR_DIAG]]
+            "APR-Core/integrations/equipment/Pawn.lua:263:callback#21", --[[/APR_DIAG]]
             function() resolve(true) end --[[APR_DIAG]]
         ) --[[/APR_DIAG]], --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/Pawn.lua:263:callback#22", --[[/APR_DIAG]] function(dialog, _, reason)
+        APRTrace("APR-Core/integrations/equipment/Pawn.lua:263:callback#22", --[[/APR_DIAG]] function(dialog, _, reason)
             if self.prompt ~= prompt then return end
             -- No allocated frame and system overrides are not user refusals.
             if not dialog or reason ~= "clicked" then
@@ -366,7 +366,7 @@ function PawnRewards:TryPrompt()
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]
-PawnRewards.TryPrompt = APRTrace("APR-Core/integrations/Pawn.lua:223:PawnRewards:TryPrompt#19", PawnRewards.TryPrompt)--[[/APR_DIAG]]
+PawnRewards.TryPrompt = APRTrace("APR-Core/integrations/equipment/Pawn.lua:223:PawnRewards:TryPrompt#19", PawnRewards.TryPrompt)--[[/APR_DIAG]]
 
 -- The workspace owns its custom AceConfig host and defers rebuilding it until
 -- the current input callback has returned.
@@ -375,7 +375,7 @@ function PawnRewards:NotifyOptions()
     if panel and panel.QueueRefresh then panel:QueueRefresh() end
 end--[[APR_DIAG]]
 PawnRewards.NotifyOptions =
-    APRTrace("APR-Core/integrations/Pawn.lua:277:PawnRewards:NotifyOptions#23", PawnRewards.NotifyOptions)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:277:PawnRewards:NotifyOptions#23", PawnRewards.NotifyOptions)--[[/APR_DIAG]]
 
 function PawnRewards:RefreshScoringContext()
     local _, state, identity = self:GetScorer()
@@ -387,7 +387,7 @@ function PawnRewards:RefreshScoringContext()
     if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
 end--[[APR_DIAG]]
 PawnRewards.RefreshScoringContext =
-    APRTrace("APR-Core/integrations/Pawn.lua:385:PawnRewards:RefreshScoringContext#36", PawnRewards.RefreshScoringContext)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:385:PawnRewards:RefreshScoringContext#36", PawnRewards.RefreshScoringContext)--[[/APR_DIAG]]
 
 function PawnRewards:RefreshSettings()
     self:CancelRefresh()
@@ -406,7 +406,7 @@ function PawnRewards:RefreshSettings()
     self:NotifyOptions()
 end--[[APR_DIAG]]
 PawnRewards.RefreshSettings =
-    APRTrace("APR-Core/integrations/Pawn.lua:282:PawnRewards:RefreshSettings#24", PawnRewards.RefreshSettings)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:282:PawnRewards:RefreshSettings#24", PawnRewards.RefreshSettings)--[[/APR_DIAG]]
 
 function PawnRewards:GetScaleOptions()
     self:UpdateSnapshot()
@@ -422,7 +422,7 @@ function PawnRewards:GetScaleOptions()
     return options
 end--[[APR_DIAG]]
 PawnRewards.GetScaleOptions =
-    APRTrace("APR-Core/integrations/Pawn.lua:298:PawnRewards:GetScaleOptions#25", PawnRewards.GetScaleOptions)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:298:PawnRewards:GetScaleOptions#25", PawnRewards.GetScaleOptions)--[[/APR_DIAG]]
 
 function PawnRewards:GetPreference()
     local char = character()
@@ -430,7 +430,7 @@ function PawnRewards:GetPreference()
     if type(record) ~= "table" then return "auto" end
     if record.mode == "apr" then return "apr" end
     return type(record.name) == "string" and ("pawn:" .. record.name) or "auto"
-end--[[APR_DIAG]]; PawnRewards.GetPreference = APRTrace("APR-Core/integrations/Pawn.lua:6:PawnRewards:GetPreference#1", PawnRewards.GetPreference)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PawnRewards.GetPreference = APRTrace("APR-Core/integrations/equipment/Pawn.lua:6:PawnRewards:GetPreference#1", PawnRewards.GetPreference)--[[/APR_DIAG]]
 
 local function matchesAutomaticBuild(scale, context)
     if not context.classID or scale.ClassID ~= context.classID then return false end
@@ -440,7 +440,7 @@ local function matchesAutomaticBuild(scale, context)
     -- Forever's native class spec is not a talent build. A single visible
     -- class scale is instead an unambiguous, per-character Pawn choice.
     return context.client == "forever"
-end--[[APR_DIAG]]; matchesAutomaticBuild = APRTrace("APR-Core/integrations/Pawn.lua:435:matchesAutomaticBuild#328", matchesAutomaticBuild)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; matchesAutomaticBuild = APRTrace("APR-Core/integrations/equipment/Pawn.lua:435:matchesAutomaticBuild#328", matchesAutomaticBuild)--[[/APR_DIAG]]
 
 function PawnRewards:GetAutomaticScale()
     if self.active == false or not pawnReady() then return end
@@ -454,7 +454,7 @@ function PawnRewards:GetAutomaticScale()
         end
     end
     return candidate
-end--[[APR_DIAG]]; PawnRewards.GetAutomaticScale = APRTrace("APR-Core/integrations/Pawn.lua:13:PawnRewards:GetAutomaticScale#2", PawnRewards.GetAutomaticScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PawnRewards.GetAutomaticScale = APRTrace("APR-Core/integrations/equipment/Pawn.lua:13:PawnRewards:GetAutomaticScale#2", PawnRewards.GetAutomaticScale)--[[/APR_DIAG]]
 
 function PawnRewards:GetSelectedScale()
     if not self.ready and pawnReady() then self:UpdateSnapshot() end
@@ -487,7 +487,7 @@ function PawnRewards:GetSelectedScale()
     return choice, true
 end--[[APR_DIAG]]
 PawnRewards.GetSelectedScale =
-    APRTrace("APR-Core/integrations/Pawn.lua:305:PawnRewards:GetSelectedScale#26", PawnRewards.GetSelectedScale)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:305:PawnRewards:GetSelectedScale#26", PawnRewards.GetSelectedScale)--[[/APR_DIAG]]
 
 function PawnRewards:SetSelectedScale(name)
     self:UpdateSnapshot()
@@ -516,7 +516,7 @@ function PawnRewards:SetSelectedScale(name)
     return true
 end--[[APR_DIAG]]
 PawnRewards.SetSelectedScale =
-    APRTrace("APR-Core/integrations/Pawn.lua:324:PawnRewards:SetSelectedScale#27", PawnRewards.SetSelectedScale)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:324:PawnRewards:SetSelectedScale#27", PawnRewards.SetSelectedScale)--[[/APR_DIAG]]
 
 -- Suggestion preferences are independent of the weights the user confirms.
 -- Pin them in decision identities without turning a UI filter into unusability.
@@ -529,7 +529,7 @@ local function recommendationContext(name)
     if not finite(level) then return end
     return tostring(not not one) .. ":" .. tostring(not not two) .. ":" .. level
 end--[[APR_DIAG]]
-recommendationContext = APRTrace("APR-Core/integrations/Pawn.lua:447:recommendationContext#29", recommendationContext)--[[/APR_DIAG]]
+recommendationContext = APRTrace("APR-Core/integrations/equipment/Pawn.lua:447:recommendationContext#29", recommendationContext)--[[/APR_DIAG]]
 
 local oneHandSuggestions = {
     INVTYPE_WEAPON = true, INVTYPE_WEAPONMAINHAND = true, INVTYPE_WEAPONOFFHAND = true,
@@ -557,7 +557,7 @@ local function canRecommend(item, name, slot)
     if stats.IsCloth or stats.IsLeather or stats.IsMail or stats.IsPlate then return nil, false end
     return true, true
 end--[[APR_DIAG]]
-canRecommend = APRTrace("APR-Core/integrations/Pawn.lua:461:canRecommend#30", canRecommend)--[[/APR_DIAG]]
+canRecommend = APRTrace("APR-Core/integrations/equipment/Pawn.lua:461:canRecommend#30", canRecommend)--[[/APR_DIAG]]
 
 function PawnRewards:GetScorer()
     self:UpdateSnapshot()
@@ -572,7 +572,7 @@ function PawnRewards:GetScorer()
     local recommendations = recommendationContext(name)
     if not recommendations then return nil, "pending" end
     local identity = key .. "\031" .. choice .. "\031" .. signature .. "\031" .. recommendations
-    return  --[[APR_DIAG]]APRTrace("APR-Core/integrations/Pawn.lua:358:callback#29", --[[/APR_DIAG]] function(link, slot)
+    return  --[[APR_DIAG]]APRTrace("APR-Core/integrations/equipment/Pawn.lua:358:callback#29", --[[/APR_DIAG]] function(link, slot)
         local currentChoice, currentReady = self:GetSelectedScale()
         if
             self.active == false
@@ -597,7 +597,7 @@ function PawnRewards:GetScorer()
         return score, true, allowed
     end--[[APR_DIAG]])--[[/APR_DIAG]], "pawn", identity
 end--[[APR_DIAG]]
-PawnRewards.GetScorer = APRTrace("APR-Core/integrations/Pawn.lua:350:PawnRewards:GetScorer#28", PawnRewards.GetScorer)--[[/APR_DIAG]]
+PawnRewards.GetScorer = APRTrace("APR-Core/integrations/equipment/Pawn.lua:350:PawnRewards:GetScorer#28", PawnRewards.GetScorer)--[[/APR_DIAG]]
 
 function PawnRewards:GetStatusText(compact)
     local char = character()
@@ -617,14 +617,14 @@ function PawnRewards:GetStatusText(compact)
     return L["REWARD_WEIGHT_SCALE_DESC"]
 end--[[APR_DIAG]]
 PawnRewards.GetStatusText =
-    APRTrace("APR-Core/integrations/Pawn.lua:370:PawnRewards:GetStatusText#30", PawnRewards.GetStatusText)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:370:PawnRewards:GetStatusText#30", PawnRewards.GetStatusText)--[[/APR_DIAG]]
 
 function PawnRewards:OnCombatEnded()
     self:UnregisterEvent("PLAYER_REGEN_ENABLED")
     self:RefreshSettings()
 end--[[APR_DIAG]]
 PawnRewards.OnCombatEnded =
-    APRTrace("APR-Core/integrations/Pawn.lua:385:PawnRewards:OnCombatEnded#31", PawnRewards.OnCombatEnded)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:385:PawnRewards:OnCombatEnded#31", PawnRewards.OnCombatEnded)--[[/APR_DIAG]]
 
 function PawnRewards:OnPawnLoaded(_, name)
     if name == "Pawn" then
@@ -633,13 +633,13 @@ function PawnRewards:OnPawnLoaded(_, name)
     end
 end--[[APR_DIAG]]
 PawnRewards.OnPawnLoaded =
-    APRTrace("APR-Core/integrations/Pawn.lua:390:PawnRewards:OnPawnLoaded#32", PawnRewards.OnPawnLoaded)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/equipment/Pawn.lua:390:PawnRewards:OnPawnLoaded#32", PawnRewards.OnPawnLoaded)--[[/APR_DIAG]]
 
 function PawnRewards:OnSpecializationChanged(_, unit)
     if ordinary(unit) and (unit == nil or unit == "player") then self:QueueRefresh() end
 end--[[APR_DIAG]]
 PawnRewards.OnSpecializationChanged = APRTrace(
-    "APR-Core/integrations/Pawn.lua:394:PawnRewards:OnSpecializationChanged#33",
+    "APR-Core/integrations/equipment/Pawn.lua:394:PawnRewards:OnSpecializationChanged#33",
     PawnRewards.OnSpecializationChanged
 )--[[/APR_DIAG]]
 
@@ -651,7 +651,7 @@ function PawnRewards:OnEnable()
     self:RegisterEvent("UNIT_LEVEL", "OnSpecializationChanged")
     self:RefreshSettings()
 end--[[APR_DIAG]]
-PawnRewards.OnEnable = APRTrace("APR-Core/integrations/Pawn.lua:398:PawnRewards:OnEnable#34", PawnRewards.OnEnable)--[[/APR_DIAG]]
+PawnRewards.OnEnable = APRTrace("APR-Core/integrations/equipment/Pawn.lua:398:PawnRewards:OnEnable#34", PawnRewards.OnEnable)--[[/APR_DIAG]]
 
 function PawnRewards:OnDisable()
     self.active = false
@@ -659,4 +659,4 @@ function PawnRewards:OnDisable()
     self:CancelPrompt()
     self:UnregisterAllEvents()
 end--[[APR_DIAG]]
-PawnRewards.OnDisable = APRTrace("APR-Core/integrations/Pawn.lua:406:PawnRewards:OnDisable#35", PawnRewards.OnDisable)--[[/APR_DIAG]]
+PawnRewards.OnDisable = APRTrace("APR-Core/integrations/equipment/Pawn.lua:406:PawnRewards:OnDisable#35", PawnRewards.OnDisable)--[[/APR_DIAG]]

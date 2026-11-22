@@ -104,7 +104,7 @@ inventory[1], inventory[5], inventory[8] = item(9301, "INVTYPE_HEAD", 1), item(9
 bags[1], bags[2], bags[3] = item(9401, "INVTYPE_HEAD", 4), item(9402, "INVTYPE_CHEST", 3), item(9403, "INVTYPE_FEET", 2)
 dofile("APR-Core/utils/ProfileUtils.lua")
 dofile("APR-Core/features/questing/RewardScoring.lua")
-dofile("APR-Core/integrations/Pawn.lua")
+dofile("APR-Core/integrations/equipment/Pawn.lua")
 dofile("APR-Core/features/player/BagUpgrades.lua")
 dofile("APR-Core/core/Commands.lua")
 local pawn, module = APR.PawnRewards, APR.BagUpgrades

@@ -85,7 +85,7 @@ end
 function APR:SetupFrameDrag() end
 function APR:PrintInfo() end
 dofile("APR-Core/utils/Utils.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/panels/LayoutEditor.lua")

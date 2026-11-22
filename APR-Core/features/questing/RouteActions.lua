@@ -7,6 +7,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Actions check interaction/combat state and retain pending-operation state to avoid duplicate execution.
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
 local actionKeys = {
     "DeathSkip",
     "SellItems",
@@ -18,6 +19,7 @@ local actionKeys = {
     "EquipItem",
     "Repair",
 }
+
 APR.routeActionKeys = actionKeys
 
 local function CanRunRouteAction(self, step)

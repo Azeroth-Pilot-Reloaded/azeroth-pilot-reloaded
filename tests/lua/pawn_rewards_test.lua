@@ -233,7 +233,7 @@ local function newEnvironment(saved, pawnScales)
     end
     PawnResetProviderScales, PawnResetScalesCore, PawnAddPluginScale = nil, nil, nil
     dofile("APR-Core/utils/ProfileUtils.lua")
-    dofile("APR-Core/integrations/Pawn.lua")
+    dofile("APR-Core/integrations/equipment/Pawn.lua")
     env.module = APR.PawnRewards
     env.module:OnEnable()
     return env

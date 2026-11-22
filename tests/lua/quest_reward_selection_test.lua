@@ -525,7 +525,7 @@ APR.questionDialog = {
 }
 dofile("APR-Core/features/questing/RewardScoring.lua")
 dofile("APR-Core/utils/ProfileUtils.lua")
-dofile("APR-Core/integrations/Pawn.lua")
+dofile("APR-Core/integrations/equipment/Pawn.lua")
 APR.PawnRewards.RegisterEvent, APR.PawnRewards.UnregisterEvent = noop, noop
 APR.PawnRewards.UnregisterAllEvents = noop
 APR.PawnRewards:OnEnable()

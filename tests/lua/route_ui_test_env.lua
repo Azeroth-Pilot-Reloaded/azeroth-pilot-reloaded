@@ -366,7 +366,7 @@ dofile("APR-Core/utils/UIUtils.lua")
 APR.CreateStandardFrame, APR.CreateFrameHeader, APR.CreateStepTextContainer = standard, header, row
 APR.SetupFrameDrag, APR.SetupHeaderDrag, APR.SetupMinimizeButton = drag, headerDrag, minimize
 APR.AddQuestTooltipDetails = tooltip
-dofile("APR-Core/integrations/QuestTracker.lua")
+dofile("APR-Core/integrations/quest-tracking/QuestTracker.lua")
 
 return {
     frames = function() return frames end,

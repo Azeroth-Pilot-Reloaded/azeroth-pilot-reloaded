@@ -39,24 +39,24 @@ local function IsEnabled(candidate)
     if _G.ElvUI and (not profile or profile.elvuiSkin ~= false) then return false end
     return candidate.IsEnabled()
 end--[[APR_DIAG]]
-IsEnabled = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:33:IsEnabled#1", IsEnabled)--[[/APR_DIAG]]
+IsEnabled = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:33:IsEnabled#1", IsEnabled)--[[/APR_DIAG]]
 
 local function UsesScope(scope)
     return not APR.GetAppearanceProvider or APR:GetAppearanceProvider(scope) == "EllesmereUI"
 end--[[APR_DIAG]]
-UsesScope = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:43:UsesScope#2", UsesScope)--[[/APR_DIAG]]
+UsesScope = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:43:UsesScope#2", UsesScope)--[[/APR_DIAG]]
 
 function module:GetFont(scope)
     if not UsesScope(scope) then return end
     if IsEnabled() then return skin.GetFont() end
 end--[[APR_DIAG]]
-module.GetFont = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:47:module:GetFont#3", module.GetFont)--[[/APR_DIAG]]
+module.GetFont = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:47:module:GetFont#3", module.GetFont)--[[/APR_DIAG]]
 
 function module:ApplyFont(fontString, scope)
     if not UsesScope(scope) then return end
     if IsEnabled() then skin.Font(fontString) end
 end--[[APR_DIAG]]
-module.ApplyFont = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:52:module:ApplyFont#4", module.ApplyFont)--[[/APR_DIAG]]
+module.ApplyFont = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:52:module:ApplyFont#4", module.ApplyFont)--[[/APR_DIAG]]
 
 function module:GetTextColor(role, scope)
     if not UsesScope(scope) then return end
@@ -68,7 +68,7 @@ function module:GetTextColor(role, scope)
     return colors[role or "base"] or colors.base
 end--[[APR_DIAG]]
 module.GetTextColor =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:57:module:GetTextColor#5", module.GetTextColor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:57:module:GetTextColor#5", module.GetTextColor)--[[/APR_DIAG]]
 
 local stripeColor = { 0.2, 0.2, 0.2, 1 }
 -- The public panel primitive uses this neutral house border, independent of the accent.
@@ -105,7 +105,7 @@ local function GetTrackerBackground()
     return trackerBackground
 end--[[APR_DIAG]]
 GetTrackerBackground =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:77:GetTrackerBackground#6", GetTrackerBackground)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:77:GetTrackerBackground#6", GetTrackerBackground)--[[/APR_DIAG]]
 
 function module:GetThemeColor(role, scope)
     if not UsesScope(scope) then return end
@@ -121,7 +121,7 @@ function module:GetThemeColor(role, scope)
     return colors[role]
 end--[[APR_DIAG]]
 module.GetThemeColor =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:93:module:GetThemeColor#7", module.GetThemeColor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:93:module:GetThemeColor#7", module.GetThemeColor)--[[/APR_DIAG]]
 
 function module:ApplyBarFill(bar, scope)
     if not UsesScope(scope) then return false end
@@ -130,14 +130,14 @@ function module:ApplyBarFill(bar, scope)
     return true
 end--[[APR_DIAG]]
 module.ApplyBarFill =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:107:module:ApplyBarFill#8", module.ApplyBarFill)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:107:module:ApplyBarFill#8", module.ApplyBarFill)--[[/APR_DIAG]]
 
 function module:ApplyHeaderTextColor(fontString, scope)
     if not UsesScope(scope) then return end
     if IsEnabled() and headerTexts[fontString] then fontString:SetTextColor(skin.GetAccentColor()) end
 end--[[APR_DIAG]]
 module.ApplyHeaderTextColor =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:114:module:ApplyHeaderTextColor#9", module.ApplyHeaderTextColor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:114:module:ApplyHeaderTextColor#9", module.ApplyHeaderTextColor)--[[/APR_DIAG]]
 
 local function Accent(region, kind)
     kind = kind or "texture"
@@ -159,7 +159,7 @@ local function Accent(region, kind)
         region:SetColorTexture(r, g, b, 1)
     end
 end--[[APR_DIAG]]
-Accent = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:119:Accent#10", Accent)--[[/APR_DIAG]]
+Accent = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:119:Accent#10", Accent)--[[/APR_DIAG]]
 
 local function StyleText(text)
     if not text then return end
@@ -170,7 +170,7 @@ local function StyleText(text)
         skin.Font(text)
     end
 end--[[APR_DIAG]]
-StyleText = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:132:StyleText#11", StyleText)--[[/APR_DIAG]]
+StyleText = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:132:StyleText#11", StyleText)--[[/APR_DIAG]]
 
 local function StyleHeader(header)
     skin.Panel(header, { noBorder = true })
@@ -187,7 +187,7 @@ local function StyleHeader(header)
         Accent(line)
     end
 end--[[APR_DIAG]]
-StyleHeader = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:142:StyleHeader#12", StyleHeader)--[[/APR_DIAG]]
+StyleHeader = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:142:StyleHeader#12", StyleHeader)--[[/APR_DIAG]]
 
 local function StyleHeaderButton(button, options)
     if options.close then
@@ -202,7 +202,7 @@ local function StyleHeaderButton(button, options)
         if texture.SetDesaturated then texture:SetDesaturated(true) end
         Accent(texture, "icon")
     end--[[APR_DIAG]]
-    Tint = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:163:Tint#14", Tint)--[[/APR_DIAG]]
+    Tint = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:163:Tint#14", Tint)--[[/APR_DIAG]]
     local function UpdateLook()
         local collapsed = options.parent and options.parent.collapsed
         local normalAtlas = collapsed and "UI-QuestTrackerButton-Secondary-Expand"
@@ -224,11 +224,11 @@ local function StyleHeaderButton(button, options)
         local background = options.parent and panelBackgrounds[options.parent]
         if background then background:SetShown(not options.parent.collapsed) end
     end--[[APR_DIAG]]
-    UpdateLook = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:168:UpdateLook#15", UpdateLook)--[[/APR_DIAG]]
+    UpdateLook = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:168:UpdateLook#15", UpdateLook)--[[/APR_DIAG]]
     UpdateLook()
     button:HookScript("OnClick", UpdateLook)
 end--[[APR_DIAG]]
-StyleHeaderButton = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:158:StyleHeaderButton#13", StyleHeaderButton)--[[/APR_DIAG]]
+StyleHeaderButton = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:158:StyleHeaderButton#13", StyleHeaderButton)--[[/APR_DIAG]]
 
 local function StyleSettingsButton(button)
     -- Use Blizzard artwork so EUI does not require its optional DamageMeters module.
@@ -243,14 +243,14 @@ local function StyleSettingsButton(button)
         settingsIcons[button] = icon
         button:HookScript(
             "OnEnter", --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/EllesmereUISkin.lua:204:callback#17", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:204:callback#17", --[[/APR_DIAG]] function()
                 local r, g, b = skin.GetAccentColor()
                 icon:SetVertexColor(r, g, b, 0.9)
             end--[[APR_DIAG]]) --[[/APR_DIAG]]
         )
         button:HookScript(
             "OnLeave", --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/EllesmereUISkin.lua:208:callback#18", --[[/APR_DIAG]] function()
+            APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:208:callback#18", --[[/APR_DIAG]] function()
                 local r, g, b = skin.GetAccentColor()
                 icon:SetVertexColor(r, g, b, 0.4)
             end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -260,7 +260,7 @@ local function StyleSettingsButton(button)
     icon:SetVertexColor(r, g, b, 0.4)
 end--[[APR_DIAG]]
 StyleSettingsButton =
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:193:StyleSettingsButton#16", StyleSettingsButton)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:193:StyleSettingsButton#16", StyleSettingsButton)--[[/APR_DIAG]]
 
 local function StyleContentPanel(frame)
     -- Paint behind images; never fade the image texture or its overlays.
@@ -273,7 +273,7 @@ local function StyleContentPanel(frame)
     panelBackgrounds[frame] = chrome
     chrome:SetShown(not frame.collapsed)
 end--[[APR_DIAG]]
-StyleContentPanel = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:217:StyleContentPanel#19", StyleContentPanel)--[[/APR_DIAG]]
+StyleContentPanel = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:217:StyleContentPanel#19", StyleContentPanel)--[[/APR_DIAG]]
 
 local backgroundHooks = setmetatable({}, { __mode = "k" })
 local function RefreshTheme()
@@ -300,11 +300,11 @@ local function RefreshTheme()
     if APR.RefreshThemeRegions then APR:RefreshThemeRegions() end
     APR:RefreshStatusBarColors()
 end--[[APR_DIAG]]
-RefreshTheme = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:230:RefreshTheme#20", RefreshTheme)--[[/APR_DIAG]]
+RefreshTheme = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:230:RefreshTheme#20", RefreshTheme)--[[/APR_DIAG]]
 
 EUI.RegisterSkin(
     "APR", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:252:callback#21", --[[/APR_DIAG]] function(S)
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:252:callback#21", --[[/APR_DIAG]] function(S)
         if not IsEnabled(S) then return end
         skin = S
         local function ApplySkin(frame, kind, options)
@@ -383,7 +383,7 @@ EUI.RegisterSkin(
                 if not APR:ApplyStatusBarColor(frame) then S.ApplyBarFill(frame) end
             end
         end--[[APR_DIAG]]
-        ApplySkin = APRTrace("APR-Core/integrations/EllesmereUISkin.lua:255:ApplySkin#22", ApplySkin)--[[/APR_DIAG]]
+        ApplySkin = APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:255:ApplySkin#22", ApplySkin)--[[/APR_DIAG]]
         if APR:RegisterSkinProvider("EllesmereUI", ApplySkin, IsEnabled) then
             APR:RegisterStaticSkinTargets()
             if APR.EnableEllesmereUISettings then APR:EnableEllesmereUISettings(S) end
@@ -400,7 +400,7 @@ events:RegisterEvent("PLAYER_REGEN_ENABLED")
 events:RegisterEvent("ADDON_LOADED")
 events:SetScript(
     "OnEvent", --[[APR_DIAG]]
-    APRTrace("APR-Core/integrations/EllesmereUISkin.lua:333:callback#23", --[[/APR_DIAG]] function(_, event, addon)
+    APRTrace("APR-Core/integrations/appearance/EllesmereUISkin.lua:333:callback#23", --[[/APR_DIAG]] function(_, event, addon)
         if refreshPending or (event == "ADDON_LOADED" and addon == "EllesmereUIQuestTracker") then RefreshTheme() end
     end--[[APR_DIAG]]) --[[/APR_DIAG]]
 )

@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Arrow.lua" />
+    <Script file="arrow/ArrowLayout.lua" />
+    <Script file="arrow/ArrowObjective.lua" />
+    <Script file="arrow/ArrowGuidance.lua" />
+</Ui>

@@ -369,7 +369,7 @@ print(L[key])''')
         self.assertEqual({entry["key"] for entry in self.scan()["references"]}, {"BASKET_ONE", "BASKET_TWO"})
 
     def test_modeled_binding_map_and_tooltip_helper(self):
-        self.write("APR-Core/integrations/Gamepad.lua", '''for action,label in pairs({MENU="MENU_KEY",STEP="STEP_KEY"}) do print(L[label]) end''')
+        self.write("APR-Core/integrations/gamepad/Gamepad.lua", '''for action,label in pairs({MENU="MENU_KEY",STEP="STEP_KEY"}) do print(L[label]) end''')
         self.write("APR-Core/features/player/XPBuffOverlay.lua", '''local function SetDismissTooltip(button,message) print(L[message]) end
 SetDismissTooltip(button,"DISMISS_KEY")''')
         self.assertEqual({entry["key"] for entry in self.scan()["references"]}, {"MENU_KEY", "STEP_KEY", "DISMISS_KEY"})

@@ -1,5 +1,7 @@
 -- Publish bundled media when APR loads, independently of its settings windows.
 -- Stable names keep saved choices and other addons' shared-media lists compatible.
+local media = LibStub and LibStub("LibSharedMedia-3.0", true)
+
 local soundRoot = "Interface\\AddOns\\APR\\APR-Core\\assets\\sound\\"
 -- Defaults resolve directly even if the optional shared-media library is unavailable.
 APR.CompanionSoundFiles = {
@@ -18,12 +20,12 @@ APR.CompanionSoundNames = {
     expired = "APR - Companion Expired",
     error = "APR - Companion Error",
 }
-local media = LibStub and LibStub("LibSharedMedia-3.0", true)
-if not media or not media.Register then return end
-
 local sounds = {
     ["APR - 42"] = "42.mp3",
 }
+
+if not media or not media.Register then return end
+
 for name, file in pairs(sounds) do
     media:Register("sound", name, soundRoot .. file)
 end

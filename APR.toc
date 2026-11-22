@@ -43,8 +43,11 @@ APR-Core/core/Core.lua
 APR-Core/utils/SharedMedia.lua
 APR-Core/core/ErrorLog.lua
 APR-Core/ui/foundations/ReloadConfirmation.lua
-APR-Core/integrations/SkinRegistry.lua
-APR-Core/features/navigation/NavigationTaxi.lua
+APR-Core/integrations/appearance/SkinRegistry.lua
+APR-Core/features/navigation/Constants.lua
+APR-Core/features/questing/Constants.lua
+APR-Core/features/group/Constants.lua
+APR-Core/features/navigation/NavigationTaxi.xml
 
 APR-Core/data/models/Items.lua
 APR-Core/data/Dungeons/DungeonsClassic.lua
@@ -58,11 +61,11 @@ APR-Core/ui/foundations/Themes.lua
 APR-Core/ui/foundations/TextStyles.lua
 APR-Core/ui/foundations/StatusBars.lua
 APR-Core/ui/foundations/Widgets.lua
-APR-Core/integrations/Gamepad.lua
-APR-Core/integrations/GamepadNavigation.lua
-APR-Core/integrations/GamepadControls.lua
-APR-Core/integrations/GamepadInput.lua
-APR-Core/integrations/GamepadMenu.lua
+APR-Core/integrations/gamepad/Gamepad.lua
+APR-Core/integrations/gamepad/GamepadNavigation.lua
+APR-Core/integrations/gamepad/GamepadControls.lua
+APR-Core/integrations/gamepad/GamepadInput.lua
+APR-Core/integrations/gamepad/GamepadMenu.lua
 APR-Core/ui/foundations/ThemeCustomization.lua
 APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua
@@ -87,12 +90,11 @@ APR-Core/features/questing/RouteSuggestions.lua
 APR-Core/features/questing/QuestLogSuggestions.lua
 APR-Core/utils/NavigationUtils.lua
 APR-Core/utils/UIUtils.lua
-APR-Core/integrations/QuestTracker.lua
+APR-Core/integrations/quest-tracking/QuestTracker.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
-APR-Core/features/navigation/NavigationAdapter.lua
-APR-Core/integrations/NavigationEntrances.lua
+APR-Core/features/navigation/NavigationAdapter.xml
 APR-Core/utils/NavigationZones.lua
 APR-Core/features/player/Cutscenes.lua
 APR-Core/ui/panels/Coordinates.lua
@@ -113,7 +115,7 @@ APR-Core/config/Config.lua
 APR-Core/config/WorkspaceOptions.lua
 APR-Core/config/Config_Route.lua
 APR-Core/config/Config_Route_Prefabs.lua
-APR-Core/features/navigation/WorldCoordinateConverter.lua
+APR-Core/features/navigation/WorldCoordinateConverter.xml
 APR-Core/core/Commands.lua
 APR-Core/core/Performance.lua
 APR-Core/core/PerformanceScopes.lua
@@ -125,7 +127,7 @@ APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
 APR-Core/features/questing/RewardScoring.lua
-APR-Core/integrations/Pawn.lua
+APR-Core/integrations/equipment/Pawn.lua
 APR-Core/features/player/BagUpgrades.lua
 APR-Core/features/questing/NPCInteraction.lua
 
@@ -137,14 +139,14 @@ APR-Core/features/questing/StepRenderer.lua
 APR-Core/features/questing/QuestCache.lua
 APR-Core/features/questing/QuestHandler.lua
 APR-Core/features/questing/RouteActions.lua
-APR-Core/features/navigation/Preview.lua
-APR-Core/features/navigation/NavigationPlanner.lua
+APR-Core/features/navigation/Preview.xml
+APR-Core/features/navigation/NavigationPlanner.xml
 APR-Core/features/navigation/NavigationUnlocks.lua
-APR-Core/features/navigation/Navigation.lua
-APR-Core/features/navigation/Services.lua
+APR-Core/features/navigation/Navigation.xml
+APR-Core/features/navigation/Services.xml
 APR-Core/features/navigation/FlightPath.lua
 
-APR-Core/features/navigation/Arrow.lua
+APR-Core/features/navigation/Arrow.xml
 APR-Core/ui/route/CurrentStepImagePreview.lua
 APR-Core/ui/route/CurrentStep.lua
 APR-Core/ui/route/CurrentStepRows.lua
@@ -166,7 +168,7 @@ APR-Core/features/group/PartyFinderDirect.lua
 APR-Core/features/group/PartyFinderWorld.lua
 APR-Core/features/group/PartyFinderFriends.lua
 APR-Core/features/group/PartyFinderInvites.lua
-APR-Core/features/navigation/Map.lua
+APR-Core/features/navigation/Map.xml
 APR-Core/features/player/AFK.lua
 APR-Core/features/player/Heirloom.lua
 APR-Core/ui/route/RouteSelection.lua
@@ -184,8 +186,8 @@ APR-Core/ui/panels/PartyFinderPanel.lua
 APR-Core/ui/panels/AboutPanel.lua
 APR-Core/ui/panels/Workspace.lua
 APR-Core/ui/panels/AppearanceIntro.lua
-APR-Core/integrations/ElvUISkin.lua
-APR-Core/integrations/EllesmereUISettings.lua
-APR-Core/integrations/EllesmereUISkin.lua
+APR-Core/integrations/appearance/ElvUISkin.lua
+APR-Core/integrations/appearance/EllesmereUISettings.lua
+APR-Core/integrations/appearance/EllesmereUISkin.lua
 
 Routes/RouteList_[Game].xml

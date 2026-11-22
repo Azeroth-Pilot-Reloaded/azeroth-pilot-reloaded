@@ -21,7 +21,7 @@ function env.methods:Show()
     show(self)
     if self.scripts.OnShow then self.scripts.OnShow(self) end
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")
 local profile, UI = APR.settings.profile, APR.UI

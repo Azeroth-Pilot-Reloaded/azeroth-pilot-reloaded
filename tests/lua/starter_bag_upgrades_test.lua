@@ -79,7 +79,7 @@ function PawnGetItemData() return { UnenchantedStats = {} } end
 function PawnGetSingleValueFromItem() return 0, 0 end
 dofile("APR-Core/utils/ProfileUtils.lua")
 dofile("APR-Core/features/questing/RewardScoring.lua")
-dofile("APR-Core/integrations/Pawn.lua")
+dofile("APR-Core/integrations/equipment/Pawn.lua")
 dofile("APR-Core/features/player/BagUpgrades.lua")
 dofile("APR-Core/core/Commands.lua")
 local bags, pawn = APR.BagUpgrades, APR.PawnRewards

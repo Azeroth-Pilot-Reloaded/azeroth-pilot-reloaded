@@ -21,7 +21,7 @@ local function ProviderJob(provider, context)
     if provider.CreateEdgeBuild then return provider:CreateEdgeBuild(context) end
     -- Small external providers may still implement only the synchronous API.
     return {
-        Step =  --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:24:callback#3", --[[/APR_DIAG]]function()
+        Step = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:24:callback#3", --[[/APR_DIAG]]function()
             local edges, metadata = provider:BuildEdges(context)
             return "ready", edges, metadata
         end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -33,8 +33,8 @@ function Planner:Create(request)
         request = request,
         phase = request.waypointLeg and "waypoint_leg"
             or request.waypointResume and not next(request.waypointResume.connections) and "restore_waypoint"
-            or not request.walkingProvider and request.preferZoneAccess
-            and request.data.CreateZoneRoute and "zone" or "prepare",
+            or not request.walkingProvider and request.preferZoneAccess and request.data.CreateZoneRoute and "zone"
+            or "prepare",
         status = "planning",
         startedAt = request.clock and request.clock(),
         slices = 0,
@@ -51,30 +51,47 @@ function Job:AdvanceWaypointLeg(maxOperations, remainingMilliseconds)
     elseif provider and provider.CreatePathJob then
         if not self.active then
             self.active = provider:CreatePathJob(leg.from, leg.to, {
-                walkingOrigin = leg.from, walkingGoal = leg.to,
+                walkingOrigin = leg.from,
+                walkingGoal = leg.to,
                 walkingGoalXY = leg.destination and request.walkingGoalXY,
-                quick = true, previewWalking = leg.before ~= nil,
-                walkSpeed = request.walkSpeed, walkSpeedAt = request.walkSpeedAt,
-                walkSpeedFor = request.walkSpeedFor, clock = request.clock,
+                quick = true,
+                previewWalking = leg.before ~= nil,
+                walkSpeed = request.walkSpeed,
+                walkSpeedAt = request.walkSpeedAt,
+                walkSpeedFor = request.walkSpeedFor,
+                clock = request.clock,
             })
         end
         status, result = self.active:Step(maxOperations, remainingMilliseconds)
     else
         local speed = request.walkSpeedFor and request.walkSpeedFor(leg.from, leg.to) or request.walkSpeed
         local dz = leg.from.z and leg.to.z and leg.to.z - leg.from.z or 0
-        status, result = "ready", {seconds = math.sqrt((leg.from.x - leg.to.x)^2 + (leg.from.y - leg.to.y)^2 + dz^2) / speed}
+        status, result =
+            "ready", { seconds = math.sqrt((leg.from.x - leg.to.x) ^ 2 + (leg.from.y - leg.to.y) ^ 2 + dz ^ 2) / speed }
     end
     if status == "planning" then
         self.waypointPreview = self.active.walkingPreview
         return
     end
     self.waypointPreview = nil
-    if status == "cancelled" then self:Cancel(); return end
+    if status == "cancelled" then
+        self:Cancel()
+        return
+    end
     self.active = nil
     if status == "ready" and result and (not provider or result.path and #result.path >= 2) then
-        self.result = {waypointLeg = leg, segments = {{
-            kind = "walk", from = leg.from, to = leg.to, path = result.path, seconds = result.seconds,
-        }}}
+        self.result = {
+            waypointLeg = leg,
+            segments = {
+                {
+                    kind = "walk",
+                    from = leg.from,
+                    to = leg.to,
+                    path = result.path,
+                    seconds = result.seconds,
+                },
+            },
+        }
         self:BeginQueue()
     elseif leg.transport then
         -- No proved walk from this landing. The ordinary graph can still
@@ -88,14 +105,16 @@ function Job:AdvanceWaypointLeg(maxOperations, remainingMilliseconds)
             request.start, request.playerPosition, request.walkingOrigin = leg.from, leg.from, leg.from
             request.walkingOriginCorridor, request.previewEntryWalk, request.previewWalking = nil, nil, nil
             request.progressiveTravel, request.allowTaxiProbes = nil, false
-            for _, step in ipairs(leg.before) do request.budget = request.budget - (step.copper or 0) end
+            for _, step in ipairs(leg.before) do
+                request.budget = request.budget - (step.copper or 0)
+            end
             self.waypointLeg = leg
         else
             self.waypointLeg = nil
         end
         self.phase = "prepare"
     end
-end--[[APR_DIAG]]; Job.AdvanceWaypointLeg = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:46:Job:AdvanceWaypointLeg#5", Job.AdvanceWaypointLeg)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.AdvanceWaypointLeg = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:45:Job:AdvanceWaypointLeg#5", Job.AdvanceWaypointLeg)--[[/APR_DIAG]]
 
 function Job:RestoreWaypoint(maxOperations, remainingMilliseconds)
     local request = self.request
@@ -104,7 +123,7 @@ function Job:RestoreWaypoint(maxOperations, remainingMilliseconds)
     local edges = self.restoreEdges or {}
     self.restoreEdges = edges
     self.restoreGroup, self.restoreIndex = self.restoreGroup or 1, self.restoreIndex or 1
-    local groups = {self.catalogueEdges or {}, self.taxiEdges or {}}
+    local groups = { self.catalogueEdges or {}, self.taxiEdges or {} }
     local segments = self.restoreSegments or {}
     self.restoreSegments = segments
     for operation = 1, maxOperations do
@@ -121,7 +140,7 @@ function Job:RestoreWaypoint(maxOperations, remainingMilliseconds)
         else
             local stored = saved.segments[self.restoreIndex]
             if not stored then
-                self.result = {segments = segments, waypointLeg = {restored = saved}}
+                self.result = { segments = segments, waypointLeg = { restored = saved } }
                 self:BeginQueue()
                 return
             end
@@ -138,7 +157,9 @@ function Job:RestoreWaypoint(maxOperations, remainingMilliseconds)
                 return
             end
             local segment = {}
-            for key, value in pairs(edge or stored) do segment[key] = value end
+            for key, value in pairs(edge or stored) do
+                segment[key] = value
+            end
             segment.from, segment.to, segment.path = stored.from, stored.to, stored.path
             segment.approachOnly, segment.pathCursor = stored.approachOnly, stored.pathCursor
             segment.departureSeen, segment.boarded = stored.departureSeen, stored.boarded
@@ -146,7 +167,7 @@ function Job:RestoreWaypoint(maxOperations, remainingMilliseconds)
             self.restoreIndex = self.restoreIndex + 1
         end
     end
-end--[[APR_DIAG]]; Job.RestoreWaypoint = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:96:Job:RestoreWaypoint#6", Job.RestoreWaypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.RestoreWaypoint = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:119:Job:RestoreWaypoint#6", Job.RestoreWaypoint)--[[/APR_DIAG]]
 
 function Job:BeginCatalogue()
     -- A refused offer belongs to one authored objective. Clear that context
@@ -155,7 +176,7 @@ function Job:BeginCatalogue()
     if taxiData.SetProbeContext then taxiData:SetProbeContext(self.request.contextKey) end
     self.phase = "catalogue"
     self.active = ProviderJob(self.request.data, self.request)
-end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:37:Job:BeginCatalogue#5", Job.BeginCatalogue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:172:Job:BeginCatalogue#7", Job.BeginCatalogue)--[[/APR_DIAG]]
 
 function Job:BeginSearch(approachRadius)
     local request = self.request
@@ -193,13 +214,13 @@ function Job:BeginSearch(approachRadius)
     else
         self.active = request.engine:CreateSearch(searchOptions)
     end
-end--[[APR_DIAG]]; Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:46:Job:BeginSearch#6", Job.BeginSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:181:Job:BeginSearch#8", Job.BeginSearch)--[[/APR_DIAG]]
 
 function Job:BeginQueue()
     self.phase, self.queueIndex = "queue", 1
     self.result.queue = {}
     self.result.probeChecked = true
-end--[[APR_DIAG]]; Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:61:Job:BeginQueue#7", Job.BeginQueue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:219:Job:BeginQueue#9", Job.BeginQueue)--[[/APR_DIAG]]
 
 -- A relaxed graph is diagnostic only. Never publish its segments as guidance.
 -- It identifies missing gates on a connected potential route, not unrelated
@@ -241,257 +262,7 @@ function Job:ExplainFailure(includeActions)
         walkingRegionFor = r.walkingRegionFor,
         walkingIsTransitive = r.walkingIsTransitive,
     })
-end--[[APR_DIAG]]; Job.ExplainFailure = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:70:Job:ExplainFailure#8", Job.ExplainFailure)--[[/APR_DIAG]]
-
-function Job:AdvancePhase(maxOperations, remainingMilliseconds)
-    local request = self.request
-    if self.phase == "waypoint_leg" then
-        self:AdvanceWaypointLeg(maxOperations, remainingMilliseconds)
-        return
-    end
-    if self.phase == "restore_waypoint" then
-        self:RestoreWaypoint(maxOperations, remainingMilliseconds)
-        return
-    end
-    if self.phase == "transport" then
-        if self.active then
-            local status, result = self.active:Step(maxOperations, remainingMilliseconds)
-            self.walkingPreview = self.active.walkingPreview
-            if status == "planning" then return end
-            if status == "cancelled" then self:Cancel(); return end
-            local edge = self.transport
-            if status == "ready" and result and result.path and #result.path >= 2 then
-                ResolveInstruction(request, edge)
-                self.travelPreview = result.yards == 0 and {edge}
-                    or {{kind = "walk", from = request.start, to = edge.from, path = result.path, seconds = result.seconds}, edge}
-            end
-        else
-            local deadline = request.clock and request.clock() + remainingMilliseconds
-            local start, goal = request.start, request.goal
-            local sameWorld = start.instanceID == goal.instanceID
-            local direct = sameWorld and math.sqrt((goal.x - start.x)^2 + (goal.y - start.y)^2) / request.walkSpeed
-            for operation = 1, maxOperations do
-                if operation > 1 and deadline and request.clock() >= deadline then return end
-                local edge = self.catalogueEdges[self.transportIndex]
-                if not edge then break end
-                self.transportIndex = self.transportIndex + 1
-                local from, to = edge.from, edge.to
-                if (edge.kind == "zeppelin" or edge.kind == "boat" or edge.kind == "tram")
-                    and not edge.action and from.instanceID == start.instanceID and to.instanceID == goal.instanceID
-                    and (not sameWorld or to.uiMapID == goal.uiMapID)
-                    and (edge.copper or 0) <= request.budget and request.canWalk(start, from) == true then
-                    local approach = math.sqrt((start.x - from.x)^2 + (start.y - from.y)^2)
-                    local onward = math.sqrt((goal.x - to.x)^2 + (goal.y - to.y)^2)
-                    local score = edge.seconds + (approach + onward) / request.walkSpeed
-                    if (not direct or score < direct)
-                        and (not self.transportScore or score < self.transportScore) then
-                        self.transportScore, self.transport = score, edge
-                    end
-                end
-            end
-            if self.catalogueEdges[self.transportIndex] then return end
-            if self.transport then
-                local edge = self.transport
-                if request.start.x == edge.from.x and request.start.y == edge.from.y
-                    and (edge.from.z == nil or request.start.z == edge.from.z) then
-                    ResolveInstruction(request, edge)
-                    self.travelPreview = {edge}
-                else
-                    self.active = request.walkingProvider:CreatePathJob(request.start, edge.from, {
-                        walkingOrigin = request.start, walkingGoal = edge.from, walkingGoalXY = edge.from.z == nil,
-                        previewWalking = true, quick = true,
-                        walkSpeed = request.walkSpeed, walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
-                        clock = request.clock,
-                    })
-                    return
-                end
-            end
-        end
-        local transport = self.transport
-        self.transport = nil
-        if self.travelPreview and request.planWaypointLanding and transport and request.canWalk(transport.to, request.goal) then
-            self.waypointLeg = {from = transport.to, to = request.goal, destination = true, transport = transport}
-            self.phase, self.active = "waypoint_leg", nil
-            return
-        end
-        self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
-        return
-    end
-    if self.phase == "zone" then
-        if not self.active then self.active = request.data:CreateZoneRoute(request) end
-        local status, result, metadata = self.active:Step(maxOperations, remainingMilliseconds)
-        if status == "planning" then return end
-        self.active = nil
-        if status == "ready" then
-            self.result, self.zoneRouted = result, true
-            self:BeginQueue()
-        elseif status == "no_path" then
-            self.zoneRouted = true
-            self.waitingData = metadata and metadata.waitingData
-            -- Zone entrances can also carry deferred labels. Publish their
-            -- already-selected blockers through the same bounded phase.
-            self.blockers, self.diagnosticIndex = {}, 1
-            self.diagnosticSegments = metadata and metadata.blockers or {}
-            self.phase = "explain_collect"
-        elseif status == "cancelled" then
-            self:Cancel()
-        else
-            self.zoneFallback, self.phase = true, "prepare"
-        end
-        return
-    end
-    if self.phase == "prepare" then
-        if not self.active and request.adapter and request.adapter.CreatePreparation then
-            self.active = request.adapter:CreatePreparation(request)
-        end
-        if self.active then
-            local status = self.active:Step(maxOperations, remainingMilliseconds)
-            if status == "planning" then return end
-            if status == "cancelled" then
-                self:Cancel()
-                return
-            end
-        end
-        self:BeginCatalogue()
-        return
-    end
-
-    if self.phase == "queue" then
-        local segments = self.result.segments or {}
-        local deadline = request.clock and (request.clock() + remainingMilliseconds)
-        for operation = 1, maxOperations do
-            if operation > 1 and deadline and request.clock() >= deadline then break end
-            local segment = segments[self.queueIndex]
-            if not segment then
-                self.status, self.active = "ready", nil
-                return
-            end
-            ResolveInstruction(request, segment)
-            if self.status ~= "planning" then return end
-            local step = request.prepareSegment(segment, self.queueIndex)
-            if self.status ~= "planning" then return end
-            if step then self.result.queue[#self.result.queue + 1] = step end
-            self.queueIndex = self.queueIndex + 1
-        end
-        -- Finishing the last row needs no extra frame, even when it used the
-        -- last operation or reached the deadline. No more row work runs here.
-        if not segments[self.queueIndex] then
-            self.status, self.active = "ready", nil
-        end
-        return
-    end
-
-    if self.phase == "explain_collect" then
-        local deadline = request.clock and (request.clock() + remainingMilliseconds)
-        for operation = 1, maxOperations do
-            if operation > 1 and deadline and request.clock() >= deadline then break end
-            local edge = self.diagnosticSegments[self.diagnosticIndex]
-            if not edge then
-                self.status, self.diagnosticSegments = "no_path", nil
-                return
-            end
-            if self.zoneRouted or edge.blockedRequirements or edge.blockedActions then
-                ResolveInstruction(request, edge)
-                if self.status ~= "planning" then return end
-                self.blockers[#self.blockers + 1] = edge
-            end
-            self.diagnosticIndex = self.diagnosticIndex + 1
-        end
-        if not self.diagnosticSegments[self.diagnosticIndex] then
-            self.status, self.diagnosticSegments = "no_path", nil
-        end
-        return
-    end
-
-    local status, result, metadata = self.active:Step(maxOperations, remainingMilliseconds)
-    if self.phase == "search" and self.active and self.active.entryWalkPreview then
-        self.entryWalkPreview = self.active.entryWalkPreview
-    end
-    if status == "planning" then return end
-    if status == "cancelled" then
-        self:Cancel()
-        return
-    end
-
-    if self.phase == "explain" then
-        if status ~= "ready" and not self.explainActions and self.catalogueMetadata.blockedActionEdges then
-            self:ExplainFailure(true)
-            return
-        end
-        self.blockers, self.diagnosticIndex = {}, 1
-        self.diagnosticSegments = result and result.segments or {}
-        self.phase, self.active = "explain_collect", nil
-    elseif self.phase == "catalogue" then
-        self.catalogueEdges, self.catalogueMetadata = result or {}, metadata or {}
-        self.waitingData = self.catalogueMetadata.waitingData
-        if request.waypointResume and not request.waypointResume.hasTaxi then
-            self.phase, self.active = "restore_waypoint", nil
-        elseif not request.waypointResume and request.progressiveTravel and request.walkingProvider and request.walkingProvider.CreatePathJob then
-            self.phase, self.active, self.transportIndex = "transport", nil, 1
-        else
-            self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
-        end
-    elseif self.phase == "taxi" then
-        self.taxiEdges = result or {}
-        self.waitingData = self.waitingData or (metadata and metadata.waitingData)
-        if request.waypointResume then
-            self.phase, self.active = "restore_waypoint", nil
-            return
-        end
-        -- On a long trip to a free pin, prove the exact stop or a nearby
-        -- approach while comparing transports in a single graph search.
-        self.approachSearch = request.allowEarlyWalkingApproach and request.walkingGoalApproach or nil
-        self:BeginSearch(self.approachSearch)
-    elseif self.phase == "search" then
-        -- Try a nearby reachable stop only after the exact map pin fails.
-        if status ~= "ready" and request.walkingGoalApproach and not self.approachSearch
-            and not self.active.unresolvedStartSurface and (status == "no_path" or self.active.unresolvedSurface) then
-            self.approachSearch = request.walkingGoalApproach
-            self:BeginSearch(self.approachSearch)
-            return
-        end
-        if status == "waiting_data" or (status == "no_path" and self.active.unresolvedSurface) then
-            self.otherDataPending = self.waitingData == true
-            self.unresolvedSurface = self.active.unresolvedSurface
-            self.unresolvedStartSurface = self.active.unresolvedStartSurface
-            self.waitingData, self.status, self.active = true, "waiting_data", nil
-            return
-        end
-        self.searchFailed = status ~= "ready"
-        self.result = result or self.active:GetResult()
-        if not self.result then self.result = { segments = {}, totalSeconds = math.huge } end
-        if not self.searchFailed then self.result.waypointLeg = self.waypointLeg end
-        local taxiData = request.taxiData
-        -- The provider knows its minimum boarding time. If that alone loses
-        -- to the current route, no flight-master exploration can improve it.
-        local probeCanHelp = not taxiData.CanProbeBeat or taxiData:CanProbeBeat(self.result.totalSeconds)
-        if request.allowTaxiProbes ~= false and taxiData.CreateProbeSearch and probeCanHelp then
-            -- An incomplete taxi offer can be the only route between regions.
-            -- Try its bounded exploration before publishing a final failure.
-            self.phase = "probe"
-            self.active =
-                request.taxiData:CreateProbeSearch(request.start, request.goal, self.result.totalSeconds, request)
-        elseif self.searchFailed then
-            self:ExplainFailure()
-        else
-            self:BeginQueue()
-        end
-    elseif self.phase == "probe" then
-        if result then
-            self.result.segments = request.probeSegments(result)
-            local approach = self.result.segments[1]
-            if approach and approach.kind == "walk" then
-                if result.approachPath then approach.path = result.approachPath end
-                if result.approachSeconds ~= nil then approach.seconds = result.approachSeconds end
-            end
-            self.result.totalSeconds = result.estimatedSeconds or math.huge
-        elseif self.searchFailed then
-            self:ExplainFailure()
-            return
-        end
-        self:BeginQueue()
-    end
-end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:87:Job:AdvancePhase#9", Job.AdvancePhase)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.ExplainFailure = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:228:Job:ExplainFailure#10", Job.ExplainFailure)--[[/APR_DIAG]]
 
 function Job:Step(maxOperations, maxMilliseconds)
     if self.status ~= "planning" then return self.status, self.result end
@@ -518,15 +289,21 @@ function Job:Step(maxOperations, maxMilliseconds)
         self.maxSliceMilliseconds = math.max(self.maxSliceMilliseconds, self.lastSliceMilliseconds)
     end
     return self.status, self.result
-end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:218:Job:Step#10", Job.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:267:Job:Step#11", Job.Step)--[[/APR_DIAG]]
 
 function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.entryWalkPreview = nil
     self.active, self.catalogueEdges, self.taxiEdges, self.diagnosticSegments, self.blockers = nil, nil, nil, nil, nil
-end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:245:Job:Cancel#11", Job.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:294:Job:Cancel#12", Job.Cancel)--[[/APR_DIAG]]
 
 function Job:GetResult()
     return self.result, self.status
-end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:251:Job:GetResult#12", Job.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:301:Job:GetResult#13", Job.GetResult)--[[/APR_DIAG]]
+
+APR.NavigationPlanner._job = {
+    Job = Job,
+    ResolveInstruction = ResolveInstruction,
+    ProviderJob = ProviderJob,
+}

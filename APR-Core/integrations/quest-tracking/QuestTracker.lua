@@ -29,13 +29,13 @@ function Tracker:GetKaliel()
     local addons = LibStub("MSA-AceAddon-3.0", true)
     return addons and addons.GetAddon and addons:GetAddon("!KalielsTracker", true)
 end--[[APR_DIAG]]
-Tracker.GetKaliel = APRTrace("APR-Core/integrations/QuestTracker.lua:16:Tracker:GetKaliel#1", Tracker.GetKaliel)--[[/APR_DIAG]]
+Tracker.GetKaliel = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:16:Tracker:GetKaliel#1", Tracker.GetKaliel)--[[/APR_DIAG]]
 
 function Tracker:GetGap()
     local _, _, provider = self:Resolve()
     return provider == "kaliel" and KALIEL_GAP or 12
 end--[[APR_DIAG]]
-Tracker.GetGap = APRTrace("APR-Core/integrations/QuestTracker.lua:33:Tracker:GetGap#2", Tracker.GetGap)--[[/APR_DIAG]]
+Tracker.GetGap = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:33:Tracker:GetGap#2", Tracker.GetGap)--[[/APR_DIAG]]
 
 function Tracker:GetBelowOffset()
     local _, _, provider = self:Resolve()
@@ -43,7 +43,7 @@ function Tracker:GetBelowOffset()
     return provider == "kaliel" and headerHeight + KALIEL_GAP or 35
 end--[[APR_DIAG]]
 Tracker.GetBelowOffset =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:38:Tracker:GetBelowOffset#3", Tracker.GetBelowOffset)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:38:Tracker:GetBelowOffset#3", Tracker.GetBelowOffset)--[[/APR_DIAG]]
 
 function Tracker:GetSide(profile)
     -- Deliberately no AceDB default: an old true boolean means the old BELOW layout.
@@ -52,7 +52,7 @@ function Tracker:GetSide(profile)
     end
     return profile.currentStepTrackerSide
 end--[[APR_DIAG]]
-Tracker.GetSide = APRTrace("APR-Core/integrations/QuestTracker.lua:44:Tracker:GetSide#4", Tracker.GetSide)--[[/APR_DIAG]]
+Tracker.GetSide = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:44:Tracker:GetSide#4", Tracker.GetSide)--[[/APR_DIAG]]
 
 function Tracker:SetSide(side)
     local profile = APR:GetSettingsProfile()
@@ -63,7 +63,7 @@ function Tracker:SetSide(side)
     profile.currentStepTrackerPosition = nil
     APR.currentStep:RefreshCurrentStepFrameAnchor()
 end--[[APR_DIAG]]
-Tracker.SetSide = APRTrace("APR-Core/integrations/QuestTracker.lua:52:Tracker:SetSide#5", Tracker.SetSide)--[[/APR_DIAG]]
+Tracker.SetSide = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:52:Tracker:SetSide#5", Tracker.SetSide)--[[/APR_DIAG]]
 
 function Tracker:Resolve(requested)
     local profile = APR:GetSettingsProfile()
@@ -84,12 +84,12 @@ function Tracker:Resolve(requested)
     local frame = _G.ObjectiveTrackerFrame or _G.QuestWatchFrame
     return frame, frame, "blizzard", frame and frame.Header
 end--[[APR_DIAG]]
-Tracker.Resolve = APRTrace("APR-Core/integrations/QuestTracker.lua:62:Tracker:Resolve#6", Tracker.Resolve)--[[/APR_DIAG]]
+Tracker.Resolve = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:62:Tracker:Resolve#6", Tracker.Resolve)--[[/APR_DIAG]]
 
 local function number(value)
     return APR:CanAccessValue(value) and type(value) == "number" and value == value
 end--[[APR_DIAG]]
-number = APRTrace("APR-Core/integrations/QuestTracker.lua:77:number#7", number)--[[/APR_DIAG]]
+number = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:77:number#7", number)--[[/APR_DIAG]]
 
 local function points(frame)
     if not frame.GetNumPoints or not frame.GetPoint then return nil end
@@ -101,7 +101,7 @@ local function points(frame)
     end
     return #result > 0 and result or nil
 end--[[APR_DIAG]]
-points = APRTrace("APR-Core/integrations/QuestTracker.lua:81:points#8", points)--[[/APR_DIAG]]
+points = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:81:points#8", points)--[[/APR_DIAG]]
 
 local function samePoints(a, b)
     if not a or not b or #a ~= #b then return false end
@@ -116,7 +116,7 @@ local function samePoints(a, b)
     end
     return true
 end--[[APR_DIAG]]
-samePoints = APRTrace("APR-Core/integrations/QuestTracker.lua:92:samePoints#9", samePoints)--[[/APR_DIAG]]
+samePoints = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:92:samePoints#9", samePoints)--[[/APR_DIAG]]
 
 local function place(frame, anchors, dx, dy)
     -- Kaliel intentionally shadows the container's setters. Call the native frame
@@ -146,7 +146,7 @@ local function place(frame, anchors, dx, dy)
     -- later detach recognizes our placement and restores the original points.
     return points(frame)
 end--[[APR_DIAG]]
-place = APRTrace("APR-Core/integrations/QuestTracker.lua:106:place#10", place)--[[/APR_DIAG]]
+place = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:106:place#10", place)--[[/APR_DIAG]]
 
 function Tracker:Release(preservePosition)
     if InCombatLockdown() then return end
@@ -197,7 +197,7 @@ function Tracker:Release(preservePosition)
         if ownsPosition and not preservePosition then place(state.frame, state.original, 0, 0) end
     end
 end--[[APR_DIAG]]
-Tracker.Release = APRTrace("APR-Core/integrations/QuestTracker.lua:133:Tracker:Release#11", Tracker.Release)--[[/APR_DIAG]]
+Tracker.Release = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:133:Tracker:Release#11", Tracker.Release)--[[/APR_DIAG]]
 
 function Tracker:WatchKaliel(owner)
     if not owner or self.kalielOwner == owner then return end
@@ -219,13 +219,13 @@ function Tracker:WatchKaliel(owner)
         if InCombatLockdown() then return end
         self:GetAnchor()
     end--[[APR_DIAG]]
-    refreshed = APRTrace("APR-Core/integrations/QuestTracker.lua:188:refreshed#13", refreshed)--[[/APR_DIAG]]
+    refreshed = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:188:refreshed#13", refreshed)--[[/APR_DIAG]]
     if owner.Tracker_SetSize then
         hooksecurefunc(
             owner,
             "Tracker_SetSize", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/QuestTracker.lua:202:callback#14", --[[/APR_DIAG]]
+                "APR-Core/integrations/quest-tracking/QuestTracker.lua:202:callback#14", --[[/APR_DIAG]]
                 function() refreshed(false) end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
@@ -235,13 +235,13 @@ function Tracker:WatchKaliel(owner)
             owner,
             "Tracker_Move", --[[APR_DIAG]]
             APRTrace(
-                "APR-Core/integrations/QuestTracker.lua:203:callback#15", --[[/APR_DIAG]]
+                "APR-Core/integrations/quest-tracking/QuestTracker.lua:203:callback#15", --[[/APR_DIAG]]
                 function() refreshed(true) end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
     end
 end--[[APR_DIAG]]
-Tracker.WatchKaliel = APRTrace("APR-Core/integrations/QuestTracker.lua:183:Tracker:WatchKaliel#12", Tracker.WatchKaliel)--[[/APR_DIAG]]
+Tracker.WatchKaliel = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:183:Tracker:WatchKaliel#12", Tracker.WatchKaliel)--[[/APR_DIAG]]
 
 function Tracker:GetKalielAnchor(frame, bounds)
     local owner = self:GetKaliel()
@@ -316,7 +316,7 @@ function Tracker:GetKalielAnchor(frame, bounds)
     return x, aprTop
 end--[[APR_DIAG]]
 Tracker.GetKalielAnchor =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:206:Tracker:GetKalielAnchor#16", Tracker.GetKalielAnchor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:206:Tracker:GetKalielAnchor#16", Tracker.GetKalielAnchor)--[[/APR_DIAG]]
 
 function Tracker:Geometry(frame, edge)
     if not frame then return end
@@ -330,7 +330,7 @@ function Tracker:Geometry(frame, edge)
     scale = scale / parentScale
     return x * scale, y * scale, scale
 end--[[APR_DIAG]]
-Tracker.Geometry = APRTrace("APR-Core/integrations/QuestTracker.lua:276:Tracker:Geometry#17", Tracker.Geometry)--[[/APR_DIAG]]
+Tracker.Geometry = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:276:Tracker:Geometry#17", Tracker.Geometry)--[[/APR_DIAG]]
 
 function Tracker:GetBlizzardAnchor(frame)
     local state = self.displacement
@@ -391,7 +391,7 @@ function Tracker:GetBlizzardAnchor(frame)
     return state.baseX + dx, state.baseTop + dy - headerHeight
 end--[[APR_DIAG]]
 Tracker.GetBlizzardAnchor =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:287:Tracker:GetBlizzardAnchor#18", Tracker.GetBlizzardAnchor)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:287:Tracker:GetBlizzardAnchor#18", Tracker.GetBlizzardAnchor)--[[/APR_DIAG]]
 
 function Tracker:GetAnchor()
     if InCombatLockdown() then return end
@@ -520,7 +520,7 @@ function Tracker:GetAnchor()
     self.baseX, self.baseTop = baseX, baseTop
     return baseX + dx, baseTop + dy - headerHeight
 end--[[APR_DIAG]]
-Tracker.GetAnchor = APRTrace("APR-Core/integrations/QuestTracker.lua:346:Tracker:GetAnchor#19", Tracker.GetAnchor)--[[/APR_DIAG]]
+Tracker.GetAnchor = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:346:Tracker:GetAnchor#19", Tracker.GetAnchor)--[[/APR_DIAG]]
 
 -- Move an unprotected proxy instead of attaching secure APR children to a
 -- provider frame. Only an active drag installs per-frame work.
@@ -562,7 +562,7 @@ function Tracker:StartDrag()
     proxy:SetScript(
         "OnUpdate", --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/QuestTracker.lua:525:callback#21", --[[/APR_DIAG]]
+            "APR-Core/integrations/quest-tracking/QuestTracker.lua:525:callback#21", --[[/APR_DIAG]]
             function() self:UpdateDrag() end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
@@ -570,14 +570,14 @@ function Tracker:StartDrag()
     proxy:SetScript(
         "OnEvent", --[[APR_DIAG]]
         APRTrace(
-            "APR-Core/integrations/QuestTracker.lua:527:callback#22", --[[/APR_DIAG]]
+            "APR-Core/integrations/quest-tracking/QuestTracker.lua:527:callback#22", --[[/APR_DIAG]]
             function() self:StopDrag() end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
     proxy:StartMoving()
     return true
 end--[[APR_DIAG]]
-Tracker.StartDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:503:Tracker:StartDrag#20", Tracker.StartDrag)--[[/APR_DIAG]]
+Tracker.StartDrag = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:503:Tracker:StartDrag#20", Tracker.StartDrag)--[[/APR_DIAG]]
 
 function Tracker:UpdateDrag()
     local drag = self.drag
@@ -601,7 +601,7 @@ function Tracker:UpdateDrag()
     profile.currentStepTrackerOffset = { x = drag.dx + x - drag.x, y = drag.dy + y - drag.y }
     APR.currentStep:RefreshQuestTrackerAnchor()
 end--[[APR_DIAG]]
-Tracker.UpdateDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:532:Tracker:UpdateDrag#23", Tracker.UpdateDrag)--[[/APR_DIAG]]
+Tracker.UpdateDrag = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:532:Tracker:UpdateDrag#23", Tracker.UpdateDrag)--[[/APR_DIAG]]
 
 function Tracker:StopDrag(skipUpdate)
     if not self.drag then return false end
@@ -616,7 +616,7 @@ function Tracker:StopDrag(skipUpdate)
     proxy:Hide()
     return true
 end--[[APR_DIAG]]
-Tracker.StopDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:548:Tracker:StopDrag#24", Tracker.StopDrag)--[[/APR_DIAG]]
+Tracker.StopDrag = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:548:Tracker:StopDrag#24", Tracker.StopDrag)--[[/APR_DIAG]]
 
 function Tracker:SavePreviewPosition(preview)
     local profile = APR:GetSettingsProfile()
@@ -628,7 +628,7 @@ function Tracker:SavePreviewPosition(preview)
     self:ApplyPendingPosition()
 end--[[APR_DIAG]]
 Tracker.SavePreviewPosition =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:465:Tracker:SavePreviewPosition#20", Tracker.SavePreviewPosition)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:465:Tracker:SavePreviewPosition#20", Tracker.SavePreviewPosition)--[[/APR_DIAG]]
 
 function Tracker:ApplyPendingPosition()
     local profile = APR:GetSettingsProfile()
@@ -647,7 +647,7 @@ function Tracker:ApplyPendingPosition()
     end
 end--[[APR_DIAG]]
 Tracker.ApplyPendingPosition =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:475:Tracker:ApplyPendingPosition#21", Tracker.ApplyPendingPosition)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:475:Tracker:ApplyPendingPosition#21", Tracker.ApplyPendingPosition)--[[/APR_DIAG]]
 
 local scopes = { currentStep = true, fillers = true, questOrderList = true, afk = true }
 function Tracker:IsAppearanceScope(scope)
@@ -659,7 +659,7 @@ function Tracker:IsAppearanceScope(scope)
     return true
 end--[[APR_DIAG]]
 Tracker.IsAppearanceScope =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:492:Tracker:IsAppearanceScope#22", Tracker.IsAppearanceScope)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:492:Tracker:IsAppearanceScope#22", Tracker.IsAppearanceScope)--[[/APR_DIAG]]
 
 -- Placement and appearance are independent: Kaliel may host an Ellesmere-styled guide.
 function Tracker:GetAppearanceProvider(scope)
@@ -691,13 +691,13 @@ function Tracker:GetAppearanceProvider(scope)
     end
 end--[[APR_DIAG]]
 Tracker.GetAppearanceProvider = APRTrace(
-    "APR-Core/integrations/QuestTracker.lua:502:Tracker:GetAppearanceProvider#23",
+    "APR-Core/integrations/quest-tracking/QuestTracker.lua:502:Tracker:GetAppearanceProvider#23",
     Tracker.GetAppearanceProvider
 )--[[/APR_DIAG]]
 local function rgba(color)
     if color then return { color.r, color.g, color.b, color.a or 1 } end
 end--[[APR_DIAG]]
-rgba = APRTrace("APR-Core/integrations/QuestTracker.lua:521:rgba#24", rgba)--[[/APR_DIAG]]
+rgba = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:521:rgba#24", rgba)--[[/APR_DIAG]]
 
 function Tracker:Style(scope)
     local appearance = self:GetAppearanceProvider(scope)
@@ -753,7 +753,7 @@ function Tracker:Style(scope)
     end
     return style
 end--[[APR_DIAG]]
-Tracker.Style = APRTrace("APR-Core/integrations/QuestTracker.lua:525:Tracker:Style#25", Tracker.Style)--[[/APR_DIAG]]
+Tracker.Style = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:525:Tracker:Style#25", Tracker.Style)--[[/APR_DIAG]]
 
 local function textureSnapshot(texture)
     if not texture or not texture.GetTexture then return end
@@ -770,7 +770,7 @@ local function textureSnapshot(texture)
         desaturated = texture.IsDesaturated and texture:IsDesaturated(),
     }
 end--[[APR_DIAG]]
-textureSnapshot = APRTrace("APR-Core/integrations/QuestTracker.lua:578:textureSnapshot#26", textureSnapshot)--[[/APR_DIAG]]
+textureSnapshot = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:578:textureSnapshot#26", textureSnapshot)--[[/APR_DIAG]]
 
 local function textureApply(texture, saved)
     if not texture then return end
@@ -797,7 +797,7 @@ local function textureApply(texture, saved)
     texture:SetHeight(saved.height)
     texture:SetShown(saved.shown)
 end--[[APR_DIAG]]
-textureApply = APRTrace("APR-Core/integrations/QuestTracker.lua:594:textureApply#27", textureApply)--[[/APR_DIAG]]
+textureApply = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:594:textureApply#27", textureApply)--[[/APR_DIAG]]
 
 local function skinButton(button, style, kind, collapsed)
     if not button or not button.GetNormalTexture then return end
@@ -846,7 +846,7 @@ local function skinButton(button, style, kind, collapsed)
         button.aprTrackerStyle = nil
     end
 end--[[APR_DIAG]]
-skinButton = APRTrace("APR-Core/integrations/QuestTracker.lua:613:skinButton#28", skinButton)--[[/APR_DIAG]]
+skinButton = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:613:skinButton#28", skinButton)--[[/APR_DIAG]]
 
 function Tracker:RefreshHeaders()
     for header, scope in pairs(self.headers) do
@@ -900,7 +900,7 @@ function Tracker:RefreshHeaders()
             header.aprTrackerClickHook = true
             header.MinimizeButton:HookScript(
                 "OnClick", --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/QuestTracker.lua:708:callback#30", --[[/APR_DIAG]] function(button)
+                APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:708:callback#30", --[[/APR_DIAG]] function(button)
                     local saved = button.aprTrackerStyle
                     if saved then
                         -- APR's original click handler has just set its new +/- art.
@@ -926,7 +926,7 @@ function Tracker:RefreshHeaders()
     end
 end--[[APR_DIAG]]
 Tracker.RefreshHeaders =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:661:Tracker:RefreshHeaders#29", Tracker.RefreshHeaders)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:661:Tracker:RefreshHeaders#29", Tracker.RefreshHeaders)--[[/APR_DIAG]]
 
 function Tracker:PanelScope(frame)
     local current = frame
@@ -939,7 +939,7 @@ function Tracker:PanelScope(frame)
         if not current then return end
     end
 end--[[APR_DIAG]]
-Tracker.PanelScope = APRTrace("APR-Core/integrations/QuestTracker.lua:731:Tracker:PanelScope#31", Tracker.PanelScope)--[[/APR_DIAG]]
+Tracker.PanelScope = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:731:Tracker:PanelScope#31", Tracker.PanelScope)--[[/APR_DIAG]]
 
 local function ResizePanel(self, frame, scope, module, provider, width)
     if not frame or not module or not module.SetContentWidth then return end
@@ -956,7 +956,7 @@ local function ResizePanel(self, frame, scope, module, provider, width)
         self.styleSignature = nil
     end
 end--[[APR_DIAG]]
-ResizePanel = APRTrace("APR-Core/integrations/QuestTracker.lua:743:ResizePanel#32", ResizePanel)--[[/APR_DIAG]]
+ResizePanel = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:743:ResizePanel#32", ResizePanel)--[[/APR_DIAG]]
 
 function Tracker:RefreshWidths()
     if InCombatLockdown() or self.resizing then return end
@@ -974,7 +974,7 @@ function Tracker:RefreshWidths()
     self.resizing = nil
 end--[[APR_DIAG]]
 Tracker.RefreshWidths =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:759:Tracker:RefreshWidths#33", Tracker.RefreshWidths)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:759:Tracker:RefreshWidths#33", Tracker.RefreshWidths)--[[/APR_DIAG]]
 
 function Tracker:ApplyPanel(frame, fallback)
     local scope = self:PanelScope(frame)
@@ -1012,7 +1012,7 @@ function Tracker:ApplyPanel(frame, fallback)
     end
     return fallback
 end--[[APR_DIAG]]
-Tracker.ApplyPanel = APRTrace("APR-Core/integrations/QuestTracker.lua:775:Tracker:ApplyPanel#34", Tracker.ApplyPanel)--[[/APR_DIAG]]
+Tracker.ApplyPanel = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:775:Tracker:ApplyPanel#34", Tracker.ApplyPanel)--[[/APR_DIAG]]
 
 function Tracker:RefreshSurface()
     local style = self:Style("currentStep")
@@ -1054,7 +1054,7 @@ function Tracker:RefreshSurface()
     surface:Show()
 end--[[APR_DIAG]]
 Tracker.RefreshSurface =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:810:Tracker:RefreshSurface#35", Tracker.RefreshSurface)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:810:Tracker:RefreshSurface#35", Tracker.RefreshSurface)--[[/APR_DIAG]]
 
 function Tracker:RefreshAppearance()
     if InCombatLockdown() then return end
@@ -1109,7 +1109,7 @@ function Tracker:RefreshAppearance()
     self:RefreshSurface()
 end--[[APR_DIAG]]
 Tracker.RefreshAppearance =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:846:Tracker:RefreshAppearance#36", Tracker.RefreshAppearance)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:846:Tracker:RefreshAppearance#36", Tracker.RefreshAppearance)--[[/APR_DIAG]]
 
 -- Reuse the geometry probe storage: observing an unchanged tracker must not scan
 -- quest rows, rebuild styles or mutate any frames. Provider internals remain untouched.
@@ -1137,7 +1137,7 @@ local function ObserveValue(state, value, trusted)
     if state[state.count] ~= value then state.changed = true end
     state[state.count] = value
 end--[[APR_DIAG]]
-ObserveValue = APRTrace("APR-Core/integrations/QuestTracker.lua:901:ObserveValue#37", ObserveValue)--[[/APR_DIAG]]
+ObserveValue = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:901:ObserveValue#37", ObserveValue)--[[/APR_DIAG]]
 
 local function ObserveFrame(state, frame, geometry)
     ObserveValue(state, frame, true)
@@ -1151,7 +1151,7 @@ local function ObserveFrame(state, frame, geometry)
         end
     end
 end--[[APR_DIAG]]
-ObserveFrame = APRTrace("APR-Core/integrations/QuestTracker.lua:911:ObserveFrame#38", ObserveFrame)--[[/APR_DIAG]]
+ObserveFrame = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:911:ObserveFrame#38", ObserveFrame)--[[/APR_DIAG]]
 
 function Tracker:LayoutInputsChanged(profile)
     local state = self.layoutObservation or {}
@@ -1204,7 +1204,7 @@ function Tracker:LayoutInputsChanged(profile)
     return state.changed or previousCount ~= state.count
 end--[[APR_DIAG]]
 Tracker.LayoutInputsChanged =
-    APRTrace("APR-Core/integrations/QuestTracker.lua:924:Tracker:LayoutInputsChanged#39", Tracker.LayoutInputsChanged)--[[/APR_DIAG]]
+    APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:924:Tracker:LayoutInputsChanged#39", Tracker.LayoutInputsChanged)--[[/APR_DIAG]]
 
 function Tracker:RefreshObservedLayout(elapsed)
     if InCombatLockdown() or (APR.LayoutEditor and APR.LayoutEditor.active) then
@@ -1242,7 +1242,7 @@ function Tracker:RefreshObservedLayout(elapsed)
     if APR.FinishPerformanceSample then APR:FinishPerformanceSample("TrackerLayoutUpdate", started) end
 end--[[APR_DIAG]]
 Tracker.RefreshObservedLayout = APRTrace(
-    "APR-Core/integrations/QuestTracker.lua:965:Tracker:RefreshObservedLayout#40",
+    "APR-Core/integrations/quest-tracking/QuestTracker.lua:965:Tracker:RefreshObservedLayout#40",
     Tracker.RefreshObservedLayout
 )--[[/APR_DIAG]]
 
@@ -1260,13 +1260,13 @@ function Tracker:RefreshObservationActivity()
         if restoreAppearance then self:RefreshAppearance() end
         if self.displacement and not InCombatLockdown() then self:Release() end
     end
-end--[[APR_DIAG]]; Tracker.RefreshObservationActivity = APRTrace("APR-Core/integrations/QuestTracker.lua:1184:Tracker:RefreshObservationActivity#46", Tracker.RefreshObservationActivity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Tracker.RefreshObservationActivity = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:1184:Tracker:RefreshObservationActivity#46", Tracker.RefreshObservationActivity)--[[/APR_DIAG]]
 function Tracker:Initialize()
     if self.observer then return end
     self.observer = CreateFrame("Frame")
     local elapsed, appearanceElapsed = 0, 0
     self.observationCallback =
-         --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1202:callback#48", --[[/APR_DIAG]]function(_, delta)
+         --[[APR_DIAG]]APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:1202:callback#48", --[[/APR_DIAG]]function(_, delta)
             if not self.observationActive then return end
             elapsed = elapsed + delta
             appearanceElapsed = appearanceElapsed + delta
@@ -1309,13 +1309,13 @@ function Tracker:Initialize()
     for _, event in ipairs({ "PLAYER_LOGOUT", "PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED" }) do
         self.observer:RegisterEvent(event)
     end
-    CurrentStepScreenPanel:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1244:callback#49", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    CurrentStepScreenPanel:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1245:callback#50", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    CurrentStepScreenPanel:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:1244:callback#49", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    CurrentStepScreenPanel:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:1245:callback#50", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
     self:RefreshObservationActivity()
     self.observer:SetScript(
         "OnEvent",
 
-            --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1250:callback#51", --[[/APR_DIAG]]function(_, event)
+            --[[APR_DIAG]]APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:1250:callback#51", --[[/APR_DIAG]]function(_, event)
                 if event == "PLAYER_LOGOUT" then
                     self.observer:SetScript("OnUpdate", nil)
                     self:Release()
@@ -1325,4 +1325,4 @@ function Tracker:Initialize()
             end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]
-Tracker.Initialize = APRTrace("APR-Core/integrations/QuestTracker.lua:997:Tracker:Initialize#41", Tracker.Initialize)--[[/APR_DIAG]]
+Tracker.Initialize = APRTrace("APR-Core/integrations/quest-tracking/QuestTracker.lua:997:Tracker:Initialize#41", Tracker.Initialize)--[[/APR_DIAG]]

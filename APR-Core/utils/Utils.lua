@@ -8,6 +8,71 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+-- Leave room for the fragment header within WoW's 255-byte limit.
+local MESSAGE_FRAGMENT_PAYLOAD_BYTES = 180
+
+-- Fold complete UTF-8 characters, never individual bytes of accented letters.
+local searchAccents = {
+    ["à"] = "a",
+    ["â"] = "a",
+    ["ä"] = "a",
+    ["á"] = "a",
+    ["ã"] = "a",
+    ["å"] = "a",
+    ["À"] = "a",
+    ["Â"] = "a",
+    ["Ä"] = "a",
+    ["Á"] = "a",
+    ["Ã"] = "a",
+    ["Å"] = "a",
+    ["é"] = "e",
+    ["è"] = "e",
+    ["ê"] = "e",
+    ["ë"] = "e",
+    ["É"] = "e",
+    ["È"] = "e",
+    ["Ê"] = "e",
+    ["Ë"] = "e",
+    ["î"] = "i",
+    ["ï"] = "i",
+    ["í"] = "i",
+    ["ì"] = "i",
+    ["Î"] = "i",
+    ["Ï"] = "i",
+    ["Í"] = "i",
+    ["Ì"] = "i",
+    ["ô"] = "o",
+    ["ö"] = "o",
+    ["ó"] = "o",
+    ["ò"] = "o",
+    ["õ"] = "o",
+    ["Ô"] = "o",
+    ["Ö"] = "o",
+    ["Ó"] = "o",
+    ["Ò"] = "o",
+    ["Õ"] = "o",
+    ["ù"] = "u",
+    ["û"] = "u",
+    ["ü"] = "u",
+    ["ú"] = "u",
+    ["Ù"] = "u",
+    ["Û"] = "u",
+    ["Ü"] = "u",
+    ["Ú"] = "u",
+    ["ç"] = "c",
+    ["Ç"] = "c",
+    ["ñ"] = "n",
+    ["Ñ"] = "n",
+    ["ÿ"] = "y",
+    ["ý"] = "y",
+    ["Ÿ"] = "y",
+    ["Ý"] = "y",
+    ["œ"] = "oe",
+    ["Œ"] = "oe",
+    ["æ"] = "ae",
+    ["Æ"] = "ae",
+}
+
 -- Accept keyed tables as well as arrays; callers use both route shapes.
 function APR:Contains(list, x)
     if list then
@@ -410,68 +475,6 @@ function APR:DeepCopyTable(value, copies)
 end--[[APR_DIAG]]
 APR.DeepCopyTable = APRTrace("APR-Core/utils/Utils.lua:363:APR:DeepCopyTable#27", APR.DeepCopyTable)--[[/APR_DIAG]]
 
--- Fold complete UTF-8 characters, never individual bytes of accented letters.
-local searchAccents = {
-    ["à"] = "a",
-    ["â"] = "a",
-    ["ä"] = "a",
-    ["á"] = "a",
-    ["ã"] = "a",
-    ["å"] = "a",
-    ["À"] = "a",
-    ["Â"] = "a",
-    ["Ä"] = "a",
-    ["Á"] = "a",
-    ["Ã"] = "a",
-    ["Å"] = "a",
-    ["é"] = "e",
-    ["è"] = "e",
-    ["ê"] = "e",
-    ["ë"] = "e",
-    ["É"] = "e",
-    ["È"] = "e",
-    ["Ê"] = "e",
-    ["Ë"] = "e",
-    ["î"] = "i",
-    ["ï"] = "i",
-    ["í"] = "i",
-    ["ì"] = "i",
-    ["Î"] = "i",
-    ["Ï"] = "i",
-    ["Í"] = "i",
-    ["Ì"] = "i",
-    ["ô"] = "o",
-    ["ö"] = "o",
-    ["ó"] = "o",
-    ["ò"] = "o",
-    ["õ"] = "o",
-    ["Ô"] = "o",
-    ["Ö"] = "o",
-    ["Ó"] = "o",
-    ["Ò"] = "o",
-    ["Õ"] = "o",
-    ["ù"] = "u",
-    ["û"] = "u",
-    ["ü"] = "u",
-    ["ú"] = "u",
-    ["Ù"] = "u",
-    ["Û"] = "u",
-    ["Ü"] = "u",
-    ["Ú"] = "u",
-    ["ç"] = "c",
-    ["Ç"] = "c",
-    ["ñ"] = "n",
-    ["Ñ"] = "n",
-    ["ÿ"] = "y",
-    ["ý"] = "y",
-    ["Ÿ"] = "y",
-    ["Ý"] = "y",
-    ["œ"] = "oe",
-    ["Œ"] = "oe",
-    ["æ"] = "ae",
-    ["Æ"] = "ae",
-}
-
 local function NormalizeSearchCharacter(character)
     -- Combining diacritics (U+0300..U+036F), for decomposed input.
     if character:match("^\204[\128-\191]$") or character:match("^\205[\128-\175]$") then
@@ -512,9 +515,8 @@ APR.AreOrderedStringListsEqual =
 
 -- Preserve APR's existing group protocol; keep transport framing out of window code.
 function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onComplete)
-    local payloadLength = 180 -- Leave room for the fragment header within WoW's 255-byte limit.
     local msgID = tostring(math.random(10000, 99999)) .. "-" .. GetTime() -- Unique message ID with timestamp
-    local total = math.ceil(#fullMessage / payloadLength)
+    local total = math.ceil(#fullMessage / MESSAGE_FRAGMENT_PAYLOAD_BYTES)
     local remaining, allSent = total, true
     local function OnFragmentSent(_, didSend)
         allSent = allSent and didSend
@@ -525,8 +527,8 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onCompl
     APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
 
     for i = 1, total do
-        local startIdx = (i - 1) * payloadLength + 1
-        local endIdx = math.min(i * payloadLength, #fullMessage)
+        local startIdx = (i - 1) * MESSAGE_FRAGMENT_PAYLOAD_BYTES + 1
+        local endIdx = math.min(i * MESSAGE_FRAGMENT_PAYLOAD_BYTES, #fullMessage)
         local part = fullMessage:sub(startIdx, endIdx)
 
         -- Format: <msgID>|<index>|<total>|<data>
