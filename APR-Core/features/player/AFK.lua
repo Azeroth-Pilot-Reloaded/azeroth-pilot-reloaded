@@ -29,6 +29,7 @@ APR.AFK.isSnapped = false
 ---------------------------------------------------------------------------------------
 
 local AfkFrame = CreateFrame("Frame", "AfkFrameScreen", UIParent, "BackdropTemplate")
+AfkFrame:SetDontSavePosition(true)
 AfkFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 AfkFrame:SetFrameStrata("LOW")
 AfkFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 150)

@@ -114,6 +114,7 @@ HasHeirlooms = APRTrace("APR-Core/features/player/Heirloom.lua:84:HasHeirlooms#6
 ---------------------------------------------------------------------------------------
 
 local HeirloomFrame = CreateFrame("Frame", "HeirloomPanel", UIParent, "BackdropTemplate")
+HeirloomFrame:SetDontSavePosition(true)
 HeirloomFrame:Hide()
 HeirloomFrame:SetSize(250, 75)
 HeirloomFrame:SetFrameStrata("LOW")

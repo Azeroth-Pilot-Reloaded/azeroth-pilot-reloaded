@@ -226,6 +226,7 @@ function overlay:Refresh()
     if not profile then return end
     if not frame then
         frame = CreateFrame("Frame", "APRXPBuffOverlay", UIParent, "BackdropTemplate")
+        frame:SetDontSavePosition(true)
         frame:SetSize(300, 40)
         frame:SetPoint("CENTER", UIParent, "CENTER", 280, 0)
         frame:SetClampedToScreen(true)
@@ -281,10 +282,11 @@ function overlay:Refresh()
         APR:RegisterSkinTarget(frame.Header, "header")
         APR:RegisterSkinTarget(frame.Header.MinimizeButton, "headerButton", { close = true })
     end
-    if self.positionConfig ~= profile.xpBuffFrame then
-        profile.xpBuffFrame = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }
-        self.positionConfig = profile.xpBuffFrame
-        LibWindow.RegisterConfig(frame, profile.xpBuffFrame)
+    local position = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }
+    if self.positionConfig ~= position then
+        profile.xpBuffFrame = position
+        self.positionConfig = position
+        LibWindow.RegisterConfig(frame, position)
         LibWindow.RestorePosition(frame)
     end
     APR:SetPanelColor(frame, profile.currentStepbackgroundColorAlpha)

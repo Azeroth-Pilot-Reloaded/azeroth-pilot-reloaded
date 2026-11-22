@@ -6,9 +6,10 @@ import base64
 import struct
 import tempfile
 import unittest
+from xml.sax.saxutils import quoteattr
 import zlib
 
-from tools.validation.check_package import validate, validate_terrain_companions
+from tools.validation.check_package import validate, validate_runtime_files, validate_terrain_companions
 
 
 class PackageValidationTests(unittest.TestCase):
@@ -61,6 +62,21 @@ class PackageValidationTests(unittest.TestCase):
         self.write("APR-Core/libs/LibAPRNavigation-1.0/nested.xml", '<Ui><Script file="missing.lua"/></Ui>')
         with self.assertRaisesRegex(AssertionError, "Missing runtime dependency"):
             validate(self.root)
+
+    def test_rejects_xml_dependencies_outside_package(self):
+        package = self.root / "package"
+        self.write("package/APR.toc", "Manifests/Catalogue.xml\n")
+        outside = self.root / "Shared.xml"
+        for reference in ("../../Shared.xml", outside.as_posix()):
+            with self.subTest(reference=reference):
+                self.write("package/Manifests/Catalogue.xml", f'<Ui><Include file={quoteattr(reference)}/></Ui>')
+                with self.assertRaisesRegex(AssertionError, "Runtime dependency outside package root"):
+                    validate_runtime_files(package, package / "APR.toc", "Standard")
+
+    def test_accepts_xml_dependency_in_parent_directory_within_package(self):
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/Catalogue.xml", '<Ui><Script file="../Shared.lua"/></Ui>')
+        self.write("APR-Core/libs/Shared.lua", "-- shared runtime dependency\n")
+        validate(self.root)
 
     def test_keeps_runtime_artwork_and_license_notices(self):
         for relative in ("APR-Core/assets/ui/logo.tga", "APR-Core/assets/Arrow-APR.tga",

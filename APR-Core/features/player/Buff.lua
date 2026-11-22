@@ -31,6 +31,7 @@ APR.Buff.auraSlots = {}
 ---------------------------------------------------------------------------------------
 
 local BuffFrame = CreateFrame("Frame", "BuffFrameScreen", UIParent, "BackdropTemplate")
+BuffFrame:SetDontSavePosition(true)
 BuffFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 BuffFrame:SetFrameStrata("LOW")
 BuffFrame:SetClampedToScreen(true)

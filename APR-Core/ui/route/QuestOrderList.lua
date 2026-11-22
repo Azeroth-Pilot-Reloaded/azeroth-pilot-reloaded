@@ -165,6 +165,7 @@ updateSnapSizing =
 
 QuestOrderListFrame =
     APR:CreateStandardFrame("QuestOrderListPanel", UIParent, FRAME_WIDTH, FRAME_HEIGHT, "BackdropTemplate")
+QuestOrderListFrame:SetDontSavePosition(true)
 QuestOrderListFrame:HookScript(
     "OnShow",
      --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:170:callback#11", --[[/APR_DIAG]]function()

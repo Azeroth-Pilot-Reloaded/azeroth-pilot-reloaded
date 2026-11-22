@@ -38,7 +38,7 @@ function APR.Arrow:RestorePosition()
     local profile = APR.settings.profile
     local left, top = self:ClampPosition(profile.arrowleft, profile.arrowtop)
     if left == nil then return end
-    profile.arrowleft, profile.arrowtop = left, top
+    -- Display changes can constrain the anchor without changing the shared placement.
     APR.ArrowFrameM:ClearAllPoints()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", left, top)
     -- An older native layout entry can have detached the artwork on login.

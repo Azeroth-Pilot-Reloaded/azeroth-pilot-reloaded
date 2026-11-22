@@ -71,6 +71,7 @@ GetGroupRoster = APRTrace("APR-Core/features/group/Party.lua:55:GetGroupRoster#3
 ---------------------------------------------------------------------------------------
 
 local PartyFrame = CreateFrame("Frame", "PartyScreenPanel", UIParent, "BackdropTemplate")
+PartyFrame:SetDontSavePosition(true)
 PartyFrame:SetSize(Constants.FRAME_WIDTH, 1)
 PartyFrame:SetFrameStrata("LOW")
 PartyFrame:SetClampedToScreen(true)

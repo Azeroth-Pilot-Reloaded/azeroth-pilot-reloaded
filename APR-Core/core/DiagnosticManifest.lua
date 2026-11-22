@@ -124,7 +124,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/ui/panels/AppearanceIntro.lua"] = {instrumented = 17, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/ChangeLog.lua"] = {instrumented = 16, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/Coordinates.lua"] = {instrumented = 8, diagnosticHelpers = 0},
-    ["APR-Core/ui/panels/LayoutEditor.lua"] = {instrumented = 45, diagnosticHelpers = 0},
+    ["APR-Core/ui/panels/LayoutEditor.lua"] = {instrumented = 47, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/OptionsPanel.lua"] = {instrumented = 33, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/PartyFinderPanel.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/PerformanceDashboard.lua"] = {instrumented = 41, diagnosticHelpers = 0},

@@ -49,6 +49,8 @@ for _, preview in ipairs(editor.previews) do
 end
 assert(not CurrentStepScreenPanel:IsShown(), "Hidden gameplay panels must not be forced visible")
 assert(editor.previews[1]:GetScale() == 1.25)
+assert(editor.previews[1].restored and editor.previews[1].restored.x == 5,
+    "A hidden live panel's initial geometry cannot replace the saved preview anchor")
 assert(editor.previews[2].point[2] == editor.previews[1], "Linked previews follow the primary preview")
 local saved = profile.currentStepFrame
 editor.previews[1].left = 420

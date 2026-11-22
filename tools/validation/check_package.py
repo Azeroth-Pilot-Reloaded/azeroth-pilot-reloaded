@@ -21,8 +21,13 @@ def validate_runtime_files(root, toc, game):
     root = root.resolve()
     visited = set()
 
-    def visit(path):
+    def resolve_dependency(path):
         path = path.resolve()
+        if not path.is_relative_to(root):
+            raise AssertionError(f'Runtime dependency outside package root: {path}')
+        return path
+
+    def visit(path):
         assert path.is_file(), f'Missing runtime dependency: {path.relative_to(root)}'
         if path in visited:
             return
@@ -30,12 +35,13 @@ def validate_runtime_files(root, toc, game):
         if path.suffix != '.xml':
             return
         for reference in manifest_references(path, game):
-            nested = path.parent / reference
-            visit(nested if nested.is_file() else root / reference)
+            nested = resolve_dependency(path.parent / reference)
+            visit(nested if nested.is_file() else resolve_dependency(root / reference))
 
-    for line in toc.read_text(encoding='utf-8-sig').splitlines():
+    for line in resolve_dependency(toc).read_text(encoding='utf-8-sig').splitlines():
         if line.strip() and not line.lstrip().startswith('#'):
-            visit(root / line.strip().replace('\\', '/').replace('[Game]', game))
+            reference = line.strip().replace('\\', '/').replace('[Game]', game)
+            visit(resolve_dependency(root / reference))
     return visited
 
 
