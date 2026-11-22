@@ -1,11 +1,12 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 18) then return end
+if not Lib:BeginModule("geography", 19) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
 local EMPTY = {}
+local HEARTHSTONE_MINIMUM_YARDS = 500
 
 local function Finite(value)
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
@@ -336,6 +337,16 @@ function Instance:CanWalk(from, to)
         if requirements and self:CheckRequirements(requirements, EMPTY) ~= true then return false end
     end
     return self:IsSameAccessRegion(from, to)
+end
+
+function Instance:IsHearthstoneTooClose(from, to)
+    if not from or not to or not Finite(from.x) or not Finite(from.y)
+        or not Finite(to.x) or not Finite(to.y) or not Finite(from.instanceID) or not Finite(to.instanceID) then
+        return false
+    end
+    local dx, dy = from.x - to.x, from.y - to.y
+    local dz = Finite(from.z) and Finite(to.z) and from.z - to.z or 0
+    return dx * dx + dy * dy + dz * dz <= HEARTHSTONE_MINIMUM_YARDS ^ 2 and self:CanWalk(from, to) == true
 end
 
 function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)

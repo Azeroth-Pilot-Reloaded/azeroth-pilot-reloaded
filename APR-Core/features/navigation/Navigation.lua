@@ -1191,7 +1191,6 @@ function nav:GetWalkingSpeedModel(start, threshold)
 end--[[APR_DIAG]]; nav.GetWalkingSpeedModel = APRTrace("APR-Core/features/navigation/Navigation.lua:1158:nav:GetWalkingSpeedModel#74", nav.GetWalkingSpeedModel)--[[/APR_DIAG]]
 function nav:GetDestination(step)
     if step._service then return step.target, step.target.uiMapID end
-    if (step.Coord or step.Coords) and APR.Services and APR.Services.training then APR.Services:CancelTraining() end
     if not step.Coord and not step.Coords and (step.LearnProfession or step.LearnSkill)
         and APR.Services and APR.Services.GetTrainingDestination then
         return APR.Services:GetTrainingDestination(step)
@@ -1301,6 +1300,22 @@ local function Exempt(step)
             and not step.Zones
         )
 end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/Navigation.lua:1267:Exempt#79", Exempt)--[[/APR_DIAG]]
+function nav:ShouldSkipHearthstone(nextStep)
+    local data = APR.NavigationData
+    if self.worldLoading or not data or not data.IsHearthstoneTooClose then return false end
+    local position = Position()
+    if not position then return false end
+    -- A location-gated step may depend on the recall entering its zone.
+    if nextStep then
+        if not APR:StepFilterQoL(nextStep) then return false end
+        if (nextStep.Coord or nextStep.Coords) and not Exempt(nextStep) then
+            local goal = self:GetDestination(nextStep)
+            if data:IsHearthstoneTooClose(position, goal) then return true end
+        end
+    end
+    local bind = data.GetBindPosition and data:GetBindPosition()
+    return data:IsHearthstoneTooClose(position, bind)
+end--[[APR_DIAG]]; nav.ShouldSkipHearthstone = APRTrace("APR-Core/features/navigation/Navigation.lua:1303:nav:ShouldSkipHearthstone#117", nav.ShouldSkipHearthstone)--[[/APR_DIAG]]
 function nav:Notify()
     local step = self:GetActiveStep()
     if self.state == "guiding" and step and self._routeInputs then self._routeInputs.hadGuidance = true end
@@ -2528,6 +2543,9 @@ function nav:Update(context)
         return
     end
     local goal, map, entranceReason, entranceBlockers, coordinateFree
+    if not step._service and (step.Coord or step.Coords) and APR.Services and APR.Services.training then
+        APR.Services:CancelTraining()
+    end
     goal, map, entranceReason, entranceBlockers, coordinateFree = self:GetDestination(step)
     if entranceReason then
         self:Cancel("entrance")
@@ -2764,6 +2782,7 @@ function nav:Update(context)
         start = start,
         playerPosition = start,
         goal = goal,
+        hearthstoneGoal = goal,
         clock = debugprofilestop,
         walkSpeed = walkSpeed,
         walkSpeedFor = walkSpeedFor,

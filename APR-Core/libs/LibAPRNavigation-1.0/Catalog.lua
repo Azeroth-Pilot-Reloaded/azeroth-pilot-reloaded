@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 22) then return end
+if not Lib:BeginModule("catalog", 23) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -328,6 +328,13 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
             or not ((origin.x - from.x)^2 + (origin.y - from.y)^2 <= definition.originRadius^2) then return end
     end
 
+    local innRecall = destination.dynamic == "bind" or definition.routeAction == "UseHS"
+    local owner, snapshot, goal = self.owner, self.snapshot, self.context.hearthstoneGoal
+    if innRecall and source.dynamic == "player"
+        and (snapshot:IsHearthstoneTooClose(from, to) or snapshot:IsHearthstoneTooClose(from, goal)) then
+        return
+    end
+
     local requirements = self.snapshot:GetTravelRequirements(definition.requirements, from, to)
     local canStart = prepared.canStart
     if requirements ~= definition.requirements then
@@ -343,6 +350,15 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         local allowed = canStart(from)
         if allowed == nil then self.metadata.waitingData = true end
         if allowed ~= true then blockedRequirements = requirements end
+    end
+    if innRecall and source.dynamic == "player" then
+        local checkRequirements = canStart
+        canStart = function(position, live)
+            local data = live and owner or snapshot
+            if data:IsHearthstoneTooClose(position, to) or data:IsHearthstoneTooClose(position, goal) then return false end
+            if checkRequirements then return checkRequirements(position, live) end
+            return true
+        end
     end
 
     local seconds, durationSource
@@ -378,8 +394,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         action = prepared.action,
         sourceFree = source.dynamic == "player",
         rawDynamicDestination = destination.dynamic ~= nil,
-        hearthstone = destination.dynamic == "bind" or definition.routeAction == "UseHS"
-            or definition.routeAction == "UseDalaHS" or definition.routeAction == "UseGarrisonHS",
+        hearthstone = innRecall or definition.routeAction == "UseDalaHS" or definition.routeAction == "UseGarrisonHS",
         arrivalZTolerance = definition.arrivalZTolerance,
         arrivalRadius = definition.arrivalRadius,
         verifiedBuild = definition.verifiedBuild,
