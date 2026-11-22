@@ -32,6 +32,7 @@ function nav:IsItineraryValid()
     if not self:IsNavigating() or not ContextCurrent(self.context) then return false end
     local copper = 0
     local provider = WalkingProvider()
+    local data = APR.NavigationData
     for index = self.cursor, #self.queue do
         local step = self.queue[index]
         -- An unavailable-terrain estimate can guide, but cannot establish a
@@ -39,13 +40,16 @@ function nav:IsItineraryValid()
         if step.provisionalEstimate or MissingWalkProof(step, provider) then return false end
         local departure = step.from
         if index == self.cursor then departure = Position() end
-        if
-            step.kind == "walk"
-            and departure
-            and APR.NavigationData
-            and APR.NavigationData:CanWalk(departure, step.to) == false
-        then
-            return false
+        if step.kind == "walk" and departure and data then
+            -- Explicit crossings can join two access regions. An observed
+            -- player can follow their proved corridor from either side.
+            if step.connectionID and HasWalkingPath(step) and data.IsSameAccessRegion then
+                if index == self.cursor
+                    and not data:IsSameAccessRegion(departure, step.from)
+                    and not data:IsSameAccessRegion(departure, step.to) then return false end
+            elseif data:CanWalk(departure, step.to) == false then
+                return false
+            end
         end
         if
             index == self.cursor
@@ -57,7 +61,6 @@ function nav:IsItineraryValid()
         then
             -- A portal's faction/quest predicates do not prove that its former
             -- departure is still reachable after an unexpected world transition.
-            local data = APR.NavigationData
             if departure.instanceID ~= step.from.instanceID then return false end
             if data and data.IsSameAccessRegion then
                 if data:IsSameAccessRegion(departure, step.from) == false then return false end
@@ -180,7 +183,7 @@ end--[[APR_DIAG]]; nav.PrepareGuidanceStep = APRTrace("APR-Core/features/navigat
 
 -- A physically validated local corridor can guide before the world catalogue
 -- finishes. It is a publication of this request, not a second planning owner.
-function nav:PublishLocalPath(result, context, generation, job, inputs, unavailable, approachOnly)
+function nav:PublishLocalPath(result, context, generation, job, inputs, unavailable, pathStatus)
     if self.worldLoading or not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then return end
     if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
     if type(result) ~= "table" then return end
@@ -202,11 +205,14 @@ function nav:PublishLocalPath(result, context, generation, job, inputs, unavaila
     local data = APR.NavigationData
     local service = APR.Services and APR.Services:GetStep()
     local target = self.destination
+    local approachOnly = pathStatus == "partial" or result.partial == true
     if approachOnly then
+        -- A bounded approach returned as ready uses the same terrain proof
+        -- as a complete search. Open-ended previews require fine proof.
         if
             unavailable
             or not result.partial
-            or result.geometryVerified ~= true
+            or (pathStatus ~= "ready" and result.geometryVerified ~= true)
             or not service
             or not service._mapWaypoint
         then

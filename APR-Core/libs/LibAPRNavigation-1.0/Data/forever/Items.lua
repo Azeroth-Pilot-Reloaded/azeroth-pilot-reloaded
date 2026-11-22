@@ -1,4 +1,6 @@
 -- Declarative travel data. Names are resolved through the game client.
+local karazhan = { space = "world", uiMapID = 1430, instanceID = 0, x = -11123.3, y = -2014.44, z = 47.0927 }
+
 LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
     connections = {
         {
@@ -15,7 +17,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1446, x = 0.5227, y = 0.2683 },
+            to = { space = "world", uiMapID = 1446, instanceID = 1, x = -7109.25, y = -3830.29, z = 10.3094 },
             requirements = { skill = { id = 202, min = 260 } },
             actions = { { id = 18986, type = "item" } },
         },
@@ -24,7 +26,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
+            to = karazhan,
             actions = { { id = 22631, type = "item" } },
         },
         {
@@ -32,7 +34,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
+            to = karazhan,
             actions = { { id = 22589, type = "item" } },
         },
         {
@@ -40,7 +42,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
+            to = karazhan,
             actions = { { id = 22630, type = "item" } },
         },
         {
@@ -48,7 +50,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
+            to = karazhan,
             actions = { { id = 22632, type = "item" } },
         },
         {
@@ -79,4 +81,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             selection = "random",
         },
     },
-}, 33)
+}, 34)

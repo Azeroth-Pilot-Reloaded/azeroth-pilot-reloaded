@@ -9,6 +9,7 @@ local Shared = APR.NavigationPlanner._job
 local Job = Shared.Job
 local ProviderJob = Shared.ProviderJob
 local ResolveInstruction = Shared.ResolveInstruction
+local MAX_ACCESS_PREVIEW_SEGMENTS = 17
 
 function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     local request = self.request
@@ -200,7 +201,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     end
 
     local status, result, metadata = self.active:Step(maxOperations, remainingMilliseconds)
-    if self.phase == "search" and self.active and self.active.entryWalkPreview then
+    if (self.phase == "search" or self.phase == "access_proof") and self.active and self.active.entryWalkPreview then
         self.entryWalkPreview = self.active.entryWalkPreview
     end
     if status == "planning" then return end
@@ -217,11 +218,45 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         self.blockers, self.diagnosticIndex = {}, 1
         self.diagnosticSegments = result and result.segments or {}
         self.phase, self.active = "explain_collect", nil
+    elseif self.phase == "access" then
+        local segments = result and result.segments
+        local connections = {}
+        -- A zone itinerary alternates approaches and declared crossings.
+        -- Only the crossings enter the terrain search. Its last landing
+        -- becomes the end of the provisional guidance.
+        if status == "ready" and segments and #segments <= MAX_ACCESS_PREVIEW_SEGMENTS then
+            for _, segment in ipairs(segments) do
+                if segment.id then connections[#connections + 1] = segment end
+            end
+        end
+        if #connections > 0 then
+            self:BeginSearch(nil, connections, connections[#connections].to)
+        else
+            self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
+        end
+    elseif self.phase == "access_proof" then
+        local segments = result and result.segments
+        if status == "ready" and segments and #segments > 0 then
+            for _, segment in ipairs(segments) do
+                ResolveInstruction(request, segment)
+            end
+            self.travelPreview = segments
+        end
+        self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
     elseif self.phase == "catalogue" then
         self.catalogueEdges, self.catalogueMetadata = result or {}, metadata or {}
         self.waitingData = self.catalogueMetadata.waitingData
         if request.waypointResume and not request.waypointResume.hasTaxi then
             self.phase, self.active = "restore_waypoint", nil
+        elseif not request.waypointResume and request.previewAccess and request.data.CreateZoneRoute then
+            -- The access graph is a proposed itinerary. The selected links
+            -- still need terrain proof and compete in the full timed search.
+            local context = {}
+            for key, value in pairs(request) do
+                context[key] = value
+            end
+            context.walkingProvider = false
+            self.phase, self.active = "access", request.data:CreateZoneRoute(context)
         elseif
             not request.waypointResume
             and request.progressiveTravel

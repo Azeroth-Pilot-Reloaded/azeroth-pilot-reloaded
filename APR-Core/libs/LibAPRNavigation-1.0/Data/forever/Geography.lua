@@ -16,12 +16,18 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         },
         ContinentMapOverrides = {},
         IsolatedAreas = {
+            -- The city and the upper island share a walking surface. The
+            -- harbor is a separate access region entered through the city portal.
+            [1438] = "forever:teldrassil",
+            [1457] = "forever:teldrassil",
             [1441] = "forever:thousand-needles",
             [1452] = "forever:winterspring",
             [1456] = "forever:thunder-bluff",
             [1458] = "forever:undercity",
+            [2482] = "forever:hyjal",
             [2521] = "forever:zephras",
             [2548] = "forever:powderfuse",
+            [2652] = "forever:shendralas",
         },
         IsolatedContinents = {},
         MapTypeOverrides = {},
@@ -65,8 +71,33 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
                 },
             },
             [1438] = { { center = { 0.55, 0.92 }, key = "ruttheran", radius = 200 } },
+            [1448] = {
+                {
+                    key = "timbermaw-junction",
+                    bounds = {
+                        instanceID = 1,
+                        minX = 6963,
+                        maxX = 6972,
+                        minY = -2264,
+                        maxY = -2252,
+                        minZ = 582,
+                        maxZ = 591,
+                    },
+                },
+            },
         },
         MapRemaps = {
+            -- The Great Lift occupies both levels in the same map footprint.
+            [1413] = {
+                { instanceID = 1, mapID = 1441, minX = -4700, maxX = -4630, minY = -1885, maxY = -1790, maxZ = -20 },
+            },
+            [1441] = {
+                { instanceID = 1, mapID = 1413, minX = -4700, maxX = -4630, minY = -1885, maxY = -1790, minZ = 75 },
+            },
+            -- Both client map records cover the same Skyborne island.
+            [2665] = {
+                { instanceID = 2991, mapID = 2521, minX = 1247.9, maxX = 4956.3, minY = -1331.3, maxY = 4231.3 },
+            },
             -- The native city map can cover the upper ruins and the occupied
             -- city at the same XY. Keep each approach on its own level.
             [1458] = {
@@ -239,4 +270,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
             },
         },
     },
-}, 37)
+}, 39)

@@ -2,7 +2,7 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
 local Runtime = Lib._TerrainNamespace
 Lib._TerrainNamespace = nil
-if not Runtime or not Lib:BeginModule("Terrain", 19) then return end
+if not Runtime or not Lib:BeginModule("Terrain", 20) then return end
 local Grid = Runtime.PathGrid
 local Work = Runtime.Work
 local maps, providers = {}, setmetatable({}, { __mode = "kv" })

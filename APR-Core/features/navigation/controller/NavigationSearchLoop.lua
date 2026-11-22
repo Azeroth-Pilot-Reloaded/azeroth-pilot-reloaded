@@ -70,8 +70,9 @@ function nav:RunPlanningSearch(options)
         local operationLimit = debugprofilestop and Constants.TIMED_OPERATION_LIMIT or Constants.UNTIMED_OPERATION_LIMIT
         local milliseconds = Constants.PLANNING_SLICE_MS
         local entryPrefix = self.walkingPrefix and job.entryWalkPreview and self.walkingPreview == job.entryWalkPreview
+        local terrainSearch = job.phase == "search" or job.phase == "access_proof"
         local foreground = (self.localPathJob or coldTerrainSearch)
-            and (self.state == "planning" or job.phase == "waypoint_leg" or entryPrefix and job.phase == "search" or self.walkingPrefix and (self.localPathJob or job.phase == "transport"))
+            and (self.state == "planning" or job.phase == "waypoint_leg" or entryPrefix and terrainSearch or self.walkingPrefix and (self.localPathJob or job.phase == "transport"))
             and not keepPath
             and not keepDirect
             and debugprofilestop
@@ -87,7 +88,7 @@ function nav:RunPlanningSearch(options)
                     step._mapWaypoint
                     and (self.state == "planning" or entryPrefix)
                     and not self.localPathJob
-                    and job.phase == "search"
+                    and terrainSearch
                 then
                     local cap = self.state == "planning"
                             and job.request
@@ -137,7 +138,7 @@ function nav:RunPlanningSearch(options)
                         job,
                         inputs,
                         false,
-                        localState == "partial"
+                        localState
                     )
                     if published and job.startedAt and not job.firstGuidanceMilliseconds and debugprofilestop then
                         job.firstGuidanceMilliseconds = debugprofilestop() - job.startedAt

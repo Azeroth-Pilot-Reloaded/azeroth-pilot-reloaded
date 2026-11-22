@@ -67,7 +67,7 @@ APR.NavigationConstants = {
 
     -- Controller limits, location fields and event subscriptions.
     Navigation = {
-        WAYPOINT_ITINERARY_VERSION = 1,
+        WAYPOINT_ITINERARY_VERSION = 2,
         EMPTY_GUIDANCE = {},
 
         -- Search budgets are in milliseconds. Timer delays are in seconds.

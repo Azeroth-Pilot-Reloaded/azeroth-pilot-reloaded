@@ -95,6 +95,61 @@ local function point(x, map) return {x = x, y = 0, z = 0, instanceID = 0, uiMapI
 local function service(id, x, map)
     return {service = "repair", npcID = id, name = "Repair " .. id, x = x, y = 0, mapID = map, faction = "A"}
 end
+
+-- A coordinate-selected service can be on the same map but past a portal.
+-- Guide over its verified departure while the full itinerary is still pending.
+do
+    local data = APR.NavigationData
+    local canWalk = data.CanWalk
+    function data:CanWalk(from, to)
+        return from.accessKey == to.accessKey and canWalk(self, from, to)
+    end
+    local entrance, landing, destination = point(70, 1), point(120, 1), point(134, 1)
+    landing.accessKey, destination.accessKey = "lower", "lower"
+    local bend = point(22, 1)
+    bend.y = 10
+    edges = {{id="lift-entrance", kind="portal", from=entrance, to=landing, seconds=3, mandatory=true}}
+    local terrain = {proveCandidatePaths = true, HasMap = function() return true end,
+        RequiresWalkingProof = function() return true end, CanFollowWalkingSegment = function() return true end}
+    local departureJobs = 0
+    function terrain:CreatePathJob(from, to, context)
+        local departure = to == entrance
+        local path = departure and {from, bend, to} or {from, to}
+        local job = {Cancel = noop}
+        if departure then
+            departureJobs = departureJobs + 1
+            assert(context.walkingGoal == entrance and context.previewWalking and not context.previewDeparture)
+        end
+        function job:Step(operations)
+            if departure and not self.walkingPreview then
+                self.walkingPreview = {{path={from, bend}}}
+                self.workLastStep = operations
+                return "planning"
+            end
+            self.workLastStep = 1
+            return "ready", {path=path, seconds=departure and 15 or 2}
+        end
+        return job
+    end
+    function data:GetWalkingProvider() return terrain end
+    services:Start({name="Service", mapID=1}, destination, nil, nil, player, true)
+    for index = 1, 100 do
+        if nav.walkingPrefix then break end
+        local timer = assert(table.remove(timers, 1), "The exact departure should publish before the search finishes")
+        if not timer.cancelled then timer.callback() end
+        assert(index < 100)
+    end
+    local preview = assert(nav:GetActiveStep())
+    assert(nav.search and #nav.queue == 1 and preview.kind == "walk" and preview.to == bend and preview.arrivalRadius == 2)
+    drain()
+    assert(not nav.search and not nav.walkingPrefix and #nav.queue == 3 and departureJobs == 1)
+    assert(nav:GetActiveStep().path[2] == bend and nav.queue[2].connectionID == "lift-entrance"
+        and nav.queue[3].to == destination and nav.totalSeconds == 20)
+    services:Cancel()
+    data.CanWalk, data.GetWalkingProvider, edges = canWalk, nil, {}
+    drain()
+end
+
 -- Without a point in the player's world, compare reachable journeys to remote services.
 remoteMaps = true
 APR.NavigationData.serviceLocations = {service(2, 1, 2), service(3, 0.1, 3)}

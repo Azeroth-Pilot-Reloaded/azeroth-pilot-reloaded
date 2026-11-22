@@ -1,6 +1,6 @@
 -- Reusable service discovery. All client observations and taxi data are injected.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("services", 11) then return end
+if not Lib:BeginModule("services", 12) then return end
 local Instance = Lib.Instance
 Lib.serviceLocations = Lib.serviceLocations or {}
 local PROFESSIONS = {
@@ -184,6 +184,7 @@ end
 function ServiceRoute:Cancel()
     if self.active then self.active:Cancel() end
     self.status, self.active = "cancelled", nil
+    self.entryWalkPreview = nil
 end
 
 function ServiceRoute:GetResult() return self.result, self.status end
@@ -199,6 +200,7 @@ end
 function ServiceRoute:Step(maxOperations, maxMilliseconds)
     if self.status ~= "planning" then return self.status, self.result end
     local status, result = self.active:Step(maxOperations, maxMilliseconds)
+    if self.phase == "baseline" then self.entryWalkPreview = self.active.entryWalkPreview end
     if status == "planning" then return status end
     if status == "cancelled" then self:Cancel(); return self.status end
     self.unresolvedSurface = self.unresolvedSurface or self.active.unresolvedSurface

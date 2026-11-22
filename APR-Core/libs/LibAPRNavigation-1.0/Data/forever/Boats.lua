@@ -8,15 +8,6 @@ local southshore = { space = "map", uiMapID = 1424, x = 0.5053, y = 0.6975, z = 
 LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "boats", {
     connections = {
         {
-            id = "boat-long-wash-ruttheran",
-            kind = "boat",
-            bidirectional = true,
-            from = { space = "map", uiMapID = 1439, x = 0.3238, y = 0.4372, z = 6 },
-            to = { space = "map", uiMapID = 1438, x = 0.5406, y = 0.9733, z = 0 },
-            requirements = { faction = "Alliance" },
-            seconds = 208,
-        },
-        {
             id = "boat-forever-transport-4001",
             kind = "boat",
             bidirectional = true,
@@ -57,7 +48,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "boats", {
             kind = "boat",
             bidirectional = true,
             from = { space = "map", uiMapID = 1446, x = 0.6858, y = 0.2299 },
-            to = { space = "map", uiMapID = 2548, x = 0.806, y = 0.5461 },
+            to = { space = "map", uiMapID = 2548, x = 0.806, y = 0.5461, areaID = 16727 },
             seconds = 90,
         },
         {
@@ -96,4 +87,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "boats", {
             seconds = 60,
         },
     },
-}, 32)
+}, 33)

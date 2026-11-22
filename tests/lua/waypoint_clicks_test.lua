@@ -183,6 +183,19 @@ local function Run(profile)
         assert(services:StartWaypoint(point(1, 12, 650, 500)))
         assert(nav.localPathJob, "A nearby pin across a map boundary can still show early walking guidance")
         data.GetWalkingProvider, data.CanWalk = walkingProvider, canWalk
+
+        services:Cancel()
+        local stored = point(1, 12, 650, 500)
+        local region = data:GetPositionRegion(stored)
+        assert(region)
+        stored.region = "retired-access-region"
+        APRNavigationCharacterSettings.waypoint = { target = stored, profile = "forever" }
+        services.waypointRestored = false
+        assert(services:RestoreWaypoint() and services:GetStep().target.region == region,
+            "Saved pins keep their coordinates and recover the current access region")
+        assert(services:GetStep().target.x == stored.x and services:GetStep().target.y == stored.y)
+        services:Cancel()
+        drain()
     end
 
     mini()

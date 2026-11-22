@@ -67,17 +67,11 @@ function nav:PublishTravelPrefix(segments, job)
     if not position then return end
     for index, segment in ipairs(segments) do
         local row = self:PrepareGuidanceStep(segment, index, generation, position)
-        if not row or MissingWalkProof(row, WalkingProvider()) then return end
+        if not row or MissingWalkProof(row, WalkingProvider()) or DepartureAllowed(row, row.from) ~= true then return end
         queue[index] = row
     end
     local transport = queue[#queue]
-    if
-        not transport
-        or (not HasWalkingPath(queue[1]) and Distance(position, transport.from) > 20)
-        or DepartureAllowed(transport, transport.from) ~= true
-    then
-        return
-    end
+    if not transport or (not HasWalkingPath(queue[1]) and Distance(position, queue[1].from) > 20) then return end
     ReuseWalkingCursor(queue[1], self.walkingPrefix)
     local _, reachable = self:AdvanceWalkingPath(queue[1], position, nil, true)
     if not reachable or not PlanningRequestCurrent(self, context, generation, job, inputs) then return end

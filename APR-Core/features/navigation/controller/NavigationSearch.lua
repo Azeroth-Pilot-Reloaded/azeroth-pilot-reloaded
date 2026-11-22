@@ -65,6 +65,7 @@ function nav:Update(context)
         self:Render()
         return
     end
+    local transportArrived = self.reason == "transport_arrived"
     local landing = self.transportLanding
     if landing and start then
         self.transportLanding = nil
@@ -350,6 +351,10 @@ function nav:Update(context)
         )
     local withinWalkingThreshold = Distance(start, goal) < threshold
     local distantMapWaypoint = step._mapWaypoint and not withinWalkingThreshold and start.uiMapID ~= goal.uiMapID
+    local separatedTravel = data.profile == "forever"
+        and not sameWalkingArea
+        and (not step._service or step._mapWaypoint)
+        and not step._navigationUnlock
     local corridor = data.profile == "forever"
             and self.lastWalkGeometry == APR.navigationGeometryRevision
             and self.lastWalkCorridor
@@ -382,14 +387,16 @@ function nav:Update(context)
         walkingGoalApproach = goalXY
                 and step._mapWaypoint
                 and data.profile == "forever"
-                and (distantMapWaypoint or (start.region and goal.region and start.region ~= goal.region))
+                and (distantMapWaypoint or separatedTravel)
                 and Constants.MAP_WAYPOINT_APPROACH_RADIUS
             or nil,
         allowEarlyWalkingApproach = distantMapWaypoint
             and start.instanceID == goal.instanceID
             and start.region == goal.region,
         previewWalking = data.profile == "forever",
-        previewEntryWalk = step._mapWaypoint == true and data.profile == "forever" and not sameWalkingArea,
+        previewEntryWalk = separatedTravel
+            or data.profile == "forever" and step.serviceWaypoint == true and not sameWalkingArea,
+        previewAccess = separatedTravel and not keepPath and not keepDirect and walkingProvider ~= nil,
         waypointLeg = waypointLeg,
         waypointResume = waypointResume,
         sameWaypointConnection = SameWaypointConnection,
@@ -399,7 +406,7 @@ function nav:Update(context)
             and (not step._service or step._mapWaypoint)
             and not step._navigationUnlock,
         protectWalkingCoverage = data.profile == "forever",
-        batchTerrainWork = preferLocal or (data.profile == "forever" and step._service == true),
+        batchTerrainWork = preferLocal or separatedTravel or (data.profile == "forever" and step._service == true),
         walkingSpeedCeiling = walkingProvider and walkingSpeedCeiling or nil,
         taxiData = APR.taxiData,
         deferInstructions = true,
@@ -456,7 +463,7 @@ function nav:Update(context)
         and not step._navigationUnlock
         and walkingProvider
         and walkingProvider.CreatePathJob
-        and (withinWalkingThreshold or step._mapWaypoint and not distantMapWaypoint)
+        and (withinWalkingThreshold or step._mapWaypoint and (not distantMapWaypoint or transportArrived and sameWalkingArea))
         and TerrainRequired(start, goal, walkingProvider)
         and data:CanWalk(start, goal) == true
     then
@@ -466,8 +473,9 @@ function nav:Update(context)
             walkSpeedAt = walkSpeedAt,
             clock = debugprofilestop,
             serviceWalking = (step._service and not step._mapWaypoint) or training ~= nil and training ~= false,
-            quick = preferLocal or step._mapWaypoint or nil,
+            quick = not distantMapWaypoint and (preferLocal or step._mapWaypoint) or nil,
             walkingPartialGoal = step._mapWaypoint == true,
+            walkingGoalApproach = distantMapWaypoint and Constants.MAP_WAYPOINT_APPROACH_RADIUS or nil,
             previewDeparture = step._mapWaypoint == true and data.profile == "forever",
             walkingOrigin = start,
             walkingOriginCorridor = corridor,

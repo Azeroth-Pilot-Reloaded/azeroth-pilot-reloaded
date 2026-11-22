@@ -262,6 +262,14 @@ Parallel direct crossings between the start and goal regions are indexed
 separately and compared by their complete walking/crossing/arrival duration.
 This avoids choosing a distant neutral boat before a nearby faction zeppelin
 merely because its record came first in the Forever catalogue.
+
+For ordinary Forever travel between separate access regions, APR also uses the
+physical graph to propose the crossings up to the final landing. A scoped
+terrain search checks the approaches before showing that part of the itinerary.
+The complete search still compares flights, personal travel and other routes.
+After following the last proposed crossing, planning resumes from the observed
+landing with the same destination.
+
 The APR adapter keeps this geometry across quest, bag and dialogue refreshes;
 readable map-art changes invalidate it, with conservative quest-turn-in refreshes
 on clients without map art. Bind and house changes still refresh live navigation

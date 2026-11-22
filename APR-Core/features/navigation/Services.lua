@@ -301,6 +301,10 @@ function Services:RestoreWaypoint()
     then
         return
     end
+    local adapter = APR.NavigationAdapter
+    if saved.profile == "forever" and APR.NavigationData and adapter and adapter.SavedPosition then
+        target = adapter:SavedPosition(target) or target
+    end
     self:Start({ waypoint = true }, target, nil, nil, nil, nil, nil, saved.itinerary)
     return true
 end--[[APR_DIAG]]; Services.RestoreWaypoint = APRTrace("APR-Core/features/navigation/Services.lua:285:Services:RestoreWaypoint#29", Services.RestoreWaypoint)--[[/APR_DIAG]]

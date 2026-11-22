@@ -78,6 +78,26 @@ do
         assert(walker:CanFollowWalkingSegment(path.path[i - 1], path.path[i]))
     end
     assert(F.finish(walker:CreatePathJob(goal, start, {quick = true}), 1) == "no_path")
+
+    local function exactPath(target)
+        local query = walker:CreatePathJob(start, target, {clock = function() return 0 end})
+        local state, result, operations = "planning", nil, 0
+        while state == "planning" and operations < 1000 do
+            state, result = query:Step(2, 1)
+            operations = operations + query.workLastStep
+        end
+        assert(state == "ready")
+        F.near(result.path[#result.path].x, target.x)
+        for i = 2, #result.path do
+            assert(walker:CanFollowWalkingSegment(result.path[i - 1], result.path[i]))
+        end
+        return operations
+    end
+    -- The quick queries have loaded the tiles. Distinct exact goals still
+    -- share the verified graph's departure and intermediate-tile witnesses.
+    local firstWork = exactPath(goal)
+    local secondWork = exactPath(F.point(18, 7, 0))
+    assert(secondWork < firstWork, "Adjacent goals should reuse directed walking work from the same departure")
 end
 
 -- Two parallel corridors cross both tiles. The portal graph can enter the

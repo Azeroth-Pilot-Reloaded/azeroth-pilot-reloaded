@@ -234,3 +234,53 @@ do
     assert(plan.status == "ready" and plan.travelPreview[1].path[2] == boarding and plan.travelPreview[2] == ferry,
         "Early guidance uses a proven boarding path and a competitive transport to the requested map")
 end
+
+do
+    local function point(x, region) return { x = x, y = 0, instanceID = 1, region = region } end
+    local start, threshold = point(0, "island"), point(10, "island")
+    local harbor, pier = point(20, "harbor"), point(30, "harbor")
+    local coast, goal = point(40, "coast"), point(1000, "coast")
+    local portal = { id = "fixture-portal", kind = "portal", from = threshold, to = harbor, seconds = 5 }
+    local ferry = { id = "fixture-ferry", kind = "boat", from = pier, to = coast, seconds = 10 }
+    local walk = { kind = "walk", from = start, to = threshold, path = { start, threshold }, seconds = 1 }
+    local approach = { kind = "walk", from = harbor, to = pier, path = { harbor, pier }, seconds = 1 }
+    local candidate = { segments = { walk, portal, approach, ferry, { kind = "walk", from = coast, to = goal } } }
+    local proof = { segments = { walk, portal, approach, ferry } }
+    for _, state in ipairs({ "ready", "no_path", "waiting_data" }) do
+        local checked, full = false, false
+        local provider = {}
+        local plan = APR.NavigationPlanner:Create({
+            start = start, goal = goal, walkSpeed = 10, budget = 0,
+            walkingGoal = goal, walkingGoalXY = true, walkingGoalApproach = 20,
+            walkingProvider = provider, previewAccess = true,
+            data = {
+                CreateEdgeBuild = function() return Work("catalogue", { portal, ferry }) end,
+                CreateZoneRoute = function(_, context)
+                    assert(context.walkingProvider == false and context.goal == goal)
+                    return Work("access", candidate)
+                end,
+            },
+            taxiData = { CreateEdgeBuild = function() return Work("taxi", {}) end },
+            engine = { CreateSearch = function(_, options)
+                if options.goal == coast then
+                    assert(options.walkingGoal == coast and not options.walkingGoalXY and not options.walkingGoalApproach)
+                    assert(#options.edgeGroups == 1 and #options.edgeGroups[1] == 2)
+                    assert(options.edgeGroups[1][1] == portal and options.edgeGroups[1][2] == ferry)
+                    assert(options.walkingProvider == provider)
+                    checked = true
+                    return { Step = function() return state, proof end }
+                end
+                assert(options.goal == goal and options.walkingGoal == goal and options.walkingGoalXY)
+                full = true
+                return Work("search", { segments = {}, totalSeconds = 40 })
+            end },
+            prepareSegment = function(segment) return segment end,
+        })
+        for _ = 1, 100 do
+            if plan:Step(64, 1) == "ready" then break end
+        end
+        assert(checked and full and plan.status == "ready", "The final objective still uses the full search")
+        assert(plan.travelPreview == (state == "ready" and proof.segments or nil),
+            "Only the terrain-verified chain can guide before the full result")
+    end
+end

@@ -178,22 +178,22 @@ function Job:BeginCatalogue()
     self.active = ProviderJob(self.request.data, self.request)
 end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:172:Job:BeginCatalogue#7", Job.BeginCatalogue)--[[/APR_DIAG]]
 
-function Job:BeginSearch(approachRadius)
+function Job:BeginSearch(approachRadius, accessEdges, accessGoal)
     local request = self.request
-    self.phase = "search"
+    self.phase = accessGoal and "access_proof" or "search"
     local searchOptions = {
         start = request.start,
-        goal = request.goal,
+        goal = accessGoal or request.goal,
         clock = request.clock,
         walkSpeed = request.walkSpeed,
         walkSpeedFor = request.walkSpeedFor,
         walkSpeedAt = request.walkSpeedAt,
         walkingProvider = request.walkingProvider,
-        walkingGoal = request.walkingGoal,
-        walkingGoalRange = request.walkingGoalRange,
-        walkingGoalPreferRange = request.walkingGoalPreferRange,
+        walkingGoal = accessGoal or request.walkingGoal,
+        walkingGoalRange = not accessGoal and request.walkingGoalRange or nil,
+        walkingGoalPreferRange = not accessGoal and request.walkingGoalPreferRange or nil,
         walkingGoalApproach = approachRadius,
-        walkingGoalXY = request.walkingGoalXY,
+        walkingGoalXY = not accessGoal and request.walkingGoalXY or nil,
         previewWalking = request.previewWalking,
         previewEntryWalk = request.previewEntryWalk and not self.entryWalkPreview,
         protectWalkingCoverage = request.protectWalkingCoverage,
@@ -203,13 +203,13 @@ function Job:BeginSearch(approachRadius)
         walkingSpeedCeiling = request.walkingSpeedCeiling,
         budget = request.budget,
         resources = self.catalogueMetadata.resources,
-        edgeGroups = { self.catalogueEdges, self.taxiEdges },
+        edgeGroups = accessEdges and { accessEdges } or { self.catalogueEdges, self.taxiEdges },
         canWalk = request.canWalk,
         walkingRegionFor = request.walkingRegionFor,
         walkingIsTransitive = request.walkingIsTransitive,
         waitingData = self.waitingData,
     }
-    if request.serviceTravel then
+    if request.serviceTravel and not accessGoal then
         self.active = request.data:CreateServiceRouteSearch(searchOptions)
     else
         self.active = request.engine:CreateSearch(searchOptions)

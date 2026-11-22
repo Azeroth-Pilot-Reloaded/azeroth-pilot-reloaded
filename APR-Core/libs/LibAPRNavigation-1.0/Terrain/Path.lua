@@ -109,7 +109,7 @@ end
 local function walk(ctx, startTile, source, target, reverse, crossing, entrances, aimX, aimY)
     local remaining = entrances and entrances.count
     local c, unit = ctx.st.c, ctx.st.unit
-    local limit = (crossing or entrances) and 4096
+    local limit = (crossing or entrances and not entrances.exact) and 4096
     local endTile = crossing and crossing.tile or startTile
     local endNode = target and (crossing and target - crossing.offset or target)
     local endCell = endNode and (endTile.cell[endNode] or endNode)
@@ -241,8 +241,7 @@ local function unravel(prev, dest)
     return reversed
 end
 
-local function appendWalk(ctx, k, tile, prev, dest, crossing)
-    local nodes = unravel(prev, dest)
+local function appendNodes(ctx, k, tile, nodes, crossing)
     for i = #nodes, 1, -1 do
         work()
         local node = nodes[i]
@@ -274,6 +273,10 @@ local function appendWalk(ctx, k, tile, prev, dest, crossing)
                 or {x = x, y = y, z = z, gx = gx, gy = gy, rate = rate}
         end
     end
+end
+
+local function appendWalk(ctx, k, tile, prev, dest, crossing)
+    appendNodes(ctx, k, tile, unravel(prev, dest), crossing)
 end
 
 local function surface(tile, entry)
@@ -365,11 +368,12 @@ local function isolatedApproach(st, startKey, endKey, finishCosts)
     if cursor > #queue then return pages end
 end
 
-local function goalTree(ctx, tile, node, key)
+local function endpointTree(ctx, tile, node, key, reverse, page)
     local st = ctx.st
-    local cache = st.goalTrees or {}
-    st.goalTrees = cache
-    local tag = table.concat({key, node, tostring(ctx.profile), tostring(ctx.style), ctx.water[0]}, ":")
+    local field = reverse and "goalTrees" or "departureTrees"
+    local cache = st[field] or {}
+    st[field] = cache
+    local tag = key .. ":" .. node .. ":" .. ctx.costKey
     for i, entry in ipairs(cache) do
         if entry.tag == tag then
             table.remove(cache, i)
@@ -377,11 +381,66 @@ local function goalTree(ctx, tile, node, key)
             return entry.costs, entry.parents
         end
     end
-    local costs, parents = walk(ctx, tile, node, nil, true)
-    -- Publish only a finished reverse search. No job can observe a partial tree.
+    local wanted
+    if page then
+        wanted = {count = 0, exact = true}
+        for _, entry in ipairs(page.nodes) do
+            work()
+            local entrance = surface(tile, entry)
+            if not wanted[entrance] then
+                wanted[entrance] = true
+                wanted.count = wanted.count + 1
+            end
+        end
+    end
+    local costs, parents = walk(ctx, tile, node, nil, reverse, nil, wanted)
+    if page then
+        -- Departure queries need only the portal prices and their witnesses.
+        -- Leave the unrelated settled cells out of the shared cache.
+        local prices, paths = {}, {}
+        for _, entry in ipairs(page.nodes) do
+            work()
+            local entrance = surface(tile, entry)
+            prices[entrance] = costs[entrance]
+            while parents[entrance] and not paths[entrance] do
+                work()
+                paths[entrance], entrance = parents[entrance], parents[entrance]
+            end
+        end
+        costs, parents = prices, paths
+    end
+    -- Publish only finished, immutable trees. A shared origin can still own
+    -- a resumable walk frontier, so it is never stored in this cache.
     if #cache >= 4 then table.remove(cache, 1) end
     cache[#cache + 1] = {tag = tag, costs = costs, parents = parents}
     return costs, parents
+end
+
+local function portalWalk(ctx, key, tile, from, to)
+    -- Walk can reuse an origin's Dijkstra frontier or its tie order here.
+    -- Cache only paths whose search order is independent of that origin.
+    local cache, tag
+    if tile ~= ctx.startTile or from ~= ctx.source then
+        cache = ctx.st.portalWalks or {}
+        ctx.st.portalWalks = cache
+        tag = key .. ":" .. from .. ":" .. to .. ":" .. ctx.costKey
+        for i = #cache, 1, -1 do
+            local entry = cache[i]
+            if entry.tag == tag then
+                table.remove(cache, i)
+                cache[#cache + 1] = entry
+                return entry.nodes
+            end
+        end
+    end
+    local costs, prev = walk(ctx, tile, from, to)
+    assert(costs[to], "invalid intra-tile connection")
+    local nodes = unravel(prev, to)
+    if cache and #nodes <= 512 then
+        if #cache >= 64 then table.remove(cache, 1) end
+        cache[#cache + 1] = {tag = tag, nodes = nodes}
+    end
+    return nodes
 end
 
 local publishEnds
@@ -407,7 +466,7 @@ local function across(ctx, startKey, startTile, start, endKey, endTile, goal, sk
     if sketch then
         finalCosts, finalPrev = entrances(endTile, goal, lastPage, true, endKey, ctx.from)
     else
-        finalCosts, finalPrev = goalTree(ctx, endTile, goal, endKey)
+        finalCosts, finalPrev = endpointTree(ctx, endTile, goal, endKey, true)
         ctx.goalPredecessors = finalCosts
     end
     local finishCosts = {}
@@ -436,7 +495,12 @@ local function across(ctx, startKey, startTile, start, endKey, endTile, goal, sk
         end
         return
     end
-    local initialCost, initialPrev = entrances(startTile, start, first, false, startKey, ctx.to)
+    local initialCost, initialPrev
+    if sketch or ctx.originTree then
+        initialCost, initialPrev = entrances(startTile, start, first, false, startKey, ctx.to)
+    else
+        initialCost, initialPrev = endpointTree(ctx, startTile, start, startKey, false, first)
+    end
     if portalReachable then
         local possible = false
         for i, entry in ipairs(first.nodes) do
@@ -539,15 +603,13 @@ local function across(ctx, startKey, startTile, start, endKey, endTile, goal, sk
         local k, i = floor(id / 4096), id % 4096
         local tile = assert(G.grid(st, k))
         local node = surface(tile, G.graphPage(st, k).nodes[i])
-        local prev = {}
         if not previousNode then
-            prev = initialPrev
+            appendWalk(ctx, k, tile, initialPrev, node)
         elseif previousKey == k then
-            local costs
-            costs, prev = walk(ctx, tile, previousNode, node)
-            assert(costs[node], "invalid intra-tile connection")
+            appendNodes(ctx, k, tile, portalWalk(ctx, k, tile, previousNode, node))
+        else
+            appendNodes(ctx, k, tile, {node})
         end
-        appendWalk(ctx, k, tile, prev, node)
         previousKey, previousNode = k, node
     end
     local prev = {}
@@ -766,6 +828,8 @@ local function findPath(request)
         style = request.style,
         land = land,
         water = water,
+        costKey = table.concat({ tostring(request.profile), tostring(request.style), water[0], tostring(request.quick) },
+            "\0"),
         points = {},
         cells = {},
         originTree = not request.quick and request.originTree,

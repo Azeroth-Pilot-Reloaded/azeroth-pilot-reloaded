@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 28) then return end
+if not Lib:BeginModule("search", 29) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -913,10 +913,11 @@ function Search:AssembleOne()
     }
     if self.walkingProvider then
         local first, last = segments[1], segments[#segments]
-        -- Prove the destination access before pricing departures for a trip
-        -- between maps. An invalid final walk can reject the whole candidate.
+        -- An invalid final walk can reject the whole candidate. Price it first
+        -- when the trip crosses maps or walking areas.
         local backwards = self.lazyTerrain and first and (first.from.instanceID ~= last.to.instanceID
-            or first.from.region ~= last.to.region or first.from.uiMapID ~= last.to.uiMapID)
+            or first.from.region ~= last.to.region or first.from.uiMapID ~= last.to.uiMapID
+            or first.from.accessKey ~= last.to.accessKey or first.from.floor ~= last.to.floor)
         local entrance = segments[2]
         local primeEntryWalk = backwards and self.previewEntryWalk and self.proveCandidatePaths
             and not self.entryWalkAttempted and assembly.walks[first]
@@ -1012,7 +1013,10 @@ function Search:MaterializeOne()
                             context = {}
                             for key, value in pairs(self.walkingContext) do context[key] = value end
                             context.walkingGoal, context.previewWalking = segment.to, true
-                            context.previewDeparture = true
+                            -- A service can share the proven prefix of its
+                            -- exact candidate. A quick departure may point
+                            -- down a different corridor in the same area.
+                            context.previewDeparture = not context.serviceWalking
                             context.walkingGoalRange, context.walkingGoalXY, context.walkingGoalApproach = nil, nil, nil
                         end
                         self.terrainJob = self.walkingProvider:CreatePathJob(segment.from, segment.to, context)

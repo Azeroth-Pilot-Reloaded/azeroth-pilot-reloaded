@@ -50,6 +50,7 @@ local function fixture(profile)
             s.milliseconds=s.milliseconds+(s.pathCost or 0.6)
             if s.onPathStep then s.onPathStep(self) end
             if s.pathState~="ready" then return s.pathState,s.pathResult end
+            if s.readyPathResult then return "ready", s.readyPathResult end
             local yards = s.pathYards or 260
             return "ready", {path={from,{x=0,y=80,z=0,instanceID=1,uiMapID=101},
                 {x=100,y=80,z=0,instanceID=1,uiMapID=101},to},seconds=yards/7,yards=yards}
@@ -197,10 +198,58 @@ do
     pin:tick()
     assert(job.milliseconds == 4 and pin.nav:GetActiveStep() == departure,
         "Publishing the departure must not throttle or restart the remaining search")
+    local landing = {x=500,y=0,z=0,instanceID=1,uiMapID=102}
+    local shore = {x=1000,y=0,z=0,instanceID=1,uiMapID=103}
+    job.travelPreview = {
+        {kind="walk", from=pin.position, to=entrance, path={pin.position, entrance}, seconds=10},
+        {kind="portal", from=entrance, to=landing, seconds=3},
+        {kind="boat", from=landing, to=shore, seconds=15},
+    }
+    pin.milliseconds = 63
+    pin:tick()
+    assert(pin.nav.search == job and #pin.nav.queue == 3 and pin.nav.queue[2].kind == "portal",
+        "A proved approach and chain appear together before the global itinerary finishes")
     local stale = pin.nav._searchTimer.callback
+    pin.position = entrance
+    pin.nav:PollArrival()
+    assert(pin.nav:GetActiveStep().kind == "portal" and job.cancelled)
+    pin.nav:PollArrival()
+    pin.position = landing
+    pin.nav:PollArrival()
+    assert(pin.nav:GetActiveStep().kind == "boat" and pin.nav.destination == pin.step.target,
+        "An intermediate arrival retains the crossings and the original destination")
+    pin.nav:PollArrival()
+    pin.position = shore
+    pin.nav:PollArrival()
+    assert(not pin.nav:GetActiveStep() and pin.nav._stepCheckTimer and pin.nav.reason == "transport_arrived",
+        "The final crossing restarts planning from the observed landing")
     pin.nav:Cancel("cleared")
     stale()
-    assert(not pin.nav:GetActiveStep() and not pin.nav.search, "Cancellation discards the preliminary walk")
+    assert(not pin.nav:GetActiveStep() and not pin.nav.search, "Cancellation discards the preliminary travel")
+end
+
+do
+    local pin = fixture("forever")
+    APR.NavigationData.profile = "forever"
+    pin.step._service, pin.step._mapWaypoint = true, true
+    pin.step.target = {x=5000,y=0,instanceID=1,uiMapID=102}
+    local context = {service=true}
+    APR.Services = {GetStep=function() return pin.step end, IsContextCurrent=function() return true end,
+        CaptureContext=function() return context end, GetLabel=function() return "Pin" end}
+    pin.nav:Update(context)
+    assert(#pin.pathJobs == 0, "A new distant pin starts with the complete transport comparison")
+    pin.nav:Cancel("transport_arrived")
+    pin.nav:ForceRefresh("transport_arrived")
+    pin.nav:Update(context)
+    assert(pin.pathJobs[1].context.walkingGoalApproach == APR.NavigationConstants.Navigation.MAP_WAYPOINT_APPROACH_RADIUS,
+        "A distant pin within walking access gets a budgeted approach after the final crossing")
+    local stop = {x=4995,y=0,z=0,instanceID=1,uiMapID=102}
+    pin.pathState = "ready"
+    pin.readyPathResult = {path={pin.position,stop},seconds=730,yards=4995,partial=true,geometryVerified=false}
+    pin:tick()
+    assert(pin.nav.search and pin.nav:GetActiveStep().to == stop and pin.nav.waypointApproach.residualYards == 5,
+        "A proved nearby stop can guide while the full trip comparison runs")
+    pin.nav:Cancel("cleared")
 end
 
 local s=fixture("forever")
