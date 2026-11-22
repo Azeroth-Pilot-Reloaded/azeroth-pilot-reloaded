@@ -217,6 +217,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         IsolatedContinents = { [2274] = true },
         MapTypeOverrides = {
             [125] = { mapType = 3 },
+            -- The phased garrison maps are Orphans with outdoor access to their parent zones.
+            [582] = { mapType = 3 }, -- Lunarfall
+            [590] = { mapType = 3 }, -- Frostwall
             -- Native Orphan maps, but both cities share Draenor's outdoor
             -- space. Their portal endpoints may resolve to the parent map.
             [622] = { mapType = 3 }, -- Stormshield
@@ -235,4 +238,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         skyridingThreshold = 10000,
         threshold = 2000,
     },
-}, 36)
+}, 37)
