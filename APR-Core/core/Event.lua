@@ -1237,6 +1237,13 @@ function APR.event.functions.spellbook(event)
     -- Usability changes on resource/cooldown updates. Only a changed spellbook
     -- can alter learned-spell/profession conditions and require a full render.
     if event == "SPELL_UPDATE_USABLE" then return end
+    if APR.ClassName == "MAGE" and APR.ActiveRoute then
+        local data = APRData and APRData[APR.PlayerID]
+        if data then data[APR.ActiveRoute .. "-TotalSteps"] = nil end
+        if APR.questOrderList and APR.questOrderList.DelayedUpdate then APR.questOrderList:DelayedUpdate(true) end
+        APR.event:QueueStepRefresh()
+        return
+    end
     RefreshForOptions({ "LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell", "SkipForPrimaryProfessions" })
 end--[[APR_DIAG]]
 APR.event.functions.spellbook =

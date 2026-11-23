@@ -297,7 +297,8 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local color = colorByCompletion(C_QuestLog.IsOnQuest(questID), currentStepIndex, rawIndex)
                     container, activeQuestId =
                         addStepFrame(layout, displayStepIndex, L["SKIP_TUTORIAL"], color, isCurrentStep)
-                elseif step.BuyMerchant and not step.Qpart then
+                elseif step.BuyMerchant and not step.Qpart
+                    and not (APR.CanConjureMerchantPurchases and APR:CanConjureMerchantPurchases(step.BuyMerchant)) then
                     local buyMerchant = step.BuyMerchant
                     local questInfo = {}
                     local flagged = 0

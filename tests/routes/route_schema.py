@@ -266,6 +266,7 @@ class RouteSchema:
                                                    required=("rank",), choices=(("skill", "skillID"),))
             if name == "BuyMerchant":
                 fields.update(targetStock=BOOL, optional=BOOL, isSupply=BOOL, reserveCopper=COUNT, conditions=condition,
+                              supplyType=enum({"food", "drink", "foodAndDrink"}),
                               quantityFromItemID=ID, bagSlots=number(1, 40, integer=True))
             self.step_fields[name] = array(obj(fields,
                                                required=("itemID",),

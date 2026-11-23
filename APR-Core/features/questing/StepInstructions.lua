@@ -182,7 +182,7 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
     else
         APR.Buff:RemoveAllBuffIcon()
     end
-    if step.BuyMerchant then
+    if step.BuyMerchant and not (APR.CanConjureMerchantPurchases and APR:CanConjureMerchantPurchases(step.BuyMerchant)) then
         ActionTextScope("secondary", "BuyMerchant")
         APR:Debug("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
 

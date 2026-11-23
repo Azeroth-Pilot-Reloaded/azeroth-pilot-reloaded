@@ -209,8 +209,11 @@ class RouteSchemaTests(unittest.TestCase):
         self.schema.step({"BuyMerchant": seq({"itemID": 2678, "quantityFromItemID": 6889,
             "targetStock": True, "optional": True, "isSupply": True, "reserveCopper": 100,
             "conditions": {"Skill": {"skill": "cooking", "rank": 50, "operator": "<"}}})}, "step")
+        self.schema.step({"BuyMerchant": seq({"itemID": 1, "quantity": 1,
+                                              "isSupply": True, "supplyType": "drink"})}, "step")
         for entry in ({"itemID": 1}, {"itemID": 1, "quantity": 1, "optional": "yes"},
                       {"itemID": 1, "quantity": 1, "isSupply": "yes"},
+                      {"itemID": 1, "quantity": 1, "supplyType": "ammo"},
                       {"itemID": 1, "quantity": 1, "reserveCopper": -1},
                       {"itemID": 1, "quantityFromItemID": 0},
                       {"itemID": 1, "quantity": 1, "bagSlots": 0},

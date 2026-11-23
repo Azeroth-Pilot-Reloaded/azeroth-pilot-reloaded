@@ -126,6 +126,20 @@ assert(APR.event.stepRefreshTimer, "Skill changes refresh collection goals witho
 APR.event.stepRefreshTimer.callback()
 assert(refreshes == 1)
 
+APR.ClassName = "MAGE"
+APRData.player["route-TotalSteps"] = 3
+local previewRefreshes = 0
+APR.questOrderList = { DelayedUpdate = function(_, force)
+    assert(force, "Spellbook changes can hide rows without moving to another step")
+    previewRefreshes = previewRefreshes + 1
+end }
+APR.event.functions.spellbook("SPELL_UPDATE_USABLE")
+assert(not APR.event.stepRefreshTimer and previewRefreshes == 0 and APRData.player["route-TotalSteps"] == 3)
+APR.event.functions.spellbook("SPELLS_CHANGED")
+assert(APR.event.stepRefreshTimer and previewRefreshes == 1 and not APRData.player["route-TotalSteps"])
+APR.event.stepRefreshTimer.callback()
+assert(refreshes == 2, "Learning a spell refreshes the active route and invalidates its old visible count")
+
 dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 local standings = { [1] = false, [2] = false }
 function APR:IsReputationLevelReached(requirement) return standings[requirement.factionID] end

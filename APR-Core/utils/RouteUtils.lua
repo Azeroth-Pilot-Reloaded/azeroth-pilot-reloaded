@@ -76,7 +76,8 @@ APR.UpdateMapId = APRTrace("APR-Core/utils/RouteUtils.lua:53:APR:UpdateMapId#3",
 function APR:SkipStepCondition(step)
     -- Unknown eligibility must preserve the current instruction and progress.
     if self:HasPendingStartupQuestConditions(step) then return false end
-    if step.BuyMerchant and self.HasPendingMerchantPurchase and self:HasPendingMerchantPurchase(step.BuyMerchant) then
+    if step.BuyMerchant and self.HasPendingMerchantPurchase and self:HasPendingMerchantPurchase(step.BuyMerchant)
+        and not (self.CanSkipConjuredMerchantVisit and self:CanSkipConjuredMerchantVisit(step)) then
         return false
     end
     if self:StepFilterQuestHandler(step) then
@@ -308,13 +309,17 @@ function APR:StepFilterQuestHandler(step)
     -- Manual next/previous also use this predicate when seeking a visible
     -- destination. Unknown steps remain stopping points until the snapshot.
     if self:HasPendingStartupQuestConditions(step) then return false end
-    return not self:AreConditionalFiltersMet(step)
+    return not self:StepFilterQoL(step)
 end--[[APR_DIAG]]
 APR.StepFilterQuestHandler =
     APRTrace("APR-Core/utils/RouteUtils.lua:265:APR:StepFilterQuestHandler#14", APR.StepFilterQuestHandler)--[[/APR_DIAG]]
 
 --- Quality-of-life variant of the step filter that returns true when the step should be shown.
 function APR:StepFilterQoL(step)
+    if step and step.BuyMerchant and self.CanSkipConjuredMerchantVisit
+        and self:CanSkipConjuredMerchantVisit(step) then
+        return false
+    end
     return self:AreConditionalFiltersMet(step)
 end--[[APR_DIAG]]
 APR.StepFilterQoL = APRTrace("APR-Core/utils/RouteUtils.lua:273:APR:StepFilterQoL#15", APR.StepFilterQoL)--[[/APR_DIAG]]
