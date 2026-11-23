@@ -157,6 +157,12 @@ assert(a:CheckRequirements({ mapArt = { mapID = 10 } }, stateA.character) == fal
 envA.getMapArtID = nil
 assert(b:CheckRequirements({ faction = "Alliance", class = "MAGE", minLevel = 40, maxLevel = 40 }, stateA.character))
 assert(not b:CheckRequirements({ faction = "Horde" }, stateA.character))
+assert(a:CheckRequirements({ inRaid = true }, { inGroup = true, inRaid = false }) == false)
+assert(a:CheckRequirements({ inRaid = true }, { inGroup = true, inRaid = true }) == true)
+assert(a:CheckRequirements({ inRaid = true }, { inGroup = true }) == nil)
+assert(a:CheckRequirements({ inRaid = false }, { inRaid = false }) == true)
+local malformedRaid, raidReason = a:CheckRequirements({ inRaid = 1 }, {})
+assert(malformedRaid == false and raidReason == "invalid_requirements")
 assert(b:CheckRequirements({ quest = 1 }, stateA.character) == nil)
 stateA.quests[1], stateA.quests[2] = true, false
 assert(

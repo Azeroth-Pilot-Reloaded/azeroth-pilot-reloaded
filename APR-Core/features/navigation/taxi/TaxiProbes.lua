@@ -17,6 +17,31 @@ local Number = Shared.Number
 local Positive = Shared.Positive
 local Price = Shared.Price
 
+local function DiscoveryFare(job, record)
+    local fare = record.path.basePriceCopper
+    if Price(fare) and fare <= job.budget then return fare end
+end--[[APR_DIAG]]; DiscoveryFare = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:20:DiscoveryFare#1", DiscoveryFare)--[[/APR_DIAG]]
+
+local function CanUseDeparture(job, nodeID)
+    if job:Available(nodeID) then return true end
+    if not job.discovery then return false end
+    if job.discovery[nodeID] == nil then
+        job.discovery[nodeID] = false
+        if APR:HasTaxiNode(nodeID) == false
+            and job.api.IsNodeAvailable(nodeID) == true
+            and job.api.IsNodeVisible(nodeID) == true
+        then
+            for _, record in ipairs(job.cache.outgoing[nodeID]) do
+                if DiscoveryFare(job, record) and job:Available(record.to) then
+                    job.discovery[nodeID] = true
+                    break
+                end
+            end
+        end
+    end
+    return job.discovery[nodeID]
+end--[[APR_DIAG]]; CanUseDeparture = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:25:CanUseDeparture#2", CanUseDeparture)--[[/APR_DIAG]]
+
 local function ProbeWalkSeconds(job, from, to)
     if from.instanceID ~= to.instanceID then return math.huge end
     if not job.walkingProvider then return Distance(from, to) / job.speed end
@@ -29,20 +54,20 @@ local function ProbeWalkSeconds(job, from, to)
     if not Positive(speed) then speed = job.speed end
     local dz = Number(from.z) and Number(to.z) and to.z - from.z or 0
     return math.sqrt((from.x - to.x) ^ 2 + (from.y - to.y) ^ 2 + dz ^ 2) / speed
-end--[[APR_DIAG]]; ProbeWalkSeconds = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:20:ProbeWalkSeconds#1", ProbeWalkSeconds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ProbeWalkSeconds = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:45:ProbeWalkSeconds#3", ProbeWalkSeconds)--[[/APR_DIAG]]
 
 local function TerrainCost(job, entry, from, to)
     if entry and entry.state == "no_path" then return false end
     if entry and entry.state == "ready" and Price(entry.seconds) then return entry.seconds end
     local seconds = ProbeWalkSeconds(job, from, to)
     return Number(seconds) and seconds or false
-end--[[APR_DIAG]]; TerrainCost = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:34:TerrainCost#2", TerrainCost)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; TerrainCost = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:59:TerrainCost#4", TerrainCost)--[[/APR_DIAG]]
 
 local function StepWalkingJob(job)
     local remaining = job.deadline and math.max(0, job.deadline - job.clock()) or job.sliceMilliseconds
     if remaining <= 0 then return "planning" end
     return job.walkingJob:Step(1, remaining)
-end--[[APR_DIAG]]; StepWalkingJob = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:41:StepWalkingJob#3", StepWalkingJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; StepWalkingJob = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:66:StepWalkingJob#5", StepWalkingJob)--[[/APR_DIAG]]
 
 local function PrepareProbeApproaches(job)
     local pending = job.approachBatch
@@ -75,7 +100,7 @@ local function PrepareProbeApproaches(job)
     local id = job.cache.departureIDs[pending.index]
     pending.index = pending.index + 1
     if id then
-        local position = job:Available(id) and job:Position(id)
+        local position = CanUseDeparture(job, id) and job:Position(id)
         if position and (not job.canWalk or job.canWalk(job.start, position)) then
             pending.targets[#pending.targets + 1], pending.ids[#pending.ids + 1] = position, id
         else
@@ -89,7 +114,7 @@ local function PrepareProbeApproaches(job)
     end
     job.walkingJob = job.walkingProvider:CreateCostJob(job.start, pending.targets, job.walkingContext)
     pending.stage = "costs"
-end--[[APR_DIAG]]; PrepareProbeApproaches = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:47:PrepareProbeApproaches#4", PrepareProbeApproaches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PrepareProbeApproaches = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:72:PrepareProbeApproaches#6", PrepareProbeApproaches)--[[/APR_DIAG]]
 
 local function AdvanceProbeExit(job)
     local query = job.groundQuery
@@ -101,7 +126,7 @@ local function AdvanceProbeExit(job)
     end
     job.exitCosts[query.id] = TerrainCost(job, result and result.costs and result.costs[1], query.from, job.goal)
     job.walkingJob, job.groundQuery = nil, nil
-end--[[APR_DIAG]]; AdvanceProbeExit = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:94:AdvanceProbeExit#5", AdvanceProbeExit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AdvanceProbeExit = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:119:AdvanceProbeExit#7", AdvanceProbeExit)--[[/APR_DIAG]]
 
 local function ProbeGroundCost(job, nodeID, departure)
     local costs = departure and job.approachCosts or job.exitCosts
@@ -117,16 +142,24 @@ local function ProbeGroundCost(job, nodeID, departure)
     local cost = reachable and ProbeWalkSeconds(job, from, to)
     costs[nodeID] = Number(cost) and cost or false
     return costs[nodeID]
-end--[[APR_DIAG]]; ProbeGroundCost = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:106:ProbeGroundCost#6", ProbeGroundCost)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ProbeGroundCost = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:131:ProbeGroundCost#8", ProbeGroundCost)--[[/APR_DIAG]]
 
 local function EvaluateProbe(job, record)
     local from, to, pair = record.from, record.to, record.pair
-    if job.owner.probeAttempts[pair] or (job.owner.blocked and job.owner.blocked[pair]) then return end
+    if job.owner.probeAttempts[pair] or job.rejectedDiscovery[pair]
+        or (job.owner.blocked and job.owner.blocked[pair])
+    then
+        return
+    end
     -- The departure is checked once for its whole group. Keep destination
     -- checks local too; calling the availability API again adds no evidence.
     local available = job.availability[to]
     if available == nil then available = job:Available(to) end
     if not available then return end
+    local discoversDeparture = job.discovery and job.discovery[from]
+    local fare = record.path.basePriceCopper
+    if job.budget and (Price(fare) and fare > job.budget or not Price(fare) and job.budget == 0) then return end
+    if discoversDeparture and not Price(fare) then return end
     local approach, exit = job.approachCosts[from], ProbeGroundCost(job, to, false)
     if exit == nil then return false end
     if exit == false then return end
@@ -137,7 +170,10 @@ local function EvaluateProbe(job, record)
     if source.instanceID ~= target.instanceID then return end
 
     local duration = job:Measured(record.signature) or record.path.durationSeconds
-    if not Positive(duration) then duration = Distance(source, target) * 1.25 / 32 end
+    if not Positive(duration) then
+        if discoversDeparture then return end
+        duration = Distance(source, target) * 1.25 / 32
+    end
     local estimate = approach + duration + Constants.BOARDING_SECONDS + exit
     local quote = job:Quote(to, from)
     if quote then
@@ -167,10 +203,11 @@ local function EvaluateProbe(job, record)
             flightDestination = target,
             approachSeconds = approach,
             exitSeconds = exit,
+            discoveryFare = discoversDeparture and fare or nil,
             instruction = L["NAVIGATION_CONSULT_TAXI"],
         }
     end
-end--[[APR_DIAG]]; EvaluateProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:122:EvaluateProbe#7", EvaluateProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EvaluateProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:147:EvaluateProbe#9", EvaluateProbe)--[[/APR_DIAG]]
 
 local function MaterializeProbe(job)
     local best = job.best
@@ -192,9 +229,21 @@ local function MaterializeProbe(job)
         return
     end
     job.walkingJob = nil
+    local rejectDiscovery = best.discoveryFare ~= nil
+        and (status ~= "ready" or not result or result.partial or not result.path or #result.path == 0)
+    if best.discoveryFare ~= nil and not rejectDiscovery and Price(result.seconds) then
+        local field = phase == "approach" and "approachSeconds" or "exitSeconds"
+        best.estimatedSeconds = best.estimatedSeconds + result.seconds - best[field]
+        best[field] = result.seconds
+        rejectDiscovery = best.estimatedSeconds >= job.baseline
+    end
     if status == "no_path" then
         local costs = phase == "approach" and job.approachCosts or job.exitCosts
         costs[phase == "approach" and best.fromNodeID or best.toNodeID] = false
+    elseif rejectDiscovery then
+        job.rejectedDiscovery[Shared.Pair(best.fromNodeID, best.toNodeID)] = true
+    end
+    if status == "no_path" or rejectDiscovery then
         job.best, job.probePathPhase, job.outgoing = nil, nil, nil
         job.materializingProbe = nil
         job.departureIndex, job.pathIndex = 0, 0
@@ -208,7 +257,7 @@ local function MaterializeProbe(job)
         end
     end
     job.probePathPhase = phase == "approach" and "exit" or "complete"
-end--[[APR_DIAG]]; MaterializeProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:175:MaterializeProbe#8", MaterializeProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MaterializeProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:208:MaterializeProbe#10", MaterializeProbe)--[[/APR_DIAG]]
 
 local function AdvanceProbe(job)
     if not job.cache or not job.start or not job.goal or job.baseline <= Constants.BOARDING_SECONDS then
@@ -251,9 +300,7 @@ local function AdvanceProbe(job)
         job.status, job.result = "ready", job.best
         return
     end
-    local available = job.availability[nodeID]
-    if available == nil then available = job:Available(nodeID) end
-    if not available then return end
+    if not CanUseDeparture(job, nodeID) then return end
 
     -- Even an instantaneous flight must pay for reaching the master and
     -- boarding. If that already loses, none of its outgoing paths can win.
@@ -262,7 +309,7 @@ local function AdvanceProbe(job)
     local lowerBound = approach + Constants.BOARDING_SECONDS
     if lowerBound >= job.baseline or (job.best and lowerBound > job.best.estimatedSeconds) then return end
     job.outgoing, job.pathIndex = job.cache.outgoing[nodeID], 0
-end--[[APR_DIAG]]; AdvanceProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:213:AdvanceProbe#9", AdvanceProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AdvanceProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:258:AdvanceProbe#11", AdvanceProbe)--[[/APR_DIAG]]
 
 function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     options = options or {}
@@ -273,6 +320,21 @@ function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     job.baseline = baselineSeconds or math.huge
     job.speed = Positive(options.walkSpeed) and options.walkSpeed or 7
     job.walkingProvider = options.walkingProvider
+    job.rejectedDiscovery = {}
+    job.budget = Price(options.budget) and options.budget or nil
+    -- Unknown departures are only a possible walk to a visible master.
+    -- Real flight edges still require a discovered node and a live quote to board.
+    if
+        options.allowTaxiDiscovery
+        and job.walkingProvider
+        and job.budget
+        and APR.HasTaxiNode
+        and job.api
+        and job.api.IsNodeAvailable
+        and job.api.IsNodeVisible
+    then
+        job.discovery = {}
+    end
     job.walkingContext = {
         walkSpeed = job.speed,
         walkSpeedFor = options.walkSpeedFor,
@@ -282,7 +344,7 @@ function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     job.approachCosts, job.exitCosts = {}, {}
     job.pathIndex, job.departureIndex = 0, 0
     return job
-end--[[APR_DIAG]]; taxi.CreateProbeSearch = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:267:taxi:CreateProbeSearch#10", taxi.CreateProbeSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CreateProbeSearch = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:310:taxi:CreateProbeSearch#12", taxi.CreateProbeSearch)--[[/APR_DIAG]]
 
 function taxi:FindProbe(start, goal, baselineSeconds, options)
     local job = self:CreateProbeSearch(start, goal, baselineSeconds, options)
@@ -291,4 +353,4 @@ function taxi:FindProbe(start, goal, baselineSeconds, options)
         status, probe = job:Step(256)
     until status ~= "planning"
     return probe
-end--[[APR_DIAG]]; taxi.FindProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:287:taxi:FindProbe#11", taxi.FindProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.FindProbe = APRTrace("APR-Core/features/navigation/taxi/TaxiProbes.lua:344:taxi:FindProbe#13", taxi.FindProbe)--[[/APR_DIAG]]

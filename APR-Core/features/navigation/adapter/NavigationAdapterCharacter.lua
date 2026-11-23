@@ -265,6 +265,7 @@ function environment.getCharacter()
         race = Text(race),
         class = type(class) == "string" and class:upper() or nil,
         inGroup = Call(IsInGroup),
+        inRaid = Call(IsInRaid),
         mapID = environment.getCurrentMapID(),
         indoors = Call(IsIndoors),
         inInstance = Call(IsInInstance),

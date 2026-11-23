@@ -1,6 +1,6 @@
 -- Format structured access failures without depending on a host UI or locale library.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("diagnostics", 5) then return end
+if not Lib:BeginModule("diagnostics", 6) then return end
 local Instance = Lib.Instance
 
 -- Append each line once, rather than copying every descendant's lines through
@@ -24,6 +24,8 @@ local function Describe(self, node, lines, depth, parentKey)
         return
     end
     local key, value = node.key, node.value
+    local raidText = key == "inRaid" and self.env.getGlobalText
+        and self.env.getGlobalText(value and "ERR_RAID_GROUP_ONLY" or "ERR_NOT_IN_RAID")
     local name, display
     if key == "quest" or key == "questAccount" or key == "questActive" then
         name = self.env.getQuestName and self.env.getQuestName(value)
@@ -69,8 +71,9 @@ local function Describe(self, node, lines, depth, parentKey)
             or value.id
             or "?"
     end
-    local label = self:GetText("NAVIGATION_REQUIRES_" .. key)
-    local text = string.format(label, display or (name and (name .. " [" .. tostring(value) .. "]") or tostring(value)))
+    local label = self:GetText(key == "inRaid" and "NAVIGATION_ACTION_requires_group" or "NAVIGATION_REQUIRES_" .. key)
+    local text = raidText
+        or string.format(label, display or (name and (name .. " [" .. tostring(value) .. "]") or tostring(value)))
     if node.negated then text = self:GetText("NAVIGATION_NEGATED") .. text end
     if node.unknown then text = self:GetText("NAVIGATION_UNKNOWN_REQUIREMENT") .. text end
     lines[#lines + 1] = { kind = "requirement", text = string.rep(" ", depth) .. "- " .. text }

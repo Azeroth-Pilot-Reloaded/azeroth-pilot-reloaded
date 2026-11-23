@@ -35,6 +35,7 @@ function nav:IsItineraryValid()
     local data = APR.NavigationData
     for index = self.cursor, #self.queue do
         local step = self.queue[index]
+        if step.discoverTaxiNode and APR:HasTaxiNode(step.fromNodeID) then return false end
         -- An unavailable-terrain estimate can guide, but cannot establish a
         -- measured incumbent or survive a definitive complete-search refusal.
         if step.provisionalEstimate or MissingWalkProof(step, provider) then return false end
@@ -100,7 +101,7 @@ function nav:GetRemainingSeconds(walkSpeedFor)
     for index = self.cursor, #self.queue do
         local step = self.queue[index]
         local duration = step.seconds or 0
-        if step.kind == "verify_taxi" then
+        if step.kind == "verify_taxi" and not step.discoverTaxiNode then
             -- This queue stops at the master, but comparisons still cover the
             -- potential flight and the walk from its arrival to the objective.
             -- Missing estimates cannot make an incomplete trip appear free.
@@ -173,9 +174,10 @@ function nav:PrepareGuidanceStep(segment, index, generation, position)
         approachOnly = segment.approachOnly,
         fromNodeID = segment.fromNodeID,
         toNodeID = segment.toNodeID,
+        discoverTaxiNode = segment.discoverTaxiNode,
         departureSeen = segment.departureSeen or segment.sourceFree == true or Distance(position, source) <= 30,
         boarded = segment.boarded,
-        breakAfter = segment.kind == "verify_taxi",
+        breakAfter = segment.kind == "verify_taxi" and not segment.discoverTaxiNode,
         contextKey = segment.contextKey,
         label = label,
     }
@@ -403,6 +405,7 @@ function nav:Publish(result, context, generation)
         or APR.NavigationData:IsServiceItineraryAllowed(self.queue, self.cursor, result)
     if
         self.recomputeKeepingPath
+        and not result.taxiDiscovery
         and not self.waypointApproach
         and not self.walkingPrefix
         and not self.travelPrefix

@@ -54,6 +54,7 @@ end
 
 local function Metadata(data)
     if data.format ~= 2 and data.format ~= 3 then return false end
+    if data.heightDigits ~= nil and data.heightDigits ~= 2 and data.heightDigits ~= 3 then return false end
     if data.part or not Finite(data.cells) or data.cells < 2 or data.cells > 256
         or data.cells % 1 ~= 0 then return false end
     for _, field in ipairs({ "nx", "ny", "cx0", "cy0", "zstep", "swim" }) do

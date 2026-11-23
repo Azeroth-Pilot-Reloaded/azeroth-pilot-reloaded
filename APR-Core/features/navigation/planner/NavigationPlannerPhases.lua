@@ -210,7 +210,15 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         return
     end
 
-    if self.phase == "explain" then
+    if self.phase == "taxi_stops" then
+        self.active = nil
+        if result then
+            self.result.segments = result.segments
+            self.result.totalSeconds = (self.result.totalSeconds or 0) + result.extraSeconds
+            self.result.taxiDiscovery = true
+        end
+        self:BeginQueue()
+    elseif self.phase == "explain" then
         if status ~= "ready" and not self.explainActions and self.catalogueMetadata.blockedActionEdges then
             self:ExplainFailure(true)
             return

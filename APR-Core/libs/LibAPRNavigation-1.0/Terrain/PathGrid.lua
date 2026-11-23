@@ -395,7 +395,7 @@ local function runs(s, limit)
     return values, length
 end
 
-local function heights(t, s, c, step)
+local function heights(t, s, c, step, width, bias)
     local p, remaining, delta, last = 1, 0, nil, 0
     for cell = 0, c * c - 1 do
         work()
@@ -405,7 +405,7 @@ local function heights(t, s, c, step)
                 local v = digits[s:byte(p)]
                 p = p + 1
                 if v == 47 then
-                    base, delta, p = (integer(s, p, 2) - 2048) * step, nil, p + 2
+                    base, delta, p = (integer(s, p, width) - bias) * step, nil, p + width
                 elseif v < 47 then
                     delta = (v - 23) * step
                 else
@@ -423,7 +423,7 @@ local function heights(t, s, c, step)
 end
 
 -- Extra storeys carry absolute integer yards, independent of the base height quantum.
-local function floors(t, s, count)
+local function floors(t, s, count, width, bias)
     if not s then return count end
     local p = 4
     local nextNode = count
@@ -441,8 +441,10 @@ local function floors(t, s, count)
             list[i], t.cell[node] = node, cell
             local value = digits[s:byte(p)]
             assert(value == 1 or value == 2)
-            t.bits[node], t.z[node], t.steps[node] = value * 16, integer(s, p + 1, 2) - 2048, integer(s, p + 3, 2)
-            p = p + 5
+            t.bits[node] = value * 16
+            t.z[node] = integer(s, p + 1, width) - bias
+            t.steps[node] = integer(s, p + 1 + width, 2)
+            p = p + 3 + width
         end
     end
     local links = integer(s, p, 3)
@@ -477,8 +479,10 @@ local function readGrid(st, k, topologyOnly)
     local bits, n = runs(grid, c * c)
     assert(n == c * c, "short terrain grid")
     local t = { bits = bits, z = {}, layers = {}, steps = {}, links = {}, cell = {} }
-    heights(t, assert(field(st, "height", k)), c, st.data.zstep)
-    local size = floors(t, field(st, "floor", k), n)
+    local heightWidth = st.data.heightDigits or 2
+    local heightBias = heightWidth == 3 and 131072 or 2048
+    heights(t, assert(field(st, "height", k)), c, st.data.zstep, heightWidth, heightBias)
+    local size = floors(t, field(st, "floor", k), n, heightWidth, heightBias)
     if topologyOnly then return t end
     local clearance = field(st, "clearance", k)
     if clearance then

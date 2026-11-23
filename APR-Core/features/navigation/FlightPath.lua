@@ -42,7 +42,9 @@ flight.eventFrame:SetScript(
                 if node.state == Enum.FlightPathState.Current then flight.CurrentTaxiNode = node end
                 if step and (step.toNodeID or step.NodeID) == node.nodeID then flight.StepTaxiNode = node end
             end
-            if generated and guidance.kind == "verify_taxi" and APR.taxiData.MarkProbeAttempt then
+            if generated and guidance.kind == "verify_taxi" and not guidance.discoverTaxiNode and APR.taxiData.MarkProbeAttempt
+                and flight.CurrentTaxiNode.nodeID == guidance.fromNodeID
+            then
                 APR.taxiData:MarkProbeAttempt(guidance.fromNodeID, guidance.toNodeID, guidance.contextKey)
             end
             APR.taxiData:ObserveTaxiMap(nodes)

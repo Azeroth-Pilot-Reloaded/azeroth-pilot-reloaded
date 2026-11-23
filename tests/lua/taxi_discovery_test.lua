@@ -116,6 +116,31 @@ assert(APR.flightPath.unavailableNodes[999] == nil, "An unobserved node has unkn
 frame.callback(frame, "TAXIMAP_CLOSED")
 assert(next(APR.flightPath.unavailableNodes) == nil, "Availability at one flight master must not persist elsewhere")
 assert(APR:HasTaxiNode(7), "Closing the map preserves discovered nodes")
+local guidance = { kind = "verify_taxi", fromNodeID = 8, toNodeID = 7, contextKey = "discover" }
+APR.taxiData:SetProbeContext(guidance.contextKey)
+local replans = 0
+APR.navigation = {
+    IsNavigating = function() return true end,
+    GetActiveStep = function() return guidance end,
+    InvalidatePathCache = noop,
+    RequestUpdate = function() replans = replans + 1 end,
+}
+frame.callback(frame, "TAXIMAP_OPENED")
+assert(not APR.taxiData.probeAttempts["8:7"] and not APR:HasTaxiNode(8),
+    "Opening a different master's map cannot consume the planned discovery detour")
+guidance.fromNodeID = 6
+APRTaxiNodes.player[6] = nil
+local beforeReplan = replans
+frame.callback(frame, "TAXIMAP_OPENED")
+assert(APR.taxiData.probeAttempts["6:7"] and APR:HasTaxiNode(6) and taken == nil and replans == beforeReplan + 1,
+    "Interacting with the intended master records discovery and triggers replanning without buying a flight")
+guidance.discoverTaxiNode, guidance.toNodeID, guidance.contextKey = true, nil, "onward-walk"
+APR.taxiData:SetProbeContext(guidance.contextKey)
+APRTaxiNodes.player[6] = nil
+beforeReplan = replans
+frame.callback(frame, "TAXIMAP_OPENED")
+assert(APR:HasTaxiNode(6) and not next(APR.taxiData.probeAttempts) and taken == nil and replans == beforeReplan + 1,
+    "An incidental stop learns the node and resumes planning without offering or buying a flight")
 APR.flightPath.unavailableNodes[8] = true
 APR.settings.profile.enableAddon = false
 frame.callback(frame, "TAXIMAP_CLOSED")

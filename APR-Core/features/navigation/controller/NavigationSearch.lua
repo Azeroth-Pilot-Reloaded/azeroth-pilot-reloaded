@@ -360,6 +360,7 @@ function nav:Update(context)
             and self.lastWalkCorridor
         or nil
     local contextKey = tostring(context.route) .. ":" .. tostring(context.index) .. ":" .. tostring(context.revision)
+    if step._mapWaypoint then contextKey = contextKey .. ":waypoint:" .. tostring(context.service) end
     self.waitingData = false
     if waypointLeg then
         self.waypointJourney, self.waypointPendingLeg = true, waypointLeg
@@ -371,7 +372,11 @@ function nav:Update(context)
         -- Ordinary travel compares elapsed time across every available action.
         -- Access-only routing intentionally prefers a physical entrance and
         -- must be reserved for the steps that explain or unlock that entrance.
-        allowTaxiProbes = step._service ~= true and not training,
+        allowTaxiProbes = not training
+            and (
+                step._service ~= true
+                or data.profile == "forever" and step._mapWaypoint and (distantMapWaypoint or separatedTravel)
+            ),
         serviceTravel = (step._service == true and not step._mapWaypoint) or training ~= nil and training ~= false,
         preferZoneAccess = step._navigationUnlock == true,
         localObjective = step._navigationUnlock == true,
@@ -409,6 +414,9 @@ function nav:Update(context)
         batchTerrainWork = preferLocal or separatedTravel or (data.profile == "forever" and step._service == true),
         walkingSpeedCeiling = walkingProvider and walkingSpeedCeiling or nil,
         taxiData = APR.taxiData,
+        allowTaxiDiscovery = data.profile == "forever",
+        allowTaxiStops = data.profile == "forever" and not training and not step._navigationUnlock
+            and (not step._service or step._mapWaypoint) and not step.GetFP and not step.UseFlightPath,
         deferInstructions = true,
         engine = APR.NavigationEngine,
         start = start,
@@ -440,8 +448,11 @@ function nav:Update(context)
                     fromNodeID = probe.fromNodeID,
                     toNodeID = probe.toNodeID,
                     seconds = probe.flightSeconds,
+                    copper = probe.discoveryFare,
                     probeDestination = probe.flightDestination,
-                    instruction = L["NAVIGATION_CONSULT_TAXI"],
+                    instruction = probe.discoveryFare ~= nil and APR.GetFlightPathDiscoveryText
+                        and APR:GetFlightPathDiscoveryText({ GetFP = probe.fromNodeID })
+                        or L["NAVIGATION_CONSULT_TAXI"],
                     contextKey = contextKey,
                 },
             }

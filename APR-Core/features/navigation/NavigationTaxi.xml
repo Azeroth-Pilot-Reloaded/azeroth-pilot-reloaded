@@ -2,5 +2,6 @@
     <Script file="NavigationTaxi.lua" />
     <Script file="taxi/TaxiPaths.lua" />
     <Script file="taxi/TaxiProbes.lua" />
+    <Script file="taxi/TaxiStops.lua" />
     <Script file="taxi/TaxiMeasurements.lua" />
 </Ui>

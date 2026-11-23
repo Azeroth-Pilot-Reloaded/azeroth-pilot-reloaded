@@ -42,4 +42,5 @@
   <Script file="Data/forever/Spells.lua" />
   <Script file="Data/forever/Passages.lua" />
   <Script file="Data/forever/UnlockRoutes.lua" />
+  <Script file="Data/forever/RaidAccess.lua" />
 </Ui>

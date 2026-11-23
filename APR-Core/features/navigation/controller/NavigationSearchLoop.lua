@@ -156,6 +156,25 @@ function nav:RunPlanningSearch(options)
                         and localResult.yards <= Constants.LOCAL_WALK_YARDS
                         and PlanningRequestCurrent(self, context, generation, job, inputs)
                     then
+                        if
+                            localState == "ready" and not localResult.partial
+                            and job.request and job.request.allowTaxiStops and job.BeginTaxiStops
+                        then
+                            job.result = {
+                                segments = { {
+                                    kind = "walk", from = start, to = goal, path = localResult.path,
+                                    seconds = localResult.seconds,
+                                } },
+                                totalSeconds = localResult.seconds,
+                                totalCopper = 0,
+                                localWalk = true,
+                            }
+                            if job:BeginTaxiStops() then
+                                self.localPathJob = nil
+                                self._searchTimer = C_Timer.NewTimer(0, advance)
+                                return
+                            end
+                        end
                         job:Cancel()
                         self.search, self.localPathJob, self._searchTimer = nil, nil, nil
                         self._localWalk, self.recomputeKeepingPath = true, nil
@@ -306,7 +325,10 @@ function nav:RunPlanningSearch(options)
         elseif state == "ready" then
             result = result or self.search:GetResult()
             local first = result and result.segments and result.segments[1]
-            if inputs.waitingForWalkingFloor and first and first.hearthstone and first.sourceFree then
+            if result and result.localWalk and not result.taxiDiscovery then
+                self.search, self._searchTimer, self.recomputeKeepingPath = nil, nil, nil
+                self._localWalk = true
+            elseif inputs.waitingForWalkingFloor and first and first.hearthstone and first.sourceFree then
                 -- A recall is feasible from either floor, but says nothing about
                 -- the exit. Retry the local comparison on a fresh observation.
                 self.waitingData, job.unresolvedSurface, job.unresolvedStartSurface = true, true, true

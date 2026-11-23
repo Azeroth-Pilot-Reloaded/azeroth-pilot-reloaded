@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 11) then return end
+if not Lib:BeginModule("conditions", 12) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -301,6 +301,9 @@ function Instance:CheckRequirements(requirements, character)
             if character.inInstance ~= nil then result = character.inInstance ~= value end
         elseif key == "inGroup" then
             if character.inGroup ~= nil then result = character.inGroup == value end
+        elseif key == "inRaid" then
+            if type(value) ~= "boolean" then return false, "invalid_requirements" end
+            if type(character.inRaid) == "boolean" then result = character.inRaid == value end
         elseif key == "housing" then
             if self.env.getDynamicPosition then result = self.env.getDynamicPosition("housing") ~= nil end
         else

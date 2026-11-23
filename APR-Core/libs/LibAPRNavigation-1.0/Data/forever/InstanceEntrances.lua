@@ -168,29 +168,38 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             interiorMapIDs = {},
         },
         {
+            id = "entrance-forever-onyxias-lair",
+            kind = "raid",
+            reviewStatus = "confirmed",
+            instanceID = 249,
+            -- Walkable cave floor inside AreaTrigger 2848 on the world map.
+            exterior = { space = "world", instanceID = 1, uiMapID = 1445, x = -4762.5, y = -3754.65, z = 46.25 },
+            interiorMapIDs = {},
+        },
+        {
             id = "entrance-9016-from-1422-at-6850-7258",
             kind = "dungeon",
             reviewStatus = "candidate",
             instanceID = 289,
-            exterior = { space = "map", uiMapID = 1422, x = 0.685, y = 0.7258 },
+            exterior = { space = "world", instanceID = 0, uiMapID = 1422, x = 1278.41, y = -2550.98, z = 87.8072 },
+            -- Interior corridor of the exterior building. The locked door and the outdoor join still need guidance.
             approach = {
-                { space = "map", uiMapID = 1422, x = 0.6972, y = 0.7336 },
-                { space = "map", uiMapID = 1422, x = 0.4212, y = 0.1195 },
-                { space = "map", uiMapID = 1422, x = 0.685, y = 0.7258 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1263.6799, y = -2581.2933, z = 93 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1268.8, y = -2575.467, z = 92.668 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1268.8, y = -2572.533, z = 93.735 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1267.59, y = -2567.38, z = 94.1143 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1269.867, y = -2560, z = 95.068 },
+                { space = "world", instanceID = 0, uiMapID = 1422, x = 1278.41, y = -2550.98, z = 87.8072 },
             },
             interiorMapIDs = {},
-            reason = "mandatory-approach-access-condition-not-verified",
+            reason = "outdoor-join-and-locked-door-guidance-not-verified",
         },
         {
             id = "entrance-9018-from-1423-at-3134-1578",
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 329,
-            exterior = { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
-            approach = {
-                { space = "map", uiMapID = 1423, x = 0.3085, y = 0.1978 },
-                { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
-            },
+            exterior = { space = "world", instanceID = 0, uiMapID = 1423, x = 3392.56, y = -3361.78, z = 142.802 },
             interiorMapIDs = {},
         },
         {
@@ -198,7 +207,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 329,
-            exterior = { space = "map", uiMapID = 1423, x = 0.4823, y = 0.2188 },
+            -- The service door is reachable from the road before it is opened.
+            exterior = { space = "world", instanceID = 0, uiMapID = 1423, x = 3185.48, y = -4039.1, z = 107.792 },
             interiorMapIDs = {},
         },
         {
@@ -247,7 +257,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 429,
-            exterior = { space = "map", uiMapID = 1444, x = 0.6282, y = 0.2446 },
+            -- Stop on the outside of the north gate while its state is unknown.
+            exterior = { space = "world", instanceID = 1, uiMapID = 1444, x = -3520.13, y = 1107.5, z = 161.219 },
             interiorMapIDs = {},
         },
         {
@@ -307,8 +318,15 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 2959,
-            exterior = { space = "map", uiMapID = 1421, x = 0.6928, y = 0.4555 },
+            exterior = {
+                space = "world",
+                instanceID = 0,
+                uiMapID = 1421,
+                x = 388.8455,
+                y = 537.441,
+                z = 40.687,
+            },
             interiorMapIDs = {},
         },
     },
-}, 3)
+}, 4)

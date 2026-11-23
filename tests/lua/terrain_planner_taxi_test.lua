@@ -1,7 +1,10 @@
 local function noop() end
 function CreateFrame() return {SetScript = noop} end
 function LibStub()
-    return {GetLocale = function() return {NAVIGATION_CONSULT_TAXI = "Consult"} end}
+    return {
+        GetLocale = function() return {NAVIGATION_CONSULT_TAXI = "Consult"} end,
+        GetText = function() return "Fly to %s" end,
+    }
 end
 APR = {PlayerID = "terrain-taxi"}
 function APR:NewModule() return {} end
@@ -17,7 +20,7 @@ LibTaxiData_API = {
     GetSource = function() return source end,
     GetAllPaths = function() return {
         [1] = {fromNodeID = 1, toNodeID = 2, durationSeconds = 5},
-        [2] = {fromNodeID = 3, toNodeID = 4, durationSeconds = 5},
+        [2] = {fromNodeID = 3, toNodeID = 4, durationSeconds = 5, basePriceCopper = 25},
     } end,
     GetNodeWorldPosition = function(id) return positions[id] end,
     IsNodeAvailable = function() return true end,
@@ -61,14 +64,15 @@ local function provider()
         return work(function()
             if self.pathUnavailable then return "unavailable" end
             if self.pathFailure == to.x and from.x == 0 then return "no_path" end
-            return "ready", {path = {from, {x = from.x, y = 25, instanceID = 1}, to}}
+            return "ready", {path = {from, {x = from.x, y = 25, instanceID = 1}, to}, seconds = self.pathSeconds}
         end)
     end
     return p
 end
-local function make(p, suffix, baseline)
+local function make(p, suffix, baseline, budget)
     return taxi:CreateProbeSearch(a, goal, baseline or 80, {contextKey = "synthetic:" .. (suffix or "one"),
         walkingProvider = p, walkSpeed = 7, canWalk = function() return true end,
+        allowTaxiDiscovery = budget ~= nil, budget = budget,
         clock = function() return p.now end})
 end
 local function finish(job, p)
@@ -112,5 +116,42 @@ for _, phase in ipairs({"cost", "path"}) do
     job:Cancel()
     assert(p.active[#p.active].cancelled and job:Step(64, 1) == "cancelled",
         "Probe cancellation reaches the active terrain " .. phase .. " job")
+end
+local known = {[4] = true}
+local eligible, visible = true, true
+function APR:HasTaxiNode(id) return known[id] == true end
+function LibTaxiData_API.IsNodeAvailable(id) return id ~= 3 or eligible end
+function LibTaxiData_API.IsNodeVisible(id) return id == 3 and visible end
+p = provider()
+status, result = finish(make(p, "discover"), p)
+assert(status == "ready" and not result, "Ordinary probes still need learned endpoints")
+p = provider()
+status, result = finish(make(p, "discover", 80, 25), p)
+assert(status == "ready" and result and result.fromNodeID == 3 and result.toNodeID == 4
+    and result.kind == "verify_taxi" and result.to == result.from and result.discoveryFare == 25
+    and #result.approachPath == 3 and #result.exitPath == 3,
+    "A visible unlearned departure can be reached without planning an unconfirmed flight")
+assert(#taxi:BuildEdges() == 0, "An unlearned departure never becomes a flight edge")
+known[3] = true
+taxi:InvalidateEdges()
+assert(#taxi:BuildEdges() == 1, "Only observed learning makes the departure usable by the normal graph")
+p = provider()
+status, result = finish(make(p, "known-no-money", 80, 0), p)
+assert(status == "ready" and not result, "A known departure does not justify a probe for an unaffordable fare")
+known[3] = nil
+taxi:InvalidateEdges()
+for _, state in ipairs({"expensive", "slower", "unknown-destination", "restricted", "hidden", "unverified-walk",
+    "longer-walk", "missing-duration"}) do
+    known[4] = state ~= "unknown-destination"
+    eligible, visible = state ~= "restricted", state ~= "hidden"
+    p = provider()
+    p.pathUnavailable = state == "unverified-walk"
+    p.pathSeconds = state == "longer-walk" and 90 or nil
+    if state == "missing-duration" then
+        paths[2].durationSeconds = nil
+        taxi:InvalidateStaticCache()
+    end
+    status, result = finish(make(p, state, state == "slower" and 39 or 80, state == "expensive" and 24 or 25), p)
+    assert(status == "ready" and not result, "No discovery detour is published with " .. state)
 end
 print("Terrain taxi probes: useful obstacle detours, batching, physical ranking, paths, disconnections and cancellation passed")
