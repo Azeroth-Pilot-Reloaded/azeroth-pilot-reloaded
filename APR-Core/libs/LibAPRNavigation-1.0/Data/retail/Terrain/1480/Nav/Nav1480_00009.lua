@@ -1,0 +1,65 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+local D=assert(L._TerrainPackStages[1480])
+D.packed.graph[82]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[82]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[82]={}
+D.packed.graph[69]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[69]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[69]={}
+D.packed.graph[56]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[56]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[56]={}
+D.packed.graph[43]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[43]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[43]={}
+D.packed.graph[81]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[81]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[81]={}
+D.packed.area[68]={"eNoLcc/Wd3R01AcDyxB0njacpx3inm0J5+ljyJk6OjqGuGeXI5SUh7hnm0BEEYKVIe7ZxuiCVRBeiHu2AbqUAVS9/igYBaNgqAFDUJ4GACmr2mI="}
+D.packed.floor[68]={"eNo9xkEKgDAMRcGz/acQkra2xUN07cL7i0LcDCOZbMA6YrtU6rf9Viu5HrnJP8/J5APUKqgX0AzQyYvDA3HMHD4="}
+D.packed.graph[68]={"eNpNjLEJACAQA2e7+AEtHUPE/VsRnkc4SHFJCOhoBUy0GoMXRnCSYxrsZIsAJzZ8TZUoV7t4L+UuQAwiXw=="}
+D.packed.grid[68]={"eNoLTbZMdNQHA8vQZIvIEATHPDIJytEOTTZPhbL1Q5ONI1NCI4NCEJJGkWmOcL5+eWiyYWSaI5xfGZgSmlyJLFIV7hiaXJmKEDAICgkygPNGwSgYBUMHGAIA4FjTuw=="}
+D.packed.height[68]={"eNorS3fPjtCHggoAH6YD2A=="}
+D.packed.area[55]={"eNrtkzsOxCAMRI9Elw3lVFyAW0SpwZx+5dgyEFik7XEBevb4JwQAt23bNnfEcMO+g+8ox3ABaM8kAr0GdRJhBkA/JKoQf+nCFMNVJIcr5CG3qJdmhUnnSu9g0UxuJgO8+pFmN8WyjGnbPromflbkqK84kDPyTMnwnGA2/EzwL/Ea677HBNfi9VTduvwgz+N8AfNtNiE="}
+D.packed.class[55]={"eNrtjlEKgDAMQ480h1PwMyR3arfTy2TOHsGPpf14DSEUaWlpKZ3EoGuSC33sWX2uQY4aLUJGoU2nEkYDZfAQcxCuGsu8J0NXUws9/Rp4yKH5W1F+cdeG9E8V5RvSj9vM"}
+D.packed.floor[55]={"eNotyzsKgDAURNElCeIGZhwTDGqQ+Okt1EoR9w/ygt3hwgWCPMhjeAH5xnQB6lvTCShmbabOlACN+dixaFVudaE7mUL9qJx+AU4RoCIdNTeOehKpaiI/hVcjiA=="}
+D.packed.graph[55]={"eNpVjjsKxEAMQw+UPv3zWEuWrdLmBPkwZe6/eGLCDDwwAskSH/+CneYX2CGf47hPS1PT2hTAL5EocCe3cKw8WBHCtgfbHAMlUqghx57sHj8HZ/+zdM5ooCZ1iWVj7m1vDZ2z3/IHpaFFmA=="}
+D.packed.grid[55]={"eNrtjzsSwyAMRA9EQQem1BWMlBlKR+EMAp8+Y08Qcs6AaN4uu3zAr1mzxocMP0pKDeFagiAZcLoCOwp0tB5gh1N1z8RyADZoM/MiLhkadtNjOa4LZFon3d6J+oxOXD4ZOl5HjiJxhbvKrRozaEKIowriWCen4SdiN3gjdnWyH34kduVthAk9NmzjwdWw/iAQe22Hv1TBueFUROKkYtvdwPQFQx0Cmw=="}
+D.packed.height[55]={"eNptxzsSQEAQBuEjIXEFgcSjdqb/yQQKmYRdt1dyXfUFfW/dbmeke+s+lyuSApFCCc+o2DjhiP7QvBoKX7VQNMooGihGNiaeb92c2njkmcapfmpfbGcmAw=="}
+D.packed.graph[42]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[42]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[42]={}
+D.packed.graph[80]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[80]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[80]={}
+D.packed.area[67]={"eNqVx6EVgDAUA8CRAgVabFQWyBYRWMr0GN77GndHEsO6GkkAOK2MzwDuP51WenWxsleblVbdrKzVw8pT7VbmC8TSJkI="}
+D.packed.class[67]={"eNpz1Dd3NQIAA2cBHw=="}
+D.packed.graph[67]={"eNpNysEJACAQA8GSfFnA5jxBGznF/v8iiAgDeWwoMNASymgaPZ0RBdpVHYO4QjiPO/paPc/XNrtMGb4="}
+D.packed.grid[67]={"eNrtyjEOgCAQRNEDWQxBUVuuMGHpzR6CxdMbTdzO3oJfzUsmY2Mr7CUDwC6ajmcBsG9QdHF1VtHoDGyiwRkperrm+2vOVEWba6WVd49Go/83XRHL0xE="}
+D.packed.height[67]={"eNorS/cMDI8oD4+oKEt3z47QBwMAUzgGxg=="}
+D.packed.area[54]={"eNrtk00OhDAIhQ/kYqxO/5asuAC3IIZl1dNPmLajdjTxALKCD3l9tBEAXk888cRVREKG319iCCcAMAfYE04JAHKvQJerdOilP7EFAJYDHcrEnEfaHmexZYMjIa9n+j0hz4Ve9Yf2iJWQ7VaqN7eVMyF7LTtCqR4CIQfNI6GseSEpPXUcNQ+EUoVMhZ5QQoF9hY5QYgstoXQtfBPK69aXe6gbfvOxGe+qZncL2p15U6Ga92e7jwXaell+B51CfVVCTh+edDij"}
+D.packed.class[54]={"eNrtkEsOhSAMRRfkAH9PYXjT2zUBrv7FxJYYoyvgDsg5BVoCQk9Pz1uS4KJJMNFkpMBlI7IQ5+qHeVaq+8yMQrivrIZRkG+tXHa2GZEZj8cN6l1+eqCq2aGbYdFoqAl2b7goaXjUGsXP3dA6F93b6MU/yXBl/QO/49sa"}
+D.packed.floor[54]={"eNpzdHR38TFyckr3C3B0dAkwAbFKHF1dQsCscEdHlzBTECvMMcglAszyctZ3iTCDsCwdHR0BddESuw=="}
+D.packed.graph[54]={"eNpVjUsKg1AQBA/k4q3EdbUzg4nHcGNitu/+YeJgEAqahv4Q9mzoLfs09DKbThl2dMjamC4A1sKdGXrRHUc6kQKBF+7pbkm2YotcuZJLPjyKyN5/8/d39ZbbwxfjxzTM"}
+D.packed.grid[54]={"eNrtj02OgzAMhQ80C8Jfki59hKY2ErMzLmcwcPpR6xBopbkBb+X39D7LhurSpUv/6YaQp/oBdTEOFYrxCPr2+ihlXGEthQYVFjyAhgE1FdvSOCVU0GM9yQzK542OxDHwbjeStpiVpCtmEc9Q/aCwsVECQ3WThXE/qaF3Fkm2WVHU2NrSgNJn1FniUfxn0pOEGc9JhySRvzvj9JFIZIM2K7fDGXpN3UDiDyrmzZ7xHPXD/UnS5F6d9jOVxI2/qPbka1X+cpyM7y0KmFxu+RTwD8h4FLw="}
+D.packed.height[54]={"eNpFjr0OwjAMhB+IIbSInz4AVFlIBVV8x4YARWoHxBI3PD2qO7BY393JPufUTs+b/1yG05saMPRyvQdoHI98oQx9h+kRUTH2qKkRrs7JB1BzakfsTSixyENO/oxCTIQzro0b4+1iBsGOWOXkO9EZnfynnWksw2Kr2GIRbAj3FVSzSYhiTbW8UK26E6jM3zQ/sxhKCA=="}
+D.packed.graph[41]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[41]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[41]={}
+D.packed.graph[79]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[79]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[79]={}
+D.packed.graph[66]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[66]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[66]={}
+D.packed.graph[53]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[53]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[53]={}
+D.packed.graph[40]={"eNpzdAQAAMUAgw=="}
+D.packed.grid[40]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
+D.packed.height[40]={}
+L:RegisterTerrainData("retail",1480,D,20261123,true)
+L._TerrainPackStages[1480]=nil
+if not next(L._TerrainPackStages) then L._TerrainPackStages=nil end

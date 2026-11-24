@@ -2,10 +2,11 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
 local Runtime = Lib._TerrainNamespace
 Lib._TerrainNamespace = nil
-if not Runtime or not Lib:BeginModule("Terrain", 20) then return end
+if not Runtime or not Lib:BeginModule("Terrain", 22) then return end
 local Grid = Runtime.PathGrid
 local Work = Runtime.Work
 local maps, providers = {}, setmetatable({}, { __mode = "kv" })
+local activeProfile = "forever"
 local generation = 0
 local Provider, Job = {}, {}
 Provider.__index, Job.__index = Provider, Job
@@ -29,21 +30,39 @@ function Runtime.Data(mapID)
     return maps[mapID] and maps[mapID].data
 end
 
-function Lib:RegisterTerrainData(profile, mapID, data, revision)
-    if profile ~= "forever" or not Finite(mapID) or mapID < 0 or mapID % 1 ~= 0 then return end
+function Lib:MatchesGeneratedTerrain(profile, build)
+    if profile ~= "retail" and profile ~= "forever" then return false end
+    local getBuildInfo = rawget(_G, "GetBuildInfo")
+    if type(getBuildInfo) ~= "function" then return false end
+    local version, number, _, interface = getBuildInfo()
+    if type(version) ~= "string" or (type(number) ~= "string" and type(number) ~= "number")
+        or version .. "." .. tostring(number) ~= build then return false end
+    interface = tonumber(interface) or 0
+    if profile == "forever" and (interface < 16000 or interface >= 17000) then return false end
+    if profile == "retail" and interface < 100000 then return false end
+    if activeProfile ~= profile and next(maps) then return false end
+    activeProfile = profile
+    return true
+end
+
+function Lib:RegisterTerrainData(profile, mapID, data, revision, generated)
+    if profile ~= activeProfile or not Finite(mapID) or mapID < 0 or mapID % 1 ~= 0 then return end
     revision = revision or 1
     if not Finite(revision) or type(data) ~= "table" then return end
-    if maps[mapID] and maps[mapID].revision >= revision then return end
+    generated = generated == true
+    local previous = maps[mapID]
+    if previous and (previous.generated and not generated
+        or (previous.generated == generated and previous.revision >= revision)) then return end
     -- Catalogue declarations contain immutable packed strings. The mutable field
     -- tables belong only to this runtime, never to the registering addon/global.
     local ok, private = pcall(Lib.Copy, data)
-    maps[mapID] = { data = ok and private or {}, revision = revision }
+    maps[mapID] = { data = ok and private or {}, revision = revision, generated = generated }
     generation = generation + 1
     Grid.Reset()
 end
 
 function Lib.Instance:GetWalkingProvider()
-    if self.profile ~= "forever" or not next(maps) then return nil end
+    if self.profile ~= activeProfile or not next(maps) then return nil end
     if not providers[self] then providers[self] = setmetatable({ owner = self }, Provider) end
     return providers[self]
 end
@@ -106,7 +125,20 @@ function Provider:RequiresWalkingProof(from, to)
     if not entry then return false end
     if not entry.validated and not Metadata(entry.data) then return true end
     local st = Grid.State(from.instanceID)
-    return Grid.locate(st, from.x, from.y) ~= nil and Grid.locate(st, to.x, to.y) ~= nil
+    local first = Grid.locate(st, from.x, from.y)
+    local last = Grid.locate(st, to.x, to.y)
+    if first == nil or last == nil then return false end
+    if entry.generated then
+        local pages = entry.data.packed and entry.data.packed.grid or entry.data.grid
+        return pages ~= nil and pages[first + 1] ~= nil and pages[last + 1] ~= nil
+    end
+    return true
+end
+
+function Provider:HasWalkingCoverage(point)
+    if not Position(point) then return false end
+    local entry = maps[point.instanceID]
+    return entry ~= nil and (not entry.generated or self:RequiresWalkingProof(point, point))
 end
 
 function Provider:GetWalkingPage(point)

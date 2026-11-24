@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[1599]={["area"]={},["areaNames"]={[12104]="",[50627]="",[50725]="",[50842]="Refuge des saisons d’Hyjal",[50843]="Refuge des saisons d’Hyjal",[50844]="Refuge des saisons d’Hyjal",[50845]="Refuge des saisons d’Hyjal",[51042]="",[54392]="",[54726]="Auberge de Nordrassil",[54727]="Nordrassil",[80608]=""},["areaParents"]={[12104]=0,[50627]=0,[50725]=0,[50842]=5032,[50843]=5032,[50844]=5032,[50845]=5032,[51042]=0,[54392]=0,[54726]=5730,[54727]=5038,[80608]=0},["cells"]=128,["class"]={},["counts"]={["area"]=4,["class"]=4,["floor"]=4,["graph"]=4,["grid"]=4,["height"]=4},["cx0"]=9,["cy0"]=-8,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["heightDigits"]=3,["hubs"]={},["nx"]=2,["ny"]=2,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

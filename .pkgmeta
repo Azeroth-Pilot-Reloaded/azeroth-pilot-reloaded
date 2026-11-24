@@ -40,6 +40,10 @@ ignore:
   - APR-Core/README.md
   - APR-Core/libs/LibAPRNavigation-1.0/README.md
   - "APR-Core/libs/LibAPRNavigation-1.0/Data/forever/Terrain/*.json"
+  - "APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/**/PACK.json"
+  - "APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/**/Generation.json"
+  - "APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/**/Tiles.json"
+  - "APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/.install"
 
   # Embedded libraries load through XML; their standalone TOCs/logo are unused.
   - "APR-Core/libs/*.toc"

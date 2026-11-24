@@ -124,6 +124,19 @@ for _, mode in ipairs({"missing", "uncovered", "retail"}) do
 end
 nav:Cancel("cleared")
 
+APR.NavigationData.profile = "retail"
+function provider:HasWalkingCoverage(point) return covered and point.instanceID == 0 end
+nav:Update()
+assert(request.walkingProvider == provider and nav.state == "planning",
+    "Retail dispatches generated walking data when both endpoints are covered")
+nav:Cancel("cleared")
+covered = false
+nav:Update()
+assert(nav.state == "ready", "An uncovered Retail route keeps its direct baseline with a generated provider")
+nav:Cancel("cleared")
+APR.NavigationData.profile = nil
+provider.HasWalkingCoverage = nil
+
 -- Join the actual scheduler/search with the controller contract as well.
 expose, covered, version, x, y = true, true, "forever", 0, 0
 function provider:CreateCostJob(from, targets)

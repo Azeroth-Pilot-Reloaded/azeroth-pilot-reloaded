@@ -53,15 +53,23 @@ def manifest_references(path, game):
 
 def validate_terrain_loading(root, files, game):
     library = (root / 'APR-Core/libs/LibAPRNavigation-1.0').resolve()
+    retail_terrain = library / 'Data/retail/Terrain'
     if game == 'Standard':
+        has_retail_terrain = retail_terrain / 'Terrain.xml' in files
         for path in files:
             if not path.is_relative_to(library):
                 continue
             relative = path.relative_to(library)
+            if has_retail_terrain and (relative == Path('Terrain.lua') or relative.parts[0] == 'Terrain'
+                                       or path.is_relative_to(retail_terrain)):
+                continue
             assert relative.name != 'Terrain.lua' and 'Terrain' not in relative.parts, \
                 f'Retail must not load Forever terrain: {relative}'
+        if has_retail_terrain:
+            assert library / 'Terrain.lua' in files, 'Retail must load its terrain provider'
     elif (library / 'Terrain_Camelot.xml').is_file():
         assert library / 'Terrain.lua' in files, 'Forever must load its terrain provider'
+        assert not any(path.is_relative_to(retail_terrain) for path in files), 'Forever must not load Retail terrain'
         indices = {path for path in files if path.parent == library / 'Data/forever/Terrain'
                    and re.fullmatch(r'Index-\d+\.lua', path.name)}
         if indices:

@@ -7,6 +7,7 @@
 # cache and compiled files
 .cache/
 __pycache__/
+APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/.install/
 node_modules/
 target/
 

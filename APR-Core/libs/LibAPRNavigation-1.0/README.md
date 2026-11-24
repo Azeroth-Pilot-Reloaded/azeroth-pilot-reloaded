@@ -878,25 +878,29 @@ The reproducible benchmark and measured limits are documented in
 Without a walking provider, free segments remain direct lines within an
 authorized region, connected through mandatory passages.
 
-## Optional Forever terrain
+## Optional walking terrain
 
-`Terrain_[Game].xml` selects the walking implementation: Standard is empty;
-Camelot loads the private router, provider and generated declarations. Retail
-never loads the router or packed walking maps. The package validator checks
-both client include graphs. The addon remains a single package.
+`Terrain_[Game].xml` loads the walking provider and selects the client data.
+Standard loads locally generated Retail and PTR maps. Camelot loads the shipped
+Forever catalogue and eligible locally generated maps. A generated map registers
+only on its exact client build. The package validator checks both include graphs.
 
 The sibling Route-generator checkout contains the offline CLI in `tools/apr-terrain`.
 Its README covers building the tools, generating a pack from a Forever or Retail client
 and checking it before installation. Raw geometry and build caches stay in the generator workspace.
 Generated maps use the router's format 2/3; private-map-derived distributions
-are not inputs. Keep source build identities and run the export check before
-installing maps under `Data/forever/Terrain`.
+are not inputs. The APR Terrain launcher and Retail batch generator verify packs
+before publishing them under `Data/<profile>/Terrain/<mapID>`. The profile's
+`Terrain.xml` includes the map's `Terrain.xml`, which loads its `Nav/` files.
+Retail test products use `Data/retail/Terrain/<product>/<mapID>` so they can
+coexist with live maps. The exact build remains in the pack metadata and Lua
+load guards. Publishing a newer build replaces the map at the same path.
 
 `library:RegisterTerrainData("forever", worldMapID, data, revision)` registers a
 complete immutable map declaration after all its parts have loaded. A newer
 revision replaces the declaration and invalidates pending walking work.
-`navigator:GetWalkingProvider()` returns an instance-bound provider for Forever
-when terrain declarations exist, and nil for other profiles or absent data.
+`navigator:GetWalkingProvider()` returns an instance-bound provider for the active
+profile when its terrain declarations exist.
 
 The optional `walkingProvider` search argument supplies caller-driven cost and
 path jobs. Both implement `Step(maxOperations, milliseconds)` and `Cancel()`;

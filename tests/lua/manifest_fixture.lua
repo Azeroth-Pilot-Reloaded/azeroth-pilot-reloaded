@@ -11,7 +11,7 @@ return function(path, options)
     local visited, load = {}, options.load or dofile
     local function visit(current)
         if visited[current] or (options.skip and options.skip(current)) then return end
-        if not options.terrainData and current:find("/Data/forever/Terrain/", 1, true) then return end
+        if not options.terrainData and current:find("/Data/[^/]+/Terrain/") then return end
         visited[current] = true
         if current:sub(-4) ~= ".xml" then load(current); return end
         local xml = (options.read or read)(current):gsub("<!%-%-.-%-%->", "")

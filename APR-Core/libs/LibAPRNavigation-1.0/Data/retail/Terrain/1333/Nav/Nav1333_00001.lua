@@ -1,0 +1,31 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+local D=assert(L._TerrainPackStages[1333])
+D.packed.area[4]={"eNoLiix3dHQsD4qsANH6EGAaFAkScXR0hJBQYTMIrxyboP4oGAWjYLgDS0jJACErIZQJpJwAAI3+1VE="}
+D.packed.class[4]={"eNrtx7ENACAMA8GRqKC3Pp7JjE+BxBLkunNEaVzT6KW19o9lTFRmixRROFcKxSE="}
+D.packed.floor[4]={"eNpNjTEOwjAQBN9FOXs2FnIwkZAsoKPJtWnC+9EdDd1qNTsLAzA5N5DzZoKKPHo5dy5ynpwCSmpCjbSwY/yTYXmpYYq0MuU82LDfUh+sRLqWFUtHt05F+XAObXIHNRfDOi2tyochA9FU9AXjhzRb"}
+D.packed.graph[4]={"eNqNUe0OgkAMe7buNg4VVNAQ3v9JTMcBm/GHpIGVW/fRwwx/CgBBKVtYSTwSgQog6j+LAAYogA4wYUqBMItB4Ut5ZqxpMLigwqtXMn4KYMbES4PpEZIJruksMmPnHZ1hSGwEng2LYQLeDavgdmaaklmD+bSh+5DYmLqX1K+eVQaLuuqzPBrePsvcsAjuYRZDn9h4Zj5ctzRMwmph6prYBVzKsTmx7z55lbXhJfQn6EL3Tpi5VzFNTvhlHvspOwQnsi/dn07olxM17d6H3V13dFBW+61bkm5NujHpbpqcSGy72+BgHxz0jY7MpJs+7TrivQ=="}
+D.packed.grid[4]={"eNoLTHIMKXfUhwDTkHIUXiCCY4ZgjoJRMAqGL7AAAECPwvI="}
+D.packed.height[4]={"eNqLLE8OikgKCk8JikgMiAIAJmMFAg=="}
+D.packed.area[2]={"eNpzdHTUHwWjYBQMF6AdFFnhiJGrLVFEQbxyR0dHFEFzCK8cRdACqhLKNUWoqYDoNwmKBPEgZAUA9TfWrg=="}
+D.packed.class[2]={"eNrtyrENwCAQQ9GRqEBprX83kzM+TYDMgO5V35LVSinXceirh1Vt10h0Hj39XwQywjKviCTxBBFCyKI="}
+D.packed.floor[2]={"eNoljrEOwjAQQz+oW1VFWe1zGhDQVAxVy0YHslYMfD/KdbF80vPTAbN6kBWGRT3PdmiAsSIzs2LiqoHtHm1vt301WCMFKPh6Y1bwddFHwU76yooHDkWIFbOTT88XFkXnV/4U3VZsV1Rrdyzq/IPi+WZWx+aYAHc086ai7lwiA0m9iQljogIzE24X/gHmLD8n"}
+D.packed.graph[2]={"eNp1UkFOAzEMfFAuCPXQ6yR2kkKBbYFSekRC4v8vQHac3ThSpZEsx+PM2AnO9AAAkR4RJewkS7STTEICMu0RkRLtkVogoFBozNBqQZiFQtTLQowgCY2ZotwSCJqx9kl3NjBLNxuYRXyt0f1acbXsai8sNq+Gb8Yb8GE4MRbgYngnYQ4KT8DBwCSnPcuuVlytqF6/85elthgujGc37avrWzbmJ620xjwOXqrsbPAyMqvMvjLd7H/q5Wy4MurspWe56ntvm1/cXg7OC896d2evbtphE1lfpSsc6zR73Ga4OYUvVfCvufqsKPN/uRl+5j/Bwy9wXphxglhV5DrtbNDLVSbrTP4HdZjhsw=="}
+D.packed.grid[2]={"eNpz1B8Fo2AUDBegHeIIY8JZ5kFwpkVIuWMwjGMWHlKRCOOYBoU4ItSZAgADvMOm"}
+D.packed.height[2]={"eNqLiAqPTAkJD04JioyKKE8KAwAvzwW1"}
+D.packed.area[3]={"eNrtyLEJACAQQ9GR7ATLrJAuk1x0eosTxBXkXhH4AdBSpxxU4H1uNsq3xlOllA+ZsqmgzgKgPDMi65y5awNhA9jg"}
+D.packed.class[3]={"eNpz1IcAC9dyRyjT3BnBtnSFsUbBKBgFwxhUODu6Ors6Ole5Opc7Ojs6Gzo6AwBessSj"}
+D.packed.floor[3]={"eNotj7tuw0AMBD9IhaogunKWPEWxFUlREcTu8kCudSH4+43jpeOAO1wQdvQsFTIfaLCYbiosHChV3oMv/KKu8kpW4UpCfeNXFb654e2SXvB2yea6tw1PiuQT3tXpYne89+hBhXdq/moz41D3IjOGs7AxRu9mx785Ru85zJUTU2qOMXXe7PjjLXxj6k1/fYp8ZTzzaZb5MmV+XA+nuEpz"}
+D.packed.graph[3]={"eNpdkTtPAzEQhH9QiitJym/t3Vxe9wgCIrpIECgQ/P8O2efceSNNM57Z15gz8iQQkTWoIGuBgGzIjxsBQzYBWmRF1lZCCEgzsaawAEpsBBFiE9JjbGJ6tKQZbSMgtIlFJfsnqDLAreBb2C6aCa1z8lj3UXDL2q5gUHq4Flyy87PgzzlHJS7skOvOBUOuey34Evbpkgnmury5LqNyYMZe6ZjhJ7y4CT/C0d23W3qqcKqYpl0qrXPatmJW76ma8qw0cZo9bl1dO8Cl4NcIi6bmdnGbmaVuVRcjnZhxyCnNP51zuTuPljzzhJz1ffo1Z+3/ti94V0a32anK05KnSrd3E4bl9mdL7O7s/gHL59f6"}
+D.packed.grid[3]={"eNpz1IcAs+CQ0ERHKMc0pDw4KATGMw+pgDEt4IKjYBSMgmEIABKnwaU="}
+D.packed.height[3]={"eNoLTw+MDI1IjCgPj4gKAwAgdgSl"}
+D.packed.area[1]={"eNpzdHTUHwWjYBQMN2AZFFnhCM/d5ig8MxQeVGUlhpJyR0fHoMhyXILlUB6IrgCLQslKCFURFFmOEINwICQAi0/kJw=="}
+D.packed.class[1]={"eNpz1B8Fo2AUDDdg6eyIJmLi4lgBFzR1RuKYOzu6liM4ruXOFSDZCmdHZ0fnckfnchdXMM/V2RUAxffKbw=="}
+D.packed.floor[1]={"eNoljbEOwjAMRD+oQ4SqkGb0+ZqCghpgAkYYYEOqgO9HdpfTne3zE7mwH4CnqBT2nTngwT6sswNjMldQGId1OzFmc9QDozdmbBiD+oyWdWFK64c3k/f2PDFluyliOvPD1Jk74ounXPFjcupRK/PWnMjI7O2GHbNTGyuzU28amJ06y8uyLAxOhYwMgzq/+r4xOPusli9oDM5uGK3JxuCfmt/ftYoUxk7B2BWTCcxJTIA/SLlUfw=="}
+D.packed.graph[1]={"eNp1kMFqxDAMRD9oD6aUpc3x2ZLi3XTTdFso3ePSS///B4odO7ELhQEhZiSNhjd5cECQR+dB5JhKkKMLoDI4TwgyrJ178uDFPYOmkpVuYC0+S4YAo7gDWXnwBBHnSgkgigcrUAPQAtXUbZwSGs66ub9bQrel4S7KCPeCH+UM3wU324bWuRkuBaPyCqcCVQSmgkV52ZWTsuxbzIidz1NzISZnzb2x45ofLN+rrm9ZWb28Z+5acO24j/xf9TnFpOx31rlPTQ7ngqnb8tVtWfJ/tTvHNNe4HruU9N8EY8qlVzbd3HSWrjec7XlaTn7zYqluWf8CXau8ag=="}
+D.packed.grid[1]={"eNpz1B8Fo2AUDDdgGeIIZZnDWWYhjhVwjmmEY0VIOZwXUhGaiFBXHhQCAMRSxIs="}
+D.packed.height[1]={"eNqLiIyIiigPC48qDwsPTQsOBwAxHAXD"}
+L:RegisterTerrainData("retail",1333,D,20261123,true)
+L._TerrainPackStages[1333]=nil
+if not next(L._TerrainPackStages) then L._TerrainPackStages=nil end

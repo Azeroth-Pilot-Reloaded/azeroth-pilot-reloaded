@@ -1,2 +1,2 @@
 # Generated pack hashes must survive Windows checkouts unchanged.
-APR-Core/libs/LibAPRNavigation-1.0/Data/forever/Terrain/** text eol=lf
+APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/** text eol=lf

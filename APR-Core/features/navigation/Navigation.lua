@@ -91,12 +91,20 @@ end--[[APR_DIAG]]; Distance = APRTrace("APR-Core/features/navigation/Navigation.
 local function WalkingProvider()
     local data = APR.NavigationData
     if not data or not data.GetWalkingProvider then return end
-    if not APR.GetGameVersion or APR:GetGameVersion() ~= APR.GAME_VERSIONS.Forever then return end
-    return data:GetWalkingProvider()
+    if APR.GetGameVersion and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        return data:GetWalkingProvider()
+    end
+    if data.profile == "retail" then
+        local provider = data:GetWalkingProvider()
+        if provider and provider.HasWalkingCoverage then return provider end
+    end
 end--[[APR_DIAG]]; WalkingProvider = APRTrace("APR-Core/features/navigation/Navigation.lua:89:WalkingProvider#8", WalkingProvider)--[[/APR_DIAG]]
 
 local function TerrainRequired(from, to, provider)
     provider = provider or WalkingProvider()
+    if provider and provider.HasWalkingCoverage and from and to then
+        return provider:HasWalkingCoverage(from) and provider:HasWalkingCoverage(to)
+    end
     return provider
             and provider.HasMap
             and from

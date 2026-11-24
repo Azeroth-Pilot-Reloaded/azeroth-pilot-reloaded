@@ -149,6 +149,20 @@ class PackageValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "Retail.*terrain"):
             validate(self.root)
 
+    def test_accepts_retail_runtime_for_its_generated_data_only(self):
+        library = self.terrain_manifests()
+        generated = "Data/retail/Terrain/Terrain.xml"
+        standard = f'<Ui><Script file="Terrain.lua"/><Include file="{generated}"/></Ui>'
+        self.write(f"{library}/Terrain_Standard.xml", standard)
+        self.write(f"{library}/{generated}", '<Ui><Include file="7/Terrain.xml"/></Ui>')
+        self.write(f"{library}/Data/retail/Terrain/7/Terrain.xml", '<Ui/>')
+        validate(self.root)
+        forever = "Data/forever/Terrain/7/Terrain.xml"
+        self.write(f"{library}/{forever}", '<Ui/>')
+        self.write(f"{library}/Terrain_Standard.xml", standard.replace('</Ui>', f'<Include file="{forever}"/></Ui>'))
+        with self.assertRaisesRegex(AssertionError, "Retail.*Forever terrain"):
+            validate(self.root)
+
     def test_rejects_missing_forever_terrain_provider(self):
         library = self.terrain_manifests()
         self.write(f"{library}/Terrain_Camelot.xml",
