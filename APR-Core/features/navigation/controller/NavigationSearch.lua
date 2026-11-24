@@ -324,7 +324,7 @@ function nav:Update(context)
     self._routeInputs = self:CapturePlanningInputs(step, start, context)
     self._routeInputs.hadGuidance = hadGuidance or nil
     self._directBaselinePending = coldDirect and not seedDirect or nil
-    if data.profile == "forever" and IsIndoors then
+    if start.indoors == nil and data.profile == "forever" and IsIndoors then
         start.indoors = self._routeInputs.indoors
     end
     self.showOutOfZoneStepContent = self.zoneReady == true
@@ -402,6 +402,7 @@ function nav:Update(context)
         previewEntryWalk = separatedTravel
             or data.profile == "forever" and step.serviceWaypoint == true and not sameWalkingArea,
         previewAccess = separatedTravel and not keepPath and not keepDirect and walkingProvider ~= nil,
+        previewSameWorldTransit = distantMapWaypoint and sameWalkingArea and not keepPath and not keepDirect,
         waypointLeg = waypointLeg,
         waypointResume = waypointResume,
         sameWaypointConnection = SameWaypointConnection,

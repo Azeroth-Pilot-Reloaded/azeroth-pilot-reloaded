@@ -70,9 +70,21 @@ function nav:RunPlanningSearch(options)
         local operationLimit = debugprofilestop and Constants.TIMED_OPERATION_LIMIT or Constants.UNTIMED_OPERATION_LIMIT
         local milliseconds = Constants.PLANNING_SLICE_MS
         local entryPrefix = self.walkingPrefix and job.entryWalkPreview and self.walkingPreview == job.entryWalkPreview
-        local terrainSearch = job.phase == "search" or job.phase == "access_proof"
+        local terrainSearch = job.phase == "search" or job.phase == "access_proof" or job.phase == "transit_proof"
+        -- A verified transit prefix leaves the destination unplanned. Keep
+        -- the frame-adaptive waypoint budget until the full comparison ends.
+        local transitPrefix = self.travelPrefix
+            and job.request
+            and job.request.previewSameWorldTransit
+            and job.phase == "search"
         local foreground = (self.localPathJob or coldTerrainSearch)
-            and (self.state == "planning" or job.phase == "waypoint_leg" or entryPrefix and terrainSearch or self.walkingPrefix and (self.localPathJob or job.phase == "transport"))
+            and (
+                self.state == "planning"
+                or transitPrefix
+                or job.phase == "waypoint_leg"
+                or entryPrefix and terrainSearch
+                or self.walkingPrefix and (self.localPathJob or job.phase == "transport")
+            )
             and not keepPath
             and not keepDirect
             and debugprofilestop
@@ -86,7 +98,7 @@ function nav:RunPlanningSearch(options)
                 local interval = now - previousSliceAt
                 if
                     step._mapWaypoint
-                    and (self.state == "planning" or entryPrefix)
+                    and (self.state == "planning" or entryPrefix or transitPrefix)
                     and not self.localPathJob
                     and terrainSearch
                 then

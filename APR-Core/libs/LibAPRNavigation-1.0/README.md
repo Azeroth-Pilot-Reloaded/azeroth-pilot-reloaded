@@ -18,6 +18,8 @@ isolation rules. Ordinary instances remain separate.
 Connections may specify `instructionKey` for a localized interaction that is
 more specific than their transport kind. Hidden teleports keep their approach
 passages as separate edges rather than directing players through cave walls.
+Connections that together form a tram journey through a separate world may
+share a `transitGroup` so APR can price that journey early for distant map pins.
 
 Each client keeps its portals in `Data/*/Portals.lua`. Forever's geography adds
 world-scoped map corrections and local access polygons/circles; map and area
@@ -903,6 +905,11 @@ per-frame event. Cost batches preserve target order. Their per-target state is
 `ready`, `no_path` or `unavailable`. Physical seconds are separate from the
 router's ground preference weights. Missing/unsupported data permits the normal
 authorized fallback; a proven disconnection never creates a direct edge.
+
+If the optional `HasMap(instanceID)` returns `false`, the search can use
+authorized estimates in that world without opening terrain jobs. A registered
+map with partial coverage still goes through the provider, as do searches that
+require verified walks. Terrain in other worlds remains available after a crossing.
 
 Successful walking segments may include `path`, an immutable list of world
 positions. APR follows it with a navigation-only cursor and keeps the authored

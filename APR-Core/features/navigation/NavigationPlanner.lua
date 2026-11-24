@@ -310,6 +310,7 @@ function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.entryWalkPreview = nil
+    self.transitGroups, self.bestTransitGroup = nil, nil
     self.active, self.catalogueEdges, self.taxiEdges, self.diagnosticSegments, self.blockers = nil, nil, nil, nil, nil
 end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:309:Job:Cancel#13", Job.Cancel)--[[/APR_DIAG]]
 

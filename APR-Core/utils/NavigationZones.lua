@@ -728,7 +728,21 @@ function APR:GetNavigationPlayerPosition()
     end
     if self.NavigationData then
         if position.uiMapID and self.NavigationData.NormalizeLocation then
-            return self.NavigationData:NormalizeLocation(position)
+            position = self.NavigationData:NormalizeLocation(position)
+            local indoorAreas = config and config.IndoorMapAreas
+            local indoorArea = position and position.z == nil and indoorAreas and indoorAreas[position.uiMapID]
+            if indoorArea and areaName and GetRealZoneText then
+                local name, realZone = areaName(indoorArea), GetRealZoneText()
+                if
+                    (not self.CanAccessValue or (self:CanAccessValue(name) and self:CanAccessValue(realZone)))
+                    and type(name) == "string"
+                    and name ~= ""
+                    and realZone == name
+                then
+                    position.indoors = true
+                end
+            end
+            return position
         end
         if position.uiMapID then
             position.region = self.NavigationData:GetPositionRegion(position)

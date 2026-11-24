@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 23) then return end
+if not Lib:BeginModule("catalog", 24) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -397,6 +397,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         hearthstone = innRecall or definition.routeAction == "UseDalaHS" or definition.routeAction == "UseGarrisonHS",
         arrivalZTolerance = definition.arrivalZTolerance,
         arrivalRadius = definition.arrivalRadius,
+        transitGroup = definition.transitGroup,
         verifiedBuild = definition.verifiedBuild,
         canStart = canStart,
     }

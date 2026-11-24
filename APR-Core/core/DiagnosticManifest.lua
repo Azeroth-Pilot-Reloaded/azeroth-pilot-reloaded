@@ -67,7 +67,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/navigation/map/MapEvents.lua"] = {instrumented = 3, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/map/MapLines.lua"] = {instrumented = 29, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/map/MapPins.lua"] = {instrumented = 17, diagnosticHelpers = 0},
-    ["APR-Core/features/navigation/planner/NavigationPlannerPhases.lua"] = {instrumented = 1, diagnosticHelpers = 0},
+    ["APR-Core/features/navigation/planner/NavigationPlannerPhases.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/preview/PreviewClipping.lua"] = {instrumented = 3, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/preview/PreviewProjection.lua"] = {instrumented = 6, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/services/ServiceSearch.lua"] = {instrumented = 8, diagnosticHelpers = 0},

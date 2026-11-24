@@ -284,3 +284,76 @@ do
             "Only the terrain-verified chain can guide before the full result")
     end
 end
+
+do
+    local engine = dofile("tests/lua/navigation_engine_fixture.lua").Engine
+    local function point(x, world, region)
+        return { x = x, y = 0, instanceID = world, region = region }
+    end
+    local start, entrance = point(0, 1, "outdoor"), point(70, 1, "outdoor")
+    local landing, goal = point(630, 1, "outdoor"), point(700, 1, "outdoor")
+    start.uiMapID, entrance.uiMapID, landing.uiMapID, goal.uiMapID = 1, 1, 2, 2
+    local platform, farPlatform = point(1000, 2, "west"), point(1100, 2, "east")
+    local function link(id, kind, from, to, seconds)
+        return { id = id, kind = kind, from = from, to = to, seconds = seconds, transitGroup = "fixture" }
+    end
+    local enter = link("enter", "passage", entrance, platform, 2)
+    local ride = link("ride", "tram", platform, farPlatform, 20)
+    local exit = link("exit", "passage", farPlatform, landing, 2)
+    local shortcut = { id = "shortcut", kind = "portal", from = start, to = goal, seconds = 5 }
+    local ferry = { id = "ferry", kind = "boat", from = entrance, to = goal, seconds = 40 }
+
+    for _, case in ipairs({ "faster", "slower", "closed", "missing_exit", "other_transport" }) do
+        ride.seconds = (case == "slower" or case == "other_transport") and 150 or 20
+        local edges = { enter, ride, shortcut }
+        if case ~= "missing_exit" then edges[#edges + 1] = exit end
+        if case == "other_transport" then edges[#edges + 1] = ferry end
+        local terrain = { proveCandidatePaths = true }
+        function terrain:RequiresWalkingProof(from, to)
+            return from.instanceID == 1 and to.instanceID == 1
+        end
+        function terrain:CreatePathJob(from, to)
+            local seconds
+            if from == start and to == goal then seconds = 100 end
+            if from == start and to == entrance then seconds = 7 end
+            if from == landing and to == goal and case ~= "closed" then seconds = 7 end
+            return { Step = function()
+                if seconds then return "ready", { path = { from, to }, seconds = seconds } end
+                return "no_path"
+            end }
+        end
+        local taxiStarted, preview, status, result
+        local plan = APR.NavigationPlanner:Create({
+            start = start, goal = goal, walkSpeed = 10, walkingSpeedCeiling = 10, budget = 0,
+            walkingProvider = terrain, batchTerrainWork = true,
+            progressiveTravel = true, previewSameWorldTransit = true,
+            data = { CreateEdgeBuild = function() return Work("catalogue", edges) end },
+            taxiData = { CreateEdgeBuild = function()
+                taxiStarted = true
+                return Work("taxi", {})
+            end },
+            engine = engine,
+            canWalk = function(from, to) return from.instanceID == to.instanceID and from.region == to.region end,
+            prepareSegment = function(segment) return segment end,
+        })
+        for _ = 1, 2000 do
+            status, result = plan:Step(3, 1)
+            if plan.travelPreview and not preview then
+                assert(taxiStarted and plan.phase == "taxi", "Publish the proved trip before the full search")
+                preview = plan.travelPreview
+            end
+            if status ~= "planning" then break end
+        end
+        assert(status == "ready" and result.totalSeconds == 5 and result.segments[1].id == shortcut.id,
+            "The complete search can still select a faster alternative")
+        if case == "faster" then
+            assert(preview and #preview == 4 and preview[1].path[2] == entrance)
+            assert(preview[2].id == enter.id and preview[3].id == ride.id and preview[4].id == exit.id)
+            assert(preview[4].to == landing, "The preview ends after leaving the station world")
+        elseif case == "other_transport" then
+            assert(preview and #preview == 2 and preview[2] == ferry, "Keep the early boat fallback")
+        else
+            assert(not preview, "No tram guidance for " .. case)
+        end
+    end
+end

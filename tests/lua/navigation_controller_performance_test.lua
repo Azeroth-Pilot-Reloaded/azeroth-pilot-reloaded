@@ -1,6 +1,6 @@
 -- Count live observations around a deliberately long, synthetic planning job.
 -- The controller is real; controlled slices isolate its scheduling overhead.
-local function fixture(profile)
+local function fixture(profile, waypoint)
     local s = {
         now = 10,
         positionReads = 0,
@@ -12,12 +12,14 @@ local function fixture(profile)
     }
     local noop = function() end
     local step = { Zone = 102, Coord = { x = 0, y = 3000, instanceID = 1 } }
+    if waypoint then step._mapWaypoint = true end
     local steps = { step, {} }
     function LibStub()
         return { GetLocale = function() return {} end }
     end
     function CreateFrame() return { SetScript = noop, RegisterEvent = noop } end
     function GetTime() return s.now end
+    debugprofilestop = waypoint and function() return s.now * 1000 end or nil
     function UnitIsDeadOrGhost() return s.dead end
     function IsIndoors() return false end
     function IsFlyableArea() return false end
@@ -62,11 +64,19 @@ local function fixture(profile)
     end
     function APR:CheckNavigationZoneReady() return false end
     APR.NavigationData = { profile = profile, CanWalk = function() return true end }
+    if waypoint then
+        function APR.NavigationData:GetWalkingProvider()
+            return { RequiresWalkingProof = function() return true end }
+        end
+    end
     APR.NavigationPlanner = {
         Create = function(_, request)
             local job = { request = request, slices = 0 }
             function job:Step(_, milliseconds)
-                assert(milliseconds <= 1, "The search keeps its one-millisecond work allowance")
+                if not waypoint then
+                    assert(milliseconds <= 1, "The search keeps its one-millisecond work allowance")
+                end
+                self.budget = milliseconds
                 self.slices = self.slices + 1
                 self.lastSliceMilliseconds = 0.5
                 if s.onStep then s.onStep() end
@@ -251,6 +261,25 @@ for _, profile in ipairs({ "retail", "forever" }) do
         "An unchanged completed job still publishes its usable itinerary"
     )
     s.nav:Cancel("test_end")
+end
+
+do
+    local s = fixture("forever", true)
+    assert(s.job.request.previewSameWorldTransit)
+    s.job.phase, s.nav.state = "search", "guiding"
+    s.nav.travelPrefix = { kind = "passage" }
+    -- Represent the published transit prefix while the whole trip is compared.
+    s:frame(1 / 60)
+    local cap = APR.NavigationConstants.Navigation.MAP_WAYPOINT_SEARCH_MAX_MS
+    assert(s.job.slices == 2 and s.job.budget == cap and s.nav._searchTimer.due == s.now)
+    s:frame(1 / 400)
+    assert(s.job.slices == 3 and s.job.budget > 1 and s.job.budget < cap)
+
+    s.job.phase = "probe"
+    s:frame(1 / 60)
+    assert(s.job.slices == 4 and s.job.budget == 1 and s.nav._searchTimer.due > s.now)
+    s.nav:Cancel("test_end")
+    debugprofilestop = nil
 end
 print(
     "Controller overhead: bounded observations, high-FPS scheduling, live mutations, reentrancy and publication passed"

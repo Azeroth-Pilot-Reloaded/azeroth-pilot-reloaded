@@ -19,12 +19,16 @@ for _, profile in ipairs({ "retail", "forever" }) do
         if id == 0 then return worldToMap(id, point, hint) end
     end
     f.maps[83002] = { mapID = 83002, mapType = 4, parentMapID = 0, name = "Invented dungeon map" }
+    local cityMap, cityArea = 83003, 83004
     f.translations = setmetatable(
         { LEAVE_INSTANCE = "Leave the instance: %s" },
         { __index = function(_, key) return key end }
     )
     local data = f:Load({
-        config = { UnmappedInstances = { [73] = true, [75] = true } },
+        config = {
+            UnmappedInstances = { [73] = true, [75] = true },
+            IndoorMapAreas = profile == "forever" and { [cityMap] = cityArea } or nil,
+        },
         entrances = {
             {
                 id = "invented-dungeon",
@@ -270,6 +274,38 @@ for _, profile in ipairs({ "retail", "forever" }) do
     assert(not changed.isInstance, "Outdoor identity never becomes an instance on either client")
     observedKind = ""
     assert(not APR:GetNavigationPlayerContext().isInstance, "An empty instance type is not evidence of an interior")
+
+    nativeMap, observedKind = cityMap, "none"
+    f.player = { x = 500, y = 600, z = 0, instanceID = 0 }
+    step.Zone = cityMap
+    local zone = C_Map.GetAreaInfo(cityArea)
+    function GetRealZoneText() return zone end
+    local player = APR:GetNavigationPlayerPosition()
+    assert(player.uiMapID == cityMap and not IsIndoors())
+    if profile == "forever" then
+        assert(player.z == nil and player.indoors == true, "The live area can identify an interior without altitude")
+        update()
+        assert(nav.start.indoors == true, "Planning preserves the area even when the generic indoor flag is false")
+        assert(not nav:HasPlanningInputsChanged(player), "The same live area keeps the current plan")
+        local matchingZone = zone
+        zone = "Invented surrounding terrain"
+        player = APR:GetNavigationPlayerPosition()
+        assert(player.uiMapID == cityMap and player.indoors == nil, "Overlapping artwork alone is insufficient")
+        assert(nav:HasPlanningInputsChanged(player), "A real area change invalidates guidance at identical coordinates")
+        zone = matchingZone
+        f.player.z = 731
+        player = APR:GetNavigationPlayerPosition()
+        assert(player.z == 731 and player.indoors == nil, "An observed altitude remains authoritative")
+        f.player.z, zone = 0, nil
+        assert(APR:GetNavigationPlayerPosition().indoors == nil, "Missing area text does not identify an interior")
+        zone = matchingZone
+        APR.CanAccessValue = function(_, value) return value ~= matchingZone end
+        assert(APR:GetNavigationPlayerPosition().indoors == nil, "Restricted area text does not identify an interior")
+        APR.CanAccessValue = nil
+    else
+        assert(player.z == 0 and player.indoors == nil, "Retail retains its native position")
+    end
+    GetRealZoneText = nil
     GetInstanceInfo = nil
 end
 print(

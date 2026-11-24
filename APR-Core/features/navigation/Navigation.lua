@@ -44,6 +44,8 @@ local function CopyLocation(point)
         if not ReadableLocationValue(value) then return end
         snapshot[key] = value
     end
+    local indoors = point.indoors
+    if type(indoors) == "boolean" and ReadableLocationValue(indoors) then snapshot.indoors = indoors end
     return snapshot
 end--[[APR_DIAG]]; CopyLocation = APRTrace("APR-Core/features/navigation/Navigation.lua:38:CopyLocation#4", CopyLocation)--[[/APR_DIAG]]
 

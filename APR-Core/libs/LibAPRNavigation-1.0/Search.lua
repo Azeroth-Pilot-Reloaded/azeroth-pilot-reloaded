@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 29) then return end
+if not Lib:BeginModule("search", 30) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -122,6 +122,20 @@ function Search:GetWalkSeconds(from, to, fromNode, toNode)
     local dx, dy = to.x - from.x, to.y - from.y
     local dz = IsFinite(from.z) and IsFinite(to.z) and to.z - from.z or 0
     return math.sqrt(dx * dx + dy * dy + dz * dz) / speed
+end
+
+function Search:CanEstimateWalks(instanceID)
+    local provider = self.walkingProvider
+    if not provider then return true end
+    if self.strictWalking or not provider.HasMap then return false end
+    -- An absent map rules out terrain for the whole walking bucket. Sparse
+    -- coverage within a registered map still requires the usual terrain checks.
+    local estimate = self.estimatedWalksByInstance[instanceID]
+    if estimate == nil then
+        estimate = provider:HasMap(instanceID) == false
+        self.estimatedWalksByInstance[instanceID] = estimate
+    end
+    return estimate
 end
 
 function Search:GetWalkingBucket(position, create)
@@ -313,7 +327,7 @@ function Search:PrepareDirectWalk(goalNode, priority)
     self.walkChecks = self.walkChecks + 1
     local seconds = false
     if self.canWalk(from, to) then
-        if self.boundedWalking then
+        if self.boundedWalking and not self:CanEstimateWalks(from.instanceID) then
             if self.proveCandidatePaths then return end
             self.directGoalNode = goalNode
             self.terrainJob = self.walkingProvider:CreateCostJob(from, {to}, self.walkingContext)
@@ -321,7 +335,12 @@ function Search:PrepareDirectWalk(goalNode, priority)
             return
         end
         seconds = self:GetWalkSeconds(from, to, self.startNode, goalNode)
-        self.directSeconds = math.min(self.directSeconds or math.huge, seconds)
+        if self.boundedWalking then
+            -- Other worlds may still need catalogue endpoints as terrain waypoints.
+            self.terrainDirectSeconds = math.min(self.terrainDirectSeconds or math.huge, seconds)
+        else
+            self.directSeconds = math.min(self.directSeconds or math.huge, seconds)
+        end
     end
     self:GetWalkingCache(self.startNode)[goalNode] = seconds
 end
@@ -777,11 +796,11 @@ function Search:CheckWalk(pending, target)
     local cache = pending.walkCache
     local seconds = cache[target]
     if seconds == nil then
-        if self.walkingProvider and not self.lazyTerrain then return end
+        if not pending.estimateWalks and not self.lazyTerrain then return end
         local from, to = self.nodes[label.node], self.nodes[target]
         self.walkChecks = self.walkChecks + 1
         if target ~= self.blockedTerrainGoal and self.canWalk(from, to) then
-            if self.lazyTerrain then
+            if not pending.estimateWalks then
                 self:QueueCandidate(target, label, nil, self:WalkingLowerBound(from, to))
                 return
             end
@@ -827,7 +846,9 @@ function Search:ExpandOne()
             return
         end
         pending.stage, pending.index = "walking", 1
-        pending.walking = self:GetWalkingBucket(self.nodes[label.node])
+        local position = self.nodes[label.node]
+        pending.walking = self:GetWalkingBucket(position)
+        pending.estimateWalks = self:CanEstimateWalks(position.instanceID)
         -- In a transitive region with one Euclidean speed, two consecutive
         -- automatic walks cannot beat the direct link already relaxed by the
         -- parent. Keep transport/action expansion, but avoid a quadratic scan
@@ -836,7 +857,7 @@ function Search:ExpandOne()
         -- intermediate point suppresses their otherwise nonzero vertical cost.
         if
             label.walkSeconds ~= nil
-            and not self.walkingProvider
+            and pending.estimateWalks
             and self.walkingIsTransitive
             and not pending.walking.mixedSpeed
             and (self.walkSpeedAt or not self.walkSpeedFor)
@@ -852,7 +873,7 @@ function Search:ExpandOne()
         end
         if #pending.walking > 0 then
             pending.walkCache = self:GetWalkingCache(label.node)
-            if self.walkingProvider and not self.lazyTerrain and not pending.walkCache.terrainComplete then
+            if not pending.estimateWalks and not self.lazyTerrain and not pending.walkCache.terrainComplete then
                 pending.stage, pending.targets, pending.targetNodes = "terrain_targets", {}, {}
             end
         end
@@ -881,7 +902,9 @@ function Search:AssembleOne()
                 copper = 0,
                 mandatory = false,
             }
-            assembly.walks[edge] = {from = previous.node, to = label.node}
+            if self.walkingProvider and not self:CanEstimateWalks(edge.from.instanceID) then
+                assembly.walks[edge] = {from = previous.node, to = label.node}
+            end
         elseif edge.sourceFree then
             edge = CopyEdge(edge, self.nodes[previous.node], self.nodes[label.node])
         else
@@ -911,7 +934,7 @@ function Search:AssembleOne()
         resourcesUsed = self.winner.used,
         goalIndex = self.goalNodes and self.goalNodes[self.winner.node],
     }
-    if self.walkingProvider then
+    if next(assembly.walks) or assembly.passages then
         local first, last = segments[1], segments[#segments]
         -- An invalid final walk can reject the whole candidate. Price it first
         -- when the trip crosses maps or walking areas.
@@ -1217,6 +1240,7 @@ function Engine:CreateSearch(request)
         walkingExpansionsSkipped = 0,
         walkingExpansionsNarrowed = 0,
         walkingSpeeds = {},
+        estimatedWalksByInstance = {},
         defaultWalking = request.canWalk == nil,
         walkingIsTransitive = request.canWalk == nil or request.walkingIsTransitive == true,
         budget = IsFinite(request.budget) and math.max(0, request.budget) or 0,

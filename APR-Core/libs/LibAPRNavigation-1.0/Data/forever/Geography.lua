@@ -39,6 +39,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
             [1456] = { [215] = 1412 },
             [1458] = { [153] = 1420 },
         },
+        -- The city lies inside the mountain. Its real area distinguishes the
+        -- interior from the outdoor terrain covered by the same map artwork.
+        IndoorMapAreas = { [1455] = 1537 },
         actionLoadingSeconds = 5,
         defaultItemCastSeconds = 10,
         defaultSpellCastSeconds = 10,

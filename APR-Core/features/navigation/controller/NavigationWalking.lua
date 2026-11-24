@@ -69,15 +69,21 @@ end--[[APR_DIAG]]; WalkingPosition = APRTrace("APR-Core/features/navigation/cont
 
 function nav:ObserveWalkingPosition(position, provider)
     local observation = self.walkingObservation
-    if self.worldLoading or not (position and provider and provider.GetWalkingObservationHeight and IsIndoors) then
+    if self.worldLoading or not (position and provider and provider.GetWalkingObservationHeight) then
         self.walkingObservation = nil
         return position
     end
-    local now, indoors = Now(), IsIndoors() == true
+    local now, indoors = Now(), position.indoors
+    if indoors == nil and IsIndoors then indoors = IsIndoors() == true end
+    if indoors == nil then
+        self.walkingObservation = nil
+        return position
+    end
     local previous, moved
     if
         indoors
         and observation
+        and (position.indoors == nil or observation.indoors == indoors)
         and observation.geometry == APR.navigationGeometryRevision
         and now - observation.time <= Constants.WALK_OBSERVATION_IDLE
         and SameAccess(position, observation.position)
@@ -259,6 +265,7 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
             and not position.isInstance
             and not position.floor
             and not position.accessKey
+            and position.indoors ~= true
             and IsIndoors
             and IsIndoors() == false
             and provider

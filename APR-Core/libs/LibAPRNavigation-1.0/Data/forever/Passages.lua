@@ -67,16 +67,17 @@ local undercitySewer = {
     World(0, 1458, 1595, 415, -62),
 }
 
-local function AddPassageChain(connections, id, points, radius, first)
+local function AddPassageChain(connections, id, points, radius, first, transitGroup)
     for index = (first or 1) + 1, #points do
         local edge = Passage(id .. ":" .. (index - 1), points[index - 1], points[index])
-        edge.bidirectional, edge.arrivalRadius = true, radius
+        edge.bidirectional, edge.arrivalRadius, edge.transitGroup = true, radius, transitGroup
         connections[#connections + 1] = edge
     end
 end
 
 -- Each platform has its own walking region inside the tram instance.
 local alliance = { faction = "Alliance" }
+local tramGroup = "deeprun-tram"
 local ironforgeStation = World(369, 499, 69.228, 10.393, -4.297)
 local stormwindStation = World(369, 499, 67.761, 2490.98, -4.296)
 local ironforgeExit = World(369, 499, 76.027, 10.504, -4.297)
@@ -84,6 +85,16 @@ local stormwindExit = World(369, 499, 80.163, 2490.88, -1.857)
 local ironforgeBoarding = World(369, 499, 4.6296, 28.139, -3.4569)
 local stormwindBoarding = World(369, 499, 4.6294, 2510.42, -3.2704)
 local stormwindArrival = World(369, 499, 45.0956, 2490.52, -4.2965)
+-- The portal lips only connect to the street through the declared walks.
+local stormwindEntrance = World(0, 1453, -8346.46, 514.031, 92, true)
+local stormwindLanding = World(0, 1453, -8354.23, 524.068, 91.797, true)
+local stormwindStreet = World(0, 1453, -8384, 580, 91.38)
+local function TramPassage(id, from, to)
+    local edge = Passage(id, from, to, 5, alliance)
+    edge.transitGroup = tramGroup
+    return edge
+end
+
 local function Tram(id, from, to)
     return {
         id = id,
@@ -91,6 +102,7 @@ local function Tram(id, from, to)
         from = from,
         to = to,
         requirements = alliance,
+        transitGroup = tramGroup,
         seconds = 160,
         arrivalRadius = 16,
     }
@@ -624,30 +636,40 @@ local catalogue = {
             World(1, 1456, -1037.2, -25.2, 141),
             14
         ),
-        Passage("passage-stormwind-deeprun-tram", World(0, 1453, -8346.46, 514.031, 92), stormwindStation, 5, alliance),
-        Passage(
+        TramPassage("passage-stormwind-deeprun-tram", stormwindEntrance, stormwindStation),
+        TramPassage(
             "passage-ironforge-deeprun-tram",
-            World(0, 1455, -4840.26, -1330.46, 502),
-            ironforgeStation,
-            5,
-            alliance
+            World(0, 1455, -4840.26, -1330.46, 502, true),
+            ironforgeStation
         ),
-        Passage(
-            "passage-deeprun-tram-stormwind",
-            stormwindExit,
-            World(0, 1453, -8354.23, 524.068, 91.797),
-            5,
-            alliance
-        ),
-        Passage(
+        TramPassage("passage-deeprun-tram-stormwind", stormwindExit, stormwindLanding),
+        TramPassage(
             "passage-deeprun-tram-ironforge",
             ironforgeExit,
-            World(0, 1455, -4839.51, -1317.74, 501.868),
-            5,
-            alliance
+            World(0, 1455, -4839.51, -1317.74, 501.868)
         ),
         Tram("tram-stormwind-ironforge", stormwindBoarding, ironforgeStation),
         Tram("tram-ironforge-stormwind", ironforgeBoarding, stormwindArrival),
+        -- Split the terrain search at the street so the detailed tram approach
+        -- can connect to routes across the city, including the harbor and taxi.
+        {
+            id = "walk-stormwind-tram-entrance",
+            kind = "walk",
+            from = stormwindStreet,
+            to = stormwindEntrance,
+            requirements = alliance,
+            transitGroup = tramGroup,
+            costMode = "ground",
+        },
+        {
+            id = "walk-stormwind-tram-landing",
+            kind = "walk",
+            from = stormwindLanding,
+            to = stormwindStreet,
+            requirements = alliance,
+            transitGroup = tramGroup,
+            costMode = "ground",
+        },
     },
 }
 
@@ -771,7 +793,7 @@ AddPassageChain(catalogue.connections, "passage-stormwind-cathedral", {
 -- The tram's arrival and departure triggers sit at different points on
 -- the Forge approach. Give both directions a verified link to the city.
 AddPassageChain(catalogue.connections, "passage-ironforge-tram-approach", {
-    World(0, 1455, -4840.26, -1330.46, 502),
+    World(0, 1455, -4840.26, -1330.46, 502, true),
     World(0, 1455, -4829.867, -1288.267, 501.985),
     World(0, 1455, -4800, -1280, 501.968, true),
     World(0, 1455, -4748.533, -1265.6, 501.701, true),
@@ -780,11 +802,11 @@ AddPassageChain(catalogue.connections, "passage-ironforge-tram-approach", {
     World(0, 1455, -4752, -1173.333, 502.235, true),
     World(0, 1455, -4779.645, -1165.956, 502.774, true),
     World(0, 1455, -4821.78, -1155.44, 502.21),
-}, 5)
+}, 5, nil, tramGroup)
 AddPassageChain(catalogue.connections, "passage-ironforge-tram-arrival-approach", {
     World(0, 1455, -4839.51, -1317.74, 501.868),
     World(0, 1455, -4829.867, -1288.267, 501.985),
-}, 5)
+}, 5, nil, tramGroup)
 -- The bridge and ramp from Spirit Rise cross terrain below the same XY.
 -- The path rejoins the regular terrain graph at the foot of the tower.
 AddPassageChain(catalogue.connections, "passage-thunder-bluff-spirit-rise", {
@@ -832,13 +854,13 @@ AddPassageChain(
     catalogue.connections,
     "passage-deeprun-tram-stormwind-platform",
     { stormwindExit, stormwindStation, stormwindArrival, stormwindBoarding },
-    8
+    8, nil, tramGroup
 )
 AddPassageChain(
     catalogue.connections,
     "passage-deeprun-tram-ironforge-platform",
     { ironforgeExit, ironforgeStation, ironforgeBoarding },
-    8
+    8, nil, tramGroup
 )
 
 AddPassageChain(catalogue.connections, "passage-undercity-gate", undercityApproach, 8)
@@ -861,4 +883,4 @@ for _, lift in ipairs(undercityLifts) do
         Lift("elevator-undercity-" .. side .. "-surface-to-city", upper, lower, 13)
 end
 
-LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", catalogue, 41)
+LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", catalogue, 43)

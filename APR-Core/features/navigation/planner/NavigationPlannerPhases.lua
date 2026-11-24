@@ -9,7 +9,60 @@ local Shared = APR.NavigationPlanner._job
 local Job = Shared.Job
 local ProviderJob = Shared.ProviderJob
 local ResolveInstruction = Shared.ResolveInstruction
-local MAX_ACCESS_PREVIEW_SEGMENTS = 17
+local MAX_TRAVEL_PREVIEW_SEGMENTS = 17
+
+local function ScanTransitGroups(job, maxOperations, remainingMilliseconds)
+    local request = job.request
+    local start, goal = request.start, request.goal
+    local deadline = request.clock and request.clock() + remainingMilliseconds
+    local direct = (goal.x - start.x) ^ 2 + (goal.y - start.y) ^ 2
+    local groups = job.transitGroups
+    for operation = 1, maxOperations do
+        if operation > 1 and deadline and request.clock() >= deadline then return end
+        local edge = job.catalogueEdges[job.transportIndex]
+        if not edge then
+            local best = job.bestTransitGroup
+            job.transitGroups, job.bestTransitGroup = nil, nil
+            if best then
+                job:BeginSearch(request.allowEarlyWalkingApproach and request.walkingGoalApproach, best.edges)
+                job.phase = "transit_proof"
+            else
+                job.phase, job.active = "transport", nil
+                job.transportIndex = 1
+            end
+            return
+        end
+        job.transportIndex = job.transportIndex + 1
+        local key = edge.transitGroup
+        if key and not edge.action and not edge.sourceFree and (edge.copper or 0) <= request.budget then
+            local group = groups[key]
+            if not group then
+                group = { edges = {}, approach = math.huge, onward = math.huge }
+                groups[key] = group
+            end
+            local from, to = edge.from, edge.to
+            if from.instanceID == start.instanceID and request.canWalk(start, from) then
+                group.approach = math.min(group.approach, (from.x - start.x) ^ 2 + (from.y - start.y) ^ 2)
+            end
+            if to.instanceID == goal.instanceID and request.canWalk(to, goal) then
+                group.onward = math.min(group.onward, (goal.x - to.x) ^ 2 + (goal.y - to.y) ^ 2)
+            end
+            group.edges[#group.edges + 1] = edge
+            group.hasTram = group.hasTram or edge.kind == "tram"
+            -- Geographic proximity only schedules a proof. The reduced search
+            -- still prices the complete journey and the competing direct walk.
+            local score = math.sqrt(group.approach) + math.sqrt(group.onward)
+            group.score = score
+            if
+                group.hasTram
+                and score ^ 2 < direct
+                and (not job.bestTransitGroup or score < job.bestTransitGroup.score)
+            then
+                job.bestTransitGroup = group
+            end
+        end
+    end
+end--[[APR_DIAG]]; ScanTransitGroups = APRTrace("APR-Core/features/navigation/planner/NavigationPlannerPhases.lua:14:ScanTransitGroups#1", ScanTransitGroups)--[[/APR_DIAG]]
 
 function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     local request = self.request
@@ -19,6 +72,10 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     end
     if self.phase == "restore_waypoint" then
         self:RestoreWaypoint(maxOperations, remainingMilliseconds)
+        return
+    end
+    if self.phase == "transit_groups" then
+        ScanTransitGroups(self, maxOperations, remainingMilliseconds)
         return
     end
     if self.phase == "transport" then
@@ -232,7 +289,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         -- A zone itinerary alternates approaches and declared crossings.
         -- Only the crossings enter the terrain search. Its last landing
         -- becomes the end of the provisional guidance.
-        if status == "ready" and segments and #segments <= MAX_ACCESS_PREVIEW_SEGMENTS then
+        if status == "ready" and segments and #segments <= MAX_TRAVEL_PREVIEW_SEGMENTS then
             for _, segment in ipairs(segments) do
                 if segment.id then connections[#connections + 1] = segment end
             end
@@ -241,6 +298,32 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
             self:BeginSearch(nil, connections, connections[#connections].to)
         else
             self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
+        end
+    elseif self.phase == "transit_proof" then
+        local segments = status == "ready" and result and result.segments
+        local rodeTransit
+        for index = 1, math.min(#(segments or {}), MAX_TRAVEL_PREVIEW_SEGMENTS) do
+            local segment = segments[index]
+            if segment.kind == "tram" then rodeTransit = true end
+            if
+                rodeTransit
+                and segment.from.instanceID ~= segment.to.instanceID
+                and segment.to.instanceID == request.goal.instanceID
+            then
+                local prefix = {}
+                for leg = 1, index do
+                    ResolveInstruction(request, segments[leg])
+                    if self.status ~= "planning" then return end
+                    prefix[leg] = segments[leg]
+                end
+                self.travelPreview = prefix
+                break
+            end
+        end
+        if self.travelPreview then
+            self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
+        else
+            self.phase, self.active, self.transportIndex = "transport", nil, 1
         end
     elseif self.phase == "access_proof" then
         local segments = result and result.segments
@@ -271,7 +354,9 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
             and request.walkingProvider
             and request.walkingProvider.CreatePathJob
         then
-            self.phase, self.active, self.transportIndex = "transport", nil, 1
+            self.phase = request.previewSameWorldTransit and "transit_groups" or "transport"
+            self.active, self.transportIndex = nil, 1
+            if request.previewSameWorldTransit then self.transitGroups = {} end
         else
             self.phase, self.active = "taxi", ProviderJob(request.taxiData, request)
         end
@@ -340,6 +425,6 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         end
         self:BeginQueue()
     end
-end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/planner/NavigationPlannerPhases.lua:13:Job:AdvancePhase#1", Job.AdvancePhase)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/planner/NavigationPlannerPhases.lua:67:Job:AdvancePhase#2", Job.AdvancePhase)--[[/APR_DIAG]]
 
 APR.NavigationPlanner._job = nil

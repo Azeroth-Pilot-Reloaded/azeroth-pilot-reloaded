@@ -141,6 +141,7 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
     if not self.dirty and self:IsNavigating() and FollowingManualCrossing(self:GetActiveStep(), position) then
         return false
     end
+    if inputs.position.indoors ~= position.indoors then return true end
     local indoors = IsIndoors and IsIndoors() == true or false
     local geometryChanged = inputs.geometryRevision ~= APR.navigationGeometryRevision
     local indoorsChanged = inputs.indoors ~= indoors

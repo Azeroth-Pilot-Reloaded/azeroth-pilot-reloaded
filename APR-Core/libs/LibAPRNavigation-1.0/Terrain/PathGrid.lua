@@ -4,6 +4,9 @@ local runtime = LibStub("LibAPRNavigation-1.0")._TerrainNamespace
 local G = {}
 runtime.PathGrid = G
 local work, floor = runtime.Work, math.floor
+-- Continent journeys alternate between departure, arrival and intermediate
+-- grids while pricing competing routes. Keep those decoded pages resident.
+local GRID_CACHE_BYTES = 32 * 1024 * 1024
 local alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 local digits = {}
 for i = 1, #alphabet do
@@ -606,7 +609,7 @@ function G.endpoint(st, tile, cell, height, x, y)
 end
 
 function G.grid(st, k)
-    return cached(st, "grid", k, readGrid, 8 * 1024 * 1024)
+    return cached(st, "grid", k, readGrid, GRID_CACHE_BYTES)
 end
 
 local function readGraph(st, k)
