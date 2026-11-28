@@ -1,18 +1,21 @@
 name: Discord Release Notification
 
 on:
-  release:
-    types: [published] # Triggers on newly published releases
-  workflow_dispatch:
+  workflow_call:
     inputs:
       release_tag:
         description: "Release tag to notify"
-        required: false
+        required: true
         type: string
+    secrets:
+      DISCORD_WEBHOOK_URL:
+        required: true
 
 jobs:
   notify-discord:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.release_tag }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -27,21 +30,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests python-dotenv
 
-      - name: Get release body if manual
-        id: get_release_body
-        if: ${{ github.event.inputs.release_tag != '' }}
+      - name: Get release notes
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          release_body=$(gh release view "${{ github.event.inputs.release_tag }}" --json body -q ".body")
-          echo "release_body<<EOF" >> $GITHUB_ENV
-          echo "$release_body" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          gh release view --repo "$GITHUB_REPOSITORY" --json body --jq .body -- "$RELEASE_TAG" > "$RUNNER_TEMP/discord-release-notes.md"
 
       - name: Post release notes to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          RELEASE_TAG: ${{ github.event.release.tag_name || github.event.inputs.release_tag }}
-          RELEASE_BODY: ${{ env.release_body || github.event.release.body }}
         run: |
+          RELEASE_BODY=$(cat "$RUNNER_TEMP/discord-release-notes.md")
+          export RELEASE_BODY
           python .github/scripts/post_discord.py
