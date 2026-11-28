@@ -30,7 +30,13 @@ function APR:IsStepContextCurrent() return true end
 APR.NavigationData = {GetMapWorldInstanceID = function() return 0 end,
     CanWalk = function() return true end, IsSameAccessRegion = function() return true end}
 APR.currentStep = {AddQuestSteps = function() end}
+local createFrame, navigationFrame = CreateFrame
+function CreateFrame(...)
+    navigationFrame = createFrame(...)
+    return navigationFrame
+end
 dofile("APR-Core/features/navigation/Navigation.lua")
+CreateFrame = createFrame
 dofile("APR-Core/features/navigation/Preview.lua")
 dofile("APR-Core/features/navigation/Arrow.lua")
 local nav = APR.navigation
@@ -52,6 +58,30 @@ assert(#APR.navigationPreview:GetPoints() == 0, "Pending terrain planning must n
 authored.Waypoint, authored.Range = nil, 3
 nav.queue = {nav:PrepareGuidanceStep({kind="walk", from=path[1], to=final, path=path}, 1, 1, path[1])}
 nav.state, nav.cursor, nav.context = "guiding", 1, {}
+local render = nav.Render
+local warnings = {}
+local warningKey = nav.NavigationStepKey .. "-hostile"
+local warningUI = {questsList = {}, pendingRemoval = {}}
+function warningUI:AddQuestSteps(key, text)
+    self.questsList[key] = {text = text}
+    if key == warningKey then warnings[#warnings + 1] = text end
+end
+function warningUI:FlushPendingContainers()
+    for key in pairs(self.pendingRemoval) do self.questsList[key] = nil end
+    self.pendingRemoval = {}
+end
+APR.currentStep = warningUI
+FACTION_CONTROLLED_TERRITORY = "%s territory"
+FACTION_HORDE = "Synthetic rival"
+path.lastHostileIndex = 2
+path[2].terrainFaction = "Alliance"
+render(nav)
+assert(warnings[1] == "Synthetic rival territory" and warningUI.questsList[warningKey])
+nav.queue[1].pathCursor = 3
+render(nav)
+assert(not warningUI.questsList[warningKey] and #warnings == 1)
+nav.queue[1].pathCursor = 2
+path.lastHostileIndex = nil
 function nav:Render() end
 APR.Arrow:SetCoord()
 assert(APR.Arrow.x == 40 and APR.Arrow.y == 0, "The real arrow targets the first bend, not the final objective")
@@ -159,6 +189,67 @@ now = projectionReadyAt
 tick()
 assert(APR.map.worldSegments[1].line:IsShown() and APR.map.minimapSegments[1].line:IsShown(),
     "A stationary player gets the first visible corridor when transient map data becomes available")
+do
+    nav:Cancel("step_changed")
+    profile.mapshowNextSteps, profile.minimapshowNextSteps = false, false
+    local straight = {}
+    for x = 0, 140, 10 do straight[#straight + 1] = {x=x,y=0,z=12,instanceID=0,uiMapID=1} end
+    local walking = {kind="walk",from=straight[1],to=straight[#straight],path=straight}
+    local leg = nav:PrepareGuidanceStep(walking, 1, nav.generation, walking.from)
+    local height
+    function APR:GetNavigationPlayerPosition() return {x=py,y=px,z=height,instanceID=0,uiMapID=1} end
+    px, py = 6, 55
+    nav.state, nav.context, nav.queue, nav.cursor = "guiding", {}, {leg}, 1
+    nav:Notify()
+    nav:RefreshActivity()
+    local poll = navigationFrame.scripts.OnUpdate
+    assert(APR.Arrow.Active and APR.Arrow.y == 10)
+    poll(navigationFrame, 0.5)
+    assert(not APR.Arrow.Active and not APR.ArrowFrame:IsShown() and leg.pathCursor == 2,
+        "Unknown ground after passing bends suspends the visible bearing")
+    px, py, height = 2, 57, 12
+    poll(navigationFrame, 0.25)
+    assert(APR.Arrow.Active and APR.Arrow.y == 127 and APRData.p.r == 1,
+        "The extra walking poll restores a verified forward bearing without advancing the guide")
+
+    local behind = {x=-2,y=0,z=12,instanceID=0,uiMapID=1}
+    local nextVertex = {x=4,y=0,z=12,instanceID=0,uiMapID=1}
+    local closeGoal = {x=38,y=0,z=12,instanceID=0,uiMapID=1}
+    local tightPath = {straight[1], behind, nextVertex, closeGoal}
+    local shortProvider = {}
+    function shortProvider:CanFollowWalkingSegment(from, to)
+        if from == behind or from == nextVertex then return true end
+        return to == behind or (to.x >= from.x and to.x <= from.x + 1)
+    end
+    APR.NavigationData.GetWalkingProvider = function() return shortProvider end
+    nav.queue[1] = nav:PrepareGuidanceStep({kind="walk",from=tightPath[1],to=closeGoal,path=tightPath},
+        1, nav.generation, tightPath[1])
+    px, py = 0, 0
+    nav:PollArrival()
+    assert(APR.Arrow.y == 1)
+    local heading = APR.Arrow.lastTextureCell
+    px = 0.08
+    APR.Arrow:UpdatePosition()
+    assert(APR.Arrow.lastTextureCell == heading, "A small lateral change near a short aim keeps the same heading")
+    local originalFacing = GetPlayerFacing
+    GetPlayerFacing = function() return 0.2 end
+    APR.Arrow:UpdatePosition()
+    assert(APR.Arrow.lastTextureCell ~= heading, "Turning the player still changes the arrow immediately")
+    GetPlayerFacing = originalFacing
+    px = 0.75
+    APR.Arrow:UpdatePosition()
+    assert(APR.Arrow.lastTextureCell ~= heading, "A substantial change of course is visible immediately")
+    px = 0
+    APR.Arrow:UpdatePosition()
+    py = 2
+    APR.Arrow:UpdatePosition()
+    assert(APR.Arrow.lastTextureCell == heading, "Crossing a close target between polls cannot flip the arrow")
+    nav:PollArrival()
+    assert(APR.Arrow.y == 3 and APR.Arrow.lastTextureCell == heading, "A fresh sample replaces the close bearing")
+    APR.NavigationData.GetWalkingProvider = function() return terrain end
+    APR.GetNavigationPlayerPosition = nil
+    profile.mapshowNextSteps, profile.minimapshowNextSteps = true, true
+end
 do
     local outside = {x=200,y=20,z=0,instanceID=0,uiMapID=1}
     local provider = {HasMap=function() return true end}

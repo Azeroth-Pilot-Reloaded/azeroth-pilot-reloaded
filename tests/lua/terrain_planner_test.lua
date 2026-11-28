@@ -49,6 +49,35 @@ local function provider(costs, paths)
     end
     return p
 end
+local function withHazard(p, weight)
+    local createCostJob, createPathJob = p.CreateCostJob, p.CreatePathJob
+    local function adjust(job, matches, batched)
+        local step = job.Step
+        function job:Step(...)
+            local status, result = step(self, ...)
+            if status == "ready" then
+                if batched then
+                    for i, cost in ipairs(result.costs) do
+                        if matches[i] then cost.weightedSeconds = weight end
+                    end
+                elseif matches then
+                    result.weightedSeconds = weight
+                end
+            end
+            return status, result
+        end
+        return job
+    end
+    function p:CreateCostJob(from, targets, context)
+        local matches = {}
+        for i, to in ipairs(targets) do matches[i] = key(from, to) == "0:14" end
+        return adjust(createCostJob(self, from, targets, context), matches, true)
+    end
+    function p:CreatePathJob(from, to, context)
+        return adjust(createPathJob(self, from, to, context), key(from, to) == "0:14", false)
+    end
+    return p
+end
 local function finish(search, p)
     for _ = 1, 10000 do
         local before = p and p.now or 0
@@ -81,6 +110,14 @@ assert(result.segments[2].kind == "boat" and #result.segments[1].path == 3)
 assert(result.segments[1].path[1] == a and result.segments[3].path[3] == d,
     "Materialized paths retain endpoint and access metadata")
 assert(#p.batches[0] == 3 and #p.paths == 2, "Batch all authorized targets but materialize only the winning legs")
+
+-- Weight changes the choice, while the published itinerary retains its duration.
+p = withHazard(provider({["0:14"] = 2, ["0:7"] = 1, ["13:14"] = 1}), 40)
+status, result = finish(search(p, {transport(b, c, 3)}), p)
+assert(status == "ready" and result.totalSeconds == 5 and result.segments[2].kind == "boat")
+p = withHazard(provider({["0:14"] = 2}), 40)
+status, result = finish(search(p), p)
+assert(status == "ready" and result.totalSeconds == 2 and result.segments[1].seconds == 2)
 
 -- Terrain distances need not obey the old Euclidean/transitive shortcut.
 p = provider({["0:14"] = 80, ["0:7"] = 1, ["7:13"] = 1, ["13:14"] = 1})

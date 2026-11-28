@@ -295,7 +295,8 @@ end--[[APR_DIAG]]; environment.isAchievementCompleted = APRTrace("APR-Core/featu
 
 function environment.getGarrisonLevel(kind)
     local info = C_Garrison and Call(C_Garrison.GetGarrisonInfo, kind)
-    return type(info) == "table" and info.garrisonLevel or info
+    local level = type(info) == "table" and info.garrisonLevel or info
+    return Number(level) and level or nil
 end--[[APR_DIAG]]; environment.getGarrisonLevel = APRTrace("APR-Core/features/navigation/adapter/NavigationAdapterCharacter.lua:295:environment.getGarrisonLevel#33", environment.getGarrisonLevel)--[[/APR_DIAG]]
 
 function environment.hasToy(id) return Call(PlayerHasToy, id) end--[[APR_DIAG]]; environment.hasToy = APRTrace("APR-Core/features/navigation/adapter/NavigationAdapterCharacter.lua:300:environment.hasToy#34", environment.hasToy)--[[/APR_DIAG]]

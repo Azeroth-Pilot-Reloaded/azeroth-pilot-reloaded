@@ -80,7 +80,12 @@ function nav:Update(context)
             start.z = landing.z
         end
     end
-    if not self.dirty and ContextCurrent(self._routedStepContext) and not self:HasPlanningInputsChanged(start) then
+    if
+        (not self.dirty or self._routeInputs and self._routeInputs.stoppedInRange)
+        and ContextCurrent(self._routedStepContext)
+        and not self:HasPlanningInputsChanged(start)
+    then
+        self.dirty = false
         return
     end
     local step = ObjectiveStep()
@@ -206,6 +211,17 @@ function nav:Update(context)
             and not step._service
             and APR:CheckNavigationZoneReady(goal, { step = step, playerPosition = start, threshold = threshold })
         )
+    if
+        self.zoneReady == true
+        and self:IsLocalObjectiveInRange(step, start, goal, IsIndoors and IsIndoors() == false)
+        and ContextCurrent(context)
+    then
+        self.destination, self.start = goal, start
+        self._routeInputs = self:CapturePlanningInputs(step, start, context)
+        self._routeInputs.stoppedInRange = true
+        self:MarkRouteReady(true)
+        return
+    end
     -- A nearby objective is still a candidate for portals, toys and spells.
     -- The search compares complete travel times; zone readiness only controls
     -- whether the authored objective can remain visible while that work runs.
@@ -227,6 +243,10 @@ function nav:Update(context)
     -- Keep zone readiness (including its distance/access rules) authoritative;
     -- unlock instructions still need their normal action/entrance planning.
     local data = APR.NavigationData
+    -- Long Retail routes must compare transports before publishing a direct leg,
+    -- even when skyriding or a shared zone makes the objective zone-ready.
+    local deferDirect = data.profile == "retail"
+        and Distance(start, goal) > APR.NavigationConstants.NavigationMovement.GROUND_THRESHOLD_YARDS
     local waypointLeg = step.waypointLeg
     step.waypointLeg = nil
     local waypointResume, savedLanding = self:GetWaypointResume(step.waypointResume, start, goal)
@@ -280,8 +300,16 @@ function nav:Update(context)
     if waypointLeg then
         keepPath, keepDirect = false, false
     end
-    local sameWalkingArea = data.profile == "forever" and walkingProvider and data:CanWalk(start, goal) == true
+    local coveredRetail = data.profile == "retail"
+        and walkingProvider and (walkingProvider:HasWalkingCoverage(start) or walkingProvider:HasWalkingCoverage(goal))
+    local terrainNavigation = data.profile == "forever" or coveredRetail
+    local walkSpeed, walkingSpeedCeiling, walkSpeedAt, walkSpeedFor, flight = self:GetWalkingSpeedModel(start, threshold)
+    local fliesToGoal = flight and flight.canFly(start, goal)
+    local flightStateChanged = keepPath and self._routeInputs and self._routeInputs.flightAirborne ~= nil
+        and flight and self._routeInputs.flightAirborne ~= flight.airborne
+    local sameWalkingArea = terrainNavigation and walkingProvider and data:CanWalk(start, goal) == true
     local preferLocal = sameWalkingArea
+        and not fliesToGoal
         and (not step._service or step.serviceWaypoint)
         and not training
         and not step._navigationUnlock
@@ -295,6 +323,7 @@ function nav:Update(context)
     local coldDirect = not self._routeInputs
         or (self._directBaselinePending and sameGeometry and sameObjective and ContextCurrent(self._routedStepContext))
     local seedDirect = coldDirect
+        and not deferDirect
         and not TerrainRequired(start, goal, walkingProvider)
         and not step._navigationUnlock
         and self.zoneReady == true
@@ -318,17 +347,17 @@ function nav:Update(context)
         false, keepPath and "guiding" or ((keepDirect or seedDirect) and "ready" or "planning"), self.zoneReady == true
     self._resumeAfterTransition = nil
     self._transitionProbe = nil
-    self.recomputeKeepingPath = keepPath
+    self.recomputeKeepingPath = keepPath and not flightStateChanged
     self._localWalk = nil
     self.recomputeKeepingDirect = keepDirect or seedDirect
     self._routeInputs = self:CapturePlanningInputs(step, start, context)
     self._routeInputs.hadGuidance = hadGuidance or nil
-    self._directBaselinePending = coldDirect and not seedDirect or nil
-    if start.indoors == nil and data.profile == "forever" and IsIndoors then
+    self._directBaselinePending = coldDirect and not deferDirect and not seedDirect or nil
+    if start.indoors == nil and terrainNavigation and IsIndoors then
         start.indoors = self._routeInputs.indoors
     end
+    self._routeInputs.flightAirborne = flight and flight.airborne
     self.showOutOfZoneStepContent = self.zoneReady == true
-    local walkSpeed, walkingSpeedCeiling, walkSpeedAt, walkSpeedFor = self:GetWalkingSpeedModel(start, threshold)
     self.plannedWalkSpeed = walkSpeed
     local generation = self.generation
     local areaObjective = step.Qpart ~= nil and goal.accessKey == nil
@@ -351,11 +380,12 @@ function nav:Update(context)
         )
     local withinWalkingThreshold = Distance(start, goal) < threshold
     local distantMapWaypoint = step._mapWaypoint and not withinWalkingThreshold and start.uiMapID ~= goal.uiMapID
-    local separatedTravel = data.profile == "forever"
+    local separatedTravel = terrainNavigation
         and not sameWalkingArea
         and (not step._service or step._mapWaypoint)
         and not step._navigationUnlock
-    local corridor = data.profile == "forever"
+    local corridor = terrainNavigation
+            and not (flight and flight.airborne)
             and self.lastWalkGeometry == APR.navigationGeometryRevision
             and self.lastWalkCorridor
         or nil
@@ -380,9 +410,11 @@ function nav:Update(context)
         serviceTravel = (step._service == true and not step._mapWaypoint) or training ~= nil and training ~= false,
         preferZoneAccess = step._navigationUnlock == true,
         localObjective = step._navigationUnlock == true,
+        deferDirect = deferDirect,
         adapter = APR.NavigationAdapter,
         data = data,
         walkingProvider = walkingProvider,
+        flight = flight,
         walkingOrigin = start,
         walkingOriginCorridor = corridor,
         walkingGoal = goal,
@@ -391,14 +423,14 @@ function nav:Update(context)
         walkingGoalXY = goalXY,
         walkingGoalApproach = goalXY
                 and step._mapWaypoint
-                and data.profile == "forever"
+                and terrainNavigation
                 and (distantMapWaypoint or separatedTravel)
                 and Constants.MAP_WAYPOINT_APPROACH_RADIUS
             or nil,
         allowEarlyWalkingApproach = distantMapWaypoint
             and start.instanceID == goal.instanceID
             and start.region == goal.region,
-        previewWalking = data.profile == "forever",
+        previewWalking = terrainNavigation and not deferDirect,
         previewEntryWalk = separatedTravel
             or data.profile == "forever" and step.serviceWaypoint == true and not sameWalkingArea,
         previewAccess = separatedTravel and not keepPath and not keepDirect and walkingProvider ~= nil,
@@ -411,8 +443,8 @@ function nav:Update(context)
             and (start.instanceID ~= goal.instanceID or distantMapWaypoint)
             and (not step._service or step._mapWaypoint)
             and not step._navigationUnlock,
-        protectWalkingCoverage = data.profile == "forever",
-        batchTerrainWork = preferLocal or separatedTravel or (data.profile == "forever" and step._service == true),
+        protectWalkingCoverage = terrainNavigation,
+        batchTerrainWork = coveredRetail or preferLocal or separatedTravel or (terrainNavigation and step._service == true),
         walkingSpeedCeiling = walkingProvider and walkingSpeedCeiling or nil,
         taxiData = APR.taxiData,
         allowTaxiDiscovery = data.profile == "forever",
@@ -471,6 +503,7 @@ function nav:Update(context)
     elseif
         not waypointLeg
         and not waypointResume
+        and not deferDirect
         and (not keepPath or wasLocalWalk)
         and not step._navigationUnlock
         and walkingProvider
@@ -483,19 +516,20 @@ function nav:Update(context)
             walkSpeed = walkSpeed,
             walkSpeedFor = walkSpeedFor,
             walkSpeedAt = walkSpeedAt,
+            flight = flight,
             clock = debugprofilestop,
             serviceWalking = (step._service and not step._mapWaypoint) or training ~= nil and training ~= false,
             quick = not distantMapWaypoint and (preferLocal or step._mapWaypoint) or nil,
             walkingPartialGoal = step._mapWaypoint == true,
             walkingGoalApproach = distantMapWaypoint and Constants.MAP_WAYPOINT_APPROACH_RADIUS or nil,
-            previewDeparture = step._mapWaypoint == true and data.profile == "forever",
+            previewDeparture = step._mapWaypoint == true and terrainNavigation and not fliesToGoal,
             walkingOrigin = start,
             walkingOriginCorridor = corridor,
             walkingGoal = goal,
             walkingGoalRange = goalRange,
             walkingGoalPreferRange = areaObjective,
             walkingGoalXY = goalXY,
-            previewWalking = data.profile == "forever",
+            previewWalking = terrainNavigation,
         })
         if not PlanningRequestCurrent(self, context, generation, worldJob, inputs) then
             if localJob and localJob.Cancel then localJob:Cancel() end

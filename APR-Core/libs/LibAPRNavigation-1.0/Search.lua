@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 30) then return end
+if not Lib:BeginModule("search", 34) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -24,7 +24,7 @@ local function PositionKey(position, walkingProvider)
     -- Map identity matters even where two map layers share world coordinates:
     -- an item may be usable on one layer and forbidden on another.
     return string.format(
-        "%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s",
+        "%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s:%s",
         tostring(position.instanceID),
         position.x,
         position.y,
@@ -33,7 +33,8 @@ local function PositionKey(position, walkingProvider)
         tostring(position.accessKey or ""),
         tostring(position.noAutoconnect or false),
         tostring(position.z or (walkingProvider and "" or 0)),
-        tostring(position.floor or "")
+        tostring(position.floor or ""),
+        tostring(position.indoors)
     )
 end
 
@@ -249,6 +250,10 @@ function Search:IngestEdge(edge)
     -- Inputs are immutable for this search. Copy only the winning itinerary,
     -- not every transport in the catalogue or every speculative arrival.
     local link = { target = target, edge = edge }
+    local entrances = self.walkingContext.flightEntrances
+    if entrances and edge.kind == "passage" and edge.from.instanceID ~= edge.to.instanceID then
+        entrances[self.nodes[from]] = true
+    end
     if edge.sourceFree then
         link.allowedAtStart = not edge.canStart or not not edge.canStart(self.nodes[self.startNode])
         if link.allowedAtStart then
@@ -281,14 +286,24 @@ function Search:WalkingLowerBound(from, to)
     local dx, dy = to.x - from.x, to.y - from.y
     local dz = IsFinite(from.z) and IsFinite(to.z) and to.z - from.z or 0
     local context = self.walkingContext
-    local radius = context.walkingGoalRange or context.walkingGoalApproach
-    if context.walkingGoal == to and IsFinite(radius) and radius > 0 then
-        return math.max(0, math.sqrt(dx * dx + dy * dy) - radius) / self.walkingSpeedCeiling
+    local radius = 0
+    if context.walkingGoal == to then
+        local range, approach = context.walkingGoalRange, context.walkingGoalApproach
+        radius = math.max(0, IsFinite(range) and range or 0, IsFinite(approach) and approach or 0)
     end
+    if context.flight or radius > 0 then dz = 0 end
     -- Interaction can finish directly above or below the observed service.
     -- Only the minimum required elevation change is a valid pruning bound.
     if self.serviceTargets and self.serviceTargets[to] then dz = math.max(0, math.abs(dz) - 5) end
-    return math.sqrt(dx * dx + dy * dy + dz * dz) / self.walkingSpeedCeiling
+    local distance = math.max(0, math.sqrt(dx * dx + dy * dy + dz * dz) - radius)
+    local bound = distance / self.walkingSpeedCeiling
+    -- An uncovered walk can fall back to an estimate without a takeoff
+    -- charge. Use the terrain provider's tighter bound when proof is required.
+    local provider = self.walkingProvider
+    if context.flight and self.strictWalking and provider.GetFlightWalkingLowerBound then
+        return math.max(bound, provider:GetFlightWalkingLowerBound(from, to, context.flight, distance) or 0)
+    end
+    return bound
 end
 
 function Search:PrepareDirectWalk(goalNode, priority)
@@ -372,6 +387,12 @@ function Search:RecordSurfaceRefusal(refusal, from, to)
     end
 end
 
+local function WalkingScore(result)
+    if not result or not IsFinite(result.seconds) or result.seconds < 0 then return end
+    return IsFinite(result.weightedSeconds) and result.weightedSeconds >= result.seconds
+        and result.weightedSeconds or result.seconds
+end
+
 function Search:AdvanceDirectTerrain()
     local status, result = self:StepTerrainJob()
     if status == "planning" then return end
@@ -387,8 +408,9 @@ function Search:AdvanceDirectTerrain()
         seconds = false
     elseif (cost and cost.state == "no_path") or status == "no_path" then
         seconds = false
-    elseif cost and cost.state == "ready" and IsFinite(cost.seconds) and cost.seconds >= 0 then
-        seconds, self.terrainDirectSeconds = cost.seconds, cost.seconds
+    elseif cost and cost.state == "ready" and WalkingScore(cost) then
+        seconds = WalkingScore(cost)
+        self.terrainDirectSeconds = seconds
         -- With a feasible walk in hand, order alternatives by their physical
         -- lower bounds. Materialization validates the winning legs and retries
         -- if a detour or obstruction changes their price.
@@ -762,7 +784,10 @@ function Search:TerrainSeconds(status, cost, from, to)
         return false
     end
     if status == "no_path" or (cost and cost.state == "no_path") then return false end
-    if cost and cost.state == "ready" and IsFinite(cost.seconds) and cost.seconds >= 0 then return cost.seconds end
+    if cost and cost.state == "ready" then
+        local score = WalkingScore(cost)
+        if score then return score end
+    end
     if self:NeedsTerrainData(from, to) then return false end
     return self:GetWalkSeconds(self.nodes[from], self.nodes[to], from, to)
 end
@@ -949,7 +974,8 @@ function Search:AssembleOne()
                 or entrance.from.accessKey ~= entrance.to.accessKey or entrance.from.floor ~= entrance.to.floor)
         if primeEntryWalk then self.entryWalkAttempted = true end
         self.materialization = {result = result, walks = assembly.walks, passages = assembly.passages, index = backwards and #segments or 1,
-            pricing = self.lazyTerrain, increment = backwards and -1 or 1, primeEntryWalk = primeEntryWalk}
+            pricing = self.lazyTerrain, increment = backwards and -1 or 1, primeEntryWalk = primeEntryWalk,
+            guidance = self.walkingContext.flightEntrances and {} or nil}
         self.assembly = nil
     else
         self.result, self.assembly, self.status = result, nil, "ready"
@@ -973,7 +999,48 @@ function Search:RememberWalkingProof(nodes, result)
     local proofs = self.walkingProofs or {}
     self.walkingProofs = proofs
     if #proofs == 8 then table.remove(proofs, 1) end
-    proofs[#proofs + 1] = {from = nodes.from, to = nodes.to, path = result.path, approach = result.approach}
+    proofs[#proofs + 1] = {from = nodes.from, to = nodes.to, path = result.path, approach = result.approach,
+        seconds = result.seconds, weightedSeconds = result.weightedSeconds}
+end
+
+local function ApplyWalkingDuration(pending, segment, proven)
+    local score = proven.weightedSeconds and WalkingScore(proven)
+    if score and math.abs(score - segment.seconds) <= 0.000001 then
+        pending.result.totalSeconds = pending.result.totalSeconds - segment.seconds + proven.seconds
+        segment.seconds = proven.seconds
+    end
+end
+
+local function AdvanceMaterializedSegment(pending, segment)
+    local guidance = pending.guidance
+    if guidance and not pending.pricing then
+        local path = segment.path
+        local flight = path and path.flight
+        if flight and (flight.groundBefore or flight.groundPath) then
+            local flightPath = { path[1], path[2], path[3], flight = {
+                speed = flight.speed, climb = flight.climb, referenceHeight = flight.referenceHeight,
+                estimated = flight.estimated,
+            } }
+            if flight.groundBefore then
+                local ground = flight.groundBefore
+                local takeoff, seconds = ground[#ground], flight.groundBeforeSeconds
+                guidance[#guidance + 1] = {
+                    kind = "walk", from = segment.from, to = takeoff, path = ground, seconds = seconds,
+                    arrivalRadius = 2, arrivalZTolerance = 3,
+                }
+                segment.from, segment.path, segment.seconds = takeoff, flightPath, segment.seconds - seconds
+            else
+                local landing = flight.groundPath[1]
+                guidance[#guidance + 1] = {
+                    kind = "walk", from = segment.from, to = landing, path = flightPath,
+                    seconds = segment.seconds - flight.groundSeconds, arrivalRadius = 8, arrivalZTolerance = 8,
+                }
+                segment.from, segment.path, segment.seconds = landing, flight.groundPath, flight.groundSeconds
+            end
+        end
+        guidance[#guidance + 1] = segment
+    end
+    pending.index = pending.index + pending.increment
 end
 
 function Search:MaterializeOne()
@@ -984,6 +1051,7 @@ function Search:MaterializeOne()
             pending.pricing, pending.index, pending.increment = nil, 1, 1
             return
         end
+        pending.result.segments = pending.guidance or pending.result.segments
         self.result, self.materialization, self.status = pending.result, nil, "ready"
         return
     end
@@ -1017,7 +1085,7 @@ function Search:MaterializeOne()
         end
         segment.path = path
     end
-    if not nodes then pending.index = pending.index + pending.increment; return end
+    if not nodes then AdvanceMaterializedSegment(pending, segment); return end
     if pending.pricing then
         local row = self:GetWalkingCache(nodes.from)
         if row[nodes.to] == nil then
@@ -1093,8 +1161,9 @@ function Search:MaterializeOne()
     for _, proof in ipairs(self.walkingProofs or EMPTY) do
         if proof.from == nodes.from and proof.to == nodes.to then
             segment.path = proof.path
+            ApplyWalkingDuration(pending, segment, proof)
             if proof.approach then segment.to, segment.approachOnly = proof.approach, true end
-            pending.index = pending.index + 1
+            AdvanceMaterializedSegment(pending, segment)
             return
         end
     end
@@ -1116,20 +1185,21 @@ function Search:MaterializeOne()
         return
     end
     if status == "ready" and result and type(result.path) == "table" and #result.path >= 2 then
-        if IsFinite(result.seconds) and result.seconds >= 0
-            and math.abs(result.seconds - segment.seconds) > 0.000001 then
+        local score = WalkingScore(result)
+        if score and math.abs(score - segment.seconds) > 0.000001 then
             -- A now-measured route supersedes an earlier unavailable estimate.
             -- Old labels/bounds must not suppress a newly competitive transport.
-            self:ReconsiderWalkingEdge(nodes, result.seconds)
+            self:ReconsiderWalkingEdge(nodes, score)
             return
         end
+        ApplyWalkingDuration(pending, segment, result)
         segment.path = result.path
         if result.approach then segment.to, segment.approachOnly = result.approach, true end
     elseif self:NeedsTerrainData(nodes.from, nodes.to) then
         self:ReconsiderWalkingEdge(nodes, false)
         return
     end
-    pending.index = pending.index + 1
+    AdvanceMaterializedSegment(pending, segment)
 end
 
 function Search:AdvanceOne()
@@ -1273,6 +1343,8 @@ function Engine:CreateSearch(request)
         walkSpeed = search.walkSpeed,
         walkSpeedFor = search.walkSpeedFor,
         walkSpeedAt = search.walkSpeedAt,
+        flight = request.flight,
+        flightEntrances = request.flight and {},
         clock = search.clock,
     }
     if not IsPosition(request.start) or (not IsPosition(request.goal) and type(request.goals) ~= "table") then

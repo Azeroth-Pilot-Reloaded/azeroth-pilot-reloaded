@@ -28,12 +28,17 @@ local function Run(profile, nativeMapType, parentMapType)
     fixture.maps[81022] = { mapID = 81022, mapType = 3, parentMapID = 81023 }
     fixture.maps[81023] = nil
     fixture.maps[81024] = { mapID = 81024, mapType = 7, parentMapID = 81020 }
+    fixture.maps[81025] = { mapID = 81025, mapType = 3, parentMapID = 0 }
+    fixture.maps[81026] = { mapID = 81026, mapType = 5, parentMapID = 81025 }
     C_Map.GetMapInfo = function(id)
-        if id >= 81001 and id <= 81024 then return fixture.maps[id] end
+        if id >= 81001 and id <= 81026 then return fixture.maps[id] end
         return originalMapInfo(id)
     end
     local data = fixture:Load({
         config = {
+            AccessMapAliases = { [81025] = 81005 },
+            GroundOnlyAreas = { [81005] = true },
+            MapRequirements = { [81005] = { quest = 99102 } },
             IsolatedAreas = {
                 [81005] = "sealed-room",
                 [81014] = "sealed-orphan-room",
@@ -80,6 +85,16 @@ local function Run(profile, nativeMapType, parentMapType)
         data:CanWalk(point(81005), point(81005, { x = 10 })),
         "Points inside the same isolated descendant remain connected"
     )
+    local alias = data:NormalizeLocation(point(81025))
+    assert(alias.uiMapID == 81025, "Access aliases retain the original map for display and projection")
+    assert(data:CanWalk(alias, point(81005)) and data:CanWalk(point(81005), point(81026)),
+        "Alternate artwork and its children can reach the same room in either direction")
+    assert(not data:CanWalk(start, alias) and not data:CanWalk(alias, start),
+        "Alternate artwork cannot bypass the room's entrance")
+    assert(not data:CanWalk(alias, point(81005, { instanceID = 74 })))
+    assert(not data:CanWalk(alias, point(81005, { floor = "upper" })))
+    assert(data:GetWalkingSpeed(alias, 30, 7) == 7)
+    assert(data:GetMapAccessRequirements(81026) == data:GetMapAccessRequirements(81005))
     assert(
         data:GetPositionRegion(point(81006)) == nil and data:GetPositionRegion(point(81020)) == nil,
         "Cosmic and World maps never become local walking regions themselves"

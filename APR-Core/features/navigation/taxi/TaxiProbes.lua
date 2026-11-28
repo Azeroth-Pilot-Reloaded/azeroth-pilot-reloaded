@@ -339,6 +339,7 @@ function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
         walkSpeed = job.speed,
         walkSpeedFor = options.walkSpeedFor,
         walkSpeedAt = options.walkSpeedAt,
+        flight = options.flight,
         clock = job.clock,
     }
     job.approachCosts, job.exitCosts = {}, {}

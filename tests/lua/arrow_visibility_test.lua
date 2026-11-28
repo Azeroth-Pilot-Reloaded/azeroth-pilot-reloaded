@@ -671,10 +671,34 @@ tick()
 assert(frame:IsShown(), "A real position restores ordinary guidance after the instance restriction ends")
 
 navigating = false
-step.Range = 30
+step.Range, step.ZoneStepTrigger = 30, nil
 playerX, playerY = step.Coord.x, step.Coord.y
 refresh()
 assert(not frame:IsShown() and APR.ArrowFrameM.scripts.OnUpdate, "The active objective starts a hidden range watch")
+local readsBeforeRange, mapsBeforeRange, writesBeforeRange = stepReads, mapReads, textWrites
+local headingReads = 0
+function GetPlayerFacing()
+    headingReads = headingReads + 1
+    return facing
+end
+for index = 1, 60 do
+    playerX = step.Coord.x + index % 15
+    facing = index / 10
+    tick()
+end
+assert(not frame:IsShown() and arrow.Distance == 0 and arrow.QuestStepDistance == 0)
+assert(
+    stepReads == readsBeforeRange and mapReads == mapsBeforeRange
+        and textWrites == writesBeforeRange and headingReads == 0,
+    "Movement and turns within Range use only the cached objective and position"
+)
+playerX = step.Coord.x + step.Range
+tick()
+assert(frame:IsShown() and frame.distance.text == "30 yards" and headingReads == 1,
+    "Crossing the boundary resumes heading and distance rendering")
+playerX = step.Coord.x
+tick()
+assert(not frame:IsShown() and APR.ArrowFrameM.scripts.OnUpdate)
 APR:SetRouteProgress(APR.ActiveRoute, 2, "manual_skip")
 playerX = playerX + 60
 tick()

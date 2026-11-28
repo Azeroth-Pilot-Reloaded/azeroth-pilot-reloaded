@@ -26,6 +26,29 @@ local WalkingPosition = Shared.WalkingPosition
 local WalkingProjection = Shared.WalkingProjection
 local WalkingProvider = Shared.WalkingProvider
 
+function nav:IsLocalObjectiveInRange(step, position, goal, outdoors)
+    local range = step and step.Range
+    if
+        type(range) ~= "number" or range <= 0
+        or not position or not goal or position.instanceID ~= goal.instanceID
+        or step._service or step._navigationUnlock or step.Waypoint or step.NoArrow or step.ZoneStepTrigger
+        or step.EnterInstance or step.LeaveInstance or step.EnterScenario or step.LeaveScenario
+        or goal.z ~= nil or goal.floor ~= nil or goal.accessKey ~= nil or goal.indoors == true
+    then
+        return false
+    end
+    local dx, dy = position.x - goal.x, position.y - goal.y
+    if dx * dx + dy * dy >= range * range or self:IsAirborne() then return false end
+    -- An outdoor area objective accepts the player's current ground within
+    -- the radius. Other terrain objectives still need a verified approach.
+    if step.Qpart and outdoors and position.indoors ~= true and not position.isInstance
+        and not goal.isInstance and position.uiMapID == goal.uiMapID
+    then
+        return true
+    end
+    return not TerrainRequired(position, goal)
+end--[[APR_DIAG]]; nav.IsLocalObjectiveInRange = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:29:nav:IsLocalObjectiveInRange#1", nav.IsLocalObjectiveInRange)--[[/APR_DIAG]]
+
 function nav:IsDirectRouteValid(position)
     return self.state == "ready"
         and ContextCurrent(self._routedStepContext)
@@ -37,7 +60,7 @@ function nav:IsDirectRouteValid(position)
         and not TerrainRequired(position, self.destination)
         and APR.NavigationData
         and APR.NavigationData:CanWalk(position, self.destination) == true
-end--[[APR_DIAG]]; nav.IsDirectRouteValid = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:29:nav:IsDirectRouteValid#1", nav.IsDirectRouteValid)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.IsDirectRouteValid = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:52:nav:IsDirectRouteValid#2", nav.IsDirectRouteValid)--[[/APR_DIAG]]
 
 function nav:CapturePlanningInputs(step, position, context)
     if step._service then
@@ -84,7 +107,7 @@ function nav:CapturePlanningInputs(step, position, context)
         waypoint = step.Waypoint,
         range = step.Range,
     }
-end--[[APR_DIAG]]; nav.CapturePlanningInputs = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:42:nav:CapturePlanningInputs#2", nav.CapturePlanningInputs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.CapturePlanningInputs = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:65:nav:CapturePlanningInputs#3", nav.CapturePlanningInputs)--[[/APR_DIAG]]
 
 function nav:IsObjectiveCurrent(inputs)
     if not inputs then return false end
@@ -130,7 +153,7 @@ function nav:IsObjectiveCurrent(inputs)
         and step.NoArrow == inputs.noArrow
         and step.Waypoint == inputs.waypoint
         and step.Range == inputs.range
-end--[[APR_DIAG]]; nav.IsObjectiveCurrent = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:89:nav:IsObjectiveCurrent#3", nav.IsObjectiveCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.IsObjectiveCurrent = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:112:nav:IsObjectiveCurrent#4", nav.IsObjectiveCurrent)--[[/APR_DIAG]]
 
 function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
     local inputs = self._routeInputs
@@ -138,6 +161,16 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
     if not self:IsObjectiveCurrent(inputs) then return true end
     if self.waypointPendingLeg and self.waypointPendingLeg.before and self.search then return false end
     if not position then return true end
+    local active = self:IsNavigating() and self:GetActiveStep()
+    local flight = active and active.path and active.path.flight
+    if inputs.flightAirborne ~= nil and (active and active.kind == "walk" or not active and self.search) then
+        local flyable = self:CanFlyHere()
+        if flight and not flyable then return true end
+        local landing = flight and active.to or self.destination
+        if flyable and self:IsAirborne() ~= inputs.flightAirborne and Distance(position, landing) > 20 then
+            return true
+        end
+    end
     if not self.dirty and self:IsNavigating() and FollowingManualCrossing(self:GetActiveStep(), position) then
         return false
     end
@@ -150,7 +183,7 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
         local data = APR.NavigationData
         if
             self.dirty
-            or not (data and data.profile == "forever" and data.IsSameAccessRegion and HasWalkingPath(step))
+            or not (data and data.IsSameAccessRegion and HasWalkingPath(step) and not step.path.flight)
             or (position.uiMapID == inputs.position.uiMapID and (geometryChanged or not indoorsChanged))
             or position.isInstance ~= inputs.position.isInstance
             or data:IsSameAccessRegion(position, inputs.position) ~= true
@@ -165,6 +198,7 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
         if
             not (
                 provider
+                and nextPoint
                 and provider.RequiresWalkingProof
                 and provider:RequiresWalkingProof(observed, nextPoint)
                 and provider.CanFollowWalkingSegment
@@ -187,6 +221,9 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
     then
         return true
     end
+    if inputs.stoppedInRange then
+        return not self:IsLocalObjectiveInRange(inputs.step, position, self.destination, not indoors)
+    end
     -- Walking around one objective does not alter the transport graph. Revisit
     -- the choice after meaningful displacement, while map and access changes
     -- bypass this movement allowance immediately.
@@ -199,16 +236,35 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
         local provider = WalkingProvider()
         return not (provider and provider.IsSameWalkingCell and provider:IsSameWalkingCell(previous, position))
     end
-    local step = self:IsNavigating() and self:GetActiveStep()
+    local step = active
     local data = APR.NavigationData
     local moved = Distance(position, self.waypointApproach and self.waypointApproach.observation or inputs.position)
+    local endpoint = HasWalkingPath(step) and step.path[#step.path]
+    if endpoint and endpoint.sharedFloorChord and moved >= 2 then
+        local provider = WalkingProvider()
+        if
+            not provider
+            or not provider.CanFollowWalkingSegment
+            or not data
+            or data:CanWalk(position, endpoint) ~= true
+            or provider:CanFollowWalkingSegment(WalkingPosition(position, provider, step), endpoint, true) ~= true
+        then
+            return true
+        end
+        inputs.position, inputs.startedAt = position, Now()
+        return false
+    end
     if Now() - inputs.startedAt < Constants.MOVEMENT_REPLAN_SECONDS then return false end
+    if flight and data and data.CanWalk and data:CanWalk(position, step.to) == true then
+        local cursor = step.pathCursor or 2
+        local _, offset = WalkingProjection(position, step.path[cursor - 1], step.path[cursor])
+        return offset > Constants.MOVEMENT_REPLAN_YARDS ^ 2
+    end
     if
         HasWalkingPath(step)
         and not self.walkingPrefix
         and not self.travelPrefix
         and data
-        and data.profile == "forever"
         and data.CanWalk
         and data:CanWalk(position, step.to) == true
     then
@@ -245,7 +301,7 @@ function nav:HasPlanningInputsChanged(position, verifiedWalkingCandidate)
         end
     end
     return moved >= Constants.MOVEMENT_REPLAN_YARDS
-end--[[APR_DIAG]]; nav.HasPlanningInputsChanged = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:135:nav:HasPlanningInputsChanged#4", nav.HasPlanningInputsChanged)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.HasPlanningInputsChanged = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:158:nav:HasPlanningInputsChanged#5", nav.HasPlanningInputsChanged)--[[/APR_DIAG]]
 
 function nav:RefreshStalePlanningInputs()
     local inputs, context, destination, start = self._routeInputs, self.context, self.destination, self.start
@@ -283,4 +339,4 @@ function nav:RefreshStalePlanningInputs()
     self:ForceRefresh("planning_inputs_changed")
     self:Render()
     self:RequestUpdate()
-end--[[APR_DIAG]]; nav.RefreshStalePlanningInputs = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:249:nav:RefreshStalePlanningInputs#5", nav.RefreshStalePlanningInputs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RefreshStalePlanningInputs = APRTrace("APR-Core/features/navigation/controller/NavigationPlanningInputs.lua:305:nav:RefreshStalePlanningInputs#6", nav.RefreshStalePlanningInputs)--[[/APR_DIAG]]

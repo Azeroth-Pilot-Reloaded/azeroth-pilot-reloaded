@@ -46,6 +46,13 @@ local function CopyLocation(point)
     end
     local indoors = point.indoors
     if type(indoors) == "boolean" and ReadableLocationValue(indoors) then snapshot.indoors = indoors end
+    local phase = point.terrainPhase
+    if type(phase) ~= "nil" then
+        if not ReadableLocationValue(phase) then return end
+        snapshot.terrainPhase = phase
+    end
+    local boundary = point.phaseBoundary
+    if type(boundary) == "boolean" and ReadableLocationValue(boundary) then snapshot.phaseBoundary = boundary end
     return snapshot
 end--[[APR_DIAG]]; CopyLocation = APRTrace("APR-Core/features/navigation/Navigation.lua:38:CopyLocation#4", CopyLocation)--[[/APR_DIAG]]
 
@@ -148,7 +155,10 @@ local function MissingWalkProof(step, provider)
 end--[[APR_DIAG]]; MissingWalkProof = APRTrace("APR-Core/features/navigation/Navigation.lua:117:MissingWalkProof#12", MissingWalkProof)--[[/APR_DIAG]]
 
 local function SameAccess(a, b)
-    return SameLocationFields(a, b, Constants.ACCESS_FIELDS)
+    if not SameLocationFields(a, b, Constants.ACCESS_FIELDS) then return false end
+    local first, last = a.terrainPhase, b.terrainPhase
+    return (type(first) == "nil" and type(last) == "nil")
+        or (ReadableLocationValue(first) and ReadableLocationValue(last) and first == last)
 end--[[APR_DIAG]]; SameAccess = APRTrace("APR-Core/features/navigation/Navigation.lua:140:SameAccess#13", SameAccess)--[[/APR_DIAG]]
 
 local function CancelTimer(timer)
@@ -198,19 +208,25 @@ end--[[APR_DIAG]]; ActionPending = APRTrace("APR-Core/features/navigation/Naviga
 
 local function MapIncludes(mapID, ancestorID)
     if not mapID or not ancestorID then return false end
+    local data = APR.NavigationData
+    local getAccessMapID = data and data.GetAccessMapID
+    if getAccessMapID then
+        mapID, ancestorID = getAccessMapID(data, mapID), getAccessMapID(data, ancestorID)
+    end
     if mapID == ancestorID then return true end
     if APR.GetMapParentChain then
         for _, map in ipairs(APR:GetMapParentChain(mapID)) do
-            if map == ancestorID then return true end
+            if map == ancestorID or getAccessMapID and getAccessMapID(data, map) == ancestorID then return true end
         end
     else
-        local data, current, seen = APR.NavigationData, mapID, {}
+        local current, seen = mapID, {}
         for _ = 1, 50 do
             if not current or current == 0 or seen[current] then break end
             seen[current] = true
             local info = data and data.GetMapAncestryInfo and data:GetMapAncestryInfo(current)
                 or (C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(current))
             current = info and info.parentMapID
+            if getAccessMapID then current = getAccessMapID(data, current) end
             if current == ancestorID then return true end
         end
     end

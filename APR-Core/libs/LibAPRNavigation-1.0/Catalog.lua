@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 24) then return end
+if not Lib:BeginModule("catalog", 25) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -503,6 +503,9 @@ function Instance:CreatePlanningSnapshot(context)
     -- Physical graph routing mutates its departure character's map per link.
     -- That simulation must never become evidence of a native phase change.
     snapshot.phaseCharacter = Lib.Copy(character)
+    if self.config.PhaseGroups and self.env.getCurrentMapID then
+        snapshot.phaseCharacter.mapID = self.env.getCurrentMapID()
+    end
     if context and context.inGroup ~= nil then character.inGroup = context.inGroup end
     return snapshot, character
 end

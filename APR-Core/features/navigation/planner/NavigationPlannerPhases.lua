@@ -150,6 +150,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
                         walkSpeed = request.walkSpeed,
                         walkSpeedFor = request.walkSpeedFor,
                         walkSpeedAt = request.walkSpeedAt,
+                        flight = request.flight,
                         clock = request.clock,
                     })
                     return

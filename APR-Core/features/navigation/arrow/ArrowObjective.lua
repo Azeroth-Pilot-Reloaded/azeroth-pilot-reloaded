@@ -10,10 +10,30 @@ local WorldInstanceID = Shared.WorldInstanceID
 local mathAbs = Shared.mathAbs
 local mathFloor = Shared.mathFloor
 
-local function DistanceBetween(ax, ay, bx, by)
+local function DistanceSquared(ax, ay, bx, by)
     local dx, dy = ax - bx, by - ay
-    return (dx * dx + dy * dy) ^ 0.5
-end--[[APR_DIAG]]; DistanceBetween = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:13:DistanceBetween#1", DistanceBetween)--[[/APR_DIAG]]
+    return dx * dx + dy * dy
+end--[[APR_DIAG]]; DistanceSquared = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:13:DistanceSquared#1", DistanceSquared)--[[/APR_DIAG]]
+
+local function DistanceBetween(ax, ay, bx, by)
+    return DistanceSquared(ax, ay, bx, by) ^ 0.5
+end--[[APR_DIAG]]; DistanceBetween = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:18:DistanceBetween#2", DistanceBetween)--[[/APR_DIAG]]
+
+local function NewRangeTarget(step, coord, instanceID, playerX, playerY)
+    return {
+        step = step,
+        coord = coord,
+        authoredCoord = step.Coord,
+        authoredCoords = step.Coords,
+        instanceID = instanceID,
+        geometry = APR.navigationGeometryRevision,
+        playerX = playerX,
+        playerY = playerY,
+        x = coord.x,
+        y = coord.y,
+        range = step.Range,
+    }
+end--[[APR_DIAG]]; NewRangeTarget = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:22:NewRangeTarget#3", NewRangeTarget)--[[/APR_DIAG]]
 
 local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentCoord, displayOnly)
     if displayOnly or (APR.navigation and APR.navigation:IsNavigating()) then
@@ -113,7 +133,7 @@ local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentC
     end
 
     return mathFloor(distance + 0.5)
-end--[[APR_DIAG]]; CheckDistance = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:18:CheckDistance#2", CheckDistance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CheckDistance = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:38:CheckDistance#4", CheckDistance)--[[/APR_DIAG]]
 
 function APR.Arrow:SetCoord()
     APR:Debug("APR.Arrow:SetCoord()")
@@ -144,7 +164,9 @@ function APR.Arrow:SetCoord()
         local guidance = APR.navigation:GetActiveStep()
         local target = APR.navigation.GetGuidanceTarget and APR.navigation:GetGuidanceTarget()
         local coord = guidance and guidance.Coord
-        if guidance and guidance.path and target then coord = { x = target.y, y = target.x } end
+        if guidance and guidance.path and APR.navigation.GetGuidanceTarget then
+            coord = target and { x = target.y, y = target.x }
+        end
         local action = guidance and guidance.sourceFree and guidance.action
         local _, _, _, instanceID = UnitPosition("player")
         instanceID = WorldInstanceID(instanceID)
@@ -232,21 +254,32 @@ function APR.Arrow:SetCoord()
         local rangeTarget
         -- Step refreshes must not briefly show an arrow we already reached.
         -- Waypoints still need OnUpdate to perform their step transition.
-        if step.Range and not step.Waypoint then
+        if step.Range and step.Range > 0 and not step.Waypoint then
             local playerY, playerX, _, instanceID = UnitPosition("player")
+            instanceID = WorldInstanceID(instanceID)
+            local target = self.rangeTarget
             if
                 not (issecretvalue and (issecretvalue(playerX) or issecretvalue(playerY)))
                 and playerY
                 and playerX
-                and DistanceBetween(playerX, playerY, stepCoord.x, stepCoord.y) < step.Range
             then
-                rangeTarget = { step = step, instanceID = WorldInstanceID(instanceID) }
+                if target and target.step == step and target.instanceID == instanceID
+                    and target.playerX == playerX and target.playerY == playerY
+                    and target.x == stepCoord.x and target.y == stepCoord.y and target.range == step.Range
+                then
+                    rangeTarget = target
+                    target.coord, target.authoredCoord, target.authoredCoords = stepCoord, step.Coord, step.Coords
+                    target.geometry = APR.navigationGeometryRevision
+                elseif DistanceSquared(playerX, playerY, stepCoord.x, stepCoord.y) < step.Range * step.Range then
+                    rangeTarget = NewRangeTarget(step, stepCoord, instanceID, playerX, playerY)
+                end
             end
         end
         self:SetArrowActive(true, stepCoord.x, stepCoord.y, nil, nil, rangeTarget)
         self.currentStep = currentStepIndex
     end
-end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:118:APR.Arrow:SetCoord#3", APR.Arrow.SetCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/arrow/ArrowObjective.lua:138:APR.Arrow:SetCoord#5", APR.Arrow.SetCoord)--[[/APR_DIAG]]
 
-APR.Arrow._helpers.DistanceBetween = DistanceBetween
+APR.Arrow._helpers.DistanceSquared = DistanceSquared
+APR.Arrow._helpers.NewRangeTarget = NewRangeTarget
 APR.Arrow._helpers.CheckDistance = CheckDistance

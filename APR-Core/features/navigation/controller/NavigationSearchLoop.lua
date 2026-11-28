@@ -35,7 +35,7 @@ function nav:RunPlanningSearch(options)
     local waypointLeg = options.waypointLeg
 
     local previousSliceAt
-    local coldTerrainSearch = data.profile == "forever" and not reuseItinerary
+    local coldTerrainSearch = walkingProvider ~= nil and not reuseItinerary
     local trackTerrainFrame = data.profile == "forever"
         and data.BeginTerrainFrame
         and data.HasDeferredTerrainImports
@@ -136,7 +136,7 @@ function nav:RunPlanningSearch(options)
             end
             if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
             if localState ~= "planning" then
-                inputs.waitingForWalkingFloor = preferLocal
+                inputs.waitingForWalkingFloor = (preferLocal or step._service)
                         and start.indoors == true
                         and Distance(start, goal) <= Constants.LOCAL_WALK_YARDS
                         and localResult
@@ -161,15 +161,16 @@ function nav:RunPlanningSearch(options)
                             )
                         end
                     end
+                    local sharedFloorChord = published and localResult.path[#localResult.path].sharedFloorChord
                     if
                         published
-                        and preferLocal
+                        and (preferLocal or sharedFloorChord)
                         and type(localResult.yards) == "number"
                         and localResult.yards <= Constants.LOCAL_WALK_YARDS
                         and PlanningRequestCurrent(self, context, generation, job, inputs)
                     then
                         if
-                            localState == "ready" and not localResult.partial
+                            not sharedFloorChord and localState == "ready" and not localResult.partial
                             and job.request and job.request.allowTaxiStops and job.BeginTaxiStops
                         then
                             job.result = {
@@ -340,12 +341,12 @@ function nav:RunPlanningSearch(options)
             if result and result.localWalk and not result.taxiDiscovery then
                 self.search, self._searchTimer, self.recomputeKeepingPath = nil, nil, nil
                 self._localWalk = true
-            elseif inputs.waitingForWalkingFloor and first and first.hearthstone and first.sourceFree then
-                -- A recall is feasible from either floor, but says nothing about
-                -- the exit. Retry the local comparison on a fresh observation.
+            elseif inputs.waitingForWalkingFloor and first and first.sourceFree then
+                -- A personal teleport does not resolve the walking departure.
+                -- Retry the nearby objective on a fresh floor observation.
                 self.waitingData, job.unresolvedSurface, job.unresolvedStartSurface = true, true, true
                 local active = self:GetActiveStep()
-                if active and active.hearthstone then self.recomputeKeepingPath = nil end
+                if active and active.sourceFree then self.recomputeKeepingPath = nil end
                 self:SearchFailed()
             else
                 self:Publish(result, context, generation)

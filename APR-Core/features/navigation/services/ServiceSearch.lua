@@ -118,9 +118,11 @@ function Services:Find(query, training, resuming)
         nav:RefreshActivity()
         return true
     end
-    local speed, ceiling, speedAt, speedFor
-    if profile == "forever" and nav.GetWalkingSpeedModel then
-        speed, ceiling, speedAt, speedFor = nav:GetWalkingSpeedModel(start, nav:GetThreshold())
+    local speed, ceiling, speedAt, speedFor, flight
+    local terrain = profile == "retail" and data.GetWalkingProvider and data:GetWalkingProvider()
+    local coveredRetail = terrain and terrain.HasWalkingCoverage and terrain:HasWalkingCoverage(start)
+    if (profile == "forever" or coveredRetail) and nav.GetWalkingSpeedModel then
+        speed, ceiling, speedAt, speedFor, flight = nav:GetWalkingSpeedModel(start, nav:GetThreshold())
     else
         speed = nav:GetMovementSpeed(nav:GetThreshold())
         local ground = math.min(nav:GetMovementSpeed(2000), 14)
@@ -139,7 +141,7 @@ function Services:Find(query, training, resuming)
         character = character,
         start = start,
         nearestByCoordinates = not training,
-        batchTerrainWork = profile == "forever",
+        batchTerrainWork = profile == "forever" or coveredRetail == true,
         activeWalk = activeWalk,
         adapter = APR.NavigationAdapter,
         flightProvider = APR.taxiData,
@@ -150,6 +152,7 @@ function Services:Find(query, training, resuming)
         walkSpeedAt = speedAt,
         walkingSpeedCeiling = ceiling,
         walkSpeedFor = speedFor,
+        flight = flight,
     })
     if request.job.status == "unavailable" then
         Message("SERVICE_TAXI_UNAVAILABLE")

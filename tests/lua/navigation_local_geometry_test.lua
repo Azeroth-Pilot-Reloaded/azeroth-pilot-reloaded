@@ -59,8 +59,9 @@ local marked = data:NormalizeLocation({
     x = road.x,
     y = road.y,
     accessKey = "explicit",
+    indoors = true,
 })
-assert(marked.accessKey == "explicit")
+assert(marked.accessKey == "explicit" and marked.indoors == true)
 local mapped = data:NormalizeLocation({ space = "world", uiMapID = 100, instanceID = 8, x = 100, y = 80 })
 assert(mapped.uiMapID == 101)
 local other = data:NormalizeLocation({ space = "world", uiMapID = 100, instanceID = 9, x = 100, y = 80 })

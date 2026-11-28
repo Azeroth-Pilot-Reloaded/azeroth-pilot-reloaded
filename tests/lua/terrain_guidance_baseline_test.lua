@@ -252,6 +252,47 @@ do
     pin.nav:Cancel("cleared")
 end
 
+for _, profile in ipairs({"forever", "retail"}) do
+    local area = fixture(profile)
+    APR.NavigationData.profile = profile
+    area.provider.HasWalkingCoverage = function() return true end
+    area.step.PickUp, area.step.Qpart, area.step.Coord.z, area.step.Range = nil, {[901]={1}}, nil, 30
+    area.position.x = 84
+    area.nav:Update()
+    assert(area.nav.state == "ready" and not area.nav:GetActiveStep() and #area.worldJobs == 0 and #area.pathJobs == 0,
+        "Starting inside an accessible outdoor objective needs no local or world route")
+    local generation = area.nav.generation
+    for index = 1, 20 do
+        area.position.x = 90 + index
+        area.nav:InvalidatePathCache("QUEST_LOG_UPDATE")
+        area.nav:Update()
+    end
+    assert(area.nav.generation == generation and #area.worldJobs == 0 and #area.pathJobs == 0 and APRData.p.r == 1,
+        "Quest refreshes within the radius reuse arrival without advancing the objective")
+    area.position.x = 130
+    area.nav:Update()
+    assert(#area.worldJobs == 1, "The strict Range boundary restarts guidance")
+    area.nav:Cancel("cleared")
+end
+
+do
+    local area = fixture("forever")
+    APR.NavigationData.profile = "forever"
+    area.step.PickUp, area.step.Qpart, area.step.Coord.z, area.step.Range = nil, {[901]={1}}, nil, 30
+    area.pathState = "ready"
+    area.nav:Update()
+    assert(area.nav:IsNavigating())
+    area.position.x = 80
+    area.allowed = false
+    area.nav:PollArrival()
+    assert(area.nav:IsNavigating(), "Matching XY cannot finish an objective whose access is closed")
+    area.allowed = true
+    area.nav:PollArrival()
+    assert(area.nav.state == "ready" and not area.nav:GetActiveStep() and area.worldJobs[1].cancelled and APRData.p.r == 1,
+        "Entering an accessible outdoor objective retires guidance and its remaining work")
+    area.nav:Cancel("cleared")
+end
+
 local s=fixture("forever")
 s.nav:Update()
 assert(#s.pathJobs==1 and s.pathJobs[1].steps==1,"A nearby covered objective starts its path immediately")
@@ -387,6 +428,51 @@ for _, observation in ipairs({"cell", "altitude", "catalogue", "destination"}) d
     assert(#s.pathJobs==2 and s.nav:IsNavigating() and s.nav:GetGuidanceTarget().y==80,
         "Resolved terrain publishes the bend on the new route")
     s.nav:Cancel("cleared")
+end
+
+do
+    local service = fixture("retail")
+    APR.NavigationData.profile = "retail"
+    function service.provider:HasWalkingCoverage() return true end
+    function IsIndoors() return true end
+    service.position.z, service.position.indoors = nil, true
+    service.step._service = true
+    service.step.target = {x=40,y=0,z=0,instanceID=1,uiMapID=101}
+    local context = {service=true}
+    APR.Services = {GetStep=function() return service.step end, IsContextCurrent=function() return true end,
+        CaptureContext=function() return context end, GetLabel=function() return "Service" end}
+    local otherMap = {x=1000,y=0,instanceID=1,uiMapID=102}
+    service.pathState, service.pathResult = "unavailable", {unresolvedSurface=true, ambiguousFrom=true}
+    service.worldState = "ready"
+    service.worldResult = {segments={{kind="item",from=service.position,to=otherMap,sourceFree=true},
+        {kind="walk",from=otherMap,to=service.step.target}},totalSeconds=100}
+    service.nav:Update(context)
+    assert(service.nav.state == "waiting_data" and service.nav.reason == "terrain_origin")
+    assert(not service.nav:GetActiveStep(), "A personal travel item is no substitute for an unresolved nearby exit")
+    service.nav:Cancel("cleared")
+end
+
+do
+    local manual = fixture("forever")
+    APR.NavigationData.profile = "forever"
+    function manual.provider:CanFollowWalkingSegment() return true end
+    manual.step._service, manual.step._mapWaypoint = true, true
+    manual.step.target = {x=30,y=0,instanceID=1,uiMapID=101}
+    local context = {service=true}
+    APR.Services = {GetStep=function() return manual.step end, IsContextCurrent=function() return true end,
+        CaptureContext=function() return context end, GetLabel=function() return "Pin" end}
+    manual.pathState = "ready"
+    manual.onPathStep = function()
+        local job = manual.worldJobs[1]
+        assert(job.request.allowTaxiStops)
+        function job:BeginTaxiStops() error("A direct indoor pin cannot require a taxi stop") end
+        local point = {x=30,y=0,instanceID=1,uiMapID=101,sharedFloorChord=true}
+        manual.readyPathResult = {path={manual.position,point},seconds=5,yards=30}
+    end
+    manual.nav:Update(context)
+    assert(manual.nav:IsNavigating() and manual.nav:GetGuidanceTarget().sharedFloorChord)
+    assert(not manual.nav.search and manual.worldJobs[1].cancelled)
+    manual.nav:Cancel("cleared")
 end
 
 s=fixture("forever")

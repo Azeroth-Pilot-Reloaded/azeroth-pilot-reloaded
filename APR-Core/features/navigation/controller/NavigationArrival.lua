@@ -67,7 +67,20 @@ function nav:PollArrival()
     if step.kind ~= "walk" and (step.sourceFree or Distance(position, step.from) <= 30) then
         step.departureSeen = true
     end
-    local walkingProvider = HasWalkingPath(step) and WalkingProvider() or nil
+    local inputs = self._routeInputs
+    if
+        step.kind == "walk" and step ~= self.walkingPrefix and not self.travelPrefix and self.cursor == #self.queue
+        and inputs and inputs.geometryRevision == APR.navigationGeometryRevision
+        and self:IsLocalObjectiveInRange(inputs.step, position, self.destination, IsIndoors and IsIndoors() == false)
+        and self:IsObjectiveCurrent(inputs)
+        and APR.NavigationData:CanWalk(position, self.destination) == true
+    then
+        inputs.stoppedInRange = true
+        self:MarkRouteReady(true)
+        return
+    end
+    local flight = HasWalkingPath(step) and step.path.flight
+    local walkingProvider = HasWalkingPath(step) and not flight and WalkingProvider() or nil
     if walkingProvider then
         self.lastWalkCorridor, self.lastWalkGeometry = step, APR.navigationGeometryRevision
     else
@@ -100,7 +113,8 @@ function nav:PollArrival()
         position = WalkingPosition(position, walkingProvider, step)
     end
     local pathReached = self:AdvanceWalkingPath(step, position, walkingProvider)
-        or WalkingDestinationReached(step, position, walkingProvider)
+        or (not flight and WalkingDestinationReached(step, position, walkingProvider))
+    if flight and self:IsAirborne() then return end
     local arrived = pathReached
         and Distance(position, step.to)
             <= (step.arrivalRange or step.arrivalRadius or (step.kind == "taxi" and 100 or 20))
@@ -114,7 +128,7 @@ function nav:PollArrival()
         and goalRange
     then
         arrived = Distance(position, step.to) < goalRange
-            and WalkingPointReached(position, step.path[#step.path], walkingProvider)
+            and (flight or WalkingPointReached(position, step.path[#step.path], walkingProvider))
     end
     local coarseMap
     if arrived then
@@ -123,13 +137,18 @@ function nav:PollArrival()
             arrived = WalkingPointReached(position, step.path[#step.path], walkingProvider)
         end
     end
+    local endpoint = HasWalkingPath(step) and not flight and step.path[#step.path]
+    local sharedFloorArrival = endpoint and endpoint.sharedFloorChord
     local arrivalZ, arrivalZTolerance = step.to.z, step.arrivalZTolerance
-    if HasWalkingPath(step) then
-        arrivalZ = arrivalZ or step.path[#step.path].z
+    if endpoint then
+        arrivalZ = arrivalZ or endpoint.z
         arrivalZTolerance = arrivalZTolerance or 5
     end
+    if arrived and flight and arrivalZ ~= nil and position.z == nil then
+        position = WalkingPosition(position, WalkingProvider(), step)
+    end
     local data = APR.NavigationData
-    if arrived and arrivalZTolerance and arrivalZ ~= nil then
+    if arrived and not sharedFloorArrival and arrivalZTolerance and arrivalZ ~= nil then
         if position.z ~= nil then
             arrived = math.abs(position.z - arrivalZ) <= arrivalZTolerance
         else
@@ -144,7 +163,7 @@ function nav:PollArrival()
         end
     end
     if arrived and step.arrivalRange and data then
-        arrived = data:IsServiceArrival(position, step.to, step.arrivalRange)
+        arrived = data:IsServiceArrival(position, sharedFloorArrival and endpoint or step.to, step.arrivalRange)
     end
     if arrived and data and data.IsSameAccessRegion then
         -- Explicit passage endpoints may forbid automatic graph connections.
@@ -154,6 +173,7 @@ function nav:PollArrival()
     if step.kind == "taxi" then arrived = arrived and step.boarded == true end
     if step.kind ~= "walk" then arrived = arrived and step.departureSeen and not onTaxi end
     if arrived then
+        if flight and self._routeInputs then self._routeInputs.flightAirborne = false end
         if step.kind ~= "walk" then self.walkingObservation = nil end
         if step == self.walkingPrefix then
             self.queue, self.cursor, self.state = {}, 1, "planning"
@@ -199,7 +219,7 @@ function nav:PollArrival()
                 self.state = "planning"
                 self:Notify()
             else
-                self:MarkRouteReady(nil, position)
+                self:MarkRouteReady(nil, position, sharedFloorArrival and endpoint or nil)
             end
         else
             if self.waypointJourney and nextStep.kind ~= "walk" and Distance(position, nextStep.from) <= 30 then

@@ -805,17 +805,21 @@ are rechecked on retained edges immediately before departure. A completed
 endeavor still exists until its cycle ends; completion alone does not close it.
 
 `config.PhaseGroups` records verified map artworks and unambiguous local map
-identities. Two separate maps each reporting their static artwork do not prove
-the selected timeline. A verified phase recipe may guide to Zidormi even when
-the initial phase is unknown, but only native phase evidence completes that
-interaction. `phaseAgnostic=true` is reserved for an observer's approach, where
-the NPC exists on both sides; it is not an authorization for a portal.
+identities. A group with separate UI maps uses the player's observed map or
+its outdoor ancestry. A group using a single UI map can use its changing
+artwork. A verified phase recipe can guide to Zidormi while the phase is
+unknown and completes once the client reports the requested phase.
+Use `phaseAgnostic=true` for an approach to an observer present in both phases.
+If the phase uses separate maps, provide its positions on both maps, with the
+continental approach first for players whose current map is outside the zone.
 
 `config.MapRequirements` applies common access rules to every connection whose
-resolved endpoint belongs to the map or a descendant, including personal
-teleports, physical region routing and instance approaches. Walking to an absent
-map also fails closed. Retain explicit requirements on shared-map phases such
-as the Dark Portal and Silithus: their UI map alone cannot identify a timeline.
+resolved endpoint belongs to the map or a descendant in the same outdoor map
+hierarchy. An independent instance can declare its own rule. Personal teleports,
+physical region routing and instance approaches use these rules. Walking checks
+both endpoints. The player can still approach a shared observer covered by their
+current map's rule. Keep explicit phase requirements on shared-map connections
+such as the Dark Portal and Silithus.
 
 `environment.isHolidayActive(key)` must return a Boolean or nil. APR reads
 native holiday icons and exact start/end times against the server calendar,

@@ -168,6 +168,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             from = { dynamic = "player" },
             to = { space = "map", uiMapID = 2070, x = 0.6941, y = 0.6274 },
             actions = { { id = 3563, groupSpellID = 11418, type = "spell" } },
+            requirements = { faction = "Horde" },
         },
         {
             id = "spell-3566-teleport-thunder-bluff",
@@ -1399,7 +1400,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 2393, x = 0.5, y = 0.5, areaID = 3487 },
+            to = { space = "map", uiMapID = 2393, x = 0.5274, y = 0.6535, z = 45.55, indoors = true, areaID = 15969 },
             actions = { { id = 1259190, groupSpellID = 1259194, type = "spell" } },
         },
         {
@@ -1705,4 +1706,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             cooldownGroup = "personal-camp",
         },
     },
-}, 32)
+}, 34)

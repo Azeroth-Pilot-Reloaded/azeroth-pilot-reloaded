@@ -1,15 +1,21 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 19) then return end
+if not Lib:BeginModule("geography", 23) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
 local EMPTY = {}
 local HEARTHSTONE_MINIMUM_YARDS = 500
+local GARRISON_FACTIONS = { "Alliance", "Horde" }
 
 local function Finite(value)
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
+end
+
+function Instance:GetAccessMapID(mapID)
+    local aliases = self.config.AccessMapAliases
+    return aliases and aliases[mapID] or mapID
 end
 
 function Instance:GetMapAncestryInfo(mapID)
@@ -35,6 +41,17 @@ end
 function Instance:GetWorldInstanceID(instanceID)
     local overrides = self.config.WorldInstanceOverrides
     return (overrides and overrides[instanceID]) or instanceID
+end
+
+function Instance:GetGarrisonPhase(instanceID)
+    local phases = self.config.GarrisonPhases
+    if not phases or instanceID == phases.world or self:GetWorldInstanceID(instanceID) ~= phases.world then return end
+    for _, faction in ipairs(GARRISON_FACTIONS) do
+        local family = phases[faction]
+        for _, phase in ipairs(family and family.levels or EMPTY) do
+            if instanceID == phase then return family end
+        end
+    end
 end
 
 function Instance:GetFallbackMapForInstance(instanceID)
@@ -196,7 +213,7 @@ end
 function Instance:NormalizeLocation(location, hint)
     if type(location) ~= "table" then return nil end
     local x, y = location.x, location.y
-    local instanceID, mapID = self:GetWorldInstanceID(location.instanceID), location.uiMapID
+    local instanceID, mapID = location.instanceID, location.uiMapID
     if not Finite(x) or not Finite(y) then return nil end
     if location.space == "map" then
         if not self.env.mapToWorld or not mapID or x < 0 or x > 1 or y < 0 or y > 1 then return nil end
@@ -208,7 +225,9 @@ function Instance:NormalizeLocation(location, hint)
         -- or declared interior space without replacing the observed X/Y.
         instanceID = self:GetMapWorldInstanceID(mapID)
     elseif not mapID and instanceID ~= nil then
-        mapID = self:GetFallbackMapForInstance(instanceID)
+        local phase = self:GetGarrisonPhase(instanceID)
+        instanceID = self:GetWorldInstanceID(instanceID)
+        mapID = phase and phase.mapID or self:GetFallbackMapForInstance(instanceID)
         if
             not mapID
             and not (self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
@@ -217,6 +236,7 @@ function Instance:NormalizeLocation(location, hint)
             mapID = self.env.worldToMap(instanceID, x, y, hint)
         end
     end
+    local terrainPhase = location.terrainPhase or location.instanceID or instanceID
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
     local remap
@@ -239,8 +259,11 @@ function Instance:NormalizeLocation(location, hint)
         noAutoconnect = location.noAutoconnect,
         phaseAgnostic = location.phaseAgnostic,
         isInstance = location.isInstance,
+        terrainPhase = self:GetWorldInstanceID(terrainPhase) == instanceID
+            and self:GetGarrisonPhase(terrainPhase) and terrainPhase or nil,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
+    if type(location.indoors) == "boolean" then position.indoors = location.indoors end
     if remap and remap.indoors ~= nil then position.indoors = remap.indoors end
     position.accessKey = self:GetLocationAccessKey(position)
     position.region = self:GetPositionRegion(position)
@@ -276,6 +299,7 @@ function Instance:GetPositionRegion(position)
     -- The nearest isolated ancestor wins. Two points can share world
     -- coordinates while still requiring a portal or an instance entrance.
     for _ = 1, 50 do
+        current = self:GetAccessMapID(current)
         if not current or current == 0 or seen[current] then return nil end
         seen[current] = true
         local info = self:GetMapAncestryInfo(current)
@@ -332,11 +356,24 @@ end
 
 function Instance:CanWalk(from, to)
     if not from or not to or from.noAutoconnect or to.noAutoconnect then return false end
-    if not to.phaseAgnostic and self.config.MapRequirements then
-        local requirements = self:GetMapAccessRequirements(to.uiMapID)
-        if requirements and self:CheckRequirements(requirements, EMPTY) ~= true then return false end
+    if not self:IsSameAccessRegion(from, to) then return false end
+    if self.config.MapRequirements then
+        local fromRule = not from.phaseAgnostic and self:GetMapAccessRequirements(from.uiMapID)
+        local toRule = not to.phaseAgnostic and self:GetMapAccessRequirements(to.uiMapID)
+        if fromRule or toRule then
+            local character = self.phaseCharacter or (self.env.getCharacter and self.env.getCharacter()) or EMPTY
+            if fromRule and self:CheckRequirements(fromRule, character) ~= true then
+                -- A shared observer must remain reachable from the player's
+                -- current map even when that map's regular access is closed.
+                if not to.phaseAgnostic or fromRule ~= self:GetMapAccessRequirements(to.uiMapID) then return false end
+                local currentMap = character.mapID
+                if not self.phaseCharacter and self.env.getCurrentMapID then currentMap = self.env.getCurrentMapID() end
+                if self:GetAccessMapID(currentMap) ~= self:GetAccessMapID(from.uiMapID) then return false end
+            end
+            if toRule and toRule ~= fromRule and self:CheckRequirements(toRule, character) ~= true then return false end
+        end
     end
-    return self:IsSameAccessRegion(from, to)
+    return true
 end
 
 function Instance:IsHearthstoneTooClose(from, to)
@@ -357,6 +394,7 @@ function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)
     if groundOnly == nil then
         local current, restrictions = mapID, self.config.GroundOnlyAreas or EMPTY
         for _ = 1, 50 do
+            current = self:GetAccessMapID(current)
             if restrictions[current] then
                 groundOnly = true
                 break

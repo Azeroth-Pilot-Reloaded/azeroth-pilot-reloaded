@@ -18,8 +18,14 @@ local WalkingProvider = Shared.WalkingProvider
 local frame, elapsed, originElapsed = CreateFrame("Frame"), 0, 0
 local navigationPoll = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/controller/NavigationEvents.lua:19:callback#1", --[[/APR_DIAG]]function(_, delta)
     if nav.worldLoading or not nav.polling then return end
+    local previousElapsed = elapsed
     elapsed = elapsed + delta
     if elapsed < Constants.ARRIVAL_POLL_SECONDS then
+        -- Established outdoor walking guidance gets one extra observation.
+        if previousElapsed < Constants.WALK_GUIDANCE_POLL_SECONDS and elapsed >= Constants.WALK_GUIDANCE_POLL_SECONDS then
+            local step = nav:GetActiveStep()
+            if step and step.walkingFollow then nav:PollArrival() end
+        end
         local request = APR.Services and APR.Services.request
         if request and request.waitingForOrigin then
             originElapsed = originElapsed + delta
@@ -73,7 +79,7 @@ local navigationPoll = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/cont
     end
     if Enabled() and nav._routeInputs and not nav.search and ContextCurrent(nav._routedStepContext) then
         local position = Position()
-        if nav.state == "ready" or nav.reason == "terrain_origin" then
+        if nav.state == "ready" and not nav._routeInputs.stoppedInRange or nav.reason == "terrain_origin" then
             position = nav:ObserveWalkingPosition(position, WalkingProvider())
         end
         if nav:HasPlanningInputsChanged(position) then nav:RequestUpdate() end

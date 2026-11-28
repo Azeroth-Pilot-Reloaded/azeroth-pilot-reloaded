@@ -1,6 +1,6 @@
 -- Reusable service discovery. All client observations and taxi data are injected.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("services", 12) then return end
+if not Lib:BeginModule("services", 13) then return end
 local Instance = Lib.Instance
 Lib.serviceLocations = Lib.serviceLocations or {}
 local PROFESSIONS = {
@@ -349,7 +349,12 @@ function Instance:IsServiceArrival(position, target, radius)
     if (position.x - target.x)^2 + (position.y - target.y)^2 > radius^2 then return false end
     if self:CanWalk(position, target) ~= true then return false end
     if self.IsSameAccessRegion and self:IsSameAccessRegion(position, target) ~= true then return false end
-    local provider = self.profile == "forever" and self.GetWalkingProvider and self:GetWalkingProvider()
+    local provider = (target.sharedFloorChord or self.profile == "forever")
+        and self.GetWalkingProvider and self:GetWalkingProvider()
+    if target.sharedFloorChord then
+        return provider and provider.CanFollowWalkingSegment
+            and provider:CanFollowWalkingSegment(position, target) == true or false
+    end
     if provider and provider.RequiresWalkingProof and provider:RequiresWalkingProof(position, target) then
         if position.z == nil and provider.GetGuidanceHeight then
             position = Lib.Copy(position)
@@ -610,7 +615,7 @@ function Job:Advance(operations, milliseconds)
         walkingSpeedCeiling = options.walkingSpeedCeiling,
         hearthstoneThresholdSeconds = options.hearthstoneThresholdSeconds,
         clock = options.clock, walkSpeed = options.walkSpeed or 7, walkSpeedAt = options.walkSpeedAt,
-        walkSpeedFor = options.walkSpeedFor, budget = options.budget or 0,
+        walkSpeedFor = options.walkSpeedFor, flight = options.flight, budget = options.budget or 0,
         resources = self.metadata.resources, edgeGroups = {self.edges, self.taxiEdges},
         canWalk = function(a, b) return nav:CanWalk(a, b) end,
         walkingRegionFor = nav.GetPositionRegion and function(p) return nav:GetPositionRegion(p) end,

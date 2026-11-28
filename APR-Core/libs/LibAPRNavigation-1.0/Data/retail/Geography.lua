@@ -19,7 +19,27 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
             [1159] = 1116,
             [1160] = 1116,
         },
+        GarrisonPhases = {
+            world = 1116,
+            garrisonType = 2,
+            Alliance = { mapID = 582, levels = { 1158, 1331, 1159 } },
+            Horde = { mapID = 590, levels = { 1152, 1330, 1153 } },
+        },
         HousingMaps = { [2351] = true, [2352] = true },
+        -- Alternate map art/ancestry for the same physical areas in the client.
+        -- Keep their own projections, but share the canonical access rules.
+        AccessMapAliases = {
+            [1266] = 90,   -- Undercity
+            [2175] = 2133, -- Zaralek Cavern
+            [2270] = 2213, -- City of Threads (alternate Khaz Algar map)
+            [2271] = 2248, -- Isle of Dorn
+            [2272] = 2214, -- The Ringing Deeps
+            [2273] = 2215, -- Hallowfall
+            [2374] = 2346, -- Undermine
+            [2398] = 2371, -- K'aresh
+            [2479] = 2405, -- Voidstorm
+            [2480] = 2413, -- Harandar
+        },
         ContinentMapOverrides = { [2509] = 13, [2537] = 13 },
         GroundOnlyAreas = {
             [90] = true,
@@ -230,6 +250,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
             [1672] = { mapType = 3 },
             [1673] = { mapType = 3 },
             [2305] = { mapType = 3 },
+            -- The Coreway minimap is a local part of the Ringing Deeps.
+            [2431] = { mapType = 5 },
             [2537] = { mapType = 3 },
         },
         actionLoadingSeconds = 5,
@@ -238,4 +260,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         skyridingThreshold = 10000,
         threshold = 2000,
     },
-}, 37)
+}, 39)

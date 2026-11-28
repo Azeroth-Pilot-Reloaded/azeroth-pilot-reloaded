@@ -42,6 +42,7 @@ function nav:IsItineraryValid()
         local departure = step.from
         if index == self.cursor then departure = Position() end
         if step.kind == "walk" and departure and data then
+            if index == self.cursor and step.path and step.path.flight and not self:CanFlyHere() then return false end
             -- Explicit crossings can join two access regions. An observed
             -- player can follow their proved corridor from either side.
             if step.connectionID and HasWalkingPath(step) and data.IsSameAccessRegion then
@@ -88,11 +89,12 @@ function nav:IsItineraryValid()
     return copper <= money
 end--[[APR_DIAG]]; nav.IsItineraryValid = APRTrace("APR-Core/features/navigation/controller/NavigationItinerary.lua:31:nav:IsItineraryValid#1", nav.IsItineraryValid)--[[/APR_DIAG]]
 
-function nav:GetRemainingSeconds(walkSpeedFor)
+function nav:GetRemainingSeconds(walkSpeedFor, flight)
     local position, seconds = Position(), 0
     local speed = self:GetMovementSpeed()
-    local function walkSeconds(from, to)
-        local liveSpeed = walkSpeedFor and walkSpeedFor(from, to) or speed
+    local function walkSeconds(from, to, speedFor)
+        speedFor = speedFor or walkSpeedFor
+        local liveSpeed = speedFor and speedFor(from, to) or speed
         if type(liveSpeed) ~= "number" or liveSpeed <= 0 or liveSpeed ~= liveSpeed or liveSpeed == math.huge then
             liveSpeed = speed
         end
@@ -110,15 +112,24 @@ function nav:GetRemainingSeconds(walkSpeedFor)
         end
         if step.kind == "walk" then
             local from = index == self.cursor and position or step.from
-            if HasWalkingPath(step) then
+            if HasWalkingPath(step) and step.path.flight then
+                if index == self.cursor then
+                    -- Keep the priced climb and takeoff in candidate comparisons.
+                    local yards = self:GetRemainingWalkYards()
+                    local full = 0
+                    for i = 2, #step.path do full = full + Distance(step.path[i - 1], step.path[i]) end
+                    duration = full > 0 and step.seconds * (yards / full) or 0
+                end
+            elseif HasWalkingPath(step) then
                 duration = 0
+                local groundSpeedFor = flight and flight.groundSpeedFor
                 if index == self.cursor and step.pathAimPoint then
-                    duration = walkSeconds(from, step.pathAimPoint)
+                    duration = walkSeconds(from, step.pathAimPoint, groundSpeedFor)
                     from = step.pathAimPoint
                 end
                 for pathIndex = index == self.cursor and (step.pathAimIndex or step.pathCursor or 2) or 2, #step.path do
                     local point = step.path[pathIndex]
-                    duration = duration + walkSeconds(from, point)
+                    duration = duration + walkSeconds(from, point, groundSpeedFor)
                     from = point
                 end
             else
@@ -419,8 +430,9 @@ function nav:Publish(result, context, generation)
         -- Compare both complete journeys using this search's speed model,
         -- including future outdoor/indoor walks. Stored segment durations may
         -- have been measured while flying and cannot compete with a fresh plan.
-        local walkSpeedFor = job and job.request and job.request.walkSpeedFor
-        local remaining, candidate = self:GetRemainingSeconds(walkSpeedFor), result.totalSeconds or math.huge
+        local request = job and job.request
+        local remaining = self:GetRemainingSeconds(request and request.walkSpeedFor, request and request.flight)
+        local candidate = result.totalSeconds or math.huge
         -- Keep exact ties stable, but accept every meaningful improvement.
         -- A fixed percentage/floor can retain a slower itinerary indefinitely.
         local requiredGain = 0.001

@@ -19,6 +19,7 @@ local L = Shared.L
 local NavigationText = Shared.NavigationText
 local Now = Shared.Now
 local Position = Shared.Position
+local SameLocationFields = Shared.SameLocationFields
 local TerrainRequired = Shared.TerrainRequired
 local WalkingProvider = Shared.WalkingProvider
 
@@ -61,12 +62,16 @@ end--[[APR_DIAG]]; nav.MarkGuidanceSurface = APRTrace("APR-Core/features/navigat
 
 function nav:GetGuidanceTarget()
     local step = self:GetActiveStep()
+    if step and step.pathArrowUnavailable then return end
     if HasWalkingPath(step) then return step.pathAimPoint or step.path[step.pathAimIndex or step.pathCursor or 2] end
     if step then return step.kind == "walk" and step.to or step.from end
 end--[[APR_DIAG]]; nav.GetGuidanceTarget = APRTrace("APR-Core/features/navigation/controller/NavigationDisplay.lua:62:nav:GetGuidanceTarget#3", nav.GetGuidanceTarget)--[[/APR_DIAG]]
 
 function nav:BlocksDirectGuidance()
     if self:IsNavigating() then return false end
+    if self.state == "planning" and self.search and self.search.request and self.search.request.deferDirect then
+        return true
+    end
     if self.state == "waiting_data" and self.reason == "terrain_coverage" then return true end
     if
         self.state == "ready"
@@ -180,14 +185,20 @@ function nav:RefreshStepForNavigation()
     if APR.UpdateStep then APR:UpdateStep() end
 end--[[APR_DIAG]]; nav.RefreshStepForNavigation = APRTrace("APR-Core/features/navigation/controller/NavigationDisplay.lua:179:nav:RefreshStepForNavigation#9", nav.RefreshStepForNavigation)--[[/APR_DIAG]]
 
-function nav:MarkRouteReady(forceRefresh, arrivedPosition)
+function nav:MarkRouteReady(forceRefresh, arrivedPosition, walkingEndpoint)
     local service = APR.Services and APR.Services:GetStep()
     if service then
         if self.waypointApproach then return end
         -- A verified walking corridor can resolve the arrival floor when the
         -- live position has no altitude and several floors share that XY.
         local point = arrivedPosition or Position()
-        if APR.NavigationData:IsServiceArrival(point, service.target) then
+        local target = service.target
+        if walkingEndpoint
+            and SameLocationFields(walkingEndpoint, target, APR.NavigationConstants.Navigation.LOCATION_FIELDS)
+        then
+            target = walkingEndpoint
+        end
+        if APR.NavigationData:IsServiceArrival(point, target) then
             APR.Services:Cancel()
         else
             -- Exhausting guidance is not proof of a legal direct approach.
@@ -264,10 +275,14 @@ function nav:Render()
             and ActionUsable(action) == true
             and (step.sourceFree or Distance(position, step.from) <= 30)
         or false
-    if self._renderedState ~= self.state or self._renderedStep ~= step or self._renderedActionReady ~= actionReady then
+    local hostile = step and step.kind == "walk" and step.path and step.path.lastHostileIndex
+        and (step.pathCursor or 2) <= step.path.lastHostileIndex
+    if self._renderedState ~= self.state or self._renderedStep ~= step or self._renderedActionReady ~= actionReady
+        or self._renderedHostile ~= hostile then
         self:ClearNavigationUiLines()
     end
     self._renderedState, self._renderedStep, self._renderedActionReady = self.state, step, actionReady
+    self._renderedHostile = hostile
     if self:IsNavigating() and step then
         -- The service destination already has its own row. A final walking
         -- instruction with the same label adds no information to that row.
@@ -281,7 +296,18 @@ function nav:Render()
             if actionReady then
                 ui:AddStepButton(self.NavigationStepKey .. "-" .. tostring(step.id), action.data, action.type)
             end
-            if ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
+        end
+        if hostile then
+            local faction = step.path[step.path.lastHostileIndex].terrainFaction
+            local enemy = faction == "Alliance" and FACTION_HORDE or faction == "Horde" and FACTION_ALLIANCE
+            local warning = enemy and FACTION_CONTROLLED_TERRITORY
+                and string.format(FACTION_CONTROLLED_TERRITORY, enemy) or FACTION_STANDING_LABEL2
+            if warning then
+                ui:AddQuestSteps(self.NavigationStepKey .. "-hostile", warning, 0, nil, true, false, self.ErrorTextColor)
+            end
+        end
+        if (hostile or not duplicateDestination) and ui.AddQuestDivider then
+            ui:AddQuestDivider(self.NavigationDividerStepKey)
         end
     elseif self.state == "no_path" then
         local text = APR.NavigationAdapter
@@ -362,8 +388,25 @@ function nav:SearchFailed(blockers, missingCoverage)
         self.recomputeKeepingDirect = nil
         return
     end
-    local state = (self.waitingData or (InCombatLockdown and InCombatLockdown())) and "waiting_data" or "no_path"
     local context, destination, start, inputs = self.context, self.destination, self.start, self._routeInputs
+    local inCombat = InCombatLockdown and InCombatLockdown()
+    local state = (self.waitingData or inCombat) and "waiting_data" or "no_path"
+    local data = APR.NavigationData
+    if not inCombat and destination and not destination.phaseAgnostic and data and data.GetMapAccessRequirements then
+        local requirements = data:GetMapAccessRequirements(destination.uiMapID)
+        local phase = requirements and requirements.phase
+        if phase and data:GetWorldPhase(phase.group) ~= phase.phase then
+            -- A closed destination can also break the diagnostic graph's
+            -- walking approaches. Report the gate without publishing a path.
+            blockers = { {
+                id = "map-access:" .. destination.uiMapID,
+                from = start,
+                to = destination,
+                blockedRequirements = requirements,
+            } }
+            state = "no_path"
+        end
+    end
     local approach = self.waypointApproach and self.waypointApproach.reached and self.waypointApproach
     local baselinePending = self._directBaselinePending
     local retainedArrow = state == "waiting_data"

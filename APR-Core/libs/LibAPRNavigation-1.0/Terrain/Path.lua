@@ -5,6 +5,8 @@ local floor, abs, sqrt = math.floor, math.abs, math.sqrt
 local min, max = math.min, math.max
 local diagonalExtra = sqrt(2) - 1
 local fineChordLimit = 20
+local outdoorHeightTolerance = 2
+local outdoorShortcutLimit = 40
 local dx, dy = { 1, -1, 0, 0, 1, 1, -1, -1 }, { 0, 0, 1, -1, 1, -1, 1, -1 }
 local opposite = { 2, 1, 4, 3, 8, 7, 6, 5 }
 local fineColumnOffsets = {}
@@ -681,6 +683,23 @@ local function localDetour(ctx, map, from, to)
     end
 end
 
+local function localSurfaceDetour(ctx, map, from, to)
+    local _, path = runtime.SurfaceRoute({ map = map, from = from, to = to, profile = ctx.profile })
+    if not path or #path <= 2 then return end
+    local reverse, nextPoint = {}, to
+    for i = #path - 1, 1, -1 do
+        local point = i == 1 and from or path[i]
+        -- Keep the original coarse anchors. The fine search can snap their
+        -- heights, so prove each join using the heights guidance will receive.
+        if not runtime.Sight(map, point.x, point.y, point.z, nextPoint.x, nextPoint.y, nextPoint.z, ctx) then
+            return
+        end
+        if i > 1 then reverse[#reverse + 1] = point end
+        nextPoint = point
+    end
+    return reverse
+end
+
 local function verifyPath(request, ctx, raw, preview, progress)
     local from, to = request.from, request.to
     local st, result = ctx.st, {from}
@@ -695,7 +714,9 @@ local function verifyPath(request, ctx, raw, preview, progress)
     -- A short lookahead bounds repeated casts in a winding corridor. The
     -- underlying cells and the chosen shortcut still use the same proof.
     local lookahead = preview and 8 or (st.data.portalCostPerYard and 12 or 32)
-    local ceilings, corridorCeilings = {}, {}
+    local ceilings, corridorCeilings, exposure = {}, {}, {}
+    local factionCosts = runtime.FactionCostContext(st, request.profile, true)
+    local outdoorProof
     while i < #raw do
         work()
         local anchor = result[#result]
@@ -703,12 +724,19 @@ local function verifyPath(request, ctx, raw, preview, progress)
         local lastIndex = math.min(#raw, i + lookahead)
         local ceiling = raw[nextIndex].rate
         local corridorCeiling = ceiling
+        if factionCosts then
+            exposure[nextIndex] = runtime.HostileDistance(factionCosts, anchor, raw[nextIndex])
+        end
         for candidate = nextIndex + 1, lastIndex do
             work()
             ceiling = math.min(ceiling, raw[candidate].rate)
             corridorCeiling = math.max(corridorCeiling, raw[candidate].rate)
             ceilings[candidate] = ceiling
             corridorCeilings[candidate] = corridorCeiling
+            if factionCosts then
+                exposure[candidate] = exposure[candidate - 1]
+                    + runtime.HostileDistance(factionCosts, raw[candidate - 1], raw[candidate])
+            end
         end
         -- A short chord can hit a blocked corner even when a longer chord
         -- has a clear angle. Try furthest first and verify the full segment.
@@ -723,16 +751,47 @@ local function verifyPath(request, ctx, raw, preview, progress)
                 and staysNear(raw, nextIndex, candidate, anchor, point, st.unit / 3) then
                 rate = corridorCeilings[candidate]
             end
-            if runtime.Sight(request.map, anchor.x, anchor.y, anchor.z, point.x, point.y, point.z, ctx, rate) then
-                nextIndex = candidate
-                verified = true
-                break
+            if not factionCosts or runtime.HostileDistance(factionCosts, anchor, point) <= exposure[candidate] + .001 then
+                local clear = runtime.Sight(request.map, anchor.x, anchor.y, anchor.z, point.x, point.y, point.z, ctx, rate)
+                -- For short outdoor shortcuts, permit the highest terrain cost already in this corridor.
+                if not clear and candidate == lastIndex and candidate > i + 1 and rate < corridorCeilings[candidate]
+                    and ctx.style ~= "roads"
+                    and (point.x - anchor.x)^2 + (point.y - anchor.y)^2 <= outdoorShortcutLimit^2 then
+                    outdoorProof = outdoorProof or {land = ctx.land, water = ctx.water, outdoorOnly = true}
+                    clear = runtime.Sight(request.map, anchor.x, anchor.y, anchor.z, point.x, point.y, point.z,
+                        outdoorProof, corridorCeilings[candidate], true)
+                end
+                if clear then
+                    nextIndex = candidate
+                    verified = true
+                    break
+                end
             end
         end
         if not verified then
-            for candidate = min(nextIndex + 2, lastIndex), nextIndex, -1 do
+            local page = G.surfacePage(st, anchor.x, anchor.y, true)
+            local fineAttempts = 0
+            local coarseLimit = min(nextIndex + 2, lastIndex)
+            for candidate = page and lastIndex or coarseLimit, nextIndex, -1 do
                 local point = candidate == #raw and to or raw[candidate]
-                local bend = localDetour(ctx, request.map, anchor, point)
+                local bend
+                if page and fineAttempts < 3 and max(abs(point.x - anchor.x), abs(point.y - anchor.y)) <= 12 * st.unit
+                    and G.sameWindow(page, G.surfacePage(st, point.x, point.y, true)) then
+                    fineAttempts = fineAttempts + 1
+                    bend = localSurfaceDetour(ctx, request.map, anchor, point)
+                end
+                if not bend and candidate <= coarseLimit then
+                    bend = localDetour(ctx, request.map, anchor, point)
+                end
+                if bend and factionCosts then
+                    local distance, previous = 0, anchor
+                    for n = #bend, 1, -1 do
+                        distance = distance + runtime.HostileDistance(factionCosts, previous, bend[n])
+                        previous = bend[n]
+                    end
+                    distance = distance + runtime.HostileDistance(factionCosts, previous, point)
+                    if distance > exposure[candidate] + .001 then bend = nil end
+                end
                 if bend then
                     for n = #bend, 1, -1 do result[#result + 1] = bend[n] end
                     nextIndex, verified = candidate, true
@@ -844,7 +903,9 @@ local function findPath(request)
     -- A straight, uniformly cheapest chord needs no expansion. On the
     -- foreground corridor permit ordinary land, preserving costly hazards.
     local rate = request.quick and math.min(1, land[0]) or ctx.minimum / st.unit
-    if runtime.Sight(request.map, from.x, from.y, from.z, to.x, to.y, to.z, ctx, rate) then
+    local factionCosts = runtime.FactionCostContext(st, request.profile, true)
+    if (not factionCosts or runtime.HostileFraction(factionCosts, from, to) == 0)
+        and runtime.Sight(request.map, from.x, from.y, from.z, to.x, to.y, to.z, ctx, rate) then
         return {from, to}
     end
     local refused
@@ -1587,7 +1648,7 @@ local function previewDistances(st,from,to)
     end
 end
 
-local function simplifySurfacePath(st, map, path)
+local function simplifySurfacePath(st, map, path, factionCosts)
     local result, first = {path[1]}, 1
     while first < #path do
         work()
@@ -1595,11 +1656,22 @@ local function simplifySurfacePath(st, map, path)
         local page = G.surfacePage(st, anchor.x, anchor.y, true)
         if page then
             local candidate = min(#path, first + floor(2 * fineChordLimit / page.step))
+            local exposure = {}
+            if factionCosts then
+                local yards = 0
+                for i = first + 1, candidate do
+                    local a, b = path[i - 1], path[i]
+                    yards = yards + joinDistance(a, b) * runtime.HostileFraction(factionCosts, a, b)
+                    exposure[i] = yards
+                end
+            end
             while candidate > first + 1 do
                 work()
                 local point = path[candidate]
                 if max(abs(point.x - anchor.x), abs(point.y - anchor.y)) <= fineChordLimit then
-                    if runtime.Sight(map, anchor.x, anchor.y, anchor.z, point.x, point.y, point.z, {}, nil, nil, true) then
+                    if (not factionCosts or joinDistance(anchor, point)
+                        * runtime.HostileFraction(factionCosts, anchor, point) <= exposure[candidate] + .001)
+                        and runtime.Sight(map, anchor.x, anchor.y, anchor.z, point.x, point.y, point.z, {}, nil, nil, true) then
                         nextIndex = candidate
                         break
                     end
@@ -1718,6 +1790,11 @@ function runtime.SurfaceRoute(request,eager,allWindows,stepDown)
     end
     if connectedFloors==0 then return true,nil,"unverified","goal" end
     local queue,cost,parent,nodes={},{},{},{}
+    local factionCosts = runtime.FactionCostContext(st, request.profile, true)
+    local function weighted(a, b, distance)
+        if not factionCosts then return distance end
+        return runtime.WithFactionCost(distance, runtime.HostileFraction(factionCosts, a, b))
+    end
     -- Nearby windows can share a short corridor. The weighted preview can
     -- send that walk toward a coarse portal even when an exact route is cheap.
     local localSpan = st.unit * st.c
@@ -1726,6 +1803,7 @@ function runtime.SurfaceRoute(request,eager,allWindows,stepDown)
     local estimate=preview and previewDistances(st,from,to)
     local function visit(node,score,prev)
         if preview and preview[node.id] then return end
+        if factionCosts and prev then score = cost[prev] + weighted(nodes[prev], node, score - cost[prev]) end
         if not cost[node.id] or score<cost[node.id] then
             nodes[node.id],cost[node.id],parent[node.id]=node,score,prev
             local x,y=abs(node.x-to.x),abs(node.y-to.y)
@@ -1740,7 +1818,7 @@ function runtime.SurfaceRoute(request,eager,allWindows,stepDown)
             push(queue,node.id,score,score+lower)
         end
     end
-    for _,n in ipairs(starts) do visit(n,joinDistance(start,n,startBends[n.id])) end
+    for _,n in ipairs(starts) do visit(n,weighted(start,n,joinDistance(start,n,startBends[n.id]))) end
     local winner,storey,best,checkedFloors
     local tiles=mixed and {} or nil
     -- Keep the continental search on the certified coarse mesh. Only enter
@@ -1755,7 +1833,8 @@ function runtime.SurfaceRoute(request,eager,allWindows,stepDown)
             if preview then preview[id]=true end
             for _,i in ipairs(finishes[id] or {}) do
                 if storey and i~=storey then return true,nil,"surface",{unresolvedSurface=true,unresolvedTo=true} end
-                local value=score+joinDistance(n,precisePoint(to,heights[i]),endBends[i][id])
+                local goal = precisePoint(to,heights[i])
+                local value=score+weighted(n,goal,joinDistance(n,goal,endBends[i][id]))
                 if not best or value<best then winner,storey,best=id,i,value end
             end
             if not multipleWindows and best and connectedFloors>1 and not checkedFloors then
@@ -1849,7 +1928,7 @@ function runtime.SurfaceRoute(request,eager,allWindows,stepDown)
         goal.coarseEndpoint=arrival and true or nil
         path[#path+1]=goal
     end
-    return true,simplifySurfacePath(st,request.map,path)
+    return true,simplifySurfacePath(st,request.map,path,factionCosts)
 end
 
 -- Return the interpolated height on a directed PCG1 edge that contains
@@ -1928,8 +2007,8 @@ function runtime.GuidanceHeight(id, x, y)
     end
 end
 
-function runtime.ContinueWalkingHeight(point, previous)
-    local map = point.instanceID
+function runtime.ContinueWalkingHeight(point, previous, map)
+    map = map or point.instanceID
     local st = G.State(map)
     if not st then return end
     local page = G.surfacePage(st, point.x, point.y, false)
@@ -1980,7 +2059,15 @@ crossesPage=function(st, k, t, node, j, dest, candidate, ctx)
 end
 
 local maxRise = math.tan(math.rad(50))
-local function followsFan(fan, x, y, mx, my, first, last, width, z, tz)
+local function dryOutdoor(tile, node)
+    return tile.bits[node] < 32 and (tile.class[node] or 0) % 8 < 4
+end
+
+local function heightTolerance(tile, node)
+    return dryOutdoor(tile, node) and not tile.cell[node] and not tile.layers[node] and outdoorHeightTolerance or 1
+end
+
+local function followsFan(fan, x, y, mx, my, first, last, width, z, tz, tolerance)
     if last <= first then return true end
     local one = mx ~= my and (y - x) / (mx - my) or last
     local two = mx ~= -my and -(x + y) / (mx + my) or last
@@ -2008,7 +2095,7 @@ local function followsFan(fan, x, y, mx, my, first, last, width, z, tz)
             if not supported(G.gradient(fan, px, py)) then return false end
         end
         local height = G.fanHeight(fan, x + mx*b, y + my*b)
-        if z and tz and abs(z + (tz - z)*b - height) > 1 then return false end
+        if z and tz and abs(z + (tz - z)*b - height) > tolerance then return false end
         local ok = height - previous <= span * (limit - 0.1) * (b - a)
         previous = height
         return ok
@@ -2043,7 +2130,9 @@ function runtime.Sight(id, x, y, z, tx, ty, tz, ctx, ceiling, unbranched,nativeO
     if not st then return end
     local fine,fineCovered,finePending=G.surfacePage(st,x,y,ctx~=nil)
     local other,otherCovered,otherPending=G.surfacePage(st,tx,ty,ctx~=nil)
-    if z and tz and canonicalChord(st,x,y,z,tx,ty,tz,nativeOnly and ctx~=nil) then return true end
+    local outdoorOnly = ctx and ctx.outdoorOnly
+    if outdoorOnly and (fineCovered or otherCovered) then return false end
+    if not outdoorOnly and z and tz and canonicalChord(st,x,y,z,tx,ty,tz,nativeOnly and ctx~=nil) then return true end
     -- A cold atlas cannot disprove a previously certified segment. Let the
     -- guidance cursor reload it through its bounded terrain job.
     if nativeOnly and (finePending or otherPending) then return nil end
@@ -2104,6 +2193,7 @@ function runtime.Sight(id, x, y, z, tx, ty, tz, ctx, ceiling, unbranched,nativeO
     if not onEdges and ax + ay > 0 then mask = 2 ^ (floor(math.atan2(my, mx) * 8 / math.pi + 0.5) % 16) end
     local missingSurface
     local function clears(tile, node, ix, iy, first, last)
+        if outdoorOnly and not dryOutdoor(tile, node) then return false end
         local pageKey=floor(ix/st.c)*st.data.ny+floor(iy/st.c)
         local raw=st.data.surface or st.data.packed and st.data.packed.surface
         if raw and raw[pageKey+1] then
@@ -2119,8 +2209,11 @@ function runtime.Sight(id, x, y, z, tx, ty, tz, ctx, ceiling, unbranched,nativeO
         -- A graph edge identifies the surface transition. Its centre line
         -- still has to follow the actual terrain triangles when supplied.
         if not mask and not fan then return true end
-        if fan and not followsFan(fan, fx-ix-0.5, fy-iy-0.5, mx, my, first, last, st.unit, z, tz) then
-            return false
+        if fan then
+            local tolerance = onEdges and 1 or heightTolerance(tile, node)
+            if not followsFan(fan, fx-ix-0.5, fy-iy-0.5, mx, my, first, last, st.unit, z, tz, tolerance) then
+                return false
+            end
         end
         if fan and fan.occupied == 0 then return true end
         local offset = tile.subclearance and tile.subclearance[node]
@@ -2213,7 +2306,8 @@ function runtime.Sight(id, x, y, z, tx, ty, tz, ctx, ceiling, unbranched,nativeO
         if (dest.clearance or dest.subclearance or dest.support) and (xx ~= ex or yy ~= ey) and z and tz then
             local nearest = ((xx + 0.5 - fx) * mx + (yy + 0.5 - fy) * my) / (mx * mx + my * my)
             local height = z + (tz - z) * max(enter, min(exit, nearest))
-            if abs(G.centerHeight(dest, nextNode) - height) > (onEdges and 1e-6 or max(1, st.data.zstep / 2)) then return false end
+            local tolerance = onEdges and 1e-6 or max(heightTolerance(dest, nextNode), st.data.zstep / 2)
+            if abs(G.centerHeight(dest, nextNode) - height) > tolerance then return false end
         end
         if ceiling then
             local costs = dest.bits[nextNode] >= 32 and ctx.water or ctx.land

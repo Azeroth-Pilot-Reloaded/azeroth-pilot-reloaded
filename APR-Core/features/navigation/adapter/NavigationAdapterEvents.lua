@@ -23,17 +23,20 @@ local profile = Shared.profile
 local observedGeometryArt = {}
 
 local function Changed(housingContextChanged, event)
+    local navigation = APR.navigation
     if
         not housingContextChanged
         and not APR.ActiveRoute
         and not (APR.Services and (APR.Services.active or APR.Services.request))
-        and not (APR.navigation and APR.navigation.search)
+        and not (navigation and (navigation.search or (event == "UNIT_PHASE" and navigation.destination)))
+        and event ~= "GARRISON_UPDATE"
     then
         if
             event == "QUEST_TURNED_IN"
             or event == "PLAYER_ENTERING_WORLD"
             or event == "ZONE_CHANGED_NEW_AREA"
             or event == "NEIGHBORHOOD_MAP_DATA_UPDATED"
+            or event == "UNIT_PHASE"
         then
             observedGeometryArt = {}
             Data:InvalidatePositionCache()
@@ -47,7 +50,7 @@ local function Changed(housingContextChanged, event)
     if not Number(mapID) then mapID = nil end
     local artID = mapID and Call(C_Map.GetMapArtID, mapID)
     if not Number(artID) then artID = nil end
-    local geometryChanged = event == "NEIGHBORHOOD_MAP_DATA_UPDATED"
+    local geometryChanged = event == "NEIGHBORHOOD_MAP_DATA_UPDATED" or event == "GARRISON_UPDATE" or event == "UNIT_PHASE"
     if mapID and artID then
         geometryChanged = geometryChanged or observedGeometryArt[mapID] ~= artID
         observedGeometryArt[mapID] = artID
@@ -63,7 +66,6 @@ local function Changed(housingContextChanged, event)
             Data:InvalidatePositionCache()
         end
     end
-    local navigation = APR.navigation
     local cancelledHousing = false
     if housingContextChanged and navigation and navigation.Cancel then
         -- Secure housing buttons must not keep an old house identity. A
@@ -150,6 +152,15 @@ elseif frame.RegisterUnitEvent then
 else
     frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 end
+if profile == "retail" then
+    if APR.RegisterSupportedEvent then
+        APR:RegisterSupportedEvent(frame, "UNIT_PHASE", "player")
+    elseif frame.RegisterUnitEvent then
+        Call(frame.RegisterUnitEvent, frame, "UNIT_PHASE", "player")
+    else
+        Call(frame.RegisterEvent, frame, "UNIT_PHASE")
+    end
+end
 frame:RegisterEvent("ADDONS_UNLOADING")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
@@ -158,10 +169,12 @@ if APR.RegisterMessage then
 end
 
 for event in pairs(Constants.availabilityChanges) do
-    if APR.TryRegisterEvent then
-        APR:TryRegisterEvent(frame, event)
-    else
-        --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event)
+    if event ~= "GARRISON_UPDATE" or profile == "retail" then
+        if APR.TryRegisterEvent then
+            APR:TryRegisterEvent(frame, event)
+        else
+            --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event)
+        end
     end
 end
 if C_Housing then
@@ -178,6 +191,7 @@ frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/
     then
         return
     end
+    if event == "UNIT_PHASE" and (not Accessible(payload) or payload ~= "player") then return end
     if event == "ADDON_LOADED" or event == "PLAYER_REGEN_ENABLED" then
         Adapter:QueueWaypointRefresh()
         return

@@ -17,7 +17,7 @@ local ReadableLocationValue = Shared.ReadableLocationValue
 
 local function ReadableMountValue(value)
     return not (issecretvalue and issecretvalue(value)) and (not APR.CanAccessValue or APR:CanAccessValue(value))
-end--[[APR_DIAG]]; ReadableMountValue = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:16:ReadableMountValue#1", ReadableMountValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReadableMountValue = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:18:ReadableMountValue#1", ReadableMountValue)--[[/APR_DIAG]]
 
 local function UsableCollectedMount(journal, mountID)
     if not mountID or not journal or not journal.GetMountInfoByID then return nil end
@@ -26,16 +26,30 @@ local function UsableCollectedMount(journal, mountID)
     if not collected then return false end
     if journal.GetMountUsabilityByID then usable = journal.GetMountUsabilityByID(mountID, true) end
     if ReadableMountValue(usable) and type(usable) == "boolean" then return usable end
-end--[[APR_DIAG]]; UsableCollectedMount = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:20:UsableCollectedMount#2", UsableCollectedMount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UsableCollectedMount = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:22:UsableCollectedMount#2", UsableCollectedMount)--[[/APR_DIAG]]
+
+function nav:IsAirborne()
+    local flying = IsFlying and IsFlying()
+    if ReadableMountValue(flying) and flying == true then return true end
+    local gliding = C_PlayerInfo and C_PlayerInfo.GetGlidingInfo and C_PlayerInfo.GetGlidingInfo()
+    return ReadableMountValue(gliding) and gliding == true
+end--[[APR_DIAG]]; nav.IsAirborne = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:31:nav:IsAirborne#3", nav.IsAirborne)--[[/APR_DIAG]]
+
+function nav:CanFlyHere()
+    local flyable = IsFlyableArea and IsFlyableArea()
+    local indoors = IsIndoors and IsIndoors()
+    return ReadableMountValue(flyable) and flyable == true
+        and ReadableMountValue(indoors) and indoors ~= true
+end--[[APR_DIAG]]; nav.CanFlyHere = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:38:nav:CanFlyHere#4", nav.CanFlyHere)--[[/APR_DIAG]]
 
 function nav:GetThreshold()
     if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then return Constants.GROUND_THRESHOLD_YARDS end
     local sky = false
     if C_PlayerInfo and C_PlayerInfo.GetGlidingInfo then
         local _, canGlide = C_PlayerInfo.GetGlidingInfo()
-        sky = canGlide == true
+        sky = ReadableMountValue(canGlide) and canGlide == true
     end
-    local canFly = IsFlyableArea and IsFlyableArea() and not (IsIndoors and IsIndoors())
+    local canFly = self:CanFlyHere()
     -- GetGlidingInfo describes the current mount. An unmounted player may
     -- still have a usable skyriding mount and must not be treated as grounded.
     if
@@ -63,7 +77,7 @@ function nav:GetThreshold()
         end
     end
     return sky and canFly and Constants.SKYRIDING_THRESHOLD_YARDS or Constants.GROUND_THRESHOLD_YARDS
-end--[[APR_DIAG]]; nav.GetThreshold = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:29:nav:GetThreshold#3", nav.GetThreshold)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.GetThreshold = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:45:nav:GetThreshold#5", nav.GetThreshold)--[[/APR_DIAG]]
 
 function nav:HasUsableMount()
     local cached = self._mountCapability
@@ -83,7 +97,7 @@ function nav:HasUsableMount()
     end
     self._mountCapability = { expires = Now() + Constants.MOUNT_CACHE_SECONDS, usable = usable }
     return usable
-end--[[APR_DIAG]]; nav.HasUsableMount = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:66:nav:HasUsableMount#4", nav.HasUsableMount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.HasUsableMount = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:82:nav:HasUsableMount#6", nav.HasUsableMount)--[[/APR_DIAG]]
 
 function nav:GetMovementSpeed(threshold)
     -- An `and` expression keeps only the first return value. Sample all four
@@ -95,7 +109,7 @@ function nav:GetMovementSpeed(threshold)
     local function speed(value)
         if type(value) ~= "number" or (issecretvalue and issecretvalue(value)) then return 0 end
         return value == value and value < math.huge and math.max(0, value) or 0
-    end--[[APR_DIAG]]; speed = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:93:speed#6", speed)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; speed = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:109:speed#8", speed)--[[/APR_DIAG]]
     current, running, flying = speed(current), speed(running), speed(flying)
     threshold = threshold or self:GetThreshold()
     if threshold == Constants.SKYRIDING_THRESHOLD_YARDS then
@@ -108,7 +122,7 @@ function nav:GetMovementSpeed(threshold)
         if mountSpeed and self:HasUsableMount() then return math.max(current, running, mountSpeed) end
     end
     return math.max(current, running, Constants.BASE_RUN_SPEED)
-end--[[APR_DIAG]]; nav.GetMovementSpeed = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:86:nav:GetMovementSpeed#5", nav.GetMovementSpeed)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.GetMovementSpeed = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:102:nav:GetMovementSpeed#7", nav.GetMovementSpeed)--[[/APR_DIAG]]
 
 function nav:GetWalkingSpeedModel(start, threshold)
     local data = APR.NavigationData
@@ -122,11 +136,11 @@ function nav:GetWalkingSpeedModel(start, threshold)
     -- The movement lookup already checked mount availability when needed.
     -- Repeating a journal scan here is especially expensive while indoors.
     local groundSpeed = math.min(currentGroundSpeed, Constants.JOURNEYMAN_RIDE_SPEED)
-    local gliding = C_PlayerInfo and C_PlayerInfo.GetGlidingInfo and C_PlayerInfo.GetGlidingInfo()
-    local confirmedGround = IsFlying and IsFlying() == false and gliding ~= true
-    local function walkSpeedAt(point)
-        if not data.GetWalkingSpeed then return walkSpeed end
-        local ground = groundSpeed
+    local airborne = self:IsAirborne()
+    local flying = IsFlying and IsFlying()
+    local confirmedGround = ReadableMountValue(flying) and flying == false and not airborne
+    local function groundSpeedAt(point)
+        if point.indoors == true then return Constants.BASE_RUN_SPEED end
         -- A live ground vehicle can exceed mount speed in its own zone. Do not
         -- transfer that speed to an unrelated destination or to an interior.
         if
@@ -136,15 +150,53 @@ function nav:GetWalkingSpeedModel(start, threshold)
             and point.accessKey == start.accessKey
             and point.floor == start.floor
         then
-            ground = currentGroundSpeed
+            return currentGroundSpeed
         end
-        return data:GetWalkingSpeed(point, walkSpeed, ground)
-    end--[[APR_DIAG]]; walkSpeedAt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:121:walkSpeedAt#8", walkSpeedAt)--[[/APR_DIAG]]
+        return groundSpeed
+    end--[[APR_DIAG]]; groundSpeedAt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:141:groundSpeedAt#10", groundSpeedAt)--[[/APR_DIAG]]
+    local function groundSpeedFor(from, to)
+        return math.min(groundSpeedAt(from), groundSpeedAt(to))
+    end--[[APR_DIAG]]; groundSpeedFor = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:155:groundSpeedFor#11", groundSpeedFor)--[[/APR_DIAG]]
+    local flight
+    local sky = threshold == Constants.SKYRIDING_THRESHOLD_YARDS
+    if data.profile == "retail" and self:CanFlyHere() and (sky or airborne) then
+        if airborne and C_PlayerInfo and C_PlayerInfo.GetGlidingInfo then
+            local gliding, canGlide = C_PlayerInfo.GetGlidingInfo()
+            sky = ReadableMountValue(gliding) and gliding == true
+                or ReadableMountValue(canGlide) and canGlide == true
+        end
+        local speed = sky and math.max(walkSpeed, Constants.SKYRIDING_SPEED) or Constants.STEADY_FLIGHT_SPEED
+        if airborne and not sky and GetUnitSpeed then
+            local _, _, flying = GetUnitSpeed("player")
+            if ReadableLocationValue(flying) and type(flying) == "number" and flying > 0 then speed = flying end
+        end
+        local function canFlyAt(point)
+            return not (point.indoors or point.isInstance or point.floor or point.accessKey or point.noAutoconnect)
+                and (not data.GetWalkingSpeed or data:GetWalkingSpeed(point, 2, 1) == 2)
+        end--[[APR_DIAG]]; canFlyAt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:171:canFlyAt#12", canFlyAt)--[[/APR_DIAG]]
+        flight = {
+            speed = speed,
+            climbSpeed = speed * (sky and 0.30 or 0.60),
+            airborne = airborne,
+            origin = start,
+            groundSpeedFor = groundSpeedFor,
+            groundSpeedCeiling = confirmedGround and currentGroundSpeed or groundSpeed,
+            canFly = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:181:callback#13", --[[/APR_DIAG]]function(from, to) return canFlyAt(from) and canFlyAt(to) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        }
+        walkSpeed = math.max(speed, groundSpeed)
+    elseif data.profile == "retail" then
+        walkSpeed = airborne and groundSpeed or currentGroundSpeed
+    end
+    local function walkSpeedAt(point)
+        local ground = groundSpeedAt(point)
+        if flight then return flight.canFly(point, point) and flight.speed or ground end
+        return data.GetWalkingSpeed and data:GetWalkingSpeed(point, walkSpeed, ground) or walkSpeed
+    end--[[APR_DIAG]]; walkSpeedAt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:185:walkSpeedAt#14", walkSpeedAt)--[[/APR_DIAG]]
     local function walkSpeedFor(from, to)
         return math.min(walkSpeedAt(from), walkSpeedAt(to))
-    end--[[APR_DIAG]]; walkSpeedFor = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:137:walkSpeedFor#9", walkSpeedFor)--[[/APR_DIAG]]
-    return walkSpeed, math.max(walkSpeed, currentGroundSpeed), walkSpeedAt, walkSpeedFor
-end--[[APR_DIAG]]; nav.GetWalkingSpeedModel = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:108:nav:GetWalkingSpeedModel#7", nav.GetWalkingSpeedModel)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; walkSpeedFor = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:190:walkSpeedFor#15", walkSpeedFor)--[[/APR_DIAG]]
+    return walkSpeed, math.max(walkSpeed, currentGroundSpeed), walkSpeedAt, walkSpeedFor, flight
+end--[[APR_DIAG]]; nav.GetWalkingSpeedModel = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:127:nav:GetWalkingSpeedModel#9", nav.GetWalkingSpeedModel)--[[/APR_DIAG]]
 
 function nav:GetDestination(step)
     if step._service then return step.target, step.target.uiMapID end
@@ -212,7 +264,7 @@ function nav:GetDestination(step)
         destination = APR.NavigationData:NormalizeLocation(destination)
     end
     return destination, map
-end--[[APR_DIAG]]; nav.GetDestination = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:143:nav:GetDestination#10", nav.GetDestination)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.GetDestination = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:196:nav:GetDestination#16", nav.GetDestination)--[[/APR_DIAG]]
 
 function nav:RequiresScenarioNavigation(step)
     local map = APR.GetScenarioMapIDForStep and APR:GetScenarioMapIDForStep(step)
@@ -225,7 +277,7 @@ function nav:RequiresScenarioNavigation(step)
     end
     if step.LeaveScenario or step.LeaveInstance then return inside end
     return not inside and not step.EnterScenario and not step.EnterInstance
-end--[[APR_DIAG]]; nav.RequiresScenarioNavigation = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:211:nav:RequiresScenarioNavigation#11", nav.RequiresScenarioNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RequiresScenarioNavigation = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:264:nav:RequiresScenarioNavigation#17", nav.RequiresScenarioNavigation)--[[/APR_DIAG]]
 
 local function Exempt(step)
     if step._service then return false end
@@ -255,7 +307,7 @@ local function Exempt(step)
             and not step.Zone
             and not step.Zones
         )
-end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:224:Exempt#12", Exempt)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:277:Exempt#18", Exempt)--[[/APR_DIAG]]
 
 function nav:ShouldSkipHearthstone(nextStep)
     local data = APR.NavigationData
@@ -272,6 +324,6 @@ function nav:ShouldSkipHearthstone(nextStep)
     end
     local bind = data.GetBindPosition and data:GetBindPosition()
     return data:IsHearthstoneTooClose(position, bind)
-end--[[APR_DIAG]]; nav.ShouldSkipHearthstone = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:254:nav:ShouldSkipHearthstone#13", nav.ShouldSkipHearthstone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.ShouldSkipHearthstone = APRTrace("APR-Core/features/navigation/controller/NavigationObjective.lua:307:nav:ShouldSkipHearthstone#19", nav.ShouldSkipHearthstone)--[[/APR_DIAG]]
 
 APR.navigation._helpers.Exempt = Exempt

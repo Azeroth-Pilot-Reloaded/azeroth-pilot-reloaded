@@ -51,7 +51,7 @@ end--[[APR_DIAG]]; WalkingTerrainHeight = APRTrace("APR-Core/features/navigation
 
 local function WalkingPosition(position, provider, step)
     if position and position.z == nil then
-        if position.indoors == nil and IsIndoors and APR.NavigationData and APR.NavigationData.profile == "forever" then
+        if position.indoors == nil and IsIndoors then
             position = CopyLocation(position)
             position.indoors = IsIndoors() == true
         end
@@ -105,7 +105,12 @@ function nav:ObserveWalkingPosition(position, provider)
         if previous and not moved then
             height = previous.z
         else
-            height = provider:GetWalkingObservationHeight(position, previous)
+            local probe = position
+            if position.indoors == nil then
+                probe = CopyLocation(position)
+                probe.indoors = indoors
+            end
+            height = provider:GetWalkingObservationHeight(probe, previous)
         end
     end
     if height == nil then
@@ -135,7 +140,6 @@ local function WalkingAccessReached(position, point, checkHeight, provider)
         not TargetMapReached(position, point)
         and not (
             data
-            and data.profile == "forever"
             and data.IsSameAccessRegion
             and provider
             and provider.RequiresWalkingProof
@@ -152,7 +156,7 @@ end--[[APR_DIAG]]; WalkingAccessReached = APRTrace("APR-Core/features/navigation
 local function WalkingPointReached(position, point, provider, radius)
     if
         Distance(position, point) > (radius or Constants.WALK_ARRIVAL_RADIUS)
-        or not WalkingAccessReached(position, point, nil, provider)
+        or not WalkingAccessReached(position, point, not point.sharedFloorChord, provider)
     then
         return false
     end
@@ -257,11 +261,21 @@ local function WalkingDestinationReached(step, position, provider)
     return WalkingPointReached(position, endpoint, provider)
 end--[[APR_DIAG]]; WalkingDestinationReached = APRTrace("APR-Core/features/navigation/controller/NavigationWalking.lua:242:WalkingDestinationReached#10", WalkingDestinationReached)--[[/APR_DIAG]]
 
-local function FollowOutdoorPath(step, position, provider, cursor, limit, beforePublication)
+local function ProveOutdoorAim(position, from, to, fraction, provider)
+    local point = CopyLocation(to)
+    point.x, point.y = from.x + fraction * (to.x - from.x), from.y + fraction * (to.y - from.y)
+    point.z = WalkingTerrainHeight(point, provider) or (from.z + fraction * (to.z - from.z))
+    point.geometryVerified = from.geometryVerified and to.geometryVerified
+    if Distance(position, point) <= Constants.WALK_OUTDOOR_JOIN_DISTANCE
+        and provider:CanFollowWalkingSegment(position, point, "outdoor") == true then
+        return point
+    end
+end--[[APR_DIAG]]; ProveOutdoorAim = APRTrace("APR-Core/features/navigation/controller/NavigationWalking.lua:266:ProveOutdoorAim#14", ProveOutdoorAim)--[[/APR_DIAG]]
+
+local function FollowOutdoorPath(step, position, provider, cursor, limit)
     if
         not (
             position
-            and position.z ~= nil
             and not position.isInstance
             and not position.floor
             and not position.accessKey
@@ -278,21 +292,19 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
     local cached = step.walkingFollow
     if
         cached
-        and cached.aim
+        and (cached.aim or position.z == nil)
         and cached.cursor == cursor
         and cached.geometry == APR.navigationGeometryRevision
         and SameLocationFields(position, cached.position, Constants.LOCATION_FIELDS)
     then
-        return cursor, cached.aim, cached.aimPoint
+        return cached.aim and cursor or nil, cached.aim, cached.aimPoint
     end
 
     local path = step.path
-    local window = Constants.WALK_RECOVERY_DISTANCE
-    if beforePublication then
-        -- A result can arrive after several seconds of movement. Give its
-        -- origin some room to catch up without scanning the entire path.
-        window = window + math.min(Constants.WALK_OUTDOOR_JOIN_DISTANCE, Distance(position, path[cursor - 1]))
-    end
+    -- A late result or a missed poll can leave the player well ahead of the
+    -- cursor. Extend the scan by that displacement within the existing bounds.
+    local window = Constants.WALK_OUTDOOR_RECOVERY_DISTANCE
+        + math.min(Constants.WALK_OUTDOOR_JOIN_DISTANCE, Distance(position, path[cursor - 1]))
     local best, bestDistance, remainingOnEdge, along = cursor, math.huge, 0, 0
     for index = cursor, limit do
         local from, to = path[index - 1], path[index]
@@ -310,7 +322,7 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
         local distance = math.sqrt(squared)
         local margin = index == best + 1 and 0 or 4
         if
-            math.abs(position.z - (from.z + dz * fraction)) <= 5
+            (position.z == nil or math.abs(position.z - (from.z + dz * fraction)) <= 5)
             and (
                 distance + margin < bestDistance or (margin == 0 and distance == bestDistance and remainingOnEdge == 0)
             )
@@ -322,42 +334,41 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
     end
 
     local aim, aimPoint
-    if bestDistance <= Constants.WALK_OUTDOOR_JOIN_DISTANCE then
+    if position.z ~= nil and bestDistance <= Constants.WALK_OUTDOOR_JOIN_DISTANCE then
         local farthest, ahead = best, remainingOnEdge
-        while farthest < limit and not path[farthest].mandatory do
+        local aimEdge = ahead > Constants.WALK_LOOK_AHEAD and best or nil
+        while not aimEdge and farthest < limit and not path[farthest].mandatory do
             local from, to = path[farthest], path[farthest + 1]
             if not WalkingAccessReached(position, to, false, provider) or to.indoors == true then break end
             local length = Distance(from, to)
-            if
-                ahead + length > Constants.WALK_LOOK_AHEAD
-                or to.z == nil
-                or math.abs(to.z - from.z) > math.max(5, length)
-            then
+            if to.z == nil or math.abs(to.z - from.z) > math.max(5, length) then break end
+            local previous = path[farthest - 1]
+            local direction = (from.x - previous.x) * (to.x - from.x)
+                + (from.y - previous.y) * (to.y - from.y)
+            -- Stop the wide search at a reversal. A nearby turn can still
+            -- be joined directly, including an off-centre departure.
+            if direction < 0 and (farthest > best or remainingOnEdge > Constants.WALK_POINT_RADIUS) then break end
+            ahead = ahead + length
+            if ahead > Constants.WALK_LOOK_AHEAD then
+                if direction > 0 then aimEdge = farthest + 1 end
                 break
             end
-            farthest, ahead = farthest + 1, ahead + length
+            farthest = farthest + 1
         end
-        if remainingOnEdge > Constants.WALK_LOOK_AHEAD then
-            -- On a long straight leg the next vertex can be well beyond the
-            -- useful aim. Take a point on that same segment first.
-            local from, to = path[best - 1], path[best]
-            local fraction = 1 - (remainingOnEdge - Constants.WALK_LOOK_AHEAD) / Distance(from, to)
-            local point = CopyLocation(to)
-            point.x, point.y = from.x + fraction * (to.x - from.x), from.y + fraction * (to.y - from.y)
-            point.z = WalkingTerrainHeight(point, provider) or (from.z + fraction * (to.z - from.z))
-            point.geometryVerified = from.geometryVerified and to.geometryVerified
-            if
-                Distance(position, point) <= Constants.WALK_OUTDOOR_JOIN_DISTANCE
-                and provider:CanFollowWalkingSegment(position, point, "outdoor") == true
-            then
-                aim, aimPoint = best, point
-            end
+        if aimEdge then
+            -- A fixed look-ahead distance keeps the bearing stable as the
+            -- player approaches and passes vertices of different spacing.
+            local from, to = path[aimEdge - 1], path[aimEdge]
+            local fraction = 1 - (ahead - Constants.WALK_LOOK_AHEAD) / Distance(from, to)
+            aimPoint = ProveOutdoorAim(position, from, to, fraction, provider)
+            if aimPoint then aim = aimEdge end
         end
-        -- Try nearer aims after a blocked chord. Bound the number of terrain
-        -- probes even when the path is dense, and always try the first bend.
-        local stride = math.max(1, math.ceil((farthest - best) / 10))
+        -- Sample the remote part of the window and check every nearby bend.
+        -- A wide stride must not skip the only clear vertex near the player.
+        local nearby = math.min(farthest, best + 4)
+        local stride = math.max(1, math.ceil((farthest - nearby) / 6))
         local index = farthest
-        while not aim do
+        while not aim and index > best do
             if
                 Distance(position, path[index]) <= Constants.WALK_OUTDOOR_JOIN_DISTANCE
                 and provider:CanFollowWalkingSegment(position, path[index], "outdoor") == true
@@ -365,8 +376,34 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
                 aim = index
                 break
             end
-            if index == best then break end
-            index = math.max(best, index - stride)
+            index = index > nearby and math.max(nearby, index - stride) or index - 1
+        end
+        if not aim and not path[best].mandatory and best < #path
+            and Distance(position, path[best]) <= Constants.WALK_POINT_RADIUS then
+            -- The nearest vertex can be behind the player even though a short
+            -- part of the outgoing edge is clear. Check that edge before the bend.
+            for edge = math.min(farthest, best + 1), best, -1 do
+                local from, to = path[edge - 1], path[edge]
+                local fraction, offset = WalkingProjection(position, from, to)
+                if offset <= Constants.WALK_POINT_RADIUS ^ 2 then
+                    local length = Distance(from, to)
+                    local advance = 1 - fraction
+                    for _ = 1, 3 do
+                        advance = advance / 2
+                        if length * advance < 0.25 then break end
+                        aimPoint = ProveOutdoorAim(position, from, to, fraction + advance, provider)
+                        if aimPoint then
+                            aim = edge
+                            break
+                        end
+                    end
+                end
+                if aim then break end
+            end
+        end
+        if not aim and Distance(position, path[best]) <= Constants.WALK_OUTDOOR_JOIN_DISTANCE
+            and provider:CanFollowWalkingSegment(position, path[best], "outdoor") == true then
+            aim = best
         end
     end
     local nextCursor = aim and best or cursor
@@ -377,38 +414,58 @@ local function FollowOutdoorPath(step, position, provider, cursor, limit, before
         aim = aim,
         aimPoint = aimPoint,
         off = bestDistance,
-        missed = best > cursor + 1,
+        missed = best > cursor,
     }
     return aim and nextCursor or nil, aim, aimPoint
 end--[[APR_DIAG]]; FollowOutdoorPath = APRTrace("APR-Core/features/navigation/controller/NavigationWalking.lua:254:FollowOutdoorPath#11", FollowOutdoorPath)--[[/APR_DIAG]]
 
 function nav:AdvanceWalkingPath(step, position, provider, beforePublication)
     if not HasWalkingPath(step) then return true, true end
+    if step.path.flight then
+        if not position or position.instanceID ~= step.from.instanceID then return false, false end
+        local path, cursor = step.path, step.pathCursor or 2
+        while cursor < #path do
+            local _, offset = WalkingProjection(position, path[cursor], path[cursor + 1])
+            if Distance(position, path[cursor]) > 20 and offset > 20 ^ 2 then break end
+            cursor = cursor + 1
+        end
+        if cursor ~= step.pathCursor then
+            step.pathCursor = cursor
+            if not beforePublication then self:Notify() end
+        end
+        local _, offset = WalkingProjection(position, path[cursor - 1], path[cursor])
+        return cursor == #path, offset <= Constants.MOVEMENT_REPLAN_YARDS ^ 2
+    end
     provider = provider or WalkingProvider()
+    local endpoint = step.path[#step.path]
+    if endpoint.sharedFloorChord then
+        position = WalkingPosition(position, provider, step)
+        if not position or not provider or not provider.CanFollowWalkingSegment then return false, false end
+        if beforePublication then
+            return false, provider:CanFollowWalkingSegment(position, endpoint, true) == true
+        end
+        return WalkingPointReached(position, endpoint, provider)
+    end
+    local atStart
     if beforePublication then
         if not position then return false, false end
         local start = step.path[1]
-        if
-            not provider
-            or not provider.CanFollowWalkingSegment
-            or (
-                Distance(position, start) == 0 and (
-                    not position.z
-                    or not start.z
-                    or math.abs(position.z - start.z) <= 5
-                )
-            )
-        then
+        atStart = Distance(position, start) == 0
+            and (not position.z or not start.z or math.abs(position.z - start.z) <= 5)
+        if not provider or not provider.CanFollowWalkingSegment or (atStart and (
+            #step.path < 3 or step.path[2].mandatory or Distance(position, step.path[2]) > Constants.WALK_POINT_RADIUS
+        )) then
             return false, true
         end
     end
     position = WalkingPosition(position, provider, step)
-    local cursor = step.pathCursor or 2
+    local current = step.pathCursor or 2
+    local cursor = current
     -- Dense duplicate points cannot monopolize an arrival poll.
     local limit = math.min(cursor + 64, #step.path)
-    local projected, aim, aimPoint = FollowOutdoorPath(step, position, provider, cursor, limit, beforePublication)
+    local projected, aim, aimPoint = FollowOutdoorPath(step, position, provider, cursor, limit)
     cursor = projected or cursor
-    while not aim and cursor < limit do
+    while not aim and not atStart and cursor < limit do
         local previous, point, following = step.path[cursor - 1], step.path[cursor], step.path[cursor + 1]
         local radius = not point.mandatory
                 and provider
@@ -457,13 +514,25 @@ function nav:AdvanceWalkingPath(step, position, provider, beforePublication)
         end
     end
     local aimIndex = aim and aim > cursor and aim or nil
-    if cursor ~= step.pathCursor or aimIndex ~= step.pathAimIndex or aimPoint ~= step.pathAimPoint then
+    local follow = step.walkingFollow
+    -- An XY match can retire a stale bearing, but only a proven walking
+    -- connection can move the cursor or publish a replacement target.
+    local target = step.path[cursor]
+    local unavailable = not aim and cursor == current and follow and not target.mandatory
+        and (step.pathArrowUnavailable or (follow.missed and follow.off <= Constants.WALK_POINT_RADIUS
+            and Distance(position, target) > Constants.WALK_POINT_RADIUS))
+        and (position.z == nil or Distance(position, target) > Constants.WALK_OUTDOOR_JOIN_DISTANCE
+            or provider:CanFollowWalkingSegment(position, target, "outdoor") ~= true)
+        or nil
+    if cursor ~= step.pathCursor or aimIndex ~= step.pathAimIndex or aimPoint ~= step.pathAimPoint
+        or unavailable ~= step.pathArrowUnavailable then
         step.pathCursor, step.pathAimIndex, step.pathAimPoint = cursor, aimIndex, aimPoint
+        step.pathArrowUnavailable = unavailable
         if not beforePublication then self:Notify() end
     end
     if beforePublication then
         return cursor >= #step.path,
-            aim ~= nil or provider:CanFollowWalkingSegment(position, step.path[cursor], true) == true
+            aim ~= nil or (not unavailable and (atStart or provider:CanFollowWalkingSegment(position, target, true) == true))
     end
     return cursor >= #step.path
 end--[[APR_DIAG]]; nav.AdvanceWalkingPath = APRTrace("APR-Core/features/navigation/controller/NavigationWalking.lua:378:nav:AdvanceWalkingPath#12", nav.AdvanceWalkingPath)--[[/APR_DIAG]]

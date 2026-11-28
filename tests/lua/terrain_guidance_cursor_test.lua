@@ -349,13 +349,60 @@ do
 
     outdoor:route({point(0,0,12), point(200,0,12), point(220,0,12)})
     function outdoor.provider:CanFollowWalkingSegment(from, to, joining)
-        return joining == "outdoor" and math.abs(to.x - from.x) <= 50
+        return joining == "outdoor" and math.abs(to.x - from.x) <= 80
     end
     outdoor:poll(point(100,28))
-    assert(outdoor.leg.pathCursor == 2 and outdoor.nav:GetGuidanceTarget().x == 145,
+    assert(outdoor.leg.pathCursor == 2 and outdoor.nav:GetGuidanceTarget().x == 170,
         "On a sparse straight leg the aim slides along the segment")
     outdoor:poll(point(102,28))
-    assert(outdoor.nav:GetGuidanceTarget().x == 147 and outdoor.leg.pathCursor == 2)
+    assert(outdoor.nav:GetGuidanceTarget().x == 172 and outdoor.leg.pathCursor == 2)
+
+    local straight = {}
+    for x = 0, 280, 10 do straight[#straight + 1] = point(x, 0, 12) end
+    outdoor:route(straight)
+    outdoor:poll(point(182, 2, 12))
+    assert(outdoor.leg.pathCursor == 20 and outdoor.nav:GetGuidanceTarget().x == 252,
+        "A live observation beyond the original recovery window aims ahead in one poll")
+
+    outdoor:route(straight)
+    outdoor.leg.pathCursor = 4
+    outdoor.height = nil
+    local notices = outdoor.notices
+    outdoor:poll(point(55, 6))
+    assert(outdoor.leg.pathCursor == 4 and outdoor.nav:GetGuidanceTarget() == nil,
+        "An unresolved floor after passing several bends cannot steer back to the stale point")
+    outdoor:poll(point(55, 6))
+    assert(outdoor.notices == notices + 1, "A stationary unresolved observation does not republish guidance")
+    outdoor:poll(point(57, 25))
+    assert(outdoor.nav:GetGuidanceTarget() == nil, "Moving farther away does not restore the discarded bearing")
+    outdoor:poll(point(57, 2, 12))
+    assert(outdoor.nav:GetGuidanceTarget().x == 127 and outdoor.notices == notices + 2,
+        "A proven forward target restores guidance as soon as the surface is observed again")
+    assert(outdoor.nav.cursor == 1 and APRData.synthetic == 4 and outdoor.timers == 0)
+
+    straight[4].mandatory = true
+    outdoor:route(straight)
+    outdoor.leg.pathCursor = 4
+    outdoor:poll(point(55, 6))
+    assert(outdoor.nav:GetGuidanceTarget() == straight[4], "A required point remains the target without floor evidence")
+
+    local origin, behind, nextVertex, goal = point(0, 0, 12), point(-2, 0, 12), point(4, 0, 12), point(38, 0, 12)
+    outdoor:route({origin, behind, nextVertex, goal})
+    function outdoor.provider:CanFollowWalkingSegment(from, to)
+        if from == behind or from == nextVertex then return true end
+        return to == behind or (to.x >= from.x and to.x <= from.x + 1)
+    end
+    local _, reachable = outdoor.nav:AdvanceWalkingPath(outdoor.leg, origin, outdoor.provider, true)
+    assert(reachable and outdoor.nav:GetGuidanceTarget().x == 1,
+        "Publish a proven short bearing ahead when the first grid vertex is behind the departure")
+    outdoor:poll(point(2, 0, 12))
+    assert(outdoor.nav:GetGuidanceTarget().x == 3,
+        "Moving past the short bearing uses a new point ahead on the same edge")
+    behind.mandatory = true
+    outdoor:route({origin, behind, nextVertex, goal})
+    outdoor:poll(origin)
+    assert(outdoor.nav:GetGuidanceTarget() == behind, "A mandatory bend still takes precedence over the short aim")
+
     IsIndoors, GetTime = originalIndoors, originalTime
 end
 

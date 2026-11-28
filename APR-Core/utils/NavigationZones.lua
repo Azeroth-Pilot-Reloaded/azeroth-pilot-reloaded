@@ -79,6 +79,8 @@ function APR:GetNavigationPlayerContext()
     local observedWorld = world
     world = world or instanceID
     if not world or world < 0 or world % 1 ~= 0 then return nil end
+    local garrison = data and data.GetGarrisonPhase and data:GetGarrisonPhase(world)
+    local terrainPhase = garrison and world
     if data and data.GetWorldInstanceID then world = data:GetWorldInstanceID(world) end
     -- During transitions the two APIs can describe different worlds. Do not
     -- attach the previous instance's name/type to a fresh outdoor position.
@@ -89,7 +91,8 @@ function APR:GetNavigationPlayerContext()
     local mapID = C_Map and C_Map.GetBestMapForUnit and PublicPositionNumber(C_Map.GetBestMapForUnit("player"))
     local mapSource = "native"
     if not mapID or mapID <= 0 or mapID % 1 ~= 0 then
-        mapID = data and data.GetFallbackMapForInstance and data:GetFallbackMapForInstance(world)
+        mapID = garrison and garrison.mapID
+            or (data and data.GetFallbackMapForInstance and data:GetFallbackMapForInstance(world))
         mapSource = mapID and "catalogue" or "unavailable"
     end
     local coordinatesAvailable = observedWorld ~= nil and x ~= nil and y ~= nil
@@ -99,7 +102,8 @@ function APR:GetNavigationPlayerContext()
         instanceType = kind,
         -- GetInstanceInfo uses "none" outdoors. Do not restrict this to a
         -- hand-maintained list: every public non-outdoor type is an instance.
-        isInstance = kind ~= nil and kind ~= "" and kind ~= "none",
+        isInstance = not garrison and kind ~= nil and kind ~= "" and kind ~= "none",
+        terrainPhase = terrainPhase,
         uiMapID = mapID,
         mapSource = mapSource,
         coordinatesAvailable = coordinatesAvailable,
@@ -705,8 +709,16 @@ function APR:GetNavigationPlayerPosition()
         z = context.z,
         instanceID = context.instanceID,
         uiMapID = context.uiMapID,
+        terrainPhase = context.terrainPhase,
         isInstance = context.isInstance or nil,
     }
+    local data = self.NavigationData
+    -- The terrain provider can resolve a surface when the native navigation
+    -- position has a zero altitude placeholder.
+    if position.z == 0 and data and data.profile == "retail" and data.GetWalkingProvider then
+        local terrain = data:GetWalkingProvider()
+        if terrain and terrain.HasWalkingCoverage and terrain:HasWalkingCoverage(position) then position.z = nil end
+    end
     local areaName = C_Map and C_Map.GetAreaInfo
     local sanctum = areaName and areaName(10523)
     local config = self.NavigationData and self.NavigationData.GetConfig and self.NavigationData:GetConfig()

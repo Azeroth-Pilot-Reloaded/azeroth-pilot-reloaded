@@ -113,3 +113,65 @@ local cornerState, cornerResult = F.finish(provider:CreatePathJob(corner, goal, 
 assert(cornerState == "ready" and #cornerResult.path == 3)
 assert(cornerResult.path[2].x == bend.x and cornerResult.path[2].y == bend.y)
 assert(provider:CanFollowWalkingSegment(corner, goal) == false)
+
+-- An off-centre segment can cross a minor rise in the middle cell, provided
+-- the pack allows the crossing and the height difference stays within tolerance.
+local function testRise(revision, rise, mask, expected)
+    local fixture = F.map()
+    local riseCell = 2 * fixture.cells + 1
+    local remainingCells = fixture.cells * fixture.cells - riseCell - 2
+    fixture.height[1] = string.rep("X", riseCell) .. number(23 + rise, 1)
+        .. number(23 - rise, 1) .. string.rep("X", remainingCells)
+    fixture.clearance = { number(riseCell, 3) .. number(mask, 3) }
+    local walker = F.provider(lib, fixture, revision)
+    local from, to = F.point(1, 1, 0), F.point(3, 1, 0)
+    assert(F.finish(walker:CreateWalkingSegmentJob(from, to, {})) == "no_path",
+        "Cell-centre edges require exact intermediate heights")
+
+    from.y, to.y = from.y + F.cellSize / 8, to.y + F.cellSize / 8
+    assert(F.finish(walker:CreateWalkingSegmentJob(from, to, {})) == expected,
+        "Off-centre segment classification differs for rise " .. rise .. " and clearance mask " .. mask)
+end
+
+testRise(10, 2, 0, "ready")
+testRise(11, 3, 0, "no_path")
+testRise(12, 2, 1, "no_path")
+
+-- An outdoor triangle can follow a shallow bump that differs from the straight
+-- altitude interpolation. An indoor sample with the same shape stays strict.
+for revision, class in ipairs({ "A", "E" }) do
+    local fixture = F.map({ class = class })
+    local riseCell = 2 * fixture.cells + 1
+    fixture.support = { number(riseCell, 3) .. number(0, 3) .. number(131072 + 48, 3)
+        .. string.rep(number(131072, 3), 4) }
+    local walker = F.provider(lib, fixture, 12 + revision)
+    local from, to = F.point(1, 1, 0), F.point(3, 1, 0)
+    from.y, to.y = from.y + F.cellSize / 8, to.y + F.cellSize / 8
+    local expected = class == "A" and "ready" or "no_path"
+    assert(F.finish(walker:CreateWalkingSegmentJob(from, to, {})) == expected)
+end
+
+-- Both routes must cross the rough strip. A short outdoor shortcut can stay
+-- straight through it without raising the maximum terrain cost in the route.
+local hillside = F.map()
+hillside.cells = 64
+hillside.grid[1] = string.rep("Q", hillside.cells ^ 2)
+hillside.height[1] = string.rep("X", hillside.cells ^ 2)
+local classes = {}
+for x = 0, hillside.cells - 1 do
+    for y = 0, hillside.cells - 1 do
+        classes[#classes + 1] = (x == 4 or (x == 5 and y == 3)) and "D" or "A"
+    end
+end
+hillside.class[1] = table.concat(classes)
+local walker = F.provider(lib, hillside, 15)
+local unit = F.cellSize * 8 / hillside.cells
+local from = { instanceID = 900, x = 2.2 * unit, y = 2.2 * unit, z = 0 }
+local to = { instanceID = 900, x = 6.2 * unit, y = 4.2 * unit, z = 0 }
+local directStatus, direct = F.finish(walker:CreatePathJob(from, to, { style = "fastest", quick = true }), 8192)
+assert(directStatus == "ready" and #direct.path == 2)
+F.near(direct.yards, math.sqrt(20) * unit)
+assert(walker:CanFollowWalkingSegment(direct.path[1], direct.path[2]))
+
+local roadsStatus, roads = F.finish(walker:CreatePathJob(from, to, { style = "roads", quick = true }), 8192)
+assert(roadsStatus == "ready" and #roads.path > 2 and roads.yards > direct.yards)

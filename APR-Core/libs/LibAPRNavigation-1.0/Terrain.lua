@@ -2,7 +2,7 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
 local Runtime = Lib._TerrainNamespace
 Lib._TerrainNamespace = nil
-if not Runtime or not Lib:BeginModule("Terrain", 22) then return end
+if not Runtime or not Lib:BeginModule("Terrain", 28) then return end
 local Grid = Runtime.PathGrid
 local Work = Runtime.Work
 local maps, providers = {}, setmetatable({}, { __mode = "kv" })
@@ -119,20 +119,51 @@ local function Position(point)
         and Finite(point.x) and Finite(point.y) and (point.z == nil or Finite(point.z))
 end
 
-function Provider:RequiresWalkingProof(from, to)
-    if not Position(from) or not Position(to) or from.instanceID ~= to.instanceID then return false end
-    local entry = maps[from.instanceID]
+local function SelectPhase(owner, point, faction)
+    local phases = owner.config and owner.config.GarrisonPhases
+    if not phases or not point or point.instanceID ~= phases.world then return end
+    local observed = point.terrainPhase
+    if observed and owner:GetGarrisonPhase(observed) then return maps[observed] and observed or nil end
+    local frame = GetTime and GetTime()
+    local cached = owner.terrainPhaseObservation
+    if frame and cached and cached.frame == frame and (not faction or faction == cached.faction) then
+        return cached.phase
+    end
+    local env = owner.env
+    if not faction and env.getCharacter then
+        local character = env.getCharacter()
+        faction = character and character.faction
+    end
+    local family = faction and phases[faction]
+    local level = family and env.getGarrisonLevel and env.getGarrisonLevel(phases.garrisonType)
+    local phase = level and family.levels[level]
+    phase = maps[phase] and phase or nil
+    owner.terrainPhaseObservation = frame and { frame = frame, faction = faction, phase = phase } or nil
+    return phase
+end
+
+local function TerrainMap(point, phase)
+    local st = phase and Grid.State(phase)
+    if st and Grid.locate(st, point.x, point.y) then return phase end
+    return point.instanceID
+end
+
+local function HasPage(map, point)
+    local entry = maps[map]
     if not entry then return false end
     if not entry.validated and not Metadata(entry.data) then return true end
-    local st = Grid.State(from.instanceID)
-    local first = Grid.locate(st, from.x, from.y)
-    local last = Grid.locate(st, to.x, to.y)
-    if first == nil or last == nil then return false end
-    if entry.generated then
-        local pages = entry.data.packed and entry.data.packed.grid or entry.data.grid
-        return pages ~= nil and pages[first + 1] ~= nil and pages[last + 1] ~= nil
-    end
-    return true
+    local st = Grid.State(map)
+    local key = Grid.locate(st, point.x, point.y)
+    if key == nil then return false end
+    if not entry.generated then return true end
+    local pages = entry.data.packed and entry.data.packed.grid or entry.data.grid
+    return pages ~= nil and pages[key + 1] ~= nil
+end
+
+function Provider:RequiresWalkingProof(from, to)
+    if not Position(from) or not Position(to) or from.instanceID ~= to.instanceID then return false end
+    local phase = SelectPhase(self.owner, from.terrainPhase and from or to)
+    return HasPage(TerrainMap(from, phase), from) and HasPage(TerrainMap(to, phase), to)
 end
 
 function Provider:HasWalkingCoverage(point)
@@ -142,6 +173,8 @@ function Provider:HasWalkingCoverage(point)
 end
 
 function Provider:GetWalkingPage(point)
+    -- Search rejection keys are scoped to the geographical world. Phased
+    -- candidates discard page-local rejection hints when returning costs.
     local st = Grid.State(point.instanceID)
     if st then return Grid.locate(st, point.x, point.y) end
 end
@@ -151,9 +184,12 @@ end
 function Provider:IsSameWalkingCell(a, b)
     if not Position(a) or not Position(b) then return nil end
     if a.instanceID ~= b.instanceID then return false end
-    local entry = maps[a.instanceID]
+    local phase = SelectPhase(self.owner, a)
+    local map = TerrainMap(a, phase)
+    if map ~= TerrainMap(b, phase) then return false end
+    local entry = maps[map]
     if not entry or not (entry.validated or Metadata(entry.data)) then return nil end
-    local st = Grid.State(a.instanceID)
+    local st = Grid.State(map)
     local tileA, cellA = Grid.locate(st, a.x, a.y)
     local tileB, cellB = Grid.locate(st, b.x, b.y)
     if tileA == nil or tileB == nil then return nil end
@@ -170,7 +206,7 @@ local function ObservedFloors(st, point, load)
             Work()
             local node = i == 0 and cell or layers[i]
             local class = (tile.class[node] or 0) % 8
-            if tile.z[node] and class ~= 5 and (class == 4) == point.indoors then
+            if tile.z[node] and class ~= 5 and (point.indoors == nil or (class == 4) == point.indoors) then
                 heights[#heights + 1] = Grid.surfaceHeight(st, tile, node, point.x, point.y)
             end
         end
@@ -178,10 +214,9 @@ local function ObservedFloors(st, point, load)
     return Runtime.MatchSurfaceHeights(st, point, heights, load)
 end
 
-function Provider:GetGuidanceHeight(point)
-    if not Position(point) then return nil end
-    local height = Runtime.GuidanceHeight(point.instanceID, point.x, point.y)
-    local st = height == nil and type(point.indoors) == "boolean" and Grid.State(point.instanceID)
+local function GuidanceHeight(map, point)
+    local height = Runtime.GuidanceHeight(map, point.x, point.y)
+    local st = height == nil and type(point.indoors) == "boolean" and Grid.State(map)
     if st then
         local floors = ObservedFloors(st, point, false)
         if #floors == 1 then return floors[1] end
@@ -189,12 +224,20 @@ function Provider:GetGuidanceHeight(point)
     return height
 end
 
+function Provider:GetGuidanceHeight(point)
+    if not Position(point) then return nil end
+    return GuidanceHeight(TerrainMap(point, SelectPhase(self.owner, point)), point)
+end
+
 function Provider:GetWalkingObservationHeight(point, previous)
     if not Position(point) then return end
-    local height = Runtime.GuidanceHeight(point.instanceID, point.x, point.y)
+    local phase = SelectPhase(self.owner, point)
+    local map = TerrainMap(point, phase)
+    local height = GuidanceHeight(map, point)
     if height ~= nil then return height end
-    if Position(previous) and Finite(previous.z) and previous.instanceID == point.instanceID then
-        return Runtime.ContinueWalkingHeight(point, previous)
+    if Position(previous) and Finite(previous.z) and previous.instanceID == point.instanceID
+        and TerrainMap(previous, phase) == map then
+        return Runtime.ContinueWalkingHeight(point, previous, map)
     end
 end
 
@@ -204,16 +247,74 @@ local function RequiresNativeChord(from, to)
     return (from.geometryVerified or to.geometryVerified) and not (from.coarseEndpoint or to.coarseEndpoint)
 end
 
+local function WalkingFaction(owner)
+    local env = owner and owner.env
+    if env and env.getCharacter then
+        local ok, character = pcall(env.getCharacter)
+        if ok and type(character) == "table" then return character.faction end
+    end
+end
+
+local function ChordMap(owner, from, to)
+    local phase = SelectPhase(owner, from.terrainPhase and from or to)
+    local first, last = TerrainMap(from, phase), TerrainMap(to, phase)
+    if first == last then return first end
+    if (from.phaseBoundary or to.phaseBoundary)
+        and (from.x - to.x)^2 + (from.y - to.y)^2 <= math.max(20, Grid.State(phase).unit * 1.5)^2 then
+        return from.instanceID, true
+    end
+end
+
+-- Nearby destinations can share a walking direction across several storeys.
+-- Prove the whole directed chord from every plausible departure.
+local function SharedFloorChord(map, from, to, faction, load)
+    local st = map and Grid.State(map)
+    local distance = (from.x - to.x)^2 + (from.y - to.y)^2
+    if not st or distance > 50 ^ 2 then return end
+    if from.z == nil and from.indoors ~= true then return end
+    local starts = from.z and {from.z} or ObservedFloors(st, from, load)
+    if #starts == 0 or load and #starts == 1 then return end
+    local costs = Runtime.FactionCostContext(st, faction, load)
+    if Runtime.HostileFraction(costs, from, to) ~= 0 then return end
+    local goals = to.z and {to.z} or ObservedFloors(st, to, load)
+    local pages = load and {} or nil
+    local rise = 0
+    for _, startZ in ipairs(starts) do
+        local reached
+        for _, goalZ in ipairs(goals) do
+            Work()
+            if Runtime.Sight(map, from.x, from.y, startZ, to.x, to.y, goalZ, pages, nil, true) == true then
+                if reached then return end
+                reached = goalZ
+            end
+        end
+        if not reached then return end
+        rise = math.max(rise, math.abs(reached - startZ))
+    end
+    return math.sqrt(distance + rise ^ 2)
+end
+
 function Provider:CanFollowWalkingSegment(from, to, joining)
-    if not Position(from) or not Position(to) or from.instanceID ~= to.instanceID
-        or not Finite(from.z) or not Finite(to.z) then return nil end
+    if not Position(from) or not Position(to) or from.instanceID ~= to.instanceID then return nil end
+    if to.sharedFloorChord then
+        return SharedFloorChord(ChordMap(self.owner, from, to), from, to, WalkingFaction(self.owner), false) ~= nil
+    end
+    if not Finite(from.z) or not Finite(to.z) then return nil end
     -- Live steering may merge across open terrain. The line still goes through
     -- every intervening cell, and the native surface rules apply inside windows.
     local joinRange = joining == "outdoor" and 100 or joining == true and 20
     local shortJoin = joinRange and not from.geometryVerified
         and (from.x - to.x)^2 + (from.y - to.y)^2 <= joinRange^2
-    return Runtime.Sight(from.instanceID, from.x, from.y, from.z, to.x, to.y, to.z, nil, nil, nil,
-        RequiresNativeChord(from, to), shortJoin)
+    local map, crosses = ChordMap(self.owner, from, to)
+    if not map then return false end
+    if joining and self.owner.profile == "forever" then
+        local costs = Runtime.FactionCostContext(Grid.State(map), to.terrainFaction or WalkingFaction(self.owner), false)
+        local exposure = Runtime.HostileDistance(costs, from, to)
+        if exposure == nil then return nil end
+        if exposure > (to.hostileDistance or 0) + .001 then return false end
+    end
+    return Runtime.Sight(map, from.x, from.y, from.z, to.x, to.y, to.z, nil, nil, nil,
+        not crosses and RequiresNativeChord(from, to), shortJoin)
 end
 
 -- Off the current leg, require two nearby, single-surface witnesses. On
@@ -222,7 +323,9 @@ end
 local function CorridorHeight(provider, point, step, loadPages)
     if not Position(point) or point.z ~= nil or not step or step.kind ~= "walk"
         or type(step.path) ~= "table" then return end
-    local st = Grid.State(point.instanceID)
+    local phase = SelectPhase(provider.owner, point)
+    local map = TerrainMap(point, phase)
+    local st = Grid.State(map)
     if not st then return end
     local key, cell = Grid.locate(st, point.x, point.y)
     if not key then return end
@@ -230,10 +333,11 @@ local function CorridorHeight(provider, point, step, loadPages)
     local cursor = step.pathCursor or 2
     local pages = loadPages and {} or nil
     local function sight(a, b, unbranched)
-        return Runtime.Sight(point.instanceID, a.x, a.y, a.z, b.x, b.y, b.z, pages, nil, unbranched)
+        return Runtime.Sight(map, a.x, a.y, a.z, b.x, b.y, b.z, pages, nil, unbranched)
     end
     local function compatible(anchor)
-        if not Finite(anchor.z) or anchor.instanceID ~= point.instanceID then return false end
+        if not Finite(anchor.z) or anchor.instanceID ~= point.instanceID
+            or TerrainMap(anchor, phase) ~= map then return false end
         -- A continuous outdoor corridor can span several client map labels.
         if anchor.uiMapID ~= point.uiMapID and (not anchor.region or anchor.region ~= point.region) then return false end
         for _, field in ipairs({"region", "accessKey", "floor"}) do
@@ -308,9 +412,9 @@ local function CorridorHeight(provider, point, step, loadPages)
             local node = layer == 0 and cell or layers[layer]
             local z = Grid.surfaceHeight(st, tile, node, point.x, point.y)
             if z then
-                local incoming = not first or Runtime.Sight(point.instanceID, a.x, a.y, a.z,
+                local incoming = not first or Runtime.Sight(map, a.x, a.y, a.z,
                     point.x, point.y, z, pages, nil, not last)
-                local outgoing = not last or Runtime.Sight(point.instanceID, point.x, point.y, z,
+                local outgoing = not last or Runtime.Sight(map, point.x, point.y, z,
                     b.x, b.y, b.z, pages, nil, not first)
                 if incoming ~= false and outgoing ~= false then
                     if found or not incoming or not outgoing then return nil, true end
@@ -322,8 +426,8 @@ local function CorridorHeight(provider, point, step, loadPages)
         -- witness selected one layer. It cannot break a tie between layers.
         if found then
             local z = Grid.surfaceHeight(st, tile, found, point.x, point.y)
-            if (first or Runtime.Sight(point.instanceID, a.x, a.y, a.z, point.x, point.y, z, pages))
-                and (last or Runtime.Sight(point.instanceID, point.x, point.y, z, b.x, b.y, b.z, pages)) then
+            if (first or Runtime.Sight(map, a.x, a.y, a.z, point.x, point.y, z, pages))
+                and (last or Runtime.Sight(map, point.x, point.y, z, b.x, b.y, b.z, pages)) then
                 return found
             end
         end
@@ -402,7 +506,9 @@ end
 
 local function Speed(context, from, to)
     local speed = context.walkSpeed
-    if context.walkSpeedAt then
+    if context.flight and context.flight.groundSpeedFor then
+        speed = context.flight.groundSpeedFor(from, to)
+    elseif context.walkSpeedAt then
         local a, b = context.walkSpeedAt(from), context.walkSpeedAt(to)
         if Finite(a) and Finite(b) then speed = math.min(a, b) end
     elseif context.walkSpeedFor then
@@ -412,16 +518,24 @@ local function Speed(context, from, to)
     return Finite(speed) and speed > 0 and speed or 7
 end
 
-local function Measure(points, context)
-    local yards, seconds = 0, 0
+local function Measure(points, context, factionCosts)
+    local yards, seconds, weightedSeconds = 0, 0, nil
     for i = 2, #points do
         Work()
         local a, b = points[i - 1], points[i]
         local dz = Finite(a.z) and Finite(b.z) and b.z - a.z or 0
         local distance = math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2 + dz ^ 2)
-        yards, seconds = yards + distance, seconds + distance / Speed(context, a, b)
+        local duration = distance / Speed(context, a, b)
+        yards, seconds = yards + distance, seconds + duration
+        if factionCosts then
+            local exposure = Runtime.HostileFraction(factionCosts, a, b)
+            b.hostileDistance = exposure > 0 and math.sqrt((a.x - b.x)^2 + (a.y - b.y)^2) * exposure or nil
+            if b.hostileDistance then points.lastHostileIndex = i end
+            b.terrainFaction = context.faction
+            weightedSeconds = (weightedSeconds or 0) + Runtime.WithFactionCost(duration, exposure or 0)
+        end
     end
-    return yards, seconds
+    return yards, seconds, weightedSeconds
 end
 
 local function Corridor(job, from, to)
@@ -449,13 +563,14 @@ local function ExactRoute(job, from, target, refusedApproachAnchors)
     local to = Copy(target)
     Work()
     if not Position(from) or not Position(to) or from.instanceID ~= to.instanceID then return "unavailable" end
-    local entry = maps[from.instanceID]
+    local map = job.walkMap or from.instanceID
+    local entry = maps[map]
     if not entry then return "unavailable" end
     if not entry.validated then
         if not Whole(entry.data) then return "unavailable" end
         entry.validated = true
     end
-    local st = Grid.State(from.instanceID)
+    local st = Grid.State(map)
     if not st then return "unavailable" end
     if job.context.walkingGoalXY and job.context.walkingGoal == target and to.z == nil
         and type(to.indoors) == "boolean" then
@@ -464,7 +579,7 @@ local function ExactRoute(job, from, target, refusedApproachAnchors)
         to.z = floors[1]
     end
     local start, goal = Copy(from), Copy(to)
-    local request = { map = from.instanceID, from = start, to = goal,
+    local request = { map = map, from = start, to = goal,
         profile = job.context.faction, style = job.context.style, waterWalking = job.context.waterWalking,
         quick = not job.localApproach and job.context.quick or nil, originTree = job.originTree, rejected = job.rejected,
         refusedApproachAnchors = refusedApproachAnchors,
@@ -564,28 +679,31 @@ local function ExactRoute(job, from, target, refusedApproachAnchors)
     end
     local corridor = Corridor(job, from, to)
     local path = {}
+    local phase = map == job.phase and job.phase or nil
     for index, point in ipairs(points) do
         Work()
-        local location = {x = point.x, y = point.y, z = point.z, instanceID = from.instanceID}
+        local location = {x = point.x, y = point.y, z = point.z, instanceID = from.instanceID, terrainPhase = phase}
         for key, value in pairs(corridor) do Work(); location[key] = value end
         path[index] = location
     end
     path[1], path[#path] = Copy(from), Copy(to)
     path[1].z, path[#path].z = start.z, goal.z
+    if phase then path[1].terrainPhase, path[#path].terrainPhase = phase, phase end
     path[1].coarseEndpoint = points[1].coarseEndpoint
     path[#path].coarseEndpoint = points[#points].coarseEndpoint
     if geometryVerified and job.from.z == nil and from.z ~= nil then
         -- A height inferred from an earlier corridor can select a path, but
         -- it cannot disambiguate this attestation without a unique fine floor.
-        local provider = providers[job.owner]
-        local unique = provider and Grid.surfacePage(st, from.x, from.y, true) and provider:GetGuidanceHeight(from)
+        local unique = Grid.surfacePage(st, from.x, from.y, true) and GuidanceHeight(map, from)
         geometryVerified = unique ~= nil and math.abs(unique - start.z) < .01
     end
     if geometryVerified then
         for _,point in ipairs(path) do Work(); point.geometryVerified=true end
     end
-    local yards, seconds = Measure(path, job.context)
-    return "ready", { path = path, yards = yards, seconds = seconds, geometryVerified = geometryVerified }
+    local costs = Runtime.FactionCostContext(st, job.context.faction, true)
+    local yards, seconds, weightedSeconds = Measure(path, job.context, costs)
+    return "ready", { path = path, yards = yards, seconds = seconds, weightedSeconds = weightedSeconds,
+        geometryVerified = geometryVerified }
 end
 
 local function SameApproachAccess(job, from, goal, point)
@@ -612,7 +730,8 @@ local function PreviewDeparture(job, from, entry)
     -- Reading the local corridor only needs enough metadata to decode the
     -- touched pages. The full job still validates the rest of the pack.
     if distance < 20 or not (entry.validated or Metadata(entry.data)) then return end
-    local st = Grid.State(from.instanceID)
+    local map = job.walkMap or from.instanceID
+    local st = Grid.State(map)
     local height, surface = Runtime.PreviewHeight(st, from, Endpoint)
     if not height then return end
     local start = Copy(from)
@@ -620,7 +739,9 @@ local function PreviewDeparture(job, from, entry)
     local direction = math.atan2(dy, dx)
     local size = math.min(28, distance / 2)
     local terrain = {}
-    terrain.land, terrain.water = Runtime.Prices(job.context, st.data.swim)
+    local factionCosts = Runtime.FactionCostContext(st, job.context.faction, true)
+    terrain.land, terrain.water = Runtime.Prices({profile = job.context.faction, style = job.context.style,
+        waterWalking = job.context.waterWalking}, st.data.swim)
     local function test(length, angle)
         Work()
         local point = Copy(from)
@@ -631,7 +752,8 @@ local function PreviewDeparture(job, from, entry)
         point.accessKey, point.region = nil, nil
         point.uiMapID = owner:GetRemappedMapID(from.uiMapID, from.instanceID, point.x, point.y, z)
         if point.uiMapID ~= from.uiMapID or not SameApproachAccess(job, from, from, point) then return end
-        if Runtime.Sight(from.instanceID, start.x, start.y, start.z, point.x, point.y, point.z,
+        if factionCosts and Runtime.HostileFraction(factionCosts, start, point) > 0 then return end
+        if Runtime.Sight(map, start.x, start.y, start.z, point.x, point.y, point.z,
             terrain, 1, true, surface ~= nil) ~= true then return end
         start.geometryVerified, point.geometryVerified = surface and true, surface and true
         point.region = from.region
@@ -652,7 +774,9 @@ local function PreviewDeparture(job, from, entry)
 end
 
 local function RangeRoute(job, from, goal, radius,nativeOnly, nearbyOnly)
-    local st = Grid.State(goal.instanceID)
+    local map = job.walkMap or goal.instanceID
+    local st = Grid.State(map)
+    if not st then return end
     local startWindow=Grid.surfacePage(st,from.x,from.y,true)
     if startWindow and goal.x+radius>=startWindow.xmin and goal.x-radius<=startWindow.xmax
         and goal.y+radius>=startWindow.ymin and goal.y-radius<=startWindow.ymax then
@@ -661,7 +785,7 @@ local function RangeRoute(job, from, goal, radius,nativeOnly, nearbyOnly)
             point.x,point.y,point.z=node.x,node.y,node.z
             return point
         end
-        local stop=Runtime.SurfaceApproach(goal.instanceID,from,goal,function(node)
+        local stop=Runtime.SurfaceApproach(map,from,goal,function(node)
             return SameApproachAccess(job,from,goal,at(node))
         end,radius)
         if stop then
@@ -714,7 +838,9 @@ end
 -- stand. Search outward in world space. The first feasible sample in a
 -- ring bounds every later sample by its remaining horizontal distance.
 local function PartialRoute(job, from, goal, requireUniqueSurface)
-    local st = Grid.State(goal.instanceID)
+    local map = job.walkMap or goal.instanceID
+    local st = Grid.State(map)
+    if not st then return end
     local z = Endpoint(st, from)
     if not z then return end
     local start = Copy(from)
@@ -727,7 +853,7 @@ local function PartialRoute(job, from, goal, requireUniqueSurface)
     local radius = job.context.walkingGoalApproach
     local best = math.min(distance(start.x, start.y, start.z), radius and radius^2 or math.huge)
     job.originTree = job.originTree or {}
-    local sourceKey, reachable, exits = Runtime.ApproachOrigin({map = goal.instanceID, from = start,
+    local sourceKey, reachable, exits = Runtime.ApproachOrigin({map = map, from = start,
         profile = job.context.faction, style = job.context.style, waterWalking = job.context.waterWalking,
         originTree = job.originTree})
     local gx = math.floor((goal.x - st.x0) / unit)
@@ -859,36 +985,53 @@ local function PartialRoute(job, from, goal, requireUniqueSurface)
     return selected
 end
 
-local function Route(job, from, target)
-    if job.context.enforceWalkingRegion and Position(from) and Position(target)
-        and (from.region and target.region and from.region ~= target.region
+local function DifferentWalkingRegion(job, from, target)
+    return job.context.enforceWalkingRegion and (from.region and target.region and from.region ~= target.region
         or from.accessKey and target.accessKey and from.accessKey ~= target.accessKey
-        or from.floor and target.floor and from.floor ~= target.floor) then return "no_path" end
+        or from.floor and target.floor and from.floor ~= target.floor)
+end
+
+local function GroundRouteOnMap(job, from, target)
+    if Position(from) and Position(target) and DifferentWalkingRegion(job, from, target) then return "no_path" end
+    local map = job.walkMap or (Position(target) and target.instanceID)
+    local entry = maps[map]
     local radius=job.context.walkingGoalRange
+    if target == job.context.walkingGoal and Position(from) and Position(target)
+        and from.instanceID == target.instanceID and from.indoors == true and from.z == nil
+        and (target.z ~= nil or job.context.walkingPartialGoal and job.context.walkingGoalXY)
+        and (from.x - target.x)^2 + (from.y - target.y)^2 <= 50 ^ 2
+        and entry and (entry.validated or Whole(entry.data)) then
+        local yards = SharedFloorChord(map, from, target, job.context.faction, true)
+        if yards then
+            local finish = Copy(target)
+            finish.sharedFloorChord = true
+            return "ready", {path = {Copy(from), finish}, yards = yards, seconds = yards / Speed(job.context, from, target)}
+        end
+    end
     if job.context.walkingGoalPreferRange and target == job.context.walkingGoal and Position(from) and Position(target)
         and from.instanceID == target.instanceID and target.z == nil and target.floor == nil and Finite(radius) and radius > 0
         and (from.x - target.x)^2 + (from.y - target.y)^2 <= (radius + 60)^2
-        and maps[from.instanceID] and (maps[from.instanceID].validated or Whole(maps[from.instanceID].data)) then
+        and entry and (entry.validated or Whole(entry.data)) then
         local approach = RangeRoute(job, from, target, radius, false, true)
         if approach then return "ready", approach end
     end
     if target==job.context.walkingGoal and Position(from) and Position(target) and from.instanceID==target.instanceID
         and target.z==nil and target.floor==nil and Finite(radius) and radius>0
-        and maps[from.instanceID] and (maps[from.instanceID].validated or Whole(maps[from.instanceID].data))
-        and Runtime.StackedSurfaceGoal(target.instanceID,from,target) then
+        and entry and (entry.validated or Whole(entry.data))
+        and Runtime.StackedSurfaceGoal(map,from,target) then
         local approach=RangeRoute(job,from,target,radius,true)
         if approach then return "ready",approach end
     end
     local state, result = ExactRoute(job, from, target)
     if result and result.unresolvedFrom then
         local floors
-        local st = Grid.State(from.instanceID)
+        local st = Grid.State(map)
         if from.z == nil and type(from.indoors) == "boolean" then
             floors = ObservedFloors(st, from, true)
             if #floors == 1 then
                 local observed = Copy(from)
                 observed.z = floors[1]
-                return Route(job, observed, target)
+                return GroundRouteOnMap(job, observed, target)
             end
             result.ambiguousFrom = #floors > 1
         end
@@ -908,7 +1051,7 @@ local function Route(job, from, target)
         if access then return "ready", access end
     end
     if job.context.walkingGoalXY and unresolved and not result.fineSurface and type(target.indoors) ~= "boolean" then
-        local st = Grid.State(target.instanceID)
+        local st = Grid.State(map)
         local key, cell = Grid.locate(st, target.x, target.y)
         local tile = Grid.grid(st, key)
         local layers, reachable = tile.layers[cell]
@@ -947,7 +1090,7 @@ local function Route(job, from, target)
             point.x,point.y,point.z=node.x,node.y,node.z
             return point
         end
-        local stopping = Runtime.SurfaceApproach(target.instanceID,from,target,function(node)
+        local stopping = Runtime.SurfaceApproach(map,from,target,function(node)
             return (not result or result.dryApproach or not result.wetFloor or math.abs(result.wetFloor-node.z)<=1.05)
                 and SameApproachAccess(job,from,target,candidate(node))
         end, approachRadius)
@@ -969,18 +1112,434 @@ local function Route(job, from, target)
     return state, result
 end
 
-local function Run(job)
-    Work()
-    if job.context.faction == nil then
-        local env = job.owner and job.owner.env
-        if env and env.getCharacter then
-            local ok, character = pcall(env.getCharacter)
-            if ok and type(character) == "table" then job.context.faction = character.faction end
+-- The phase WDT replaces one tile in the parent world. Its outer cells
+-- overlap the base grid, so a crossing can join two independently proven
+-- corridors at a shared surface without changing the displayed world.
+local function PhaseCrossings(world, phase)
+    local entry = maps[phase]
+    local stored = entry.phaseCrossings
+    if stored and stored.world == world and stored.generation == generation then return stored.points end
+    local st, base = Grid.State(phase), Grid.State(world)
+    if not st or not base or st.data.nx ~= 1 or st.data.ny ~= 1 then return {} end
+    local cells, points = st.c, {}
+    for side = 1, 4 do
+        local dx = side == 1 and -1 or side == 2 and 1 or 0
+        local dy = side == 3 and -1 or side == 4 and 1 or 0
+        for i = 0, cells - 1, math.max(1, math.floor(cells / 32)) do
+            Work()
+            local ix = dx < 0 and 0 or dx > 0 and cells - 1 or i
+            local iy = dy < 0 and 0 or dy > 0 and cells - 1 or i
+            local x, y = Grid.position(st, 0, ix * cells + iy)
+            local point = { x = x, y = y, instanceID = world, phaseBoundary = true }
+            local z, baseZ = Endpoint(st, point), Endpoint(base, point)
+            if z and baseZ and math.abs(z - baseZ) <= 0.5 then
+                local ox, oy = x + dx * st.unit, y + dy * st.unit
+                local outerZ = Endpoint(base, { x = ox, y = oy })
+                if outerZ then
+                    local entryClear = Runtime.Sight(world, ox, oy, outerZ, x, y, z, {})
+                    local exitClear = Runtime.Sight(world, x, y, z, ox, oy, outerZ, {})
+                    if entryClear or exitClear then
+                        point.z, point.terrainPhase = z, phase
+                        local outside = { x = ox, y = oy, z = outerZ, instanceID = world }
+                        points[#points + 1] = { inside = point, outside = outside,
+                            enter = entryClear, leave = exitClear }
+                    end
+                end
+            end
         end
     end
+    entry.phaseCrossings = { world = world, points = points, generation = generation }
+    return points
+end
+
+local PLANE_AXES = { "x", "y" }
+
+local function IntersectsPhase(st, a, b)
+    local size = st.c * st.unit
+    local first, last = 0, 1
+    for _, axis in ipairs(PLANE_AXES) do
+        local origin = axis == "x" and st.x0 or st.y0
+        local delta = b[axis] - a[axis]
+        if delta == 0 then
+            if a[axis] < origin or a[axis] >= origin + size then return false end
+        else
+            local u, v = (origin - a[axis]) / delta, (origin + size - a[axis]) / delta
+            first, last = math.max(first, math.min(u, v)), math.min(last, math.max(u, v))
+            if first >= last then return false end
+        end
+    end
+    return true
+end
+
+local function StaysOutside(st, result)
+    local path = result.path
+    for i = 2, #path do
+        Work()
+        if IntersectsPhase(st, path[i - 1], path[i]) then return false end
+    end
+    return true
+end
+
+local function AppendWalkingPath(path, leg)
+    for _, point in ipairs(leg) do
+        Work()
+        local last = path[#path]
+        if not last or last.x ~= point.x or last.y ~= point.y or last.z ~= point.z then
+            path[#path + 1] = point
+        elseif point.phaseBoundary or point.mandatory then
+            path[#path] = point
+        end
+    end
+end
+
+local function CrossPhase(job, from, target, firstMap, lastMap)
+    if DifferentWalkingRegion(job, from, target) then return "no_path" end
+    local entering = lastMap == job.phase
+    local st = Grid.State(job.phase)
+    local ranked = {}
+    for i, crossing in ipairs(PhaseCrossings(from.instanceID, job.phase)) do
+        Work()
+        if (entering and crossing.enter) or (not entering and crossing.leave) then
+            local p = crossing.inside
+            local x, y = p.x, p.y
+            ranked[#ranked + 1] = { crossing = crossing, index = i,
+                yards = math.sqrt((from.x - x)^2 + (from.y - y)^2)
+                    + math.sqrt((target.x - x)^2 + (target.y - y)^2) }
+        end
+    end
+    table.sort(ranked, function(a, b)
+        if a.yards == b.yards then return a.index < b.index end
+        return a.yards < b.yards
+    end)
+    local tree, rejected = job.originTree, job.rejected
+    local firstTree = tree or {}
+    local finalState, finalResult = "no_path", nil
+    for _, candidate in ipairs(ranked) do
+        Work()
+        local crossing = candidate.crossing
+        local inside, outside = Copy(crossing.inside), Copy(crossing.outside)
+        local exit, entry = entering and outside or inside, entering and inside or outside
+        exit.uiMapID, entry.uiMapID = from.uiMapID, target.uiMapID
+        exit.region, entry.region = from.region, target.region
+        exit.mandatory, entry.mandatory = true, true
+        job.walkMap, job.originTree, job.rejected = firstMap, firstTree, nil
+        local state, first = GroundRouteOnMap(job, from, exit)
+        if first and first.independentFrom then
+            finalState, finalResult = state, first
+            break
+        end
+        if state == "ready" and not first.partial and (not entering or StaysOutside(st, first)) then
+            job.walkMap, job.originTree, job.rejected = lastMap, nil, not job.targets and {} or nil
+            local status, last = GroundRouteOnMap(job, entry, target)
+            if last and last.independentTo then
+                finalState, finalResult = status, last
+                break
+            end
+            if (status == "ready" or status == "partial") and (entering or StaysOutside(st, last)) then
+                local path = {}
+                -- The seam must be reached before steering considers a
+                -- chord into the other tile.
+                AppendWalkingPath(path, first.path)
+                AppendWalkingPath(path, last.path)
+                local yards, seconds = Measure({exit, entry}, job.context)
+                last.path, last.yards = path, first.yards + yards + last.yards
+                last.seconds = first.seconds + seconds + last.seconds
+                last.geometryVerified = false
+                if status == "ready" then
+                    finalState, finalResult = status, last
+                    break
+                end
+                if not finalResult or last.remainingYards < finalResult.remainingYards then
+                    finalState, finalResult = status, last
+                end
+            end
+        end
+    end
+    job.walkMap, job.originTree, job.rejected = nil, tree, rejected
+    if finalResult then finalResult.approachPages = nil end
+    return finalState, finalResult
+end
+
+local function GroundRoute(job, from, target)
+    if not job.phase or not Position(from) or not Position(target) or from.instanceID ~= target.instanceID then
+        return GroundRouteOnMap(job, from, target)
+    end
+    local first, last = TerrainMap(from, job.phase), TerrainMap(target, job.phase)
+    if first ~= last then return CrossPhase(job, from, target, first, last) end
+    if first == from.instanceID then return GroundRouteOnMap(job, from, target) end
+    local tree = job.originTree
+    job.walkMap, job.originTree = first, nil
+    local status, result = GroundRouteOnMap(job, from, target)
+    job.walkMap, job.originTree = nil, tree
+    if result then result.approachPages = nil end
+    return status, result
+end
+
+local FLIGHT_CLEARANCE = 12
+local FLIGHT_TAKEOFF_SECONDS = 2
+local AIRBORNE_CLEARANCE = 30
+local FLIGHT_SURFACE_TOLERANCE = 8
+local FLIGHT_SAMPLE_SPACING = 20
+local MAX_FLIGHT_SAMPLES = 768
+local FLIGHT_DETOURS = { 0, 0.15, -0.15, 0.30, -0.30 }
+
+-- Walking data can have several surfaces in one column. The highest one
+-- represents the obstacle for an overflight, including roofs and bridges.
+local function FlightHeight(st, x, y, outdoorOnly, phase)
+    local phased = phase and Grid.State(phase)
+    if phased and Grid.locate(phased, x, y) then st = phased end
+    local key, cell = Grid.locate(st, x, y)
+    local tile = key and Grid.grid(st, key)
+    if not tile then return end
+    local height, highest = Grid.surfaceHeight(st, tile, cell, x, y), cell
+    for _, node in ipairs(tile.layers[cell] or {}) do
+        Work()
+        local z = Grid.surfaceHeight(st, tile, node, x, y)
+        if z and (not height or z > height) then height, highest = z, node end
+    end
+    if outdoorOnly then
+        local class = (tile.class[highest] or 0) % 8
+        if class == 4 or class == 5 then return end
+    end
+    return height
+end
+
+local function FlightPeak(st, from, to, length, phase)
+    local count = math.ceil(length / FLIGHT_SAMPLE_SPACING)
+    if count > MAX_FLIGHT_SAMPLES then return end
+    local peak = -math.huge
+    for i = 1, count do
+        Work()
+        local t = i / count
+        local height = FlightHeight(st, from.x + (to.x - from.x) * t, from.y + (to.y - from.y) * t, nil, phase)
+        if not height then return end
+        peak = math.max(peak, height)
+    end
+    return peak
+end
+
+local function FlightEndpoint(point)
+    return not (point.indoors or point.isInstance or point.floor or point.accessKey or point.noAutoconnect)
+end
+
+function Provider:GetFlightWalkingLowerBound(from, to, flight, distance)
+    if
+        self.owner.profile ~= "retail"
+        or not flight.groundSpeedFor
+        or not Finite(flight.groundSpeedCeiling)
+        or flight.groundSpeedCeiling <= 0
+        or not Finite(flight.speed)
+        or flight.speed <= 0
+    then
+        return
+    end
+    local ground = distance / flight.groundSpeedCeiling
+    -- Flight and the mixed ground/air routes all require an eligible destination.
+    if not FlightEndpoint(to) then return ground end
+    local takeoff = from == flight.origin and flight.airborne and 0 or FLIGHT_TAKEOFF_SECONDS
+    return math.min(ground, distance / math.max(flight.speed, flight.groundSpeedCeiling) + takeoff)
+end
+
+local function FlightRoute(job, from, to)
+    local flight = job.context.flight
+    if not flight or not Position(from) or not Position(to) or from.instanceID ~= to.instanceID
+        or (from.region and to.region and from.region ~= to.region)
+        or not FlightEndpoint(from) or not FlightEndpoint(to) or not flight.canFly(from, to) then return end
+    local dx, dy = to.x - from.x, to.y - from.y
+    local distance = math.sqrt(dx * dx + dy * dy)
+    if distance == 0 then return end
+    local liveDeparture = job.from == flight.origin
+    local airborne = liveDeparture and flight.airborne
+    local takeoff = airborne and 0 or FLIGHT_TAKEOFF_SECONDS
+    local start, goal = Copy(from), Copy(to)
+    start.z, goal.z = nil, nil
+    local entry = maps[from.instanceID]
+    local st
+    if entry and (entry.validated or Whole(entry.data)) then
+        entry.validated = true
+        st = Grid.State(from.instanceID)
+    end
+    local ground = st and FlightHeight(st, from.x, from.y, nil, job.phase)
+    local landing = st and FlightHeight(st, to.x, to.y, nil, job.phase)
+    if not liveDeparture and from.z and (not ground or math.abs(from.z - ground) > FLIGHT_SURFACE_TOLERANCE) then
+        return
+    end
+    if to.z and (not landing or math.abs(to.z - landing) > FLIGHT_SURFACE_TOLERANCE) then
+        -- A covered passage needs a landing at its mouth and a proved ground
+        -- corridor to the actual world transition below the roof.
+        local entrances = job.context.flightEntrances
+        if entrances and entrances[to] and landing and to.z < landing then return nil, st end
+        return
+    end
+
+    local best, reference
+    if ground and landing then
+        reference = ground
+        if airborne then
+            local total, count = ground, 1
+            for i = 1, 4 do
+                local angle = i * math.pi / 2
+                local height = FlightHeight(st, from.x + 30 * math.cos(angle), from.y + 30 * math.sin(angle), nil, job.phase)
+                if height then total, count = total + height, count + 1 end
+            end
+            reference = math.max(ground, total / count) + AIRBORNE_CLEARANCE
+        end
+        for _, fraction in ipairs(FLIGHT_DETOURS) do
+            local path, yards = { start, goal }, distance
+            local offset = math.min(math.abs(fraction) * distance, 500) * (fraction < 0 and -1 or 1)
+            if offset ~= 0 then
+                local bend = { x = from.x + dx / 2 - dy / distance * offset,
+                    y = from.y + dy / 2 + dx / distance * offset, instanceID = from.instanceID }
+                if from.uiMapID == to.uiMapID then bend.uiMapID = from.uiMapID end
+                path = { start, bend, goal }
+                yards = 2 * math.sqrt(distance ^ 2 / 4 + offset ^ 2)
+            end
+            local travel = takeoff + yards / flight.speed
+            if not best or travel < best.seconds then
+                local a = FlightPeak(st, path[1], path[2], yards / (#path - 1), job.phase)
+                local b = a
+                if a and #path == 3 then b = FlightPeak(st, path[2], path[3], yards / 2, job.phase) end
+                if a and b then
+                    local climb = math.max(0, math.max(a, b) + FLIGHT_CLEARANCE - reference)
+                    local seconds = travel + climb / flight.climbSpeed
+                    if not best or seconds < best.seconds then
+                        path.flight = { speed = flight.speed, climb = climb, referenceHeight = reference }
+                        best = { path = path, yards = yards, seconds = seconds }
+                    end
+                end
+            end
+        end
+    end
+    if best then return best end
+    -- Incomplete coverage still permits the authorized direct flight estimate.
+    local path = { start, goal, flight = { speed = flight.speed, estimated = true } }
+    return { path = path, yards = distance, seconds = takeoff + distance / flight.speed }
+end
+
+local function FlyToCoveredEntrance(job, from, target, st)
+    local groundStart = from
+    local airborne = job.from == job.context.flight.origin and job.context.flight.airborne
+    if airborne then
+        -- Find the ground approach from a surface even during an airborne replan.
+        groundStart = Copy(from)
+        groundStart.z = nil
+    end
+    local preview = job.context.previewWalking
+    job.context.previewWalking = nil
+    local status, ground = GroundRoute(job, groundStart, target)
+    job.context.previewWalking = preview
+    if status ~= "ready" or ground.partial then return status, ground end
+
+    local path, landing, nextIndex = ground.path
+    local spacing = math.min(st.unit / 2, FLIGHT_SAMPLE_SPACING)
+    -- Walking geometry can simplify a straight tunnel approach into a single
+    -- chord. Look for the open-air end along that chord as well as at bends.
+    for index = #path, 2, -1 do
+        Work()
+        local a, b = path[index - 1], path[index]
+        local dx, dy = a.x - b.x, a.y - b.y
+        local count = math.ceil(math.sqrt(dx * dx + dy * dy) / spacing)
+        if a.z and b.z then
+            for sample = 1, count do
+                Work()
+                local t = sample / count
+                local x, y, z = b.x + dx * t, b.y + dy * t, b.z + (a.z - b.z) * t
+                local height = FlightHeight(st, x, y, nil, job.phase)
+                if height and math.abs(height - z) <= FLIGHT_SURFACE_TOLERANCE then
+                    landing, nextIndex = Copy(a), index
+                    landing.x, landing.y, landing.z = x, y, z
+                    break
+                end
+            end
+        end
+        if landing then break end
+    end
+    local air = landing and FlightRoute(job, from, landing)
+    if not air then return status, ground end
+    local suffix = { landing }
+    for i = nextIndex, #path do
+        Work()
+        suffix[#suffix + 1] = path[i]
+    end
+    local yards, seconds = Measure(suffix, job.context)
+    if airborne or air.seconds + seconds < ground.seconds then
+        air.path.flight.groundPath = suffix
+        air.path.flight.groundSeconds = seconds
+        air.seconds, air.yards = air.seconds + seconds, air.yards + yards
+        return "ready", air
+    end
+    return status, ground
+end
+
+-- After an indoor landing, follow the proven ground corridor to open air.
+-- Match its height to the exposed surface so a roof above it cannot be a takeoff point.
+local function FlyFromInterior(job, target, ground)
+    local path = ground.path
+    local st = Grid.State(target.instanceID)
+    if not st or not path then return end
+    local spacing = math.min(st.unit / 2, FLIGHT_SAMPLE_SPACING)
+    local prefix = { path[1] }
+    for index = 2, #path do
+        Work()
+        local from, to = path[index - 1], path[index]
+        if Finite(from.z) and Finite(to.z) then
+            local dx, dy = to.x - from.x, to.y - from.y
+            local count = math.ceil(math.sqrt(dx * dx + dy * dy) / spacing)
+            for sample = 1, count do
+                Work()
+                local t = sample / count
+                local x, y, z = from.x + dx * t, from.y + dy * t, from.z + (to.z - from.z) * t
+                local height = FlightHeight(st, x, y, true, job.phase)
+                if height and math.abs(height - z) <= 2 then
+                    local takeoff = Copy(from)
+                    takeoff.x, takeoff.y, takeoff.z, takeoff.indoors = x, y, z, false
+                    local air = FlightRoute(job, takeoff, target)
+                    if not air then return end
+                    prefix[#prefix + 1] = takeoff
+                    local yards, seconds = Measure(prefix, job.context)
+                    if seconds + air.seconds < ground.seconds then
+                        air.path.flight.groundBefore = prefix
+                        air.path.flight.groundBeforeSeconds = seconds
+                        air.seconds, air.yards = air.seconds + seconds, air.yards + yards
+                        return air
+                    end
+                    return
+                end
+            end
+        end
+        prefix[#prefix + 1] = to
+    end
+end
+
+local function Route(job, from, target)
+    local flight, covered = FlightRoute(job, from, target)
+    if covered then return FlyToCoveredEntrance(job, from, target, covered) end
+    if not flight then
+        local status, ground = GroundRoute(job, from, target)
+        local travel = job.context.flight
+        if status == "ready" and not ground.partial and from.indoors == true and FlightEndpoint(target)
+            and travel and job.context.flightEntrances and travel.canFly(target, target) then
+            return status, FlyFromInterior(job, target, ground) or ground
+        end
+        return status, ground
+    end
+    if job.from == job.context.flight.origin and job.context.flight.airborne then return "ready", flight end
+    local distance = math.sqrt((target.x - from.x) ^ 2 + (target.y - from.y) ^ 2)
+    if flight.seconds <= distance / Speed(job.context, from, target) then return "ready", flight end
+    local status, ground = GroundRoute(job, from, target)
+    if status == "ready" and not ground.partial and ground.seconds <= flight.seconds then return status, ground end
+    return "ready", flight
+end
+
+local function Run(job)
+    Work()
+    if job.context.faction == nil then job.context.faction = WalkingFaction(job.owner) end
     local from = Copy(job.from)
-    local entry = Position(from) and maps[from.instanceID]
-    if job.shareOrigin and entry and (not entry.data.portalCostPerYard or job.targets and #job.targets > 1) then
+    job.phase = Position(from) and SelectPhase(job.owner, from, job.context.faction) or nil
+    local map = Position(from) and TerrainMap(from, job.phase)
+    local entry = map and maps[map]
+    if entry and map == from.instanceID and job.shareOrigin
+        and (not entry.data.portalCostPerYard or job.targets and #job.targets > 1) then
         local stored = entry and entry.originTree
         if stored and stored.faction == job.context.faction and stored.style == job.context.style
             and stored.waterWalking == job.context.waterWalking then
@@ -993,14 +1552,19 @@ local function Run(job)
         end
     end
     if Position(from) and from.z == nil and job.context.walkingOriginCorridor then
-        local entry = maps[from.instanceID]
         if entry and (entry.validated or Whole(entry.data)) then
             entry.validated = true
             from.z = CorridorHeight(providers[job.owner], from, job.context.walkingOriginCorridor, true)
         end
     end
     if not job.targets then
-        if job.context.previewDeparture then PreviewDeparture(job, from, entry) end
+        local flight = job.context.flight
+        if job.context.previewDeparture and not (flight and flight.canFly(from, job.to))
+            and (not job.phase or Position(job.to) and TerrainMap(job.to, job.phase) == map) then
+            job.walkMap = map
+            PreviewDeparture(job, from, entry)
+            job.walkMap = nil
+        end
         return Route(job, from, job.to)
     end
     local costs = {}
@@ -1014,7 +1578,7 @@ local function Run(job)
             local ok
             ok, state, result = coroutine.resume(worker)
             if not ok then
-                job.originTree = nil
+                job.originTree, job.walkMap = nil, nil
                 state, result = "unavailable", nil
                 break
             end
@@ -1026,7 +1590,8 @@ local function Run(job)
             approachPages = result and result.approachPages,
             unverifiedGeometry = result and result.unverifiedGeometry,
             unresolvedFrom = result and result.unresolvedFrom, unresolvedTo = result and result.unresolvedTo,
-            yards = result and result.yards, seconds = result and result.seconds}
+            yards = result and result.yards, seconds = result and result.seconds,
+            weightedSeconds = result and result.weightedSeconds}
     end
     return "ready", { costs = costs }
 end
@@ -1057,10 +1622,12 @@ local function NewJob(owner, from, to, targets, context)
         walkingGoalApproach = context.walkingGoalApproach,
         walkingGoal = context.walkingGoal or to,
         walkingGoalXY = context.walkingGoalXY,
+        walkingPartialGoal = context.walkingPartialGoal,
         walkingOrigin = context.walkingOrigin, previewWalking = context.previewWalking,
         previewDeparture = context.previewDeparture == true,
         faction = context.faction, style = context.style, waterWalking = context.waterWalking, walkSpeed = context.walkSpeed,
-        walkSpeedFor = context.walkSpeedFor, walkSpeedAt = context.walkSpeedAt, quick = context.quick }
+        walkSpeedFor = context.walkSpeedFor, walkSpeedAt = context.walkSpeedAt, quick = context.quick,
+        flight = owner.profile == "retail" and context.flight or nil, flightEntrances = context.flightEntrances }
     local walk = context.walkingOriginCorridor
     if walk and (context.walkingOrigin == from or (not context.walkingOrigin and not targets)) then
         snapshot.walkingOriginCorridor = SnapshotCorridor(walk)
@@ -1079,7 +1646,7 @@ function Provider:CreateServiceOriginJob(point, walk, clock)
     local job = NewJob(self.owner, point, nil, nil, {clock = clock})
     local step = SnapshotCorridor(walk)
     job.co = coroutine.create(function()
-        local entry = maps[point.instanceID]
+        local entry = maps[TerrainMap(point, SelectPhase(self.owner, point))]
         if not entry or not (entry.validated or Whole(entry.data)) then return "unavailable" end
         entry.validated = true
         return "ready", CorridorHeight(self, point, step, true)
@@ -1097,21 +1664,23 @@ function Provider:CreatePassageJob(from, to, context)
     local job = NewJob(self.owner, from, to, nil, context)
     job.co = coroutine.create(function()
         if not self:RequiresWalkingProof(from,to) then return "unavailable" end
-        local entry = maps[from.instanceID]
+        local map = ChordMap(self.owner, from, to)
+        local entry = maps[map]
+        if not entry then return "unavailable" end
         if not entry.validated and not Whole(entry.data) then return "unavailable" end
         entry.validated = true
-        local st = Grid.State(from.instanceID)
+        local st = Grid.State(map)
         local a,b = Copy(from),Copy(to)
         local function height(point)
             if Grid.surfacePage(st,point.x,point.y,true) then
-                return point.z or Runtime.GuidanceHeight(from.instanceID,point.x,point.y)
+                return point.z or Runtime.GuidanceHeight(map,point.x,point.y)
             end
             local z = Endpoint(st,point)
             return z and (point.z or z)
         end
         a.z,b.z = height(a),height(b)
         if not a.z or not b.z then return "unavailable" end
-        local clear = Runtime.Sight(from.instanceID,a.x,a.y,a.z,b.x,b.y,b.z,{})
+        local clear = Runtime.Sight(map,a.x,a.y,a.z,b.x,b.y,b.z,{})
         if clear == nil then return "unavailable" end
         if clear then return "ready", {path={a,b}} end
         return "no_path"
@@ -1129,11 +1698,12 @@ function Provider:CreateWalkingSegmentJob(from, to, context)
         if not Position(from) or not Position(to) or not from.z or not to.z or from.instanceID ~= to.instanceID then
             return "unavailable"
         end
-        local entry = maps[from.instanceID]
+        local map, crosses = ChordMap(self.owner, from, to)
+        local entry = maps[map]
         if not entry or not (entry.validated or Whole(entry.data)) then return "unavailable" end
         entry.validated = true
-        local clear = Runtime.Sight(from.instanceID, from.x, from.y, from.z, to.x, to.y, to.z, {},nil,nil,
-            RequiresNativeChord(from, to))
+        local clear = Runtime.Sight(map, from.x, from.y, from.z, to.x, to.y, to.z, {},nil,nil,
+            not crosses and RequiresNativeChord(from, to))
         if clear == nil then return "unavailable" end
         return clear and "ready" or "no_path"
     end)
@@ -1175,7 +1745,8 @@ function Job:Step(maxOperations, milliseconds)
     end
     if self.status ~= "planning" then
         self.surfacePages=nil
-        if self.shareOrigin and self.status == "ready" and self.originTree and self.originTree.tile then
+        if self.shareOrigin and self.status == "ready" and self.originTree and self.originTree.tile
+            and TerrainMap(self.from, self.phase) == self.from.instanceID then
             maps[self.from.instanceID].originTree = self.originTree
         end
         self.originTree, self.rejected = nil, nil

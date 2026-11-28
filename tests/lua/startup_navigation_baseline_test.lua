@@ -145,8 +145,9 @@ local function fixture(profile, options)
         SetCoord = function(self)
             local nav = APR.navigation
             local guidance = nav:GetActiveStep()
-            local coord = guidance and guidance.Coord or (APR.IsInRouteZone and select(1, APR:GetCurrentStep()).Coord)
-            self.Active = coord ~= nil
+            local coord = guidance and guidance.Coord
+                or (APR.IsInRouteZone and not nav:BlocksDirectGuidance() and select(1, APR:GetCurrentStep()).Coord)
+            self.Active = not not coord
             if coord then
                 self.x, self.y = coord.x, coord.y
             end
@@ -225,6 +226,27 @@ local function fixture(profile, options)
     end
     return s
 end
+
+for _, shortcut in ipairs({ true, false }) do
+    local t = fixture("retail", { shortcut = shortcut })
+    t.step.Coord.y = 7800
+    function IsFlyableArea() return true end
+    C_PlayerInfo = { GetGlidingInfo = function() return false, true end }
+    t.nav:Update()
+    t:frames(5)
+    assert(t.nav.zoneReady and t.nav.search and t.nav.state == "planning",
+        "A destination inside the skyriding threshold still requires the long trip comparison")
+    APR.Arrow:SetCoord()
+    assert(not APR.Arrow.Active and not t.firstCommit, "The far direct arrow must wait for transport comparison")
+    t:settle()
+    if shortcut then
+        local action = t.nav:GetActiveStep()
+        assert(action and action.kind == "spell" and t.nav.totalSeconds < 120)
+    else
+        assert(t.nav.state == "ready" and APR.Arrow.Active, "Direct guidance is available when it wins")
+    end
+end
+C_PlayerInfo = nil
 
 for _, profile in ipairs({ "retail", "forever" }) do
     local t = fixture(profile)

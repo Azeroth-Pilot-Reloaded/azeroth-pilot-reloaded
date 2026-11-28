@@ -211,6 +211,69 @@ local function double(value)
     local fraction, exponent = math.frexp(value)
     return little(0, 4) .. little((exponent + 1022 + 2 * fraction - 1) * 1048576, 4)
 end
+
+-- A coarse row crosses a doorway whose clearance requires a turn between
+-- cell centres. Only the detailed lattice contains the bend.
+do
+    local function doorway(sealed)
+        local data = F.map()
+        data.cells = 128
+        data.grid[1] = string.rep("AAQ" .. string.rep("A", 125), 128)
+        data.height[1] = string.rep("X", 128)
+        data.class[1] = string.rep("A", 128 * 128)
+
+        local vertices, faces, nodes = {}, {}, {}
+        local function vertex(x, y, z)
+            local index = #vertices
+            vertices[index + 1] = double(x) .. double(y) .. double(z)
+            return little(index, 4)
+        end
+        local a, b, c, d = vertex(7, 7, 0), vertex(43, 7, 0), vertex(43, 15, 0), vertex(7, 15, 0)
+        faces[1], faces[2] = "\0" .. a .. b .. c, "\0" .. a .. c .. d
+        local top = sealed and 15 or 11
+        a, b, c, d = vertex(19.5, 7, 0), vertex(19.5, top, 0), vertex(19.5, top, 3), vertex(19.5, 7, 3)
+        faces[3], faces[4] = "\1" .. a .. b .. c, "\1" .. a .. c .. d
+        for x = 8, 40 do
+            for y = 10, 12 do
+                local edges = {}
+                if x < 40 and (x ~= 19 or not sealed and y == 12) then edges[#edges + 1] = "\0\0" end
+                if x > 8 and (x ~= 20 or not sealed and y == 12) then edges[#edges + 1] = "\1\0" end
+                if y < 12 then edges[#edges + 1] = "\2\0" end
+                if y > 10 then edges[#edges + 1] = "\3\0" end
+                nodes[#nodes + 1] = little(x, 2) .. little(y, 2) .. double(0) .. "\0"
+                    .. little(#edges, 2) .. table.concat(edges)
+            end
+        end
+        local window = "SFC1" .. little(8, 2) .. little(8, 2) .. little(40, 2) .. little(14, 2)
+            .. little(#nodes, 4) .. little(#vertices, 4) .. little(#faces, 4)
+            .. table.concat(nodes) .. table.concat(vertices) .. table.concat(faces)
+        data.surface = { "SFA1" .. little(1, 4) .. little(#window, 4) .. window }
+        return data
+    end
+    local unit = (1600 / 3) / 128
+    local from = { instanceID = 901, x = unit / 2, y = 2.5 * unit, z = 0 }
+    local to = { instanceID = 901, x = 7.5 * unit, y = from.y, z = 0 }
+    local function check(sealed)
+        -- Keep this fixture in its own world so subsequent fixture revisions
+        -- and caches do not affect it.
+        lib:RegisterTerrainData("forever", 901, doorway(sealed), sealed and 2 or 1)
+        for _, endpoints in ipairs({ { from, to }, { to, from } }) do
+            local status, result = route(endpoints[1], endpoints[2], {})
+            if sealed then
+                assert(status ~= "ready", "A closed doorway must remain impassable")
+            else
+                assert(status == "ready", status)
+                assert(#result.path > 2 and result.yards > to.x - from.x)
+                for index = 2, #result.path do
+                    assert(provider:CanFollowWalkingSegment(result.path[index - 1], result.path[index]))
+                end
+            end
+        end
+    end
+    check(false)
+    check(true)
+end
+
 local vertices, faces, nodes = {}, {}, {}
 for i, z in ipairs({0, 4}) do
     for _, point in ipairs({{0, 0}, {12, 0}, {0, 12}}) do

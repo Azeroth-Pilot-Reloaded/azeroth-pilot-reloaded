@@ -748,7 +748,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 2541, x = 0.5093, y = 0.788 },
+            to = { space = "map", uiMapID = 2541, x = 0.5093, y = 0.788, z = -0.01, indoors = true },
             actions = { { id = 253629, type = "item" } },
             requirements = { toyID = 253629 },
         },
@@ -960,4 +960,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "items", {
             requirements = { faction = "Horde" },
         },
     },
-}, 32)
+}, 33)

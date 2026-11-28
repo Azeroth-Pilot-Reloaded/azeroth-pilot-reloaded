@@ -59,6 +59,7 @@ function Job:AdvanceWaypointLeg(maxOperations, remainingMilliseconds)
                 walkSpeed = request.walkSpeed,
                 walkSpeedAt = request.walkSpeedAt,
                 walkSpeedFor = request.walkSpeedFor,
+                flight = request.flight,
                 clock = request.clock,
             })
         end
@@ -189,6 +190,7 @@ function Job:BeginSearch(approachRadius, accessEdges, accessGoal)
         walkSpeedFor = request.walkSpeedFor,
         walkSpeedAt = request.walkSpeedAt,
         walkingProvider = request.walkingProvider,
+        flight = request.flight,
         walkingGoal = accessGoal or request.walkingGoal,
         walkingGoalRange = not accessGoal and request.walkingGoalRange or nil,
         walkingGoalPreferRange = not accessGoal and request.walkingGoalPreferRange or nil,
@@ -264,6 +266,7 @@ function Job:ExplainFailure(includeActions)
         walkSpeedFor = r.walkSpeedFor,
         walkSpeedAt = r.walkSpeedAt,
         walkingProvider = r.walkingProvider,
+        flight = r.flight,
         protectWalkingCoverage = r.protectWalkingCoverage,
         walkingGoal = r.walkingGoal,
         walkingGoalRange = r.walkingGoalRange,
