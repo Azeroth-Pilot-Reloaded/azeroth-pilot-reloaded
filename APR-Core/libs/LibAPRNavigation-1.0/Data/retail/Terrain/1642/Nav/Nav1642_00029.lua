@@ -692,6 +692,3 @@ D.packed.height[1585]={"eNqL0B8Fo2AUjFSgDQDYbLxV"}
 D.packed.graph[1537]={"eNpdkl1qAzEMhA+Uh1BygvFK8s/uNtk8pD1DHpYE2tDevngnNJbhAzMIj2VpsOC8x+Wk+KlHDJuysCkbqAbWhEo2pbJLuJxEdp9bbbdutd1hO/aJB2t71va1poqAICSIImMKZAqKgvFKxqsBgD5RBdy9wamCciXlqhhRjBRTTMg3km+GwXn6XsSpEdlI3lzSStJq/xZ08b2oUxPiSuKqmBEzidkQnYt/3ZyaYZlYVrxD70Tvhuxc/Ouxm3U+kHyoLnInclccITOR2TA6T99L6qYUP0j8qC7DTIbZMDuX2P1I3oi8KU7A15Mvw7Hbu0/IyyV1CQkuBQNKIiXVueSF5KVOwv+h9QzdbtsUCNKNpJvvpW66dRm63bYpMNiD2MO/XufSukg3ibKQstQftZmYnMu7c9FuSumXpN/aS5uCCDkSOfpe6m5bT+v+Z2di5+rySoHvpW66dYl9Qr5J+K45e2Wifz019/4ANG1Qhw=="}
 D.packed.grid[1537]={"eNpz1IcA7dBkKMsicZQ5yhxljjJHmTRhBkFZliEAop5LuQ=="}
 D.packed.height[1537]={"eNqL0B8Fo2AUjDSgDQD6brrd"}
-L:RegisterTerrainData("retail",1642,D,20261123,true)
-L._TerrainPackStages[1642]=nil
-if not next(L._TerrainPackStages) then L._TerrainPackStages=nil end

@@ -319,6 +319,3 @@ D.packed.height[34]={}
 D.packed.graph[1]={"eNpzdAQAAMUAgw=="}
 D.packed.grid[1]={"eNpz1B8Fo2AUjFSgDQB8Vbw+"}
 D.packed.height[1]={}
-L:RegisterTerrainData("retail",2222,D,20261123,true)
-L._TerrainPackStages[2222]=nil
-if not next(L._TerrainPackStages) then L._TerrainPackStages=nil end
