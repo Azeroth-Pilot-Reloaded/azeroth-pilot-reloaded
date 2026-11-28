@@ -101,7 +101,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(404, {"error": "This file is not available yet."})
             return
         try:
-            file = (job.folder / name).open("rb")
+            file = (job.reports / name).open("rb")
         except FileNotFoundError:
             self.send_json(404, {"error": "This file is not available yet."})
             return

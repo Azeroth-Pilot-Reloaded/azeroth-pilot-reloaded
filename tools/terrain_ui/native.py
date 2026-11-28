@@ -16,6 +16,7 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
 WORKSPACE = ROOT / ".cache" / "terrain-ui"
+REPORTS = ROOT / "tools" / "terrain_ui" / "reports"
 RETAIL = ROOT / ".cache" / "retail-terrain-70961"
 GENERATOR = ROOT.parent / "Route-generator"
 DEFINITIONS = WORKSPACE / "definitions"
@@ -351,6 +352,35 @@ fn build_grid_variant(geometry: &Path, out: &Path, workers: usize, capacity: usi
         'process_map(&dir, &stage, m, workers, capacity, query_graph)?')
 
 
+def cargo_build(manifest, target, options, log, execute):
+    env = os.environ.copy()
+    portable = RETAIL / "toolchain"
+    cargo = shutil.which("cargo")
+    if not cargo and (portable / "cargo/bin/cargo.exe").is_file():
+        cargo = str(portable / "cargo/bin/cargo.exe")
+        env.update(CARGO_HOME=str(portable / "cargo"), RUSTUP_HOME=str(portable / "rustup"))
+    if not cargo:
+        raise ValueError("Rust Cargo is required to compile the local terrain generator.")
+    env["CARGO_TARGET_DIR"] = str(target)
+    command = [cargo, "build", "--release", "--offline", "--locked", "--jobs", "2",
+               "--manifest-path", manifest, *options]
+    log("Cargo build · APR terrain")
+    if execute:
+        execute(command, env)
+    else:
+        result = subprocess.run(command, env=env, capture_output=True)
+        if result.returncode:
+            raise ValueError(result.stderr.decode("utf-8", errors="replace"))
+
+
+def prepare_forever_packer(log, execute=None):
+    with BUILD_LOCK:
+        target = WORKSPACE / "native-target-forever"
+        manifest = GENERATOR / "tools/apr-terrain/Cargo.toml"
+        cargo_build(manifest, target, ["--bin", "apr-terrain"], log, execute)
+        return target / "release/apr-terrain.exe"
+
+
 def prepare_binaries(log, execute=None, toolchain=None):
     with BUILD_LOCK:
         source, dll = resources() if toolchain is None else toolchain
@@ -483,24 +513,7 @@ def prepare_binaries(log, execute=None, toolchain=None):
         "--out", direct_out.to_str().unwrap()]);
     assert_eq!(direct["files"], packed["files"]);
     assert_eq!(call(&["check", "--out", direct_out.to_str().unwrap()])["state"], "ok");'''), encoding="utf-8")
-        env = os.environ.copy()
-        portable = RETAIL / "toolchain"
-        cargo = shutil.which("cargo")
-        if not cargo and (portable / "cargo/bin/cargo.exe").is_file():
-            cargo = str(portable / "cargo/bin/cargo.exe")
-            env.update(CARGO_HOME=str(portable / "cargo"), RUSTUP_HOME=str(portable / "rustup"))
-        if not cargo:
-            raise ValueError("Rust Cargo is required to compile the local terrain generator.")
-        env["CARGO_TARGET_DIR"] = str(target)
-        command = [cargo, "build", "--release", "--offline", "--locked", "--workspace", "--jobs", "2",
-                   "--manifest-path", native / "Cargo.toml"]
-        log("Cargo build · APR terrain")
-        if execute:
-            execute(command, env)
-        else:
-            result = subprocess.run(command, env=env, capture_output=True)
-            if result.returncode:
-                raise ValueError(result.stderr.decode("utf-8", errors="replace"))
+        cargo_build(native / "Cargo.toml", target, ["--workspace"], log, execute)
         stamp.write_text(signature, encoding="utf-8")
         return executables, dll
 

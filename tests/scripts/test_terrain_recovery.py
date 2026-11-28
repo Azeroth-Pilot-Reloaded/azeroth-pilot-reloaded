@@ -20,7 +20,8 @@ class TerrainRecoveryTests(unittest.TestCase):
         temporary = Path(directory.name)
         self.world = {"id": 601, "name": {"en": "Fixture"}, "tiles": {"1_1": 1, "1_2": 2, "1_3": 3, "1_4": 4}}
         client = {"id": "fixture", "product": "wow", "build": "12.0.0.1", "buildKey": "fixture-key"}
-        with patch("tools.terrain_ui.job.WORKSPACE", temporary):
+        with patch("tools.terrain_ui.job.WORKSPACE", temporary / "work"), patch(
+                "tools.terrain_ui.job.REPORTS", temporary / "reports"):
             self.job = Generation(client, {"worlds": {"601": self.world}, "tree": []}, {}, DEFAULTS)
         self.job.world = self.world
         self.geometry = temporary / "geometry"
@@ -55,7 +56,7 @@ class TerrainRecoveryTests(unittest.TestCase):
         self.assertEqual(accepted["1_2"]["file"], "retry/1_2.json")
         self.assertEqual(set(accepted), {"1_1", "1_2"})
         self.assertEqual(errors, {"1_3": [model_error], "1_4": ["No geometry emitted for the requested tile"]})
-        self.assertIn(model_error, (self.job.folder / "generation.log").read_text(encoding="utf-8"))
+        self.assertIn(model_error, (self.job.reports / "generation.log").read_text(encoding="utf-8"))
 
     def test_only_unfinished_maps_are_available_for_retry(self):
         self.job.ids = [601, 602, 603]

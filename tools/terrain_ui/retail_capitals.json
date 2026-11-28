@@ -1,0 +1,92 @@
+[
+  {
+    "expansion": "World of Warcraft",
+    "hubs": [
+      {"maps": [84], "anchor": [60.8, 74.8]},
+      {"maps": [87], "anchor": [18.6, 51.6]},
+      {"maps": [90], "anchor": [67.8, 38.6]},
+      {"maps": [85], "anchor": [48.74, 84.04]},
+      {"maps": [88], "anchor": [45.8, 64.6]},
+      {"maps": [89], "anchor": [62.4, 32.8]}
+    ]
+  },
+  {
+    "expansion": "The Burning Crusade",
+    "hubs": [
+      {"maps": [103], "anchor": [59.91, 19.45]},
+      {"maps": [110], "anchor": [79.6, 58.6]},
+      {"maps": [111], "anchor": [28.2, 48.4]}
+    ]
+  },
+  {
+    "expansion": "Wrath of the Lich King",
+    "hubs": [
+      {"maps": [125, 126], "anchor": [52.7, 14.73]}
+    ]
+  },
+  {
+    "expansion": "Cataclysm",
+    "hubs": [
+      {"maps": [84], "anchor": [60.8, 74.8]},
+      {"maps": [85], "anchor": [48.74, 84.04]},
+      {"maps": [218], "anchor": [50, 50]},
+      {"maps": [207], "area": 5303, "anchor": [49.8, 52]}
+    ]
+  },
+  {
+    "expansion": "Mists of Pandaria",
+    "hubs": [
+      {"maps": [392, 391], "anchor": [22.99, 54.59]},
+      {"maps": [394, 393], "anchor": [45.36, 66.86]}
+    ]
+  },
+  {
+    "expansion": "Warlords of Draenor",
+    "hubs": [
+      {"maps": [622], "anchor": [35.7, 77.9]},
+      {"maps": [624], "anchor": [51.39, 61.92]}
+    ]
+  },
+  {
+    "expansion": "Legion",
+    "hubs": [
+      {"maps": [627, 628], "anchor": [52.27, 14.74]},
+      {"maps": [831, 832, 883, 884, 886, 887, 940, 941], "anchor": [44.63, 74.35]}
+    ]
+  },
+  {
+    "expansion": "Battle for Azeroth",
+    "hubs": [
+      {"maps": [1161], "anchor": [75.87, 17.56]},
+      {"maps": [1165, 1163, 1164], "anchor": [52.42, 84.94]}
+    ]
+  },
+  {
+    "expansion": "Shadowlands",
+    "hubs": [
+      {"maps": [1670, 1671], "anchor": [67.48, 50.33]}
+    ]
+  },
+  {
+    "expansion": "Dragonflight",
+    "hubs": [
+      {"maps": [2112], "anchor": [47.47, 46.2]},
+      {"maps": [2239], "area": 15115, "anchor": [48.29, 54.03]}
+    ]
+  },
+  {
+    "expansion": "The War Within",
+    "hubs": [
+      {"maps": [2339], "anchor": [44.73, 46.4]},
+      {"maps": [2346], "anchor": [43.5, 51.69]},
+      {"maps": [2472], "anchor": [41.13, 25.1]}
+    ]
+  },
+  {
+    "expansion": "Midnight",
+    "hubs": [
+      {"maps": [2393], "anchor": [56.46, 70.35]},
+      {"maps": [2536], "anchor": [45.26, 50.22]}
+    ]
+  }
+]

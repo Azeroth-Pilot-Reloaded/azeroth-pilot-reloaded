@@ -5,7 +5,6 @@ from collections import Counter
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from contextlib import contextmanager
 import ctypes
-import importlib.util
 import io
 import json
 import os
@@ -21,9 +20,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if not __package__:
     sys.path.insert(0, str(ROOT))
 
+from tools.terrain_ui import retail_worker as engine
 from tools.terrain_ui.install import Installation
 from tools.terrain_ui.job import PACK_CAPACITY, generate_fitting_pack, geometry_omissions
-from tools.terrain_ui.native import prepare_binaries
+from tools.terrain_ui.native import REPORTS, prepare_binaries
+from tools.terrain_ui.retail_report import report
 
 GIB = 1024**3
 STATUSES = {"complete": "complet", "partial": "partiel", "failed": "échec"}
@@ -40,7 +41,6 @@ def arguments():
     parser.add_argument("--threads", type=int, default=2, help="Nombre de threads du générateur par monde.")
     parser.add_argument("--worlds", nargs="+", type=int, metavar="ID", help="Limite la génération à ces mondes.")
     parser.add_argument("--dry-run", action="store_true", help="Vérifie les prérequis et affiche la couverture actuelle.")
-    parser.add_argument("--cache-only", action="store_true", help="Conserve les packs dans le cache sans les installer.")
     args = parser.parse_args()
     if args.workers < 1 or args.threads < 1:
         parser.error("--workers et --threads doivent être positifs")
@@ -74,8 +74,8 @@ def prepare(args):
     dll = args.casc_dll or next(iter(sorted((args.generator / ".cache/terrain-tools").glob(dll_pattern))), None)
     if not dll or not dll.is_file():
         raise ValueError("CascLib.dll est introuvable. Indique son chemin avec --casc-dll.")
-    required = [root / name for name in ("generate_worlds.py", "subzone_report.py", "coverage-expected.json",
-                "area-catalogue.json", "community-listfile.csv", "road-texture-listfile.csv", "file-index.sqlite")]
+    required = [root / name for name in ("coverage-expected.json", "area-catalogue.json",
+                "community-listfile.csv", "road-texture-listfile.csv", "file-index.sqlite")]
     if args.dry_run:
         required.append(args.bin / "apr-terrain.exe")
     required.extend((args.defs / "Map.dbd", args.generator / "tools/apr-terrain/road-textures.json"))
@@ -344,9 +344,6 @@ def main():
     args = arguments()
     try:
         root, identity, worlds = prepare(args)
-        spec = importlib.util.spec_from_file_location("apr_retail_engine", root / "generate_worlds.py")
-        engine = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(engine)
         executable = args.bin / "apr-terrain.exe"
         if args.dry_run:
             results = prepare_results(root, engine, worlds, executable, restore=False)
@@ -361,6 +358,9 @@ def main():
             executable = args.bin / "apr-terrain.exe"
             for name in ("work", "logs", "active", "packs"):
                 (root / name).mkdir(exist_ok=True)
+            reports = REPORTS / identity["product"] / identity["build"] / "batch"
+            args.logs = reports / "logs"
+            args.logs.mkdir(parents=True, exist_ok=True)
             # Windows rebooted between some resumptions. These markers cannot belong to a live worker.
             uptime = ctypes.windll.kernel32.GetTickCount64
             uptime.restype = ctypes.c_uint64
@@ -373,16 +373,14 @@ def main():
                     and shutil.disk_usage(root).free < 35 * GIB):
                 raise ValueError("Le générateur a besoin d’au moins 35 Gio libres pour ses fichiers temporaires.")
             status = generate(args, root, identity, worlds, engine, results)
-            print("\nActualisation du rapport des zones et sous-zones…", flush=True)
-            report = subprocess.run([sys.executable, "-B", root / "subzone_report.py", "--all-worlds"], capture_output=True)
-            if report.returncode:
-                print(report.stderr.decode("utf-8", errors="replace"), file=sys.stderr)
-                return report.returncode
-            print(f"Rapport  {root / 'coverage-retail-full.json'}\nPacks    {root / 'packs'}\nJournaux {root / 'logs'}")
-            if status != 130 and not args.cache_only:
+            if status != 130:
                 print("Installation des graphes dans la bibliothèque…", flush=True)
                 if install_packs(root, identity, executable, results, Installation(identity)):
-                    return 2
+                    status = 2
+            print("\nActualisation du rapport des zones et sous-zones…", flush=True)
+            report_path = reports / "coverage-retail-full.json"
+            engine.write(report_path, report(root, all_worlds=True))
+            print(f"Rapport  {report_path}\nJournaux {args.logs}", flush=True)
             return status
     except (OSError, ValueError, KeyError, IndexError) as error:
         print(f"Génération Retail · {error}", file=sys.stderr)

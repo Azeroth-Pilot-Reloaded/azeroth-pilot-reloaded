@@ -14,9 +14,12 @@ from threading import RLock, Thread
 from time import monotonic, sleep
 from uuid import uuid4
 
+from tools.forever.terrain_faction import WORLDS as FACTION_WORLDS, faction_policy_path
+
 from .catalog import LOCALES, area_path, client_reader, open_client, read_area_tiles, select, tiles_in_bounds
 from .install import Installation, coverage
-from .native import DEFINITIONS, GENERATOR, RETAIL, WORKSPACE, prepare_binaries, read_json, write_json
+from .native import (DEFINITIONS, GENERATOR, REPORTS, RETAIL, WORKSPACE, prepare_binaries,
+                     prepare_forever_packer, read_json, write_json)
 
 
 CPU_COUNT = os.cpu_count() or 1
@@ -110,7 +113,9 @@ class Generation:
         self.ids = ids if only_worlds is None else [world for world in ids if world in only_worlds]
         self.trail, self.roots, self.zone = trail, roots, zone
         identity = json.dumps([scope, settings], sort_keys=True).encode()
-        self.folder = WORKSPACE / "clients" / client["id"] / "jobs" / hashlib.sha256(identity).hexdigest()[:16]
+        selection = hashlib.sha256(identity).hexdigest()[:16]
+        self.folder = WORKSPACE / "clients" / client["id"] / "jobs" / selection
+        self.reports = REPORTS / client["product"] / client["build"] / client["id"] / selection
         self.runtime = uuid4().hex
         self.marker = self.folder / f"{self.runtime}.pause"
         self.acknowledgement = self.marker.with_suffix(".ack")
@@ -138,6 +143,7 @@ class Generation:
         self.finished = None
         self.disk = (0, 0, 0)
         self.folder.mkdir(parents=True, exist_ok=True)
+        self.reports.mkdir(parents=True, exist_ok=True)
 
     def start(self):
         Thread(target=self.run, daemon=True, name="terrain-generation").start()
@@ -148,7 +154,7 @@ class Generation:
             self.lines.append(str(message).rstrip()[:900])
 
     def write_log(self, message):
-        with (self.folder / "generation.log").open("a", encoding="utf-8") as stream:
+        with (self.reports / "generation.log").open("a", encoding="utf-8") as stream:
             stream.write(message + "\n")
 
     def retry_worlds(self):
@@ -292,6 +298,8 @@ class Generation:
             self.plan()
             self.phase = "preparing"
             binaries, dll = prepare_binaries(self.log, self.command)
+            packer = (prepare_forever_packer(self.log, self.command) if self.client["product"] == "wowf"
+                      else binaries / "apr-terrain.exe")
             env = os.environ | {"APR_CASCLIB_DLL": str(dll), "APR_PYTHON": sys.executable, "PYTHONUTF8": "1",
                                 "APR_TERRAIN_PAUSE_FILE": str(self.marker),
                                 "APR_TERRAIN_FILE_INDEX": str(RETAIL / "file-index.sqlite")}
@@ -307,12 +315,12 @@ class Generation:
                     self.unit = self.folder / "worlds" / str(world["id"])
                 result = {}
                 try:
-                    result = self.build_world(binaries, env, selected)
+                    result = self.build_world(binaries, packer, env, selected)
                     self.phase = "installation"
                     self.log(f"Installing map {world['id']} in LibAPRNavigation")
                     pack = self.unit / "pack"
                     installed = self.installation.publish(pack, world["id"], self.protected[world["id"]],
-                        lambda path: self.command([binaries / "apr-terrain.exe", "check", "--out", path], env),
+                        lambda path: self.command([packer, "check", "--out", path], env),
                         self.checkpoint)
                     result = result | {"installed": str(installed)}
                 except (OSError, ValueError, KeyError) as error:
@@ -339,7 +347,7 @@ class Generation:
             self.marker.unlink(missing_ok=True)
             self.acknowledgement.unlink(missing_ok=True)
             try:
-                write_json(self.folder / "report.json", {"client": self.client["product"], "build": self.client["build"],
+                write_json(self.reports / "report.json", {"client": self.client["product"], "build": self.client["build"],
                     "scope": self.scope, "settings": self.settings, "state": self.state, "phase": self.phase,
                     "error": self.error, "destination": str(self.installation.root), "results": self.results})
             finally:
@@ -418,11 +426,20 @@ class Generation:
             lambda old, new: self.log(f"Map {self.world['id']} · {old} cells exceed pack capacity · "
                                      f"retrying all tiles with {new} cells"))
 
-    def build_world(self, binaries, env, selected):
+    def build_world(self, binaries, executable, env, selected):
         world_id = self.world["id"]
         pack = self.unit / "pack"
         record = self.unit / "result.json"
-        executable = binaries / "apr-terrain.exe"
+        faction_path = None
+        faction_source = None
+        faction_checksum = None
+        if self.client["product"] == "wowf" and world_id in FACTION_WORLDS:
+            faction_path = faction_policy_path(self.client["build"])
+            if not faction_path.is_file():
+                raise ValueError(f"Missing Forever faction policy for {self.client['build']} at {faction_path}.")
+            faction_bytes = faction_path.read_bytes()
+            faction_source = json.loads(faction_bytes)["source"]
+            faction_checksum = hashlib.sha256(faction_bytes).hexdigest()
         if record.is_file() and (pack / "PACK.json").is_file():
             result = read_json(record)
             if result["status"] == "complete":
@@ -431,7 +448,11 @@ class Generation:
                     self.command([executable, "check", "--out", pack], env)
                     manifest = read_json(pack / "PACK.json")
                     needed = set(selected or self.world["tiles"] or ())
-                    if needed <= coverage(pack, world_id, manifest) and not geometry_omissions(manifest["maps"][str(world_id)]):
+                    if (needed <= coverage(pack, world_id, manifest)
+                            and not geometry_omissions(manifest["maps"][str(world_id)])
+                            and (faction_checksum is None or
+                                 (result.get("factionSha256") == faction_checksum
+                                  and manifest["policy"].get("factionCosts") == faction_source))):
                         return result | {"cells": manifest["cells"]}
                 except ValueError:
                     self.log(f"Pack verification failed for map {world_id}; rebuilding.")
@@ -470,15 +491,20 @@ class Generation:
                               ("graph-stretch-percent", "stretch"), ("road-threshold", "roadThreshold"),
                               ("road-weak-threshold", "roadWeak")):
                 command.extend((f"--{flag}", str(self.settings[key])))
-            for flag, key in (("wide-heights", "wideHeights"), ("wide-layers", "wideLayers")):
-                if self.settings[key]:
-                    command.append(f"--{flag}")
+            if faction_path is not None:
+                command.extend(("--hubs", faction_path))
+            if self.client["product"] != "wowf":
+                for flag, key in (("wide-heights", "wideHeights"), ("wide-layers", "wideLayers")):
+                    if self.settings[key]:
+                        command.append(f"--{flag}")
             self.phase, self.expected = "raster", len(ok)
             self.log(f"Graph generation · map {world_id} · {len(ok)}")
             cells = self.generate_pack(command, env)
             self.phase = "verification"
             self.command([executable, "check", "--out", pack], env)
             manifest = read_json(pack / "PACK.json")
+            if faction_checksum is not None and manifest["policy"].get("factionCosts") != faction_source:
+                raise ValueError("The pack does not contain the expected Forever faction policy.")
             stats = manifest["maps"][str(world_id)]
             tiles = stats["clusters"]
             if tiles != len(ok):
@@ -492,6 +518,8 @@ class Generation:
                     raise ValueError(message)
             result = {"world": world_id, "status": "complete" if tiles == expected and not omitted else "partial",
                       "expected": expected, "tiles": tiles, "cells": cells, "errors": errors}
+            if faction_checksum is not None:
+                result["factionSha256"] = faction_checksum
             result.update(omitted)
             write_json(record, result)
             return result
@@ -565,8 +593,8 @@ class Generation:
         eta = round(elapsed * (1 - progress) / progress) if 0.005 < progress < 1 and elapsed >= 3 else None
         return {"state": self.state, "phase": phase, "scope": self.trail, "current": current, "elapsed": round(elapsed),
                 "client": self.client["id"], "retryMaps": len(self.retry_worlds()),
-                "logReady": (self.folder / "generation.log").is_file(),
-                "reportReady": self.finished is not None and (self.folder / "report.json").is_file(),
+                "logReady": (self.reports / "generation.log").is_file(),
+                "reportReady": self.finished is not None and (self.reports / "report.json").is_file(),
                 "eta": eta, "progress": progress, "total": len(self.tasks), "done": len(self.results),
                 "failed": sum(item["status"] == "failed" for item in self.results),
                 "partial": sum(item["status"] == "partial" for item in self.results),
