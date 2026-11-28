@@ -321,14 +321,12 @@ Finder.InitializeDirectTransport = APRTrace(
 
 function Finder:SendDirect(kind, wire, target, guard, ttl, onComplete)
     if self.TraceTraffic then self:TraceTraffic("QUEUE", kind, "WHISPER", target, "requested", wire) end
+    local key = self:PlayerKey(target)
     if
         kind ~= "P" and kind ~= "I" and kind ~= "R" and kind ~= "Q" and kind ~= "D" and kind ~= "W"
         or not Envelope(wire)
-        or not Public(target)
-        or type(target) ~= "string"
-        or #target == 0
-        or #target > 128
-        or target:find("[%c|]")
+        or not key
+        or key == self.playerKey
         or guard ~= nil and type(guard) ~= "function"
         or recordCount >= Constants.PartyFinderDirect.LIMIT
         or not self:IsEnabled()

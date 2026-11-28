@@ -97,10 +97,11 @@ protocol.UnitName = APRTrace("APR-Core/features/group/PartyProtocol.lua:80:proto
 function protocol.LocalName()
     if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
         local name = protocol.UnitName("player")
-        if name then return name end
+        if name and name:find(" ", 1, true) then return name end
+        if not APR.SafeUnitName then return name end
         local first, last = APR:SafeUnitName("player")
-        if not first then return end
-        return last and last ~= "" and (first .. " " .. last) or first
+        if not first then return name end
+        return last and last ~= "" and (first .. " " .. last) or name or first
     end
     return APR.Username
 end--[[APR_DIAG]]

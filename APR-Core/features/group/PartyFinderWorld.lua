@@ -355,9 +355,9 @@ function Finder:ReadAPRRoster()
                     cursor
                 )
             local key = ok and self:PlayerKey(name)
-            if key then
+            if ok and Public(name) and type(name) == "string" and name ~= "" then
                 known = known + 1
-                if key ~= self.playerKey and not keys[key] then
+                if key and key ~= self.playerKey and not keys[key] then
                     keys[key], members[#members + 1] = true, key
                 end
             else

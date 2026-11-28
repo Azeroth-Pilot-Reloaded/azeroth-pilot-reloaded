@@ -31,7 +31,10 @@ function Finder:PlayerKey(name)
     if not Public(name) or type(name) ~= "string" or #name == 0 or #name > 128 or name:find("[%c|]") then
         return
     end
-    if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then return name end
+    if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
+        -- A given name alone cannot identify a regional character.
+        return name:match("^%S+ %S+$")
+    end
     return APR.PartyProtocol.PlayerKey(name)
 end--[[APR_DIAG]]
 Finder.PlayerKey = APRTrace("APR-Core/features/group/PartyFinder.lua:41:Finder:PlayerKey#3", Finder.PlayerKey)--[[/APR_DIAG]]
@@ -1724,7 +1727,12 @@ Finder.SetListening =
 function Finder:OnInit()
     self.initialized = true
     self.responses, self.candidates, self.requestTimes, self.repliedTo, self.notificationTimes = {}, {}, {}, {}, {}
-    local name = GetUnitName and GetUnitName("player", true) or APR.Username
+    local name
+    if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
+        name = APR.PartyProtocol.LocalName()
+    else
+        name = GetUnitName and GetUnitName("player", true) or APR.Username
+    end
     self.playerKey = self:PlayerKey(name)
     if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(Constants.PREFIX) end
     self.eventFrame = self.eventFrame or CreateFrame("Frame")
