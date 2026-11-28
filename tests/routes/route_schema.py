@@ -201,10 +201,12 @@ class RouteSchema:
             self.step_fields[name] = number(0)
         for name in "InVehicle PickedLoa".split():
             self.step_fields[name] = enum((1, 2))
-        xy = obj({"x": NUMBER, "y": NUMBER, "mapID": ID, "instanceID": COUNT}, required=("x", "y"))
+        point_fields = {"x": NUMBER, "y": NUMBER, "mapID": ID, "instanceID": COUNT}
+        xy = obj(point_fields, required=("x", "y"))
+        navigation_point = obj({**point_fields, "z": NUMBER}, required=("x", "y"))
         zone_aliases = {key: ID for key in ("Zone", "zone", "mapID", "MapID", "uiMapID", "UiMapID")}
-        coord_entry = union(obj({"x": NUMBER, "y": NUMBER, **zone_aliases}, required=("x", "y")),
-                            obj({"Coord": xy, **zone_aliases}, required=("Coord",)))
+        coord_entry = union(obj({"x": NUMBER, "y": NUMBER, "z": NUMBER, **zone_aliases}, required=("x", "y")),
+                            obj({"Coord": navigation_point, **zone_aliases}, required=("Coord",)))
         multi_coord = union(array(coord_entry, 1), mapping(ID, coord_entry))
         objective = scalar("quest ID or quest-objective key", lambda v:
                            isinstance(v, str) and re.fullmatch(r"[1-9]\d*(?:-\d+)?", v) is not None)
@@ -215,7 +217,7 @@ class RouteSchema:
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "FillerPreviewImages": mapping(ID, array(TEXT, 1)),
             "_index": ID, "_comment": TEXT, "Grind": level,
-            "Coord": union(xy, multi_coord), "Coords": multi_coord, "MapMarkers": array(xy, 1),
+            "Coord": union(navigation_point, multi_coord), "Coords": multi_coord, "MapMarkers": array(xy, 1),
             # StepUtils.NormalizeZoneList accepts navigation-only Zone lists.
             "Zone": union(ID, IDS),
             "ZoneStepTrigger": union(
@@ -264,6 +266,7 @@ class RouteSchema:
                                                    required=("rank",), choices=(("skill", "skillID"),))
             if name == "BuyMerchant":
                 fields.update(targetStock=BOOL, optional=BOOL, isSupply=BOOL, reserveCopper=COUNT, conditions=condition,
+                              supplyType=enum({"food", "drink", "foodAndDrink"}),
                               quantityFromItemID=ID, bagSlots=number(1, 40, integer=True))
             self.step_fields[name] = array(obj(fields,
                                                required=("itemID",),

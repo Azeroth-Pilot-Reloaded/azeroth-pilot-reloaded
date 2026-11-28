@@ -52,6 +52,7 @@ local FRAME_WIDTH = APR.currentStep.layout.width
 -- Create the main current step frame
 local CurrentStepFrame =
     APR:CreateStandardFrame("CurrentStepScreenPanel", UIParent, FRAME_WIDTH, 30, "BackdropTemplate")
+CurrentStepFrame:SetDontSavePosition(true)
 
 -- Keep the movable root's geometry stable; a background child covers the measured content.
 local contentBackdrop = CreateFrame("Frame", nil, CurrentStepFrame, "BackdropTemplate")

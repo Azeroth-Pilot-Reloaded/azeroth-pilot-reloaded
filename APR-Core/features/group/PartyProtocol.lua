@@ -6,15 +6,13 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Validates only the fields consumed by the group UI, with a fixed row budget.
 -- Never walk arbitrary received tables: unknown fields are discarded after deserialization.
 
+local Constants = APR.GroupConstants.PartyProtocol
+
 APR.PartyProtocol = {}
 local protocol = APR.PartyProtocol
-local MAX_INDEX, MAX_ROWS = 1000000, 128
-local ROUTE_FIELDS = { "route", "routeFileName" }
-local PROGRESS_FIELDS = { "index", "step", "total" }
-local DETAIL_FIELDS = { "extraLines", "questSteps", "fillerSteps" }
 
 local function IsInteger(value, minimum)
-    return type(value) == "number" and value == value and value >= minimum and value <= MAX_INDEX and value % 1 == 0
+    return type(value) == "number" and value == value and value >= minimum and value <= Constants.MAX_INDEX and value % 1 == 0
 end--[[APR_DIAG]]
 IsInteger = APRTrace("APR-Core/features/group/PartyProtocol.lua:16:IsInteger#1", IsInteger)--[[/APR_DIAG]]
 
@@ -99,10 +97,11 @@ protocol.UnitName = APRTrace("APR-Core/features/group/PartyProtocol.lua:80:proto
 function protocol.LocalName()
     if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
         local name = protocol.UnitName("player")
-        if name then return name end
+        if name and name:find(" ", 1, true) then return name end
+        if not APR.SafeUnitName then return name end
         local first, last = APR:SafeUnitName("player")
-        if not first then return end
-        return last and last ~= "" and (first .. " " .. last) or first
+        if not first then return name end
+        return last and last ~= "" and (first .. " " .. last) or name or first
     end
     return APR.Username
 end--[[APR_DIAG]]
@@ -151,7 +150,7 @@ function protocol.NormalizeSnapshot(data, sender)
         username = realm and realm ~= home and (name .. "-" .. realm) or name,
         sender = regional and name or name .. "-" .. (realm or home),
     }
-    for _, field in ipairs(ROUTE_FIELDS) do
+    for _, field in ipairs(Constants.ROUTE_FIELDS) do
         if data[field] ~= nil then
             result[field] = Text(data[field], 256)
             if not result[field] then return nil, "route_type" end
@@ -194,21 +193,21 @@ function protocol.NormalizeSnapshot(data, sender)
     if details.progress ~= nil then
         if type(details.progress) ~= "table" then return nil, "progress_type" end
         local progress = {}
-        for _, field in ipairs(PROGRESS_FIELDS) do
+        for _, field in ipairs(Constants.PROGRESS_FIELDS) do
             local value = details.progress[field]
             if value ~= nil and not IsInteger(value, 0) then return nil, "progress_range" end
             progress[field] = value
         end
         result.stepFrameDetails.progress = progress
     end
-    local remaining = MAX_ROWS
-    for _, field in ipairs(DETAIL_FIELDS) do
+    local remaining = Constants.MAX_ROWS
+    for _, field in ipairs(Constants.DETAIL_FIELDS) do
         local rows = details[field]
         if rows ~= nil then
             if type(rows) ~= "table" then return nil, "rows_type" end
             local clean = {}
             result.stepFrameDetails[field] = clean
-            for index = 1, MAX_ROWS + 1 do
+            for index = 1, Constants.MAX_ROWS + 1 do
                 local row = rows[index]
                 if row == nil then break end
                 remaining = remaining - 1
@@ -220,7 +219,7 @@ function protocol.NormalizeSnapshot(data, sender)
                 if row.subSteps ~= nil then
                     if type(row.subSteps) ~= "table" then return nil, "substeps_type" end
                     entry.subSteps = {}
-                    for subIndex = 1, MAX_ROWS + 1 do
+                    for subIndex = 1, Constants.MAX_ROWS + 1 do
                         local sub = row.subSteps[subIndex]
                         if sub == nil then break end
                         remaining = remaining - 1

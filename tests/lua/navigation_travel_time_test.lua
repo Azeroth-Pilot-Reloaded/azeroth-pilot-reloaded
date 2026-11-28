@@ -27,6 +27,11 @@ local data = fixture:Load({
             to = point(1, 102, 5990),
             actions = { { type = "item", id = 20, consumable = true } },
         },
+        {
+            id = "inn-recall", kind = "item", routeAction = "UseHS",
+            from = { dynamic = "player" }, to = { dynamic = "bind" },
+            actions = { { type = "item", id = 21 } },
+        },
     },
 })
 local nativeAdapter = APR.NavigationAdapter
@@ -119,6 +124,33 @@ fixture.items[20] = nil
 active, seconds = plan()
 assert(active.kind == "spell" and seconds == 93, "Removing an item restores the best available spell")
 assert(APRData[APR.PlayerID][APR.ActiveRoute] == 1, "Travel choices cannot advance the authored guide")
+
+fixture.spells[10], fixture.items[21] = nil, 1
+local character = nativeAdapter:GetCharacterSettings()
+character.bindLocation = { name = GetBindLocation(), location = departure }
+start = point(1, 102, 5500)
+active, seconds = plan()
+assert(active.kind == "walk" and seconds == 115, "At 500 yards from the inn, walk to the onward transport")
+start.x = 5499
+active, seconds = plan()
+assert(active.hearthstone and active.action.data == 21 and seconds == 71, "A distant recall can still shorten the complete journey")
+assert(active.canStart(start, true), "The published recall is valid at its original departure")
+assert(not active.canStart(point(1, 102, 5500), true), "Moving closer invalidates the published recall")
+start = point(9, 102, 6000)
+active = plan()
+assert(active.hearthstone, "Identical coordinates in another world cannot suppress a recall")
+
+local travelStep = step
+character.bindLocation.location = point(1, 101, 550)
+start = point(1, 101, 0)
+step = { Zone = 101, Coord = { x = 0, y = 500, mapID = 101, instanceID = 1 } }
+active, seconds = plan()
+assert(active.kind == "walk" and seconds == 50, "Suppress the recall for a nearby objective even with a more distant inn")
+step.Coord.y = 501
+active = plan()
+assert(active.hearthstone, "An objective outside the proximity limit still compares total travel time")
+
+step, fixture.items[21], fixture.spells[10], character.bindLocation = travelStep, nil, true, nil
 
 -- Use the real adapter event handler and real access-region checks too. Generic
 -- inventory/log updates after a native world event cannot erase its signal.
@@ -321,3 +353,38 @@ print(
 print(
     "APR travel time: distant and nearby approaches, cast/loading/arrival costs, movement speed and unavailable/owned actions passed"
 )
+
+-- The authored action runs before publishing its row or secure button.
+APR.stepHandlers = {}
+local getStepCoord = APR.GetStepCoord
+dofile("APR-Core/utils/StepUtils.lua")
+APR.GetStepCoord = getStepCoord
+dofile("APR-Core/features/questing/StepTravelHandlers.lua")
+local hearthStep = { UseHS = 22, Coord = { x = 0, y = 0 } }
+function APR:GetRouteSteps() return { hearthStep, step } end
+function APR:StepFilterQoL(candidate)
+    return not candidate.OnlyInZones or candidate.OnlyInZones[1] == start.uiMapID
+end
+function APR:GetHearthstoneStepText() return "Recall" end
+function APR:GetHearthstoneItemID() return 21 end
+local advances, buttons = 0, 0
+function APR:UpdateNextStep() advances = advances + 1 end
+function APR.currentStep:AddStepButton() buttons = buttons + 1 end
+C_QuestLog.IsQuestFlaggedCompleted = function() return false end
+start = point(1, 101, 0)
+character.bindLocation = { name = GetBindLocation(), location = point(1, 101, 550) }
+step = { Zone = 101, Coord = { x = 0, y = 500, mapID = 101, instanceID = 1 } }
+assert(APR.stepHandlers.UseHS(hearthStep, true, 1) and advances == 1 and buttons == 0,
+    "The authored recall auto-advances when its next destination is already close")
+step.Coord.y = 501
+APR.stepHandlers.UseHS(hearthStep, true, 1)
+assert(advances == 1 and buttons == 1, "The authored cast location is not a proximity target")
+start.x, step.Coord.y = 50, 2000
+assert(APR.stepHandlers.UseHS(hearthStep, false, 1) and advances == 2 and buttons == 1,
+    "A nearby inn also advances an authored recall when details are hidden")
+step.OnlyInZones = { 102 }
+APR.stepHandlers.UseHS(hearthStep, true, 1)
+assert(advances == 2 and buttons == 2, "Preserve a recall when the next step requires entering another zone")
+start = nil
+APR.stepHandlers.UseHS(hearthStep, true, 1)
+assert(advances == 2 and buttons == 3, "Missing position does not advance the route")

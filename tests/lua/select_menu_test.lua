@@ -40,7 +40,7 @@ end
 function methods:SetVertexColor(...) self.vertexColor = { ... } end
 function APR:RegisterFontString(region, _, options) region.textRole = options.role end
 UIParent:SetSize(1920, 1080)
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")

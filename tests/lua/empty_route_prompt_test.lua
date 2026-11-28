@@ -1,7 +1,7 @@
 -- An empty guide offers route browsing in-place across startup, resets, visibility and tracker skins.
 local env = dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 function env.methods:SetFont(font, size, flags)
     self.font, self.size, self.flags = font, size, flags
     return true

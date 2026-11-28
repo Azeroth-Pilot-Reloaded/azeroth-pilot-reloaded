@@ -12,6 +12,10 @@ local LibWindow = LibStub("LibWindow-1.1")
 -- Initialize module
 APR.AFK = APR:NewModule("AFK")
 
+local FRAME_WIDTH = 250
+local FRAME_HEIGHT = 30
+local FILLERS_REFRESH_THROTTLE = 0.15
+
 APR.AFK.lastStep = nil
 APR.AFK.defaultSnapHeight = 20
 APR.AFK.fakeTimerActive = false
@@ -20,15 +24,12 @@ APR.AFK.lastSizeHeight = nil
 APR.AFK.lastFillersRefresh = 0
 APR.AFK.isSnapped = false
 
-local FRAME_WIDTH = 250
-local FRAME_HEIGHT = 30
-local FILLERS_REFRESH_THROTTLE = 0.15
-
 ---------------------------------------------------------------------------------------
 ----------------------------------- AFK Frames ----------------------------------------
 ---------------------------------------------------------------------------------------
 
 local AfkFrame = CreateFrame("Frame", "AfkFrameScreen", UIParent, "BackdropTemplate")
+AfkFrame:SetDontSavePosition(true)
 AfkFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 AfkFrame:SetFrameStrata("LOW")
 AfkFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 150)

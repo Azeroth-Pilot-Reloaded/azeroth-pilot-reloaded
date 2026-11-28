@@ -2,34 +2,30 @@
 from pathlib import Path
 import unittest
 
-from tools.validation.check_package import read_manifest
+from tools.validation.check_package import manifest_references
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def visit_manifest(path, reached):
+def visit_manifest(path, reached, game):
     path = path.resolve()
     if path in reached:
         return
     reached.add(path)
     if path.suffix != ".xml":
         return
-    for element in read_manifest(path).iter():
-        if element.tag.rsplit("}", 1)[-1] not in ("Include", "Script"):
-            continue
-        reference = element.attrib.get("file")
-        if reference:
-            relative = Path(reference.replace("\\", "/"))
-            nested = path.parent / relative
-            visit_manifest(nested if nested.is_file() else ROOT / relative, reached)
+    for reference in manifest_references(path, game):
+        relative = Path(reference)
+        nested = path.parent / relative
+        visit_manifest(nested if nested.is_file() else ROOT / relative, reached, game)
 
 
-def loaded_core_sources(toc):
+def loaded_core_sources(toc, game):
     reached = set()
     for line in toc.read_text(encoding="utf-8-sig").splitlines():
-        entry = line.strip().replace("\\", "/")
+        entry = line.strip().replace("\\", "/").replace("[Game]", game)
         if entry.startswith("APR-Core/"):
-            visit_manifest(ROOT / entry, reached)
+            visit_manifest(ROOT / entry, reached, game)
     return reached
 
 
@@ -40,7 +36,8 @@ class RuntimeManifestTests(unittest.TestCase):
         tocs = sorted(ROOT.glob("APR*.toc"))
         self.assertTrue(tocs)
         for toc in tocs:
-            with self.subTest(toc=toc.name):
-                reached = loaded_core_sources(toc)
-                self.assertEqual(sorted(p.relative_to(ROOT).as_posix() for p in sources - reached), [],
-                                 "Owned runtime Lua files must be loaded by the TOC or its XML includes")
+            for game in ("Standard", "Camelot"):
+                with self.subTest(toc=toc.name, game=game):
+                    reached = loaded_core_sources(toc, game)
+                    self.assertEqual(sorted(p.relative_to(ROOT).as_posix() for p in sources - reached), [],
+                                     "Owned runtime Lua files must be loaded by the TOC or its XML includes")

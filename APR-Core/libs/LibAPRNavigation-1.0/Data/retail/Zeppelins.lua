@@ -91,5 +91,17 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "zeppelins", {
             requirements = { faction = "Horde" },
             seconds = 150,
         },
+        {
+            id = "zeppelin-dornogal-siren-isle",
+            kind = "zeppelin",
+            bidirectional = true,
+            -- Speak to the captain aboard the docked zeppelin. The rope
+            -- at Flotsam Shoal gives access to the return departure.
+            from = { space = "world", uiMapID = 2339, instanceID = 2552, x = 3214.7, y = -3072.7 },
+            to = { space = "map", uiMapID = 2369, x = 0.697, y = 0.494 },
+            requirements = { quest = 84720 },
+            seconds = 15,
+            durationSource = "estimated-world-transition",
+        },
     },
-}, 31)
+}, 32)

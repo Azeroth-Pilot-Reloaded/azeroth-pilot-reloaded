@@ -58,7 +58,7 @@ function APR:Contains(values, value) return tContains(values, value) end
 
 dofile("APR-Core/data/models/Enums.lua")
 dofile("tests/lua/navigation_entrance_test_env.lua")("retail")
-dofile("APR-Core/integrations/NavigationEntrances.lua")
+dofile("APR-Core/features/navigation/adapter/NavigationEntrances.lua")
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")

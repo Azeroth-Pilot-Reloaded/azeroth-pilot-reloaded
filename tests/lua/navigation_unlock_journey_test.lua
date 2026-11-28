@@ -5,12 +5,9 @@ APR, APRData, LibStub = nil, nil, nil
 strmatch = string.match
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
-local xml = manifest:read("*a")
-manifest:close()
-for file in xml:gmatch('file="([^"]+)"') do
-    if not file:match("^Data/") then dofile(root .. file) end
-end
+dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", {
+    skip = function(path) return path:find("/Data/", 1, true) ~= nil end,
+})
 local Lib = LibStub("LibAPRNavigation-1.0")
 Lib:RegisterData("retail", "fixture", dofile("tests/lua/navigation_unlock_test_catalog.lua"))
 local completed, active, objectives = {}, {}, {}

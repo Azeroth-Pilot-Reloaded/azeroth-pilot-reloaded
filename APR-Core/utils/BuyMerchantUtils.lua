@@ -6,13 +6,86 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Route quantities are additional purchases unless targetStock explicitly requests carried stock.
 -- Completion waits for loot events; inventory deltas only prevent duplicate purchase requests.
 
+local DEFAULT_LOOT_QUANTITY = 1
+local LOOT_QUANTITY_PATTERN = "x(%d+)"
+
 local currentPurchaseTracking, currentPurchaseItems, currentPurchaseContext, purchaseCompleted, purchaseRequested
+
+-- Existing routes use isSupply for many kinds of stock. Identify ordinary food
+-- and water by item ID so saved and shared routes keep their original definitions.
+local foodSupplies = {
+    [117] = true, [414] = true, [422] = true, [787] = true, [1707] = true, [2070] = true,
+    [2287] = true, [3770] = true, [3771] = true, [3927] = true, [4536] = true, [4537] = true,
+    [4538] = true, [4539] = true, [4540] = true, [4541] = true, [4542] = true, [4544] = true,
+    [4592] = true, [4593] = true, [4594] = true, [4599] = true, [4601] = true, [4602] = true,
+    [4604] = true, [4605] = true, [4606] = true, [4607] = true, [4608] = true, [8932] = true,
+    [8948] = true, [8950] = true, [8952] = true, [8953] = true, [8957] = true, [21552] = true,
+}
+local drinkSupplies = { [159] = true, [1179] = true, [1205] = true, [1708] = true, [1645] = true, [8766] = true }
+local conjureFood = { 587, 597, 990, 6129, 10144, 10145, 28612 }
+local conjureWater = { 5504, 5505, 5506, 6127, 10138, 10139, 10140, 468766 }
+local merchantNote = { Note = true }
+
+local function GetMageSupplyType(item)
+    if not item.isSupply or item.questID then return nil end
+    if item.supplyType then return item.supplyType end
+    if foodSupplies[item.itemID] then return "food" end
+    if drinkSupplies[item.itemID] then return "drink" end
+    if item.itemID == 13724 then return "foodAndDrink" end
+end--[[APR_DIAG]]; GetMageSupplyType = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:29:GetMageSupplyType#1", GetMageSupplyType)--[[/APR_DIAG]]
+
+local function CanConjureSupply(self, supplyType, gameVersion)
+    if not supplyType then return false end
+    if gameVersion == self.GAME_VERSIONS.Retail then return true end
+    if gameVersion ~= self.GAME_VERSIONS.Forever then return false end
+    return (supplyType == "drink" or self:IsAnySpellKnown(conjureFood))
+        and (supplyType == "food" or self:IsAnySpellKnown(conjureWater))
+end--[[APR_DIAG]]; CanConjureSupply = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:37:CanConjureSupply#2", CanConjureSupply)--[[/APR_DIAG]]
+
+-- True for a visit whose entire purchase list can be conjured. Companion
+-- actions can still run on a step with this purchase list.
+function APR:CanConjureMerchantPurchases(items)
+    if self.ClassName ~= "MAGE" or not items or #items == 0 then return false end
+    local gameVersion = self:GetGameVersion()
+    local canConjure = {}
+    for _, item in ipairs(items) do
+        local supplyType = GetMageSupplyType(item)
+        if not supplyType then return false end
+        if not canConjure[supplyType] then
+            if not CanConjureSupply(self, supplyType, gameVersion) then return false end
+            canConjure[supplyType] = true
+        end
+    end
+    return true
+end--[[APR_DIAG]]; APR.CanConjureMerchantPurchases = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:47:APR:CanConjureMerchantPurchases#3", APR.CanConjureMerchantPurchases)--[[/APR_DIAG]]
+
+function APR:CanSkipConjuredMerchantVisit(step)
+    return step and self:CanConjureMerchantPurchases(step.BuyMerchant)
+        and not self:HasAnyMainStepOption(step, merchantNote)
+        and not (step.Waypoint or step.GroupTask or step.ChromiePick or step.MountVehicle or step.VehicleExit)
+end--[[APR_DIAG]]; APR.CanSkipConjuredMerchantVisit = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:62:APR:CanSkipConjuredMerchantVisit#4", APR.CanSkipConjuredMerchantVisit)--[[/APR_DIAG]]
 
 -- Per-item conditions allow one merchant visit to serve different weapons or
 -- classes. Stock targets describe what to carry, not an additional purchase.
 function APR:GetMerchantPurchaseQuantity(item)
     if item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID) then return 0 end
-    if item.conditions and not self:AreConditionalFiltersMet(item.conditions) then return 0 end
+    local conditions = item.conditions
+    local supplyType = self.ClassName == "MAGE" and GetMageSupplyType(item)
+    if supplyType then
+        local gameVersion = self:GetGameVersion()
+        if CanConjureSupply(self, supplyType, gameVersion) then return 0 end
+        -- Older Forever food entries excluded every mage. Keep their level and
+        -- other conditions while the character still needs to buy food.
+        if gameVersion == self.GAME_VERSIONS.Forever and supplyType == "food" and not item.supplyType
+            and conditions and conditions.ClassNot == "MAGE" then
+            local otherConditions = {}
+            for key, value in pairs(conditions) do
+                if key ~= "ClassNot" then otherConditions[key] = value end
+            end
+            conditions = otherConditions
+        end
+    end
+    if conditions and not self:AreConditionalFiltersMet(conditions) then return 0 end
     local quantity = item.quantityFromItemID and self:GetCollectionItemCount(item.quantityFromItemID, false)
         or item.quantity
         or 1
@@ -36,17 +109,11 @@ function APR:GetMerchantPurchaseQuantity(item)
         quantity = math.max(0, quantity - self:GetCollectionItemCount(item.itemID, false))
     end
     return quantity
-end--[[APR_DIAG]]
-APR.GetMerchantPurchaseQuantity = APRTrace(
-    "APR-Core/utils/BuyMerchantUtils.lua:13:APR:GetMerchantPurchaseQuantity#1",
-    APR.GetMerchantPurchaseQuantity
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetMerchantPurchaseQuantity = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:70:APR:GetMerchantPurchaseQuantity#5", APR.GetMerchantPurchaseQuantity)--[[/APR_DIAG]]
 
 local function IsPurchaseContextCurrent(self)
     return not currentPurchaseContext or self:IsStepContextCurrent(currentPurchaseContext)
-end--[[APR_DIAG]]
-IsPurchaseContextCurrent =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:40:IsPurchaseContextCurrent#2", IsPurchaseContextCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsPurchaseContextCurrent = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:114:IsPurchaseContextCurrent#6", IsPurchaseContextCurrent)--[[/APR_DIAG]]
 
 function APR:StartPurchaseTracking(BuyMerchant)
     if not BuyMerchant then return end
@@ -64,9 +131,7 @@ function APR:StartPurchaseTracking(BuyMerchant)
         local required = self:GetMerchantPurchaseQuantity(item)
         currentPurchaseTracking[item.itemID] = { required = required, purchased = 0, initialCarried = carried }
     end
-end--[[APR_DIAG]]
-APR.StartPurchaseTracking =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:44:APR:StartPurchaseTracking#3", APR.StartPurchaseTracking)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.StartPurchaseTracking = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:118:APR:StartPurchaseTracking#7", APR.StartPurchaseTracking)--[[/APR_DIAG]]
 
 -- Cash/bag filters describe entry eligibility. Once a request is made, money
 -- and inventory events must not skip the current step before its loot receipts.
@@ -77,22 +142,23 @@ function APR:HasPendingMerchantPurchase(items)
             and not purchaseCompleted
             and IsPurchaseContextCurrent(self)
         or false
-end--[[APR_DIAG]]
-APR.HasPendingMerchantPurchase =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:62:APR:HasPendingMerchantPurchase#4", APR.HasPendingMerchantPurchase)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HasPendingMerchantPurchase = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:138:APR:HasPendingMerchantPurchase#8", APR.HasPendingMerchantPurchase)--[[/APR_DIAG]]
 
 function APR:CheckPurchaseCompletion()
     if not currentPurchaseTracking or not IsPurchaseContextCurrent(self) then return false end
     if purchaseCompleted then return true end
-    for _, info in pairs(currentPurchaseTracking) do
-        if info.purchased < info.required then return false end
+    local gameVersion = self.ClassName == "MAGE" and self:GetGameVersion()
+    for _, item in ipairs(currentPurchaseItems) do
+        local info = currentPurchaseTracking[item.itemID]
+        if info.purchased < info.required
+            and not (gameVersion and CanConjureSupply(self, GetMageSupplyType(item), gameVersion)) then
+            return false
+        end
     end
     purchaseCompleted = true
     self:UpdateNextStep()
     return true
-end--[[APR_DIAG]]
-APR.CheckPurchaseCompletion =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:67:APR:CheckPurchaseCompletion#5", APR.CheckPurchaseCompletion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckPurchaseCompletion = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:147:APR:CheckPurchaseCompletion#9", APR.CheckPurchaseCompletion)--[[/APR_DIAG]]
 
 function APR:UpdatePurchaseTracking(itemID, quantity)
     if purchaseCompleted or not IsPurchaseContextCurrent(self) then return end
@@ -100,9 +166,7 @@ function APR:UpdatePurchaseTracking(itemID, quantity)
         currentPurchaseTracking[itemID].purchased = currentPurchaseTracking[itemID].purchased + quantity
         self:CheckPurchaseCompletion()
     end
-end--[[APR_DIAG]]
-APR.UpdatePurchaseTracking =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:78:APR:UpdatePurchaseTracking#6", APR.UpdatePurchaseTracking)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UpdatePurchaseTracking = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:163:APR:UpdatePurchaseTracking#10", APR.UpdatePurchaseTracking)--[[/APR_DIAG]]
 
 function APR:BuyItemFromMerchant(BuyMerchant)
     if
@@ -123,11 +187,13 @@ function APR:BuyItemFromMerchant(BuyMerchant)
     -- purchase request is opt-in; quest buys and other merchant actions keep
     -- their existing policy, even in a mixed list.
     local autoBuySupplies = self.settings and self.settings.profile and self.settings.profile.autoBuySupplies == true
+    local gameVersion = self.ClassName == "MAGE" and self:GetGameVersion()
     local found, budget = {}, GetMoney and GetMoney()
     for i = 1, GetMerchantNumItems() do
         local id = GetMerchantItemID(i)
         for _, item in ipairs(BuyMerchant) do
-            if tonumber(id) == item.itemID and (not item.isSupply or autoBuySupplies) then
+            if tonumber(id) == item.itemID and (not item.isSupply or autoBuySupplies)
+                and not (gameVersion and CanConjureSupply(self, GetMageSupplyType(item), gameVersion)) then
                 found[item.itemID] = true
                 local tracked = currentPurchaseTracking[item.itemID]
                 local carried = self:GetCollectionItemCount(item.itemID, false)
@@ -185,19 +251,13 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         end
     end
     self:CheckPurchaseCompletion()
-end--[[APR_DIAG]]
-APR.BuyItemFromMerchant =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:86:APR:BuyItemFromMerchant#7", APR.BuyItemFromMerchant)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.BuyItemFromMerchant = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:171:APR:BuyItemFromMerchant#11", APR.BuyItemFromMerchant)--[[/APR_DIAG]]
 
 function APR:GetQuantityfromLootMessage(message)
-    local quantity = 1 -- by default the quantity if not specified is 1
-    local quantityPattern = "x(%d+)"
     local sanitizedMessage = APR:StripHyperlinks(message)
-    local extractedQuantity = sanitizedMessage:match(quantityPattern)
+    local extractedQuantity = sanitizedMessage:match(LOOT_QUANTITY_PATTERN)
     if extractedQuantity then
-        quantity = tonumber(extractedQuantity)
+        return tonumber(extractedQuantity)
     end
-    return quantity
-end--[[APR_DIAG]]
-APR.GetQuantityfromLootMessage =
-    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:154:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]
+    return DEFAULT_LOOT_QUANTITY
+end--[[APR_DIAG]]; APR.GetQuantityfromLootMessage = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:256:APR:GetQuantityfromLootMessage#12", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]

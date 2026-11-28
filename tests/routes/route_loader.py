@@ -52,6 +52,7 @@ def load_routes(paths=None, translations=None):
     enums = {name: plain(runtime.globals().APR[name]) for name in enum_names}
     profiles = set(runtime.globals().APR.LevelRequirementProfiles.keys())
     runtime.execute('function APR:NewModule() return {} end')
+    runtime.execute((ROOT / 'APR-Core/features/navigation/Constants.lua').read_text(encoding='utf-8'))
     runtime.execute((ROOT / 'APR-Core/features/navigation/WorldCoordinateConverter.lua').read_text(encoding='utf-8'))
     environment, registry, execute = runtime.execute('''
         local registry = {}

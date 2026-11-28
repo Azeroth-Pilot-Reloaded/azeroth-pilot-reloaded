@@ -65,6 +65,16 @@ jobs:
         with:
           args: -p 618667 -w 26457 -a XKq9xXKy
 
+  notify-discord:
+    needs: release
+    permissions:
+      contents: read
+    uses: ./.github/workflows/post-discord.yml
+    with:
+      release_tag: ${{ github.event.release.tag_name || inputs.tag }}
+    secrets:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
   release-alpha:
     if: >-
       github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' &&

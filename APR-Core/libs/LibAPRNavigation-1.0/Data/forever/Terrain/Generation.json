@@ -1,0 +1,16 @@
+{
+  "cells": 128,
+  "clientBuild": "1.60.1.71139",
+  "generator": "Route-generator/tools/apr-terrain",
+  "gridIndexSha256": "a028f09125e32dc485e8c8b0976068f066138fed69130a841604890ebd688a7a",
+  "mapFormat": 3,
+  "maps": [
+    0,
+    1,
+    2991
+  ],
+  "maximumPortalCostIncreasePercent": 2,
+  "minimumRegionSize": 1000,
+  "packManifestSha256": "483f8eb721928f6380b0003dd56daf7a8eb6839720fd77291ac62972910af9cd",
+  "product": "wowf"
+}

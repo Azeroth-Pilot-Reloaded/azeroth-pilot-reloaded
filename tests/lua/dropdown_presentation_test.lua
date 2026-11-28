@@ -1,7 +1,7 @@
 -- Exercise APR presentation against real AceGUI controls and their acquire/release lifecycle.
 local fixture = dofile("tests/lua/settings_widgets_test.lua")
 local gui = fixture.gui
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 

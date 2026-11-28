@@ -140,7 +140,7 @@ end
 
 function S.StateButtonLabel() end
 
-dofile("APR-Core/integrations/EllesmereUISettings.lua")
+dofile("APR-Core/integrations/appearance/EllesmereUISettings.lua")
 APR:EnableEllesmereUISettings(S)
 local native = gui:Create("Button")
 gui:Release(native)

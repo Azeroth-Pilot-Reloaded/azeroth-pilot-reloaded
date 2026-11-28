@@ -94,6 +94,7 @@ function methods:SetText(value) self.text = value end
 function methods:SetWidth(width) self.width = width end
 function methods:GetWidth() return rawget(self, "width") or 0 end
 function methods:SetSize(width, height) self.width, self.height = width, height end
+function methods:SetDontSavePosition(value) self.dontSavePosition = value end
 
 function methods:IsShown() return self.shown and (not rawget(self, "parent") or self.parent:IsShown()) end
 
@@ -145,12 +146,14 @@ local function visibleRows()
     return count
 end
 APR.settings =
-    { profile = { enableAddon = true, xpBuffFrame = {}, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
+    { profile = { enableAddon = true, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
 dofile("APR-Core/utils/UIUtils.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/XPBuffOverlay.lua")
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "XP reminders require an active route")
+assert(APR.settings.profile.xpBuffFrame.x == 280 and APRXPBuffOverlay.dontSavePosition,
+    "The lazy panel initializes its missing profile position and opts out of the native layout cache")
 APR.ActiveRoute = "route"
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 3, "With a route: War Mode and two missing item buffs")

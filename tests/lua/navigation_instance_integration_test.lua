@@ -125,7 +125,6 @@ APR.Arrow, APR.event = { SetCoord = noop, SetArrowActive = noop }, { QueueStepRe
 APR.SendMessage, APR.UpdateStep, APR.UpdateQuest = noop, noop, noop
 APRData, APRScenarioMapIDCompleted = { p = { r = 1 } }, { p = { 2269, 129, 2300 } }
 APR.RouteQuestStepList = {}
-dofile("APR-Core/integrations/NavigationEntrances.lua")
 dofile("APR-Core/features/questing/DelveRoutes.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")

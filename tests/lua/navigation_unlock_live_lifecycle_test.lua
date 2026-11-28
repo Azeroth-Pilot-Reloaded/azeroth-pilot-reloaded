@@ -2,7 +2,25 @@
 -- Map/UI readers use the real RouteUtils getter in the client. It must not
 -- restore a SavedVariables checkpoint over an already active native session.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
-local data = fixture:Load(dofile("tests/lua/navigation_unlock_test_catalog.lua"))
+local catalog = dofile("tests/lua/navigation_unlock_test_catalog.lua")
+local past = { phase = { group = "fixture", phase = "past" } }
+catalog.config = {
+    PhaseGroups = { fixture = { localMaps = { [104] = "past", [105] = "present" } } },
+    MapRequirements = { [104] = past },
+}
+catalog.unlockRoutes[#catalog.unlockRoutes + 1] = {
+    id = "fixture-observer",
+    goal = { key = "phase", value = past.phase },
+    steps = { {
+        kind = "action",
+        actionType = "phase_past",
+        npcID = 66,
+        position = { space = "world", uiMapID = 101, instanceID = 1, x = 2925, y = -2407, phaseAgnostic = true },
+        completeWhen = past,
+    } },
+}
+fixture.currentMap = 104
+local data = fixture:Load(catalog)
 local completed, active, timers, rows = { [13] = true }, {}, {}, {}
 data.env.isQuestAvailable = function() return nil end
 data.env.isQuestCompleted = function(id) return completed[id] == true end
@@ -233,6 +251,22 @@ startUnlock(false)
 removePath(true)
 startUnlock(true)
 removePath(true, true)
+
+-- A closed map can break even a diagnostic walk to the first transport.
+APRCustomPath.live = { route }
+APR:ActivateRoute(route)
+fixture.currentMap = 101
+nav.context, nav.start = APR:CaptureStepContext(), APR:GetNavigationPlayerPosition()
+nav.destination = { x = -1343, y = -515.6, uiMapID = 104, instanceID = 3 }
+nav.waitingData = true
+nav:SearchFailed()
+state = assert(APR._navigationUnlock, "An unobserved destination phase starts a detour even without a blocked edge")
+session = state.session
+drain()
+local phaseStep = assert(APR:GetNavigationUnlockStep())
+assert(phaseStep.unlockAction.actionType == "phase_past" and phaseStep.unlockAction.npcID == 66)
+fixture.currentMap = 104
+assert(session:Step(64) == "resume", "Only observation of the destination's phase clears the gate")
 print(
     "Live unlock lifecycle: real route-map getter/UI readers preserve planning and published action; reload restores once"
 )

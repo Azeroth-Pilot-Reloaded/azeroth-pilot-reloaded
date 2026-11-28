@@ -5,6 +5,8 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Compares exact item variants against valid configurations of currently equipped gear.
 -- APR's weights are deliberately simple leveling defaults, independent of Pawn's scales.
+local Constants = APR.QuestingConstants.RewardScoring
+
 APR.RewardScoring = {}
 local Scoring = APR.RewardScoring
 
@@ -24,37 +26,6 @@ end--[[APR_DIAG]]; itemAPI = APRTrace("APR-Core/features/questing/RewardScoring.
 local function forever()
     return APR.GetGameVersion and APR.GAME_VERSIONS and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
 end--[[APR_DIAG]]; forever = APRTrace("APR-Core/features/questing/RewardScoring.lua:24:forever#4", forever)--[[/APR_DIAG]]
-
-local attributeAliases = {
-    Strength = { "ITEM_MOD_STRENGTH_SHORT" },
-    Agility = { "ITEM_MOD_AGILITY_SHORT" },
-    Intellect = { "ITEM_MOD_INTELLECT_SHORT" },
-}
-local aliases = {
-    Stamina = { "ITEM_MOD_STAMINA_SHORT" },
-    Spirit = { "ITEM_MOD_SPIRIT_SHORT" },
-    Crit = { "ITEM_MOD_CRIT_RATING_SHORT", "ITEM_MOD_SPELL_CRIT_RATING_SHORT", "ITEM_MOD_CRIT_SPELL_RATING_SHORT" },
-    Haste = { "ITEM_MOD_HASTE_RATING_SHORT", "ITEM_MOD_SPELL_HASTE_RATING_SHORT", "ITEM_MOD_HASTE_SPELL_RATING_SHORT" },
-    Hit = { "ITEM_MOD_HIT_RATING_SHORT", "ITEM_MOD_SPELL_HIT_RATING_SHORT", "ITEM_MOD_HIT_SPELL_RATING_SHORT" },
-    Mastery = { "ITEM_MOD_MASTERY_RATING_SHORT" },
-    Versatility = { "ITEM_MOD_VERSATILITY", "ITEM_MOD_VERSATILITY_RATING_SHORT" },
-    Armor = { "RESISTANCE0_NAME", "ITEM_MOD_ARMOR_SHORT" },
-    AttackPower = { "ITEM_MOD_ATTACK_POWER_SHORT", "ITEM_MOD_RANGED_ATTACK_POWER_SHORT" },
-    SpellPower = { "ITEM_MOD_SPELL_POWER_SHORT", "ITEM_MOD_SPELL_DAMAGE_DONE_SHORT" },
-    Healing = { "ITEM_MOD_SPELL_HEALING_DONE_SHORT" },
-    ManaRegen = { "ITEM_MOD_MANA_REGENERATION_SHORT" },
-    WeaponDPS = { "ITEM_MOD_DAMAGE_PER_SECOND_SHORT" },
-    Dodge = { "ITEM_MOD_DODGE_RATING_SHORT" },
-    Parry = { "ITEM_MOD_PARRY_RATING_SHORT" },
-    Defense = { "ITEM_MOD_DEFENSE_SKILL_RATING_SHORT" },
-    Block = { "ITEM_MOD_BLOCK_RATING_SHORT" },
-}
-local hybrids = {
-    { "ITEM_MOD_AGILITY_OR_INTELLECT_SHORT", "Agility", "Intellect" },
-    { "ITEM_MOD_AGILITY_OR_STRENGTH_SHORT", "Agility", "Strength" },
-    { "ITEM_MOD_STRENGTH_OR_INTELLECT_SHORT", "Strength", "Intellect" },
-    { "ITEM_MOD_AGILITY_STRENGTH_INTELLECT_SHORT", "Agility", "Strength", "Intellect" },
-}
 
 function Scoring:GetProfileDescription()
     local context = APR:GetRewardBuildContext()
@@ -90,11 +61,11 @@ local function defaultScore(link, scale, slot)
         end
     end
     local attributes = {}
-    for stat, keys in pairs(attributeAliases) do
+    for stat, keys in pairs(Constants.attributeAliases) do
         attributes[stat] = aliasValue(stats, keys)
         if attributes[stat] == nil then return nil, false end
     end
-    for _, hybrid in ipairs(hybrids) do
+    for _, hybrid in ipairs(Constants.hybrids) do
         local value = stats[hybrid[1]]
         if not accessible(value) then return nil, false end
         if value ~= nil then
@@ -115,7 +86,7 @@ local function defaultScore(link, scale, slot)
     for stat, value in pairs(attributes) do
         total = total + value * (scale.weights[stat] or 0)
     end
-    for stat, keys in pairs(aliases) do
+    for stat, keys in pairs(Constants.aliases) do
         local value = aliasValue(stats, keys)
         if value == nil then return nil, false end
         -- The baseline models white weapon damage, not special attacks/talents.

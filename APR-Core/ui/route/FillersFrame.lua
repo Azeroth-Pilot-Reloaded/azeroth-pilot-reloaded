@@ -29,6 +29,7 @@ local FillersFrame = APR:CreateStandardFrame(
     "BackdropTemplate",
     { preserveBackground = true, roundedGameplay = true }
 )
+FillersFrame:SetDontSavePosition(true)
 FillersFrame:Hide()
 
 -- Setup drag and drop for the frame

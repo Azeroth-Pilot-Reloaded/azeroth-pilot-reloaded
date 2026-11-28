@@ -21,6 +21,7 @@ class InstrumentationTests(unittest.TestCase):
                 runtime = LuaRuntime(unpack_returned_tuples=True)
                 runtime.execute('function GetTime() return 0 end; function debugprofilestop() return 0 end')
                 runtime.execute((ROOT / 'APR-Core/core/Diagnostics.lua').read_text(encoding='utf-8-sig'))
+                runtime.execute('dofile = dofile("tests/lua/feature_loader.lua")(dofile, _G)')
                 runtime.execute('APRInstrumentation.enabled=true; APRInstrumentation.debug=true')
                 runtime.execute((ROOT / f'tests/lua/{name}_test.lua').read_text(encoding='utf-8-sig'))
 

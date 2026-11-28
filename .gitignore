@@ -6,8 +6,11 @@
 
 # cache and compiled files
 .cache/
+/tools/terrain_ui/reports/
 __pycache__/
+APR-Core/libs/LibAPRNavigation-1.0/Data/*/Terrain/.install/
 node_modules/
+target/
 
 # Generated localization notification state (persisted in the Actions cache)
 /.github/scripts/localization-state.json
@@ -22,4 +25,4 @@ docs/*
 .vscode/settings.json
 AGENTS.md
 .scratch/*
-.metrics/*
+.metrics/

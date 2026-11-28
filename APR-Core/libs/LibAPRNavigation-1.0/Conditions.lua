@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 11) then return end
+if not Lib:BeginModule("conditions", 14) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -21,6 +21,13 @@ local function CheckQuestList(environment, questIDs, requireAll)
     return requireAll
 end
 
+local function OutdoorParent(data, mapID, info)
+    local override = data.config.MapTypeOverrides and data.config.MapTypeOverrides[mapID]
+    local mapType = override and override.mapType or info.mapType
+    if mapType == 4 or mapType == 6 or (data.entranceMaps and data.entranceMaps[mapID]) then return nil end
+    return info.parentMapID
+end
+
 -- Different UI maps can each retain their own artwork even while the other
 -- timeline is active. Only the actual player map disambiguates those groups;
 -- never substitute the simulated departure map of a later journey leg.
@@ -39,18 +46,27 @@ function Instance:GetWorldPhase(group)
     if definition.localMaps then
         local seen = {}
         for _ = 1, 50 do
+            mapID = self:GetAccessMapID(mapID)
             if not mapID or mapID == 0 or seen[mapID] then break end
             seen[mapID] = true
             local localPhase = definition.localMaps[mapID]
             if localPhase then return localPhase end
             local info = self:GetMapAncestryInfo(mapID)
-            mapID = info and info.parentMapID
+            if not info then break end
+            mapID = OutdoorParent(self, mapID, info)
         end
     end
+    local artMap
+    for _, side in ipairs(definition.sides or {}) do
+        -- Artwork on separate maps describes those maps, even if only one
+        -- of their artworks is currently readable or matches the catalog.
+        if artMap and artMap ~= side.mapID then return nil end
+        artMap = side.mapID
+    end
+    local art = artMap and self.env.getMapArtID and self.env.getMapArtID(artMap)
+    if art == nil then return nil end
     local phase
     for _, side in ipairs(definition.sides or {}) do
-        local art = self.env.getMapArtID and self.env.getMapArtID(side.mapID)
-        if art == nil then return nil end
         if art == side.artID then
             if phase and phase ~= side.phase then return nil end
             phase = side.phase
@@ -69,6 +85,7 @@ function Instance:GetMapAccessRequirements(mapID)
     if cached ~= nil then return cached or nil end
     local original, seen = mapID, {}
     for _ = 1, 50 do
+        mapID = self:GetAccessMapID(mapID)
         if not mapID or mapID == 0 or seen[mapID] then
             self.mapAccessRequirements[original] = false
             return nil
@@ -80,7 +97,7 @@ function Instance:GetMapAccessRequirements(mapID)
         end
         local info = self:GetMapAncestryInfo(mapID)
         if not info then return nil end -- Retry incomplete ancestry later.
-        mapID = info.parentMapID
+        mapID = OutdoorParent(self, mapID, info)
     end
 end
 
@@ -301,6 +318,9 @@ function Instance:CheckRequirements(requirements, character)
             if character.inInstance ~= nil then result = character.inInstance ~= value end
         elseif key == "inGroup" then
             if character.inGroup ~= nil then result = character.inGroup == value end
+        elseif key == "inRaid" then
+            if type(value) ~= "boolean" then return false, "invalid_requirements" end
+            if type(character.inRaid) == "boolean" then result = character.inRaid == value end
         elseif key == "housing" then
             if self.env.getDynamicPosition then result = self.env.getDynamicPosition("housing") ~= nil end
         else

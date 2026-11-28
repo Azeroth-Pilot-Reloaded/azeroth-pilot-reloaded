@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[1602]={["area"]={},["areaNames"]={[82925]="Cime du Nimbus",[82926]="Cime du Tonnerre",[82927]="Sommet du cyclone",[82933]="La cime du Vortex",[82935]="La cime du Vortex",[82936]="La cime du Vortex",[82937]="La cime du Vortex",[82938]="La cime du Vortex"},["areaParents"]={[82925]=8093,[82926]=8093,[82927]=8093,[82933]=8093,[82935]=8093,[82936]=8093,[82937]=8093,[82938]=8093},["cells"]=128,["class"]={},["counts"]={["area"]=13,["class"]=7,["floor"]=12,["graph"]=25,["grid"]=25,["height"]=25},["cx0"]=-4,["cy0"]=-2,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["heightDigits"]=3,["hubs"]={},["nx"]=5,["ny"]=5,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

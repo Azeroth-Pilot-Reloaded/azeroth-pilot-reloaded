@@ -202,3 +202,158 @@ assert(
     job.status == "cancelled" and not job.blockers and not job.diagnosticSegments,
     "Cancelled diagnostics release their partial result and cannot report obsolete gates"
 )
+
+do
+    local function point(x, map) return { x = x, y = 0, instanceID = 1, uiMapID = map } end
+    local start, boarding, goal = point(0, 1), point(10, 1), point(1000, 2)
+    local ferry = { kind = "boat", from = boarding, to = point(900, 2), seconds = 10 }
+    local edges = {
+        { kind = "boat", from = boarding, to = point(999, 3), seconds = 1 },
+        { kind = "boat", from = boarding, to = point(999, 2), seconds = 200 },
+        ferry,
+    }
+    local plan = APR.NavigationPlanner:Create({
+        start = start, goal = goal, walkSpeed = 10, budget = 0,
+        progressiveTravel = true, walkingGoalApproach = 20, allowEarlyWalkingApproach = true,
+        canWalk = function() return true end,
+        data = { CreateEdgeBuild = function() return Work("catalogue", edges) end },
+        walkingProvider = { CreatePathJob = function(_, from, to)
+            assert(from == start and to == boarding)
+            return Work("access", { path = { from, to }, seconds = 1, yards = 10 })
+        end },
+        taxiData = { CreateEdgeBuild = function() return Work("taxi", {}) end },
+        engine = { CreateSearch = function(_, options)
+            assert(options.walkingGoalApproach == 20, "The distant pin can use an approach in its first search")
+            return Work("search", { segments = {}, totalSeconds = 40 })
+        end },
+        prepareSegment = function(segment) return segment end,
+    })
+    for _ = 1, 100 do
+        if plan:Step(64, 1) == "ready" then break end
+    end
+    assert(plan.status == "ready" and plan.travelPreview[1].path[2] == boarding and plan.travelPreview[2] == ferry,
+        "Early guidance uses a proven boarding path and a competitive transport to the requested map")
+end
+
+do
+    local function point(x, region) return { x = x, y = 0, instanceID = 1, region = region } end
+    local start, threshold = point(0, "island"), point(10, "island")
+    local harbor, pier = point(20, "harbor"), point(30, "harbor")
+    local coast, goal = point(40, "coast"), point(1000, "coast")
+    local portal = { id = "fixture-portal", kind = "portal", from = threshold, to = harbor, seconds = 5 }
+    local ferry = { id = "fixture-ferry", kind = "boat", from = pier, to = coast, seconds = 10 }
+    local walk = { kind = "walk", from = start, to = threshold, path = { start, threshold }, seconds = 1 }
+    local approach = { kind = "walk", from = harbor, to = pier, path = { harbor, pier }, seconds = 1 }
+    local candidate = { segments = { walk, portal, approach, ferry, { kind = "walk", from = coast, to = goal } } }
+    local proof = { segments = { walk, portal, approach, ferry } }
+    for _, state in ipairs({ "ready", "no_path", "waiting_data" }) do
+        local checked, full = false, false
+        local provider = {}
+        local plan = APR.NavigationPlanner:Create({
+            start = start, goal = goal, walkSpeed = 10, budget = 0,
+            walkingGoal = goal, walkingGoalXY = true, walkingGoalApproach = 20,
+            walkingProvider = provider, previewAccess = true,
+            data = {
+                CreateEdgeBuild = function() return Work("catalogue", { portal, ferry }) end,
+                CreateZoneRoute = function(_, context)
+                    assert(context.walkingProvider == false and context.goal == goal)
+                    return Work("access", candidate)
+                end,
+            },
+            taxiData = { CreateEdgeBuild = function() return Work("taxi", {}) end },
+            engine = { CreateSearch = function(_, options)
+                if options.goal == coast then
+                    assert(options.walkingGoal == coast and not options.walkingGoalXY and not options.walkingGoalApproach)
+                    assert(#options.edgeGroups == 1 and #options.edgeGroups[1] == 2)
+                    assert(options.edgeGroups[1][1] == portal and options.edgeGroups[1][2] == ferry)
+                    assert(options.walkingProvider == provider)
+                    checked = true
+                    return { Step = function() return state, proof end }
+                end
+                assert(options.goal == goal and options.walkingGoal == goal and options.walkingGoalXY)
+                full = true
+                return Work("search", { segments = {}, totalSeconds = 40 })
+            end },
+            prepareSegment = function(segment) return segment end,
+        })
+        for _ = 1, 100 do
+            if plan:Step(64, 1) == "ready" then break end
+        end
+        assert(checked and full and plan.status == "ready", "The final objective still uses the full search")
+        assert(plan.travelPreview == (state == "ready" and proof.segments or nil),
+            "Only the terrain-verified chain can guide before the full result")
+    end
+end
+
+do
+    local engine = dofile("tests/lua/navigation_engine_fixture.lua").Engine
+    local function point(x, world, region)
+        return { x = x, y = 0, instanceID = world, region = region }
+    end
+    local start, entrance = point(0, 1, "outdoor"), point(70, 1, "outdoor")
+    local landing, goal = point(630, 1, "outdoor"), point(700, 1, "outdoor")
+    start.uiMapID, entrance.uiMapID, landing.uiMapID, goal.uiMapID = 1, 1, 2, 2
+    local platform, farPlatform = point(1000, 2, "west"), point(1100, 2, "east")
+    local function link(id, kind, from, to, seconds)
+        return { id = id, kind = kind, from = from, to = to, seconds = seconds, transitGroup = "fixture" }
+    end
+    local enter = link("enter", "passage", entrance, platform, 2)
+    local ride = link("ride", "tram", platform, farPlatform, 20)
+    local exit = link("exit", "passage", farPlatform, landing, 2)
+    local shortcut = { id = "shortcut", kind = "portal", from = start, to = goal, seconds = 5 }
+    local ferry = { id = "ferry", kind = "boat", from = entrance, to = goal, seconds = 40 }
+
+    for _, case in ipairs({ "faster", "slower", "closed", "missing_exit", "other_transport" }) do
+        ride.seconds = (case == "slower" or case == "other_transport") and 150 or 20
+        local edges = { enter, ride, shortcut }
+        if case ~= "missing_exit" then edges[#edges + 1] = exit end
+        if case == "other_transport" then edges[#edges + 1] = ferry end
+        local terrain = { proveCandidatePaths = true }
+        function terrain:RequiresWalkingProof(from, to)
+            return from.instanceID == 1 and to.instanceID == 1
+        end
+        function terrain:CreatePathJob(from, to)
+            local seconds
+            if from == start and to == goal then seconds = 100 end
+            if from == start and to == entrance then seconds = 7 end
+            if from == landing and to == goal and case ~= "closed" then seconds = 7 end
+            return { Step = function()
+                if seconds then return "ready", { path = { from, to }, seconds = seconds } end
+                return "no_path"
+            end }
+        end
+        local taxiStarted, preview, status, result
+        local plan = APR.NavigationPlanner:Create({
+            start = start, goal = goal, walkSpeed = 10, walkingSpeedCeiling = 10, budget = 0,
+            walkingProvider = terrain, batchTerrainWork = true,
+            progressiveTravel = true, previewSameWorldTransit = true,
+            data = { CreateEdgeBuild = function() return Work("catalogue", edges) end },
+            taxiData = { CreateEdgeBuild = function()
+                taxiStarted = true
+                return Work("taxi", {})
+            end },
+            engine = engine,
+            canWalk = function(from, to) return from.instanceID == to.instanceID and from.region == to.region end,
+            prepareSegment = function(segment) return segment end,
+        })
+        for _ = 1, 2000 do
+            status, result = plan:Step(3, 1)
+            if plan.travelPreview and not preview then
+                assert(taxiStarted and plan.phase == "taxi", "Publish the proved trip before the full search")
+                preview = plan.travelPreview
+            end
+            if status ~= "planning" then break end
+        end
+        assert(status == "ready" and result.totalSeconds == 5 and result.segments[1].id == shortcut.id,
+            "The complete search can still select a faster alternative")
+        if case == "faster" then
+            assert(preview and #preview == 4 and preview[1].path[2] == entrance)
+            assert(preview[2].id == enter.id and preview[3].id == ride.id and preview[4].id == exit.id)
+            assert(preview[4].to == landing, "The preview ends after leaving the station world")
+        elseif case == "other_transport" then
+            assert(preview and #preview == 2 and preview[2] == ferry, "Keep the early boat fallback")
+        else
+            assert(not preview, "No tram guidance for " .. case)
+        end
+    end
+end

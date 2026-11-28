@@ -128,4 +128,64 @@ for _, modern in ipairs({ false, true }) do
     receipt(1, 1)
     assert(advances == 1, "Stale receipts cannot advance a later step")
 end
-print("Merchant supplies: manual guidance/progress, opt-in, stock, mixed visits and both APIs passed")
+
+dofile("APR-Core/data/models/Enums.lua")
+dofile("APR-Core/utils/PlayerUtils.lua")
+dofile("APR-Core/utils/StepUtils.lua")
+dofile("APR-Core/utils/RouteUtils.lua")
+APR.AdvanceStep = function() advances = advances + 1 end
+
+local learned, level = {}, 7
+Enum = { SpellBookSpellBank = { Pet = 1 } }
+C_SpellBook = { IsSpellKnown = function(id, bank) return not bank and learned[id] == true end }
+function UnitLevel() return level end
+
+local food = { itemID = 1, quantity = 5, isSupply = true, supplyType = "food" }
+local water = { itemID = 2, quantity = 4, isSupply = true, supplyType = "drink" }
+local combined = { itemID = 3, quantity = 2, isSupply = true, supplyType = "foodAndDrink" }
+local required = { itemID = 1, quantity = 3, questID = 10, isSupply = true, supplyType = "food" }
+local legacyFood = { itemID = 117, isSupply = true, conditions = { MinLevel = 5, ClassNot = "MAGE" } }
+local legacyWater = { itemID = 159, isSupply = true }
+local mageStop = { BuyMerchant = { food, water }, Note = "Merchant hint", MinLevel = 1, MaxLevel = 60 }
+
+APR.ClassName, APR.interfaceVersion = "MAGE", 16001
+assert(APR:StepFilterQoL(mageStop) and APR:GetMerchantPurchaseQuantity(food) == 5)
+assert(APR:GetMerchantPurchaseQuantity(legacyFood) == 1, "An untrained mage can buy legacy food")
+level = 4
+assert(APR:GetMerchantPurchaseQuantity(legacyFood) == 0, "The legacy level filter still applies")
+level = 7
+assert(legacyFood.conditions.ClassNot == "MAGE", "Legacy route definitions remain intact")
+
+start({ food, water }, {}, { { itemID = 1 }, { itemID = 2 } }, false)
+assert(render() == "Buy 5 Item 1;Buy 4 Item 2")
+learned[5505] = true
+assert(render() == "Buy 5 Item 1", "Learning a higher water rank removes only the drink instruction")
+assert(APR:GetMerchantPurchaseQuantity(legacyWater) == 0 and APR:GetMerchantPurchaseQuantity(combined) == 2)
+APR.settings.profile.autoBuySupplies = true
+APR.npcInteraction:HandleMerchantPurchase(step)
+assert(#calls == 1 and calls[1][1] == 1 and calls[1][2] == 5, "Reopening reevaluates the learned water spell")
+receipt(1, 5)
+assert(advances == 1, "The merchant step can complete without a receipt for conjured goods")
+
+learned = { [587] = true, [5504] = true }
+assert(APR:GetMerchantPurchaseQuantity(combined) == 0 and APR:GetMerchantPurchaseQuantity(legacyFood) == 0)
+for _, characterLevel in ipairs({ 1, 17, 60 }) do
+    level = characterLevel
+    start(mageStop.BuyMerchant, {}, { { itemID = 1 }, { itemID = 2 } }, true)
+    assert(not APR:StepFilterQoL(mageStop), "Both rank-one spells hide the visit at any character level")
+    assert(APR:SkipStepCondition(mageStop) and advances == 1 and #calls == 0,
+        "Normal progression skips the visit automatically without buying either item")
+end
+assert(APR:StepFilterQoL({ BuyMerchant = { food }, PickUp = { 10 } }), "Keep a companion quest action")
+assert(APR:StepFilterQoL({ BuyMerchant = { food, required } }), "Keep a quest-specific purchase")
+start({ required, water }, {}, { { itemID = 1 }, { itemID = 2 } }, true)
+assert(render() == "Buy 3 Item 1" and #calls == 1 and calls[1][2] == 3)
+
+learned = {}
+APR.interfaceVersion = 120105
+assert(not APR:StepFilterQoL(mageStop), "Retail mages skip ordinary refreshments")
+assert(APR:GetMerchantPurchaseQuantity({ itemID = 117, quantity = 2 }) == 2, "Keep an authored ingredient purchase")
+APR.ClassName, learned[587] = "PRIEST", true
+assert(APR:StepFilterQoL(mageStop) and APR:GetMerchantPurchaseQuantity(food) == 5)
+
+print("Merchant supplies: manual guidance, opt-in, stock, mixed visits, both APIs and mage conjuring passed")

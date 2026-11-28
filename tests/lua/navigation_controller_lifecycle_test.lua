@@ -1196,6 +1196,53 @@ assert(
     "Cross-world tunnels initially point at the reachable entrance"
 )
 
+-- A lift may use observed access when the server supplies no Z. Its arrival
+-- still requires a distinct destination and honours a known wrong-floor Z.
+t = fixture()
+from = { x = 100, y = 0, z = 40, instanceID = 0, uiMapID = 2 }
+to = { x = 100, y = 0, z = 5, instanceID = 0, uiMapID = 3 }
+function APR.NavigationData:IsSameAccessRegion(a, b) return a.uiMapID == b.uiMapID end
+local lift = t.nav:PrepareGuidanceStep({
+    kind = "elevator",
+    from = from,
+    to = to,
+    seconds = 15,
+    arrivalRadius = 7,
+    arrivalZTolerance = 4,
+}, 1, 1, from)
+t.nav.queue, t.nav.cursor, t.nav.state, t.nav.context = { lift }, 1, "guiding", APR:CaptureStepContext()
+t.position.x, t.position.uiMapID, t.position.z = 100, 2, nil
+t.nav:PollArrival()
+assert(t.nav:GetActiveStep() == lift, "Unknown altitude on the departure region is not an arrival")
+t.position.uiMapID, t.position.z = 3, 40
+t.nav:PollArrival()
+assert(t.nav:GetActiveStep() == lift, "A known wrong-floor height overrides the destination map")
+t.position.z, t.position.x = nil, 108
+t.nav:PollArrival()
+assert(t.nav:GetActiveStep() == lift, "Access observations still require the landing radius")
+t.position.x = 107
+t.nav:PollArrival()
+assert(not t.nav:GetActiveStep(), "A nearby, independently observed destination region proves lift arrival")
+
+-- The player can leave the platform's access region during a tram ride
+-- before the destination platform becomes available to the position API.
+t = fixture()
+local train = t.edges[1]
+train.kind, train.arrivalRadius = "tram", 10
+t.position.x = train.from.x
+t:Update()
+local riding = assert(t.nav:GetActiveStep())
+assert(riding.kind == "tram")
+local builds = t.builds
+t.position.x = 2500
+t.nav:ForceRefresh("location_changed")
+t.nav:Update()
+assert(t.nav:GetActiveStep() == riding and t.builds == builds)
+assert(t.nav.lastContinuation.reason == "crossing_in_progress")
+t.position.y = 300
+t:Update()
+assert(t.builds > builds, "Leaving the tram corridor permits a replan")
+
 -- The ground-only estimate must not rescan every mount after movement speed was
 -- already resolved. Indoor running needs no mount-journal walk at all.
 t = fixture()
@@ -1366,3 +1413,150 @@ assert(t.nav:GetActiveStep().connectionID == "portal" and not t.nav.lastComparis
     "A faster complete journey replaces an old master detour instead of comparing against its approach alone")
 assert(t.nav.lastComparison.remainingSeconds == 80 and t.nav.lastComparison.candidateSeconds == 75)
 assert(APRData.p.r == 1, "Replacing a verification detour preserves authored quest progress")
+
+-- The manual pin owns one intercontinental journey, including both shores.
+local function waypointFixture()
+    local world = fixture()
+    local function point(x, instanceID, uiMapID)
+        return {x = x, y = 0, z = 0, instanceID = instanceID, uiMapID = uiMapID}
+    end
+    world.position = point(0, 0, 2)
+    world.departure, world.arrival, world.goal = point(100, 0, 2), point(500, 1, 3), point(800, 1, 3)
+    world.edges = {{ id = "test-crossing", kind = "zeppelin", from = world.departure, to = world.arrival, seconds = 300 }}
+    world.walks = {}
+    local provider = {}
+    function provider:HasMap() return true end
+    function provider:RequiresWalkingProof(from, to) return from.instanceID == to.instanceID end
+    function provider:CanFollowWalkingSegment(from, to) return from.instanceID == to.instanceID and from.y == to.y end
+    function provider:CreatePathJob(from, to)
+        world.walks[#world.walks + 1] = {from = from, to = to}
+        local bend = point((from.x + to.x) / 2, to.instanceID, to.uiMapID)
+        return {Step = function()
+            if world.holdArrival and from == world.arrival then return "planning" end
+            return "ready", {path = {from, bend, to}, seconds = 12, yards = 84}
+        end}
+    end
+    function APR.NavigationData:GetWalkingProvider() return provider end
+    function APR.NavigationData:CanWalk(a, b) return a.instanceID == b.instanceID and a.uiMapID == b.uiMapID end
+    function APR.NavigationData:IsSameAccessRegion(a, b) return self:CanWalk(a, b) end
+    function APR.NavigationData:IsServiceArrival(a, b) return self:CanWalk(a, b) and a.x == b.x and a.y == b.y end
+    function APR.currentStep:RemoveStepContentPreservingNavigationUi() end
+    function world:Tick()
+        local timer = assert(table.remove(self.timers, 1), "Planning must have a scheduled continuation")
+        if not timer.cancelled then timer.callback() end
+    end
+    function world:Drain()
+        for _ = 1, 150 do
+            if not self.timers[1] then return end
+            self:Tick()
+        end
+        error("Waypoint planning did not settle")
+    end
+    APRNavigationCharacterSettings = nil
+    dofile("APR-Core/features/navigation/Services.lua")
+    return world
+end
+
+t = waypointFixture()
+assert(APR.Services:StartWaypoint(t.goal))
+t:Drain()
+local departureWalk, crossing, arrivalWalk = unpack(t.nav.queue)
+assert(departureWalk.kind == "walk" and crossing.kind == "zeppelin" and arrivalWalk.kind == "walk")
+assert(arrivalWalk.path[1] == t.arrival and arrivalWalk.path[2].x == 650 and arrivalWalk.path[3] == t.goal,
+    "The arrival corridor belongs to the itinerary before boarding")
+assert(#t.nav:GetPreview() == 3 and t.nav:GetActiveStep() == departureWalk)
+assert(#t.walks == 2 and t.builds == 1, "A valid fixed crossing needs a walking job on each shore")
+dofile("APR-Core/features/navigation/Preview.lua")
+local preview, dock, bend = t.nav:GetPreview()
+for index, point in ipairs(preview) do
+    if point.instanceID == 1 and point.Coord.y == 500 then dock = index end
+    if point.instanceID == 1 and point.Coord.y == 650 then bend = index end
+end
+assert(dock and bend == dock + 1 and preview[dock].breakBefore
+    and APR.navigationPreview:CanConnect(preview[dock], preview[bend]),
+    "The map can draw the far shore's walk without drawing across continents")
+
+local movedGoal = {x = 900, y = 0, z = 0, instanceID = 1, uiMapID = 3}
+assert(APR.Services:StartWaypoint(movedGoal))
+assert(t.nav.queue[1] == departureWalk and t.nav.queue[2] == crossing,
+    "Changing the final pin keeps the departure and crossing available during planning")
+t:Drain()
+assert(t.nav.queue[1] == departureWalk and t.nav.queue[2] == crossing and t.nav.queue[3].to == movedGoal)
+assert(#t.walks == 3 and t.walks[3].from == t.arrival and t.builds == 1)
+
+t.position = {x = 10, y = 170, z = 0, instanceID = 0, uiMapID = 2}
+t.now = t.now + 10
+arrivalWalk = t.nav.queue[3]
+t.nav:Update()
+t:Drain()
+assert(#t.walks == 4 and t.walks[4].from.y == 170 and t.walks[4].to == t.departure and t.builds == 1)
+assert(t.nav.queue[1] ~= departureWalk and t.nav.queue[2] == crossing and t.nav.queue[3] == arrivalWalk,
+    "Moving off the first corridor repairs only that walk")
+
+t.position = t.departure
+t.nav:PollArrival()
+assert(t.nav:GetActiveStep() == crossing)
+t.nav:BeginWorldLoading("LOADING_SCREEN_ENABLED")
+t.position = t.arrival
+t.nav:EndWorldLoading("LOADING_SCREEN_DISABLED")
+t:Drain()
+assert(t.nav:GetActiveStep() == arrivalWalk and t.nav.continuationReuses == 1 and #t.walks == 4 and t.builds == 1)
+
+-- Simulate a fresh module lifetime and the character's saved tables.
+t.position = {x = 690, y = 0, z = 0, instanceID = 1, uiMapID = 3}
+t.nav:PollArrival()
+local pathCursor = t.nav:GetActiveStep().pathCursor
+t.nav:BeginWorldLoading("PLAYER_LEAVING_WORLD")
+dofile("APR-Core/features/navigation/Services.lua")
+dofile("APR-Core/features/navigation/Navigation.lua")
+t.nav = APR.navigation
+t.nav:EndWorldLoading("PLAYER_ENTERING_WORLD")
+t:Drain()
+assert(APR.Services:GetStep().target == movedGoal and t.nav:GetActiveStep().path == arrivalWalk.path)
+assert(t.nav:GetActiveStep().pathCursor == pathCursor and #t.walks == 4 and t.builds == 1,
+    "Reload restores the active corridor and cursor without rebuilding the crossing or calculating the walk")
+APR.Services:Cancel()
+assert(APRNavigationCharacterSettings.waypoint == nil)
+
+t = waypointFixture()
+t.holdArrival = true
+assert(APR.Services:StartWaypoint(t.goal))
+while #t.walks < 2 do t:Tick() end
+t.position = t.departure
+t.nav:PollArrival()
+assert(t.nav:GetActiveStep().kind == "zeppelin")
+t.nav:BeginWorldLoading("LOADING_SCREEN_ENABLED")
+t:Tick()
+t.position = t.arrival
+t.nav:EndWorldLoading("LOADING_SCREEN_DISABLED")
+t.holdArrival = false
+t:Drain()
+assert(t.nav:GetActiveStep().path[1] == t.arrival and #t.walks == 2 and t.builds == 1,
+    "An unfinished suffix can continue through a crossing without restarting either walk")
+
+t = waypointFixture()
+t.holdArrival = true
+assert(APR.Services:StartWaypoint(t.goal))
+while #t.walks < 2 do t:Tick() end
+local savedDeparture = t.nav.queue[1].path
+t.nav:BeginWorldLoading("PLAYER_LEAVING_WORLD")
+t.timers = {}
+dofile("APR-Core/features/navigation/Services.lua")
+dofile("APR-Core/features/navigation/Navigation.lua")
+t.nav = APR.navigation
+t.holdArrival = false
+t.nav:EndWorldLoading("PLAYER_ENTERING_WORLD")
+t:Drain()
+assert(t.nav.queue[1].path == savedDeparture and t.nav.queue[2].connectionID == "test-crossing"
+    and #t.walks == 3 and t.walks[3].from.instanceID == 1 and t.builds == 2,
+    "Reload revalidates the pending crossing and calculates only the missing arrival leg")
+
+t.nav:BeginWorldLoading("PLAYER_LEAVING_WORLD")
+t.timers, t.edges = {}, {}
+dofile("APR-Core/features/navigation/Services.lua")
+dofile("APR-Core/features/navigation/Navigation.lua")
+t.nav = APR.navigation
+t.nav:EndWorldLoading("PLAYER_ENTERING_WORLD")
+t:Drain()
+assert(not t.nav:IsNavigating() and #t.walks == 3 and APR.Services:GetStep().target == t.goal,
+    "Reload never reuses a transport that disappeared from the live catalogue")

@@ -24,7 +24,7 @@ function env.methods:Hide()
     hide(self)
     if shown and self.scripts.OnHide then self.scripts.OnHide(self) end
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/panels/ChangeLog.lua")

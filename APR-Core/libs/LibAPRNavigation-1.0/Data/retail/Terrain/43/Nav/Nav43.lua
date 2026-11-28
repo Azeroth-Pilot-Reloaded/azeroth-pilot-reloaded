@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[43]={["area"]={},["areaNames"]={[15290]="",[15291]="",[15292]="Ravine hurlante",[15293]="Ravine hurlante",[15294]="Rocher du Rêveur",[15295]="Ravine hurlante",[15296]="",[15297]="",[15300]="Abîme des Crocs",[15301]="Combe des Éternels",[17730]="Abîme des Crocs",[18836]="",[54907]=""},["areaParents"]={[15290]=0,[15291]=0,[15292]=0,[15293]=0,[15294]=0,[15295]=0,[15296]=0,[15297]=0,[15300]=0,[15301]=0,[17730]=0,[18836]=0,[54907]=0},["cells"]=128,["class"]={},["counts"]={["area"]=4,["class"]=5,["floor"]=4,["graph"]=5,["grid"]=5,["height"]=5},["cx0"]=-1,["cy0"]=-1,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["hubs"]={},["nx"]=2,["ny"]=3,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

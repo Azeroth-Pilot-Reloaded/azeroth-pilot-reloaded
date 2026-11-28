@@ -1,0 +1,16 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Navigation.lua" />
+    <Script file="controller/NavigationWalking.lua" />
+    <Script file="controller/NavigationDisplay.lua" />
+    <Script file="controller/NavigationPreview.lua" />
+    <Script file="controller/NavigationLifecycle.lua" />
+    <Script file="controller/NavigationObjective.lua" />
+    <Script file="controller/NavigationPlanningInputs.lua" />
+    <Script file="controller/NavigationTransitions.lua" />
+    <Script file="controller/NavigationItinerary.lua" />
+    <Script file="controller/NavigationWaypointJourney.lua" />
+    <Script file="controller/NavigationSearch.lua" />
+    <Script file="controller/NavigationSearchLoop.lua" />
+    <Script file="controller/NavigationArrival.lua" />
+    <Script file="controller/NavigationEvents.lua" />
+</Ui>

@@ -15,7 +15,7 @@ function env.methods:SetFont(path, size, flags)
 end
 function env.methods:SetTextColor(...) self.textColor = { ... } end
 function env.methods:SetVertexColor(...) self.vertex = { ... } end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/TextStyles.lua")
 dofile("APR-Core/utils/TextStyleUtils.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")

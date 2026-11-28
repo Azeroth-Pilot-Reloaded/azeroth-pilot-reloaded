@@ -36,7 +36,7 @@ function APR:CanAccessValue(value) return type(value) ~= "table" end
 function GetTime() return 10 end
 UIParent:SetSize(1920, 1080)
 -- Native mutation APIs are captured when the integration loads.
-dofile("APR-Core/integrations/QuestTracker.lua")
+dofile("APR-Core/integrations/quest-tracking/QuestTracker.lua")
 local tracker = APR.QuestTracker
 local manager = env.widget(UIParent)
 manager:SetSize(1920, 1080)

@@ -5,6 +5,8 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Transient guidance: never insert synthetic steps into authored routes or
 -- write their saved progress. Every callback belongs to a route AND generation.
+local Constants = APR.NavigationConstants.Navigation
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.navigation = APR:NewModule("Navigation")
 local nav = APR.navigation
@@ -12,40 +14,17 @@ nav.NavigationStepKey, nav.ErrorStepKey = "01_NAVIGATION_PATH", "01_NAVIGATION_E
 nav.ErrorDestinationLineKey, nav.NavigationDividerStepKey = "00_ERROR_DESTINATION", "03_NAVIGATION_DIVIDER"
 nav.ErrorTextColor = APR.HEXColor and APR.HEXColor.red or "ff3333"
 nav.state, nav.generation, nav.queue, nav.cursor = "ready", 0, {}, 1
-nav.controllerRevision, nav.continuationReuses, nav.worldLoading = 10, 0, false
-local EMPTY_GUIDANCE = {}
-local PLANNING_SLICE_MS = 1
--- Bound background CPU at high frame rates without delaying a 60 FPS frame.
-local PLANNING_SLICE_DELAY = 0.01
-local TIMED_OPERATION_LIMIT = 4096
-local UNTIMED_OPERATION_LIMIT = 64
-local MOVEMENT_REPLAN_YARDS = 100
-local MOVEMENT_REPLAN_SECONDS = 5
-local TRANSITION_REUSE_SECONDS = 10
-local TRANSITION_SETTLE_SECONDS = 5
+nav.controllerRevision, nav.continuationReuses, nav.worldLoading = Constants.CONTROLLER_REVISION, 0, false
+
 local function NavigationText(key)
     local data = APR.NavigationData
     if data and data.GetText then return data:GetText(key) end
     local library = LibStub("LibAPRNavigation-1.0", true)
     return library and library.GetText and library:GetText(key, GetLocale and GetLocale()) or key
-end--[[APR_DIAG]]; NavigationText = APRTrace("APR-Core/features/navigation/Navigation.lua:26:NavigationText#1", NavigationText)--[[/APR_DIAG]]
-local function Now() return GetTime and GetTime() or 0 end--[[APR_DIAG]]; Now = APRTrace("APR-Core/features/navigation/Navigation.lua:32:Now#2", Now)--[[/APR_DIAG]]
-local LOCATION_FIELDS = {
-    "x",
-    "y",
-    "z",
-    "instanceID",
-    "uiMapID",
-    "mapID",
-    "floor",
-    "accessKey",
-    "noAutoconnect",
-    "phaseAgnostic",
-    "isInstance",
-    "region",
-}
-local ACCESS_FIELDS =
-    { "instanceID", "uiMapID", "floor", "accessKey", "noAutoconnect", "phaseAgnostic", "isInstance", "region" }
+end--[[APR_DIAG]]; NavigationText = APRTrace("APR-Core/features/navigation/Navigation.lua:19:NavigationText#1", NavigationText)--[[/APR_DIAG]]
+
+local function Now() return GetTime and GetTime() or 0 end--[[APR_DIAG]]; Now = APRTrace("APR-Core/features/navigation/Navigation.lua:26:Now#2", Now)--[[/APR_DIAG]]
+
 local function ReadableLocationValue(value)
     if issecretvalue and issecretvalue(value) then return false end
     if APR.CanAccessValue and not APR:CanAccessValue(value) then return false end
@@ -54,18 +33,29 @@ local function ReadableLocationValue(value)
         or kind == "string"
         or kind == "boolean"
         or (kind == "number" and value == value and value > -math.huge and value < math.huge)
-end--[[APR_DIAG]]; ReadableLocationValue = APRTrace("APR-Core/features/navigation/Navigation.lua:49:ReadableLocationValue#3", ReadableLocationValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReadableLocationValue = APRTrace("APR-Core/features/navigation/Navigation.lua:28:ReadableLocationValue#3", ReadableLocationValue)--[[/APR_DIAG]]
+
 local function CopyLocation(point)
     if issecretvalue and issecretvalue(point) then return end
     if type(point) ~= "table" or (APR.CanAccessTable and not APR:CanAccessTable(point)) then return end
     local snapshot = {}
-    for _, key in ipairs(LOCATION_FIELDS) do
+    for _, key in ipairs(Constants.LOCATION_FIELDS) do
         local value = point[key]
         if not ReadableLocationValue(value) then return end
         snapshot[key] = value
     end
+    local indoors = point.indoors
+    if type(indoors) == "boolean" and ReadableLocationValue(indoors) then snapshot.indoors = indoors end
+    local phase = point.terrainPhase
+    if type(phase) ~= "nil" then
+        if not ReadableLocationValue(phase) then return end
+        snapshot.terrainPhase = phase
+    end
+    local boundary = point.phaseBoundary
+    if type(boundary) == "boolean" and ReadableLocationValue(boundary) then snapshot.phaseBoundary = boundary end
     return snapshot
-end--[[APR_DIAG]]; CopyLocation = APRTrace("APR-Core/features/navigation/Navigation.lua:58:CopyLocation#4", CopyLocation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CopyLocation = APRTrace("APR-Core/features/navigation/Navigation.lua:38:CopyLocation#4", CopyLocation)--[[/APR_DIAG]]
+
 local function SameLocationFields(point, snapshot, fields)
     if issecretvalue and issecretvalue(point) then return false end
     if type(point) ~= "table" or not snapshot or (APR.CanAccessTable and not APR:CanAccessTable(point)) then
@@ -76,7 +66,8 @@ local function SameLocationFields(point, snapshot, fields)
         if not ReadableLocationValue(value) or value ~= snapshot[key] then return false end
     end
     return true
-end--[[APR_DIAG]]; SameLocationFields = APRTrace("APR-Core/features/navigation/Navigation.lua:69:SameLocationFields#5", SameLocationFields)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameLocationFields = APRTrace("APR-Core/features/navigation/Navigation.lua:50:SameLocationFields#5", SameLocationFields)--[[/APR_DIAG]]
+
 local function Position()
     -- Providers may reuse their live table. Async requests and freshness checks
     -- must own the values observed at dispatch, including optional restrictions.
@@ -97,68 +88,151 @@ local function Position()
         instanceID = instance,
         uiMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player"),
     })
-end--[[APR_DIAG]]; Position = APRTrace("APR-Core/features/navigation/Navigation.lua:80:Position#6", Position)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Position = APRTrace("APR-Core/features/navigation/Navigation.lua:62:Position#6", Position)--[[/APR_DIAG]]
+
 local function Distance(a, b)
     if not a or not b or a.instanceID ~= b.instanceID then return math.huge end
     return math.sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2)
-end--[[APR_DIAG]]; Distance = APRTrace("APR-Core/features/navigation/Navigation.lua:101:Distance#7", Distance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Distance = APRTrace("APR-Core/features/navigation/Navigation.lua:84:Distance#7", Distance)--[[/APR_DIAG]]
+
+local function WalkingProvider()
+    local data = APR.NavigationData
+    if not data or not data.GetWalkingProvider then return end
+    if APR.GetGameVersion and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        return data:GetWalkingProvider()
+    end
+    if data.profile == "retail" then
+        local provider = data:GetWalkingProvider()
+        if provider and provider.HasWalkingCoverage then return provider end
+    end
+end--[[APR_DIAG]]; WalkingProvider = APRTrace("APR-Core/features/navigation/Navigation.lua:89:WalkingProvider#8", WalkingProvider)--[[/APR_DIAG]]
+
+local function TerrainRequired(from, to, provider)
+    provider = provider or WalkingProvider()
+    if provider and provider.HasWalkingCoverage and from and to then
+        return provider:HasWalkingCoverage(from) and provider:HasWalkingCoverage(to)
+    end
+    return provider
+            and provider.HasMap
+            and from
+            and to
+            and provider:HasMap(from.instanceID)
+            and provider:HasMap(to.instanceID)
+        or false
+end--[[APR_DIAG]]; TerrainRequired = APRTrace("APR-Core/features/navigation/Navigation.lua:96:TerrainRequired#9", TerrainRequired)--[[/APR_DIAG]]
+
+local function SpatialDistance(from, to)
+    local distance = Distance(from, to)
+    local dz = from and to and type(from.z) == "number" and type(to.z) == "number" and to.z - from.z or 0
+    return math.sqrt(distance * distance + dz * dz)
+end--[[APR_DIAG]]; SpatialDistance = APRTrace("APR-Core/features/navigation/Navigation.lua:107:SpatialDistance#10", SpatialDistance)--[[/APR_DIAG]]
+
+local function HasWalkingPath(step)
+    return step and step.kind == "walk" and type(step.path) == "table" and #step.path > 1
+end--[[APR_DIAG]]; HasWalkingPath = APRTrace("APR-Core/features/navigation/Navigation.lua:113:HasWalkingPath#11", HasWalkingPath)--[[/APR_DIAG]]
+
+local function MissingWalkProof(step, provider)
+    if not step or step.kind ~= "walk" or HasWalkingPath(step) or not provider or not provider.RequiresWalkingProof then
+        return false
+    end
+    local from, to = step.from, step.to
+    if not from or not to or from.instanceID ~= to.instanceID then return true end
+    if
+        from.x == to.x
+        and from.y == to.y
+        and from.z == to.z
+        and from.floor == to.floor
+        and from.accessKey == to.accessKey
+        and from.region == to.region
+    then
+        return false
+    end
+    -- An estimated link into an absent page and another link back would
+    -- otherwise join two covered points without proving either crossing.
+    return provider:RequiresWalkingProof(from, from)
+        or provider:RequiresWalkingProof(to, to)
+        or provider:RequiresWalkingProof(from, to)
+end--[[APR_DIAG]]; MissingWalkProof = APRTrace("APR-Core/features/navigation/Navigation.lua:117:MissingWalkProof#12", MissingWalkProof)--[[/APR_DIAG]]
+
 local function SameAccess(a, b)
-    return SameLocationFields(a, b, ACCESS_FIELDS)
-end--[[APR_DIAG]]; SameAccess = APRTrace("APR-Core/features/navigation/Navigation.lua:105:SameAccess#8", SameAccess)--[[/APR_DIAG]]
+    if not SameLocationFields(a, b, Constants.ACCESS_FIELDS) then return false end
+    local first, last = a.terrainPhase, b.terrainPhase
+    return (type(first) == "nil" and type(last) == "nil")
+        or (ReadableLocationValue(first) and ReadableLocationValue(last) and first == last)
+end--[[APR_DIAG]]; SameAccess = APRTrace("APR-Core/features/navigation/Navigation.lua:140:SameAccess#13", SameAccess)--[[/APR_DIAG]]
+
 local function CancelTimer(timer)
     if timer and timer.Cancel then timer:Cancel() end
-end--[[APR_DIAG]]; CancelTimer = APRTrace("APR-Core/features/navigation/Navigation.lua:108:CancelTimer#9", CancelTimer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CancelTimer = APRTrace("APR-Core/features/navigation/Navigation.lua:144:CancelTimer#14", CancelTimer)--[[/APR_DIAG]]
+
 local function ContextCurrent(context)
     if context and context.service then return APR.Services and APR.Services:IsContextCurrent(context) end
     return context and APR:IsStepContextCurrent(context)
-end--[[APR_DIAG]]; ContextCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:111:ContextCurrent#10", ContextCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ContextCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:148:ContextCurrent#15", ContextCurrent)--[[/APR_DIAG]]
+
 local function CaptureContext()
     return APR.Services and APR.Services:CaptureContext() or APR:CaptureStepContext()
-end--[[APR_DIAG]]; CaptureContext = APRTrace("APR-Core/features/navigation/Navigation.lua:115:CaptureContext#11", CaptureContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CaptureContext = APRTrace("APR-Core/features/navigation/Navigation.lua:153:CaptureContext#16", CaptureContext)--[[/APR_DIAG]]
+
 local function ObjectiveStep()
     return APR.Services and APR.Services:GetStep()
-        or (APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep()) or APR:GetCurrentStep()
-end--[[APR_DIAG]]; ObjectiveStep = APRTrace("APR-Core/features/navigation/Navigation.lua:118:ObjectiveStep#12", ObjectiveStep)--[[/APR_DIAG]]
+        or (APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep())
+        or APR:GetCurrentStep()
+end--[[APR_DIAG]]; ObjectiveStep = APRTrace("APR-Core/features/navigation/Navigation.lua:157:ObjectiveStep#17", ObjectiveStep)--[[/APR_DIAG]]
+
 local function PlanningRequestCurrent(self, context, generation, job, inputs)
     return generation == self.generation
         and self.search == job
         and self._routeInputs == inputs
         and ContextCurrent(context)
-end--[[APR_DIAG]]; PlanningRequestCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:122:PlanningRequestCurrent#13", PlanningRequestCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PlanningRequestCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:163:PlanningRequestCurrent#18", PlanningRequestCurrent)--[[/APR_DIAG]]
+
 local function Enabled()
     local profile = APR.settings and APR.settings.profile
-    return profile and profile.enableAddon and (APR.ActiveRoute ~= nil or (APR.Services and APR.Services:GetStep() ~= nil))
-end--[[APR_DIAG]]; Enabled = APRTrace("APR-Core/features/navigation/Navigation.lua:128:Enabled#14", Enabled)--[[/APR_DIAG]]
+    return profile
+        and profile.enableAddon
+        and (APR.ActiveRoute ~= nil or (APR.Services and APR.Services:GetStep() ~= nil))
+end--[[APR_DIAG]]; Enabled = APRTrace("APR-Core/features/navigation/Navigation.lua:170:Enabled#19", Enabled)--[[/APR_DIAG]]
+
 local function ActionUsable(action)
     if not action then return true end
     local data = APR.NavigationData
     if data and data.GetActionUsability then return data:GetActionUsability(action.type, action.data) end
     if APR.GetRouteActionUsability then return APR:GetRouteActionUsability(action.type, action.data) end
     return true
-end--[[APR_DIAG]]; ActionUsable = APRTrace("APR-Core/features/navigation/Navigation.lua:132:ActionUsable#15", ActionUsable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ActionUsable = APRTrace("APR-Core/features/navigation/Navigation.lua:177:ActionUsable#20", ActionUsable)--[[/APR_DIAG]]
+
 local function ActionPending(step)
     return step and step.actionCommittedUntil and Now() < step.actionCommittedUntil
-end--[[APR_DIAG]]; ActionPending = APRTrace("APR-Core/features/navigation/Navigation.lua:139:ActionPending#16", ActionPending)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ActionPending = APRTrace("APR-Core/features/navigation/Navigation.lua:185:ActionPending#21", ActionPending)--[[/APR_DIAG]]
+
 local function MapIncludes(mapID, ancestorID)
     if not mapID or not ancestorID then return false end
+    local data = APR.NavigationData
+    local getAccessMapID = data and data.GetAccessMapID
+    if getAccessMapID then
+        mapID, ancestorID = getAccessMapID(data, mapID), getAccessMapID(data, ancestorID)
+    end
     if mapID == ancestorID then return true end
     if APR.GetMapParentChain then
         for _, map in ipairs(APR:GetMapParentChain(mapID)) do
-            if map == ancestorID then return true end
+            if map == ancestorID or getAccessMapID and getAccessMapID(data, map) == ancestorID then return true end
         end
     else
-        local data, current, seen = APR.NavigationData, mapID, {}
+        local current, seen = mapID, {}
         for _ = 1, 50 do
             if not current or current == 0 or seen[current] then break end
             seen[current] = true
             local info = data and data.GetMapAncestryInfo and data:GetMapAncestryInfo(current)
                 or (C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(current))
             current = info and info.parentMapID
+            if getAccessMapID then current = getAccessMapID(data, current) end
             if current == ancestorID then return true end
         end
     end
     return false
-end--[[APR_DIAG]]; MapIncludes = APRTrace("APR-Core/features/navigation/Navigation.lua:142:MapIncludes#17", MapIncludes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MapIncludes = APRTrace("APR-Core/features/navigation/Navigation.lua:189:MapIncludes#22", MapIncludes)--[[/APR_DIAG]]
+
 local function TargetMapReached(position, target)
     if not target.uiMapID or MapIncludes(position.uiMapID, target.uiMapID) then return true, false end
     -- After loading, native map data can expose a continent before its city.
@@ -175,1857 +249,47 @@ local function TargetMapReached(position, target)
         return true, true
     end
     return false, false
-end--[[APR_DIAG]]; TargetMapReached = APRTrace("APR-Core/features/navigation/Navigation.lua:162:TargetMapReached#18", TargetMapReached)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; TargetMapReached = APRTrace("APR-Core/features/navigation/Navigation.lua:210:TargetMapReached#23", TargetMapReached)--[[/APR_DIAG]]
+
 local function DepartureAllowed(step, position)
     if ActionPending(step) or not step.canStart then return true end
     if not position then return nil end
     return step.canStart(position, true)
-end--[[APR_DIAG]]; DepartureAllowed = APRTrace("APR-Core/features/navigation/Navigation.lua:179:DepartureAllowed#19", DepartureAllowed)--[[/APR_DIAG]]
-function nav:GetState() return self.state end--[[APR_DIAG]]; nav.GetState = APRTrace("APR-Core/features/navigation/Navigation.lua:184:nav:GetState#20", nav.GetState)--[[/APR_DIAG]]
-function nav:IsNavigating() return self.state == "guiding" and self:GetActiveStep() ~= nil end--[[APR_DIAG]]; nav.IsNavigating = APRTrace("APR-Core/features/navigation/Navigation.lua:185:nav:IsNavigating#21", nav.IsNavigating)--[[/APR_DIAG]]
-function nav:GetActiveStep() return self.queue and self.queue[self.cursor or 1] end--[[APR_DIAG]]; nav.GetActiveStep = APRTrace("APR-Core/features/navigation/Navigation.lua:186:nav:GetActiveStep#22", nav.GetActiveStep)--[[/APR_DIAG]]
-function nav:GetData() return APR.NavigationData end--[[APR_DIAG]]; nav.GetData = APRTrace("APR-Core/features/navigation/Navigation.lua:187:nav:GetData#23", nav.GetData)--[[/APR_DIAG]]
-function nav:GetPreview()
-    local guiding = self:IsNavigating()
-    local guidance = guiding and self.queue or EMPTY_GUIDANCE
-    local cursor = guiding and self.cursor or 1
-    local step, index, steps
-    local service = APR.Services and APR.Services:GetStep()
-    if service then step, index, steps = service, 1, {service}
-    else step, index, steps = APR:GetCurrentStep() end
-    local unlockPreview = not service and APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep()
-    if unlockPreview then
-        step, index, steps = unlockPreview, 1, { unlockPreview }
-    end
-    if APR.navigationPreview then return APR.navigationPreview:Build(guidance, step, index, steps, cursor) end
-    local remaining = {}
-    for i = cursor, #guidance do
-        remaining[#remaining + 1] = guidance[i]
-    end
-    return remaining
-end--[[APR_DIAG]]; nav.GetPreview = APRTrace("APR-Core/features/navigation/Navigation.lua:188:nav:GetPreview#24", nav.GetPreview)--[[/APR_DIAG]]
-function nav:ClearNavigationUiLines()
-    local ui = APR.currentStep
-    if not ui then return end
-    local function navigationKey(key)
-        return (APR.IsNavigationQuestUiKey and APR:IsNavigationQuestUiKey(key))
-            or (APR.IsNavigationExtraTextUiKey and APR:IsNavigationExtraTextUiKey(key))
-            or key == self.NavigationStepKey
-            or key == self.ErrorStepKey
-            or key == self.ErrorDestinationLineKey
-            or key == self.NavigationDividerStepKey
-            or (type(key) == "string" and (key:match("^01_NAVIGATION_PATH%-") or key:match("^01_NAVIGATION_ERROR%-")))
-    end--[[APR_DIAG]]; navigationKey = APRTrace("APR-Core/features/navigation/Navigation.lua:210:navigationKey#26", navigationKey)--[[/APR_DIAG]]
-    -- A combat-deferred secure request can outlive its row. Its generation is
-    -- encoded in the key, so discard every retired navigation request directly.
-    for _, pending in ipairs({
-        ui.pendingButtonRequests or {},
-        ui.pendingButtonResets or {},
-        ui.pendingRaidIconRequests or {},
-    }) do
-        for key in pairs(pending) do
-            if navigationKey(key) then pending[key] = nil end
-        end
-    end
-    if not ui.pendingRemoval then
-        self._renderedState, self._renderedStep = nil, nil
-        return
-    end
-    local inCombat = InCombatLockdown and InCombatLockdown()
-    for _, list in ipairs({ ui.questsList or {}, ui.questsExtraTextList or {} }) do
-        for key, container in pairs(list) do
-            if navigationKey(key) then
-                if inCombat then
-                    ui:SoftHide(container)
-                    ui.pendingContainerDestroy[#ui.pendingContainerDestroy + 1] = container
-                    if ui.pendingButtonRequests then ui.pendingButtonRequests[key] = nil end
-                    list[key] = nil
-                else
-                    ui.pendingRemoval[key] = true
-                end
-            end
-        end
-    end
-    if not inCombat and next(ui.pendingRemoval) then ui:FlushPendingContainers() end
-    self._renderedState, self._renderedStep = nil, nil
-end--[[APR_DIAG]]; nav.ClearNavigationUiLines = APRTrace("APR-Core/features/navigation/Navigation.lua:207:nav:ClearNavigationUiLines#25", nav.ClearNavigationUiLines)--[[/APR_DIAG]]
-function nav:Cancel(reason, keepArrow)
-    if APR.Services and APR.Services.CancelTraining and (reason == "step_changed" or reason == "disabled"
-        or reason == "inactive" or reason == "no_step" or reason == "cleared" or reason == "dead") then
-        APR.Services:CancelTraining()
-    end
-    local active = self:GetActiveStep()
-    self.lastCancellation = {
-        reason = reason,
-        queuedSteps = #self.queue,
-        cursor = self.cursor,
-        activeKind = active and active.kind,
-        generation = self.generation,
-        invalidation = self.lastInvalidation,
-        worldLoading = self.worldLoading,
-        worldEvent = self.lastWorldEvent,
-    }
-    if
-        reason ~= "local"
-        and reason ~= "replan"
-        and reason ~= "search_failed"
-        and reason ~= "entrance"
-        and APR.CancelNavigationUnlock
-    then
-        APR:CancelNavigationUnlock()
-    end
-    if not keepArrow and APR.NavigationData and APR.NavigationData.ReleaseWaypoints then
-        APR.NavigationData:ReleaseWaypoints(reason == "cleared")
-    end
-    self.blockers = nil
-    local wasNavigating = self:IsNavigating()
-    self.generation = self.generation + 1
-    CancelTimer(self._stepCheckTimer)
-    CancelTimer(self._searchTimer)
-    if reason ~= "local" and reason ~= "replan" then
-        CancelTimer(self._cooldownRefreshTimer)
-        self._cooldownRefreshTimer = nil
-    end
-    self._stepCheckTimer, self._searchTimer = nil, nil
-    if self.search then self.search:Cancel() end
-    self.search, self.queue, self.cursor, self.activePathStep = nil, {}, 1, nil
-    self.state, self.reason, self.showOutOfZoneStepContent = "ready", reason, false
-    self._routedStepContext, self._scheduledStepContext = nil, nil
-    self.context, self.recomputeKeepingPath, self.recomputeKeepingDirect = nil, nil, nil
-    self.retainedArrow = nil
-    self._routeInputs = nil
-    self._directBaselinePending = nil
-    self.instanceContext = nil
-    self._transitionArrival, self._resumeAfterTransition, self._transitionProbe = nil, nil, nil
-    if not keepArrow and (wasNavigating or reason ~= "local") and APR.Arrow and APR.Arrow.SetArrowActive then
-        APR.Arrow:SetArrowActive(false, 0, 0)
-    end
-    self:ClearNavigationUiLines()
-    if self.RefreshActivity then self:RefreshActivity() end
-end--[[APR_DIAG]]; nav.Cancel = APRTrace("APR-Core/features/navigation/Navigation.lua:252:nav:Cancel#27", nav.Cancel)--[[/APR_DIAG]]
-function nav:CaptureRetainedArrow(position)
-    local arrow = APR.Arrow
-    if not arrow or not arrow.Active or type(arrow.x) ~= "number" or type(arrow.y) ~= "number" then return end
-    local active = self:GetActiveStep()
-    local displayAction = (self.retainedArrow and self.retainedArrow.displayAction)
-        or (active and active.sourceFree and active.action)
-    if arrow.x == 0 and not self.retainedArrow and not self:IsNavigating() then return end
-    if not ContextCurrent(self._routedStepContext) or not self:IsObjectiveCurrent(self._routeInputs) then return end
-    local world = (self.retainedArrow and self.retainedArrow.instanceID)
-        or (active and active.instanceID)
-        or (self.destination and self.destination.instanceID)
-        or (self.start and self.start.instanceID)
-    if not position or position.instanceID ~= world then return end
-    -- This target is display-only. Cancelling an obsolete itinerary must still
-    -- remove its actions and arrival checks while its replacement is computed.
-    return {
-        Coord = not displayAction and { x = arrow.x, y = arrow.y } or nil,
-        displayAction = displayAction and { type = displayAction.type, data = displayAction.data } or nil,
-        uiMapID = (self.retainedArrow and self.retainedArrow.uiMapID)
-            or (active and active.uiMapID)
-            or (self.destination and self.destination.uiMapID),
-        label = (self.retainedArrow and self.retainedArrow.label) or (active and active.label),
-        id = (self.retainedArrow and self.retainedArrow.id) or (active and active.id),
-        instanceID = position.instanceID,
-        context = self._routedStepContext,
-        inputs = self._routeInputs,
-    }
-end--[[APR_DIAG]]; nav.CaptureRetainedArrow = APRTrace("APR-Core/features/navigation/Navigation.lua:301:nav:CaptureRetainedArrow#28", nav.CaptureRetainedArrow)--[[/APR_DIAG]]
-function nav:GetRetainedArrow()
-    local target = self.retainedArrow
-    if
-        target
-        and Enabled()
-        and not (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player"))
-        and ContextCurrent(target.context)
-        and self:IsObjectiveCurrent(target.inputs)
-    then
-        return target
-    end
-end--[[APR_DIAG]]; nav.GetRetainedArrow = APRTrace("APR-Core/features/navigation/Navigation.lua:329:nav:GetRetainedArrow#29", nav.GetRetainedArrow)--[[/APR_DIAG]]
-function nav:ClearActivePath() self:Cancel("cleared") end--[[APR_DIAG]]; nav.ClearActivePath = APRTrace("APR-Core/features/navigation/Navigation.lua:341:nav:ClearActivePath#30", nav.ClearActivePath)--[[/APR_DIAG]]
-function nav:DiscardCandidate(reason)
-    if not self.search then return false end
-    self.generation = self.generation + 1
-    self.search:Cancel()
-    self.search = nil
-    CancelTimer(self._searchTimer)
-    self._searchTimer = nil
-    self.recomputeKeepingPath, self.recomputeKeepingDirect = nil, nil
-    self.dirty = true
-    self.lastCandidateDiscard = { reason = reason, queuedSteps = #self.queue, generation = self.generation }
-    return true
-end--[[APR_DIAG]]; nav.DiscardCandidate = APRTrace("APR-Core/features/navigation/Navigation.lua:342:nav:DiscardCandidate#31", nav.DiscardCandidate)--[[/APR_DIAG]]
-function nav:BeginWorldLoading(event)
-    local alreadyLoading = self.worldLoading
-    if event == "PLAYER_LEAVING_WORLD" then
-        self._outsideWorld = true
-    else
-        self._loadingScreen = true
-    end
-    self.worldLoading, self.lastWorldEvent = true, event
-    if self.RefreshActivity then self:RefreshActivity() end
-    if not alreadyLoading then
-        -- Keep the published route in memory, including its live predicates.
-        -- Only the candidate measured before departure becomes obsolete.
-        self:DiscardCandidate("world_loading")
-        CancelTimer(self._stepCheckTimer)
-        self._stepCheckTimer = nil
-        CancelTimer(self._cooldownRefreshTimer)
-        self._cooldownRefreshTimer = nil
-        self._resumeAfterTransition = true
-    end
-end--[[APR_DIAG]]; nav.BeginWorldLoading = APRTrace("APR-Core/features/navigation/Navigation.lua:354:nav:BeginWorldLoading#32", nav.BeginWorldLoading)--[[/APR_DIAG]]
-function nav:EndWorldLoading(event)
-    local wasLoading = self.worldLoading
-    if event == "PLAYER_ENTERING_WORLD" then
-        self._outsideWorld = false
-    else
-        self._loadingScreen = false
-    end
-    self.worldLoading = self._outsideWorld == true or self._loadingScreen == true
-    self.lastWorldEvent = event
-    if self.worldLoading then return end
-    -- The settling allowance starts on return, not before a long loading
-    -- screen. A duplicate return event must not renew it indefinitely.
-    if wasLoading then self._transitionProbe = nil end
-    self:ForceRefresh("world_transition")
-    self:RequestUpdate()
-    if self.RefreshActivity then self:RefreshActivity() end
-end--[[APR_DIAG]]; nav.EndWorldLoading = APRTrace("APR-Core/features/navigation/Navigation.lua:373:nav:EndWorldLoading#33", nav.EndWorldLoading)--[[/APR_DIAG]]
-function nav:BeginTransitionProbe(step)
-    if not step or step.kind == "walk" or step.kind == "unlock" or step.kind == "verify_taxi" then return end
-    local probe = self._transitionProbe
-    if not probe or probe.queue ~= self.queue or probe.step ~= step then
-        self._transitionProbe = { queue = self.queue, step = step, deadline = Now() + TRANSITION_SETTLE_SECONDS }
-    end
-end--[[APR_DIAG]]; nav.BeginTransitionProbe = APRTrace("APR-Core/features/navigation/Navigation.lua:389:nav:BeginTransitionProbe#34", nav.BeginTransitionProbe)--[[/APR_DIAG]]
-function nav:InvalidatePathCache(reason)
-    if APR.Services and APR.Services.CancelTraining and (reason == "SKILL_LINES_CHANGED"
-        or reason == "SPELLS_CHANGED" or reason == "PLAYER_LEVEL_UP" or reason == "UPDATE_FACTION"
-        or reason == "QUEST_LOG_UPDATE" or reason == "QUEST_TURNED_IN" or reason == "QUEST_REMOVED") then
-        APR.Services:CancelTraining()
-    end
-    self.dirty, self._mountCapability = true, nil
-    self.lastInvalidation = reason or "refresh"
-    -- Quest/bag/cooldown events interleave with loading. They cannot erase an
-    -- arrival still awaiting validation or renew its bounded settling window.
-    if reason == "world_transition" then
-        self._resumeAfterTransition = true
-        self:BeginTransitionProbe(self:GetActiveStep())
-    end
-end--[[APR_DIAG]]; nav.InvalidatePathCache = APRTrace("APR-Core/features/navigation/Navigation.lua:396:nav:InvalidatePathCache#35", nav.InvalidatePathCache)--[[/APR_DIAG]]
-function nav:ForceRefresh(reason) self:InvalidatePathCache(reason) end--[[APR_DIAG]]; nav.ForceRefresh = APRTrace("APR-Core/features/navigation/Navigation.lua:406:nav:ForceRefresh#36", nav.ForceRefresh)--[[/APR_DIAG]]
-function nav:RequestUpdate()
-    if not Enabled() then
-        self:RefreshActivity()
-        return
-    end
-    if APR.routeValidationPending or APR.routeValidationFailed then return end
-    if self.worldLoading then return end
-    if self._stepCheckTimer then return end
-    local context = CaptureContext()
-    self._scheduledStepContext = context
-    local timer
-    timer = C_Timer.NewTimer(
-        0.05,
-         --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:423:callback#38", --[[/APR_DIAG]]function()
-            if self._stepCheckTimer ~= timer then return end
-            self._stepCheckTimer = nil
-            if ContextCurrent(context) then self:Update(context) end
-            self:RefreshActivity()
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
-    )
-    self._stepCheckTimer = timer
-end--[[APR_DIAG]]; nav.RequestUpdate = APRTrace("APR-Core/features/navigation/Navigation.lua:407:nav:RequestUpdate#37", nav.RequestUpdate)--[[/APR_DIAG]]
-nav.RequestRouteCheck, nav.ScheduleRouteCheck = nav.RequestUpdate, nav.RequestUpdate
-function nav:RequestCooldownRefresh()
-    if self.worldLoading or not Enabled() then return end
-    if self._cooldownRefreshTimer then return end
-    local adapter = APR.NavigationAdapter
-    if not adapter or not adapter.CreateCooldownCheck then return end
-    -- Most cooldown events belong to combat spells. Inspect only travel actions
-    -- already seen in the catalogue, in small batches, before dirtying a route.
-    local timer
-    local check
-    local function refresh()
-        if self._cooldownRefreshTimer ~= timer then return end
-        self._cooldownRefreshTimer = nil
-        if not Enabled() then return end
-        if self.search then
-            self:RequestCooldownRefresh()
-            return
-        end
-        check = check or adapter:CreateCooldownCheck()
-        local state, changed = check:Step(8, 0.5)
-        if state == "planning" then
-            timer = C_Timer.NewTimer(0, refresh)
-            self._cooldownRefreshTimer = timer
-        elseif changed then
-            self:InvalidatePathCache()
-            self:RequestUpdate()
-        end
-    end--[[APR_DIAG]]; refresh = APRTrace("APR-Core/features/navigation/Navigation.lua:434:refresh#40", refresh)--[[/APR_DIAG]]
-    timer = C_Timer.NewTimer(1, refresh)
-    self._cooldownRefreshTimer = timer
-end--[[APR_DIAG]]; nav.RequestCooldownRefresh = APRTrace("APR-Core/features/navigation/Navigation.lua:425:nav:RequestCooldownRefresh#39", nav.RequestCooldownRefresh)--[[/APR_DIAG]]
-function nav:GetMeToRightZone() self:Update() end--[[APR_DIAG]]; nav.GetMeToRightZone = APRTrace("APR-Core/features/navigation/Navigation.lua:455:nav:GetMeToRightZone#41", nav.GetMeToRightZone)--[[/APR_DIAG]]
-local function ReadableMountValue(value)
-    return not (issecretvalue and issecretvalue(value)) and (not APR.CanAccessValue or APR:CanAccessValue(value))
-end--[[APR_DIAG]]; ReadableMountValue = APRTrace("APR-Core/features/navigation/Navigation.lua:456:ReadableMountValue#42", ReadableMountValue)--[[/APR_DIAG]]
-local function UsableCollectedMount(journal, mountID)
-    if not mountID or not journal or not journal.GetMountInfoByID then return nil end
-    local _, _, _, _, usable, _, _, _, _, _, collected = journal.GetMountInfoByID(mountID)
-    if not ReadableMountValue(collected) or type(collected) ~= "boolean" then return nil end
-    if not collected then return false end
-    if journal.GetMountUsabilityByID then usable = journal.GetMountUsabilityByID(mountID, true) end
-    if ReadableMountValue(usable) and type(usable) == "boolean" then return usable end
-end--[[APR_DIAG]]; UsableCollectedMount = APRTrace("APR-Core/features/navigation/Navigation.lua:459:UsableCollectedMount#43", UsableCollectedMount)--[[/APR_DIAG]]
-function nav:GetThreshold()
-    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then return 2000 end
-    local sky = false
-    if C_PlayerInfo and C_PlayerInfo.GetGlidingInfo then
-        local _, canGlide = C_PlayerInfo.GetGlidingInfo()
-        sky = canGlide == true
-    end
-    local canFly = IsFlyableArea and IsFlyableArea() and not (IsIndoors and IsIndoors())
-    -- GetGlidingInfo describes the current mount. An unmounted player may
-    -- still have a usable skyriding mount and must not be treated as grounded.
-    if
-        not sky
-        and canFly
-        and C_MountJournal
-        and C_MountJournal.IsDragonridingUnlocked
-        and C_MountJournal.IsDragonridingUnlocked()
-        and C_MountJournal.GetCollectedDragonridingMounts
-        and C_MountJournal.GetMountUsabilityByID
-    then
-        -- Remember a candidate, not its usability. Inventory, spell and quest
-        -- events can request several plans without changing the mount journal.
-        -- Revalidate ownership and current restrictions before avoiding a scan.
-        sky = UsableCollectedMount(C_MountJournal, self._skyridingMountID) == true
-        if not sky then
-            self._skyridingMountID = nil
-            for _, mountID in ipairs(C_MountJournal.GetCollectedDragonridingMounts() or {}) do
-                local usable = C_MountJournal.GetMountUsabilityByID(mountID, true)
-                if ReadableMountValue(usable) and usable == true then
-                    sky, self._skyridingMountID = true, mountID
-                    break
-                end
-            end
-        end
-    end
-    return sky and canFly and 10000 or 2000
-end--[[APR_DIAG]]; nav.GetThreshold = APRTrace("APR-Core/features/navigation/Navigation.lua:467:nav:GetThreshold#44", nav.GetThreshold)--[[/APR_DIAG]]
-function nav:HasUsableMount()
-    local cached = self._mountCapability
-    if cached and Now() < cached.expires then return cached.usable end
-    local journal = C_MountJournal
-    local usable = UsableCollectedMount(journal, self._usableMountID) == true
-    if journal and journal.GetMountIDs and journal.GetMountInfoByID then
-        if not usable then
-            self._usableMountID = nil
-            for _, id in ipairs(journal.GetMountIDs() or {}) do
-                if UsableCollectedMount(journal, id) == true then
-                    usable, self._usableMountID = true, id
-                    break
-                end
-            end
-        end
-    end
-    self._mountCapability = { expires = Now() + 2, usable = usable }
-    return usable
-end--[[APR_DIAG]]; nav.HasUsableMount = APRTrace("APR-Core/features/navigation/Navigation.lua:503:nav:HasUsableMount#45", nav.HasUsableMount)--[[/APR_DIAG]]
-function nav:GetMovementSpeed(threshold)
-    -- An `and` expression keeps only the first return value. Sample all four
-    -- API results explicitly: current, running, flying, swimming speed.
-    local current, running, flying
-    if GetUnitSpeed then
-        current, running, flying = GetUnitSpeed("player")
-    end
-    local function speed(value)
-        if type(value) ~= "number" or (issecretvalue and issecretvalue(value)) then return 0 end
-        return value == value and value < math.huge and math.max(0, value) or 0
-    end--[[APR_DIAG]]; speed = APRTrace("APR-Core/features/navigation/Navigation.lua:529:speed#47", speed)--[[/APR_DIAG]]
-    current, running, flying = speed(current), speed(running), speed(flying)
-    threshold = threshold or self:GetThreshold()
-    if threshold == 10000 then return math.max(flying, current, 60) end
-    if IsMounted and IsMounted() then return math.max(current, running, 7) end
-    if not (IsIndoors and IsIndoors()) and APR.IsSpellKnown then
-        local mountSpeed = APR:IsSpellKnown(33391) and 14 or (APR:IsSpellKnown(33388) and 11.2)
-        if mountSpeed and self:HasUsableMount() then return math.max(current, running, mountSpeed) end
-    end
-    return math.max(current, running, 7)
-end--[[APR_DIAG]]; nav.GetMovementSpeed = APRTrace("APR-Core/features/navigation/Navigation.lua:522:nav:GetMovementSpeed#46", nav.GetMovementSpeed)--[[/APR_DIAG]]
-function nav:GetDestination(step)
-    if step._service then return step.target, step.target.uiMapID end
-    if (step.Coord or step.Coords) and APR.Services and APR.Services.training then APR.Services:CancelTraining() end
-    if not step.Coord and not step.Coords and (step.LearnProfession or step.LearnSkill)
-        and APR.Services and APR.Services.GetTrainingDestination then
-        return APR.Services:GetTrainingDestination(step)
-    end
-    local _, fallback = APR:GetCurrentRouteMapIDsAndName()
-    local coord, map = APR:GetStepCoord(step, fallback)
-    if coord then
-        coord = CopyLocation(coord)
-        if not coord then return nil, map, "pending_data" end
-    end
-    map = coord and (coord.mapID or map) or (map or APR:GetStepZoneForPlayer(step, fallback))
-    if not ReadableLocationValue(map) then return nil, nil, "pending_data" end
-    if not coord and APR.GetScenarioStepTarget then
-        local scenarioMap, entrance = APR:GetScenarioStepTarget(step)
-        local inside = APR.IsInScenarioStep and APR:IsInScenarioStep(step, scenarioMap)
-        if entrance and entrance.unavailable and not inside then
-            local blockers
-            if entrance.requirements then
-                blockers = {
-                    {
-                        id = "entrance:" .. tostring(scenarioMap),
-                        blockedRequirements = entrance.requirements,
-                        from = { uiMapID = entrance.zone or map },
-                        instruction = NavigationText("NAVIGATION_INSTANCE_ACCESS"),
-                    },
-                }
-            end
-            return nil, map, entrance.unavailable, blockers
-        end
-    end
-    if not coord then return nil, map, nil, nil, true end
-    if type(coord.x) ~= "number" or type(coord.y) ~= "number" then return nil, map, "pending_data" end
-    local instance = coord.instanceID
-    if not instance and map then
-        if APR.NavigationData and APR.NavigationData.GetMapWorldInstanceID then
-            instance = APR.NavigationData:GetMapWorldInstanceID(map)
-        elseif C_Map and C_Map.GetWorldPosFromMapPos then
-            instance = C_Map.GetWorldPosFromMapPos(map, CreateVector2D(0.5, 0.5))
-        end
-    end
-    if not instance then return nil, map end
-    if type(instance) ~= "number" or not ReadableLocationValue(instance) then return nil, map, "pending_data" end
-    local destination = {
-        x = coord.y,
-        y = coord.x,
-        z = coord.z,
-        instanceID = instance,
-        uiMapID = map,
-        accessKey = coord.accessKey,
-        noAutoconnect = coord.noAutoconnect,
-        floor = coord.floor,
-        phaseAgnostic = coord.phaseAgnostic,
-        isInstance = coord.isInstance,
-        region = coord.region,
-    }
-    if APR.NavigationData and APR.NavigationData.NormalizeLocation then
-        destination = APR.NavigationData:NormalizeLocation(destination)
-    end
-    return destination, map
-end--[[APR_DIAG]]; nav.GetDestination = APRTrace("APR-Core/features/navigation/Navigation.lua:543:nav:GetDestination#48", nav.GetDestination)--[[/APR_DIAG]]
-function nav:RequiresScenarioNavigation(step)
-    local map = APR.GetScenarioMapIDForStep and APR:GetScenarioMapIDForStep(step)
-    if not map then return false end
-    local inside
-    if APR.IsInScenarioStep then
-        inside = APR:IsInScenarioStep(step, map)
-    else
-        inside = C_Map.GetBestMapForUnit("player") == map or APR:GetPlayerParentMapID() == map
-    end
-    if step.LeaveScenario or step.LeaveInstance then return inside end
-    return not inside and not step.EnterScenario and not step.EnterInstance
-end--[[APR_DIAG]]; nav.RequiresScenarioNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:601:nav:RequiresScenarioNavigation#49", nav.RequiresScenarioNavigation)--[[/APR_DIAG]]
-local function Exempt(step)
-    if step._service then return false end
-    local unregisteredDungeon = step.Dungeon and step.InstanceQuest and step.NoArrow
-    if unregisteredDungeon and APR.GetScenarioStepTarget then
-        local _, entrance = APR:GetScenarioStepTarget(step)
-        unregisteredDungeon = entrance == nil
-    end
-    -- Hearth steps ask for a cast at the player's current location. Legacy
-    -- coordinates record where the author cast, not a destination to route to.
-    local personalTravel = not step._navigationUnlock and (step.UseHS or step.UseDalaHS or step.UseGarrisonHS)
-    return personalTravel
-        -- Instructions without an authored destination apply wherever the
-        -- player is. The guide's map is not a destination for these steps.
-        or (
-            not step.Coord
-            and not step.Coords
-            and not step.Zone
-            and not step.Zones
-            and not step.ZoneStepTrigger
-            and not step.LearnProfession
-            and not step.LearnSkill
-            and not step._navigationUnlock
-            and not (APR.GetScenarioMapIDForStep and APR:GetScenarioMapIDForStep(step))
-        )
-        or unregisteredDungeon
-        or ((step.LeaveInstance or step.LeaveScenario) and step.NoArrow)
-        or (APR.IsInDelveRouteContext and APR:IsInDelveRouteContext(APR.ActiveRoute))
-        or (APR.IsInDungeonStepContext and APR:IsInDungeonStepContext(step))
-        or (
-            step.UseItem
-            and not step.UseItem.questID
-            and not step.Coord
-            and not step.Coords
-            and not step.Zone
-            and not step.Zones
-        )
-end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/Navigation.lua:613:Exempt#50", Exempt)--[[/APR_DIAG]]
-function nav:Notify()
-    if APR.Arrow then
-        APR.Arrow.currentStep = 0
-        APR.Arrow:SetCoord()
-    end
-    if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
-    if APR.SendMessage then APR:SendMessage("APR_MAP_UPDATE") end
-    self:Render()
-end--[[APR_DIAG]]; nav.Notify = APRTrace("APR-Core/features/navigation/Navigation.lua:637:nav:Notify#51", nav.Notify)--[[/APR_DIAG]]
-function nav:RefreshStepForNavigation()
-    if APR.UpdateStep then APR:UpdateStep() end
-end--[[APR_DIAG]]; nav.RefreshStepForNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:646:nav:RefreshStepForNavigation#52", nav.RefreshStepForNavigation)--[[/APR_DIAG]]
-function nav:MarkRouteReady(forceRefresh)
-    local service = APR.Services and APR.Services:GetStep()
-    if service then
-        local point = Position()
-        if APR.NavigationData:IsServiceArrival(point, service.target) then
-            APR.Services:Cancel()
-        else
-            -- Exhausting guidance is not proof of a legal direct approach.
-            -- Re-enter the library planner so mandatory passages remain enforced.
-            self:Cancel("replan")
-            self.dirty = true
-            self:RequestUpdate()
-        end
-        return
-    end
-    local unlock = APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep()
-    if unlock and unlock.unlockAction and (unlock.unlockAction.target or unlock.unlockAction.positionOptional) then
-        local action = unlock.unlockAction
-        self.queue, self.cursor =
-            {
-                {
-                    kind = "unlock",
-                    id = "unlock:" .. self.generation,
-                    from = action.target,
-                    to = action.target,
-                    Coord = unlock.Coord,
-                    label = action.label,
-                    generated = true,
-                    mandatory = true,
-                    sourceFree = action.target == nil,
-                },
-            }, 1
-        local useActions = action.useActions or {}
-        if #useActions == 1 then self.queue[1].action = { type = useActions[1].type, data = useActions[1].id } end
-        self.context = CaptureContext()
-        self._routedStepContext = self.context
-        self.state, APR.IsInRouteZone, self.dirty = "guiding", false, false
-        self:Notify()
-        return
-    end
-    local inputs, destination, start = self._routeInputs, self.destination, self.start
-    self.dirty = false
-    if not forceRefresh and self.state == "ready" and ContextCurrent(self._routedStepContext) then
-        -- A background search confirmed the same direct journey. Its result
-        -- does not change the arrow, quest rows or map preview.
-        self.recomputeKeepingDirect, self.reason = nil, nil
-        APR.IsInRouteZone = true
-        return
-    end
-    -- Publish the authored target without hiding the previous arrow between
-    -- clearing temporary guidance and assigning the replacement coordinates.
-    self:Cancel("local", true)
-    self.state, APR.IsInRouteZone, self._lastReady = "ready", true, Now()
-    self._routedStepContext = CaptureContext()
-    self.context, self._routeInputs, self.destination, self.start = self._routedStepContext, inputs, destination, start
-    self:Notify()
-end--[[APR_DIAG]]; nav.MarkRouteReady = APRTrace("APR-Core/features/navigation/Navigation.lua:649:nav:MarkRouteReady#53", nav.MarkRouteReady)--[[/APR_DIAG]]
-function nav:Render()
-    if self.RefreshActivity then self:RefreshActivity() end
-    if self.worldLoading then return end
-    local ui = APR.currentStep
-    if not ui then return end
-    if not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
-        if self.state ~= "ready" then self:Cancel("inactive") end
-        return
-    end
-    if self:IsNavigating() and not ContextCurrent(self.context) then
-        self:Cancel("step_changed")
-        return
-    end
-    local step = self:GetActiveStep()
-    local action = self:IsNavigating() and step and step.action
-    if APR.Services and APR.Services:GetStep() and ui.RefreshServiceProgress then ui:RefreshServiceProgress() end
-    local position = action and Position()
-    local actionReady = action
-            and not ActionPending(step)
-            and DepartureAllowed(step, position) == true
-            and ActionUsable(action) == true
-            and (step.sourceFree or Distance(position, step.from) <= 30)
-        or false
-    if self._renderedState ~= self.state or self._renderedStep ~= step or self._renderedActionReady ~= actionReady then
-        self:ClearNavigationUiLines()
-    end
-    self._renderedState, self._renderedStep, self._renderedActionReady = self.state, step, actionReady
-    if self:IsNavigating() and step then
-        -- The service destination already has its own row. A final walking
-        -- instruction with the same label adds no information to that row.
-        local service = APR.Services and APR.Services:GetStep()
-        local duplicateDestination = service and step.kind == "walk" and not action and step.label == APR.Services:GetLabel()
-        if not duplicateDestination then
-            ui:AddQuestSteps(self.NavigationStepKey, step.label, step.id or 0, nil, true, false)
-            if actionReady then
-                ui:AddStepButton(self.NavigationStepKey .. "-" .. tostring(step.id), action.data, action.type)
-            end
-            if ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
-        end
-    elseif self.state == "no_path" then
-        local text = APR.NavigationAdapter
-                and APR.NavigationAdapter.GetBlockedRouteText
-                and APR.NavigationAdapter:GetBlockedRouteText(self.blockers, true)
-            or NavigationText("PATH_NOT_FOUND")
-        if self.unlockMissingText then text = text .. "\n\n" .. self.unlockMissingText end
-        ui:AddQuestSteps(
-            self.ErrorStepKey,
-            text,
-            self.destination and self.destination.uiMapID or 0,
-            nil,
-            true,
-            false,
-            self.ErrorTextColor
-        )
-        if ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
-    elseif self.state == "instance" and not APR.IsInRouteZone then
-        -- GetInstanceInfo can identify a dungeon while UnitPosition is
-        -- restricted. An exterior objective needs an actual exit, not a
-        -- permanent loading message or an arrow based on invented coordinates.
-        local name = self.instanceContext and self.instanceContext.instanceName
-        local text = string.format(L["LEAVE_INSTANCE"], name and name ~= "" and name or NavigationText("UNKNOWN"))
-        ui:AddQuestSteps(self.NavigationStepKey, text, 0, nil, true, false)
-        if ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
-    elseif self.state == "waiting_data" or self.state == "planning" then
-        local key = self.state == "planning" and "NAVIGATION_CALCULATING" or "NAVIGATION_WAITING"
-        local text = L[key]
-        local blocked = self.blockers and #self.blockers > 0
-        if blocked and APR.NavigationAdapter and APR.NavigationAdapter.GetBlockedRouteText then
-            text = text .. "\n\n" .. APR.NavigationAdapter:GetBlockedRouteText(self.blockers, true)
-        end
-        ui:AddQuestSteps(self.NavigationStepKey, text, 0, nil, true, false)
-        if blocked and ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
-    end
-end--[[APR_DIAG]]; nav.Render = APRTrace("APR-Core/features/navigation/Navigation.lua:709:nav:Render#54", nav.Render)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; DepartureAllowed = APRTrace("APR-Core/features/navigation/Navigation.lua:228:DepartureAllowed#24", DepartureAllowed)--[[/APR_DIAG]]
 
-function nav:GuideRestrictedInstance(context, step, start, goal, map)
-    if start or not APR.GetNavigationPlayerContext then return false end
-    local observed = APR:GetNavigationPlayerContext()
-    if not observed or not observed.isInstance or observed.coordinatesAvailable then return false end
-    local inside = (goal and goal.instanceID == observed.instanceID)
-        or (map and observed.uiMapID == map)
-        or (APR.IsInScenarioStep and APR:IsInScenarioStep(step, map))
-        or false
-    self:Cancel("instance_position_unavailable")
-    self.state, self.reason, self.context, self._routedStepContext =
-        "instance", "coordinates_unavailable", context, context
-    self.instanceContext, self.start, self.destination, self.dirty = observed, nil, goal, false
-    APR.IsInRouteZone, self.showOutOfZoneStepContent = inside, inside
-    self:Notify()
-    return true
-end--[[APR_DIAG]]; nav.GuideRestrictedInstance = APRTrace("APR-Core/features/navigation/Navigation.lua:776:nav:GuideRestrictedInstance#55", nav.GuideRestrictedInstance)--[[/APR_DIAG]]
+function nav:GetState() return self.state end--[[APR_DIAG]]; nav.GetState = APRTrace("APR-Core/features/navigation/Navigation.lua:234:nav:GetState#25", nav.GetState)--[[/APR_DIAG]]
 
-function nav:IsItineraryValid()
-    if not self:IsNavigating() or not ContextCurrent(self.context) then return false end
-    local copper = 0
-    for index = self.cursor, #self.queue do
-        local step = self.queue[index]
-        local departure = step.from
-        if index == self.cursor then departure = Position() end
-        if
-            step.kind == "walk"
-            and departure
-            and APR.NavigationData
-            and APR.NavigationData:CanWalk(departure, step.to) == false
-        then
-            return false
-        end
-        if
-            index == self.cursor
-            and step.kind ~= "walk"
-            and not step.sourceFree
-            and departure
-            and step.from
-            and not ActionPending(step)
-        then
-            -- A portal's faction/quest predicates do not prove that its former
-            -- departure is still reachable after an unexpected world transition.
-            local data = APR.NavigationData
-            if departure.instanceID ~= step.from.instanceID then return false end
-            if data and data.IsSameAccessRegion then
-                if data:IsSameAccessRegion(departure, step.from) == false then return false end
-            elseif departure.accessKey ~= step.from.accessKey or departure.floor ~= step.from.floor then
-                return false
-            end
-        end
-        if DepartureAllowed(step, departure) == false then return false end
-        copper = copper + (step.copper or 0)
-        if step.action and not ActionPending(step) then
-            local usable, reason = ActionUsable(step.action)
-            if usable == false and reason ~= "pending_data" and reason ~= "restricted" then return false end
-        end
-        if
-            step.kind == "taxi"
-            and APR.taxiData.blocked
-            and APR.taxiData.blocked[tostring(step.fromNodeID) .. ":" .. tostring(step.toNodeID)]
-        then
-            return false
-        end
-    end
-    local money = GetMoney and GetMoney() or 0
-    if issecretvalue and issecretvalue(money) then return true end
-    return copper <= money
-end--[[APR_DIAG]]; nav.IsItineraryValid = APRTrace("APR-Core/features/navigation/Navigation.lua:793:nav:IsItineraryValid#56", nav.IsItineraryValid)--[[/APR_DIAG]]
+function nav:IsNavigating() return self.state == "guiding" and self:GetActiveStep() ~= nil end--[[APR_DIAG]]; nav.IsNavigating = APRTrace("APR-Core/features/navigation/Navigation.lua:236:nav:IsNavigating#26", nav.IsNavigating)--[[/APR_DIAG]]
 
-function nav:GetRemainingSeconds(walkSpeedFor)
-    local position, seconds = Position(), 0
-    local speed = self:GetMovementSpeed()
-    local function walkSeconds(from, to)
-        local distance = Distance(from, to)
-        local dz = from and to and type(from.z) == "number" and type(to.z) == "number" and to.z - from.z or 0
-        local liveSpeed = walkSpeedFor and walkSpeedFor(from, to) or speed
-        if type(liveSpeed) ~= "number" or liveSpeed <= 0 or liveSpeed ~= liveSpeed or liveSpeed == math.huge then
-            liveSpeed = speed
-        end
-        return math.sqrt(distance * distance + dz * dz) / liveSpeed
-    end--[[APR_DIAG]]; walkSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:848:walkSeconds#58", walkSeconds)--[[/APR_DIAG]]
-    for index = self.cursor, #self.queue do
-        local step = self.queue[index]
-        local duration = step.seconds or 0
-        if step.kind == "verify_taxi" then
-            -- This queue stops at the master, but comparisons still cover the
-            -- potential flight and the walk from its arrival to the objective.
-            -- Missing estimates cannot make an incomplete trip appear free.
-            duration = step.probeDestination and (duration + walkSeconds(step.probeDestination, self.destination))
-                or math.huge
-        end
-        if step.kind == "walk" then
-            local from = index == self.cursor and position or step.from
-            duration = walkSeconds(from, step.to)
-        elseif index == self.cursor and not step.sourceFree then
-            duration = duration + walkSeconds(position, step.from)
-        end
-        seconds = seconds + duration
-    end
-    return seconds
-end--[[APR_DIAG]]; nav.GetRemainingSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:845:nav:GetRemainingSeconds#57", nav.GetRemainingSeconds)--[[/APR_DIAG]]
+function nav:GetActiveStep() return self.queue and self.queue[self.cursor or 1] end--[[APR_DIAG]]; nav.GetActiveStep = APRTrace("APR-Core/features/navigation/Navigation.lua:238:nav:GetActiveStep#27", nav.GetActiveStep)--[[/APR_DIAG]]
 
-function nav:SearchFailed(blockers)
-    self.search, self._searchTimer = nil, nil
-    if self.recomputeKeepingPath and self:IsItineraryValid() then
-        self.recomputeKeepingPath = nil
-        return
-    end
-    if self.recomputeKeepingDirect and self:IsDirectRouteValid(Position()) then
-        self.recomputeKeepingDirect = nil
-        return
-    end
-    local state = (self.waitingData or (InCombatLockdown and InCombatLockdown())) and "waiting_data" or "no_path"
-    local context, destination, inputs = self.context, self.destination, self._routeInputs
-    local baselinePending = self._directBaselinePending
-    local retainedArrow = state == "waiting_data" and self:CaptureRetainedArrow(Position()) or nil
-    self:Cancel("search_failed", retainedArrow ~= nil)
-    self.state, self.context, self._routedStepContext, self.destination = state, context, context, destination
-    self._routeInputs, self.retainedArrow = inputs, retainedArrow
-    self._directBaselinePending = baselinePending
-    self.blockers = blockers
-    self:Notify()
-    if state == "no_path" and not (APR.Services and APR.Services:GetStep()) and APR.StartNavigationUnlock then APR:StartNavigationUnlock(blockers, context) end
-end--[[APR_DIAG]]; nav.SearchFailed = APRTrace("APR-Core/features/navigation/Navigation.lua:871:nav:SearchFailed#59", nav.SearchFailed)--[[/APR_DIAG]]
+function nav:GetData() return APR.NavigationData end--[[APR_DIAG]]; nav.GetData = APRTrace("APR-Core/features/navigation/Navigation.lua:240:nav:GetData#28", nav.GetData)--[[/APR_DIAG]]
 
-function nav:IsDirectRouteValid(position)
-    return self.state == "ready"
-        and ContextCurrent(self._routedStepContext)
-        and self._routeInputs
-        and self._routeInputs.geometryRevision == APR.navigationGeometryRevision
-        and self:IsObjectiveCurrent(self._routeInputs)
-        and self.destination
-        and position
-        and APR.NavigationData
-        and APR.NavigationData:CanWalk(position, self.destination) == true
-end--[[APR_DIAG]]; nav.IsDirectRouteValid = APRTrace("APR-Core/features/navigation/Navigation.lua:894:nav:IsDirectRouteValid#60", nav.IsDirectRouteValid)--[[/APR_DIAG]]
-
-function nav:CapturePlanningInputs(step, position, context)
-    if step._service then
-        return {step = step, position = CopyLocation(position), startedAt = Now(),
-            geometryRevision = APR.navigationGeometryRevision, indoors = IsIndoors and IsIndoors() == true or false}
-    end
-    local definition = context.definition
-    local sourceSteps = definition and (definition.steps or definition)
-    local coord = step.Coord
-    local coordValues = coord and CopyLocation(coord)
-    local _, fallback = APR:GetCurrentRouteMapIDsAndName()
-    local resolvedCoord, resolvedMap = APR:GetStepCoord(step, fallback)
-    -- Ordinary objectives resolve to their authored coordinate. Share that
-    -- immutable snapshot so freshness checks need only validate it once.
-    local resolvedValues = resolvedCoord and CopyLocation(resolvedCoord)
-    if coordValues and resolvedValues and rawequal(resolvedCoord, coord) then resolvedValues = coordValues end
-    return {
-        position = CopyLocation(position),
-        indoors = IsIndoors and IsIndoors() == true or false,
-        startedAt = Now(),
-        geometryRevision = APR.navigationGeometryRevision,
-        step = step,
-        sourceSteps = sourceSteps,
-        sourceStep = sourceSteps and sourceSteps[context.index],
-        coord = coord,
-        x = coordValues and coordValues.x,
-        y = coordValues and coordValues.y,
-        mapID = coordValues and coordValues.mapID,
-        instanceID = coordValues and coordValues.instanceID,
-        coordValues = coordValues,
-        resolvedCoord = resolvedCoord,
-        resolvedValues = resolvedValues,
-        resolvedMap = resolvedMap,
-        fallbackMap = fallback,
-        coords = step.Coords,
-        zone = step.Zone,
-        zones = step.Zones,
-        noArrow = step.NoArrow,
-    }
-end--[[APR_DIAG]]; nav.CapturePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:906:nav:CapturePlanningInputs#61", nav.CapturePlanningInputs)--[[/APR_DIAG]]
-
-function nav:IsObjectiveCurrent(inputs)
-    if not inputs then return false end
-    if inputs.step and inputs.step._service then return APR.Services and APR.Services:GetStep() == inputs.step end
-    -- Peek avoids resolving the effective route or activating parallel steps.
-    -- Scenario handlers can change the runtime target without advancing it.
-    local step = inputs.step
-    if inputs.step and inputs.step._navigationUnlock then
-        step = APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep()
-    elseif APR.PeekCurrentStep then
-        step = APR:PeekCurrentStep()
-    end
-    if step ~= inputs.step then return false end
-    local context = self._routedStepContext
-    local definition = context and context.definition
-    local sourceSteps = definition and (definition.steps or definition)
-    if sourceSteps ~= inputs.sourceSteps or (sourceSteps and sourceSteps[context.index]) ~= inputs.sourceStep then
-        return false
-    end
-    local coord = step and step.Coord
-    if issecretvalue and issecretvalue(coord) then return false end
-    if coord and (type(coord) ~= "table" or (APR.CanAccessTable and not APR:CanAccessTable(coord))) then
-        return false
-    end
-    -- A scenario/transport override can become applicable without changing the
-    -- authored coordinate. Resolve only this step, never its route/history or
-    -- the navigation catalogue.
-    local resolved, map = APR:GetStepCoord(step, inputs.fallbackMap)
-    if
-        not ReadableLocationValue(map)
-        or map ~= inputs.resolvedMap
-        or (resolved and not SameLocationFields(resolved, inputs.resolvedValues, LOCATION_FIELDS))
-        or (not resolved and inputs.resolvedCoord)
-    then
-        return false
-    end
-    local sharedCoordinate = rawequal(coord, resolved) and rawequal(inputs.coordValues, inputs.resolvedValues)
-    return rawequal(coord, inputs.coord)
-        and (not coord or sharedCoordinate or SameLocationFields(coord, inputs.coordValues, LOCATION_FIELDS))
-        and step.Coords == inputs.coords
-        and step.Zone == inputs.zone
-        and step.Zones == inputs.zones
-        and step.NoArrow == inputs.noArrow
-end--[[APR_DIAG]]; nav.IsObjectiveCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:946:nav:IsObjectiveCurrent#62", nav.IsObjectiveCurrent)--[[/APR_DIAG]]
-
-function nav:HasPlanningInputsChanged(position)
-    local inputs = self._routeInputs
-    if not inputs or not SameAccess(position, inputs.position) then return true end
-    if not self:IsObjectiveCurrent(inputs) then return true end
-    if inputs.geometryRevision ~= APR.navigationGeometryRevision then return true end
-    if inputs.indoors ~= (IsIndoors and IsIndoors() == true or false) then return true end
-    -- Phase/quest access can close without changing the point's scalar fields.
-    -- Recheck this direct proof only; it does not prepare or scan the catalogue.
-    if
-        self.state == "ready"
-        and self.destination
-        and APR.NavigationData
-        and APR.NavigationData:CanWalk(position, self.destination) ~= true
-    then
-        return true
-    end
-    -- Walking around one objective does not alter the transport graph. Revisit
-    -- the choice after meaningful displacement, while map and access changes
-    -- bypass this movement allowance immediately.
-    if self.search then return false end
-    return Now() - inputs.startedAt >= MOVEMENT_REPLAN_SECONDS
-        and Distance(position, inputs.position) >= MOVEMENT_REPLAN_YARDS
-end--[[APR_DIAG]]; nav.HasPlanningInputsChanged = APRTrace("APR-Core/features/navigation/Navigation.lua:990:nav:HasPlanningInputsChanged#63", nav.HasPlanningInputsChanged)--[[/APR_DIAG]]
-
-function nav:RefreshStalePlanningInputs()
-    local inputs, context, destination, start = self._routeInputs, self.context, self.destination, self.start
-    local generation, job = self.generation, self.search
-    local retained = self:CaptureRetainedArrow(Position())
-    if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-    self:Cancel("replan", retained ~= nil)
-    self._routeInputs, self.context, self._routedStepContext = inputs, context, context
-    self.destination, self.start, self.retainedArrow = destination, start, retained
-    self.state, self.zoneReady, APR.IsInRouteZone = "planning", false, false
-    self:ForceRefresh("planning_inputs_changed")
-    self:Render()
-    self:RequestUpdate()
-end--[[APR_DIAG]]; nav.RefreshStalePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:1014:nav:RefreshStalePlanningInputs#64", nav.RefreshStalePlanningInputs)--[[/APR_DIAG]]
-
--- The published queue contains the complete trip. A loading screen changes
--- location/geometry caches, but need not discard its remaining legs. Confirm
--- the actual transport arrival before checking cooldowns of future actions.
-function nav:RecordContinuation(status, reason, step, position)
-    local target = step and step.to
-    self.lastContinuation = {
-        status = status,
-        reason = reason,
-        invalidation = self.lastInvalidation,
-        cursor = self.cursor,
-        queuedSteps = #self.queue,
-        expectedMapID = target and target.uiMapID,
-        actualMapID = position and position.uiMapID,
-        expectedInstanceID = target and target.instanceID,
-        actualInstanceID = position and position.instanceID,
-        distance = position and target and Distance(position, target),
-    }
-    if status == "waiting" then return nil, status end
-    return status == "reused", status
-end--[[APR_DIAG]]; nav.RecordContinuation = APRTrace("APR-Core/features/navigation/Navigation.lua:1031:nav:RecordContinuation#65", nav.RecordContinuation)--[[/APR_DIAG]]
-
-function nav:TryResumeAfterTransition(position)
-    local inputs = self._routeInputs
-    if not inputs then return false end
-    local step = self:GetActiveStep()
-    local transport = self:IsNavigating()
-        and step
-        and step.kind ~= "walk"
-        and step.kind ~= "unlock"
-        and step.kind ~= "verify_taxi"
-    if not ContextCurrent(self.context) or not self:IsObjectiveCurrent(inputs) then
-        if self._resumeAfterTransition or transport then
-            return self:RecordContinuation("rejected", "objective_changed", step, position)
-        end
-        return false
-    end
-    if not position or not position.uiMapID then
-        if transport then return self:RecordContinuation("waiting", "position_pending", step, position) end
-        return false
-    end
-    if step and step.exitHousing then
-        self:PollArrival()
-        if self:GetActiveStep() ~= step then return false end
-        if ActionUsable(step.action) ~= true then
-            -- An action-only prefix has no complete-trip duration. It cannot
-            -- compete with normal routes as an apparent zero-second journey.
-            self:Cancel("housing_exit_unavailable")
-            self:ForceRefresh("housing_exit_unavailable")
-            return false
-        end
-        inputs.position, inputs.startedAt, inputs.geometryRevision = position, Now(), APR.navigationGeometryRevision
-        inputs.indoors = IsIndoors and IsIndoors() == true or false
-        self.dirty = false
-        return true
-    end
-    -- A real arrival is authoritative even if generic events arrived before
-    -- PLAYER_ENTERING_WORLD, or the cast commitment expired during loading.
-    if transport then self:PollArrival() end
-    local arrival = self._transitionArrival
-    if not transport and not arrival then return false end
-    local matches = arrival
-        and arrival.queue == self.queue
-        and arrival.cursor == self.cursor
-        and arrival.inputs == self._routeInputs
-        and Now() - arrival.time <= TRANSITION_REUSE_SECONDS
-        and (not arrival.accepted or self._resumeAfterTransition or arrival.mapPending)
-        and TargetMapReached(position, arrival.target)
-        and position.accessKey == arrival.position.accessKey
-        and position.floor == arrival.position.floor
-        and Distance(position, arrival.position) <= (arrival.accepted and MOVEMENT_REPLAN_YARDS or 20)
-    if not matches then
-        if transport then
-            local from, target = step.from, step.to
-            local origin = step.castOrigin or from
-            local source = position.instanceID == origin.instanceID
-                and (not origin.uiMapID or position.uiMapID == origin.uiMapID)
-                and Distance(position, origin) <= 30
-            local coarse = position.uiMapID ~= target.uiMapID
-                and position.instanceID == target.instanceID
-                and Distance(position, target) <= 20
-                and position.accessKey == target.accessKey
-                and position.floor == target.floor
-                and MapIncludes(target.uiMapID, position.uiMapID)
-            local partial = coarse
-                or (position.instanceID == target.instanceID and origin.uiMapID ~= target.uiMapID and position.uiMapID == origin.uiMapID and Distance(
-                    position,
-                    target
-                ) <= 20)
-                or (
-                    origin.instanceID ~= target.instanceID
-                    and position.instanceID == origin.instanceID
-                    and position.uiMapID == target.uiMapID
-                )
-            if partial then self:BeginTransitionProbe(step) end
-            local probe = self._transitionProbe
-            local settling = probe and probe.queue == self.queue and probe.step == step and Now() < probe.deadline
-            if (source or partial) and (ActionPending(step) or settling) then
-                return self:RecordContinuation(
-                    "waiting",
-                    partial and "map_pending" or "cast_or_load_pending",
-                    step,
-                    position
-                )
-            end
-        end
-        if self._resumeAfterTransition or self._transitionProbe then
-            return self:RecordContinuation("rejected", "arrival_mismatch", step, position)
-        end
-        return false
-    end
-    local data = APR.NavigationData
-    if data and data.IsSameAccessRegion and not data:IsSameAccessRegion(position, arrival.target) then
-        return self:RecordContinuation("rejected", "access_changed", step, position)
-    end
-    if
-        arrival.zTolerance
-        and (
-            position.z == nil
-            or arrival.target.z == nil
-            or math.abs(position.z - arrival.target.z) > arrival.zTolerance
-        )
-    then
-        return self:RecordContinuation("rejected", "altitude_changed", step, position)
-    end
-    if self:IsNavigating() then
-        if not self:IsItineraryValid() then
-            return self:RecordContinuation("rejected", "remaining_leg_unavailable", step, position)
-        end
-    elseif self.state ~= "ready" or not data or not data:CanWalk(position, self.destination) then
-        return self:RecordContinuation("rejected", "destination_changed", step, position)
-    end
-
-    -- A candidate computed at the previous origin cannot replace this cursor.
-    if self.search then
-        self.generation = self.generation + 1
-        self.search:Cancel()
-        self.search = nil
-        CancelTimer(self._searchTimer)
-        self._searchTimer = nil
-    end
-    inputs = self._routeInputs
-    inputs.position, inputs.startedAt = position, Now()
-    inputs.geometryRevision = APR.navigationGeometryRevision
-    inputs.indoors = IsIndoors and IsIndoors() == true or false
-    self.start, self.dirty, self._resumeAfterTransition = position, false, nil
-    self._transitionProbe = nil
-    self.recomputeKeepingPath, self.recomputeKeepingDirect = nil, nil
-    arrival.accepted = true
-    local _, coarseMap = TargetMapReached(position, arrival.target)
-    arrival.mapPending = coarseMap == true
-    self.continuationReuses = (self.continuationReuses or 0) + 1
-    if APR.CountPerformanceEvent then APR:CountPerformanceEvent("NavigationContinuationReused") end
-    return self:RecordContinuation(
-        "reused",
-        coarseMap and "parent_map_arrival" or "expected_arrival",
-        { to = arrival.target },
-        position
-    )
-end--[[APR_DIAG]]; nav.TryResumeAfterTransition = APRTrace("APR-Core/features/navigation/Navigation.lua:1049:nav:TryResumeAfterTransition#66", nav.TryResumeAfterTransition)--[[/APR_DIAG]]
-
-function nav:GuideHousingExit(context, step, start, goal)
-    local data = APR.NavigationData
-    local exit = data.GetHousingExitAction and data:GetHousingExitAction(start, goal)
-    if not exit then return false end
-    self:Cancel("replan")
-    self.context, self._routedStepContext, self.destination, self.start = context, context, goal, start
-    self._routeInputs = self:CapturePlanningInputs(step, start, context)
-    exit.id, exit.generated, exit.departureSeen = self.generation .. ":housing-exit", true, true
-    exit.instanceID, exit.uiMapID = start.instanceID, start.uiMapID
-    self.queue, self.cursor, self.state = { exit }, 1, "guiding"
-    self.totalSeconds, self.totalCopper, self.plannedWalkSpeed = nil, nil, nil
-    self.dirty, self.zoneReady, APR.IsInRouteZone = false, false, false
-    self.reason = "housing_exit"
-    if APR.CountPerformanceEvent then APR:CountPerformanceEvent("NavigationHousingExit") end
-    self:Notify()
-    return true
-end--[[APR_DIAG]]; nav.GuideHousingExit = APRTrace("APR-Core/features/navigation/Navigation.lua:1188:nav:GuideHousingExit#67", nav.GuideHousingExit)--[[/APR_DIAG]]
-
--- Convert a single world-space segment to APR's route-row coordinates. The
--- planner calls this incrementally; published rows remain separate from quests.
-function nav:PrepareGuidanceStep(segment, index, generation, position)
-    local source, target = segment.from, segment.to
-    if not source or not target then return nil end
-    local walking = segment.kind == "walk" or (segment.kind == "passage" and source.instanceID == target.instanceID)
-    local point = walking and target or source
-    -- Personal travel can be activated at the current position. Its planned
-    -- origin remains useful to the search, but is not a waypoint to walk back to.
-    local needsCoordinate = not (segment.sourceFree and segment.action)
-    local label = segment.instruction
-    if not label or label == "" then
-        local info = target.uiMapID and C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(target.uiMapID)
-        label = walking and NavigationText("RUN_WAYPOINT")
-            or string.format(NavigationText("TRAVEL_TO"), info and info.name or NavigationText("UNKNOWN"))
-    end
-    return {
-        id = generation .. ":" .. index,
-        connectionID = segment.id,
-        kind = segment.kind,
-        from = source,
-        to = target,
-        Coord = needsCoordinate and { x = point.y, y = point.x, mapID = point.uiMapID, instanceID = point.instanceID }
-            or nil,
-        uiMapID = point.uiMapID,
-        instanceID = point.instanceID,
-        mandatory = true,
-        generated = true,
-        action = segment.action,
-        sourceFree = segment.sourceFree == true,
-        hearthstone = segment.hearthstone == true,
-        canStart = segment.canStart,
-        seconds = segment.seconds or 0,
-        probeDestination = segment.probeDestination,
-        copper = segment.copper or 0,
-        arrivalZTolerance = segment.arrivalZTolerance,
-        fromNodeID = segment.fromNodeID,
-        toNodeID = segment.toNodeID,
-        departureSeen = segment.sourceFree == true or Distance(position, source) <= 30,
-        breakAfter = segment.kind == "verify_taxi",
-        contextKey = segment.contextKey,
-        label = label,
-    }
-end--[[APR_DIAG]]; nav.PrepareGuidanceStep = APRTrace("APR-Core/features/navigation/Navigation.lua:1208:nav:PrepareGuidanceStep#68", nav.PrepareGuidanceStep)--[[/APR_DIAG]]
-
-function nav:Publish(result, context, generation)
-    if self.worldLoading then return end
-    if generation ~= self.generation or not ContextCurrent(context) then return end
-    if not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
-        self:Cancel("inactive")
-        return
-    end
-    local job, inputs = self.search, self._routeInputs
-    local changed = inputs and self:HasPlanningInputsChanged(Position())
-    if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-    if changed then
-        self:RefreshStalePlanningInputs()
-        return
-    end
-    self.search, self._searchTimer = nil, nil
-    self._directBaselinePending = nil
-    result = result or {}
-    local service = APR.Services and APR.Services:GetStep()
-    local servicePolicyValid = not service or APR.NavigationData:IsServiceItineraryAllowed(self.queue, self.cursor, result)
-    if self.recomputeKeepingPath and self:IsItineraryValid() and servicePolicyValid then
-        if not Position() then
-            self.recomputeKeepingPath = nil
-            return
-        end
-        -- Compare both complete journeys using this search's speed model,
-        -- including future outdoor/indoor walks. Stored segment durations may
-        -- have been measured while flying and cannot compete with a fresh plan.
-        local walkSpeedFor = job and job.request and job.request.walkSpeedFor
-        local remaining, candidate = self:GetRemainingSeconds(walkSpeedFor), result.totalSeconds or math.huge
-        -- Keep exact ties stable, but accept every meaningful improvement.
-        -- A fixed percentage/floor can retain a slower itinerary indefinitely.
-        local requiredGain = 0.001
-        local committed = ActionPending(self:GetActiveStep())
-        self.lastComparison = {
-            remainingSeconds = remaining,
-            candidateSeconds = candidate,
-            requiredGain = requiredGain,
-            retained = committed or remaining - candidate <= requiredGain,
-        }
-        if self.lastComparison.retained then
-            self.recomputeKeepingPath = nil
-            return
-        end
-    end
-    self.recomputeKeepingPath = nil
-    local queue = result.queue
-    if not queue then
-        -- Publish also accepts small routes supplied by another APR component.
-        -- The normal planner prepares these rows within its frame budget.
-        queue = {}
-        local position = Position()
-        for index, segment in ipairs(result.segments or {}) do
-            local entry = self:PrepareGuidanceStep(segment, index, generation, position)
-            if entry then queue[#queue + 1] = entry end
-        end
-    end
-    if not PlanningRequestCurrent(self, context, generation, nil, inputs) then return end
-    changed = inputs and self:HasPlanningInputsChanged(Position())
-    if not PlanningRequestCurrent(self, context, generation, nil, inputs) then return end
-    if changed then
-        self:RefreshStalePlanningInputs()
-        return
-    end
-    local service = APR.Services and APR.Services:GetStep()
-    if service then
-        local final = queue[#queue]
-        if not final or Distance(final.to, service.target) > 0.01 then
-            -- Only the library may supply the journey to the selected service.
-            -- An incomplete result must never acquire an invented walking leg.
-            self:MarkRouteReady()
-            return
-        end
-        if final.kind ~= "walk" then
-            queue[#queue + 1] = self:PrepareGuidanceStep({kind = "walk", from = service.target,
-                to = service.target, instruction = APR.Services:GetLabel()}, #queue + 1, generation, Position())
-        end
-        queue[#queue].arrivalRange, queue[#queue].arrivalZTolerance = 5, service.target.z and 5 or nil
-        queue[#queue].label = APR.Services:GetLabel()
-    end
-    local training = APR.Services and APR.Services.training
-    if training and training.target and APR.Services:IsTrainingCurrent(training) then
-        local final = queue[#queue]
-        if final then final.arrivalRange, final.arrivalZTolerance = 5, training.target.z and 5 or nil end
-    end
-    if #queue <= 1 and (not queue[1] or queue[1].kind == "walk") and self.zoneReady then
-        self:MarkRouteReady()
-        return
-    end
-    self.recomputeKeepingDirect = nil
-    self.retainedArrow = nil
-    self.queue, self.cursor = queue, 1
-    self._transitionArrival, self._resumeAfterTransition, self._transitionProbe = nil, nil, nil
-    self.state = #queue > 0 and "guiding" or "no_path"
-    self.totalSeconds, self.totalCopper = result and result.totalSeconds, result and result.totalCopper
-    self._routedStepContext = context
-    self:Notify()
-    self:PollArrival()
-end--[[APR_DIAG]]; nav.Publish = APRTrace("APR-Core/features/navigation/Navigation.lua:1249:nav:Publish#69", nav.Publish)--[[/APR_DIAG]]
-function nav:Update(context)
-    if APR.routeValidationPending or APR.routeValidationFailed then return end
-    local profile = APR.settings and APR.settings.profile
-    if self.worldLoading then
-        if profile and profile.enableAddon == false then self:Cancel("disabled") end
-        return
-    end
-    if not Enabled() then
-        self:Cancel("disabled")
-        return
-    end
-    if not (APR.Services and APR.Services:GetStep()) and APR.RefreshNavigationUnlockRoute and APR:RefreshNavigationUnlockRoute() then return end
-    if APR.stepUpdatePending or APR.stepUpdateTimer or APR.stepUpdateRunning then
-        self:RequestUpdate()
-        return
-    end
-    if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then
-        self:Cancel("dead")
-        return
-    end
-    context = type(context) == "table" and (context.route or context.service) and context or CaptureContext()
-    if not ContextCurrent(context) then return end
-    if self:IsNavigating() and self:GetActiveStep().kind == "taxi" and UnitOnTaxi and UnitOnTaxi("player") then
-        return
-    end
-    local start = Position()
-    local resumed, continuation = self:TryResumeAfterTransition(start)
-    if resumed or continuation == "waiting" then
-        self:Render()
-        return
-    end
-    if not self.dirty and ContextCurrent(self._routedStepContext) and not self:HasPlanningInputsChanged(start) then
-        return
-    end
-    local step = ObjectiveStep()
-    if not step then
-        self:Cancel("no_step")
-        return
-    end
-    if
-        step._navigationUnlock
-        and step.unlockAction
-        and step.unlockAction.positionOptional
-        and not step.unlockAction.target
-    then
-        self._routeInputs = nil
-        self:MarkRouteReady()
-        return
-    end
-    if Exempt(step) then
-        self._routeInputs = nil
-        self:MarkRouteReady()
-        return
-    end
-    if not APR.NavigationData or APR.NavigationData.profile == "unsupported" then
-        self:Cancel("unsupported")
-        self.state, self.reason, self.context = "waiting_data", "unsupported", context
-        self:Notify()
-        return
-    end
-    local goal, map, entranceReason, entranceBlockers, coordinateFree
-    goal, map, entranceReason, entranceBlockers, coordinateFree = self:GetDestination(step)
-    if entranceReason then
-        self:Cancel("entrance")
-        self.state = entranceReason == "pending_data" and "waiting_data" or "no_path"
-        self.reason, self.context, APR.IsInRouteZone = entranceReason, context, false
-        self.blockers = entranceBlockers
-        self:Notify()
-        if self.state == "no_path" and not step._service and APR.StartNavigationUnlock then
-            APR:StartNavigationUnlock(entranceBlockers, context)
-        end
-        return
-    end
-    if not goal and self:RequiresScenarioNavigation(step) then
-        local scenario = APR:GetScenarioZoneInfo(APR:GetScenarioMapIDForStep(step))
-        if scenario and scenario.Coord then
-            local c = scenario.Coord
-            goal = {
-                x = c.y,
-                y = c.x,
-                uiMapID = c.mapID or map,
-                instanceID = c.instanceID or (map and C_Map.GetWorldPosFromMapPos(map, CreateVector2D(0.5, 0.5))),
-            }
-        end
-    end
-    if not goal and coordinateFree and not self:RequiresScenarioNavigation(step) then
-        -- Native map identity is sufficient for a positionless instruction.
-        -- Moving transports can lack world/map coordinates or a continent.
-        local currentMap = APR.GetPlayerMapID and APR:GetPlayerMapID()
-            or (C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player"))
-        if
-            type(currentMap) == "number"
-            and ReadableLocationValue(currentMap)
-            and map
-            and (currentMap == map or APR:GetPlayerParentMapID() == map)
-        then
-            self._routeInputs = nil
-            self:MarkRouteReady()
-            return
-        end
-    end
-    if self:GuideRestrictedInstance(context, step, start, goal, map) then return end
-    if not start or (not start.uiMapID and not start.region) or not goal then
-        -- Preserve a confirmed transport during loading, but invalidate any
-        -- unconfirmed search so it cannot publish after its position vanished.
-        if self:IsNavigating() and ContextCurrent(self.context) then
-            self.generation = self.generation + 1
-            CancelTimer(self._searchTimer)
-            self._searchTimer = nil
-            if self.search then self.search:Cancel() end
-            self.search, self.recomputeKeepingPath = nil, nil
-            return
-        end
-        self:Cancel("position")
-        self.state, self.reason, self.context, APR.IsInRouteZone = "waiting_data", "position", context, false
-        self:Notify()
-        return
-    end
-    if self:GuideHousingExit(context, step, start, goal) then return end
-    local threshold = self:GetThreshold()
-    local training = not step.Coord and not step.Coords and (step.LearnProfession or step.LearnSkill)
-        and APR.Services and APR.Services.training
-    self.zoneReady = training and APR.NavigationData:IsServiceArrival(start, goal)
-        or (not training and not step._service and APR:CheckNavigationZoneReady(goal, { step = step, playerPosition = start, threshold = threshold }))
-    -- A nearby objective is still a candidate for portals, toys and spells.
-    -- The search compares complete travel times; zone readiness only controls
-    -- whether the authored objective can remain visible while that work runs.
-    local sameGeometry = not self._routeInputs or self._routeInputs.geometryRevision == APR.navigationGeometryRevision
-    local sameObjective = not self._routeInputs or self:IsObjectiveCurrent(self._routeInputs)
-    local keepPath = sameGeometry and sameObjective and self:IsItineraryValid()
-    local keepDirect = self.zoneReady
-        and self:IsDirectRouteValid(start)
-        and self.destination.instanceID == goal.instanceID
-        and self.destination.uiMapID == goal.uiMapID
-        and self.destination.x == goal.x
-        and self.destination.y == goal.y
-    -- On the first plan there is no previous publication to retain. The same
-    -- provider can already prove direct access without preparing its catalogue.
-    -- Keep zone readiness (including its distance/access rules) authoritative;
-    -- unlock instructions still need their normal action/entrance planning.
-    local data = APR.NavigationData
-    -- Missing geography can become available after the first slice. Retry only
-    -- an unpublished cold baseline for the same objective/context/geometry.
-    local coldDirect = not self._routeInputs
-        or (self._directBaselinePending and sameGeometry and sameObjective and ContextCurrent(self._routedStepContext))
-    local seedDirect = coldDirect
-        and not step._navigationUnlock
-        and self.zoneReady == true
-        and data.CanWalk
-        and data:CanWalk(start, goal) == true
-    if not ContextCurrent(context) then return end
-    local retainedArrow = not keepPath and not keepDirect and self:CaptureRetainedArrow(start)
-    if keepPath or keepDirect then
-        self.generation = self.generation + 1
-        CancelTimer(self._searchTimer)
-        self._searchTimer = nil
-        if self.search then self.search:Cancel() end
-    else
-        self:Cancel("replan", retainedArrow ~= nil)
-        self.retainedArrow = retainedArrow
-    end
-    self.context, self._routedStepContext, self.destination, self.start = context, context, goal, start
-    self.dirty, self.state, APR.IsInRouteZone =
-        false, keepPath and "guiding" or ((keepDirect or seedDirect) and "ready" or "planning"), self.zoneReady == true
-    self._resumeAfterTransition = nil
-    self._transitionProbe = nil
-    self.recomputeKeepingPath = keepPath
-    self.recomputeKeepingDirect = keepDirect or seedDirect
-    self._routeInputs = self:CapturePlanningInputs(step, start, context)
-    self._directBaselinePending = coldDirect and not seedDirect or nil
-    self.showOutOfZoneStepContent = self.zoneReady == true
-    local walkSpeed = self:GetMovementSpeed(threshold)
-    self.plannedWalkSpeed = walkSpeed
-    -- Current airborne speed is not a ground-mount capability. Ground-only
-    -- interiors cannot inherit a 60-yard/s flight estimate from the departure.
-    -- Ground plans have already sampled this same synchronous observation.
-    local currentGroundSpeed = threshold == 2000 and walkSpeed or self:GetMovementSpeed(2000)
-    -- The movement lookup already checked mount availability when needed.
-    -- Repeating a journal scan here is especially expensive while indoors.
-    local groundSpeed = math.min(currentGroundSpeed, 14)
-    local gliding = C_PlayerInfo and C_PlayerInfo.GetGlidingInfo and C_PlayerInfo.GetGlidingInfo()
-    local confirmedGround = IsFlying and IsFlying() == false and gliding ~= true
-    local function groundSpeedAt(point)
-        -- A live ground vehicle can exceed mount speed in its own zone. Do not
-        -- transfer that speed to an unrelated destination or to an interior.
-        if
-            confirmedGround
-            and point.instanceID == start.instanceID
-            and point.uiMapID == start.uiMapID
-            and point.accessKey == start.accessKey
-            and point.floor == start.floor
-        then
-            return currentGroundSpeed
-        end
-        return groundSpeed
-    end--[[APR_DIAG]]; groundSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1513:groundSpeedAt#71", groundSpeedAt)--[[/APR_DIAG]]
-    local function walkSpeedAt(point)
-        if not data.GetWalkingSpeed then return walkSpeed end
-        return data:GetWalkingSpeed(point, walkSpeed, groundSpeedAt(point))
-    end--[[APR_DIAG]]; walkSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1527:walkSpeedAt#72", walkSpeedAt)--[[/APR_DIAG]]
-    local function walkSpeedFor(from, to)
-        return math.min(walkSpeedAt(from), walkSpeedAt(to))
-    end--[[APR_DIAG]]; walkSpeedFor = APRTrace("APR-Core/features/navigation/Navigation.lua:1531:walkSpeedFor#73", walkSpeedFor)--[[/APR_DIAG]]
-    local generation = self.generation
-    local contextKey = tostring(context.route) .. ":" .. tostring(context.index) .. ":" .. tostring(context.revision)
-    self.waitingData = false
-    self.search = APR.NavigationPlanner:Create({
-        -- Ordinary travel compares elapsed time across every available action.
-        -- Access-only routing intentionally prefers a physical entrance and
-        -- must be reserved for the steps that explain or unlock that entrance.
-        allowTaxiProbes = step._service ~= true and not training,
-        serviceTravel = step._service == true or training ~= nil and training ~= false,
-        preferZoneAccess = step._navigationUnlock == true,
-        localObjective = step._navigationUnlock == true,
-        adapter = APR.NavigationAdapter,
-        data = data,
-        taxiData = APR.taxiData,
-        deferInstructions = true,
-        engine = APR.NavigationEngine,
-        start = start,
-        playerPosition = start,
-        goal = goal,
-        clock = debugprofilestop,
-        walkSpeed = walkSpeed,
-        walkSpeedFor = walkSpeedFor,
-        walkSpeedAt = walkSpeedAt,
-        contextKey = contextKey,
-        walkingIsTransitive = true,
-        budget = GetMoney and GetMoney() or 0,
-
-        canWalk =
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1560:callback#74", --[[/APR_DIAG]]function(from, to) return data:CanWalk(from, to) end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-        walkingRegionFor = data.GetPositionRegion  and
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1562:callback#75", --[[/APR_DIAG]]function(point) return data:GetPositionRegion(point) end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-
-        prepareSegment =
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1565:callback#76", --[[/APR_DIAG]]function(segment, index)
-                return self:PrepareGuidanceStep(segment, index, generation, start)
-            end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-
-        probeSegments =
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1570:callback#77", --[[/APR_DIAG]]function(probe)
-                return {
-                    { kind = "walk", from = start, to = probe.from, instruction = NavigationText("RUN_WAYPOINT") },
-                    {
-                        kind = "verify_taxi",
-                        from = probe.from,
-                        to = probe.from,
-                        fromNodeID = probe.fromNodeID,
-                        toNodeID = probe.toNodeID,
-                        seconds = probe.flightSeconds,
-                        probeDestination = probe.flightDestination,
-                        instruction = L["NAVIGATION_CONSULT_TAXI"],
-                        contextKey = contextKey,
-                    },
-                }
-            end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-    })
-    local function advance()
-        if self.worldLoading then return end
-        if generation ~= self.generation or not ContextCurrent(context) or not self.search then return end
-        local job, inputs = self.search, self._routeInputs
-        local changed = self:HasPlanningInputsChanged(Position())
-        if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-        if changed then
-            self:RefreshStalePlanningInputs()
-            return
-        end
-        if not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
-            self:Cancel("inactive")
-            return
-        end
-        -- With a clock, use the available time instead of yielding after a few
-        -- cheap operations. The smaller fallback also bounds clients without it.
-        local operationLimit = debugprofilestop and TIMED_OPERATION_LIMIT or UNTIMED_OPERATION_LIMIT
-        local state, result = job:Step(operationLimit, PLANNING_SLICE_MS)
-        if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-        if state ~= "planning" then
-            self.lastPlanning = {
-                status = state,
-                slices = job.slices,
-                elapsedMilliseconds = job.elapsedMilliseconds,
-                totalSliceMilliseconds = job.totalSliceMilliseconds,
-                maxSliceMilliseconds = job.maxSliceMilliseconds,
-            }
-        end
-        self.waitingData = job.waitingData == true
-        if job.lastSliceMilliseconds and APR.RecordPerformanceDuration then
-            APR:RecordPerformanceDuration("NavigationPlanningSlice", job.lastSliceMilliseconds)
-        end
-        if state ~= "planning" and state ~= "cancelled" and APR.performanceLogging and APR.CountPerformanceEvent then
-            APR:CountPerformanceEvent(
-                job.zoneRouted and (state == "ready" and "NavigationZoneReady" or "NavigationZoneBlocked")
-                    or "NavigationFullGraph"
-            )
-        end
-        if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-        -- Unfinished work publishes nothing. Its next slice checks live inputs
-        -- before doing more work; repeating full observations twice in this
-        -- callback only multiplies map/coordinate/secret-value queries. A
-        -- terminal result must still be checked after providers and telemetry,
-        -- which can change inputs or replace this request reentrantly.
-        if state ~= "planning" then
-            changed = self:HasPlanningInputsChanged(Position())
-            if not PlanningRequestCurrent(self, context, generation, job, inputs) then return end
-            if changed then
-                self:RefreshStalePlanningInputs()
-                return
-            end
-        end
-        if state == "cancelled" then
-            -- A provider changed while the graph was being prepared. Restart
-            -- from fresh inputs instead of treating the interruption as failure.
-            self:ForceRefresh()
-            self:RequestUpdate()
-        elseif state == "planning" then
-            self._searchTimer = C_Timer.NewTimer(PLANNING_SLICE_DELAY, advance)
-        elseif state == "ready" then
-            self:Publish(result or self.search:GetResult(), context, generation)
-        else
-            self:SearchFailed(job.blockers)
-        end
-    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/navigation/Navigation.lua:1585:advance#78", advance)--[[/APR_DIAG]]
-    -- MarkRouteReady would cancel this newly created search. Notify through
-    -- the ordinary arrow/step refresh flow while faster alternatives continue.
-    if seedDirect then
-        self:Notify()
-    else
-        self:Render()
-    end
-    advance()
-end--[[APR_DIAG]]; nav.Update = APRTrace("APR-Core/features/navigation/Navigation.lua:1334:nav:Update#70", nav.Update)--[[/APR_DIAG]]
-function nav:PollArrival()
-    if self.worldLoading then return end
-    if not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
-        self:Cancel("inactive")
-        return
-    end
-    if not self:IsNavigating() then return end
-    if not ContextCurrent(self.context) then
-        self:Cancel("step_changed")
-        self:RequestUpdate()
-        return
-    end
-    local step, position = self:GetActiveStep(), Position()
-    if not position then return end
-    if step.exitHousing then
-        local data = APR.NavigationData
-        -- The current map can temporarily become a continent while still in
-        -- the housing world. Require a real outside-world observation.
-        if
-            data.IsHousingLocation
-            and data:IsHousingLocation(position) == false
-            and position.instanceID ~= step.from.instanceID
-        then
-            self:Cancel("housing_exit_complete")
-            self:ForceRefresh("housing_exit_complete")
-            self:RequestUpdate()
-        end
-        return
-    end
-    if step.kind == "unlock" then
-        if APR.RefreshNavigationUnlockRoute then APR:RefreshNavigationUnlockRoute() end
-        if self.dirty then self:RequestUpdate() end
-        return
-    end
-    if step.kind == "verify_taxi" then return end
-    local onTaxi = UnitOnTaxi and UnitOnTaxi("player")
-    if step.kind == "taxi" and onTaxi then
-        -- Manual boarding may happen before the next off-taxi origin poll.
-        -- Native taxi travel is itself proof that this leg has departed.
-        step.boarded, step.departureSeen = true, true
-        return
-    end
-    if step.kind ~= "walk" and (step.sourceFree or Distance(position, step.from) <= 30) then
-        step.departureSeen = true
-    end
-    local arrived = Distance(position, step.to) <= (step.arrivalRange or (step.kind == "taxi" and 100 or 20))
-    local coarseMap
-    if arrived then
-        arrived, coarseMap = TargetMapReached(position, step.to)
-    end
-    if arrived and step.arrivalZTolerance and step.to.z ~= nil then
-        -- Height is required at stacked lift platforms. Missing player Z is
-        -- loading/unknown state, never proof that the upper floor was reached.
-        arrived = position.z ~= nil and math.abs(position.z - step.to.z) <= step.arrivalZTolerance
-    end
-    local data = APR.NavigationData
-    if arrived and step.arrivalRange and data then arrived = data:IsServiceArrival(position, step.to, step.arrivalRange) end
-    if arrived and data and data.IsSameAccessRegion then
-        -- Explicit passage endpoints may forbid automatic graph connections.
-        -- Arrival still succeeds there, but never from a different floor/region.
-        arrived = data:IsSameAccessRegion(position, step.to)
-    end
-    if step.kind == "taxi" then arrived = arrived and step.boarded == true end
-    if step.kind ~= "walk" then arrived = arrived and step.departureSeen and not onTaxi end
-    if arrived then
-        -- A background result was measured from the preceding leg. Do not let
-        -- its eventual callback rewind an itinerary that has already advanced.
-        if self.search then
-            self.generation = self.generation + 1
-            self.search:Cancel()
-            self.search = nil
-            CancelTimer(self._searchTimer)
-            self._searchTimer = nil
-            self.recomputeKeepingPath = nil
-        end
-        self.cursor = self.cursor + 1
-        if not self:GetActiveStep() then
-            self:MarkRouteReady()
-        else
-            self:Notify()
-        end
-        if step.kind ~= "walk" then
-            -- Keep this short-lived receipt after advancing too: the arrival
-            -- poll and the delayed world-event callback can run in either order.
-            self._transitionArrival = {
-                queue = self.queue,
-                cursor = self.cursor,
-                inputs = self._routeInputs,
-                target = step.to,
-                position = position,
-                time = Now(),
-                zTolerance = step.arrivalZTolerance,
-                mapPending = coarseMap == true,
-            }
-            self._resumeAfterTransition = true
-            self._transitionProbe = nil
-        end
-    elseif DepartureAllowed(step, position) ~= true then
-        -- Arrival wins over departure restrictions after an actual transport.
-        -- Otherwise remove stale actions immediately and refresh the route.
-        self:ForceRefresh()
-        self:Render()
-        self:RequestUpdate()
-    end
-end--[[APR_DIAG]]; nav.PollArrival = APRTrace("APR-Core/features/navigation/Navigation.lua:1659:nav:PollArrival#79", nav.PollArrival)--[[/APR_DIAG]]
-local frame, elapsed = CreateFrame("Frame"), 0
-local navigationPoll =
-     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1790:callback#80", --[[/APR_DIAG]]function(_, delta)
-        if nav.worldLoading or not nav.polling then return end
-        elapsed = elapsed + delta
-        if elapsed < 0.5 then return end
-        elapsed = 0
-        if APR.Services then APR.Services:Validate() end
-        if nav.state ~= "ready" and (not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player"))) then
-            nav:Cancel("inactive")
-            return
-        end
-        if nav:IsNavigating() then
-            if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then
-                nav:Cancel("dead")
-            else
-                nav:PollArrival()
-            end
-        elseif
-            nav.state == "waiting_data"
-            and nav.reason ~= "unsupported"
-            and Enabled()
-            and (not nav._retryAt or Now() >= nav._retryAt)
-        then
-            nav._retryAt = Now() + 2
-            if APR._navigationUnlock then APR._navigationUnlock.session:Retry() end
-            nav:InvalidatePathCache()
-            nav:RequestUpdate()
-        elseif nav.state == "instance" and Enabled() and APR.GetNavigationPlayerContext then
-            local observed = APR:GetNavigationPlayerContext()
-            local previous = nav.instanceContext
-            if
-                not observed
-                or not previous
-                or observed.coordinatesAvailable
-                or not observed.isInstance
-                or observed.instanceID ~= previous.instanceID
-                or observed.uiMapID ~= previous.uiMapID
-            then
-                nav:RequestUpdate()
-            end
-        end
-        if
-            Enabled()
-            and nav._routeInputs
-            and not nav.search
-            and ContextCurrent(nav._routedStepContext)
-            and nav:HasPlanningInputsChanged(Position())
-        then
-            nav:RequestUpdate()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
-
-frame:SetScript("OnUpdate", nil)
-function nav:RefreshActivity()
-    local active = Enabled() and not self.worldLoading
-        and (self:IsNavigating() or self._routeInputs ~= nil
-            or self.state == "instance"
-            or (self.state == "waiting_data" and self.reason ~= "unsupported")
-            or (APR.Services and APR.Services.active ~= nil))
-    if active then
-        if not self.polling then
-            self.polling = true
-            elapsed = 0
-            frame:SetScript("OnUpdate", navigationPoll)
-        end
-    else
-        self.polling = nil
-        frame:SetScript("OnUpdate", nil)
-        elapsed = 0
-    end
-    if APR.NavigationAdapter and APR.NavigationAdapter.RefreshActivity then
-        APR.NavigationAdapter:RefreshActivity(active)
-    end
-end--[[APR_DIAG]]; nav.RefreshActivity = APRTrace("APR-Core/features/navigation/Navigation.lua:1842:nav:RefreshActivity#81", nav.RefreshActivity)--[[/APR_DIAG]]
-for _, event in ipairs({
-    "PLAYER_LEAVING_WORLD",
-    "PLAYER_ENTERING_WORLD",
-    "LOADING_SCREEN_ENABLED",
-    "LOADING_SCREEN_DISABLED",
-    "PLAYER_MONEY",
-    "BAG_UPDATE_DELAYED",
-    "SPELLS_CHANGED",
-    "GROUP_ROSTER_UPDATE",
-    "NEW_TOY_ADDED",
-    "TOYS_UPDATED",
-    "QUEST_ACCEPTED",
-    "QUEST_REMOVED",
-    "QUEST_TURNED_IN",
-    "ACHIEVEMENT_EARNED",
-    "PLAYER_LEVEL_UP",
-    "QUEST_LOG_UPDATE",
-    "CURRENCY_DISPLAY_UPDATE",
-    "UPDATE_FACTION",
-    "SKILL_LINES_CHANGED",
-    "SCENARIO_CRITERIA_UPDATE",
-    "SCENARIO_UPDATE",
-    "CHROMIE_TIME_OPEN",
-    "CHROMIE_TIME_CLOSE",
-    "MAJOR_FACTION_RENOWN_LEVEL_CHANGED",
-    "GOSSIP_SHOW",
-    "GOSSIP_CLOSED",
-    "QUEST_GREETING",
-    "QUEST_DETAIL",
-    "QUEST_FINISHED",
-    "HEARTHSTONE_BOUND",
-    "PLAYER_ALIVE",
-    "PLAYER_UNGHOST",
-    "PLAYER_MOUNT_DISPLAY_CHANGED",
-    "SPELL_UPDATE_COOLDOWN",
-    "BAG_UPDATE_COOLDOWN",
-    "UNIT_SPELLCAST_START",
-    "UNIT_SPELLCAST_SUCCEEDED",
-    "UNIT_SPELLCAST_FAILED",
-    "UNIT_SPELLCAST_INTERRUPTED",
-}) do
-    local unit = event:find("^UNIT_SPELLCAST_") and "player" or nil
-    if APR.RegisterSupportedEvent then
-        APR:RegisterSupportedEvent(frame, event, unit)
-    elseif unit and frame.RegisterUnitEvent then
-        --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterUnitEvent, frame, event, unit)
-    elseif APR.TryRegisterEvent then
-        APR:TryRegisterEvent(frame, event)
-    else --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event)
-    end
-end
-frame:SetScript(
-    "OnEvent",
-
-        --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1917:callback#82", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
-            if event == "PLAYER_LEAVING_WORLD" or event == "LOADING_SCREEN_ENABLED" then
-                nav:BeginWorldLoading(event)
-                return
-            end
-            if event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then
-                nav:EndWorldLoading(event)
-                return
-            end
-            if APR.Services and APR.Services.active then APR.Services:Validate() end
-            if not Enabled() then
-                if nav.state ~= "ready" then nav:Cancel("inactive") end
-                nav:RefreshActivity()
-                return
-            end
-            if event == "SPELL_UPDATE_COOLDOWN" or event == "BAG_UPDATE_COOLDOWN" then
-                nav:RequestCooldownRefresh()
-                return
-            end
-            if event and event:find("^UNIT_SPELLCAST_") then
-                if unit ~= "player" then return end
-                local step = nav:GetActiveStep()
-                local action = step and step.action
-                if not action then return end
-                local expected = action.type == "spell" and action.data
-                if action.type == "item" then
-                    local getSpell = C_Item and C_Item.GetItemSpell or GetItemSpell
-                    if getSpell then
-                        local _, id = getSpell(action.data)
-                        expected = id
-                    end
-                end
-                if expected ~= spellID then return end
-                if event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_INTERRUPTED" then
-                    step.actionCommittedUntil, step.castOrigin = nil, nil
-                else
-                    if event == "UNIT_SPELLCAST_START" or not step.castOrigin then step.castOrigin = Position() end
-                    step.actionCommittedUntil = Now() + 30
-                end
-            end
-            if
-                APR._navigationUnlock
-                and (
-                    event == "QUEST_ACCEPTED"
-                    or event == "QUEST_REMOVED"
-                    or event == "QUEST_LOG_UPDATE"
-                    or event == "QUEST_TURNED_IN"
-                    or event == "ACHIEVEMENT_EARNED"
-                    or event == "PLAYER_LEVEL_UP"
-                    or event == "CURRENCY_DISPLAY_UPDATE"
-                    or event == "UPDATE_FACTION"
-                    or event == "SKILL_LINES_CHANGED"
-                    or event == "CHROMIE_TIME_OPEN"
-                    or event == "CHROMIE_TIME_CLOSE"
-                    or event == "MAJOR_FACTION_RENOWN_LEVEL_CHANGED"
-                    or event == "BAG_UPDATE_DELAYED"
-                    or event == "SPELLS_CHANGED"
-                    or event == "SCENARIO_CRITERIA_UPDATE"
-                    or event == "SCENARIO_UPDATE"
-                    or event == "GOSSIP_SHOW"
-                    or event == "QUEST_GREETING"
-                    or event == "QUEST_DETAIL"
-                )
-            then
-                APR._navigationUnlock.session:Retry()
-            end
-            nav:InvalidatePathCache(event)
-            nav:RequestUpdate()
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
-)
+-- Other files in this manifest capture local references to these helpers.
+APR.navigation._helpers = {
+    NavigationText = NavigationText,
+    Now = Now,
+    ReadableLocationValue = ReadableLocationValue,
+    CopyLocation = CopyLocation,
+    SameLocationFields = SameLocationFields,
+    Position = Position,
+    Distance = Distance,
+    WalkingProvider = WalkingProvider,
+    TerrainRequired = TerrainRequired,
+    SpatialDistance = SpatialDistance,
+    HasWalkingPath = HasWalkingPath,
+    MissingWalkProof = MissingWalkProof,
+    SameAccess = SameAccess,
+    CancelTimer = CancelTimer,
+    ContextCurrent = ContextCurrent,
+    CaptureContext = CaptureContext,
+    ObjectiveStep = ObjectiveStep,
+    PlanningRequestCurrent = PlanningRequestCurrent,
+    Enabled = Enabled,
+    ActionUsable = ActionUsable,
+    ActionPending = ActionPending,
+    MapIncludes = MapIncludes,
+    TargetMapReached = TargetMapReached,
+    DepartureAllowed = DepartureAllowed,
+    L = L,
+}

@@ -1,0 +1,31 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+local D=assert(L._TerrainPackStages[1323])
+D.packed.area[4]={"eNoLtCioCLTId3R01IcAs0BsIuWBFoXYBPPLUYTyKxBcCxT1o2AUjILhAywgxUQhggq0KCwPtCiohPCgVDk20Xy4BhgbVFAgcwMtCgFl1u59"}
+D.packed.class[4]={"eNrtycEJwDAMQ9GBesixuQpJM9nePpSSkhmK30Uf5MR43T4ydPTOyV3Xd7fW/mM64ZQFF1xyiM+UGFYwQFBcrsfNfg=="}
+D.packed.floor[4]={"eNo9j7tuAjEURD8pNeWZsVkso0hhySq0FGyXUPD/ijxW0hxZnse9F1ag6vF2AO2Iqp1reEOgmt+mnRZewjsN7P/cxgZF0Z+YY5Qt2cEeXsMbxpqOVxyvOJ4zPdr9jl3i+NGOw00nPGe4U+cMLaMh7OElvGPqnFH6cITdgx/hF0dqce4aXGksKJvAovH61DeLh3qOsnKmUbRzytU9XKk0zSb+XJ5NpmsmDfwCgP9pGg=="}
+D.packed.graph[4]={"eNpdUMsOwjAM+zY7TUt5jMEB7covcACJr0duu62lshTFSeykmKHnBEAcFAxRVEAyVUSAhqhQSVbSTF0IVChThiQBIoHiMwxUqG0ZG5w4dplrsKudh9qprFHgQXNb5tpj7czEtGfR5dppXgdN31UiMUMmBcl7h+iaezU8iNve6S61Naudn4aFuENfUjD6efi7qL824DLUpuHaDHwblrLnu+EZ5L75/QDJv350"}
+D.packed.grid[4]={"eNoLCikPdtSHALOw4JByOCekEiuzAsa0CIGxRsEoGAXDB1gAALf2w1M="}
+D.packed.height[4]={"eNoLiijPiKjIiCjP802JSIoIj0hOAQBJGAc4"}
+D.packed.area[2]={"eNrtk7ENwDAIBAdKkTKfkhF+EsCNne0jY9nuMkDEFUh//y0iciZJ8jcOosj67vs7Wd0RhLUdL6L0ltBGlL4llHBCQ3tcG5tu63IthD3DT+0v+sTg6Q=="}
+D.packed.class[2]={"eNrtxrENgFAMQ8GBKCgR5VPsmRy2pwHRMMFXrjr2McZqNvPs/F3q/eH+GqJyIyo4iBRu+RKq3PYGynQ="}
+D.packed.floor[2]={"eNo9j80KwkAQgx9oD4KUsh6TyfZPsWop9SzoHn3/m8woXpaQzLeTAWbtQb52GVSDEkqsMBgrRoAVJwxqSFYc8VaLLqY8J9wdUDyjOzf0aqlgR1ac7cmKxS5qjUFMykEJpvybXGOL/7Lyrmxfdwp3dh5nZTkFjErR8xDdSlC3eB+AEr1diqyLBlPoa+gNvZJZXOLuarOS7H/v4hdbwWRWsIEfPChQVw=="}
+D.packed.graph[2]={"eNpdkUtuwzAMRA/kXREY2T5xKMtpkaRpc4Buuuj9D1BQkWMpwAAEfzMciS+9ASfTgQRJBxxM86M4oyjOZHAdgTXp+JicAI+QKBGMbJoQSwSvI8nIEbwWUwZpMoOsSQbmIXBrWEUoNLhC55l5ZNvkXRihUeEeex2LBhYfWAzeG1bnCj8NF+cTfhuuCs8bXCw7Sxaly8pwdXm5+jz0rNtzLkNPQ+a7v+xxb8f5MUwuQy8Pjmx39F39bd5z7f013Ove03t9l27y1r1ECaWt5wOnF07dr/wDOy6gxQ=="}
+D.packed.grid[2]={"eNpz1B8Fo2AUDDegHewIZVkiWCHlMKZFSAWMaR6EYJsBABYwwQo="}
+D.packed.height[2]={"eNoLiihPTUwOD43ICAEAGIQECw=="}
+D.packed.area[3]={"eNrtlLsNgDAMREeiAq69EW6SOJWT7RGyIUKCBVBe4e+59JFcgk2wzq92FYpQBWsPTSEpmI/hLhQXbEwg1NFNJpMfED8eptDTGyKFJ0R9+0Z/U7pQPXMu23WR8Vwd4uXyPA=="}
+D.packed.class[3]={"eNrtx7sNgAAMA9GRqPiVVuyZnGyPBKRiA5Sr3mF52lT4cqWVPXvI7VOtI1rTNP0gIVRUUonXddugDBWDoAOOCxYl0Ag="}
+D.packed.floor[3]={"eNo9kMFOwzAQRD8oh1zJ8c3aTpqkSDTQiGuR8JEC/y8hTyouq5Fndt964YKekj77gaLKilTZEBqKX39VCbIqC6jyYr1zR1124qyKXDfXGx+oP7yTvVZfXd8R6eBp98xwXyI9eM/mXb3Lm3lN77GQuiPx5Zl3J2Z3N33TmfSgygmZKlODMthLjSezLxpVuXKmdKntEs27xOKOmdIfPHeQzMO88C+DaTiuBVMnXyUx9fF/qx2YnVmb6o6NRua+TZt8keUx8wRTJqJkIpfM1tQ2lsy3IvODWDvpDyX0elU="}
+D.packed.graph[3]={"eNp1kEsOgzAMRA/EgqorWL5JHCifQnuJSr3/AapAaBOkSk9yxnbsTFhRAwg12oMHj1oYhVqBQ61jiipstcozC1UGhmqLLX4PfQ1O9LXwYqgdisFv2RtfzLBCdTAmOmOBS+Ilpl/NxFzcU6bEvVBL0ekgJPYN18RbrMWGx7+X9cYQPe8Ei9ku0YvnuXYoC99jVMUUC6fOKdseCrch+sumuOyXQnR0+LMPhC962A=="}
+D.packed.grid[3]={"eNpz1IcAs+Cg8hBHGCckMArOMQ2pCEaSqYQxzYNCymFsC7iCUTAKRsEwAAAm6sRo"}
+D.packed.height[3]={"eNoLijDMTPZICSqPDI4IjwhJBgAuIQWH"}
+D.packed.area[1]={"eNrtk7sRwDAIQ0dKmiRqNYImMabB3j53dr5FFshZjeAh6CA5DQ0N/VWb4IXXm6+C13crmODxgvbILEIiKVg085lkCEnwBlIc+2fwxrnf7+ks2DU5qk7jto9R6VaFvAPsevWx"}
+D.packed.class[1]={"eNrtx7ENgFAMA9GRoAFqK7mZnL89iqBmAJTX+KxtjPFXF6U3T9Z3HiksdjlQ4VAQfeoJFMaJs28vJVbevfvRZw=="}
+D.packed.floor[1]={"eNo9kMFqw0AMRD/IB6UE4+xxpHFqE1NDnbr0Wmi2pxJC6fcXjUMug9iRnkYLvHFf3C92wBP3zVYV7m2rrmwPqnxlu/W5sW36rGheAc5eceTJK068sDV5cfOKiMkrRrhXTHFjd2cN7MpGyFmP1DGS8BIzu+Yo70veKEKfBHWf+cPO1CG6g14xQPvFWGJiOSS/IDKFdJBOCJayeWumB8RPXfyXpaG8q8jfXvGOE4vpNfjYtyJoXd61oKdp2+6+DdqWevaZVjTrzznreccaM00/WJTXlf1VEx8YabpuBzwucOmijs/MHCwG7/FH/wd5s3vm"}
+D.packed.graph[1]={"eNpVkEFuwzAMBB+UAw9F4eq4EknTsQM4bZL23v7/DQVl2gmBAaQlRC5XuPEbAefK71QBPwRoPGzFgdiLAykgXAiYKhdqXqSPuh2heDvEX1IB5spUqg+j0rC4YkCZToxLZTpJb/DRVQFgCkRRX5S4+gzuigbMgSg49Unqa/BCZxIswG9wFazAT7AqNM0cn1O0u/8Fd0t72uueY1JLd38E3+IOu9rcdz81f6mBWEokxxUTZkv5zDty2lvw6H5fwdqzH37iP7n/i5qnPbIbLM3Me56ffeM//daVww=="}
+D.packed.grid[1]={"eNpz1B8Fo2AUDFdgHlQe4ghlmwUHRiFxyoMQnJDQRDjHNMQxKMQRAMFyxCI="}
+D.packed.height[1]={"eNoLijCLLE+PKAcADDkC5w=="}
+L:RegisterTerrainData("retail",1323,D,20261123,true)
+L._TerrainPackStages[1323]=nil
+if not next(L._TerrainPackStages) then L._TerrainPackStages=nil end

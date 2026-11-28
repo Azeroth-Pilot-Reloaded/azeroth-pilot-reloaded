@@ -35,6 +35,7 @@ local definitions = {
         kind = "passage",
         bidirectional = true,
         costMode = "ground",
+        arrivalRadius = 7,
         from = { space = "map", uiMapID = 101, x = 0.4, y = 0.5 },
         to = { space = "map", uiMapID = 102, x = 0.4, y = 0.5 },
     },
@@ -253,6 +254,12 @@ for _, edge in ipairs(nativeEdges) do
         end
     end
     fixture.player, fixture.currentMap = at(edge.to), edge.to.uiMapID
+    if edge.arrivalRadius then
+        fixture.player = at(edge.to, nil, nil, 8)
+        nav:PollArrival()
+        assert(nav:GetActiveStep().connectionID == edge.id, "A controlled passage uses its own arrival radius")
+        fixture.player = at(edge.to, nil, nil, 7)
+    end
     if edge == azj then
         fixture.player, fixture.currentMap = at(edge.to, 105), 105
     end

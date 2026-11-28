@@ -35,12 +35,7 @@ setmetatable(sandbox, {
     end,
 })
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
-local xml = manifest:read("*a")
-manifest:close()
-for path in xml:gmatch('file="([^"]+)"') do
-    Load(root .. path)
-end
+dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", { load = Load })
 local library = sandbox.LibStub("LibAPRNavigation-1.0")
 assert(rawget(sandbox, "APR") == nil and rawget(sandbox, "CreateFrame") == nil and rawget(sandbox, "C_Map") == nil)
 assert(type(library.Instance.SetWaypoint) == "function", "The bridge must ship in LibAPRNavigation.xml")

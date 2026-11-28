@@ -6,12 +6,12 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Decides when guide UI is allowed in instances and manages the one-time character preference prompt.
 -- An explicit InstanceQuest step can keep the guide visible in party/raid content.
 
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
 local partyRaidTypes = {
     party = true,
     raid = true,
 }
-
-local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local hiddenInstanceTypes = {
     pvp = true,

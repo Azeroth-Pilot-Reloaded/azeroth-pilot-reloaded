@@ -60,6 +60,30 @@ adapter.frame.OnEvent(adapter.frame, "QUEST_LOG_UPDATE")
 assert(data.zoneGraph == graph, "Unreadable map art does not make every UI event a world reload")
 adapter.frame.OnEvent(adapter.frame, "NEIGHBORHOOD_MAP_DATA_UPDATED")
 assert(data.zoneGraph == nil)
+
+assert(adapter.frame.events.UNIT_PHASE, "Retail listens for changes to the player's phase")
+data.zoneGraph = graph
+local refreshesBeforePhase = refreshes
+adapter.frame.OnEvent(adapter.frame, "UNIT_PHASE", "party1")
+assert(data.zoneGraph == graph and refreshes == refreshesBeforePhase)
+adapter.frame.OnEvent(adapter.frame, "UNIT_PHASE", "player")
+assert(data.zoneGraph == nil and refreshes == refreshesBeforePhase + 1,
+    "A native player phase change refreshes navigation even before its artwork is available")
+
+APR.ActiveRoute = nil
+APR.navigation.destination = first
+data.zoneGraph = graph
+refreshesBeforePhase = refreshes
+adapter.frame.OnEvent(adapter.frame, "UNIT_PHASE", "player")
+assert(data.zoneGraph == nil and refreshes == refreshesBeforePhase + 1,
+    "An active standalone waypoint also replans on a phase change")
+APR.navigation.destination = nil
+
+-- An upgrade changes collision while keeping the same UI map and artwork.
+data.terrainPhaseObservation = {}
+local refreshesBeforeUpgrade = refreshes
+adapter.frame.OnEvent(adapter.frame, "GARRISON_UPDATE")
+assert(data.terrainPhaseObservation == nil and refreshes == refreshesBeforeUpgrade + 1)
 print(
     "Adapter geometry cache: 100 character/UI events retain static topology; fresh quest flags, real phase changes and unavailable-art recovery passed"
 )

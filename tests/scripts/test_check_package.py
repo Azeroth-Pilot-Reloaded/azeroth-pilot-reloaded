@@ -1,10 +1,15 @@
 """Check the package validator using a minimal unpacked release fixture."""
 
 from pathlib import Path
+from contextlib import chdir
+import base64
+import struct
 import tempfile
 import unittest
+from xml.sax.saxutils import quoteattr
+import zlib
 
-from tools.validation.check_package import validate
+from tools.validation.check_package import validate, validate_runtime_files, validate_terrain_companions
 
 
 class PackageValidationTests(unittest.TestCase):
@@ -58,6 +63,21 @@ class PackageValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "Missing runtime dependency"):
             validate(self.root)
 
+    def test_rejects_xml_dependencies_outside_package(self):
+        package = self.root / "package"
+        self.write("package/APR.toc", "Manifests/Catalogue.xml\n")
+        outside = self.root / "Shared.xml"
+        for reference in ("../../Shared.xml", outside.as_posix()):
+            with self.subTest(reference=reference):
+                self.write("package/Manifests/Catalogue.xml", f'<Ui><Include file={quoteattr(reference)}/></Ui>')
+                with self.assertRaisesRegex(AssertionError, "Runtime dependency outside package root"):
+                    validate_runtime_files(package, package / "APR.toc", "Standard")
+
+    def test_accepts_xml_dependency_in_parent_directory_within_package(self):
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/Catalogue.xml", '<Ui><Script file="../Shared.lua"/></Ui>')
+        self.write("APR-Core/libs/Shared.lua", "-- shared runtime dependency\n")
+        validate(self.root)
+
     def test_keeps_runtime_artwork_and_license_notices(self):
         for relative in ("APR-Core/assets/ui/logo.tga", "APR-Core/assets/Arrow-APR.tga",
                          "LICENSE", "APR-Core/assets/ui/mdi/LICENSE", "APR-Core/libs/Library/LICENSE"):
@@ -72,4 +92,80 @@ class PackageValidationTests(unittest.TestCase):
         validate(self.root)
         (self.root / "APR-Core/libs/LibAPRNavigation-1.0/embedded.lua").unlink()
         with self.assertRaises(AssertionError):
+            validate(self.root)
+
+    def terrain_manifests(self):
+        library = "APR-Core/libs/LibAPRNavigation-1.0"
+        self.write(f"{library}/Catalogue.xml", '<Ui><Include file="Terrain_[Game].xml"/></Ui>')
+        self.write(f"{library}/Terrain_Standard.xml", '<Ui/>')
+        self.write(f"{library}/Terrain_Camelot.xml",
+                   '<Ui><Script file="Terrain.lua"/><Include file="Data/forever/Terrain/Terrain.xml"/></Ui>')
+        self.write(f"{library}/Terrain.lua", "-- synthetic terrain provider\n")
+        self.write(f"{library}/Data/forever/Terrain/Terrain.xml", '<Ui><Script file="Patch.lua"/></Ui>')
+        self.write(f"{library}/Data/forever/Terrain/Patch.lua", "-- synthetic packed map\n")
+        return library
+
+    def test_accepts_terrain_loaded_only_by_forever(self):
+        self.terrain_manifests()
+        validate(self.root)
+
+    def test_partitioned_release_requires_matching_on_demand_companions(self):
+        data = base64.b64encode(zlib.compress(struct.pack('<IIIHH', 1, 3, 0, 1, 7))).decode()
+        self.write("APR/Index-4.lua", f'I.pages={{"{data}"}}\nL:RegisterTerrainPartitionIndex("forever",4,8,D,I)\n')
+        group = "APR_NavData_Forever_4_3"
+        toc = f"{group}/{group}_Camelot.toc"
+        script = f"{group}/World-4-Group-3.lua"
+        manifest = "## LoadOnDemand: 1\n## Dependencies: APR\nWorld-4-Group-3.lua\n"
+        addon = self.root / "APR"
+        def check():
+            validate_terrain_companions(addon, {addon / "Index-4.lua"})
+        with self.assertRaisesRegex(AssertionError, "Missing terrain companion"):
+            check()
+        self.write(toc, manifest)
+        self.write(script, 'L:RegisterTerrainPartitionPages("forever",4,7,3,D)\n')
+        with self.assertRaisesRegex(AssertionError, "revision"):
+            check()
+        self.write(script, 'L:RegisterTerrainPartitionPages("forever",4,8,3,D)\n')
+        check()
+        self.write(toc, manifest.replace("LoadOnDemand: 1", "LoadOnDemand: 0"))
+        with self.assertRaisesRegex(AssertionError, "Invalid terrain TOC"):
+            check()
+
+    def test_accepts_relative_package_directory(self):
+        self.terrain_manifests()
+        with chdir(self.root.parent):
+            validate(Path(self.root.name))
+
+    def test_rejects_terrain_runtime_loaded_by_retail(self):
+        library = self.terrain_manifests()
+        self.write(f"{library}/Terrain_Standard.xml", '<Ui><Script file="Terrain.lua"/></Ui>')
+        with self.assertRaisesRegex(AssertionError, "Retail.*terrain"):
+            validate(self.root)
+
+    def test_rejects_nested_terrain_data_loaded_by_retail(self):
+        library = self.terrain_manifests()
+        self.write(f"{library}/Terrain_Standard.xml",
+                   '<Ui><Include file="Data/forever/Terrain/Terrain.xml"/></Ui>')
+        with self.assertRaisesRegex(AssertionError, "Retail.*terrain"):
+            validate(self.root)
+
+    def test_accepts_retail_runtime_for_its_generated_data_only(self):
+        library = self.terrain_manifests()
+        generated = "Data/retail/Terrain/Terrain.xml"
+        standard = f'<Ui><Script file="Terrain.lua"/><Include file="{generated}"/></Ui>'
+        self.write(f"{library}/Terrain_Standard.xml", standard)
+        self.write(f"{library}/{generated}", '<Ui><Include file="7/Terrain.xml"/></Ui>')
+        self.write(f"{library}/Data/retail/Terrain/7/Terrain.xml", '<Ui/>')
+        validate(self.root)
+        forever = "Data/forever/Terrain/7/Terrain.xml"
+        self.write(f"{library}/{forever}", '<Ui/>')
+        self.write(f"{library}/Terrain_Standard.xml", standard.replace('</Ui>', f'<Include file="{forever}"/></Ui>'))
+        with self.assertRaisesRegex(AssertionError, "Retail.*Forever terrain"):
+            validate(self.root)
+
+    def test_rejects_missing_forever_terrain_provider(self):
+        library = self.terrain_manifests()
+        self.write(f"{library}/Terrain_Camelot.xml",
+                   '<Ui><Include file="Data/forever/Terrain/Terrain.xml"/></Ui>')
+        with self.assertRaisesRegex(AssertionError, "Forever.*terrain provider"):
             validate(self.root)

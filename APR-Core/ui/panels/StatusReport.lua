@@ -310,7 +310,7 @@ UnlockSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:196:UnlockSnapsho
 local function NavigationSnapshot()
     local navigation = APR.navigation
     if not ReadableTable(navigation) then return nil end
-    local positionFields = { "x", "y", "z", "uiMapID", "mapID", "instanceID", "accessKey", "region", "floor" }
+    local positionFields = { "x", "y", "z", "uiMapID", "mapID", "instanceID", "accessKey", "region", "floor", "indoors" }
     local snapshot = SnapshotFields(navigation, {
         "state",
         "generation",
@@ -334,8 +334,15 @@ local function NavigationSnapshot()
     snapshot.searchPending = navigation.search ~= nil
     snapshot.planning = SnapshotFields(
         navigation.search or navigation.lastPlanning,
-        { "status", "phase", "slices", "elapsedMilliseconds", "totalSliceMilliseconds", "maxSliceMilliseconds" }
+        { "status", "phase", "slices", "elapsedMilliseconds", "totalSliceMilliseconds", "maxSliceMilliseconds",
+            "firstGuidanceMilliseconds" }
     )
+    snapshot.firstGuidanceMilliseconds = SnapshotFields(navigation.guidanceMeasurement,
+        { "source", "generation", "Published", "WorldMap", "Minimap", "Arrow", "cancelled", "approachOnly", "residualYards" })
+    if ReadableTable(navigation.waypointApproach) then
+        snapshot.waypointApproach = SnapshotFields(navigation.waypointApproach, { "residualYards", "remainingHeight", "reached" })
+        snapshot.waypointApproach.endpoint = SnapshotFields(navigation.waypointApproach.endpoint, positionFields)
+    end
     snapshot.continuation = SnapshotFields(navigation.lastContinuation, {
         "status",
         "reason",

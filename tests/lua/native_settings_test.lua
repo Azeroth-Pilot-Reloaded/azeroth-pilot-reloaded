@@ -1,7 +1,7 @@
 -- Blizzard exposes one lazy launcher, with no nested settings; all editing happens in the workspace.
 dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/config/Config.lua")

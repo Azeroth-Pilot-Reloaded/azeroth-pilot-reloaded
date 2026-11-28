@@ -237,8 +237,17 @@ handlers.Waypoint =
     APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:167:handlers.Waypoint#7", handlers.Waypoint)--[[/APR_DIAG]]
 
 function handlers.UseHS(step, showStepDetails, currentStepIndex)
-    local questKey, questText, useHSKey, spellID, type
+    local questKey, questText, useHSKey, spellID, type, nextStep
     if step.UseHS then
+        local navigation = APR.navigation
+        local checkProximity = navigation and navigation.ShouldSkipHearthstone
+        if showStepDetails or checkProximity then
+            nextStep = APR:GetNextApplicableStep(APR:GetRouteSteps(APR.ActiveRoute), currentStepIndex)
+        end
+        if checkProximity and navigation:ShouldSkipHearthstone(nextStep) then
+            APR:UpdateNextStep()
+            return true
+        end
         questKey = step.UseHS
         questText = L["USE_HEARTHSTONE"]
         useHSKey = "UseHS"
@@ -270,8 +279,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
 
     if showStepDetails then
         if step.UseHS then
-            local steps = APR:GetRouteSteps(APR.ActiveRoute)
-            questText = APR:GetHearthstoneStepText(APR:GetNextApplicableStep(steps, currentStepIndex))
+            questText = APR:GetHearthstoneStepText(nextStep)
         end
         APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
         APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)

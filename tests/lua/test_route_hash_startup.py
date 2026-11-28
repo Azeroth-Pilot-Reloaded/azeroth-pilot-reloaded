@@ -78,12 +78,13 @@ class RouteHashStartupTests(unittest.TestCase):
             "band": lambda left, right: _signed(_bit_number(left) & _bit_number(right)),
         })
         runtime.execute(ENV)
+        runtime.execute('dofile = dofile("tests/lua/feature_loader.lua")(dofile, _G)')
         for path in (
             "utils/RouteHashUtils.lua", "utils/RouteUtils.lua", "features/questing/RouteManager.lua",
             "features/questing/DelveRoutes.lua", "features/questing/StepTransitions.lua",
             "features/questing/QuestHandler.lua", "features/navigation/Navigation.lua", "core/Event.lua",
         ):
-            runtime.execute((ROOT / "APR-Core" / path).read_text(encoding="utf-8-sig"), name="@APR-Core/" + path)
+            runtime.globals().dofile("APR-Core/" + path)
         runtime.execute(r'''
 function APR:GetCurrentRouteMapIDsAndName() return nil, 0, H.selection or self.ActiveRoute end
 function APR:GetRouteDisplayName(key) return key end

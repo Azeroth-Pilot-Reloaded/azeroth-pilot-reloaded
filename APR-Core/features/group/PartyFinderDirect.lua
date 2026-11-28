@@ -4,9 +4,11 @@ local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yi
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Tiny private packets use AceComm's output pacing, never its multipart receiver.
+local Constants = APR.GroupConstants
+
 local Finder = APR.partyFinder
 local P = APR.PartyFinderProtocol
-local PREFIX, LIMIT = "APRFindV1", 32
+
 local records, recordCount = {}, 0
 local dispatching, guardedFrame, frameGuard, guardedCTL, enqueueGuard, guardedSender, senderGuard
 local receiveSecond, receiveCount
@@ -33,7 +35,7 @@ local function GuardReceiver(ace)
 APRTrace(
         "APR-Core/features/group/PartyFinderDirect.lua:31:callback#4", --[[/APR_DIAG]]
         function(owner, event, prefix, wire, distribution, sender, ...)
-            if event == "CHAT_MSG_ADDON" and Public(prefix) and prefix == PREFIX then
+            if event == "CHAT_MSG_ADDON" and Public(prefix) and prefix == Constants.PartyFinder.PREFIX then
                 -- Another addon can wrap the previous guard before a library
                 -- refresh. A chain of guards still accounts for one event once.
                 if receiving then return original(owner, event, prefix, wire, distribution, sender, ...) end
@@ -189,14 +191,14 @@ APRTrace(
                 entry
                 and library == entry.ctl
                 and type(message) == "table"
-                and message[1] == PREFIX
+                and message[1] == Constants.PartyFinder.PREFIX
                 and message[3] == "WHISPER"
             then
                 -- This is the exact CTL32 record format. Refuse unfamiliar output
                 -- instead of leaving an uncancellable, unvalidated presence queued.
                 if
                     priority ~= "NORMAL"
-                    or pipeName ~= PREFIX
+                    or pipeName ~= Constants.PartyFinder.PREFIX
                     or message[2] ~= entry.wire
                     or message[4] ~= entry.target
                     or message.n ~= 4
@@ -249,7 +251,7 @@ APRTrace(
             if
                 entry
                 and library == entry.ctl
-                and prefix == PREFIX
+                and prefix == Constants.PartyFinder.PREFIX
                 and channel == "WHISPER"
                 and wire == entry.wire
                 and target == entry.target
@@ -319,16 +321,14 @@ Finder.InitializeDirectTransport = APRTrace(
 
 function Finder:SendDirect(kind, wire, target, guard, ttl, onComplete)
     if self.TraceTraffic then self:TraceTraffic("QUEUE", kind, "WHISPER", target, "requested", wire) end
+    local key = self:PlayerKey(target)
     if
         kind ~= "P" and kind ~= "I" and kind ~= "R" and kind ~= "Q" and kind ~= "D" and kind ~= "W"
         or not Envelope(wire)
-        or not Public(target)
-        or type(target) ~= "string"
-        or #target == 0
-        or #target > 128
-        or target:find("[%c|]")
+        or not key
+        or key == self.playerKey
         or guard ~= nil and type(guard) ~= "function"
-        or recordCount >= LIMIT
+        or recordCount >= Constants.PartyFinderDirect.LIMIT
         or not self:IsEnabled()
         or self:IsRestricted()
         or not self:InitializeDirectTransport()
@@ -370,7 +370,7 @@ function Finder:SendDirect(kind, wire, target, guard, ttl, onComplete)
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
             self.directAceComm.SendCommMessage,
             self,
-            PREFIX,
+            Constants.PartyFinder.PREFIX,
             wire,
             "WHISPER",
             target,

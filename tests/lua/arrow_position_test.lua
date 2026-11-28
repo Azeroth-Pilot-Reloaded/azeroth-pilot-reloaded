@@ -14,14 +14,17 @@ function APR:IsInstanceWithUI() return true end
 dofile("APR-Core/features/navigation/Arrow.lua")
 local arrow, profile, anchor = APR.Arrow, APR.settings.profile, APR.ArrowFrameM
 profile.arrowScale, profile.arrowStyle = 1, "classic"
+arrow:Init()
+assert(anchor.point[4] == 1600 / 2.05 and anchor.point[5] == -600)
+assert(profile.arrowleft == nil and profile.arrowtop == nil, "A first login does not save a display-dependent anchor")
 profile.arrowleft, profile.arrowtop = 3000, -2000
 arrow:Init()
-assert(profile.arrowleft == 1544 and profile.arrowtop == -858)
+assert(profile.arrowleft == 3000 and profile.arrowtop == -2000)
 assert(anchor.point[4] == 1544 and anchor.point[5] == -858)
 
 profile.arrowleft, profile.arrowtop = -500, 200
 arrow:RestorePosition()
-assert(profile.arrowleft == 0 and profile.arrowtop == 0)
+assert(anchor.point[4] == 0 and anchor.point[5] == 0)
 profile.arrowleft, profile.arrowtop = 350, -420
 arrow:Init()
 assert(profile.arrowleft == 350 and profile.arrowtop == -420)
@@ -51,26 +54,30 @@ assert(profile.arrowleft == 300 and profile.arrowtop == -300)
 -- Bad legacy values recover without corrupting valid coordinates on the other axis.
 profile.arrowleft, profile.arrowtop = 0 / 0, -100
 arrow:RestorePosition()
-assert(math.abs(profile.arrowleft - 1600 / 2.05) < 0.001 and profile.arrowtop == -100)
+assert(math.abs(anchor.point[4] - 1600 / 2.05) < 0.001 and anchor.point[5] == -100)
 profile.arrowleft, profile.arrowtop = "invalid", math.huge
 arrow:RestorePosition()
-assert(math.abs(profile.arrowleft - 1600 / 2.05) < 0.001 and profile.arrowtop == -600)
+assert(math.abs(anchor.point[4] - 1600 / 2.05) < 0.001 and anchor.point[5] == -600)
 profile.arrowleft, profile.arrowtop = 1500, -800
 profile.arrowScale = 3
 arrow:ApplySize()
-assert(profile.arrowleft == 1432 and profile.arrowtop == -774)
+assert(anchor.point[4] == 1432 and anchor.point[5] == -774)
 UIParent:SetSize(1000, 600)
 anchor.scripts.OnEvent(anchor, "DISPLAY_SIZE_CHANGED")
-assert(profile.arrowleft == 832 and profile.arrowtop == -474)
+assert(anchor.point[4] == 832 and anchor.point[5] == -474)
 UIParent:SetSize(800, 500)
 UIParent:SetScale(0.8)
 anchor.scripts.OnEvent(anchor, "UI_SCALE_CHANGED")
-assert(profile.arrowleft == 632 and profile.arrowtop == -374)
+assert(anchor.point[4] == 632 and anchor.point[5] == -374)
+assert(profile.arrowleft == 1500 and profile.arrowtop == -800, "Small displays must not move the shared profile anchor")
 local left, top = arrow:ClampPosition(-20, -1000, 2000, 1000)
 assert(left == 0 and top == 0, "Oversized artwork keeps its top-left visible")
 UIParent:SetSize(0, 0)
 arrow:RestorePosition()
-assert(profile.arrowleft == 632 and profile.arrowtop == -374)
+assert(anchor.point[4] == 632 and anchor.point[5] == -374)
+UIParent:SetSize(1800, 1000)
+anchor.scripts.OnEvent(anchor, "DISPLAY_SIZE_CHANGED")
+assert(anchor.point[4] == 1500 and anchor.point[5] == -800, "A larger display restores the chosen position")
 UIParent:SetSize(1600, 900)
 
 -- Real editor opening recovers an off-screen preview without committing the draft.
@@ -85,7 +92,7 @@ end
 function APR:SetupFrameDrag() end
 function APR:PrintInfo() end
 dofile("APR-Core/utils/Utils.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/panels/LayoutEditor.lua")
@@ -109,7 +116,7 @@ preview.left, preview.top = 2000, -100
 anchor.scripts.OnEvent(anchor, "UI_SCALE_CHANGED")
 assert(preview.point[4] == 1432 and preview.point[5] == -774)
 editor:Hide()
-assert(profile.arrowleft == 1432 and profile.arrowtop == -774)
+assert(profile.arrowleft == 3000 and profile.arrowtop == -2000)
 profile.arrowleft, profile.arrowtop = 3000, -2000
 editor:Show()
 preview:SetScale(1.5)

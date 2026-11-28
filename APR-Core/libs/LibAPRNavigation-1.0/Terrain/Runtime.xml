@@ -1,0 +1,7 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Namespace.lua"/>
+    <Script file="Costs.lua"/>
+    <Script file="PathGrid.lua"/>
+    <Script file="Path.lua"/>
+    <Script file="Partitions.lua"/>
+</Ui>

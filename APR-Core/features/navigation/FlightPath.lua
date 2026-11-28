@@ -4,6 +4,8 @@ local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yi
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Live offers are checked before payment. Guidance never advances route indices.
+local Constants = APR.NavigationConstants.FlightPath
+
 APR.flightPath = APR:NewModule("FlightPath")
 local flight = APR.flightPath
 flight.CurrentTaxiNode, flight.StepTaxiNode, flight.unavailableNodes = {}, {}, {}
@@ -40,7 +42,9 @@ flight.eventFrame:SetScript(
                 if node.state == Enum.FlightPathState.Current then flight.CurrentTaxiNode = node end
                 if step and (step.toNodeID or step.NodeID) == node.nodeID then flight.StepTaxiNode = node end
             end
-            if generated and guidance.kind == "verify_taxi" and APR.taxiData.MarkProbeAttempt then
+            if generated and guidance.kind == "verify_taxi" and not guidance.discoverTaxiNode and APR.taxiData.MarkProbeAttempt
+                and flight.CurrentTaxiNode.nodeID == guidance.fromNodeID
+            then
                 APR.taxiData:MarkProbeAttempt(guidance.fromNodeID, guidance.toNodeID, guidance.contextKey)
             end
             APR.taxiData:ObserveTaxiMap(nodes)
@@ -82,7 +86,7 @@ flight.eventFrame:SetScript(
             end
             local context = APR:CaptureStepContext()
             C_Timer.After(
-                2, --[[APR_DIAG]]
+                Constants.DEPARTURE_CHECK_SECONDS, --[[APR_DIAG]]
                 APRTrace("APR-Core/features/navigation/FlightPath.lua:63:callback#2", --[[/APR_DIAG]] function()
                     if not APR.settings.profile.enableAddon then return end
                     if APR.routeValidationPending or APR.routeValidationFailed then return end

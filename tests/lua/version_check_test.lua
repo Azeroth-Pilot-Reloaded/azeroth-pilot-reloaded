@@ -67,20 +67,25 @@ for _, row in ipairs({
     { "7.2", "7.2.0", false },
     { "7.2.1", "7.2.1", false },
     { "7.2.1", "7.1.99", false },
-    { "7.2.1", "7.2.1-12-gabcdef0", true },
+    { "7.2.1", "7.2.1-12-gabcdef0", false },
+    { "7.2.1", "9.0.0-alpha.1", false },
+    { "7.2.1", "9.0.0-beta.1", false },
     { "7.2.1-9-gabcdef0", "7.2.1-10-g123abcd", true },
     { "7.2.1-10-gabcdef0", "7.2.1-9-g123abcd", false },
     { "7.2.1-10-gabcdef0", "7.2.1-10-g123abcd", false },
+    { "7.2.1-10-gabcdef0", "7.2.1", false },
     { "7.2.1-10-gabcdef0", "7.2.2", true },
     { "7.3.0-alpha.9", "7.3.0-alpha.10", true },
     { "7.3.0-alpha.10", "7.3.0-beta.1", true },
-    { "7.3.0-beta.2", "7.3.0-rc.1", true },
+    { "7.3.0-beta.2", "7.3.0-rc.1", false },
+    { "7.3.0-beta.2", "9.0.0-alpha.1", false },
+    { "7.3.0-beta.2", "7.3.0", true },
     { "7.3.0-rc.1", "7.3.0", true },
     { "7.3.0", "7.3.0-beta.2", false },
     { "7.3.0-alpha", "7.3.0-alpha.1", true },
     { "7.3.0-alpha.1", "7.3.0-alpha", false },
-    { "7.3.0-1", "7.3.0-alpha", true },
-    { "7.3.0-1e3", "7.3.0-999", false }, -- only digit identifiers are numeric
+    { "7.3.0-alpha.1", "7.3.0-alpha.z", true },
+    { "7.3.0-alpha.1e3", "7.3.0-alpha.999", false }, -- only digit identifiers are numeric
     { "7.2.1+abc", "7.2.1+def", false },
     { "7.2.1", "7.2.2+build.12", true },
     { "7.2.1001", "7.3.0", true }, -- no arithmetic component collisions
@@ -136,6 +141,37 @@ check = loadVersion("7.2.1", { versionCheck = 123 })
 assert(#popups == 0 and APRData.versionCheck.retail == "7.2.1", "Repair invalid saved state")
 check = loadVersion("@project-version@", { versionCheck = 123 })
 assert(#popups == 0, "Invalid saved state must also be harmless in a development checkout")
+
+-- Migrate the old mixed cache and keep two candidates for preview installs.
+saved = { versionCheck = { retail = "7.2.1-12-gabcdef0", forever = "8.0.0" } }
+check = loadVersion("7.2.1", saved)
+assert(#popups == 0 and saved.versionCheck.retail == "7.2.1" and saved.versionCheck.forever == "8.0.0")
+check:HandleVersionMessage("9.0.0-beta.1")
+assert(#popups == 0 and saved.versionCheck.retail == "7.2.1" and saved.versionCheck.preview == nil)
+check:HandleVersionMessage("7.2.2")
+assert(#popups == 1 and popups[1]:find("version=7.2.2 ", 1, true))
+
+saved = { versionCheck = { retail = "7.2.1-12-gabcdef0" } }
+check = loadVersion("7.2.1-3-g123abcd", saved)
+assert(#popups == 1 and popups[1]:find("version=7.2.1-12-gabcdef0 ", 1, true))
+assert(saved.versionCheck.retail == nil and saved.versionCheck.preview.retail == "7.2.1-12-gabcdef0")
+check:HandleVersionMessage("9.0.0-beta.1")
+assert(#popups == 1 and saved.versionCheck.preview.retail == "9.0.0-beta.1")
+check:HandleVersionMessage("7.2.2")
+assert(#popups == 2 and popups[2]:find("version=7.2.2 ", 1, true), "A later stable supersedes a preview alert")
+check:HandleVersionMessage("7.2.3")
+assert(#popups == 2 and saved.versionCheck.retail == "7.2.3", "Stable alerts remain once per session")
+check = loadVersion("7.2.1-3-g123abcd", saved)
+assert(#popups == 1 and popups[1]:find("version=7.2.3 ", 1, true), "A known stable is shown first")
+check = loadVersion("7.2.3", saved)
+assert(#popups == 0, "Stable installs ignore a preview cached from a previous install")
+
+check = loadVersion("7.2.1-3-g123abcd")
+grouped = true
+check:HandleVersionMessage("7.2.0")
+assert(#sent == 0, "A preview does not reply to a stable peer with its own version")
+check:HandleVersionMessage("7.2.1-1-gabcdef0")
+assert(#sent == 1 and sent[1].message == "7.2.1-3-g123abcd", "Previews still reply to older previews")
 
 -- Reply to downgraded peers even after warning locally or opting out of popups.
 check = loadVersion("7.2.2", nil, false)

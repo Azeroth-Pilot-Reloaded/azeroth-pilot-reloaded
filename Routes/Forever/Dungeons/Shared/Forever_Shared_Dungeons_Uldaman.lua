@@ -422,6 +422,201 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             _index = 36,
         },
         {
+            PickUp = { 1104 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.06, 77.13),
+            RaidIcon = { {
+                npcID = 4454,
+                questID = 1104,
+            } },
+            MinLevel = 28,
+            Zone = 1441,
+            _index = 37,
+        },
+        {
+            Qpart = { [1104] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 86.57, 68.57),
+            IsQuestOnQuest = 1104,
+            Zone = 1441,
+            _index = 38,
+        },
+        {
+            Done = { 1104 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.06, 77.13),
+            RaidIcon = { {
+                npcID = 4454,
+                questID = 1104,
+            } },
+            IsQuestOnQuest = 1104,
+            Zone = 1441,
+            _index = 39,
+        },
+        {
+            PickUp = { 1105 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.14, 77.12),
+            RaidIcon = { {
+                npcID = 4453,
+                questID = 1105,
+            } },
+            MinLevel = 28,
+            Zone = 1441,
+            _index = 40,
+        },
+        {
+            Qpart = { [1105] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 81.33, 52.68),
+            IsQuestOnQuest = 1105,
+            Zone = 1441,
+            _index = 41,
+        },
+        {
+            Done = { 1105 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.14, 77.12),
+            RaidIcon = { {
+                npcID = 4453,
+                questID = 1105,
+            } },
+            IsQuestOnQuest = 1105,
+            Zone = 1441,
+            _index = 42,
+        },
+        {
+            PickUp = { 1106 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.06, 77.13),
+            RaidIcon = { {
+                npcID = 4454,
+                questID = 1106,
+            } },
+            AllOf = { { IsQuestCompleted = 1104 }, { IsQuestCompleted = 1105 } },
+            MinLevel = 26,
+            Zone = 1441,
+            _index = 43,
+        },
+        {
+            Done = { 1106 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.22, 52.69),
+            RaidIcon = { {
+                npcID = 4618,
+                questID = 1106,
+            } },
+            IsQuestOnQuest = 1106,
+            Zone = 1418,
+            _index = 44,
+        },
+        {
+            PickUp = { 1108 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.22, 52.69),
+            RaidIcon = { {
+                npcID = 4618,
+                questID = 1108,
+            } },
+            AnyOf = { { IsQuestCompleted = 1106 } },
+            MinLevel = 28,
+            Zone = 1418,
+            _index = 45,
+        },
+        {
+            Qpart = { [1108] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 64.17, 42.47),
+            IsQuestOnQuest = 1108,
+            Zone = 1418,
+            _index = 46,
+        },
+        {
+            Done = { 1108 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.22, 52.69),
+            RaidIcon = { {
+                npcID = 4618,
+                questID = 1108,
+            } },
+            IsQuestOnQuest = 1108,
+            Zone = 1418,
+            _index = 47,
+        },
+        {
+            PickUp = { 1137 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.22, 52.69),
+            RaidIcon = { {
+                npcID = 4618,
+                questID = 1137,
+            } },
+            AnyOf = { { IsQuestCompleted = 1108 } },
+            MinLevel = 28,
+            Zone = 1418,
+            _index = 48,
+        },
+        {
+            Done = { 1137 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.06, 77.13),
+            RaidIcon = { {
+                npcID = 4454,
+                questID = 1137,
+            } },
+            IsQuestOnQuest = 1137,
+            Zone = 1441,
+            _index = 49,
+        },
+        {
+            PickUp = { 1190 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 80.18, 75.88),
+            RaidIcon = { {
+                npcID = 4630,
+                questID = 1190,
+            } },
+            AnyOf = { { IsQuestCompleted = 1137 } },
+            MinLevel = 29,
+            Zone = 1441,
+            _index = 50,
+        },
+        {
+            PickUp = { 1191 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 79.81, 77.03),
+            RaidIcon = { {
+                npcID = 4709,
+                questID = 1191,
+            } },
+            IsQuestOnQuest = 1190,
+            MinLevel = 29,
+            Zone = 1441,
+            _index = 51,
+        },
+        {
+            Done = { 1191 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 79.81, 77.03),
+            RaidIcon = { {
+                npcID = 4709,
+                questID = 1191,
+            } },
+            IsQuestOnQuest = 1190,
+            Zone = 1441,
+            _index = 52,
+        },
+        {
+            Done = { 1190 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 77.21, 77.39),
+            IsQuestOnQuest = 1190,
+            Zone = 1441,
+            _index = 53,
+        },
+        {
+            PickUp = { 1194 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 77.21, 77.39),
+            AnyOf = { { IsQuestCompleted = 1190 } },
+            MinLevel = 29,
+            Zone = 1441,
+            _index = 54,
+        },
+        {
+            Done = { 1194 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 80.18, 75.88),
+            RaidIcon = { {
+                npcID = 4630,
+                questID = 1194,
+            } },
+            IsQuestOnQuest = 1194,
+            Zone = 1441,
+            _index = 55,
+        },
+        {
             PickUp = { 1192 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 80.18, 75.88),
             RaidIcon = { {
@@ -431,7 +626,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 1194 } },
             MinLevel = 29,
             Zone = 1441,
-            _index = 37,
+            _index = 56,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_70" },
@@ -439,7 +634,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             Zone = 1418,
-            _index = 38,
+            _index = 57,
         },
         {
             PickUp = { 2278 },
@@ -447,7 +642,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             MinLevel = 40,
-            _index = 39,
+            _index = 58,
         },
         {
             KillNPC = {
@@ -458,7 +653,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 40,
+            _index = 59,
         },
         {
             KillNPC = {
@@ -469,7 +664,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 41,
+            _index = 60,
         },
         {
             KillNPC = {
@@ -480,7 +675,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 42,
+            _index = 61,
         },
         {
             KillNPC = {
@@ -491,7 +686,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 43,
+            _index = 62,
         },
         {
             KillNPC = {
@@ -502,7 +697,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 44,
+            _index = 63,
         },
         {
             KillNPC = {
@@ -513,7 +708,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 45,
+            _index = 64,
         },
         {
             KillNPC = {
@@ -524,7 +719,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 46,
+            _index = 65,
         },
         {
             KillNPC = {
@@ -535,7 +730,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
-            _index = 47,
+            _index = 66,
         },
         {
             Qpart = { [17] = { 1 } },
@@ -543,7 +738,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 17,
-            _index = 48,
+            _index = 67,
         },
         {
             Qpart = { [704] = { 1 } },
@@ -551,7 +746,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 704,
-            _index = 49,
+            _index = 68,
         },
         {
             Qpart = { [709] = { 1 } },
@@ -559,7 +754,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 709,
-            _index = 50,
+            _index = 69,
         },
         {
             Qpart = { [722] = { 1 } },
@@ -567,7 +762,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 722,
-            _index = 51,
+            _index = 70,
         },
         {
             Qpart = { [1360] = { 1 } },
@@ -575,7 +770,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 1360,
-            _index = 52,
+            _index = 71,
         },
         {
             Qpart = { [1956] = { 1 } },
@@ -583,7 +778,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 1956,
-            _index = 53,
+            _index = 72,
         },
         {
             PickUp = { 2198 },
@@ -597,7 +792,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
                 itemID = 7666,
             },
             MinLevel = 37,
-            _index = 54,
+            _index = 73,
         },
         {
             Qpart = { [2202] = { 1 } },
@@ -605,7 +800,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2202,
-            _index = 55,
+            _index = 74,
         },
         {
             Done = { 2398 },
@@ -618,7 +813,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             } },
             Faction = "Alliance",
             IsQuestOnQuest = 2398,
-            _index = 56,
+            _index = 75,
         },
         {
             Qpart = { [2278] = { 1 } },
@@ -626,7 +821,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2278,
-            _index = 57,
+            _index = 76,
         },
         {
             Qpart = { [2283] = { 1 } },
@@ -634,7 +829,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2283,
-            _index = 58,
+            _index = 77,
         },
         {
             Qpart = { [2342] = { 1 } },
@@ -642,7 +837,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2342,
-            _index = 59,
+            _index = 78,
         },
         {
             Qpart = { [2418] = { 1, 2 } },
@@ -650,7 +845,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2418,
-            _index = 60,
+            _index = 79,
         },
         {
             Qpart = { [2198] = { 1 } },
@@ -658,7 +853,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2198,
-            _index = 61,
+            _index = 80,
         },
         {
             PickUp = { 2240 },
@@ -672,7 +867,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2398 } },
             Faction = "Alliance",
             MinLevel = 35,
-            _index = 62,
+            _index = 81,
         },
         {
             Done = { 2278 },
@@ -680,7 +875,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2278,
-            _index = 63,
+            _index = 82,
         },
         {
             Qpart = { [2240] = { 1 } },
@@ -689,7 +884,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2240,
-            _index = 64,
+            _index = 83,
         },
         {
             PickUp = { 2279 },
@@ -699,7 +894,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2278 } },
             Faction = "Alliance",
             MinLevel = 40,
-            _index = 65,
+            _index = 84,
         },
         {
             PickUp = { 2280 },
@@ -709,7 +904,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2278 } },
             Faction = "Horde",
             MinLevel = 40,
-            _index = 66,
+            _index = 85,
         },
         {
             Qpart = { [2279] = { 1 } },
@@ -717,7 +912,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2279,
-            _index = 67,
+            _index = 86,
         },
         {
             Qpart = { [2280] = { 1 } },
@@ -725,13 +920,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2280,
-            _index = 68,
+            _index = 87,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_70" },
             NoArrow = true,
             Dungeon = "INSTANCE_70",
-            _index = 69,
+            _index = 88,
         },
         {
             Done = { 17 },
@@ -743,7 +938,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 17,
             Zone = 1432,
-            _index = 70,
+            _index = 89,
         },
         {
             Done = { 704 },
@@ -755,7 +950,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 704,
             Zone = 1432,
-            _index = 71,
+            _index = 90,
         },
         {
             Done = { 709 },
@@ -766,7 +961,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             } },
             IsQuestOnQuest = 709,
             Zone = 1418,
-            _index = 72,
+            _index = 91,
         },
         {
             Done = { 722 },
@@ -778,7 +973,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 722,
             Zone = 1418,
-            _index = 73,
+            _index = 92,
         },
         {
             Done = { 1360 },
@@ -790,7 +985,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 1360,
             Zone = 1455,
-            _index = 74,
+            _index = 93,
         },
         {
             Done = { 1956 },
@@ -802,7 +997,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Class = { "MAGE" },
             IsQuestOnQuest = 1956,
             Zone = 1445,
-            _index = 75,
+            _index = 94,
         },
         {
             Done = { 2198 },
@@ -814,7 +1009,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2198,
             Zone = 1455,
-            _index = 76,
+            _index = 95,
         },
         {
             Done = { 2202 },
@@ -826,7 +1021,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2202,
             Zone = 1418,
-            _index = 77,
+            _index = 96,
         },
         {
             Done = { 2240 },
@@ -838,7 +1033,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2240,
             Zone = 1455,
-            _index = 78,
+            _index = 97,
         },
         {
             Done = { 2279 },
@@ -850,7 +1045,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2279,
             Zone = 1455,
-            _index = 79,
+            _index = 98,
         },
         {
             Done = { 2280 },
@@ -862,7 +1057,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2280,
             Zone = 1456,
-            _index = 80,
+            _index = 99,
         },
         {
             Done = { 2283 },
@@ -874,7 +1069,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2283,
             Zone = 1454,
-            _index = 81,
+            _index = 100,
         },
         {
             Done = { 2342 },
@@ -886,7 +1081,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2342,
             Zone = 1458,
-            _index = 82,
+            _index = 101,
         },
         {
             Done = { 2418 },
@@ -897,7 +1092,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             } },
             IsQuestOnQuest = 2418,
             Zone = 1418,
-            _index = 83,
+            _index = 102,
         },
         {
             PickUp = { 723 },
@@ -910,7 +1105,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1418,
-            _index = 84,
+            _index = 103,
         },
         {
             PickUp = { 1957 },
@@ -923,7 +1118,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Class = { "MAGE" },
             MinLevel = 35,
             Zone = 1445,
-            _index = 85,
+            _index = 104,
         },
         {
             PickUp = { 2199 },
@@ -936,7 +1131,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 37,
             Zone = 1455,
-            _index = 86,
+            _index = 105,
         },
         {
             PickUp = { 2203 },
@@ -949,7 +1144,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 40,
             Zone = 1418,
-            _index = 87,
+            _index = 106,
         },
         {
             PickUp = { 2284 },
@@ -962,7 +1157,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 37,
             Zone = 1454,
-            _index = 88,
+            _index = 107,
         },
         {
             PickUp = { 2439 },
@@ -975,7 +1170,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 40,
             Zone = 1455,
-            _index = 89,
+            _index = 108,
         },
         {
             PickUp = { 2440 },
@@ -988,39 +1183,39 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 40,
             Zone = 1456,
-            _index = 90,
+            _index = 109,
         },
         {
             Qpart = { [723] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 723,
-            _index = 91,
+            _index = 110,
         },
         {
             Qpart = { [1957] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 45.83, 56.94),
             IsQuestOnQuest = 1957,
             Zone = 1445,
-            _index = 92,
+            _index = 111,
         },
         {
             Qpart = { [2203] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 84.68, 55.85),
             IsQuestOnQuest = 2203,
             Zone = 1418,
-            _index = 93,
+            _index = 112,
         },
         {
             Qpart = { [2439] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 2439,
-            _index = 94,
+            _index = 113,
         },
         {
             Qpart = { [2440] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 2440,
-            _index = 95,
+            _index = 114,
         },
         {
             Done = { 723 },
@@ -1032,7 +1227,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 723,
             Zone = 1418,
-            _index = 96,
+            _index = 115,
         },
         {
             Done = { 1957 },
@@ -1044,7 +1239,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Class = { "MAGE" },
             IsQuestOnQuest = 1957,
             Zone = 1445,
-            _index = 97,
+            _index = 116,
         },
         {
             Done = { 2203 },
@@ -1056,7 +1251,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2203,
             Zone = 1418,
-            _index = 98,
+            _index = 117,
         },
         {
             Done = { 2439 },
@@ -1068,7 +1263,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2439,
             Zone = 1455,
-            _index = 99,
+            _index = 118,
         },
         {
             Done = { 2440 },
@@ -1080,7 +1275,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2440,
             Zone = 1456,
-            _index = 100,
+            _index = 119,
         },
         {
             PickUp = { 724 },
@@ -1093,7 +1288,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1418,
-            _index = 101,
+            _index = 120,
         },
         {
             PickUp = { 1958 },
@@ -1106,7 +1301,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Class = { "MAGE" },
             MinLevel = 35,
             Zone = 1445,
-            _index = 102,
+            _index = 121,
         },
         {
             PickUp = { 2963 },
@@ -1119,7 +1314,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 45,
             Zone = 1455,
-            _index = 103,
+            _index = 122,
         },
         {
             PickUp = { 2965 },
@@ -1132,13 +1327,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 45,
             Zone = 1456,
-            _index = 104,
+            _index = 123,
         },
         {
             Qpart = { [724] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 724,
-            _index = 105,
+            _index = 124,
         },
         {
             Done = { 1958 },
@@ -1150,7 +1345,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Class = { "MAGE" },
             IsQuestOnQuest = 1958,
             Zone = 1445,
-            _index = 106,
+            _index = 125,
         },
         {
             Done = { 2963 },
@@ -1162,7 +1357,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2963,
             Zone = 1455,
-            _index = 107,
+            _index = 126,
         },
         {
             Done = { 2965 },
@@ -1174,7 +1369,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2965,
             Zone = 1456,
-            _index = 108,
+            _index = 127,
         },
         {
             Done = { 724 },
@@ -1186,7 +1381,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 724,
             Zone = 1455,
-            _index = 109,
+            _index = 128,
         },
         {
             PickUp = { 2946 },
@@ -1199,7 +1394,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 45,
             Zone = 1455,
-            _index = 110,
+            _index = 129,
         },
         {
             PickUp = { 2966 },
@@ -1212,7 +1407,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 45,
             Zone = 1456,
-            _index = 111,
+            _index = 130,
         },
         {
             PickUp = { 725 },
@@ -1225,25 +1420,25 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1455,
-            _index = 112,
+            _index = 131,
         },
         {
             Qpart = { [2946] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 2946,
-            _index = 113,
+            _index = 132,
         },
         {
             Qpart = { [2966] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 2966,
-            _index = 114,
+            _index = 133,
         },
         {
             Qpart = { [725] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 725,
-            _index = 115,
+            _index = 134,
         },
         {
             Done = { 2946 },
@@ -1251,7 +1446,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2946,
             Zone = 1446,
-            _index = 116,
+            _index = 135,
         },
         {
             Done = { 2966 },
@@ -1259,7 +1454,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2966,
             Zone = 1446,
-            _index = 117,
+            _index = 136,
         },
         {
             Done = { 725 },
@@ -1271,7 +1466,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 725,
             Zone = 1455,
-            _index = 118,
+            _index = 137,
         },
         {
             PickUp = { 2954 },
@@ -1283,7 +1478,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2946 }, { IsQuestCompleted = 2966 } },
             MinLevel = 45,
             Zone = 1446,
-            _index = 119,
+            _index = 138,
         },
         {
             PickUp = { 726 },
@@ -1296,14 +1491,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1455,
-            _index = 120,
+            _index = 139,
         },
         {
             Qpart = { [2954] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.6, 81.4),
             IsQuestOnQuest = 2954,
             Zone = 1446,
-            _index = 121,
+            _index = 140,
         },
         {
             Done = { 726 },
@@ -1315,14 +1510,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 726,
             Zone = 1455,
-            _index = 122,
+            _index = 141,
         },
         {
             Done = { 2954 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.63, 81.4),
             IsQuestOnQuest = 2954,
             Zone = 1446,
-            _index = 123,
+            _index = 142,
         },
         {
             PickUp = { 762 },
@@ -1335,14 +1530,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1455,
-            _index = 124,
+            _index = 143,
         },
         {
             Qpart = { [762] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.1, 28.88),
             IsQuestOnQuest = 762,
             Zone = 1418,
-            _index = 125,
+            _index = 144,
         },
         {
             Done = { 762 },
@@ -1354,7 +1549,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 762,
             Zone = 1455,
-            _index = 126,
+            _index = 145,
         },
         {
             PickUp = { 1139 },
@@ -1367,7 +1562,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 35,
             Zone = 1455,
-            _index = 127,
+            _index = 146,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_70" },
@@ -1375,7 +1570,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             Zone = 1418,
-            _index = 128,
+            _index = 147,
         },
         {
             Qpart = { [1139] = { 1 } },
@@ -1383,7 +1578,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 1139,
-            _index = 129,
+            _index = 148,
         },
         {
             Qpart = { [2199] = { 1 } },
@@ -1391,7 +1586,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2199,
-            _index = 130,
+            _index = 149,
         },
         {
             Done = { 2284 },
@@ -1404,7 +1599,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             } },
             Faction = "Horde",
             IsQuestOnQuest = 2284,
-            _index = 131,
+            _index = 150,
         },
         {
             PickUp = { 2318 },
@@ -1418,13 +1613,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2284 } },
             Faction = "Horde",
             MinLevel = 37,
-            _index = 132,
+            _index = 151,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_70" },
             NoArrow = true,
             Dungeon = "INSTANCE_70",
-            _index = 133,
+            _index = 152,
         },
         {
             Done = { 1139 },
@@ -1436,7 +1631,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 1139,
             Zone = 1455,
-            _index = 134,
+            _index = 153,
         },
         {
             Done = { 2199 },
@@ -1448,7 +1643,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2199,
             Zone = 1455,
-            _index = 135,
+            _index = 154,
         },
         {
             Done = { 2318 },
@@ -1460,7 +1655,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2318,
             Zone = 1418,
-            _index = 136,
+            _index = 155,
         },
         {
             PickUp = { 2200 },
@@ -1473,7 +1668,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 37,
             Zone = 1455,
-            _index = 137,
+            _index = 156,
         },
         {
             PickUp = { 2338 },
@@ -1486,7 +1681,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 37,
             Zone = 1418,
-            _index = 138,
+            _index = 157,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_70" },
@@ -1494,7 +1689,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             Zone = 1418,
-            _index = 139,
+            _index = 158,
         },
         {
             Done = { 2200 },
@@ -1507,7 +1702,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             } },
             Faction = "Alliance",
             IsQuestOnQuest = 2200,
-            _index = 140,
+            _index = 159,
         },
         {
             Qpart = { [2338] = { 1 } },
@@ -1515,7 +1710,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2338,
-            _index = 141,
+            _index = 160,
         },
         {
             PickUp = { 2201 },
@@ -1529,7 +1724,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2200 } },
             Faction = "Alliance",
             MinLevel = 37,
-            _index = 142,
+            _index = 161,
         },
         {
             Qpart = { [2201] = { 1, 2, 3 } },
@@ -1537,7 +1732,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2201,
-            _index = 143,
+            _index = 162,
         },
         {
             Done = { 2201 },
@@ -1546,7 +1741,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 2201,
-            _index = 144,
+            _index = 163,
         },
         {
             PickUp = { 2204 },
@@ -1556,7 +1751,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             AnyOf = { { IsQuestCompleted = 2201 } },
             Faction = "Alliance",
             MinLevel = 37,
-            _index = 145,
+            _index = 164,
         },
         {
             Qpart = { [2204] = { 1 } },
@@ -1564,13 +1759,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2204,
-            _index = 146,
+            _index = 165,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_70" },
             NoArrow = true,
             Dungeon = "INSTANCE_70",
-            _index = 147,
+            _index = 166,
         },
         {
             Done = { 2204 },
@@ -1582,7 +1777,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2204,
             Zone = 1455,
-            _index = 148,
+            _index = 167,
         },
         {
             Done = { 2338 },
@@ -1594,7 +1789,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2338,
             Zone = 1418,
-            _index = 149,
+            _index = 168,
         },
         {
             PickUp = { 3375 },
@@ -1607,7 +1802,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 37,
             Zone = 1455,
-            _index = 150,
+            _index = 169,
         },
         {
             PickUp = { 2339 },
@@ -1620,7 +1815,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 37,
             Zone = 1418,
-            _index = 151,
+            _index = 170,
         },
         {
             PickUp = { 2361 },
@@ -1633,7 +1828,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             MinLevel = 37,
             Zone = 1455,
-            _index = 152,
+            _index = 171,
         },
         {
             Done = { 2361 },
@@ -1645,7 +1840,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 2361,
             Zone = 1455,
-            _index = 153,
+            _index = 172,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_70" },
@@ -1653,7 +1848,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             Zone = 1418,
-            _index = 154,
+            _index = 173,
         },
         {
             Qpart = { [2339] = { 1, 2, 3, 4 } },
@@ -1661,7 +1856,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2339,
-            _index = 155,
+            _index = 174,
         },
         {
             Qpart = { [3375] = { 1, 2, 3 } },
@@ -1669,13 +1864,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 3375,
-            _index = 156,
+            _index = 175,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_70" },
             NoArrow = true,
             Dungeon = "INSTANCE_70",
-            _index = 157,
+            _index = 176,
         },
         {
             Done = { 2339 },
@@ -1687,7 +1882,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2339,
             Zone = 1418,
-            _index = 158,
+            _index = 177,
         },
         {
             Done = { 3375 },
@@ -1699,7 +1894,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 3375,
             Zone = 1455,
-            _index = 159,
+            _index = 178,
         },
         {
             PickUp = { 2340 },
@@ -1712,7 +1907,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 37,
             Zone = 1418,
-            _index = 160,
+            _index = 179,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_70" },
@@ -1720,7 +1915,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             Zone = 1418,
-            _index = 161,
+            _index = 180,
         },
         {
             Qpart = { [2340] = { 1 } },
@@ -1728,7 +1923,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Dungeon = "INSTANCE_70",
             InstanceQuest = true,
             IsQuestOnQuest = 2340,
-            _index = 162,
+            _index = 181,
         },
         {
             Qpart = { [1192] = { 1 } },
@@ -1737,13 +1932,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 1192,
             MinLevel = 29,
-            _index = 163,
+            _index = 182,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_70" },
             NoArrow = true,
             Dungeon = "INSTANCE_70",
-            _index = 164,
+            _index = 183,
         },
         {
             Done = { 2340 },
@@ -1755,7 +1950,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2340,
             Zone = 1454,
-            _index = 165,
+            _index = 184,
         },
         {
             PickUp = { 2341 },
@@ -1768,7 +1963,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             MinLevel = 40,
             Zone = 1454,
-            _index = 166,
+            _index = 185,
         },
         {
             Done = { 2341 },
@@ -1780,7 +1975,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             Faction = "Horde",
             IsQuestOnQuest = 2341,
             Zone = 1418,
-            _index = 167,
+            _index = 186,
         },
         {
             Done = { 1192 },
@@ -1792,11 +1987,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
             IsQuestOnQuest = 1192,
             MinLevel = 29,
             Zone = 1441,
-            _index = 168,
+            _index = 187,
         },
         {
             RouteCompleted = true,
-            _index = 169,
+            _index = 188,
         },
     },
 }

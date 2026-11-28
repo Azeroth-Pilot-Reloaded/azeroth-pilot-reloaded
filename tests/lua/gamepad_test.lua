@@ -77,8 +77,8 @@ end
 
 -- Old clients have no native navigation. Loading, bindings and normal windows still work.
 InputUtil, GamepadMode, SmartNavigation = nil, nil, nil
-dofile("APR-Core/integrations/Gamepad.lua")
-dofile("APR-Core/integrations/GamepadNavigation.lua")
+dofile("APR-Core/integrations/gamepad/Gamepad.lua")
+dofile("APR-Core/integrations/gamepad/GamepadNavigation.lua")
 local pad = APR.Gamepad
 local events = created[#created]
 local window = CreateFrame("Frame", nil, UIParent)

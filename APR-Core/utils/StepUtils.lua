@@ -8,6 +8,8 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local MANUAL_SKIP_SCAN_LIMIT = 100
+
 -- Primary and secondary keys that identify the main action for a step.
 -- Keeping them here ensures other modules can reason about step intent without re-declaring lists.
 APR.mainStepOptions = {
@@ -75,6 +77,52 @@ APR.secondaryStepOptions = {
     "MountVehicle",
     "VehicleExit",
 }
+
+-- Keep only translation keys here: labels and client globals remain live reads.
+-- Waypoint lookahead can visit many steps, so do not rebuild all labels per step.
+local stepTextLocaleKeys = {
+    BuyMerchant = "BUY",
+    Done = "TURN_IN_Q",
+    DoneDB = "TURN_IN_Q",
+    DoScenario = "SCENARIO",
+    DropQuest = "Q_DROP",
+    EnterScenario = "SCENARIO",
+    ExitTutorial = "SKIP_TUTORIAL",
+    GetFP = "GET_FLIGHTPATH",
+    GossipOptionIDs = "TALK_NPC",
+    Grind = "GRIND",
+    Group = "GROUP_Q",
+    GroupTask = "GROUP_QUEST_TASK",
+    LeaveQuest = "LEAVE_QUEST",
+    LeaveQuests = "LEAVE_QUEST",
+    ChromiePick = "SWITCH_TO_CHROMIE",
+    ResetRoute = "RESET_ROUTE",
+    MountVehicle = "MOUNT_VEHICLE",
+    VehicleExit = "LEAVE_VEHICLE",
+    LearnProfession = "LEARN_PROFESSION",
+    LeaveInstance = "LEAVE_INSTANCE",
+    LeaveScenario = "SCENARIO",
+    LootItems = "LOOT_ITEM",
+    PickUp = "PICK_UP_Q",
+    PickUpDB = "PICK_UP_Q",
+    Qpart = "Q_PART",
+    QpartDB = "Q_PART",
+    QpartPart = "Q_PART",
+    RouteCompleted = "ROUTE_COMPLETED",
+    Scenario = "SCENARIO",
+    SetHS = "SET_HEARTHSTONE",
+    Treasure = "GET_TREASURE",
+    TakePortal = "USE_PORTAL",
+    UseDalaHS = "USE_DALARAN_HEARTHSTONE",
+    UseFlightPath = "USE_FLIGHTPATH",
+    UseGarrisonHS = "USE_GARRISON_HEARTHSTONE",
+    UseHS = "USE_HEARTHSTONE",
+    UseItem = "USE_ITEM",
+    UseSpell = "USE_SPELL",
+    WarMode = "TURN_ON_WARMODE",
+    Waypoint = "RUN_WAYPOINT",
+}
+local waypointStepOptions = { "Waypoint" }
 
 -- Flights with an arrival trigger poll destination completion like other transports.
 -- Flight steps without a trigger retain their legacy departure/quest behavior.
@@ -272,65 +320,20 @@ end--[[APR_DIAG]]
 APR.GetDropQuestStepText =
     APRTrace("APR-Core/utils/StepUtils.lua:187:APR:GetDropQuestStepText#8", APR.GetDropQuestStepText)--[[/APR_DIAG]]
 
--- Keep only translation keys here: labels and client globals remain live reads.
--- Waypoint lookahead can visit many steps, so do not rebuild all labels per step.
-local stepTextLocaleKeys = {
-    BuyMerchant = "BUY",
-    Done = "TURN_IN_Q",
-    DoneDB = "TURN_IN_Q",
-    DoScenario = "SCENARIO",
-    DropQuest = "Q_DROP",
-    EnterScenario = "SCENARIO",
-    ExitTutorial = "SKIP_TUTORIAL",
-    GetFP = "GET_FLIGHTPATH",
-    GossipOptionIDs = "TALK_NPC",
-    Grind = "GRIND",
-    Group = "GROUP_Q",
-    GroupTask = "GROUP_QUEST_TASK",
-    LeaveQuest = "LEAVE_QUEST",
-    LeaveQuests = "LEAVE_QUEST",
-    ChromiePick = "SWITCH_TO_CHROMIE",
-    ResetRoute = "RESET_ROUTE",
-    MountVehicle = "MOUNT_VEHICLE",
-    VehicleExit = "LEAVE_VEHICLE",
-    LearnProfession = "LEARN_PROFESSION",
-    LeaveInstance = "LEAVE_INSTANCE",
-    LeaveScenario = "SCENARIO",
-    LootItems = "LOOT_ITEM",
-    PickUp = "PICK_UP_Q",
-    PickUpDB = "PICK_UP_Q",
-    Qpart = "Q_PART",
-    QpartDB = "Q_PART",
-    QpartPart = "Q_PART",
-    RouteCompleted = "ROUTE_COMPLETED",
-    Scenario = "SCENARIO",
-    SetHS = "SET_HEARTHSTONE",
-    Treasure = "GET_TREASURE",
-    TakePortal = "USE_PORTAL",
-    UseDalaHS = "USE_DALARAN_HEARTHSTONE",
-    UseFlightPath = "USE_FLIGHTPATH",
-    UseGarrisonHS = "USE_GARRISON_HEARTHSTONE",
-    UseHS = "USE_HEARTHSTONE",
-    UseItem = "USE_ITEM",
-    UseSpell = "USE_SPELL",
-    WarMode = "TURN_ON_WARMODE",
-    Waypoint = "RUN_WAYPOINT",
-}
-local waypointStepOptions = { "Waypoint" }
-
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
 -- skipNote lets waypoint summaries prefer destination actions over notes.
 function APR:GetStepString(step, skipNote, nextStep)
+    if not step then return "" end
     if self:IsTransportStep(step) then return self:GetTransportStepText(step) end
-    if step and step.LootMoney then
+    if step.LootMoney then
         return self:GetLootMoneyStepText(step.LootMoney), "LootMoney"
     end
     for _, key in ipairs(self.routeActionKeys or {}) do
-        if step and step[key] then return self:GetRouteActionText(key, step[key]), key end
+        if step[key] then return self:GetRouteActionText(key, step[key]), key end
     end
-    if step and step.SkillGoal then return self:GetSkillGoalStepText(step.SkillGoal), "SkillGoal" end
-    if not skipNote and step and step.Note then
+    if step.SkillGoal then return self:GetSkillGoalStepText(step.SkillGoal), "SkillGoal" end
+    if not skipNote and step.Note then
         local noteValue = step.Note
         if type(noteValue) == "table" then
             noteValue = noteValue[1]
@@ -349,10 +352,10 @@ function APR:GetStepString(step, skipNote, nextStep)
         return "Note", "Note"
     end
 
-    if step and step.Reputation then
+    if step.Reputation then
         return self:GetReputationStepText(step.Reputation), "Reputation"
     end
-    if step and step.Emote then
+    if step.Emote then
         return string.format(L["PERFORM_EMOTE"], step.Emote.emote), "Emote"
     end
 
@@ -437,9 +440,9 @@ APR.GetSkillGoalStepText = APRTrace("APR-Core/utils/StepUtils.lua:414:APR:GetSki
 function APR:GetLootItemsStepText(items)
     local names = {}
     for _, item in ipairs(items) do
-        names[#names + 1] = C_Item.GetItemInfo(item.itemID) or UNKNOWN
+        names[#names + 1] = string.format(L["LOOT_ITEM"], C_Item.GetItemInfo(item.itemID) or UNKNOWN)
     end
-    return string.format(L["LOOT_ITEM"], table.concat(names, ", "))
+    return table.concat(names, "\n")
 end--[[APR_DIAG]]
 APR.GetLootItemsStepText =
     APRTrace("APR-Core/utils/StepUtils.lua:334:APR:GetLootItemsStepText#10", APR.GetLootItemsStepText)--[[/APR_DIAG]]
@@ -757,7 +760,7 @@ function APR:SkipQuestStep()
         end
 
         tries = tries + 1
-        if tries > 100 then
+        if tries > MANUAL_SKIP_SCAN_LIMIT then
             break
         end
     end

@@ -11,7 +11,7 @@ local function near(actual, expected, message)
     )
 end
 
-local function fixture()
+local function fixture(interface)
     local t = {
         completed = {},
         timers = {},
@@ -50,13 +50,8 @@ local function fixture()
     local aceLocale = LibStub:NewLibrary("AceLocale-3.0", 1)
     function aceLocale:GetLocale() return locale end
     local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-    local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
-    local xml = manifest:read("*a")
-    manifest:close()
-    for path in xml:gmatch('file="([^"]+)"') do
-        dofile(root .. path)
-    end
-    function GetBuildInfo() return "12.1.0", "1", "", 120100 end
+    dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml")
+    function GetBuildInfo() return "12.1.0", "1", "", interface or 120100 end
     function GetLocale() return "enUS" end
     function GetTime() return 10 end
     function UnitIsDeadOrGhost() return t.dead end
@@ -313,11 +308,78 @@ local function fixture()
 end
 
 local failures, count = {}, 0
-local function scenario(name, body)
+local function scenario(name, body, interface)
     count = count + 1
-    local ok, message = xpcall(function() body(fixture()) end, debug.traceback)
+    local ok, message = xpcall(function() body(fixture(interface)) end, debug.traceback)
     if not ok then failures[#failures + 1] = name .. ": " .. tostring(message) end
 end
+
+for profile, interface in pairs({ Retail = 120100, Forever = 16001 }) do
+    scenario(profile .. " keeps the final destination through a replan and transport", function(t)
+        t:WUI()
+        dofile("APR-Core/features/navigation/Navigation.lua")
+        APR.Arrow = { SetArrowActive = function() t:Refresh() end }
+        local nav, context = APR.navigation, APR:CaptureStepContext()
+        local function plan(x, y)
+            nav.destination = { x = y, y = x, uiMapID = 2, instanceID = 0 }
+            nav.state, nav.context, nav._routedStepContext = "planning", context, context
+        end
+        plan(650, 750)
+        t:Refresh()
+        local session = t.session
+        assert(session and session.mapID == 2, "The final destination is published while planning")
+        near(session.x, 0.65)
+        near(session.y, 0.75)
+
+        nav.queue = { t:Guidance("1:1", 300, 400, 1), t:Guidance("1:2", 500, 600, 1) }
+        nav.state, nav.cursor = "guiding", 1
+        t:Refresh()
+        nav.cursor = 2
+        t.position.x, t.position.y = 500, 600
+        t.step.Note = "Changed instruction at the same destination"
+        t:Refresh()
+        APR.stepUpdateRunning = true
+        t:Refresh()
+        APR.stepUpdateRunning = nil
+        nav:Cancel("transport_arrived")
+        t.position = nil
+        t:Refresh()
+        plan(650, 750)
+        nav:Cancel("replan")
+        plan(650, 750)
+        t.position = { x = 300, y = 400, mapID = 2, instanceID = 0 }
+        t:Refresh()
+        assert(t.session == session and #t.creates == 1 and #t.clears == 0 and t.nativeWrites == 1)
+
+        plan(700, 850)
+        t:Refresh()
+        assert(t.session ~= session and #t.creates == 2 and t.nativeWrites == 2)
+        near(t.session.x, 0.7)
+        near(t.session.y, 0.85)
+        nav:ClearActivePath()
+        t:Refresh()
+        assert(not t.session and #t.clears == 1 and #t.creates == 2)
+    end, interface)
+end
+
+scenario("a selected map destination publishes with no active guide or computed path", function(t)
+    t:WUI()
+    APR.ActiveRoute = nil
+    local step = { _mapWaypoint = true, target = { x = 800, y = 600, uiMapID = 11, instanceID = 11 } }
+    APR.Services = {
+        active = true,
+        GetStep = function() return step end,
+        GetLabel = function() return "Selected destination" end,
+    }
+    t:Refresh()
+    assert(t.session and t.session.mapID == 11 and t.session.name == "Selected destination")
+    near(t.session.x, 0.6)
+    near(t.session.y, 0.8)
+    step = nil
+    APR.Services.active = nil
+    t:Refresh()
+    assert(not t.session and #t.clears == 1)
+end)
 
 scenario("optional providers absent", function(t)
     t:Refresh()
@@ -896,6 +958,8 @@ scenario("AWP wraps active and retained navigation instead of authored quest tar
     t.step.Qpart = { [101] = { 1 } }
     APR.navigation.state, APR.navigation.active = "guiding", t:Guidance("7:3", 600, 700, 2)
     APR.navigation.context = APR:CaptureStepContext()
+    APR.navigation._routedStepContext = APR.navigation.context
+    APR.navigation.destination = { x = 900, y = 800, uiMapID = 1, instanceID = 0 }
     t:Refresh()
     local target = t.providers.apr.extractTarget()
     assert(target.mapID == 2 and target.title == "Use the active passage" and target.source == "apr.step#1:7:3")

@@ -93,6 +93,7 @@ Editor.definitions = {
         key = "currentStepFrame",
         label = "CURRENT_STEP",
         linked = "currentStepAttachFrameToQuestLog",
+        scaleKey = "currentStepScale",
         width = 300,
         height = 90,
     },
@@ -101,6 +102,8 @@ Editor.definitions = {
         key = "fillersFrame",
         label = "STEP_FILLERS",
         linked = "fillersFrameSnapToCurrentStep",
+        scaleKey = "currentStepScale",
+        defaultY = -100,
         width = 300,
         height = 70,
     },
@@ -109,6 +112,7 @@ Editor.definitions = {
         key = "afkFrame",
         label = "AFK",
         linked = "afkSnapToCurrentStep",
+        defaultY = 150,
         width = 300,
         height = 20,
     },
@@ -117,10 +121,18 @@ Editor.definitions = {
         key = "questOrderListFrame",
         label = "QUEST_ORDER_LIST",
         linked = "questOrderListSnapToCurrentStep",
+        scaleKey = "questOrderListScale",
         width = 300,
         height = 220,
     },
-    { frame = "PartyScreenPanel", key = "groupFrame", label = "GROUP", width = 230, height = 100 },
+    {
+        frame = "PartyScreenPanel",
+        key = "groupFrame",
+        label = "GROUP",
+        scaleKey = "groupScale",
+        width = 230,
+        height = 100,
+    },
     {
         frame = "CoordinateScreenPanel",
         key = "coordinateFrame",
@@ -133,6 +145,60 @@ Editor.definitions = {
     { frame = "HeirloomPanel", key = "heirloomFrame", label = "HEIRLOOM", width = 230, height = 60 },
     { key = "arrow", label = "SHOW_ARROW", arrow = true, width = 100, height = 90 },
 }
+
+local positionEvents = CreateFrame("Frame")
+positionEvents:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+function Editor:RestoreProfilePositions()
+    if InCombatLockdown() then
+        positionEvents:RegisterEvent("PLAYER_REGEN_ENABLED")
+        return
+    end
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+
+    for _, definition in ipairs(self.definitions) do
+        if definition.arrow then
+            if APR.Arrow then APR.Arrow:RestorePosition() end
+        else
+            local target = _G[definition.frame]
+            if target then
+                local saved = profile[definition.key] or {}
+                profile[definition.key] = saved
+                -- AceDB can replace the window's settings table on switch, copy or reset.
+                Window.RegisterConfig(target, saved)
+                if not (definition.linked and profile[definition.linked]) then
+                    if not saved.scale then
+                        local scale = definition.scaleKey and profile[definition.scaleKey] or 1
+                        if target:GetScale() ~= scale then target:SetScale(scale) end
+                    end
+                    if definition.defaultY and (saved.x == nil or saved.y == nil) then
+                        target:ClearAllPoints()
+                        target:SetPoint("CENTER", UIParent, "CENTER", 0, definition.defaultY)
+                    else
+                        Window.RestorePosition(target)
+                    end
+                end
+            end
+        end
+    end
+    if APR.currentStep and APR.currentStep.RefreshCurrentStepFrameAnchor then
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end
+end--[[APR_DIAG]]
+Editor.RestoreProfilePositions = APRTrace(
+    "APR-Core/ui/panels/LayoutEditor.lua:152:Editor:RestoreProfilePositions#6",
+    Editor.RestoreProfilePositions
+)--[[/APR_DIAG]]
+
+positionEvents:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/panels/LayoutEditor.lua:197:callback#7", --[[/APR_DIAG]] function(self, event)
+        self:UnregisterEvent(event)
+        -- Old native layout-cache entries can load after the panels are initialized.
+        Editor:RestoreProfilePositions()
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 function Editor:Hide(reopenSettings)
     local returnToSettings = self.returnToSettings
@@ -170,18 +236,16 @@ function Editor:Save()
                 -- Save a top-left reference: a preview can be taller than the live
                 -- panel (empty rows, inactive timer), so bottom/center anchors drift.
                 local scale = preview:GetScale()
-                preview.position.x = preview:GetLeft() * scale
-                preview.position.y = preview:GetTop() * scale - UIParent:GetHeight()
-                preview.position.point, preview.position.scale = "TOPLEFT", scale
-                local saved = self.profile[definition.key] or {}
-                self.profile[definition.key] = saved
-                -- LibWindow and the gameplay panel retain this table, so update it in place.
-                for key, value in pairs(preview.position) do
-                    saved[key] = value
-                end
-                if target then
-                    Window.RegisterConfig(target, saved)
-                    Window.RestorePosition(target)
+                local left, top = preview:GetLeft(), preview:GetTop()
+                if left and top then
+                    local saved = self.profile[definition.key] or {}
+                    self.profile[definition.key] = saved
+                    saved.x, saved.y = left * scale, top * scale - UIParent:GetHeight()
+                    saved.point, saved.scale = "TOPLEFT", scale
+                    if target then
+                        Window.RegisterConfig(target, saved)
+                        Window.RestorePosition(target)
+                    end
                 end
             end
         end
@@ -641,8 +705,7 @@ function Editor:Show()
         local preview = self.previews[index] or self:CreatePreview(definition)
         self.previews[index] = preview
         preview.index = index
-        preview.target, preview.changed, preview.position = target, false, {}
-        Window.RegisterConfig(preview, preview.position)
+        preview.target, preview.changed = target, false
         preview:SetScale(target and target:GetScale() or 1)
         local width, height = target and target:GetWidth(), target and target:GetHeight()
         if index == 1 and APR.currentStep.GetContentHeight then height = APR.currentStep:GetContentHeight(false) end
@@ -657,14 +720,17 @@ function Editor:Show()
             height and height > 1 and height or definition.height
         )
         preview:ClearAllPoints()
+        local saved = self.profile[definition.key]
+        local linked = definition.linked and self.profile[definition.linked]
+        -- A hidden window may still have its initial anchor rather than its saved placement.
+        local useTarget = target and (target:IsShown() or linked or not (saved and saved.point))
         if definition.arrow and APR.Arrow then
             APR.Arrow:PlacePreview(preview)
-        elseif target and target:GetLeft() and target:GetTop() then
+        elseif useTarget and target:GetLeft() and target:GetTop() then
             -- A stationary screen anchor keeps live quest updates from shifting the draft.
             preview:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", target:GetLeft(), target:GetTop())
-        elseif self.profile[definition.key] and self.profile[definition.key].point then
-            preview.position = APR:DeepCopyTable(self.profile[definition.key])
-            Window.RegisterConfig(preview, preview.position)
+        elseif saved and saved.point then
+            Window.RegisterConfig(preview, APR:DeepCopyTable(saved))
             Window.RestorePosition(preview)
         else
             preview:SetPoint(

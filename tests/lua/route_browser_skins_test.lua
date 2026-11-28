@@ -85,7 +85,7 @@ for _, provider in ipairs({ "ElvUI", "EllesmereUI" }) do
                 UpdateMedia = function() end,
             }
             ElvUI = { E }
-            dofile("APR-Core/integrations/ElvUISkin.lua")
+            dofile("APR-Core/integrations/appearance/ElvUISkin.lua")
             enable = function() APR.ElvUISkin:OnEnable() end
             recolor = function() E:UpdateMedia() end
         else
@@ -107,7 +107,7 @@ for _, provider in ipairs({ "ElvUI", "EllesmereUI" }) do
             end
             function S.Font(font) font:SetFont("eui.ttf", font.fontSize or 12, "OUTLINE") end
             function S.FadeRegions(frame) frame:StripTextures() end
-            dofile("APR-Core/integrations/EllesmereUISkin.lua")
+            dofile("APR-Core/integrations/appearance/EllesmereUISkin.lua")
             enable = function() callback(S) end
             recolor = function() looksChanged() end
         end

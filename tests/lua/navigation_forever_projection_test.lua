@@ -1,6 +1,10 @@
 local ui = dofile("tests/lua/route_ui_test_env.lua")
 local fixture = dofile("tests/lua/navigation_forever_fixture.lua")
 fixture:Load()
+local nativeWorldPosition = C_Map.GetWorldPosFromMapPos
+function C_Map.GetWorldPosFromMapPos(map, pos)
+    if map ~= 947 then return nativeWorldPosition(map, pos) end
+end
 local translations, projections, ready = 0, 0, true
 local hbd = {
     GetZoneCoordinatesFromWorldInstance = function(_, x, y, instance, map)
@@ -9,6 +13,7 @@ local hbd = {
     end,
     TranslateZoneCoordinates = function(_, x, y, source, target)
         translations = translations + 1
+        if ready and source == 1415 and target == 947 then return 0.5 + x * 0.4, 0.1 + y * 0.7 end
         if ready then return 0.1 + x * 0.25, 0.2 + y * 0.5 end
     end,
 }
@@ -78,8 +83,9 @@ WorldMapFrame:SetSize(1000, 800)
 Minimap:SetSize(200, 200)
 WorldMapFrame:Show()
 Minimap:Show()
+local shownMap = 1415
 function WorldMapFrame:GetCanvas() return self end
-function WorldMapFrame:GetMapID() return 1415 end
+function WorldMapFrame:GetMapID() return shownMap end
 function Minimap:GetZoom() return 0 end
 function ui.methods:CreateAnimationGroup() return ui.widget() end
 function ui.methods:CreateAnimation() return ui.widget() end
@@ -134,6 +140,16 @@ assert(
     projections - beforeProjections <= 200 and translations == beforeTranslations,
     "Forever moving redraws reproject only the player and never expire stable parent transforms"
 )
+shownMap = 947
+tick()
+local line = APR.map.worldSegments[1]
+assert(line.line:IsShown() and line.cap:IsShown(), "Forever shows the route on the world without native rectangles")
+assert(math.abs(line.bx - 562) < 1e-10 and math.abs(line.by - -222.8) < 1e-10,
+    "Forever places the route on the world using the continent's artwork coordinates")
+beforeTranslations = translations
+fixture.player.x = fixture.player.x + 1
+tick()
+assert(translations == beforeTranslations, "Movement reuses the affine transform to the world map")
 Minimap:SetSize(240, 240)
 tick()
 assert(APR.map.minimapSegments[1].line:IsShown())

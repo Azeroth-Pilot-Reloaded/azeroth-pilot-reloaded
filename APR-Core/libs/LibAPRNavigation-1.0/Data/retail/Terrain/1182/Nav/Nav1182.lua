@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[1182]={["area"]={},["areaNames"]={[65969]="Congrégation des âmes",[65970]="Nef du Repos éternel",[65971]="Nef du Repos éternel",[66810]="",[66900]="Transept ouest",[66918]="",[66959]="",[72995]="Transept est",[74010]="",[74012]="",[76179]="",[76181]="",[76247]="",[76249]="",[77463]="",[77465]=""},["areaParents"]={[65969]=0,[65970]=0,[65971]=0,[66810]=0,[66900]=0,[66918]=0,[66959]=0,[72995]=0,[74010]=0,[74012]=0,[76179]=0,[76181]=0,[76247]=0,[76249]=0,[77463]=0,[77465]=0},["cells"]=128,["class"]={},["counts"]={["area"]=5,["class"]=5,["floor"]=8,["graph"]=12,["grid"]=12,["height"]=12},["cx0"]=1,["cy0"]=4,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["heightDigits"]=3,["hubs"]={},["nx"]=4,["ny"]=3,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

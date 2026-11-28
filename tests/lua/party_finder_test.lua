@@ -36,6 +36,25 @@ assert(finder:GetCount() == 1, "A response received after its query expired is s
 env:Advance(110)
 assert(finder:GetCount() == 0 and env:ActiveTimers() == 0, "Results expire and leave no permanent cleanup ticker")
 
+-- A visible idle character ignores incomplete regional names and its own echo.
+env = Fixture.New({ regional = true, playerName = "Local" })
+finder = env.finder
+assert(finder.playerKey == "Local Surname")
+env:Receive("Q", env:Query(), "Local")
+env:Receive("Q", env:Query(), "Local Surname")
+env:Receive("Q", env:Query(), "Stranger")
+env:Advance(4)
+assert(not finder.query and #env:Messages("P") == 0 and not next(finder.responses))
+env:Receive("Q", env:Query(), "Local Othername")
+env:Advance(4)
+local regionalReplies = env:Messages("P", "WHISPER")
+assert(#regionalReplies == 1 and regionalReplies[1].target == "Local Othername")
+
+local wire = env.protocol.Encode("Q", env:Query())
+assert(not finder:SendDirect("Q", wire, "Local"))
+assert(not finder:SendDirect("Q", wire, "Local Surname"))
+assert(#env:Messages("Q", "WHISPER") == 0)
+
 -- Visibility controls responses, while manual searches remain available.
 env = Fixture.New({ settings = { visible = false } })
 finder = env.finder

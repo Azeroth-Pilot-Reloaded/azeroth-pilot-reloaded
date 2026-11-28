@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Map.lua" />
+    <Script file="map/MapLines.lua" />
+    <Script file="map/MapPins.lua" />
+    <Script file="map/MapEvents.lua" />
+</Ui>

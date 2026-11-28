@@ -1,4 +1,18 @@
 -- Conditional world access. Two static map artworks do not prove a live phase.
+-- The first point is the continental approach while the active map is unknown.
+local tirisfalObserver = {
+    { space = "map", phaseAgnostic = true, uiMapID = 18, x = 0.6945, y = 0.628 },
+    { space = "map", phaseAgnostic = true, uiMapID = 2070, x = 0.6945, y = 0.628 },
+}
+local uldumObserver = {
+    { space = "map", phaseAgnostic = true, uiMapID = 249, x = 0.56, y = 0.3514 },
+    { space = "map", phaseAgnostic = true, uiMapID = 1527, x = 0.56, y = 0.3514 },
+}
+local valeObserver = {
+    { space = "map", phaseAgnostic = true, uiMapID = 390, x = 0.8052, y = 0.3192 },
+    { space = "map", phaseAgnostic = true, uiMapID = 1530, x = 0.8101, y = 0.2945 },
+}
+
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
     config = {
         PhaseGroups = {
@@ -39,6 +53,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
         MapRequirements = {
             [18] = { phase = { group = "tirisfal", phase = "past" } },
             [90] = { phase = { group = "tirisfal", phase = "past" } },
+            [2070] = { phase = { group = "tirisfal", phase = "present" } },
             [57] = { phase = { group = "darkshore", phase = "past" } },
             [89] = { phase = { group = "darkshore", phase = "past" } },
             [249] = { phase = { group = "uldum", phase = "past" } },
@@ -61,7 +76,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_past",
                     npcID = 141488,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 2070, x = 0.6945, y = 0.628 },
+                    positions = tirisfalObserver,
                     completeWhen = { phase = { group = "tirisfal", phase = "past" } },
                 },
             },
@@ -75,7 +90,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_present",
                     npcID = 141488,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 18, x = 0.6945, y = 0.628 },
+                    positions = tirisfalObserver,
                     completeWhen = { phase = { group = "tirisfal", phase = "present" } },
                 },
             },
@@ -201,7 +216,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_past",
                     npcID = 162419,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 1527, x = 0.56, y = 0.3514 },
+                    positions = uldumObserver,
                     completeWhen = { phase = { group = "uldum", phase = "past" } },
                 },
             },
@@ -215,7 +230,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_present",
                     npcID = 162419,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 249, x = 0.56, y = 0.3514 },
+                    positions = uldumObserver,
                     completeWhen = { phase = { group = "uldum", phase = "present" } },
                 },
             },
@@ -229,7 +244,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_past",
                     npcID = 163463,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 1530, x = 0.8101, y = 0.2945 },
+                    positions = valeObserver,
                     completeWhen = { phase = { group = "vale", phase = "past" } },
                 },
             },
@@ -243,7 +258,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
                     kind = "action",
                     actionType = "phase_present",
                     npcID = 163463,
-                    position = { space = "map", phaseAgnostic = true, uiMapID = 390, x = 0.8052, y = 0.3192 },
+                    positions = valeObserver,
                     completeWhen = { phase = { group = "vale", phase = "present" } },
                 },
             },
@@ -314,4 +329,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "availability", {
             requirements = { faction = "Horde" },
         },
     },
-}, 1)
+}, 2)

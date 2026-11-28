@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Include file="Terrain/Runtime.xml" />
+  <Script file="Terrain.lua" />
+  <Include file="Data/forever/Terrain/Terrain.xml" />
+</Ui>

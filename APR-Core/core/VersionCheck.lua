@@ -3,8 +3,8 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
--- Compares packaged releases and remembers the newest installed/observed version.
--- WoW cannot query CurseForge; group and shared-channel peers provide evidence.
+-- Remembers stable releases and test builds separately for each game client.
+-- Peer announcements carry version strings. Publication requires separate verification.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.versionCheck = APR:NewModule("VersionCheck")
@@ -41,7 +41,7 @@ local function ParseVersion(value)
     if cached ~= nil then return cached or nil end
     local str = value:gsub("^[vV]", "")
     local revision = str:match("^[rR]?(%d+)$")
-    if revision then return CacheParsedVersion(value, { kind = "revision", tonumber(revision) }) end
+    if revision then return CacheParsedVersion(value, { kind = "revision", tonumber(revision), preview = false }) end
 
     local build = str:match("%+([%w%.%-]+)$")
     if build then str = str:sub(1, #str - #build - 1) end
@@ -55,6 +55,7 @@ local function ParseVersion(value)
     end
     if not major then return CacheParsedVersion(value) end
     local identifiers
+    local stage
     if prerelease then
         if prerelease:find("..", 1, true) or prerelease:match("^%.") or prerelease:match("%.$") then
             return CacheParsedVersion(value)
@@ -63,22 +64,23 @@ local function ParseVersion(value)
         for identifier in prerelease:gmatch("[^%.]+") do
             identifiers[#identifiers + 1] = identifier
         end
+        stage = prerelease:lower():match("^%a+")
     end
     return CacheParsedVersion(value, {
         kind = "release",
         tonumber(major),
         tonumber(minor),
         tonumber(patch) or 0,
+        preview = prerelease ~= nil or commits ~= nil,
+        alpha = commits ~= nil or stage == "alpha",
         prerelease = identifiers,
         commits = tonumber(commits) or 0,
     })
 end--[[APR_DIAG]]
 ParseVersion = APRTrace("APR-Core/core/VersionCheck.lua:35:ParseVersion#2", ParseVersion)--[[/APR_DIAG]]
 
-local function IsNewerVersion(first, second)
-    if first == second then return false end
-    local a, b = ParseVersion(first), ParseVersion(second)
-    if not a or not b or a.kind ~= b.kind then return false end
+local function IsNewerVersion(a, b)
+    if a == b or not a or not b or a.kind ~= b.kind then return false end
     for index = 1, a.kind == "revision" and 1 or 3 do
         if a[index] ~= b[index] then return a[index] > b[index] end
     end
@@ -107,33 +109,55 @@ end--[[APR_DIAG]]
 IsNewerVersion = APRTrace("APR-Core/core/VersionCheck.lua:64:IsNewerVersion#3", IsNewerVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:RememberVersion(version)
-    if not ParseVersion(version) then return end
+    local installed, candidate = ParseVersion(APR.version), ParseVersion(version)
+    if not installed or not candidate or candidate.kind ~= installed.kind then return end
+    if candidate.preview and not installed.alpha then return end
     APRData.versionCheck = type(APRData.versionCheck) == "table" and APRData.versionCheck or {}
+    local versions = APRData.versionCheck
+    if candidate.preview then
+        versions.preview = type(versions.preview) == "table" and versions.preview or {}
+        versions = versions.preview
+    end
     local client = APR:GetGameVersion()
-    local known = APRData.versionCheck[client]
-    if known == version then return end
-    if not ParseVersion(known) or IsNewerVersion(version, known) then
-        APRData.versionCheck[client] = version
+    local known = ParseVersion(versions[client])
+    if
+        not known
+        or known.kind ~= candidate.kind
+        or known.preview ~= candidate.preview
+        or IsNewerVersion(candidate, known)
+    then
+        versions[client] = version
     end
 end--[[APR_DIAG]]
 APR.versionCheck.RememberVersion =
     APRTrace("APR-Core/core/VersionCheck.lua:94:APR.versionCheck:RememberVersion#4", APR.versionCheck.RememberVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:CheckKnownVersion()
-    if versionAlertShown or not APR.settings.profile.checkForUpdate then return end
+    if versionAlertShown == "stable" or not APR.settings.profile.checkForUpdate then return end
     local versions = APRData.versionCheck
-    local known = type(versions) == "table" and versions[APR:GetGameVersion()]
-    if IsNewerVersion(known, APR.version) then
-        versionAlertShown = true
-        APR.questionDialog:CreateMessagePopup(
-            string.format(
-                L["OUTDATED_VERSION_ALERT"],
-                APR:WrapTextWithAppearanceColor(known, "general", "warning"),
-                RELEASES_URL
-            ),
-            OKAY
-        )
+    local installed = ParseVersion(APR.version)
+    if type(versions) ~= "table" or not installed then return end
+    local client = APR:GetGameVersion()
+    local known = versions[client]
+    local stable = ParseVersion(known)
+    if stable and not stable.preview and IsNewerVersion(stable, installed) then
+        versionAlertShown = "stable"
+    elseif installed.alpha and not versionAlertShown and type(versions.preview) == "table" then
+        known = versions.preview[client]
+        local preview = ParseVersion(known)
+        if not preview or not preview.preview or not IsNewerVersion(preview, installed) then return end
+        versionAlertShown = "preview"
+    else
+        return
     end
+    APR.questionDialog:CreateMessagePopup(
+        string.format(
+            L["OUTDATED_VERSION_ALERT"],
+            APR:WrapTextWithAppearanceColor(known, "general", "warning"),
+            RELEASES_URL
+        ),
+        OKAY
+    )
 end--[[APR_DIAG]]
 APR.versionCheck.CheckKnownVersion = APRTrace(
     "APR-Core/core/VersionCheck.lua:105:APR.versionCheck:CheckKnownVersion#5",
@@ -157,10 +181,11 @@ APR.versionCheck.CheckInterfaceVersion = APRTrace(
 -- Reply only to older clients, including legacy clients using the same prefix.
 -- This lets a downgraded/reloaded player discover already-connected newer peers.
 function APR.versionCheck:HandleVersionMessage(senderVersion)
-    if not ParseVersion(senderVersion) then return end
+    local installed, peer = ParseVersion(APR.version), ParseVersion(senderVersion)
+    if not installed or not peer or peer.kind ~= installed.kind then return end
     self:RememberVersion(senderVersion)
     self:CheckKnownVersion()
-    if IsNewerVersion(APR.version, senderVersion) then self:BroadcastVersion() end
+    if (not installed.preview or peer.alpha) and IsNewerVersion(installed, peer) then self:BroadcastVersion() end
 end--[[APR_DIAG]]
 APR.versionCheck.HandleVersionMessage = APRTrace(
     "APR-Core/core/VersionCheck.lua:128:APR.versionCheck:HandleVersionMessage#7",
@@ -245,10 +270,10 @@ local function Public(value)
 end--[[APR_DIAG]]
 Public = APRTrace("APR-Core/core/VersionCheck.lua:184:Public#13", Public)--[[/APR_DIAG]]
 
-local function SharedEnabled()
-    return APR.settings.profile.enableAddon and APR.settings.profile.checkForUpdate and ParseVersion(APR.version) ~= nil
+local function GetSharedVersion()
+    return APR.settings.profile.enableAddon and APR.settings.profile.checkForUpdate and ParseVersion(APR.version)
 end--[[APR_DIAG]]
-SharedEnabled = APRTrace("APR-Core/core/VersionCheck.lua:188:SharedEnabled#14", SharedEnabled)--[[/APR_DIAG]]
+GetSharedVersion = APRTrace("APR-Core/core/VersionCheck.lua:188:GetSharedVersion#14", GetSharedVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:StopSharedChannel()
     for _, name in ipairs({ "sharedQueryTimer", "sharedResponseTimer" }) do
@@ -271,7 +296,7 @@ APR.versionCheck.StopSharedChannel = APRTrace(
 function APR.versionCheck:SendSharedMessage(kind)
     local transport = APR.CommunicationChannel
     if
-        not SharedEnabled()
+        not GetSharedVersion()
         or not self.sharedStarted
         or not transport
         or not transport:IsReady()
@@ -321,7 +346,7 @@ APR.versionCheck.SendSharedMessage = APRTrace(
 )--[[/APR_DIAG]]
 
 function APR.versionCheck:RefreshSharedChannel()
-    if not SharedEnabled() then
+    if not GetSharedVersion() then
         self:StopSharedChannel()
         return
     end
@@ -356,7 +381,7 @@ APR.versionCheck.RefreshSharedChannel = APRTrace(
 )--[[/APR_DIAG]]
 
 function APR.versionCheck:StartSharedChannel()
-    if self.sharedStarted or not SharedEnabled() then return end
+    if self.sharedStarted or not GetSharedVersion() then return end
     local transport = APR.CommunicationChannel
     if not transport or not transport.Acquire or not transport.GetChannelID or not transport.IsReady then return end
     self.sharedStarted = true
@@ -435,24 +460,29 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
     end
     if self.sharedReceiveCount >= SHARED_RECEIVE_LIMIT then return end
     self.sharedReceiveCount = self.sharedReceiveCount + 1
-    if not SharedEnabled() then
+    local installed = GetSharedVersion()
+    if not installed then
         self:StopSharedChannel()
         return
     end
     local kind, version = message:match("^([QV]):(.+)$")
-    if not kind or not ParseVersion(version) then return end
+    if not kind then return end
+    local peer = ParseVersion(version)
+    if not peer or peer.kind ~= installed.kind then return end
     local senderKey = APR.PartyProtocol.PlayerKey(sender)
     if not senderKey or senderKey == APR.PartyProtocol.PlayerKey(APR.PartyProtocol.LocalName()) then return end
 
     self:RememberVersion(version)
     self:CheckKnownVersion()
-    if IsNewerVersion(version, APR.version) and self.sharedQueryTimer then
+    -- Keep the retry alive after a preview so a stable update can still be found.
+    if not peer.preview and IsNewerVersion(peer, installed) and self.sharedQueryTimer then
         self.sharedQueryTimer:Cancel()
         self.sharedQueryTimer = nil
     end
     -- Stagger responses so one broadcast from an equally new/newer peer can
     -- silence all pending duplicates, even in a very populated APR channel.
-    if not IsNewerVersion(APR.version, version) then
+    local localIsNewer = IsNewerVersion(installed, peer)
+    if not localIsNewer and (installed.preview or not peer.preview) then
         if self.sharedResponseTimer then
             self.sharedResponseTimer:Cancel()
             self.sharedResponseTimer = nil
@@ -460,7 +490,9 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
         if kind == "V" then self.sharedLastResponse = GetTime() end
         return
     end
-    if kind ~= "Q" or self.sharedResponseTimer then return end
+    if not localIsNewer or (installed.preview and not peer.alpha) or kind ~= "Q" or self.sharedResponseTimer then
+        return
+    end
     if self.sharedLastResponse and GetTime() - self.sharedLastResponse < SHARED_RESPONSE_THROTTLE then return end
     self.sharedResponseTimer = C_Timer.NewTimer(
         math.random(5, 15) / 10,
@@ -485,7 +517,7 @@ APR.versionCheck.OnDisable =
     APRTrace("APR-Core/core/VersionCheck.lua:311:APR.versionCheck:OnDisable#23", APR.versionCheck.OnDisable)--[[/APR_DIAG]]
 
 function APR.versionCheck:RefreshSettings()
-    if SharedEnabled() then
+    if GetSharedVersion() then
         self:CheckKnownVersion()
         self:StartSharedChannel()
     else
@@ -497,6 +529,15 @@ APR.versionCheck.RefreshSettings =
     APRTrace("APR-Core/core/VersionCheck.lua:316:APR.versionCheck:RefreshSettings#24", APR.versionCheck.RefreshSettings)--[[/APR_DIAG]]
 
 function APR.versionCheck:OnInit()
+    local versions = APRData.versionCheck
+    local client = APR:GetGameVersion()
+    local previous = type(versions) == "table" and versions[client]
+    local parsed = ParseVersion(previous)
+    -- Older builds stored previews in the same slot as stable releases.
+    if parsed and parsed.preview and ParseVersion(APR.version) then
+        versions[client] = nil
+        self:RememberVersion(previous)
+    end
     self:RememberVersion(APR.version)
     self:CheckKnownVersion()
     self:CheckInterfaceVersion()

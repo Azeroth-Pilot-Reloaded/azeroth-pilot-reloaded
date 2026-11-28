@@ -18,7 +18,7 @@ function APR:RegisterButtonText(button, group, options)
     self:RegisterFontString(button:GetFontString(), group, options)
 end
 UIParent:SetSize(1280, 720)
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")

@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="WorldCoordinateConverter.lua" />
+    <Script file="converter/RouteCoordinateSerialization.lua" />
+    <Script file="converter/RouteCoordinateWindow.lua" />
+</Ui>

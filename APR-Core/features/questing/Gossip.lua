@@ -6,49 +6,13 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Automates route-approved dialogue, with modifier overrides and step-specific NPC rules.
 -- Validated gossip and ETA state are scoped to the current character/step.
 
+local Constants = APR.QuestingConstants.Gossip
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.gossip = APR:NewModule("Gossip")
 
 APR.gossip.counter = 0
-
-local DARKMOON_GOSSIP = {
-    [40007] = true, -- Darkmoon Faire Mystic Mage (Horde)
-    [40457] = true, -- Darkmoon Faire Mystic Mage (Alliance)
-}
-
-local QUEST_GOSSIP = {
-    -- usually only added if they're repeatable
-    [109275] = true, -- Soridormi - begin time rift
-    [120619] = true, -- Big Dig task
-    [120620] = true, -- Big Dig task
-    [120555] = true, -- Awakening The Machine
-    [120733] = true, -- Theater Troupe
-
-    -- Darkmoon Faire
-    [40563] = true, -- whack
-    [28701] = true, -- cannon
-    [31202] = true, -- shoot
-    [39245] = true, -- tonk
-    [40224] = true, -- ring toss
-    [43060] = true, -- firebird
-    [52651] = true, -- dance
-    [41759] = true, -- pet battle 1
-    [42668] = true, -- pet battle 2
-    [40872] = true, -- cannon return (Teleportologist Fozlebub)
-}
-
-local IGNORE_GOSSIP = {
-    -- when we don't want to automate gossip because it's counter-intuitive
-    [122442] = true, -- leave the dungeon in remix
-
-    -- avoid accidental teleports
-    [44733] = true,
-    [125350] = true, -- siren isle
-    [125351] = true, -- siren isle
-    [131324] = true, -- winter veil hillsbrad
-    [131325] = true, -- winter veil hillsbrad
-}
 
 -- To handle gossipOptionID
 if C_GossipInfo and C_GossipInfo.SelectOption and hooksecurefunc then
@@ -104,7 +68,7 @@ local function HandleQuickQuestGossipFallback(profile)
         if info.name and info.name:find("|cFFFF0000") then
             -- Red option (negation/denial) - search anywhere in text
             firstRedOption = firstRedOption or info.gossipOptionID
-        elseif DARKMOON_GOSSIP[info.gossipOptionID] then
+        elseif Constants.DARKMOON_GOSSIP[info.gossipOptionID] then
             -- Only add Darkmoon if payment is enabled
             if profile.autoGossipPayDarkmoonFare then
                 if info.gossipOptionID then
@@ -112,7 +76,7 @@ local function HandleQuickQuestGossipFallback(profile)
                     questOptionCount = questOptionCount + 1
                 end
             end
-        elseif QUEST_GOSSIP[info.gossipOptionID] then
+        elseif Constants.QUEST_GOSSIP[info.gossipOptionID] then
             if info.gossipOptionID then
                 firstQuestOption = firstQuestOption or info.gossipOptionID
                 questOptionCount = questOptionCount + 1
@@ -172,7 +136,7 @@ local function HandleQuickQuestGossipFallback(profile)
         return false
     end
 
-    if IGNORE_GOSSIP[gossip[1].gossipOptionID] then
+    if Constants.IGNORE_GOSSIP[gossip[1].gossipOptionID] then
         return false
     end
 

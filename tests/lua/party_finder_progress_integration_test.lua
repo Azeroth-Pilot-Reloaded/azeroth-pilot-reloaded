@@ -1,12 +1,14 @@
 -- Two isolated players use real route progression, fingerprinting and wire delivery.
+local wrapFeatureLoader = dofile("tests/lua/feature_loader.lua")
+
 local function Player(client, mode)
     local globals = setmetatable({}, { __index = _G })
     globals._G = globals
-    globals.dofile = function(path)
+    globals.dofile = wrapFeatureLoader(function(path)
         local chunk = assert(loadfile(path))
         setfenv(chunk, globals)
         return chunk()
-    end
+    end, globals)
     local env = globals.dofile("tests/lua/party_finder_test_env.lua").New({
         client = client, settings = { matchMode = mode or "nearby" },
     })

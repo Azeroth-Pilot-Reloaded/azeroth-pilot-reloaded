@@ -5,11 +5,13 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Host glue only. LibAPRNavigation owns the catalogue and action progression.
 -- The authored route and its saved cursor never change during an unlock detour.
-APR.NavigationUnlockRevision = 4
+local Constants = APR.NavigationConstants.NavigationUnlocks
+
+APR.NavigationUnlockRevision = Constants.UNLOCK_REVISION
+
 local function Player()
     return APRData and APR.PlayerID and APRData[APR.PlayerID]
-end--[[APR_DIAG]]
-Player = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:9:Player#1", Player)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Player = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:12:Player#1", Player)--[[/APR_DIAG]]
 
 local function Save(self)
     local player, state = Player(), self._navigationUnlock
@@ -22,8 +24,7 @@ local function Save(self)
                 }
             or nil
     end
-end--[[APR_DIAG]]
-Save = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:13:Save#2", Save)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Save = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:16:Save#2", Save)--[[/APR_DIAG]]
 
 -- GetBlockers returns acyclic declarative snapshots. Compare their values so
 -- unchanged waits do not feed Notify's queued step render back into this host.
@@ -39,8 +40,7 @@ local function SameValues(left, right)
         if right[key] == nil then return false end
     end
     return true
-end--[[APR_DIAG]]
-SameValues = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:23:SameValues#3", SameValues)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameValues = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:31:SameValues#3", SameValues)--[[/APR_DIAG]]
 
 local function SameAction(state, action)
     local signature, step = state.signature, state.step
@@ -83,8 +83,7 @@ local function SameAction(state, action)
         if previous[index] ~= indices[index] then return false end
     end
     return true
-end--[[APR_DIAG]]
-SameAction = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:37:SameAction#4", SameAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameAction = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:45:SameAction#4", SameAction)--[[/APR_DIAG]]
 
 function APR:CancelNavigationUnlockSearch()
     local state = self._navigationUnlock
@@ -92,11 +91,7 @@ function APR:CancelNavigationUnlockSearch()
         state.timer:Cancel()
         state.timer = nil
     end
-end--[[APR_DIAG]]
-APR.CancelNavigationUnlockSearch = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:59:APR:CancelNavigationUnlockSearch#5",
-    APR.CancelNavigationUnlockSearch
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelNavigationUnlockSearch = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:88:APR:CancelNavigationUnlockSearch#5", APR.CancelNavigationUnlockSearch)--[[/APR_DIAG]]
 
 function APR:CancelNavigationUnlock()
     self:CancelNavigationUnlockSearch()
@@ -109,19 +104,11 @@ function APR:CancelNavigationUnlock()
     self._navigationUnlock = nil
     if self.navigation then self.navigation.unlockMissingText = nil end
     Save(self)
-end--[[APR_DIAG]]
-APR.CancelNavigationUnlock = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:64:APR:CancelNavigationUnlock#6",
-    APR.CancelNavigationUnlock
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:96:APR:CancelNavigationUnlock#6", APR.CancelNavigationUnlock)--[[/APR_DIAG]]
 
 function APR:GetNavigationUnlockStep()
     return self._navigationUnlock and self._navigationUnlock.step
-end--[[APR_DIAG]]
-APR.GetNavigationUnlockStep = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:77:APR:GetNavigationUnlockStep#7",
-    APR.GetNavigationUnlockStep
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetNavigationUnlockStep = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:109:APR:GetNavigationUnlockStep#7", APR.GetNavigationUnlockStep)--[[/APR_DIAG]]
 
 function APR:StartNavigationUnlock(blockers, context)
     local data, player = self.NavigationData, Player()
@@ -177,11 +164,7 @@ function APR:StartNavigationUnlock(blockers, context)
     self.navigation.dirty = true
     self.navigation:RequestUpdate()
     return true
-end--[[APR_DIAG]]
-APR.StartNavigationUnlock = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:81:APR:StartNavigationUnlock#8",
-    APR.StartNavigationUnlock
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.StartNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:113:APR:StartNavigationUnlock#8", APR.StartNavigationUnlock)--[[/APR_DIAG]]
 
 function APR:RestoreNavigationUnlockRoute()
     local current = self._navigationUnlock
@@ -203,11 +186,7 @@ function APR:RestoreNavigationUnlockRoute()
     self._navigationUnlock =
         { context = context, session = data:RestoreUnlockSession(saved.library, { clock = debugprofilestop }) }
     return true
-end--[[APR_DIAG]]
-APR.RestoreNavigationUnlockRoute = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:122:APR:RestoreNavigationUnlockRoute#9",
-    APR.RestoreNavigationUnlockRoute
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RestoreNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:169:APR:RestoreNavigationUnlockRoute#9", APR.RestoreNavigationUnlockRoute)--[[/APR_DIAG]]
 
 function APR:RefreshNavigationUnlockRoute()
     local state = self._navigationUnlock
@@ -225,15 +204,12 @@ function APR:RefreshNavigationUnlockRoute()
     end
     if status == "planning" then
         if not state.timer then
-            state.timer = C_Timer.NewTimer(
-                0, --[[APR_DIAG]]
-                APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:157:callback#11", --[[/APR_DIAG]] function()
-                    state.timer = nil
-                    -- Resume on the next frame. RequestUpdate adds a 50ms debounce
-                    -- intended for event bursts, which compounds on every slice.
-                    if self._navigationUnlock == state then nav:Update(state.context) end
-                end--[[APR_DIAG]]) --[[/APR_DIAG]]
-            )
+            state.timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:207:callback#11", --[[/APR_DIAG]]function()
+                state.timer = nil
+                -- Resume on the next frame. RequestUpdate adds a 50ms debounce
+                -- intended for event bursts, which compounds on every slice.
+                if self._navigationUnlock == state then nav:Update(state.context) end
+            end--[[APR_DIAG]])--[[/APR_DIAG]])
         end
         return true
     end
@@ -315,8 +291,4 @@ function APR:RefreshNavigationUnlockRoute()
     end
     Save(self)
     return false
-end--[[APR_DIAG]]
-APR.RefreshNavigationUnlockRoute = APRTrace(
-    "APR-Core/features/navigation/NavigationUnlocks.lua:144:APR:RefreshNavigationUnlockRoute#10",
-    APR.RefreshNavigationUnlockRoute
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:191:APR:RefreshNavigationUnlockRoute#10", APR.RefreshNavigationUnlockRoute)--[[/APR_DIAG]]

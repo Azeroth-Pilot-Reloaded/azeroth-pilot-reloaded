@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>APR Terrain</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-inner">
+            <div class="wordmark"><span class="mark">APR</span><span>Terrain</span></div>
+            <div class="languages" role="group" data-label="language">
+                <button type="button" data-lang="fr" aria-pressed="true" lang="fr">Français</button>
+                <button type="button" data-lang="en" aria-pressed="false" lang="en">English</button>
+            </div>
+        </div>
+    </header>
+    <main class="shell">
+        <h1 data-copy="title">Graphes de terrain</h1>
+        <div class="workspace">
+            <section class="selection" aria-labelledby="selection-title">
+                <h2 id="selection-title" data-copy="selection">Périmètre</h2>
+                <form id="configuration" autocomplete="off">
+                    <fieldset id="scope-fields">
+                        <label for="client" data-copy="client">Client WoW</label>
+                        <select id="client" disabled></select>
+                        <p class="helper" id="client-meta" aria-live="polite"></p>
+                        <div class="map-search">
+                            <label for="map-search" data-copy="mapSearch">Rechercher une carte</label>
+                            <input id="map-search" type="search" aria-controls="map-results" maxlength="120" disabled>
+                            <p id="map-search-status" class="helper" role="status"></p>
+                            <ul id="map-results" class="map-results" hidden></ul>
+                        </div>
+                        <label for="continent" data-copy="continent">Continent</label>
+                        <select id="continent" disabled></select>
+                        <label for="zone" data-copy="zone">Zone</label>
+                        <select id="zone" disabled></select>
+                        <label for="area" data-copy="area">Sous-zone</label>
+                        <select id="area" disabled></select>
+                    </fieldset>
+                    <p id="catalogue-error" class="notice" role="status" hidden></p>
+                    <details class="advanced" id="advanced">
+                        <summary data-copy="advanced">Réglages avancés</summary>
+                        <fieldset id="settings" class="settings">
+                            <div class="setting">
+                                <label for="cells" data-copy="cells">Résolution par tuile</label>
+                                <select id="cells" data-setting="cells" aria-describedby="cells-help"><option>64</option><option>128</option><option>256</option></select>
+                                <p class="helper" id="cells-help" data-copy="cellsHelp"></p>
+                            </div>
+                            <div class="setting">
+                                <label for="threads" data-copy="threads">Threads par monde</label>
+                                <input id="threads" data-setting="threads" type="number" min="1" step="1" aria-describedby="threads-help">
+                                <p class="helper" id="threads-help" data-copy="threadsHelp"></p>
+                            </div>
+                            <div class="setting">
+                                <label for="minRegion" data-copy="minRegion">Taille minimale des régions</label>
+                                <input id="minRegion" data-setting="minRegion" type="number" min="1" max="100000" step="1" aria-describedby="region-help">
+                                <p class="helper" id="region-help" data-copy="regionHelp"></p>
+                            </div>
+                            <div class="setting">
+                                <label for="stretch" data-copy="stretch">Tolérance de détour (%)</label>
+                                <input id="stretch" data-setting="stretch" type="number" min="0" max="5" step="1" aria-describedby="stretch-help">
+                                <p class="helper" id="stretch-help" data-copy="stretchHelp"></p>
+                            </div>
+                            <div class="setting">
+                                <label for="roadThreshold" data-copy="roadThreshold">Seuil principal des routes</label>
+                                <input id="roadThreshold" data-setting="roadThreshold" type="number" min="1" max="255" step="1" aria-describedby="road-help">
+                                <p class="helper" id="road-help" data-copy="roadHelp"></p>
+                            </div>
+                            <div class="setting">
+                                <label for="roadWeak" data-copy="roadWeak">Seuil secondaire des routes</label>
+                                <input id="roadWeak" data-setting="roadWeak" type="number" min="1" max="255" step="1" aria-describedby="weak-help">
+                                <p class="helper" id="weak-help" data-copy="weakHelp"></p>
+                            </div>
+                            <label class="toggle"><input data-setting="wideHeights" type="checkbox"><span><strong data-copy="wideHeights"></strong><small data-copy="heightHelp"></small></span></label>
+                            <label class="toggle"><input data-setting="wideLayers" type="checkbox"><span><strong data-copy="wideLayers"></strong><small data-copy="layersHelp"></small></span></label>
+                            <label class="toggle"><input data-setting="keepPartial" type="checkbox"><span><strong data-copy="keepPartial"></strong><small data-copy="partialHelp"></small></span></label>
+                            <button id="reset" type="button" class="text-button" data-copy="reset">Rétablir les valeurs par défaut</button>
+                        </fieldset>
+                    </details>
+                </form>
+            </section>
+            <section class="monitor" aria-labelledby="monitor-title">
+                <div class="monitor-heading">
+                    <h2 id="monitor-title" data-copy="monitor">Génération</h2>
+                    <span class="job-state" id="job-state" role="status" data-state="idle">En attente</span>
+                </div>
+                <div class="readout">
+                    <nav class="coordinates" data-label="pathLabel">
+                        <ol id="trail"></ol>
+                    </nav>
+                    <div class="progress-label"><span id="phase">Prêt à générer</span><output id="percent">0 %</output></div>
+                    <progress id="progress" max="1" value="0" aria-labelledby="phase"></progress>
+                    <p id="tile" class="tile-line"></p>
+                    <dl class="metrics">
+                        <div><dt data-copy="elapsed">Temps passé</dt><dd id="elapsed">00:00</dd></div>
+                        <div><dt data-copy="eta">Temps restant estimé</dt><dd id="eta">—</dd></div>
+                        <div><dt data-copy="temporary">Poids temporaire</dt><dd id="temporary">—</dd></div>
+                        <div><dt data-copy="packSize">Poids des packs</dt><dd id="pack-size">—</dd></div>
+                    </dl>
+                    <div class="work-summary" id="summary"></div>
+                    <p id="job-error" class="notice" role="alert" hidden></p>
+                    <div class="actions">
+                        <button type="submit" id="start" class="primary" form="configuration" data-copy="start" disabled>Lancer la génération</button>
+                        <button type="button" id="pause" class="secondary" data-copy="pause" disabled>Mettre en pause</button>
+                        <button type="button" id="retry" class="secondary" hidden></button>
+                    </div>
+                    <p id="pause-help" class="helper" hidden data-copy="pauseHelp"></p>
+                </div>
+                <details class="log-section" id="log-section">
+                    <summary data-copy="logs">Journaux du moteur</summary>
+                    <div class="log-downloads">
+                        <a id="download-log" href="/api/log" class="text-button" data-copy="downloadLog" download hidden></a>
+                        <a id="download-report" href="/api/report" class="text-button" data-copy="downloadReport" download hidden></a>
+                    </div>
+                    <pre id="logs" tabindex="0"></pre>
+                </details>
+                <div id="output" class="output" hidden>
+                    <span data-copy="output">Dossier de sortie</span>
+                    <code id="output-path"></code>
+                    <button type="button" class="text-button" id="copy" data-copy="copy">Copier</button>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

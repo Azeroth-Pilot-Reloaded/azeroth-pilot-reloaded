@@ -45,7 +45,7 @@ function LibStub(name, ...)
     end
     return lib(name, ...)
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/TextStyles.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/route/QuestionPopUp.lua")

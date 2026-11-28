@@ -59,4 +59,29 @@ for _, profile in ipairs({ "retail", "forever" }) do
         end
     end
 end
+
+-- Retail reports the outdoor garrison maps as Orphans and uses a phased
+-- world ID for the player's coordinates. Exercise those client observations
+-- against the shipped geography, without depending on any travel catalogue.
+fixture.profile = "retail"
+fixture.maps[572] = { mapID = 572, mapType = 2, parentMapID = 947 }
+local data = fixture:Load()
+dofile("APR-Core/utils/NavigationZones.lua")
+for _, maps in ipairs({
+    { garrison = 582, mine = 579, zone = 539, phase = 1158 },
+    { garrison = 590, mine = 585, zone = 525, phase = 1152 },
+}) do
+    fixture.maps[maps.zone] = { mapID = maps.zone, mapType = 3, parentMapID = 572 }
+    fixture.maps[maps.garrison] = { mapID = maps.garrison, mapType = 6, parentMapID = maps.zone }
+    fixture.maps[maps.mine] = { mapID = maps.mine, mapType = 5, parentMapID = maps.garrison }
+    fixture.player = { instanceID = maps.phase, x = 100, y = 200 }
+    local outdoor = { instanceID = 1116, uiMapID = maps.zone, x = 150, y = 200 }
+    for _, mapID in ipairs({ maps.garrison, maps.mine }) do
+        fixture.currentMap = mapID
+        local player = APR:GetNavigationPlayerPosition()
+        assert(player and player.uiMapID == mapID and player.instanceID == outdoor.instanceID)
+        assert(data:CanWalk(player, outdoor), "The garrison must connect to its outdoor zone: " .. mapID)
+        assert(data:CanWalk(outdoor, player), "The outdoor zone must connect back to the garrison: " .. mapID)
+    end
+end
 print("Native Orphan outdoor overrides: parent portals, planning and access boundaries passed")

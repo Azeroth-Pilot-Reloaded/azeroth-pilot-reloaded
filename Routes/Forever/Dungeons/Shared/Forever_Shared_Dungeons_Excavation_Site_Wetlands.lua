@@ -16,40 +16,17 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
     mapID = 1437,
     steps = {
         {
-            PickUp = { 463 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.9, 59.64),
-            RaidIcon = { {
-                npcID = 1239,
-                questID = 463,
-            } },
-            Faction = "Alliance",
-            MinLevel = 20,
-            Zone = 1437,
-            _index = 1,
-        },
-        {
-            PickUp = { 469 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.92, 39.37),
-            RaidIcon = { {
-                npcID = 2093,
-                questID = 469,
-            } },
-            Faction = "Alliance",
-            MinLevel = 18,
-            Zone = 1437,
-            _index = 2,
-        },
-        {
             PickUp = { 95737 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 34.98, 48.46),
             RaidIcon = { {
                 npcID = 3970,
                 questID = 95737,
             } },
+            AllOf = { { IsQuestUncompleted = 95647 }, { IsQuestNotOnQuest = 95647 } },
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1440,
-            _index = 3,
+            _index = 1,
         },
         {
             PickUp = { 95663 },
@@ -61,7 +38,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             MinLevel = 24,
             Zone = 1417,
-            _index = 4,
+            _index = 2,
         },
         {
             PickUp = { 95697 },
@@ -73,7 +50,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             MinLevel = 24,
             Zone = 1454,
-            _index = 5,
+            _index = 3,
         },
         {
             PickUp = { 95772 },
@@ -85,25 +62,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1433,
-            _index = 6,
-        },
-        {
-            Done = { 463 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 463,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 463,
-            Zone = 1437,
-            _index = 7,
-        },
-        {
-            Qpart = { [469] = { 1 } },
-            NoArrow = true,
-            IsQuestOnQuest = 469,
-            _index = 8,
+            _index = 4,
         },
         {
             Done = { 95737 },
@@ -112,35 +71,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
                 npcID = 1480,
                 questID = 95737,
             } },
+            AllOf = { { IsQuestUncompleted = 95647 }, { IsQuestNotOnQuest = 95647 } },
             Faction = "Alliance",
             IsQuestOnQuest = 95737,
             Zone = 1437,
-            _index = 9,
-        },
-        {
-            PickUp = { 276 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 276,
-            } },
-            AnyOf = { { IsQuestCompleted = 463 } },
-            Faction = "Alliance",
-            MinLevel = 20,
-            Zone = 1437,
-            _index = 10,
-        },
-        {
-            Done = { 469 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
-            RaidIcon = { {
-                npcID = 2094,
-                questID = 469,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 469,
-            Zone = 1437,
-            _index = 11,
+            _index = 5,
         },
         {
             PickUp = { 95647 },
@@ -149,18 +84,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
                 npcID = 1480,
                 questID = 95647,
             } },
-            AnyOf = { { IsQuestCompleted = 95737 } },
+
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1437,
-            _index = 12,
-        },
-        {
-            Qpart = { [276] = { 1, 2 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 60.33, 73.77),
-            IsQuestOnQuest = 276,
-            Zone = 1437,
-            _index = 13,
+            _index = 6,
         },
         {
             PickUp = { 484 },
@@ -168,7 +96,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             RaidIcon = { { npcID = 2094, questID = 484 } },
             Faction = "Alliance",
             Zone = 1437,
-            _index = 14,
+            _index = 7,
         },
         {
             Qpart = { [484] = { 1 } },
@@ -177,7 +105,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 484,
             Zone = 1437,
-            _index = 15,
+            _index = 8,
         },
         {
             Done = { 484 },
@@ -186,7 +114,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 484,
             Zone = 1437,
-            _index = 16,
+            _index = 9,
         },
         {
             PickUp = { 98815 },
@@ -199,83 +127,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1437,
-            _index = 17,
-        },
-        {
-            Done = { 276 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 276,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 276,
-            Zone = 1437,
-            _index = 18,
-        },
-        {
-            PickUp = { 277 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 277,
-            } },
-            AnyOf = { { IsQuestCompleted = 276 } },
-            Faction = "Alliance",
-            MinLevel = 20,
-            Zone = 1437,
-            _index = 19,
-        },
-        {
-            Qpart = { [277] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 61.27, 58.42),
-            IsQuestOnQuest = 277,
-            Zone = 1437,
-            _index = 20,
-        },
-        {
-            Done = { 277 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 277,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 277,
-            Zone = 1437,
-            _index = 21,
-        },
-        {
-            PickUp = { 275 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 275,
-            } },
-            AnyOf = { { IsQuestCompleted = 277 } },
-            Faction = "Alliance",
-            MinLevel = 20,
-            Zone = 1437,
-            _index = 22,
-        },
-        {
-            Qpart = { [275] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 27.38, 37.12),
-            IsQuestOnQuest = 275,
-            Zone = 1437,
-            _index = 23,
-        },
-        {
-            Done = { 275 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
-            RaidIcon = { {
-                npcID = 1244,
-                questID = 275,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 275,
-            Zone = 1437,
-            _index = 24,
+            _index = 10,
         },
         {
             PickUp = { 95646 },
@@ -284,11 +136,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
                 npcID = 1244,
                 questID = 95646,
             } },
-            AnyOf = { { IsQuestCompleted = 275 } },
+
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1437,
-            _index = 25,
+            _index = 11,
         },
         {
             Done = { 95663 },
@@ -300,7 +152,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95663,
             Zone = 1437,
-            _index = 26,
+            _index = 12,
         },
         {
             PickUp = { 95682 },
@@ -313,7 +165,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             MinLevel = 24,
             Zone = 1437,
-            _index = 27,
+            _index = 13,
         },
         {
             EnterInstance = { dungeonKey = "INSTANCE_2998" },
@@ -321,7 +173,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             Zone = 1437,
-            _index = 28,
+            _index = 14,
         },
         {
             Done = { 95772 },
@@ -334,7 +186,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             } },
             Faction = "Alliance",
             IsQuestOnQuest = 95772,
-            _index = 29,
+            _index = 15,
         },
         {
             PickUp = { 95795 },
@@ -348,7 +200,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             AnyOf = { { IsQuestCompleted = 95772 } },
             Faction = "Alliance",
             MinLevel = 24,
-            _index = 30,
+            _index = 16,
         },
         {
             KillNPC = {
@@ -359,7 +211,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
-            _index = 31,
+            _index = 17,
         },
         {
             KillNPC = {
@@ -370,7 +222,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
-            _index = 32,
+            _index = 18,
         },
         {
             KillNPC = {
@@ -381,7 +233,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
-            _index = 33,
+            _index = 19,
         },
         {
             KillNPC = {
@@ -392,7 +244,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             NoArrow = true,
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
-            _index = 34,
+            _index = 20,
         },
         {
             Qpart = { [95646] = { 1 } },
@@ -400,7 +252,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95646,
-            _index = 35,
+            _index = 21,
         },
         {
             Qpart = { [95647] = { 1 } },
@@ -408,7 +260,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95647,
-            _index = 36,
+            _index = 22,
         },
         {
             Done = { 95647 },
@@ -421,7 +273,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             } },
             Faction = "Alliance",
             IsQuestOnQuest = 95647,
-            _index = 37,
+            _index = 23,
         },
         {
             PickUp = { 95809 },
@@ -435,7 +287,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             AnyOf = { { IsQuestCompleted = 95647 } },
             Faction = "Alliance",
             MinLevel = 24,
-            _index = 38,
+            _index = 24,
         },
         {
             PickUp = { 95664 },
@@ -449,7 +301,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
                 itemID = 270866,
             },
             MinLevel = 24,
-            _index = 39,
+            _index = 25,
         },
         {
             Qpart = { [95697] = { 1 } },
@@ -457,7 +309,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95697,
-            _index = 40,
+            _index = 26,
         },
         {
             PickUp = { 95810 },
@@ -471,7 +323,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
                 itemID = 270865,
             },
             MinLevel = 24,
-            _index = 41,
+            _index = 27,
         },
         {
             Qpart = { [98815] = { 1 } },
@@ -479,7 +331,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 98815,
-            _index = 42,
+            _index = 28,
         },
         {
             Qpart = { [95664] = { 1 } },
@@ -487,7 +339,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95664,
-            _index = 43,
+            _index = 29,
         },
         {
             Qpart = { [95810] = { 1 } },
@@ -495,7 +347,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95810,
-            _index = 44,
+            _index = 30,
         },
         {
             Qpart = { [95682] = { 1, 2, 3 } },
@@ -503,13 +355,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Dungeon = "INSTANCE_2998",
             InstanceQuest = true,
             IsQuestOnQuest = 95682,
-            _index = 45,
+            _index = 31,
         },
         {
             LeaveInstance = { dungeonKey = "INSTANCE_2998" },
             NoArrow = true,
             Dungeon = "INSTANCE_2998",
-            _index = 46,
+            _index = 32,
         },
         {
             Done = { 95682 },
@@ -521,7 +373,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95682,
             Zone = 1437,
-            _index = 47,
+            _index = 33,
         },
         {
             Done = { 95646 },
@@ -533,7 +385,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95646,
             Zone = 1437,
-            _index = 48,
+            _index = 34,
         },
         {
             Done = { 95664 },
@@ -545,7 +397,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95664,
             Zone = 1456,
-            _index = 49,
+            _index = 35,
         },
         {
             Done = { 95697 },
@@ -557,7 +409,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95697,
             Zone = 1454,
-            _index = 50,
+            _index = 36,
         },
         {
             Done = { 95795 },
@@ -569,7 +421,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95795,
             Zone = 1433,
-            _index = 51,
+            _index = 37,
         },
         {
             Done = { 95810 },
@@ -581,7 +433,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95810,
             Zone = 1437,
-            _index = 52,
+            _index = 38,
         },
         {
             Done = { 98815 },
@@ -593,7 +445,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 98815,
             Zone = 1437,
-            _index = 53,
+            _index = 39,
         },
         {
             PickUp = { 98823 },
@@ -606,7 +458,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             MinLevel = 24,
             Zone = 1456,
-            _index = 54,
+            _index = 40,
         },
         {
             PickUp = { 98824 },
@@ -619,7 +471,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             MinLevel = 24,
             Zone = 1437,
-            _index = 55,
+            _index = 41,
         },
         {
             Done = { 95809 },
@@ -631,7 +483,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95809,
             Zone = 1437,
-            _index = 56,
+            _index = 42,
         },
         {
             Done = { 98823 },
@@ -643,7 +495,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Horde",
             IsQuestOnQuest = 98823,
             Zone = 1412,
-            _index = 57,
+            _index = 43,
         },
         {
             Done = { 98824 },
@@ -655,11 +507,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 98824,
             Zone = 1455,
-            _index = 58,
+            _index = 44,
         },
         {
             RouteCompleted = true,
-            _index = 59,
+            _index = 45,
         },
     },
 }

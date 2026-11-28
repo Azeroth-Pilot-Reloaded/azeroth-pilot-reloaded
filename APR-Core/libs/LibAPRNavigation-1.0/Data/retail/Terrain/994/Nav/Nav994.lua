@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[994]={["area"]={},["areaNames"]={[57775]="Salle de l’Assemblée cramoisie",[57866]="Caveau des Rois d’antan",[58134]="Le passage Oublié",[58162]="Le passage Oublié",[58189]="Trône des anciens Conquérants",[58190]="Retraite du Seigneur des lames",[58191]="Sanctuaire de Nala’shi",[58193]="Le foyer Doré",[58781]="Palais Mogu’shan",[61203]="Palais Mogu’shan"},["areaParents"]={[57775]=6471,[57866]=6473,[58134]=6472,[58162]=6472,[58189]=6474,[58190]=6475,[58191]=6476,[58193]=6470,[58781]=6182,[61203]=6182},["cells"]=128,["class"]={},["counts"]={["area"]=4,["class"]=4,["floor"]=4,["graph"]=20,["grid"]=20,["height"]=20},["cx0"]=-10,["cy0"]=-7,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["heightDigits"]=3,["hubs"]={},["nx"]=4,["ny"]=5,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

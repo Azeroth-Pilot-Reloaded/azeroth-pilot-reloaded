@@ -16,7 +16,9 @@
   <Script file="TravelActions.lua" />
   <Script file="Search.lua" />
   <Script file="WaypointUI.lua" />
+  <Script file="WaypointClicks.lua" />
   <Script file="AzerothWaypoint.lua" />
+  <Include file="Terrain_[Game].xml" />
   <Script file="Data/retail/Services.lua" />
   <Script file="Data/retail/Geography.lua" />
   <Script file="Data/retail/Availability.lua" />
@@ -40,4 +42,5 @@
   <Script file="Data/forever/Spells.lua" />
   <Script file="Data/forever/Passages.lua" />
   <Script file="Data/forever/UnlockRoutes.lua" />
+  <Script file="Data/forever/RaidAccess.lua" />
 </Ui>

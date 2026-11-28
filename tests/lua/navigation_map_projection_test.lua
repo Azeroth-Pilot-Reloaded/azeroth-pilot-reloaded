@@ -166,10 +166,18 @@ WorldMapFrame:SetSize(1000, 800)
 Minimap:SetSize(200, 200)
 function WorldMapFrame:GetCanvas() return self end
 function WorldMapFrame:GetMapID() return shownMap end
+local overlayLevel, markerLevel = 45, 50
+local pinLevels = {
+    GetFrameLevelStart = function(_, layer)
+        if layer == "PIN_FRAME_LEVEL_DIG_SITE" then return markerLevel end
+    end,
+}
+function WorldMapFrame:GetPinFrameLevelsManager() return pinLevels end
 function Minimap:GetZoom() return 0 end
 function env.methods:CreateAnimationGroup() return env.widget() end
 function env.methods:CreateAnimation() return env.widget() end
 function env.methods:Play() end
+function env.methods:SetThickness(value) self.thickness = value end
 function GetMinimapShape() return "ROUND" end
 function GetPlayerFacing() return 0 end
 function GetCVar() return "0" end
@@ -209,18 +217,23 @@ for _, mapID in ipairs({ 2215, 2274, 947, 946 }) do
     APR.map:QueueMapPins() -- Native SetMapID publishes this change.
     tick()
     local segment = APR.map.worldSegments[1]
-    if mapID == 947 or mapID == 946 then
+    if mapID == 946 then
         for _, line in ipairs(APR.map.worldSegments) do
-            assert(not line.line:IsShown())
-        end
-        assert(#worldPins[APR.map.pinlist] == 0, "World/cosmic overview has no APR pins")
-        for _, pin in ipairs(APR.map.pinlist) do
-            assert(not pin:IsShown())
+            assert(not line.line:IsShown() and not line.cap:IsShown(), "Cosmic overview hides route geometry")
         end
     else
-        assert(segment.line:IsShown(), "Zone and continent views retain the route line")
+        assert(segment.line:IsShown() and segment.cap:IsShown(), "Zone, continent and world retain the route line")
+        local lineFrame = segment.line:GetParent()
+        local lineLevel = lineFrame:GetFrameLevel()
+        assert(overlayLevel < lineLevel and lineLevel < markerLevel, "The route passes above map art and below markers")
+        assert(segment.cap:GetParent() == lineFrame, "Stroke joins follow the same layer as the route")
         near(segment.bx, expected[mapID][1] * 1000, "Line pin X " .. mapID)
         near(segment.by, -expected[mapID][2] * 800, "Line pin Y " .. mapID)
+    end
+    if mapID == 947 or mapID == 946 then
+        assert(#worldPins[APR.map.pinlist] == 0, "World and cosmic overviews hide APR pins")
+        for _, pin in ipairs(APR.map.pinlist) do assert(not pin:IsShown()) end
+    else
         local placed = worldPins[APR.map.pinlist][1]
         near(placed.x, expected[mapID][1])
         near(placed.y, expected[mapID][2])
@@ -234,7 +247,29 @@ shownMap = 2274
 APR.map:QueueMapPins() -- Native SetMapID publishes this change.
 tick()
 local beforeProjects, beforeRects, beforeReads, frames = projections, rectReads, mapReads, env.frames()
-local anchors = APR.map.worldSegments[1].finish.anchors
+local segment = APR.map.worldSegments[1]
+local endPoint, capAnchors = segment.line.endPoint, segment.cap.anchors
+local nextSegment = APR.map.worldSegments[2]
+near(nextSegment.line.startPoint[3], endPoint[3], "Adjacent strokes share X")
+near(nextSegment.line.startPoint[4], endPoint[4], "Adjacent strokes share Y")
+local _, _, _, capX, capY = segment.cap:GetPoint()
+near(capX, endPoint[3], "The join is centered on the shared X")
+near(capY, endPoint[4], "The join is centered on the shared Y")
+for _, scale in ipairs({ 0.25, 2, 1 }) do
+    WorldMapFrame:SetScale(scale)
+    tick()
+    near(segment.line.thickness * scale, 2, "Zoom preserves the visible stroke width")
+    near(segment.cap:GetWidth() * scale, 2, "Zoom preserves the visible join width")
+    near(APR.map.minimapSegments[1].line.thickness, 2, "World zoom does not affect the minimap")
+    assert(segment.line:IsShown() and segment.cap:IsShown())
+end
+WorldMapFrame:SetScale(0.5)
+profile.showMapLineThickness = 3
+APR.map:UpdateMapLineStyle()
+near(segment.line.thickness, 6, "Style changes use the current zoom immediately")
+WorldMapFrame:SetScale(1)
+profile.showMapLineThickness = 2
+tick()
 for _ = 1, 100 do
     tick()
 end
@@ -243,7 +278,8 @@ assert(
         and rectReads == beforeRects
         and mapReads == beforeReads
         and env.frames() == frames
-        and APR.map.worldSegments[1].finish.anchors == anchors,
+        and segment.line.endPoint == endPoint
+        and segment.cap.anchors == capAnchors,
     "Idle map hierarchy rendering performs no projection, ancestry, frame allocation or anchor writes"
 )
 WorldMapFrame:SetSize(500, 400)
@@ -293,11 +329,23 @@ shownMap = 2274
 APR.map:QueueMapPins() -- Native SetMapID publishes this change.
 tick()
 near(APR.map.worldSegments[1].bx, 230.925, "A discrete geometry change invalidates parent rectangles")
+local estimated = { Coord = { x = -1100, y = playerY }, uiMapID = playerMap, instanceID = playerInstance, estimated = true }
+local arrival = { Coord = { x = -2000, y = playerY }, uiMapID = playerMap, instanceID = playerInstance, breakBefore = true }
+local resumed = { Coord = { x = -2100, y = playerY }, uiMapID = playerMap, instanceID = playerInstance }
+local overview = { estimated, arrival, resumed }
+function preview:GetPoints() return overview end
+shownMap = 947
+tick()
+assert(segment.line:IsShown() and not segment.cap:IsShown(), "Reusing a solid stroke for a dash hides its round cap")
+assert(nextSegment.line:IsShown() and nextSegment.cap:IsShown(), "Solid guidance resumes after transport")
+local arrivalX = preview:ProjectPoint(arrival, shownMap)
+near(nextSegment.line.startPoint[3], arrivalX * 500, "The world map starts the next stroke at the actual arrival")
+for i = 3, #APR.map.worldSegments do
+    assert(not APR.map.worldSegments[i].line:IsShown(), "The overview never connects a transport discontinuity")
+end
 profile.enableAddon = false
 tick()
-for _, segment in ipairs(APR.map.worldSegments) do
-    assert(not segment.line:IsShown())
-end
+for _, segment in ipairs(APR.map.worldSegments) do assert(not segment.line:IsShown() and not segment.cap:IsShown()) end
 print(
     "Map projection: real HBD/native identity, cross-instance ancestors/world/cosmic, caves/floors, pins/lines, resize and idle caches passed"
 )

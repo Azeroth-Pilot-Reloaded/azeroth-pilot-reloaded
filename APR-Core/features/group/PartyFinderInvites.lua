@@ -5,10 +5,10 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- User-initiated native invitations, correlated APR context and per-event audio.
 -- Native dialogs retain ownership of acceptance; no network message can accept or issue an invitation.
+local Constants = APR.GroupConstants.PartyFinderInvites
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local Finder = APR.partyFinder
-local EMPTY_SOUND_CATALOG = {}
-local INVITE_DIALOG_ACTIONS = { LFGInvitePopupAcceptButton = "accepted", LFGInvitePopupDeclineButton = "declined" }
 
 function Finder:GetSoundChoices()
     if not self.soundChoices then
@@ -28,7 +28,7 @@ function Finder:GetSoundChoices()
         })
         -- Only APR's fixed palette needs translated names. Third-party media
         -- remain lazy labels and do not need a copied catalogue or subscription.
-        for event, name in pairs(APR.CompanionSoundNames or EMPTY_SOUND_CATALOG) do
+        for event, name in pairs(APR.CompanionSoundNames or Constants.EMPTY_SOUND_CATALOG) do
             self.soundChoices["media:" .. name] = "APR - " .. L["GF_SOUND_EVENT_" .. event]
         end
     end
@@ -42,7 +42,7 @@ function Finder:GetSoundCatalog()
     -- LibSharedMedia keeps this sorted index current when sounds register.
     -- Borrow it instead of copying every name for each event's selector.
     local names = media and media.List and media:List("sound")
-    return type(names) == "table" and names or EMPTY_SOUND_CATALOG
+    return type(names) == "table" and names or Constants.EMPTY_SOUND_CATALOG
 end--[[APR_DIAG]]
 Finder.GetSoundCatalog =
     APRTrace("APR-Core/features/group/PartyFinderInvites.lua:31:Finder:GetSoundCatalog#3", Finder.GetSoundCatalog)--[[/APR_DIAG]]
@@ -496,7 +496,7 @@ Finder.ClearInvitations =
     APRTrace("APR-Core/features/group/PartyFinderInvites.lua:321:Finder:ClearInvitations#28", Finder.ClearInvitations)--[[/APR_DIAG]]
 
 local function AttachInvitationDialogs(self)
-    for name, action in pairs(INVITE_DIALOG_ACTIONS) do
+    for name, action in pairs(Constants.INVITE_DIALOG_ACTIONS) do
         local button = _G[name]
         if button and not button.aprFinderHooked then
             button:HookScript(

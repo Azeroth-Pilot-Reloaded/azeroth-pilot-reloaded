@@ -38,6 +38,9 @@ local function New()
     DirectEnv.Install(env)
     dofile("APR-Core/features/group/PartyFinderDirect.lua")
     local finder = APR.partyFinder
+    function finder:PlayerKey(name)
+        if type(name) == "string" and #name > 0 and #name <= 128 and not name:find("[%c|]") then return name end
+    end
     function finder:IsEnabled() return not env.disabled end
     function finder:IsRestricted() return env.restricted == true end
     function finder:GetSettings() return env.settings end

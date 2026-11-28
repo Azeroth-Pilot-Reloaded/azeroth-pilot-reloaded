@@ -7,6 +7,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.BagUpgrades = APR:NewModule("BagUpgrades", "AceEvent-3.0")
 local Upgrades = APR.BagUpgrades
+
 local EVENTS = {
     "BAG_UPDATE_DELAYED",
     "PLAYER_EQUIPMENT_CHANGED",
@@ -16,6 +17,27 @@ local EVENTS = {
     "PLAYER_REGEN_DISABLED",
     "PLAYER_REGEN_ENABLED",
     "PLAYER_ALIVE",
+}
+local SLOT_LABELS = {
+    "HEADSLOT",
+    "NECKSLOT",
+    "SHOULDERSLOT",
+    "SHIRTSLOT",
+    "CHESTSLOT",
+    "WAISTSLOT",
+    "LEGSSLOT",
+    "FEETSLOT",
+    "WRISTSLOT",
+    "HANDSSLOT",
+    "FINGER0SLOT",
+    "FINGER1SLOT",
+    "TRINKET0SLOT",
+    "TRINKET1SLOT",
+    "BACKSLOT",
+    "MAINHANDSLOT",
+    "SECONDARYHANDSLOT",
+    "RANGEDSLOT",
+    "TABARDSLOT",
 }
 
 local function Public(value)
@@ -446,12 +468,6 @@ function Upgrades:MatchesIntermediate(signature, hands)
     return true
 end--[[APR_DIAG]]
 Upgrades.MatchesIntermediate = APRTrace("APR-Core/features/player/BagUpgrades.lua:367:Upgrades:MatchesIntermediate#28", Upgrades.MatchesIntermediate)--[[/APR_DIAG]]
-
-local SLOT_LABELS = {
-    "HEADSLOT", "NECKSLOT", "SHOULDERSLOT", "SHIRTSLOT", "CHESTSLOT", "WAISTSLOT", "LEGSSLOT",
-    "FEETSLOT", "WRISTSLOT", "HANDSSLOT", "FINGER0SLOT", "FINGER1SLOT", "TRINKET0SLOT", "TRINKET1SLOT",
-    "BACKSLOT", "MAINHANDSLOT", "SECONDARYHANDSLOT", "RANGEDSLOT", "TABARDSLOT",
-}
 
 function Upgrades:GetOfferRows(candidate)
     local plan = candidate.plan

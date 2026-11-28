@@ -189,6 +189,32 @@ assert(
     "A reload/downgrade still warns from the observed release cache before readiness"
 )
 
+check = loadShared({ prejoined = true })
+receive(check, "V:9.0.0-alpha.1")
+assert(#popups == 0 and activeTimers() == 1 and APRData.versionCheck.preview == nil)
+receive(check, "Q:7.2.0")
+receive(check, "V:9.0.0-26-g123abcd")
+assert(activeTimers() == 2, "A preview does not suppress a pending stable response")
+advance(2)
+assert(#sent == 2 and sent[2].message == "V:7.3.0")
+
+check = loadShared({ prejoined = true, version = "7.3.0-3-g123abcd" })
+receive(check, "Q:7.2.0")
+assert(activeTimers() == 1, "A preview does not respond to a stable query")
+receive(check, "V:9.0.0-beta.1")
+assert(#popups == 1 and activeTimers() == 1, "A preview update leaves the stable discovery retry pending")
+receive(check, "V:7.3.1")
+assert(#popups == 2 and popups[2]:find("7.3.1 ", 1, true) and activeTimers() == 0)
+
+check = loadShared({ prejoined = true, version = "7.3.0-beta.2" })
+receive(check, "Q:7.3.0-alpha.1")
+advance(2)
+assert(sent[2].message == "V:7.3.0-beta.2", "A beta can advertise itself to an alpha that asks")
+receive(check, "V:8.0.0-beta.1")
+assert(#popups == 0 and not APRData.versionCheck, "A beta neither warns about nor remembers newer betas")
+receive(check, "V:7.3.0")
+assert(#popups == 1 and APRData.versionCheck.retail == "7.3.0", "The corresponding stable is newer than the beta")
+
 -- Bursts allocate one pending response; equally recent peers suppress duplicate
 -- broadcasts, while intermediate/older replies cannot hide the newest release.
 check = loadShared()

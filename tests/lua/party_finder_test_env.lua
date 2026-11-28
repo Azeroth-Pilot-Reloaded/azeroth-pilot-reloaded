@@ -56,7 +56,7 @@ function Fixture.New(options)
     function GetLocale() return options.locale or "frFR" end
     function GetNormalizedRealmName() return "Home" end
     function GetRealmName() return "Home" end
-    function GetUnitName() return options.regional and "Local Surname" or "Local-Home" end
+    function GetUnitName() return options.playerName or (options.regional and "Local Surname" or "Local-Home") end
     function RegionalUniqueNamesEnabled() return options.regional == true end
     function UnitFactionGroup() return env.faction end
     function UnitLevel() return env.level end
@@ -296,6 +296,7 @@ function Fixture.New(options)
         NewModule = function() return {} end,
         GetGameVersion = function() return options.client or "retail" end,
         GetSettingsProfile = function(self) return self.settings.profile end,
+        SafeUnitName = function() return "Local", options.regional and "Surname" or nil end,
         GetRouteData = function(_, route) return route == "synthetic" and env.definition or nil end,
         GetRouteDisplayName = function() return "Invented route" end,
         GetGroupRouteProgress = function(_, _, step) return { id = "main:" .. step, step = step, total = 20 } end,

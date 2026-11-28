@@ -6,7 +6,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Owns route/step changes, stale-callback contexts and the last manual-skip undo.
 -- History is session-only and bounded; game quest state is never restored by an undo.
 
-local HISTORY_LIMIT = 40
+local Constants = APR.QuestingConstants.StepTransitions
 
 local function GetProgress(self)
     return APRData and self.PlayerID and APRData[self.PlayerID]
@@ -35,8 +35,8 @@ InvalidateStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:15:Inv
 local function RecordTransition(self, route, previous, destination, reason)
     local history = self.transitionHistory or { entries = {}, cursor = 0, count = 0 }
     self.transitionHistory = history
-    history.cursor = history.cursor % HISTORY_LIMIT + 1
-    history.count = math.min(history.count + 1, HISTORY_LIMIT)
+    history.cursor = history.cursor % Constants.HISTORY_LIMIT + 1
+    history.count = math.min(history.count + 1, Constants.HISTORY_LIMIT)
     history.entries[history.cursor] = {
         route = route,
         from = previous,
@@ -51,7 +51,7 @@ function APR:GetRecentTransitions()
     local result, history = {}, self.transitionHistory
     if not history then return result end
     for offset = 0, history.count - 1 do
-        result[#result + 1] = history.entries[(history.cursor - offset - 1) % HISTORY_LIMIT + 1]
+        result[#result + 1] = history.entries[(history.cursor - offset - 1) % Constants.HISTORY_LIMIT + 1]
     end
     return result
 end--[[APR_DIAG]]

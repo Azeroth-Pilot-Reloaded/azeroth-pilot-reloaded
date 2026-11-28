@@ -4,12 +4,9 @@ APR, APRData, APRCustomPath, LibStub = nil, nil, nil, nil
 strmatch = string.match -- LibStub's only client alias; library modules need none.
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-local file = assert(io.open(root .. "LibAPRNavigation.xml"))
-local xml = file:read("*a")
-file:close()
-for name in xml:gmatch('file="([^"]+)"') do
-    if not name:match("^Data/") then dofile(root .. name) end
-end
+dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", {
+    skip = function(path) return path:find("/Data/", 1, true) ~= nil end,
+})
 local Lib = LibStub("LibAPRNavigation-1.0")
 Lib:RegisterData("retail", "fixture", dofile("tests/lua/navigation_unlock_test_catalog.lua"))
 local completed, active, objectives, achievements = { [13] = true }, {}, {}, {}

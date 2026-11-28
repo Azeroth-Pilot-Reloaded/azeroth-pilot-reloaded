@@ -164,6 +164,57 @@ local function acknowledge(quantity)
 end
 
 for _, profile in ipairs({ "retail", "forever", "legacy" }) do
+    -- Empty deposits skip without visiting a bank, even when the bank itself
+    -- holds targets. Unrelated carried items must not retain the step.
+    local first, last, carried = reset(profile, "BankDeposit")
+    item(first, 1, 7101, 8)
+    item(carried, 1, 7999, 2)
+    APR:UpdateStep()
+    assert(APRData.player.synthetic == 2 and #requests == 0 and not APR.routeBankOpen,
+        profile .. ": no matching carried items means no deposit visit")
+
+    first, last, carried = reset(profile, "BankDeposit")
+    item(carried, 1, 7102, 1)
+    contents[carried][1].isLocked = true
+    APR:UpdateStep()
+    assert(APRData.player.synthetic == 1 and #requests == 0,
+        "A remaining target, including a locked one, must retain the deposit")
+    contents[carried][1] = nil
+    unavailable = carried
+    APR:UpdateStep()
+    assert(APRData.player.synthetic == 1, "Unknown carried contents are not an empty deposit")
+    unavailable = nil
+    sizes[0] = 0
+    APR:UpdateStep()
+    assert(APRData.player.synthetic == 1, "Uninitialized bags cannot complete a deposit")
+    sizes[0] = 4
+    APR.event.functions.inventory("BAG_UPDATE_DELAYED")
+    tick(0.2)
+    assert(APRData.player.synthetic == 2 and #requests == 0,
+        "Loaded empty bags recover through the normal inventory event")
+
+    -- Cached totals and carried receipts cannot prove an empty withdrawal.
+    -- The personal bank must be open and all of its contents available.
+    first, last, carried = reset(profile)
+    item(carried, 1, 7101, 5)
+    item(first, 1, 7999, 3)
+    APRData.player.BankItems = {}
+    APR:UpdateStep()
+    assert(APRData.player.synthetic == 1 and #requests == 0,
+        "A closed bank cannot skip a withdrawal, even with an empty cached snapshot")
+    unavailable = last
+    APR.event.functions.bank("BANKFRAME_OPENED")
+    tick(0.2)
+    assert(APRData.player.synthetic == 1 and #requests == 0,
+        "An open bank with incomplete data cannot skip a withdrawal")
+    unavailable = nil
+    APR.event.functions.bank("PLAYERBANKSLOTS_CHANGED")
+    tick(0.2)
+    assert(APRData.player.synthetic == 2 and #requests == 0 and APR.routeBankOpen,
+        profile .. ": no matching personal-bank items skips without a transfer")
+    assert(contents[carried][1].stackCount == 5 and contents[first][1].stackCount == 3,
+        "Skipping must not touch carried or unrelated bank items")
+
     local first, last, carried = reset(profile)
     item(first, 1, 7101, 7)
     item(last, 2, 7102, 4)

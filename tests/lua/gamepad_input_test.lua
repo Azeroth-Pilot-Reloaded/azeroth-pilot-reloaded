@@ -47,7 +47,7 @@ function RegisterStateDriver(frame, state, condition)
 end
 function SetBinding() error("An input overlay must not change saved bindings") end
 function SaveBindings() error("An input overlay must not persist bindings") end
-dofile("APR-Core/integrations/GamepadInput.lua")
+dofile("APR-Core/integrations/gamepad/GamepadInput.lua")
 local watcher = fixture.created[#fixture.created]
 local owner = CreateFrame("Frame", nil, UIParent)
 pad:RegisterWindow(owner)

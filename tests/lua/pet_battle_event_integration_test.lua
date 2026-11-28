@@ -79,7 +79,7 @@ end
 dofile("APR-Core/utils/ProfileUtils.lua")
 dofile("APR-Core/utils/InstanceUtils.lua")
 dofile("APR-Core/utils/NavigationZones.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/features/group/PartyProtocol.lua")
 dofile("APR-Core/features/group/Party.lua")

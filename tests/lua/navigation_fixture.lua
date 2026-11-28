@@ -81,12 +81,10 @@ function fixture:Load(catalog)
     local locale = LibStub:NewLibrary("AceLocale-3.0", 1)
     function locale:GetLocale() return fixture.translations or {} end
     local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-    local file = assert(io.open(root .. "LibAPRNavigation.xml"))
-    local xml = file:read("*a")
-    file:close()
-    for path in xml:gmatch('file="([^"]+)"') do
-        if catalog == nil or not path:match("^Data/") then dofile(root .. path) end
-    end
+    dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", {
+        game = self.profile == "forever" and "Camelot" or "Standard",
+        skip = function(path) return catalog ~= nil and path:find("/Data/", 1, true) ~= nil end,
+    })
     if catalog then
         LibStub("LibAPRNavigation-1.0"):RegisterData(self.profile, "fixture", catalog)
     end

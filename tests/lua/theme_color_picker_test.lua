@@ -2,7 +2,7 @@
 local env = dofile("tests/lua/route_ui_test_env.lua")
 function env.methods:GetScript(event) return self.scripts[event] end
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/ThemeCustomization.lua")
 dofile("APR-Core/ui/panels/OptionsPanel.lua")

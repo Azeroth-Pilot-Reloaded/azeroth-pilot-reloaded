@@ -22,6 +22,7 @@ local fpsCounter = 0
 ---------------------------------------------------------------------------------------
 
 local CoordinateFrame = CreateFrame("Frame", "CoordinateScreenPanel", UIParent, "BackdropTemplate")
+CoordinateFrame:SetDontSavePosition(true)
 CoordinateFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 CoordinateFrame:SetFrameStrata("MEDIUM")
 CoordinateScreenPanel:EnableMouse(true)

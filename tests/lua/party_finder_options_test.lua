@@ -24,7 +24,7 @@ for _, key in ipairs({
 }) do
     _G[key] = "Native:" .. key
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 GENERAL, OPTIONS, DISPLAY = "General", "Options", "Display"
 local oldLibStub = LibStub
 local registered = {}

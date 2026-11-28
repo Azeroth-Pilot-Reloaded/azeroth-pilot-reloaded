@@ -30,7 +30,7 @@ function env.methods:SetFont(path, size, flags)
     self.font, self.fontSize, self.fontFlags = path, size, flags
     return true
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/TextStyles.lua")
 dofile("APR-Core/utils/TextStyleUtils.lua")
 local utils, profile = APR.TextStyleUtils, APR.settings.profile

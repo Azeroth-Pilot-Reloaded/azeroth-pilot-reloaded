@@ -11,6 +11,10 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Improved zone detection with caching and hierarchy support.
 ---=============================================================================
 
+-- Bound ancestry walks even when the client returns a cycle.
+local MAX_MAP_ANCESTRY_DEPTH = 50
+local PLAYER_CONTEXT_CACHE_SECONDS = 1
+
 local function HasMapApi()
     return C_Map and C_Map.GetBestMapForUnit and C_Map.GetMapInfo
 end--[[APR_DIAG]]
@@ -45,6 +49,10 @@ function APR:GetNavigationPlayerContext()
     end
     x, y, z, world =
         PublicPositionNumber(x), PublicPositionNumber(y), PublicPositionNumber(z), PublicPositionNumber(world)
+    -- This client's native zero is an altitude placeholder, not sea level.
+    -- Retain explicit nonzero observations and the existing Retail contract.
+    if z == 0 and self.GetGameVersion and self.GAME_VERSIONS
+        and self:GetGameVersion() == self.GAME_VERSIONS.Forever then z = nil end
     local name, kind, instanceID
     if GetInstanceInfo then
         local ok, n, k, _, _, _, _, _, id = --[[APR_DIAG]]
@@ -71,6 +79,8 @@ function APR:GetNavigationPlayerContext()
     local observedWorld = world
     world = world or instanceID
     if not world or world < 0 or world % 1 ~= 0 then return nil end
+    local garrison = data and data.GetGarrisonPhase and data:GetGarrisonPhase(world)
+    local terrainPhase = garrison and world
     if data and data.GetWorldInstanceID then world = data:GetWorldInstanceID(world) end
     -- During transitions the two APIs can describe different worlds. Do not
     -- attach the previous instance's name/type to a fresh outdoor position.
@@ -81,7 +91,8 @@ function APR:GetNavigationPlayerContext()
     local mapID = C_Map and C_Map.GetBestMapForUnit and PublicPositionNumber(C_Map.GetBestMapForUnit("player"))
     local mapSource = "native"
     if not mapID or mapID <= 0 or mapID % 1 ~= 0 then
-        mapID = data and data.GetFallbackMapForInstance and data:GetFallbackMapForInstance(world)
+        mapID = garrison and garrison.mapID
+            or (data and data.GetFallbackMapForInstance and data:GetFallbackMapForInstance(world))
         mapSource = mapID and "catalogue" or "unavailable"
     end
     local coordinatesAvailable = observedWorld ~= nil and x ~= nil and y ~= nil
@@ -91,7 +102,8 @@ function APR:GetNavigationPlayerContext()
         instanceType = kind,
         -- GetInstanceInfo uses "none" outdoors. Do not restrict this to a
         -- hand-maintained list: every public non-outdoor type is an instance.
-        isInstance = kind ~= nil and kind ~= "" and kind ~= "none",
+        isInstance = not garrison and kind ~= nil and kind ~= "" and kind ~= "none",
+        terrainPhase = terrainPhase,
         uiMapID = mapID,
         mapSource = mapSource,
         coordinatesAvailable = coordinatesAvailable,
@@ -117,11 +129,11 @@ function APR:InitZoneDetectionCache()
     if self.ZoneDetection then return end
 
     self.ZoneDetection = {
-        -- Cache: player zone context (TTL = 1 second)
+        -- Short-lived player zone context
         playerContextCache = {
             mapIDs = {},
             timestamp = 0,
-            ttl = 1,
+            ttl = PLAYER_CONTEXT_CACHE_SECONDS,
         },
         -- Cache: map hierarchy data (persistent)
         hierarchyCache = {},
@@ -152,7 +164,7 @@ function APR:GetContinent(mapId)
     mapId = mapId or self:GetPlayerMapID()
 
     -- Match the hierarchy helper's bound, including malformed cyclic data.
-    for _ = 1, 50 do
+    for _ = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapId or mapId == 0 then break end
         local info = C_Map.GetMapInfo(mapId)
         if not info or not info.mapType then break end
@@ -187,13 +199,13 @@ function APR:GetPlayerParentMapID(mapType)
 
     -- Stop at the nearest match instead of allocating the complete ancestry.
     local mapID = currentMapId
-    for depth = 1, 50 do
+    for depth = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapID or mapID == 0 then break end
         local mapInfo = self:GetMapInfoCached(mapID)
         if mapInfo and mapInfo.mapType == mapType then
             return mapID
         end
-        if depth == 50 then break end
+        if depth == MAX_MAP_ANCESTRY_DEPTH then break end
         -- Parent links remain live even when a map's type is already cached.
         mapInfo = C_Map.GetMapInfo(mapID)
         if not mapInfo or mapInfo.parentMapID == mapID then break end
@@ -289,10 +301,9 @@ function APR:GetMapParentChain(mapID)
 
     local chain = {}
     local current = mapID
-    local maxDepth = 50 -- Prevent infinite loops
     local depth = 0
 
-    while current and current ~= 0 and depth < maxDepth do
+    while current and current ~= 0 and depth < MAX_MAP_ANCESTRY_DEPTH do
         table.insert(chain, current)
 
         local mapInfo = C_Map.GetMapInfo(current)
@@ -515,7 +526,7 @@ APR.CheckContinentMatch =
 local function GetOutdoorMapContext(self, mapID)
     local config = GetNavigationConfig() or {}
     local visited, isolation, outerZone = {}, nil, nil
-    for _ = 1, 50 do
+    for _ = 1, MAX_MAP_ANCESTRY_DEPTH do
         if not mapID or mapID == 0 or visited[mapID] then return nil end
         visited[mapID] = true
         local info = self:GetMapInfoCached(mapID)
@@ -698,13 +709,52 @@ function APR:GetNavigationPlayerPosition()
         z = context.z,
         instanceID = context.instanceID,
         uiMapID = context.uiMapID,
+        terrainPhase = context.terrainPhase,
         isInstance = context.isInstance or nil,
     }
-    local sanctum = C_Map and C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
-    if sanctum and GetSubZoneText and GetSubZoneText() == sanctum then position.accessKey = "wizards-sanctum" end
+    local data = self.NavigationData
+    -- The terrain provider can resolve a surface when the native navigation
+    -- position has a zero altitude placeholder.
+    if position.z == 0 and data and data.profile == "retail" and data.GetWalkingProvider then
+        local terrain = data:GetWalkingProvider()
+        if terrain and terrain.HasWalkingCoverage and terrain:HasWalkingCoverage(position) then position.z = nil end
+    end
+    local areaName = C_Map and C_Map.GetAreaInfo
+    local sanctum = areaName and areaName(10523)
+    local config = self.NavigationData and self.NavigationData.GetConfig and self.NavigationData:GetConfig()
+    local maps = position.z == nil and config and config.ObservedAreaMaps
+        and config.ObservedAreaMaps[position.uiMapID]
+    local subzone = (sanctum or maps) and GetSubZoneText and GetSubZoneText()
+    if self.CanAccessValue and not self:CanAccessValue(subzone) then subzone = nil end
+    if sanctum and subzone == sanctum then position.accessKey = "wizards-sanctum" end
+    if areaName and maps then
+        local zone = GetZoneText and GetZoneText()
+        if self.CanAccessValue and not self:CanAccessValue(zone) then zone = nil end
+        for id, mapID in pairs(maps) do
+            local name = areaName(id)
+            if name and name ~= "" and (subzone == name or zone == name) then
+                position.uiMapID = mapID
+                break
+            end
+        end
+    end
     if self.NavigationData then
         if position.uiMapID and self.NavigationData.NormalizeLocation then
-            return self.NavigationData:NormalizeLocation(position)
+            position = self.NavigationData:NormalizeLocation(position)
+            local indoorAreas = config and config.IndoorMapAreas
+            local indoorArea = position and position.z == nil and indoorAreas and indoorAreas[position.uiMapID]
+            if indoorArea and areaName and GetRealZoneText then
+                local name, realZone = areaName(indoorArea), GetRealZoneText()
+                if
+                    (not self.CanAccessValue or (self:CanAccessValue(name) and self:CanAccessValue(realZone)))
+                    and type(name) == "string"
+                    and name ~= ""
+                    and realZone == name
+                then
+                    position.indoors = true
+                end
+            end
+            return position
         end
         if position.uiMapID then
             position.region = self.NavigationData:GetPositionRegion(position)

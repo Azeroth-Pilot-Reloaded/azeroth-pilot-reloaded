@@ -8,6 +8,13 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
+local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
+    "^01_NAVIGATION_PATH%-",
+    "^01_NAVIGATION_ERROR%-",
+    "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
+}
+
 local screenResizeFrames = setmetatable({}, { __mode = "k" })
 local screenResizeWatcher
 
@@ -79,13 +86,6 @@ function APR:SetScreenResizeBounds(frame, minWidth, minHeight, maxWidth, maxHeig
     screenResizeFrames[frame] = bounds
     RefreshScreenResizeBounds(frame, true)
 end--[[APR_DIAG]]; APR.SetScreenResizeBounds = APRTrace("APR-Core/utils/UIUtils.lua:57:APR:SetScreenResizeBounds#2", APR.SetScreenResizeBounds)--[[/APR_DIAG]]
-
-local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
-local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
-    "^01_NAVIGATION_PATH%-",
-    "^01_NAVIGATION_ERROR%-",
-    "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
-}
 
 local function getStatusHex(name, fallback)
     if APR.GetTextColorHex then

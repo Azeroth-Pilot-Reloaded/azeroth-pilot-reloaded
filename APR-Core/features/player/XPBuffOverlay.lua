@@ -11,8 +11,7 @@ local LibWindow = LibStub("LibWindow-1.1")
 
 APR.XPBuffOverlay = APR:NewModule("XPBuffOverlay")
 local overlay = APR.XPBuffOverlay
-local rows = {}
-local frame
+
 local PANEL_BACKDROP = {
     bgFile = "Interface\\Buttons\\WHITE8X8",
     tile = true,
@@ -21,6 +20,9 @@ local PANEL_BACKDROP = {
     edgeSize = 16,
     insets = { left = 4, right = 4, top = 4, bottom = 4 },
 }
+
+local rows = {}
+local frame
 
 function overlay:IsBonusEnabled(sourceName)
     local profile = APR.settings and APR.settings.profile
@@ -224,6 +226,7 @@ function overlay:Refresh()
     if not profile then return end
     if not frame then
         frame = CreateFrame("Frame", "APRXPBuffOverlay", UIParent, "BackdropTemplate")
+        frame:SetDontSavePosition(true)
         frame:SetSize(300, 40)
         frame:SetPoint("CENTER", UIParent, "CENTER", 280, 0)
         frame:SetClampedToScreen(true)
@@ -279,10 +282,11 @@ function overlay:Refresh()
         APR:RegisterSkinTarget(frame.Header, "header")
         APR:RegisterSkinTarget(frame.Header.MinimizeButton, "headerButton", { close = true })
     end
-    if self.positionConfig ~= profile.xpBuffFrame then
-        profile.xpBuffFrame = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }
-        self.positionConfig = profile.xpBuffFrame
-        LibWindow.RegisterConfig(frame, profile.xpBuffFrame)
+    local position = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }
+    if self.positionConfig ~= position then
+        profile.xpBuffFrame = position
+        self.positionConfig = position
+        LibWindow.RegisterConfig(frame, position)
         LibWindow.RestorePosition(frame)
     end
     APR:SetPanelColor(frame, profile.currentStepbackgroundColorAlpha)

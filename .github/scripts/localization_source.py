@@ -288,7 +288,10 @@ def _modeled_choices(path, expression, tokens, pairs, lookup):
     if path in _SCENARIO_FILES and expression in ("kind", "scenarioInfo.type", '"LEAVE_"..kind', "leaveKey"):
         prefix = "LEAVE_" if "LEAVE_" in expression or expression == "leaveKey" else ""
         return [(prefix + key, lookup) for key in _SCENARIO_KINDS]
-    if path == "APR-Core/features/navigation/Navigation.lua" and expression == "key":
+    if expression == "key" and path in {
+        "APR-Core/features/navigation/Navigation.lua",
+        "APR-Core/features/navigation/controller/NavigationDisplay.lua",
+    }:
         # Local state branch immediately above the lookup; finite, not NAVIGATION_*.
         return [(key, lookup) for key in ("NAVIGATION_CALCULATING", "NAVIGATION_WAITING")]
     if path == "APR-Core/features/player/XPBuffOverlay.lua" and expression == "message":
@@ -303,7 +306,10 @@ def _modeled_choices(path, expression, tokens, pairs, lookup):
                     result.extend(_choices(tokens, offset + 1, end, pairs) or [])
                     break
         return result
-    if path == "APR-Core/integrations/Gamepad.lua" and expression == "label":
+    if expression == "label" and path in {
+        "APR-Core/integrations/Gamepad.lua",
+        "APR-Core/integrations/gamepad/Gamepad.lua",
+    }:
         # The final pairs({...}) defines the binding labels. Other named maps in
         # this file must not keep a translation alive accidentally.
         for index in range(len(tokens) - 3, -1, -1):

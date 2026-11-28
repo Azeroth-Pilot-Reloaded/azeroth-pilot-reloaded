@@ -6,9 +6,9 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Resolves client-compatible routes and builds cached effective steps with scenarios/parallel groups.
 -- Hard compatibility, soft availability and prerequisite completion have separate meanings.
 
+local Constants = APR.QuestingConstants.RouteManager
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local routeLevelFields = { "Level", "MinLevel", "MaxLevel", "BeLvl", "SkipForLvl" }
-local levelConditionGroups = { "AnyOf", "AllOf" }
 
 local function FormatRouteLevel(level)
     return (string.format("%.2f", level):gsub("0+$", ""):gsub("%.$", ""))
@@ -56,24 +56,18 @@ APR.UsesRouteCharacterAdvice = APRTrace(
     APR.UsesRouteCharacterAdvice
 )--[[/APR_DIAG]]
 
-local characterAdviceFields = { Race = true, Class = true, ClassNot = true, AlliedRace = true }
-local classRouteAdviceFields = { Race = true, AlliedRace = true }
-local characterAdviceOrder = { "Race", "Class", "ClassNot", "AlliedRace" }
-local mageClasses = { "MAGE", 8 }
-local falseConditions = { AnyOf = {} }
-
 local function CombineSelectionConditions(children, any)
     local result = {}
     for _, child in ipairs(children) do
         if not next(child) then
             if any then return {} end
-        elseif child == falseConditions then
-            if not any then return falseConditions end
+        elseif child == Constants.falseConditions then
+            if not any then return Constants.falseConditions end
         else
             result[#result + 1] = child
         end
     end
-    if #result == 0 then return any and falseConditions or {} end
+    if #result == 0 then return any and Constants.falseConditions or {} end
     if #result == 1 then return result[1] end
     return { [any and "AnyOf" or "AllOf"] = result }
 end--[[APR_DIAG]]
@@ -86,7 +80,7 @@ local function ProjectSelectionBranch(conditions, negated, waivedFields)
     local clauses = {}
     for field, value in pairs(conditions) do
         local clause
-        if (waivedFields or characterAdviceFields)[field] then
+        if (waivedFields or Constants.characterAdviceFields)[field] then
             if negated and not waivedFields then return {} end
         elseif field == "Not" then
             clause = ProjectSelectionBranch(value, not negated, waivedFields)
@@ -119,7 +113,7 @@ local function WithoutCharacterConditions(conditions)
     local projected
     for field, value in pairs(conditions) do
         local replacement = value
-        if characterAdviceFields[field] then
+        if Constants.characterAdviceFields[field] then
             replacement = nil
         elseif field == "AnyOf" or field == "AllOf" then
             local children
@@ -258,7 +252,7 @@ function APR:GetRouteSelectionConditions(routeKey, data, recommendationsOnly)
         -- Class chapters keep authored class gates while retaining race advice.
         if data.category and data.category == self.CATEGORIES.Class then
             conditions = { AnyOf = { conditions or {},
-                ProjectSelectionBranch(conditions or {}, false, classRouteAdviceFields) or {} } }
+                ProjectSelectionBranch(conditions or {}, false, Constants.classRouteAdviceFields) or {} } }
         else
             conditions = WithoutCharacterConditions(conditions)
         end
@@ -268,7 +262,7 @@ function APR:GetRouteSelectionConditions(routeKey, data, recommendationsOnly)
         for name, value in pairs(conditions or {}) do
             mageConditions[name] = value
         end
-        mageConditions.Class = mageClasses
+        mageConditions.Class = Constants.mageClasses
         return mageConditions
     end
     return conditions
@@ -1673,7 +1667,7 @@ function APR:GetRouteLevelWarnings(routeKey)
     local playerLevel = self:GetPlayerEffectiveLevel()
     local function collect(current)
         if not self:AreConditionalFiltersMet(current, levelPolicy) then return end
-        for _, field in ipairs(routeLevelFields) do
+        for _, field in ipairs(Constants.routeLevelFields) do
             local value = current[field] and self:ResolveLevelRequirement(current[field])
             local operator = field == "SkipForLvl" and "<"
                 or field == "MaxLevel" and "<="
@@ -1700,7 +1694,7 @@ function APR:GetRouteLevelWarnings(routeKey)
                 )
             end
         end
-        for _, group in ipairs(levelConditionGroups) do
+        for _, group in ipairs(Constants.levelConditionGroups) do
             for _, child in ipairs(current[group] or {}) do
                 collect(child)
             end
@@ -1757,7 +1751,7 @@ function APR:GetRouteSelectionWarnings(routeKey)
     local seen = {}
     local function collect(current, negated)
         if self:AreConditionalFiltersMet(current, levelPolicy) ~= negated then return end
-        for _, field in ipairs(starter and { "Race", "AlliedRace" } or characterAdviceOrder) do
+        for _, field in ipairs(starter and { "Race", "AlliedRace" } or Constants.characterAdviceOrder) do
             local value = current[field]
             local matches
             if field == "Race" then
@@ -1781,7 +1775,7 @@ function APR:GetRouteSelectionWarnings(routeKey)
                 end
             end
         end
-        for _, group in ipairs(levelConditionGroups) do
+        for _, group in ipairs(Constants.levelConditionGroups) do
             local children = current[group]
             if children and (negated or not self:AreConditionalFiltersMet({ [group] = children }, levelPolicy)) then
                 for _, child in ipairs(children) do

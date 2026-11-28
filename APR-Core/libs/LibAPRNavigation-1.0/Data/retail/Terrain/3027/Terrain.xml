@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file="Nav/Nav3027.lua"/>
+  <Script file="Nav/Nav3027_00001.lua"/>
+</Ui>

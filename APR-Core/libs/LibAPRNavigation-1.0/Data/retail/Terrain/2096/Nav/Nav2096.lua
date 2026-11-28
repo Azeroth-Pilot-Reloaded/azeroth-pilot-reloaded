@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[2096]={["area"]={},["areaNames"]={[100327]="Vrille de corruption",[101039]="Vrille de corruption",[101519]="",[101520]="",[101553]="",[101554]="Vrille de corruption",[102248]="",[77881]="",[93268]="",[93706]="",[94094]="",[94109]="",[95033]="",[95225]="",[99451]="Vrille de corruption",[99860]=""},["areaParents"]={[100327]=10286,[101039]=10286,[101519]=0,[101520]=0,[101553]=0,[101554]=10286,[102248]=0,[77881]=0,[93268]=0,[93706]=0,[94094]=0,[94109]=0,[95033]=0,[95225]=0,[99451]=10286,[99860]=0},["cells"]=128,["class"]={},["counts"]={["area"]=6,["class"]=8,["floor"]=8,["graph"]=8,["grid"]=8,["height"]=8},["cx0"]=6,["cy0"]=-5,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["hubs"]={},["nx"]=2,["ny"]=4,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

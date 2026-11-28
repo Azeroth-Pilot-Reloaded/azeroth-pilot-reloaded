@@ -190,8 +190,7 @@ function APR.settings:InitializeSettings()
             -- arrowTextScale is initialized from arrowScale by Arrow to preserve existing text sizes.
             arrowStyle = "classic",
             arrowFPS = 2,
-            arrowleft = UIParent:GetWidth() / 2.05,
-            arrowtop = -(UIParent:GetHeight() / 1.5),
+            -- Arrow positions are saved only after a move. The display computes its default.
             arrowTextAppearance = APR:CreateTextAppearanceDefaults(true, {
                 warningColor = APR.Color.yellow,
             }),
@@ -324,6 +323,9 @@ APR.settings.ChatCommand =
 function APR.settings:RefreshProfile()
     if APR.LayoutEditor then APR.LayoutEditor:Hide(false) end
     self.profile = self.db.profile
+    if APR.LayoutEditor and APR.LayoutEditor.RestoreProfilePositions then
+        APR.LayoutEditor:RestoreProfilePositions()
+    end
     if APR.PathSharing then APR.PathSharing:RefreshRoster() end
     if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
@@ -1361,6 +1363,7 @@ function APR.settings:createBlizzOptions()
                                     function(info, value)
                                         SetProfileOption(info, value)
                                         if value then APR.Arrow.Active = true end
+                                        APR.Arrow:RefreshVisibility()
                                     end --[[APR_DIAG]]
                                 ) --[[/APR_DIAG]],
                                 --[[APR_DIAG]]
@@ -1535,17 +1538,8 @@ function APR.settings:createBlizzOptions()
                                         self.profile.arrowScale = 1
                                         self.profile.arrowTextScale = 1
                                         self.profile.arrowFPS = 2
-                                        self.profile.arrowleft = UIParent:GetWidth() / 2.05
-                                        self.profile.arrowtop = -(UIParent:GetHeight() / 1.5)
+                                        self.profile.arrowleft, self.profile.arrowtop = nil, nil
                                         APR.Arrow:ApplySize()
-                                        APR.ArrowFrameM:ClearAllPoints()
-                                        APR.ArrowFrameM:SetPoint(
-                                            "TOPLEFT",
-                                            UIParent,
-                                            "TOPLEFT",
-                                            self.profile.arrowleft,
-                                            self.profile.arrowtop
-                                        )
                                         if APR.UpdateStep then APR:UpdateStep() end
                                         if APR.Arrow and APR.Arrow.UpdateTextAppearance then
                                             APR.Arrow:UpdateTextAppearance()

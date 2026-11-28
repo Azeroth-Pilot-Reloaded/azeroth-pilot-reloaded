@@ -21,7 +21,7 @@ function env.methods:SetNonSpaceWrap(value) self.nonSpaceWrap = value end
 function env.methods:GetStringHeight()
     return math.max(1, math.ceil(#(self.text or "") / 30)) * (self.size or 12)
 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/TextStyles.lua")
 dofile("APR-Core/features/navigation/Arrow.lua")
 local arrow, frame, profile = APR.Arrow, APR.ArrowFrame, APR.settings.profile

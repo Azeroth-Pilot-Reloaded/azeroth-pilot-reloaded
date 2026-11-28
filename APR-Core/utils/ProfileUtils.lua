@@ -6,6 +6,21 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Resolves character-specific preferences and profile resets through APR-owned AceDB state.
 -- Persisted setting names stay stable even when internal Lua names change.
 
+-- One client/class/build identity shared by optional Pawn and APR's own scorer.
+-- Pawn's SpecID is a class-relative index, including its Classic template builds.
+-- Primary attributes describe a build; they are not a stat-weight recommendation.
+local rewardBuilds = {
+    [1] = { {"Strength", "DAMAGER"}, {"Strength", "DAMAGER"}, {"Strength", "TANK"} },
+    [2] = { {"Intellect", "HEALER"}, {"Strength", "TANK"}, {"Strength", "DAMAGER"} },
+    [3] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
+    [4] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
+    [5] = { {"Intellect", "HEALER"}, {"Intellect", "HEALER"}, {"Intellect", "DAMAGER"} },
+    [7] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Intellect", "HEALER"} },
+    [8] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
+    [9] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
+    [11] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "TANK"}, {"Intellect", "HEALER"} },
+}
+
 -- Keep AceDB character scope behind APR so integrations never depend on a generic global.
 function APR:GetCharacterSettings()
     local database = self.settings and self.settings.db
@@ -117,22 +132,6 @@ function APR:ResetAllProfilesToDefault()
 end--[[APR_DIAG]]
 APR.ResetAllProfilesToDefault =
     APRTrace("APR-Core/utils/ProfileUtils.lua:62:APR:ResetAllProfilesToDefault#6", APR.ResetAllProfilesToDefault)--[[/APR_DIAG]]
-
-
--- One client/class/build identity shared by optional Pawn and APR's own scorer.
--- Pawn's SpecID is a class-relative index, including its Classic template builds.
--- Primary attributes describe a build; they are not a stat-weight recommendation.
-local rewardBuilds = {
-    [1] = { {"Strength", "DAMAGER"}, {"Strength", "DAMAGER"}, {"Strength", "TANK"} },
-    [2] = { {"Intellect", "HEALER"}, {"Strength", "TANK"}, {"Strength", "DAMAGER"} },
-    [3] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
-    [4] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
-    [5] = { {"Intellect", "HEALER"}, {"Intellect", "HEALER"}, {"Intellect", "DAMAGER"} },
-    [7] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Intellect", "HEALER"} },
-    [8] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
-    [9] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
-    [11] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "TANK"}, {"Intellect", "HEALER"} },
-}
 
 local function rewardValue(value)
     return not issecretvalue or not issecretvalue(value)

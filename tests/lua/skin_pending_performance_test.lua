@@ -18,7 +18,7 @@ function APR:RefreshThemeRegions() regions = regions + 1 end
 function APR:ApplyAllTextStyles() fonts = fonts + 1 end
 function APR:RefreshStatusBarColors() bars = bars + 1 end
 function APR:RefreshTextAppearance() text = text + 1 end
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 local controls = {}
 for i = 1, 1000 do
     controls[i] = {}

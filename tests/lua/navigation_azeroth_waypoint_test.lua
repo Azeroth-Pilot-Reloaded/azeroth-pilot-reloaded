@@ -34,12 +34,7 @@ setmetatable(sandbox, {
     end,
 })
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
-local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
-local xml = manifest:read("*a")
-manifest:close()
-for path in xml:gmatch('file="([^"]+)"') do
-    Load(root .. path)
-end
+dofile("tests/lua/manifest_fixture.lua")(root .. "LibAPRNavigation.xml", { load = Load })
 local library = sandbox.LibStub("LibAPRNavigation-1.0")
 assert(type(library.Instance.ConnectAzerothWaypoint) == "function", "Ship the provider in the standalone manifest")
 assert(rawget(sandbox, "APR") == nil and rawget(sandbox, "C_Map") == nil)

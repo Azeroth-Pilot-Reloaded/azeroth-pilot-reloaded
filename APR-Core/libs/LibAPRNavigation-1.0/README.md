@@ -1,7 +1,7 @@
 # LibAPRNavigation-1.0
 
 An embedded Lua 5.1 travel planner with optional external waypoint output. Load
-`LibAPRNavigation.xml` after LibStub. Planning does not access APR, AceLocale,
+`LibAPRNavigation.xml` after LibStub. Transport planning does not access APR, AceLocale,
 frames, SavedVariables, protected actions or WoW globals. Each consumer supplies
 an environment and owns its character observations. Two consumers can plan
 concurrently without sharing their position caches, resources or searches.
@@ -18,6 +18,8 @@ isolation rules. Ordinary instances remain separate.
 Connections may specify `instructionKey` for a localized interaction that is
 more specific than their transport kind. Hidden teleports keep their approach
 passages as separate edges rather than directing players through cave walls.
+Connections that together form a tram journey through a separate world may
+share a `transitGroup` so APR can price that journey early for distant map pins.
 
 Each client keeps its portals in `Data/*/Portals.lua`. Forever's geography adds
 world-scoped map corrections and local access polygons/circles; map and area
@@ -44,10 +46,11 @@ retain their normalized coordinate limits.
 | `TravelActions.lua`                                       | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones                   |
 | `Search.lua`                                              | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels                          |
 | `WaypointUI.lua`                                          | Shared manual/automatic output, lifecycle, projection, ownership and Waypoint UI fallback               |
+| `WaypointClicks.lua`                                      | Shift-click input and destination projection for the world map and minimap                             |
 | `AzerothWaypoint.lua`                                     | Independent guide-provider wrapper, metadata preservation, provider arbitration and combat-safe release |
 | `Data/retail/`, `Data/forever/`                           | Positions, directions, costs and requirements, separated by client and transport type                   |
 | APR `NavigationAdapter.lua`                               | WoW API access, client locale/names, bind/house observations and character settings                     |
-| APR `integrations/NavigationEntrances.lua`                | Lazy compatibility facade over the library entrance registry; contains no coordinates                   |
+| APR `features/navigation/adapter/NavigationEntrances.lua`            | Lazy compatibility facade over the library entrance registry; contains no coordinates                   |
 | APR `Navigation.lua`, `NavigationTaxi.lua`, `Preview.lua` | Route lifecycle, character taxi knowledge, secure buttons and rendering                                 |
 | APR `NavigationPlanner.lua`                               | One scheduler for preparation, search, optional probes and guidance rows                                |
 
@@ -88,6 +91,11 @@ job:Cancel()
 Services are `flight`, `class`, `trainer`, `weapon`, `vendor`, `repair`, `inn`,
 `bank`, `mailbox`, `auction`, and `stable`. Client-specific choices come from
 `GetServiceChoices(query)`; class trainers use the supplied character's class.
+
+Set `nearestByCoordinates = true` to select the matching service with the
+shortest horizontal distance in the player's world before planning its route.
+That result has `record`, `target`, and `byCoordinates = true`. If there are no
+matching coordinates in the player's world, the job compares travel times as usual.
 
 `GetTrainingServiceQuery(spellID, professionOnly)` maps initial profession and
 weapon spells through the same definitions used by service choices. Ordinary
@@ -140,9 +148,19 @@ completion or cancellation. `IsServiceArrival(position, target, radius)` require
 compatible access and world space, proximity (five yards by default), and height
 when provided; it never advances a consumer's guide.
 
-The explicit offline compiler is `tools/import_services.py` in this library.
-Run it with `--help` for input directories; it only writes under its output
-directory. `tools/corrections.json` holds readable reviewed facts. Unsupported
+With terrain enabled, the APR service picker supplies `walkingSpeedCeiling` for
+its bounded speed model. All matching services are loaded; the engine measures
+the closest direct candidate by a geometric lower bound first, then compares
+every potentially faster journey through the shared transport graph. This order
+does not choose the winner by straight-line distance or cap the candidate list.
+A refused first candidate advances to another; unavailable terrain keeps the
+ordinary authorized estimate. Custom consumers without a valid speed ceiling
+retain the complete batched search.
+
+The offline compiler and reviewed `corrections.json` live in the companion
+`Route-generator/tools/navigation_services` directory. Run `import_services.py`
+there with `--help` for input directories; it only writes under its output
+directory (the generator's `output/navigation-services` by default). Unsupported
 conditions, invalid coordinates and non-service placeholders are excluded and
 reported to stdout. The compiler emits no provenance file. Catalog validation
 and importer tests never repair live data.
@@ -246,6 +264,14 @@ Parallel direct crossings between the start and goal regions are indexed
 separately and compared by their complete walking/crossing/arrival duration.
 This avoids choosing a distant neutral boat before a nearby faction zeppelin
 merely because its record came first in the Forever catalogue.
+
+For ordinary Forever travel between separate access regions, APR also uses the
+physical graph to propose the crossings up to the final landing. A scoped
+terrain search checks the approaches before showing that part of the itinerary.
+The complete search still compares flights, personal travel and other routes.
+After following the last proposed crossing, planning resumes from the observed
+landing with the same destination.
+
 The APR adapter keeps this geometry across quest, bag and dialogue refreshes;
 readable map-art changes invalidate it, with conservative quest-turn-in refreshes
 on clients without map art. Bind and house changes still refresh live navigation
@@ -463,6 +489,20 @@ declared stops. Out-of-range, conflicting or not-yet-named stops return no name;
 names are retried on the next call. These labels never replace the position's
 map or its access region. APR's authored tram instructions and library guidance
 use the same resolution and the existing `ENTER_TRAM` translation template.
+
+### Waypoints from map clicks
+
+Call `navigator:SetWaypointClickHandler(handler)` to receive Shift + left-click
+destinations. The handler receives a normalized world position suitable as a
+route search goal, followed by `"worldmap"` or `"minimap"`. Return `true` when
+accepting a world-map click so the canvas stays on its current map. Shift-click
+on the minimap also sends the usual ping.
+
+The navigator uses `environment.mapToWorld` for map clicks and also needs
+`worldToMap` and `getPlayerPosition` for minimap clicks. One instance owns the
+gesture at a time. The most recent registration takes ownership, and passing
+`nil` releases it. The embedding addon owns the guidance and destination UI.
+In APR, right-click the destination pin to cancel guidance.
 
 ### External waypoint output
 
@@ -765,17 +805,21 @@ are rechecked on retained edges immediately before departure. A completed
 endeavor still exists until its cycle ends; completion alone does not close it.
 
 `config.PhaseGroups` records verified map artworks and unambiguous local map
-identities. Two separate maps each reporting their static artwork do not prove
-the selected timeline. A verified phase recipe may guide to Zidormi even when
-the initial phase is unknown, but only native phase evidence completes that
-interaction. `phaseAgnostic=true` is reserved for an observer's approach, where
-the NPC exists on both sides; it is not an authorization for a portal.
+identities. A group with separate UI maps uses the player's observed map or
+its outdoor ancestry. A group using a single UI map can use its changing
+artwork. A verified phase recipe can guide to Zidormi while the phase is
+unknown and completes once the client reports the requested phase.
+Use `phaseAgnostic=true` for an approach to an observer present in both phases.
+If the phase uses separate maps, provide its positions on both maps, with the
+continental approach first for players whose current map is outside the zone.
 
 `config.MapRequirements` applies common access rules to every connection whose
-resolved endpoint belongs to the map or a descendant, including personal
-teleports, physical region routing and instance approaches. Walking to an absent
-map also fails closed. Retain explicit requirements on shared-map phases such
-as the Dark Portal and Silithus: their UI map alone cannot identify a timeline.
+resolved endpoint belongs to the map or a descendant in the same outdoor map
+hierarchy. An independent instance can declare its own rule. Personal teleports,
+physical region routing and instance approaches use these rules. Walking checks
+both endpoints. The player can still approach a shared observer covered by their
+current map's rule. Keep explicit phase requirements on shared-map connections
+such as the Dark Portal and Silithus.
 
 `environment.isHolidayActive(key)` must return a Boolean or nil. APR reads
 native holiday icons and exact start/end times against the server calendar,
@@ -821,9 +865,13 @@ exports consumed resources alongside the edges, and the search checks their sum.
 
 ## Research and validation
 
-The accompanying `../../../tools/validation/navigation_data/README.md` records retained data provenance. APR's navigation
-research note compares all nine requested addons and distinguishes inspected
-ideas from imported data. No third-party addon UI or runtime is embedded here.
+In the sibling Route-generator checkout, `tools/validation/navigation_data/README.md`
+records navigation data provenance. The service generator records the origin of each
+observation in `tools/navigation_services/forever/locations.json.gz`. Credits and
+regeneration commands accompany that catalogue. Retail mailbox coordinates are
+checked against placed type-19 entries in TrinityCore's world database, Blizzard
+client map assignments and the Dalaran observations by NessieMo. The comparison
+and its inputs are in `Route-generator/tools/navigation_services/retail`.
 
 Run the Lua regression suite, script tests, instrumentation check and package
 validator from the APR repository. The library suite loads this code with a fake
@@ -831,8 +879,85 @@ environment and no APR/WoW globals. Live transport arrivals, secure buttons,
 phase restrictions and plot coordinates still require Retail/Forever checks.
 The reproducible benchmark and measured limits are documented in
 [`NAVIGATION_PERFORMANCE.md`](../../../tools/validation/NAVIGATION_PERFORMANCE.md).
-Terrain obstacle avoidance is outside this planner's scope: free segments are
-direct lines within an authorized region, connected through mandatory passages.
+Without a walking provider, free segments remain direct lines within an
+authorized region, connected through mandatory passages.
+
+## Optional walking terrain
+
+`Terrain_[Game].xml` loads the walking provider and selects the client data.
+Standard loads locally generated Retail and PTR maps. Camelot loads the shipped
+Forever catalogue and eligible locally generated maps. A generated map registers
+only on its exact client build. The package validator checks both include graphs.
+
+The sibling Route-generator checkout contains the offline CLI in `tools/apr-terrain`.
+Its README covers building the tools, generating a pack from a Forever or Retail client
+and checking it before installation. Raw geometry and build caches stay in the generator workspace.
+Generated maps use the router's format 2/3; private-map-derived distributions
+are not inputs. The APR Terrain launcher and Retail batch generator verify packs
+before publishing them under `Data/<profile>/Terrain/<mapID>`. The profile's
+`Terrain.xml` includes the map's `Terrain.xml`, which loads its `Nav/` files.
+Retail test products use `Data/retail/Terrain/<product>/<mapID>` so they can
+coexist with live maps. The exact build remains in the pack metadata and Lua
+load guards. Publishing a newer build replaces the map at the same path.
+
+`library:RegisterTerrainData("forever", worldMapID, data, revision)` registers a
+complete immutable map declaration after all its parts have loaded. A newer
+revision replaces the declaration and invalidates pending walking work.
+`navigator:GetWalkingProvider()` returns an instance-bound provider for the active
+profile when its terrain declarations exist.
+
+The optional `walkingProvider` search argument supplies caller-driven cost and
+path jobs. Both implement `Step(maxOperations, milliseconds)` and `Cancel()`;
+they share the existing planning budget rather than installing a timer or
+per-frame event. Cost batches preserve target order. Their per-target state is
+`ready`, `no_path` or `unavailable`. Physical seconds are separate from the
+router's ground preference weights. Missing/unsupported data permits the normal
+authorized fallback; a proven disconnection never creates a direct edge.
+
+If the optional `HasMap(instanceID)` returns `false`, the search can use
+authorized estimates in that world without opening terrain jobs. A registered
+map with partial coverage still goes through the provider, as do searches that
+require verified walks. Terrain in other worlds remains available after a crossing.
+
+Successful walking segments may include `path`, an immutable list of world
+positions. APR follows it with a navigation-only cursor and keeps the authored
+quest destination and interaction radius. Map lines and remaining distance use
+the corridor; intermediate points never advance the guide's step index.
+
+The provider's optional `GetGuidanceHeight(point)` reads a unique surface from
+already-decoded terrain; missing or overlapping surfaces return nil. Its bounded
+`CanFollowWalkingSegment(from, to)` checks a connected corridor using those
+cached surfaces, including published indoor/swimming walks. Neither method
+decodes new clusters. The controller can recognize a reached or passed bend on
+the adjacent outgoing segment while preserving map/access/floor checks. A
+hairpin cannot steal progress from the incoming segment. Missing proof leaves
+the cursor unchanged until the existing planner supplies usable data.
+
+For ordinary Forever guide objectives on the player's map, APR finishes with
+the verified walking route when it measures at most 600 yards. A bounded search
+can join two neighbouring tiles using their directed terrain links. For longer
+journeys and service searches, a verified local corridor can guide while the
+full transport comparison runs. Changing the objective cancels unfinished work.
+
+When terrain coverage is unavailable, APR can publish the ordinary authorized
+walking estimate while the comparison continues. It does not attach a collision
+polyline to this estimate.
+A measured result supersedes this provisional estimate even when it is slower;
+a definitive complete-search refusal removes it.
+An ambiguous surface in a covered cell excludes the walking connection. If the
+search cannot reach its destination because a request endpoint is unresolved,
+the planner reports `waiting_data` with `unresolvedSurface`. For an unresolved
+departure, a new observed altitude or walking cell triggers a fresh search.
+`no_path` remains a refused connection. Native zero player altitude on Forever
+is unknown, so it never selects a surface at sea level or proves an arrival Z.
+
+An optional `walkingSpeedCeiling` search argument promises an upper bound on
+every walking speed returned by the consumer for that request. For one or more
+goals, the engine can measure a direct candidate first and avoid terrain queries whose
+straight-distance lower bound already loses to an accepted walking candidate
+(measured, or the ordinary authorized estimate for `unavailable`). This bound
+is never an ETA or an access permission. Consumers with unbounded/custom speed
+callbacks must omit it; the ordinary exhaustive behavior remains available.
 
 ## Catalogue maintenance and access floors
 

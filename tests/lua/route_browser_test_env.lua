@@ -61,7 +61,7 @@ function APR:GetPlayerParentMapID() return nil end
 function APR:IsDelveRoute() return false end
 tinsert = table.insert
 dofile("APR-Core/config/Config_Route_Prefabs.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 -- This lightweight fixture does not resolve anchors. Give a window's content the

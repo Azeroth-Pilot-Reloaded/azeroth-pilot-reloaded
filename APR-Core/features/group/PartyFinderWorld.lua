@@ -4,9 +4,11 @@ local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yi
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Shared-channel population, roster snapshots and bounded private fallback.
+local Constants = APR.GroupConstants.PartyFinderProtocol
+
 local Finder = APR.partyFinder
 local P = APR.PartyFinderProtocol
-local MODULO = 4294967296
+
 
 local function Public(value)
     return not (issecretvalue and issecretvalue(value))
@@ -107,10 +109,10 @@ function Finder:GetDiscoveryResponseDelay(query)
     local population = PositiveInteger(self.worldPopulation) and self.worldPopulation or 1000
     local ticket = tonumber(P.Hash(query.id .. self.playerKey), 16) or 0
     for _ = 1, 3 do
-        ticket = (ticket + math.floor(ticket / 65536)) % MODULO
-        ticket = (1664525 * ticket + 1013904223) % MODULO
+        ticket = (ticket + math.floor(ticket / 65536)) % Constants.MODULO
+        ticket = (1664525 * ticket + 1013904223) % Constants.MODULO
     end
-    return math.min(9, 0.25 + 1.2 * math.log(1 + math.max(0, population - 1) * ticket / MODULO / 24) / math.log(2))
+    return math.min(9, 0.25 + 1.2 * math.log(1 + math.max(0, population - 1) * ticket / Constants.MODULO / 24) / math.log(2))
 end--[[APR_DIAG]]
 Finder.GetDiscoveryResponseDelay = APRTrace(
     "APR-Core/features/group/PartyFinderWorld.lua:79:Finder:GetDiscoveryResponseDelay#8",
@@ -353,9 +355,9 @@ function Finder:ReadAPRRoster()
                     cursor
                 )
             local key = ok and self:PlayerKey(name)
-            if key then
+            if ok and Public(name) and type(name) == "string" and name ~= "" then
                 known = known + 1
-                if key ~= self.playerKey and not keys[key] then
+                if key and key ~= self.playerKey and not keys[key] then
                     keys[key], members[#members + 1] = true, key
                 end
             else

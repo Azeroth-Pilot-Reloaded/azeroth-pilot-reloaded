@@ -136,6 +136,7 @@ APR.npcInteraction.QueueResume = APRTrace(
 function APR.npcInteraction:HandleMerchantPurchase(step)
     if APR.routeValidationPending or APR.routeValidationFailed then return end
     if IsModifierKeyDown() or not step or not step.BuyMerchant then return end
+    if APR.CanConjureMerchantPurchases and APR:CanConjureMerchantPurchases(step.BuyMerchant) then return end
     if step.MerchantNPC and APR:GetTargetID("npc") ~= step.MerchantNPC then return end
     APR:StartPurchaseTracking(step.BuyMerchant)
     APR:BuyItemFromMerchant(step.BuyMerchant)

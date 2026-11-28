@@ -43,7 +43,7 @@ APRData = { [APR.PlayerID] = { route = 1 } }
 APR.RouteQuestStepList = { route = { steps = { { Qpart = { [100] = { 1 } } } } } }
 dofile("tests/lua/localization_test_env.lua")
 VAS_REALM_LABEL, FRIENDS_LIST_REALM = nil, "Realm: "
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/utils/Utils.lua")

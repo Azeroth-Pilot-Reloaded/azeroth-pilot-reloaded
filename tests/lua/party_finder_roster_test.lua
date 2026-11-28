@@ -110,8 +110,8 @@ env:Receive("Q", env:Query({ id = "foreign" }), "Stranger-Home", "WHISPER")
 env:Advance(11)
 assert(#env:Messages("P", "WHISPER") == 1)
 
-env, finder, channel = New(2, { regional = true, client = "forever" })
-env.roster = { "Same Givenname", "Same Othername" }
+env, finder, channel = New(3, { regional = true, client = "forever", playerName = "Local" })
+env.roster = { "Same Givenname", "Same Othername", "Incomplete" }
 assert(finder:Search())
 Deny(env, channel)
 env:Advance(0.1)

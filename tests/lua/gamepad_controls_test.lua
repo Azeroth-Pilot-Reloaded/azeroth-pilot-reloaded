@@ -32,7 +32,7 @@ function env.methods:SetValue(value)
     if old ~= value and self.scripts.OnValueChanged then self.scripts.OnValueChanged(self, value) end
 end
 function APR:RegisterSupportedEvent(frame, event) frame:RegisterEvent(event) end
-dofile("APR-Core/integrations/GamepadControls.lua")
+dofile("APR-Core/integrations/gamepad/GamepadControls.lua")
 local bindings, saves = { ["CTRL-PAD4"] = "JUMP" }, 0
 function GetCVar(name) return name == "GamePadEmulateCtrl" and "PADLTRIGGER" or "none" end
 function GetConvertedKeyOrButton(key) return key end

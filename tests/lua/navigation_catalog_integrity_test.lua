@@ -189,6 +189,10 @@ for _, profile in ipairs({ "retail", "forever" }) do
         end
     end
     for _, connection in ipairs(data:GetConnections()) do
+        assert(
+            connection.transitGroup == nil or (type(connection.transitGroup) == "string" and connection.transitGroup ~= ""),
+            connection.id .. " needs a non-empty transit group name"
+        )
         if connection.instructionKey then
             for locale, strings in pairs(LibStub("LibAPRNavigation-1.0").locales) do
                 assert(
@@ -230,15 +234,31 @@ for _, profile in ipairs({ "retail", "forever" }) do
     for mapID, id in pairs(data:GetConfig().ZoneRoutes or {}) do
         assert(data.connectionLookup[id], "Zone " .. mapID .. " references an unknown connection: " .. id)
     end
-    local edges = data:BuildEdges({ playerPosition = { instanceID = 0, uiMapID = 2395, x = 0, y = 0 } })
-    for _, edge in ipairs(edges) do
-        local id = edge.id:match("^[^:]+:(.*):forward$") or edge.id:match("^[^:]+:(.*):reverse$")
-        local definition = id and data.connectionLookup[id]
-        if definition then
+    for _, faction in ipairs({ "Alliance", "Horde" }) do
+        fixture.faction = faction
+        local edges = data:BuildEdges({ playerPosition = { instanceID = 0, uiMapID = 2395, x = 0, y = 0 } })
+        for _, edge in ipairs(edges) do
+            local id, direction = edge.id:match("^[^:]+:(.*):([^:]+)$")
+            local definition = assert(data.connectionLookup[id], "Undeclared connection: " .. edge.id)
             assert(
                 not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
                 "Unreviewed/disabled records cannot publish usable connections: " .. id
             )
+            local reverse = direction == "reverse"
+            assert(direction == "forward" or (reverse and definition.bidirectional), "Undeclared direction: " .. edge.id)
+            local declaredFrom, declaredTo = definition.from, definition.to
+            if reverse then declaredFrom, declaredTo = declaredTo, declaredFrom end
+            for _, endpoints in ipairs({ { declaredFrom, edge.from }, { declaredTo, edge.to } }) do
+                local declaration, actual = endpoints[1], endpoints[2]
+                if not declaration.dynamic then
+                    local expected = assert(data:NormalizeLocation(declaration), "Unresolved endpoint: " .. edge.id)
+                    assert(
+                        actual.instanceID == expected.instanceID and actual.x == expected.x
+                            and actual.y == expected.y and actual.z == expected.z,
+                        "Wrong endpoint for direction: " .. edge.id
+                    )
+                end
+            end
         end
     end
 end

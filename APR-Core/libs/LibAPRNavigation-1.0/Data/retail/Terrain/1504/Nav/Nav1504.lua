@@ -1,0 +1,5 @@
+local terrain=LibStub("LibAPRNavigation-1.0")
+if not terrain:MatchesGeneratedTerrain("retail","12.1.5.70961") then return end
+local L=LibStub("LibAPRNavigation-1.0")
+L._TerrainPackStages=L._TerrainPackStages or {}
+L._TerrainPackStages[1504]={["area"]={},["areaNames"]={[77923]="",[78540]="",[78542]="",[78544]="",[78546]="",[78548]="",[78550]="",[78552]="",[78554]="",[79451]="",[79453]="",[79455]="",[79457]="",[80958]="",[80964]="",[86572]=""},["areaParents"]={[77923]=0,[78540]=0,[78542]=0,[78544]=0,[78546]=0,[78548]=0,[78550]=0,[78552]=0,[78554]=0,[79451]=0,[79453]=0,[79455]=0,[79457]=0,[80958]=0,[80964]=0,[86572]=0},["cells"]=128,["class"]={},["counts"]={["area"]=2,["class"]=9,["floor"]=9,["graph"]=9,["grid"]=9,["height"]=9},["cx0"]=1,["cy0"]=1,["floor"]={},["format"]=3,["graph"]={},["grid"]={},["height"]={},["heightDigits"]=3,["hubs"]={},["nx"]=3,["ny"]=3,["packed"]={["area"]={},["class"]={},["floor"]={},["graph"]={},["grid"]={},["height"]={}},["portalCostPerYard"]=0.67,["profiles"]={"Alliance","Horde"},["swim"]=3,["zone"]={},["zstep"]=2}

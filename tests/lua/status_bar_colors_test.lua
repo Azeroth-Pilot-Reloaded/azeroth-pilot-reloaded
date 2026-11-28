@@ -86,7 +86,7 @@ for _, bar in ipairs(guideBars) do
     checkColor(bar, { 0.4, 0.5, 0.6, 0.25 })
 end
 -- Full class themes override explicit and legacy RGB on every registered APR bar.
-dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/integrations/appearance/SkinRegistry.lua")
 function UnitClass() return "Mage", "MAGE" end
 RAID_CLASS_COLORS = { MAGE = { r = 0.25, g = 0.78, b = 0.92 } }
 profile.uiTheme = "modern"

@@ -28,6 +28,7 @@ def new_runtime() -> LuaRuntime:
     runtime = LuaRuntime(unpack_returned_tuples=True)
     runtime.globals().python_clock = milliseconds
     runtime.execute("function benchmarkClock() return python_clock() end")
+    runtime.execute('dofile = dofile("tests/lua/feature_loader.lua")(dofile, _G)')
     return runtime
 
 

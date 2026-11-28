@@ -73,6 +73,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             _index = 5,
         },
         {
+            Done = { 4766 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
+            RaidIcon = { {
+                npcID = 9565,
+                questID = 4766,
+            } },
+            AllOf = { { IsQuestUncompleted = 4764 }, { IsQuestNotOnQuest = 4764 } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 4766,
+            Zone = 1428,
+            _index = 6,
+        },
+        {
             PickUp = { 4764 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
             RaidIcon = { {
@@ -82,7 +95,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 57,
             Zone = 1428,
-            _index = 6,
+            _index = 7,
         },
         {
             PickUp = { 4766 },
@@ -91,10 +104,24 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
                 npcID = 2285,
                 questID = 4766,
             } },
+            AllOf = { { IsQuestUncompleted = 4764 }, { IsQuestNotOnQuest = 4764 } },
             Faction = "Alliance",
             MinLevel = 57,
             Zone = 1453,
-            _index = 7,
+            _index = 8,
+        },
+        {
+            Done = { 4769 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
+            RaidIcon = { {
+                npcID = 9078,
+                questID = 4769,
+            } },
+            AllOf = { { IsQuestUncompleted = 4768 }, { IsQuestNotOnQuest = 4768 } },
+            Faction = "Horde",
+            IsQuestOnQuest = 4769,
+            Zone = 1418,
+            _index = 9,
         },
         {
             PickUp = { 4768 },
@@ -106,7 +133,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 57,
             Zone = 1418,
-            _index = 8,
+            _index = 10,
         },
         {
             PickUp = { 4769 },
@@ -115,10 +142,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
                 npcID = 5204,
                 questID = 4769,
             } },
+            AllOf = { { IsQuestUncompleted = 4768 }, { IsQuestNotOnQuest = 4768 } },
             Faction = "Horde",
             MinLevel = 57,
             Zone = 1458,
-            _index = 9,
+            _index = 11,
         },
         {
             PickUp = { 4862 },
@@ -129,7 +157,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             } },
             MinLevel = 55,
             Zone = 1428,
-            _index = 10,
+            _index = 12,
         },
         {
             PickUp = { 4866 },
@@ -140,7 +168,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             } },
             MinLevel = 55,
             Zone = 1428,
-            _index = 11,
+            _index = 13,
         },
         {
             PickUp = { 4981 },
@@ -152,7 +180,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 55,
             Zone = 1418,
-            _index = 12,
+            _index = 14,
         },
         {
             PickUp = { 5126 },
@@ -164,7 +192,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Class = { "WARRIOR", "PALADIN", "SHAMAN" },
             MinLevel = 55,
             Zone = 1452,
-            _index = 13,
+            _index = 15,
         },
         {
             PickUp = { 8905 },
@@ -177,7 +205,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 14,
+            _index = 16,
         },
         {
             PickUp = { 8906 },
@@ -190,7 +218,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 15,
+            _index = 17,
         },
         {
             PickUp = { 8907 },
@@ -203,7 +231,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 16,
+            _index = 18,
         },
         {
             PickUp = { 8908 },
@@ -216,7 +244,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 17,
+            _index = 19,
         },
         {
             PickUp = { 8909 },
@@ -229,7 +257,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 18,
+            _index = 20,
         },
         {
             PickUp = { 8910 },
@@ -242,7 +270,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 19,
+            _index = 21,
         },
         {
             PickUp = { 8911 },
@@ -255,7 +283,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 20,
+            _index = 22,
         },
         {
             PickUp = { 8912 },
@@ -268,7 +296,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Alliance",
             MinLevel = 58,
             Zone = 1455,
-            _index = 21,
+            _index = 23,
         },
         {
             PickUp = { 8913 },
@@ -281,7 +309,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 22,
+            _index = 24,
         },
         {
             PickUp = { 8914 },
@@ -294,7 +322,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 23,
+            _index = 25,
         },
         {
             PickUp = { 8915 },
@@ -307,7 +335,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 24,
+            _index = 26,
         },
         {
             PickUp = { 8916 },
@@ -320,7 +348,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 25,
+            _index = 27,
         },
         {
             PickUp = { 8917 },
@@ -333,7 +361,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 26,
+            _index = 28,
         },
         {
             PickUp = { 8918 },
@@ -346,7 +374,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 27,
+            _index = 29,
         },
         {
             PickUp = { 8919 },
@@ -359,7 +387,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 28,
+            _index = 30,
         },
         {
             PickUp = { 8920 },
@@ -372,43 +400,19 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             Faction = "Horde",
             MinLevel = 58,
             Zone = 1454,
-            _index = 29,
+            _index = 31,
         },
         {
             Qpart = { [3520] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 43.07, 36.94),
             IsQuestOnQuest = 3520,
             Zone = 1444,
-            _index = 30,
+            _index = 32,
         },
         {
             Qpart = { [4726] = { 1, 2 } },
             NoArrow = true,
             IsQuestOnQuest = 4726,
-            _index = 31,
-        },
-        {
-            Done = { 4766 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
-            RaidIcon = { {
-                npcID = 9565,
-                questID = 4766,
-            } },
-            Faction = "Alliance",
-            IsQuestOnQuest = 4766,
-            Zone = 1428,
-            _index = 32,
-        },
-        {
-            Done = { 4769 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
-            RaidIcon = { {
-                npcID = 9078,
-                questID = 4769,
-            } },
-            Faction = "Horde",
-            IsQuestOnQuest = 4769,
-            Zone = 1418,
             _index = 33,
         },
         {
@@ -1099,6 +1103,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             _index = 100,
         },
         {
+            Done = { 4907 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
+            RaidIcon = { {
+                npcID = 10267,
+                questID = 4907,
+            } },
+            AllOf = { { IsQuestUncompleted = 4734 }, { IsQuestNotOnQuest = 4734 } },
+            IsQuestOnQuest = 4907,
+            Zone = 1428,
+            _index = 101,
+        },
+        {
             PickUp = { 4734 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
             RaidIcon = { {
@@ -1108,7 +1124,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             AnyOf = { { IsQuestCompleted = 4810 } },
             MinLevel = 57,
             Zone = 1428,
-            _index = 101,
+            _index = 102,
         },
         {
             PickUp = { 5065 },
@@ -1120,7 +1136,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             AnyOf = { { IsQuestCompleted = 3528 } },
             MinLevel = 40,
             Zone = 1446,
-            _index = 102,
+            _index = 103,
         },
         {
             PickUp = { 4907 },
@@ -1129,10 +1145,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
                 npcID = 10468,
                 questID = 4907,
             } },
+            AllOf = { { IsQuestUncompleted = 4734 }, { IsQuestNotOnQuest = 4734 } },
             AnyOf = { { IsQuestCompleted = 4810 } },
             MinLevel = 57,
             Zone = 1452,
-            _index = 103,
+            _index = 104,
         },
         {
             PickUp = { 8925 },
@@ -1144,23 +1161,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
             AnyOf = { { IsQuestCompleted = 8924 } },
             MinLevel = 58,
             Zone = 1446,
-            _index = 104,
+            _index = 105,
         },
         {
             Qpart = { [5065] = { 1, 2 } },
             NoArrow = true,
             IsQuestOnQuest = 5065,
-            _index = 105,
-        },
-        {
-            Done = { 4907 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
-            RaidIcon = { {
-                npcID = 10267,
-                questID = 4907,
-            } },
-            IsQuestOnQuest = 4907,
-            Zone = 1428,
             _index = 106,
         },
         {

@@ -16,15 +16,74 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
     mapID = 0,
     steps = {
         {
+            PickUp = { 93030 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 17.59, 67.54),
+            RaidIcon = { {
+                npcID = 276110,
+                questID = 93030,
+            } },
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestNotOnQuest = 99187,
+            IsQuestUncompleted = 99187,
+            MinLevel = 50,
+            Zone = 1420,
+            _index = 1,
+        },
+        {
+            Qpart = {
+                [93030] = { 1 },
+            },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 17.59, 67.54),
+            RaidIcon = { {
+                npcID = 276110,
+                questID = 93030,
+            } },
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestOnQuest = 93030,
+            MinLevel = 50,
+            Zone = 1420,
+            _index = 2,
+        },
+        {
+            Done = { 93030 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 17.59, 67.54),
+            RaidIcon = { {
+                npcID = 276110,
+                questID = 93030,
+            } },
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestOnQuest = 93030,
+            MinLevel = 50,
+            Zone = 1420,
+            _index = 3,
+        },
+        {
+            PickUp = { 99187 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 17.59, 67.54),
+            RaidIcon = { {
+                npcID = 276110,
+                questID = 99187,
+            } },
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestCompleted = 93030,
+            MinLevel = 50,
+            Zone = 1420,
+            _index = 4,
+        },
+        {
             PickUp = { 92065 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 20.2),
             RaidIcon = { {
-                npcID = 6651,
+                npcID = 236573,
                 questID = 92065,
             } },
             MinLevel = 47,
             Zone = 1447,
-            _index = 1,
+            _index = 5,
         },
         {
             PickUp = { 92066 },
@@ -35,7 +94,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             } },
             MinLevel = 47,
             Zone = 1447,
-            _index = 2,
+            _index = 6,
         },
         {
             PickUp = { 92069 },
@@ -45,7 +104,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
                 questID = 92069,
             } },
             Zone = 1447,
-            _index = 3,
+            _index = 7,
         },
         {
             PickUp = { 92345 },
@@ -57,7 +116,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Alliance",
             MinLevel = 45,
             Zone = 1447,
-            _index = 4,
+            _index = 8,
         },
         {
             Done = { 92345 },
@@ -70,7 +129,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92345,
             MinLevel = 45,
             Zone = 1457,
-            _index = 5,
+            _index = 9,
         },
         {
             PickUp = { 92346 },
@@ -82,7 +141,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Horde",
             MinLevel = 45,
             Zone = 1447,
-            _index = 6,
+            _index = 10,
         },
         {
             Done = { 92346 },
@@ -95,7 +154,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92346,
             MinLevel = 45,
             Zone = 1456,
-            _index = 7,
+            _index = 11,
         },
         {
             PickUp = { 92344 },
@@ -108,7 +167,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Alliance",
             MinLevel = 45,
             Zone = 1457,
-            _index = 8,
+            _index = 12,
         },
         {
             PickUp = { 92343 },
@@ -121,7 +180,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Horde",
             MinLevel = 45,
             Zone = 1456,
-            _index = 9,
+            _index = 13,
         },
         {
             PickUp = { 97327 },
@@ -131,7 +190,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
                 questID = 97327,
             } },
             Zone = 1447,
-            _index = 10,
+            _index = 14,
         },
         {
             PickUp = { 97173 },
@@ -143,7 +202,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Alliance",
             MinLevel = 52,
             Zone = 1416,
-            _index = 11,
+            _index = 15,
         },
         {
             PickUp = { 97198 },
@@ -155,14 +214,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Horde",
             MinLevel = 52,
             Zone = 1412,
-            _index = 12,
+            _index = 16,
         },
         {
             EnterInstance = { dungeonKey = "BLACKMAW_HOLD" },
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 13,
+            _index = 17,
         },
         {
             PickUp = { 92067 },
@@ -178,7 +237,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
                 itemID = 249695,
             },
             MinLevel = 45,
-            _index = 14,
+            _index = 18,
         },
         {
             KillNPC = {
@@ -189,7 +248,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 15,
+            _index = 19,
         },
         {
             KillNPC = {
@@ -200,7 +259,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 16,
+            _index = 20,
         },
         {
             KillNPC = {
@@ -211,7 +270,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 17,
+            _index = 21,
         },
         {
             KillNPC = {
@@ -222,7 +281,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 18,
+            _index = 22,
         },
         {
             KillNPC = {
@@ -233,7 +292,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 19,
+            _index = 23,
         },
         {
             KillNPC = {
@@ -244,7 +303,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 20,
+            _index = 24,
         },
         {
             KillNPC = {
@@ -255,7 +314,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
-            _index = 21,
+            _index = 25,
         },
         {
             Qpart = { [92065] = { 1 } },
@@ -264,7 +323,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 92065,
             MinLevel = 47,
-            _index = 22,
+            _index = 26,
         },
         {
             Qpart = { [92066] = { 1, 2 } },
@@ -273,7 +332,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 92066,
             MinLevel = 47,
-            _index = 23,
+            _index = 27,
         },
         {
             Done = { 92067 },
@@ -286,7 +345,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             } },
             IsQuestOnQuest = 92067,
             MinLevel = 45,
-            _index = 24,
+            _index = 28,
         },
         {
             Qpart = { [92069] = { 1, 2 } },
@@ -294,7 +353,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
             IsQuestOnQuest = 92069,
-            _index = 25,
+            _index = 29,
         },
         {
             PickUp = { 92070 },
@@ -307,7 +366,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
                 itemID = 249698,
             },
             MinLevel = 47,
-            _index = 26,
+            _index = 30,
         },
         {
             Qpart = { [92070] = { 1 } },
@@ -316,7 +375,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             InstanceQuest = true,
             IsQuestOnQuest = 92070,
             MinLevel = 47,
-            _index = 27,
+            _index = 31,
         },
         {
             Qpart = { [92343] = { 1 } },
@@ -326,7 +385,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92343,
             MinLevel = 45,
-            _index = 28,
+            _index = 32,
         },
         {
             Qpart = { [92344] = { 1 } },
@@ -336,7 +395,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 92344,
             MinLevel = 45,
-            _index = 29,
+            _index = 33,
         },
         {
             Qpart = { [97327] = { 1 } },
@@ -344,7 +403,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Dungeon = "BLACKMAW_HOLD",
             InstanceQuest = true,
             IsQuestOnQuest = 97327,
-            _index = 30,
+            _index = 34,
         },
         {
             Qpart = { [97173] = { 1 } },
@@ -354,7 +413,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 97173,
             MinLevel = 52,
-            _index = 31,
+            _index = 35,
         },
         {
             Qpart = { [97198] = { 1 } },
@@ -364,25 +423,38 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             Faction = "Horde",
             IsQuestOnQuest = 97198,
             MinLevel = 52,
-            _index = 32,
+            _index = 36,
+        },
+        {
+            Qpart = {
+                [99187] = { 1 },
+            },
+            NoArrow = true,
+            Dungeon = "BLACKMAW_HOLD",
+            InstanceQuest = true,
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestOnQuest = 99187,
+            MinLevel = 50,
+            _index = 37,
         },
         {
             LeaveInstance = { dungeonKey = "BLACKMAW_HOLD" },
             NoArrow = true,
             Dungeon = "BLACKMAW_HOLD",
-            _index = 33,
+            _index = 38,
         },
         {
             Done = { 92065 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 20.2),
             RaidIcon = { {
-                npcID = 6651,
+                npcID = 236573,
                 questID = 92065,
             } },
             IsQuestOnQuest = 92065,
             MinLevel = 47,
             Zone = 1447,
-            _index = 34,
+            _index = 39,
         },
         {
             Done = { 92066 },
@@ -394,7 +466,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92066,
             MinLevel = 47,
             Zone = 1447,
-            _index = 35,
+            _index = 40,
         },
         {
             Done = { 92069 },
@@ -405,7 +477,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             } },
             IsQuestOnQuest = 92069,
             Zone = 1447,
-            _index = 36,
+            _index = 41,
         },
         {
             Done = { 92070 },
@@ -417,7 +489,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92070,
             MinLevel = 47,
             Zone = 1447,
-            _index = 37,
+            _index = 42,
         },
         {
             Done = { 92343 },
@@ -430,7 +502,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92343,
             MinLevel = 45,
             Zone = 1456,
-            _index = 38,
+            _index = 43,
         },
         {
             Done = { 92344 },
@@ -443,7 +515,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 92344,
             MinLevel = 45,
             Zone = 1457,
-            _index = 39,
+            _index = 44,
         },
         {
             Done = { 97327 },
@@ -454,7 +526,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             } },
             IsQuestOnQuest = 97327,
             Zone = 1447,
-            _index = 40,
+            _index = 45,
         },
         {
             PickUp = { 96246 },
@@ -470,7 +542,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             },
             MinLevel = 52,
             Zone = 1447,
-            _index = 41,
+            _index = 46,
         },
         {
             Done = { 96246 },
@@ -482,7 +554,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 96246,
             MinLevel = 52,
             Zone = 1447,
-            _index = 42,
+            _index = 47,
         },
         {
             Done = { 97173 },
@@ -495,7 +567,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 97173,
             MinLevel = 52,
             Zone = 1416,
-            _index = 43,
+            _index = 48,
         },
         {
             Done = { 97198 },
@@ -508,11 +580,25 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackmaw-Hold"] = {
             IsQuestOnQuest = 97198,
             MinLevel = 52,
             Zone = 1412,
-            _index = 44,
+            _index = 49,
+        },
+        {
+            Done = { 99187 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 17.59, 67.54),
+            RaidIcon = { {
+                npcID = 276110,
+                questID = 99187,
+            } },
+            Class = "PALADIN",
+            Faction = "Horde",
+            IsQuestOnQuest = 99187,
+            MinLevel = 50,
+            Zone = 1420,
+            _index = 50,
         },
         {
             RouteCompleted = true,
-            _index = 45,
+            _index = 51,
         },
     },
 }
